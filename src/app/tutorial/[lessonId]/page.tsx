@@ -410,10 +410,10 @@ export default async function LessonPage({
         {/* Ders Başlık Alanı */}
         <div className="border-b border-base-300 pb-6 mb-8 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className={`badge ${course.color} text-xs font-mono font-bold`}>
+            <span className={`badge ${course.color} text-xs font-mono font-bold text-white`}>
               {course.shortTitle}
             </span>
-            <span className="badge badge-neutral badge-outline text-xs font-mono font-semibold">
+            <span className="badge badge-ghost bg-base-200/90 border border-base-content/15 text-base-content/80 text-xs font-mono font-semibold">
               Modül {module.number}
             </span>
             <span className="badge badge-ghost text-xs flex items-center gap-1 font-mono">
@@ -423,16 +423,16 @@ export default async function LessonPage({
               <BarChart className="w-3 h-3" /> {lesson.difficulty}
             </span>
             <span
-              className={`badge text-xs font-mono ${
+              className={`badge text-xs font-mono font-bold text-white ${
                 lesson.category === "Design"
-                  ? "badge-info"
+                  ? "bg-sky-600 border-sky-600 text-white"
                   : lesson.category === "Verification"
-                  ? "badge-success"
+                  ? "bg-emerald-600 border-emerald-600 text-white"
                   : lesson.category === "Web"
-                  ? "badge-error"
+                  ? "bg-rose-600 border-rose-600 text-white"
                   : lesson.category === "Embedded"
-                  ? "badge-primary"
-                  : "badge-neutral"
+                  ? "bg-indigo-600 border-indigo-600 text-white"
+                  : "bg-slate-700 border-slate-700 text-white"
               }`}
             >
               {lesson.category === "Design"
@@ -461,14 +461,14 @@ export default async function LessonPage({
           </p>
 
           {lesson.id === "interview-prep" && (
-            <div className="alert alert-info bg-info/10 border-info/30 my-3">
-              <Sparkles className="w-5 h-5 text-info shrink-0" />
+            <div className="alert alert-info bg-sky-500/10 border-sky-500/30 my-3">
+              <Sparkles className="w-5 h-5 text-sky-600 dark:text-sky-400 shrink-0" />
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
                 <div>
-                  <h4 className="font-bold text-xs uppercase tracking-wider text-info">İnteraktif Mülakat & Flashcard Simülatörü</h4>
-                  <p className="text-xs text-base-content/80">Bu konudaki tüm soruları 3D çevrilebilir bilgi kartlarıyla pratik yapmak için Mülakat Merkezini ziyaret edin.</p>
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-sky-700 dark:text-sky-300">İnteraktif Mülakat & Flashcard Simülatörü</h4>
+                  <p className="text-xs text-base-content/85">Bu konudaki tüm soruları 3D çevrilebilir bilgi kartlarıyla pratik yapmak için Mülakat Merkezini ziyaret edin.</p>
                 </div>
-                <Link href="/interview" className="btn btn-info btn-xs font-mono shrink-0">
+                <Link href="/interview" className="btn btn-info btn-xs font-mono shrink-0 text-white font-bold">
                   Flashcard Modunu Aç →
                 </Link>
               </div>
@@ -492,12 +492,12 @@ export default async function LessonPage({
                   <div
                     className={`alert shadow-xs my-4 border ${
                       sec.callout.type === "info"
-                        ? "alert-info bg-info/10 border-info/30 text-info-content"
+                        ? "alert-info bg-sky-500/10 border-sky-500/30 text-sky-950 dark:text-sky-100"
                         : sec.callout.type === "warning"
-                        ? "alert-warning bg-warning/10 border-warning/30 text-warning-content"
+                        ? "alert-warning bg-warning/10 border-warning/30 text-base-content"
                         : sec.callout.type === "success"
-                        ? "alert-success bg-success/10 border-success/30 text-success-content"
-                        : "alert-neutral bg-base-200 border-base-content/20"
+                        ? "alert-success bg-success/10 border-success/30 text-base-content"
+                        : "alert-neutral bg-base-200 border-base-content/20 text-base-content"
                     }`}
                   >
                     <div className="flex items-start gap-3">
@@ -553,13 +553,13 @@ export default async function LessonPage({
         ) : (
           /* Henüz detaylı metni yazılmamış dersler için dinamik çalışma alanı */
           <div className="space-y-6">
-            <div className="alert alert-info bg-info/10 border-info/30">
-              <Info className="w-5 h-5 text-info shrink-0" />
+            <div className="alert alert-info bg-sky-500/10 border-sky-500/30 text-base-content">
+              <Info className="w-5 h-5 text-sky-600 dark:text-sky-400 shrink-0" />
               <div className="space-y-1">
-                <h4 className="font-bold text-xs">
+                <h4 className="font-bold text-xs text-sky-800 dark:text-sky-200">
                   {course.shortTitle} • Müfredat & Ders Notu Hazırlanıyor
                 </h4>
-                <p className="text-xs leading-relaxed">
+                <p className="text-xs leading-relaxed text-base-content/85">
                   {lesson.description} Bu konuya ait temel örnek şablon ve çalışma alanı aşağıda sunulmuştur.
                 </p>
               </div>

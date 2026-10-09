@@ -100,10 +100,10 @@ export default function CoursesPage() {
         </p>
 
         {/* İstatistikler */}
-        <div className="flex flex-wrap items-center gap-4 pt-2 text-xs font-mono text-base-content/60">
-          <span className="badge badge-neutral badge-sm">{COURSES.length} Ayrı Kurs</span>
-          <span className="badge badge-neutral badge-sm">{totalAllLessons} Toplam Ders</span>
-          <span className="badge badge-neutral badge-sm">4 Temel Kategori</span>
+        <div className="flex flex-wrap items-center gap-3 pt-2 text-xs font-mono text-base-content/70">
+          <span className="badge badge-ghost bg-base-200/80 border border-base-content/15 text-base-content/80 badge-sm font-mono">{COURSES.length} Ayrı Kurs</span>
+          <span className="badge badge-ghost bg-base-200/80 border border-base-content/15 text-base-content/80 badge-sm font-mono">{totalAllLessons} Toplam Ders</span>
+          <span className="badge badge-ghost bg-base-200/80 border border-base-content/15 text-base-content/80 badge-sm font-mono">4 Temel Kategori</span>
         </div>
       </div>
 
@@ -167,7 +167,7 @@ export default function CoursesPage() {
                       </h2>
                     </div>
                   </div>
-                  <span className={`badge ${course.color} badge-sm font-mono text-[10px] font-bold shrink-0`}>
+                  <span className={`badge ${course.color} badge-sm font-mono text-[10px] font-bold shrink-0 text-white`}>
                     {course.badge}
                   </span>
                 </div>

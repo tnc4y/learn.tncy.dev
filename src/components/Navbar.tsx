@@ -82,12 +82,12 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
             onClick={closeDropdown}
             className="flex items-center gap-2.5 font-bold tracking-tight text-lg group"
           >
-            <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center p-0.5 bg-emerald-500/10 border border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:scale-105 transition-all shadow-xs shrink-0">
+            <div className="relative w-10 h-10 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
               <Image
                 src="/logo.png"
                 alt="learn.tncy.dev Logo"
-                width={32}
-                height={32}
+                width={40}
+                height={40}
                 className="w-full h-full object-contain"
                 priority
               />

@@ -154,7 +154,7 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
             <span className="font-bold uppercase tracking-wider text-[10px] text-primary font-mono">
               {activeCourse.category}
             </span>
-            <span className="badge badge-sm badge-neutral font-mono text-[10px]">
+            <span className="badge badge-sm badge-ghost bg-base-100 border border-base-content/15 text-base-content/80 font-mono text-[10px]">
               {completedInCourse}/{totalCourseLessons} (%{progressPercent})
             </span>
           </div>

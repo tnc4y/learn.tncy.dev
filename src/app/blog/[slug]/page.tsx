@@ -187,17 +187,17 @@ export default async function BlogPostPage({
                   <div
                     className={`alert shadow-xs my-4 border ${
                       section.callout.type === "info"
-                        ? "alert-info bg-info/10 border-info/30 text-info-content"
+                        ? "alert-info bg-sky-500/10 border-sky-500/30 text-sky-950 dark:text-sky-100"
                         : section.callout.type === "warning"
-                        ? "alert-warning bg-warning/10 border-warning/30 text-warning-content"
+                        ? "alert-warning bg-warning/10 border-warning/30 text-base-content"
                         : section.callout.type === "success"
-                        ? "alert-success bg-success/10 border-success/30 text-success-content"
-                        : "alert-neutral bg-base-200 border-base-content/20"
+                        ? "alert-success bg-success/10 border-success/30 text-base-content"
+                        : "alert-neutral bg-base-200 border-base-content/20 text-base-content"
                     }`}
                   >
                     <div className="flex items-start gap-3">
                       {section.callout.type === "info" ? (
-                        <Info className="w-5 h-5 text-info shrink-0 mt-0.5" />
+                        <Info className="w-5 h-5 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
                       ) : section.callout.type === "warning" ? (
                         <AlertTriangle className="w-5 h-5 text-warning shrink-0 mt-0.5" />
                       ) : section.callout.type === "success" ? (

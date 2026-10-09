@@ -56,12 +56,12 @@ export default function AppShell({ children }: AppShellProps) {
             {/* Üst Başlık & Sekmeler */}
             <div className="p-3 border-b border-base-300 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <div className="relative w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center p-0.5 bg-emerald-500/10 border border-emerald-500/20 shrink-0">
+                <div className="relative w-9 h-9 flex items-center justify-center shrink-0">
                   <Image
                     src="/logo.png"
                     alt="learn.tncy.dev Logo"
-                    width={28}
-                    height={28}
+                    width={36}
+                    height={36}
                     className="w-full h-full object-contain"
                   />
                 </div>

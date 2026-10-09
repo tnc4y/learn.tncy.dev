@@ -23,3 +23,40 @@ pre, code {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(120, 120, 120, 0.45);
 }
+
+/* Badge contrast & text readability enhancements */
+.badge-info,
+.badge.badge-info {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  --badge-fg: #ffffff !important;
+}
+
+.btn-info,
+.btn.btn-info {
+  background-color: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+.badge-primary,
+.badge.badge-primary,
+.badge-secondary,
+.badge.badge-secondary,
+.badge-accent,
+.badge.badge-accent,
+.badge-success,
+.badge.badge-success,
+.badge-error,
+.badge.badge-error {
+  color: #ffffff !important;
+}
+
+/* Prevent pitch-black harsh badges in light theme */
+[data-theme="light"] .badge-neutral,
+:root:not([data-theme="dark"]) .badge-neutral {
+  background-color: #475569 !important;
+  border-color: #475569 !important;
+  color: #ffffff !important;
+}

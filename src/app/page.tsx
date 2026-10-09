@@ -271,7 +271,7 @@ export default function Home() {
                       {track.title}
                     </h3>
                   </div>
-                  <span className={`badge ${track.colorClass} badge-sm font-mono text-[10px] font-bold`}>
+                  <span className={`badge ${track.colorClass} badge-sm font-mono text-[10px] font-bold text-white`}>
                     {track.badge}
                   </span>
                 </div>
@@ -287,7 +287,10 @@ export default function Home() {
                   </span>
                   <div className="flex flex-wrap gap-1">
                     {track.topics.map((t, idx) => (
-                      <span key={idx} className="badge badge-neutral badge-xs font-mono text-[10px]">
+                      <span
+                        key={idx}
+                        className="px-2 py-0.5 rounded-md bg-base-200/80 hover:bg-base-300 text-base-content/75 border border-base-content/10 font-mono text-[10px] transition-colors"
+                      >
                         {t}
                       </span>
                     ))}
@@ -348,7 +351,7 @@ export default function Home() {
                 href="/boards"
                 className="p-3 rounded-xl bg-base-100 border border-base-300 hover:border-warning/50 transition-all text-center space-y-1 group"
               >
-                <span className={`badge badge-xs font-mono text-[9px] ${b.color}`}>
+                <span className={`badge badge-xs font-mono text-[9px] font-bold text-white ${b.color}`}>
                   {b.tag}
                 </span>
                 <div className="font-bold text-xs text-base-content group-hover:text-warning transition-colors truncate">
@@ -497,12 +500,12 @@ export default function Home() {
 
         <div className="mt-10 py-6 text-center text-xs text-base-content/50 border-t border-base-content/5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center justify-center sm:justify-start gap-2.5">
-            <div className="w-6 h-6 rounded-md bg-emerald-500/10 border border-emerald-500/20 p-0.5 flex items-center justify-center shrink-0">
+            <div className="relative w-7 h-7 flex items-center justify-center shrink-0">
               <Image
                 src="/logo.png"
                 alt="learn.tncy.dev Logo"
-                width={20}
-                height={20}
+                width={28}
+                height={28}
                 className="w-full h-full object-contain"
               />
             </div>

@@ -1412,7 +1412,7 @@ export const COURSES: CourseTrack[] = [
     category: "Programlama Dilleri",
     icon: "Code2",
     badge: "Yüksek Başarım",
-    color: "badge-neutral",
+    color: "badge-secondary",
     description: "Yüksek performanslı sistem programlama: RAII, akıllı işaretçiler, şablonlar (templates) ve STL.",
     modules: [
       {

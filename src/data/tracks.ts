@@ -167,7 +167,7 @@ export const LEARNING_TRACKS: LearningTrack[] = [
     category: "Programlama Dilleri",
     iconName: "Code2",
     badge: "Yüksek Başarım",
-    colorClass: "badge-neutral",
+    colorClass: "badge-secondary",
     description: "Sistem programlama, oyun motorları ve yüksek performans gerektiren mimariler: Bellek yönetimi, şablonlar (templates) ve STL.",
     lessonCount: 26,
     level: "İleri",
