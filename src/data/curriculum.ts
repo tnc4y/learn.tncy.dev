@@ -330,8 +330,36 @@ export const COURSES: CourseTrack[] = [
         ],
       },
       {
-        id: "sv-assertions",
+        id: "sv-coverage",
         number: 8,
+        title: "Fonksiyonel Kapsama (Coverage)",
+        description: "covergroup, coverpoint, açık/otomatik bins, ignore_bins ve çok boyutlu cross coverage.",
+        lessons: [
+          {
+            id: "covergroup-coverpoint",
+            title: "covergroup ve coverpoint Temelleri",
+            shortTitle: "covergroup & coverpoint",
+            readTime: "8 dk",
+            difficulty: "İleri",
+            description: "Kod kapsaması (Code Coverage) vs Fonksiyonel Kapsama, covergroup tanımları ve örnekleme.",
+            hasPlayground: true,
+            category: "Verification",
+          },
+          {
+            id: "coverage-bins-cross",
+            title: "Bins Tanımları ve Çapraz Kapsama (cross)",
+            shortTitle: "Bins & Cross Coverage",
+            readTime: "9 dk",
+            difficulty: "İleri",
+            description: "Açık tanımlı bins, ignore_bins, illegal_bins ve çok boyutlu cross coverage matrisleri.",
+            hasPlayground: true,
+            category: "Verification",
+          },
+        ],
+      },
+      {
+        id: "sv-assertions",
+        number: 9,
         title: "İfadeler (SVA - SystemVerilog Assertions)",
         description: "Anlık ve zaman tabanlı concurrent assertion'lar, sequence ve property kuralları.",
         lessons: [
@@ -359,7 +387,7 @@ export const COURSES: CourseTrack[] = [
       },
       {
         id: "sv-interfaces",
-        number: 9,
+        number: 10,
         title: "Arayüzler & Modportlar",
         description: "Interface yapısı, modport bağlantıları, saat blokları ve sanal arayüzler.",
         lessons: [
@@ -387,7 +415,7 @@ export const COURSES: CourseTrack[] = [
       },
       {
         id: "sv-threads",
-        number: 10,
+        number: 11,
         title: "İş Parçacıkları & IPC",
         description: "fork..join paralel süreçler, mailbox, semaphore ve event iletişimi.",
         lessons: [
@@ -414,8 +442,36 @@ export const COURSES: CourseTrack[] = [
         ],
       },
       {
+        id: "sv-tb-architecture",
+        number: 12,
+        title: "Testbench Mimarisi & Gelişmiş Özellikler",
+        description: "Transactor mimarisi (Generator, Driver, Monitor, Scoreboard), paketler ve C/C++ DPI-C.",
+        lessons: [
+          {
+            id: "tb-components",
+            title: "Transactor Mimarisi: Generator, Driver, Monitor, Scoreboard",
+            shortTitle: "Transactor Mimarisi",
+            readTime: "10 dk",
+            difficulty: "İleri",
+            description: "Modern çip doğrulamada katmanlı testbench mimarisi, transactor sınıfları ve UVM altyapısı.",
+            hasPlayground: true,
+            category: "Verification",
+          },
+          {
+            id: "dpi-c-packages",
+            title: "C/C++ Entegrasyonu (DPI-C) ve Paketler (Packages)",
+            shortTitle: "DPI-C & Paketler",
+            readTime: "7 dk",
+            difficulty: "İleri",
+            description: "DPI-C (Direct Programming Interface) ile C/C++ fonksiyonlarını çağırma ve package modülleri.",
+            hasPlayground: true,
+            category: "Verification",
+          },
+        ],
+      },
+      {
         id: "sv-interview",
-        number: 11,
+        number: 13,
         title: "Mülakat Soru Bankası",
         description: "En sık sorulan SystemVerilog & Donanım Doğrulama mülakat soruları ve yanıtları.",
         lessons: [
