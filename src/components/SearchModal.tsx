@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { COURSES } from "@/data/curriculum";
-import { Search, X, ArrowRight } from "lucide-react";
+import { BLOG_POSTS } from "@/data/blogData";
+import { Search, X, ArrowRight, BookOpen } from "lucide-react";
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -19,9 +20,6 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
         if (isOpen) onClose();
-        else {
-          // Open handled by parent, but if closed can toggle
-        }
       }
       if (e.key === "Escape" && isOpen) {
         onClose();
@@ -36,28 +34,46 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   const allLessons = COURSES.flatMap((course) =>
     course.modules.flatMap((m) =>
       m.lessons.map((l) => ({
-        ...l,
-        courseTitle: course.shortTitle,
-        courseColor: course.color,
-        moduleName: m.title,
-        moduleNumber: m.number,
+        type: "lesson" as const,
+        id: l.id,
+        url: `/tutorial/${l.id}`,
+        title: l.title,
+        shortTitle: l.shortTitle,
+        description: l.description,
+        badge: course.shortTitle,
+        badgeColor: course.color,
+        subtitle: `Modül ${m.number}: ${m.title}`,
       }))
     )
   );
 
-  const filtered = allLessons.filter(
-    (l) =>
-      l.title.toLowerCase().includes(query.toLowerCase()) ||
-      l.shortTitle.toLowerCase().includes(query.toLowerCase()) ||
-      l.description.toLowerCase().includes(query.toLowerCase()) ||
-      l.courseTitle.toLowerCase().includes(query.toLowerCase()) ||
-      l.moduleName.toLowerCase().includes(query.toLowerCase())
+  const allBlogs = BLOG_POSTS.map((b) => ({
+    type: "blog" as const,
+    id: b.slug,
+    url: `/blog/${b.slug}`,
+    title: b.title,
+    shortTitle: b.title,
+    description: b.excerpt,
+    badge: "Blog",
+    badgeColor: b.categoryColor,
+    subtitle: `${b.category} • ${b.readTime}`,
+  }));
+
+  const allItems = [...allBlogs, ...allLessons];
+
+  const filtered = allItems.filter(
+    (item) =>
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      item.shortTitle.toLowerCase().includes(query.toLowerCase()) ||
+      item.description.toLowerCase().includes(query.toLowerCase()) ||
+      item.badge.toLowerCase().includes(query.toLowerCase()) ||
+      item.subtitle.toLowerCase().includes(query.toLowerCase())
   );
 
-  const handleSelect = (id: string) => {
+  const handleSelect = (url: string) => {
     onClose();
     setQuery("");
-    router.push(`/tutorial/${id}`);
+    router.push(url);
   };
 
   return (
@@ -91,17 +107,17 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           {filtered.length > 0 ? (
             filtered.map((item) => (
               <button
-                key={item.id}
-                onClick={() => handleSelect(item.id)}
+                key={`${item.type}-${item.id}`}
+                onClick={() => handleSelect(item.url)}
                 className="w-full text-left p-3 hover:bg-base-200/80 rounded-lg flex items-center justify-between group transition-colors"
               >
                 <div className="space-y-1 pr-2 truncate">
                   <div className="flex items-center gap-2">
-                    <span className={`badge ${item.courseColor} badge-xs font-mono font-bold`}>
-                      {item.courseTitle}
+                    <span className={`badge ${item.badgeColor} badge-xs font-mono font-bold`}>
+                      {item.badge}
                     </span>
                     <span className="text-[10px] font-mono text-base-content/50">
-                      Modül {item.moduleNumber}
+                      {item.subtitle}
                     </span>
                     <span className="font-semibold text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors truncate">
                       {item.title}

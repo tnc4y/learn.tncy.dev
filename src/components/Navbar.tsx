@@ -196,6 +196,26 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                         </p>
                       </div>
                     </Link>
+
+                    {/* Mühendislik Blogu */}
+                    <Link
+                      href="/blog"
+                      onClick={closeDropdown}
+                      className="p-2.5 rounded-xl hover:bg-base-200/80 transition-colors flex items-start gap-3 group"
+                    >
+                      <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors shrink-0 mt-0.5">
+                        <BookOpen className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-base-content group-hover:text-emerald-500 transition-colors flex items-center justify-between">
+                          <span>Mühendislik Blogu</span>
+                          <span className="badge badge-success badge-xs font-mono text-[9px]">Yeni</span>
+                        </div>
+                        <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
+                          İşlemci mimarileri, SystemVerilog, Vivado ve VHDL derin teknik analizleri
+                        </p>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -356,7 +376,17 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
               )}
             </div>
 
-            {/* 3. İLERLEME (DOĞRUDAN BAĞLANTI) */}
+            {/* 3. BLOG (DOĞRUDAN BAĞLANTI) */}
+            <Link
+              href="/blog"
+              onClick={closeDropdown}
+              className="btn btn-ghost btn-sm font-semibold text-xs gap-1.5 hover:text-primary transition-colors text-base-content/80"
+            >
+              <BookOpen className="w-4 h-4 text-primary" />
+              <span>Blog</span>
+            </Link>
+
+            {/* 4. İLERLEME (DOĞRUDAN BAĞLANTI) */}
             <Link
               href="/progress"
               onClick={closeDropdown}
