@@ -44,9 +44,9 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-1 text-sm font-medium">
             <li>
-              <Link href="/tutorial/intro" className="flex items-center gap-1.5 active:bg-primary">
+              <Link href="/courses" className="flex items-center gap-1.5 active:bg-primary font-semibold">
                 <BookOpen className="w-4 h-4 text-primary" />
-                <span>Dersler</span>
+                <span>Kurslar</span>
               </Link>
             </li>
             <li>

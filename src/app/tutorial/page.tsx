@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function TutorialIndex() {
-  redirect("/tutorial/intro");
+  redirect("/courses");
 }

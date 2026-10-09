@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { CURRICULUM } from "@/data/curriculum";
+import { COURSES } from "@/data/curriculum";
 import { Search, X, ArrowRight } from "lucide-react";
 
 interface SearchModalProps {
@@ -33,8 +33,16 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
 
   if (!isOpen) return null;
 
-  const allLessons = CURRICULUM.flatMap((m) =>
-    m.lessons.map((l) => ({ ...l, moduleName: m.title, moduleNumber: m.number }))
+  const allLessons = COURSES.flatMap((course) =>
+    course.modules.flatMap((m) =>
+      m.lessons.map((l) => ({
+        ...l,
+        courseTitle: course.shortTitle,
+        courseColor: course.color,
+        moduleName: m.title,
+        moduleNumber: m.number,
+      }))
+    )
   );
 
   const filtered = allLessons.filter(
@@ -42,6 +50,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
       l.title.toLowerCase().includes(query.toLowerCase()) ||
       l.shortTitle.toLowerCase().includes(query.toLowerCase()) ||
       l.description.toLowerCase().includes(query.toLowerCase()) ||
+      l.courseTitle.toLowerCase().includes(query.toLowerCase()) ||
       l.moduleName.toLowerCase().includes(query.toLowerCase())
   );
 
@@ -62,7 +71,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
           <Search className="w-5 h-5 text-primary shrink-0" />
           <input
             type="text"
-            placeholder="Konu, anahtar kelime veya komut ara (örn. logic, array, always)..."
+            placeholder="Konu, anahtar kelime veya dil ara (örn. HTML, Arduino, Python, pointer)..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             autoFocus
@@ -88,7 +97,10 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
               >
                 <div className="space-y-1 pr-2 truncate">
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-mono text-primary font-bold px-1.5 py-0.5 rounded bg-primary/10">
+                    <span className={`badge ${item.courseColor} badge-xs font-mono font-bold`}>
+                      {item.courseTitle}
+                    </span>
+                    <span className="text-[10px] font-mono text-base-content/50">
                       Modül {item.moduleNumber}
                     </span>
                     <span className="font-semibold text-xs sm:text-sm text-base-content group-hover:text-primary transition-colors truncate">

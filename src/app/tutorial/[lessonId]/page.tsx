@@ -15,6 +15,8 @@ import {
   CheckCircle,
   Lightbulb,
   Terminal,
+  BookOpen,
+  Sparkles,
 } from "lucide-react";
 
 export function generateStaticParams() {
@@ -22,6 +24,287 @@ export function generateStaticParams() {
   return allLessons.map((lesson) => ({
     lessonId: lesson.id,
   }));
+}
+
+// Kursa ve derse özel akıllı varsayılan kod şablonu
+function getDynamicFallbackTemplate(courseId: string, lessonTitle: string) {
+  switch (courseId) {
+    case "html":
+      return {
+        code: `<!-- ${lessonTitle} -->
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>${lessonTitle}</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+    .card { background: #f0f4f8; padding: 15px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>${lessonTitle}</h1>
+  <div class="card">
+    <p>learn.tncy.dev HTML5 interaktif çalışma alanına hoş geldiniz.</p>
+    <button onclick="alert('HTML çalışıyor!')">Bana Tıkla</button>
+  </div>
+</body>
+</html>`,
+        output: [
+          "[HTML:RENDER] Sayfa DOM ağacı başarıyla oluşturuldu.",
+          `[TITLE] ${lessonTitle}`,
+          "[READY] Etiketler ve stil kuralları aktif.",
+        ],
+      };
+
+    case "css":
+      return {
+        code: `/* ${lessonTitle} */
+:root {
+  --primary-color: #0284c7;
+  --bg-card: #f8fafc;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background-color: var(--bg-card);
+  border: 2px solid var(--primary-color);
+  transition: transform 0.2s ease;
+}
+
+.box:hover {
+  transform: translateY(-4px);
+}`,
+        output: [
+          "[CSS:PARSER] 2 Seçici ve 8 kural derlendi.",
+          "[LAYOUT] Flexbox ve CSS Değişkenleri uygulandı.",
+          "[SUCCESS] Sözdizimi hatası yok.",
+        ],
+      };
+
+    case "javascript":
+      return {
+        code: `// ${lessonTitle}
+console.log("[START] JavaScript kodu yürütülüyor...");
+
+const veriler = [10, 20, 30, 40, 50];
+const kareler = veriler.map((n) => n * n);
+
+console.log("Kaynak Dizi:", veriler);
+console.log("Kareleri:", kareler);
+
+function selamla(isim) {
+  return \`Merhaba \${isim}, learn.tncy.dev JS ortamı hazır!\`;
+}
+
+console.log(selamla("Geliştirici"));
+console.log("[FINISH] Yürütme başarıyla tamamlandı.");`,
+        output: [
+          "[START] JavaScript kodu yürütülüyor...",
+          "Kaynak Dizi: [10, 20, 30, 40, 50]",
+          "Kareleri: [100, 400, 900, 1600, 2500]",
+          "Merhaba Geliştirici, learn.tncy.dev JS ortamı hazır!",
+          "[FINISH] Yürütme başarıyla tamamlandı.",
+        ],
+      };
+
+    case "embedded-c":
+      return {
+        code: `// ${lessonTitle} - Gömülü C (Bare-Metal)
+#include <stdint.h>
+#include <stdio.h>
+
+#define GPIOA_BASE     (0x40020000UL)
+#define GPIOA_MODER    (*(volatile uint32_t *)(GPIOA_BASE + 0x00))
+#define GPIOA_ODR      (*(volatile uint32_t *)(GPIOA_BASE + 0x14))
+
+void gpio_init(void) {
+  // Pin 5'i çıkış (output: 01) olarak ayarla:
+  GPIOA_MODER |= (1 << 10);
+}
+
+int main(void) {
+  printf("[BOOT] Mikrodenetleyici başlatılıyor...\\n");
+  gpio_init();
+  printf("[INFO] GPIOA Pin 5 çıkış olarak yapılandırıldı.\\n");
+  return 0;
+}`,
+        output: [
+          "[BOOT] Mikrodenetleyici başlatılıyor...",
+          "[INFO] GPIOA Pin 5 çıkış olarak yapılandırıldı.",
+          "[READY] Register MMIO adresleri başarıyla güncellendi.",
+        ],
+      };
+
+    case "micropython":
+      return {
+        code: `# ${lessonTitle} - MicroPython (ESP32 / Pico)
+import time
+from machine import Pin
+
+led = Pin(2, Pin.OUT)
+print("[BOOT] MicroPython REPL hazır.")
+
+for i in range(3):
+    led.value(1)
+    print(f"[@{i}s] LED AÇIK (HIGH)")
+    time.sleep(0.5)
+    led.value(0)
+    print(f"[@{i}s] LED KAPALI (LOW)")
+    time.sleep(0.5)
+
+print("[FINISH] Test döngüsü tamamlandı.")`,
+        output: [
+          "[BOOT] MicroPython REPL hazır.",
+          "[@0s] LED AÇIK (HIGH)",
+          "[@0s] LED KAPALI (LOW)",
+          "[@1s] LED AÇIK (HIGH)",
+          "[@1s] LED KAPALI (LOW)",
+          "[FINISH] Test döngüsü tamamlandı.",
+        ],
+      };
+
+    case "arduino":
+      return {
+        code: `// ${lessonTitle} - Arduino C++
+const int LED_PIN = 13;
+const int SENSOR_PIN = A0;
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.println("[BOOT] Arduino kartı uyandı.");
+}
+
+void loop() {
+  int sensorValue = analogRead(SENSOR_PIN);
+  Serial.print("Sensör Değeri: ");
+  Serial.println(sensorValue);
+  
+  digitalWrite(LED_PIN, HIGH);
+  delay(500);
+  digitalWrite(LED_PIN, LOW);
+  delay(500);
+}`,
+        output: [
+          "[BOOT] Arduino kartı uyandı.",
+          "Sensör Değeri: 512",
+          "[STATUS] LED Pin 13 HIGH/LOW döngüsü aktif.",
+        ],
+      };
+
+    case "python":
+      return {
+        code: `# ${lessonTitle} - Python 3
+def ana_program():
+    print("[START] Python 3 betiği çalışıyor...")
+    
+    cihazlar = {
+        "ESP32": {"ram_kb": 520, "wifi": True},
+        "STM32": {"ram_kb": 128, "wifi": False},
+        "Pico W": {"ram_kb": 264, "wifi": True}
+    }
+    
+    for ad, ozellik in cihazlar.items():
+        durum = "Kablosuz Var" if ozellik["wifi"] else "Yalnızca Kablolu"
+        print(f"• {ad}: {ozellik['ram_kb']}KB RAM | {durum}")
+        
+    print("[FINISH] Program hatasız bitti.")
+
+if __name__ == "__main__":
+    ana_program()`,
+        output: [
+          "[START] Python 3 betiği çalışıyor...",
+          "• ESP32: 520KB RAM | Kablosuz Var",
+          "• STM32: 128KB RAM | Yalnızca Kablolu",
+          "• Pico W: 264KB RAM | Kablosuz Var",
+          "[FINISH] Program hatasız bitti.",
+        ],
+      };
+
+    case "cpp":
+      return {
+        code: `// ${lessonTitle} - Modern C++ (C++20)
+#include <iostream>
+#include <memory>
+#include <vector>
+
+class Aygit {
+public:
+  Aygit(const std::string& ad) : ad_(ad) {
+    std::cout << "[INIT] " << ad_ << " oluşturuldu.\\n";
+  }
+  ~Aygit() {
+    std::cout << "[DESTROY] " << ad_ << " bellekten silindi.\\n";
+  }
+  void calistir() const {
+    std::cout << "[RUN] " << ad_ << " yüksek başarımda çalışıyor.\\n";
+  }
+private:
+  std::string ad_;
+};
+
+int main() {
+  auto dev = std::make_unique<Aygit>("Donanım Modülü");
+  dev->calistir();
+  return 0;
+}`,
+        output: [
+          "[INIT] Donanım Modülü oluşturuldu.",
+          "[RUN] Donanım Modülü yüksek başarımda çalışıyor.",
+          "[DESTROY] Donanım Modülü bellekten silindi.",
+          "[SUCCESS] 0 Bellek sızıntısı (RAII ile güvenli).",
+        ],
+      };
+
+    case "rust":
+      return {
+        code: `// ${lessonTitle} - Rust
+fn main() {
+    println!("[START] Rust Ownership ve Bellek Güvenliği");
+    
+    let mesaj = String::from("learn.tncy.dev");
+    let uzunluk = uzunluk_hesapla(&mesaj);
+    
+    println!("Metin: '{}', Uzunluk: {} karakter", mesaj, uzunluk);
+    println!("[SUCCESS] %100 Derleme anı bellek garantisi.");
+}
+
+fn uzunluk_hesapla(s: &String) -> usize {
+    s.len()
+}`,
+        output: [
+          "[START] Rust Ownership ve Bellek Güvenliği",
+          "Metin: 'learn.tncy.dev', Uzunluk: 14 karakter",
+          "[SUCCESS] %100 Derleme anı bellek garantisi.",
+        ],
+      };
+
+    default:
+      return {
+        code: `// ${lessonTitle}
+// learn.tncy.dev Donanım & Sistem Şablonu
+
+module example_module;
+  initial begin
+    $display("[START] ${lessonTitle} simülasyonu çalıştı!");
+    #10;
+    $display("[INFO] Donanım sinyalleri doğrulandı.");
+    $display("[FINISH] Test tamamlandı.");
+  end
+endmodule`,
+        output: [
+          `[START] ${lessonTitle} simülasyonu çalıştı!`,
+          "[@10ns] Donanım sinyalleri doğrulandı.",
+          "[FINISH] Test tamamlandı.",
+          "[SUCCESS] Simülasyon hatasız bitti.",
+        ],
+      };
+  }
 }
 
 export default async function LessonPage({
@@ -36,15 +319,17 @@ export default async function LessonPage({
     notFound();
   }
 
-  const { lesson, module } = lookup;
+  const { lesson, module, course } = lookup;
   const content = LESSONS_DATA[lessonId];
   const { prev, next } = getAdjacentLessons(lessonId);
 
+  const fallback = getDynamicFallbackTemplate(course.id, lesson.title);
+
   return (
     <div className="flex-1 flex max-w-7xl w-full mx-auto">
-      {/* Sol Sütun: Masaüstü Sabit Kenar Menüsü */}
-      <div className="hidden lg:block w-72 shrink-0 border-r border-base-300 min-h-[calc(100vh-4rem)] sticky top-16 h-[calc(100vh-4rem)]">
-        <Sidebar />
+      {/* Sol Sütun: Masaüstü Sabit Kenar Menüsü (Kurs-Özel Filtrelenmiş) */}
+      <div className="hidden lg:block w-76 shrink-0 border-r border-base-300 min-h-[calc(100vh-4rem)] sticky top-16 h-[calc(100vh-4rem)]">
+        <Sidebar currentCourseId={course.id} />
       </div>
 
       {/* Orta Sütun: Ana Ders İçeriği */}
@@ -56,16 +341,27 @@ export default async function LessonPage({
               <Link href="/">Ana Sayfa</Link>
             </li>
             <li>
+              <Link href="/courses" className="hover:text-primary">
+                Kurslar
+              </Link>
+            </li>
+            <li>
+              <span className="font-semibold text-primary/90">{course.shortTitle}</span>
+            </li>
+            <li>
               <span>Modül {module.number}: {module.title}</span>
             </li>
-            <li className="text-primary font-medium">{lesson.shortTitle}</li>
+            <li className="text-primary font-bold">{lesson.shortTitle}</li>
           </ul>
         </div>
 
         {/* Ders Başlık Alanı */}
         <div className="border-b border-base-300 pb-6 mb-8 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="badge badge-primary badge-outline text-xs font-mono font-semibold">
+            <span className={`badge ${course.color} text-xs font-mono font-bold`}>
+              {course.shortTitle}
+            </span>
+            <span className="badge badge-neutral badge-outline text-xs font-mono font-semibold">
               Modül {module.number}
             </span>
             <span className="badge badge-ghost text-xs flex items-center gap-1 font-mono">
@@ -80,6 +376,10 @@ export default async function LessonPage({
                   ? "badge-info"
                   : lesson.category === "Verification"
                   ? "badge-success"
+                  : lesson.category === "Web"
+                  ? "badge-error"
+                  : lesson.category === "Embedded"
+                  ? "badge-primary"
                   : "badge-neutral"
               }`}
             >
@@ -87,11 +387,15 @@ export default async function LessonPage({
                 ? "Sentezlenebilir RTL"
                 : lesson.category === "Verification"
                 ? "Doğrulama (Testbench)"
-                : "Çekirdek Sistem"}
+                : lesson.category === "Web"
+                ? "Web Teknolojisi"
+                : lesson.category === "Embedded"
+                ? "Gömülü Sistem"
+                : "Genel Programlama"}
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-base-content">
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-base-content">
             {lesson.title}
           </h1>
 
@@ -182,76 +486,78 @@ export default async function LessonPage({
             {content.quiz && <QuizExercise quiz={content.quiz} />}
           </div>
         ) : (
-          /* Henüz detaylı içerik girilmemiş dersler için zengin şablon */
+          /* Henüz detaylı metni yazılmamış dersler için dinamik kurs laboratuvarı */
           <div className="space-y-6">
             <div className="alert alert-info bg-info/10 border-info/30">
-              <Info className="w-5 h-5 text-info" />
-              <div>
-                <h4 className="font-bold text-xs">Müfredat Hazırlık Aşamasında</h4>
-                <p className="text-xs">
-                  Bu dersin interaktif içerikleri ve simülasyon kodları ChipVerify
-                  müfredatına uygun olarak oluşturulmaktadır. Aşağıda temel kod taslağını
-                  ve deneme alanını inceleyebilirsiniz.
+              <Info className="w-5 h-5 text-info shrink-0" />
+              <div className="space-y-1">
+                <h4 className="font-bold text-xs">
+                  {course.shortTitle} • Müfredat Hazırlık Aşamasında
+                </h4>
+                <p className="text-xs leading-relaxed">
+                  Bu dersin detaylı teorik anlatımları ve kapsamlı testleri hazırlanmaktadır.
+                  Aşağıdaki canlı kod alanında ders konusuna ait örnek şablonu inceleyebilir ve
+                  kodları doğrudan düzenleyip çalıştırabilirsiniz.
                 </p>
               </div>
             </div>
 
             <CodePlayground
               title={`${lesson.title} - Canlı Deneme Alanı`}
-              initialCode={`// ${lesson.title}
-// learn.tncy.dev SystemVerilog Örnek Şablonu
-
-module example_module;
-  initial begin
-    $display("[START] ${lesson.title} dersi simülasyonu çalıştı!");
-    #10;
-    $display("[INFO] Modül kategorisi: ${lesson.category}");
-    $display("[FINISH] Test tamamlandı.");
-  end
-endmodule`}
-              expectedOutput={[
-                `[START] ${lesson.title} dersi simülasyonu çalıştı!`,
-                `[@10ns] Modül kategorisi: ${lesson.category}`,
-                "[FINISH] Test tamamlandı.",
-                "[SUCCESS] Simülasyon hatasız bitti.",
-              ]}
+              initialCode={fallback.code}
+              expectedOutput={fallback.output}
             />
           </div>
         )}
 
-        {/* Alt Gezinme Butonları (Önceki & Sonraki Ders) */}
-        <div className="mt-12 pt-6 border-t border-base-300 flex items-center justify-between gap-4">
-          {prev ? (
-            <Link
-              href={`/tutorial/${prev.id}`}
-              className="btn btn-outline btn-sm sm:btn-md gap-2 normal-case font-normal text-left"
-            >
-              <ChevronLeft className="w-4 h-4" />
-              <div className="hidden sm:block">
-                <div className="text-[10px] text-base-content/50 uppercase">Önceki Ders</div>
-                <div className="text-xs font-bold truncate max-w-44">{prev.shortTitle}</div>
-              </div>
-              <span className="sm:hidden text-xs">Önceki</span>
-            </Link>
-          ) : (
-            <div />
-          )}
+        {/* Alt Gezinme Butonları (Önceki & Sonraki Ders - Kurs İçi Kapsamlı) */}
+        <div className="mt-12 pt-6 border-t border-base-300">
+          <div className="flex items-center justify-between gap-4">
+            {prev ? (
+              <Link
+                href={`/tutorial/${prev.id}`}
+                className="btn btn-outline btn-sm sm:btn-md gap-2 normal-case font-normal text-left"
+              >
+                <ChevronLeft className="w-4 h-4" />
+                <div className="hidden sm:block">
+                  <div className="text-[10px] text-base-content/50 uppercase font-mono">
+                    Önceki Ders
+                  </div>
+                  <div className="text-xs font-bold truncate max-w-44">{prev.shortTitle}</div>
+                </div>
+                <span className="sm:hidden text-xs">Önceki</span>
+              </Link>
+            ) : (
+              <div />
+            )}
 
-          {next ? (
-            <Link
-              href={`/tutorial/${next.id}`}
-              className="btn btn-primary btn-sm sm:btn-md gap-2 normal-case font-normal text-right shadow-sm"
-            >
-              <div className="hidden sm:block">
-                <div className="text-[10px] text-primary-content/70 uppercase">Sonraki Ders</div>
-                <div className="text-xs font-bold truncate max-w-44">{next.shortTitle}</div>
+            {next ? (
+              <Link
+                href={`/tutorial/${next.id}`}
+                className="btn btn-primary btn-sm sm:btn-md gap-2 normal-case font-normal text-right shadow-sm"
+              >
+                <div className="hidden sm:block">
+                  <div className="text-[10px] text-primary-content/70 uppercase font-mono">
+                    Sonraki Ders
+                  </div>
+                  <div className="text-xs font-bold truncate max-w-44">{next.shortTitle}</div>
+                </div>
+                <span className="sm:hidden text-xs">Sonraki</span>
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            ) : (
+              /* Kursun son dersine gelindiğinde */
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/courses"
+                  className="btn btn-success btn-sm sm:btn-md gap-2 normal-case font-normal text-success-content"
+                >
+                  <Sparkles className="w-4 h-4" />
+                  <span>Kursu Tamamladın! Diğer Kurslar →</span>
+                </Link>
               </div>
-              <span className="sm:hidden text-xs">Sonraki</span>
-              <ChevronRight className="w-4 h-4" />
-            </Link>
-          ) : (
-            <div />
-          )}
+            )}
+          </div>
         </div>
       </div>
     </div>

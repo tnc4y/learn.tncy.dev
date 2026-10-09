@@ -52,9 +52,9 @@ export default function Home() {
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-              <Link href="/tutorial/intro" className="btn btn-primary gap-2 shadow-lg font-mono">
+              <Link href="/courses" className="btn btn-primary gap-2 shadow-lg font-mono">
                 <BookOpen className="w-4 h-4" />
-                Dersleri Keşfet
+                Kursları Keşfet
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link href="/playground" className="btn btn-outline gap-2 font-mono">
@@ -342,8 +342,8 @@ endmodule`}
               Web geliştirmeden sistem programlamaya ve donanım tasarımına kadar tüm dünyayı uygulamalı olarak keşfedin.
             </p>
           </div>
-          <Link href="/tutorial/html-intro" className="btn btn-primary font-mono text-xs px-6 shrink-0">
-            Derslere Başla →
+          <Link href="/courses" className="btn btn-primary font-mono text-xs px-6 shrink-0">
+            Kursları İncele →
           </Link>
         </div>
 
