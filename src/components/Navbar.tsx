@@ -17,6 +17,7 @@ import {
   GraduationCap,
   ArrowRight,
   Code2,
+  FolderGit2,
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 
@@ -277,7 +278,27 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                           <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
-                          Direnç renk kodu hesaplayıcı, MCU timer prescaler ve radix çevirici
+                          Direnç renk kodu, LED ön direnci, mantık kapısı ve timer çevirici
+                        </p>
+                      </div>
+                    </Link>
+
+                    {/* Proje Atölyesi */}
+                    <Link
+                      href="/projects"
+                      onClick={closeDropdown}
+                      className="p-2.5 rounded-xl hover:bg-base-200/80 transition-colors flex items-start gap-3 group"
+                    >
+                      <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-white transition-colors shrink-0 mt-0.5">
+                        <FolderGit2 className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-base-content group-hover:text-emerald-500 transition-colors flex items-center justify-between">
+                          <span>Donanım Proje Atölyesi</span>
+                          <span className="badge badge-success badge-xs font-mono text-[9px]">Yeni</span>
+                        </div>
+                        <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
+                          ESP32 IoT, FPGA VGA Pong, STM32 FreeRTOS ve Web Serial projeleri
                         </p>
                       </div>
                     </Link>
