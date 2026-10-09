@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Link from "next/link";
 import {
   Wrench,
   Cpu,
@@ -19,13 +20,8 @@ import {
   ArrowRight,
   Code2,
   Keyboard,
-  MousePointer,
-  Gamepad2,
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
-import KeyboardTester from "@/components/tools/KeyboardTester";
-import MouseTester from "@/components/tools/MouseTester";
-import GamepadTester from "@/components/tools/GamepadTester";
 
 // Renk kodları tablosu
 const COLOR_CODES = [
@@ -57,32 +53,74 @@ function getNearestE12(val: number): number {
   );
 }
 
-export default function ToolsPage() {
-  const [activeTab, setActiveTab] = useState<
-    "resistor" | "led_voltage" | "logic" | "timer" | "radix" | "input_testers"
-  >("resistor");
-  const [inputSubTab, setInputSubTab] = useState<"keyboard" | "mouse" | "gamepad">("keyboard");
+type ToolTab = "resistor" | "led_voltage" | "logic" | "timer" | "radix";
 
-  useEffect(() => {
-    try {
-      if (typeof window !== "undefined") {
-        const params = new URLSearchParams(window.location.search);
-        const tabParam = params.get("tab");
-        if (tabParam === "keyboard") {
-          setActiveTab("input_testers");
-          setInputSubTab("keyboard");
-        } else if (tabParam === "mouse") {
-          setActiveTab("input_testers");
-          setInputSubTab("mouse");
-        } else if (tabParam === "gamepad") {
-          setActiveTab("input_testers");
-          setInputSubTab("gamepad");
-        } else if (tabParam === "input" || tabParam === "input_testers") {
-          setActiveTab("input_testers");
-        }
-      }
-    } catch {}
-  }, []);
+interface EngineeringToolCard {
+  id: ToolTab;
+  title: string;
+  badge: string;
+  badgeColor: string;
+  category: string;
+  description: string;
+  icon: typeof Zap;
+  formula: string;
+}
+
+const ENGINEERING_TOOLS: EngineeringToolCard[] = [
+  {
+    id: "resistor",
+    title: "Direnç Renk Kodu",
+    badge: "4-Bant / E12",
+    badgeColor: "badge-primary",
+    category: "Temel Pasif",
+    description: "4-bantlı direnç renklerini seçerek ohm, tolerans ve en yakın standart E12 serisi değerini hesaplayın.",
+    icon: Zap,
+    formula: "R = (D1*10 + D2) * 10^M",
+  },
+  {
+    id: "led_voltage",
+    title: "LED Direnci & Voltaj Bölücü",
+    badge: "Ohm Kanunu",
+    badgeColor: "badge-warning",
+    category: "Güç & Sinyal",
+    description: "LED ön direnci boyutu ve iki dirençli analog gerilim bölücü (Vout) formülü hesaplaması.",
+    icon: Lightbulb,
+    formula: "R_led = (Vs - Vf) / I_led",
+  },
+  {
+    id: "logic",
+    title: "Mantık Kapıları & Simülatör",
+    badge: "Sayısal Mantık",
+    badgeColor: "badge-accent",
+    category: "Dijital Mantık",
+    description: "AND, OR, XOR, NAND, NOR, XNOR ve NOT kapılarını canlı girişlerle sürün ve doğruluk tablosunu inceleyin.",
+    icon: Radio,
+    formula: "Y = A · B (AND / OR / XOR)",
+  },
+  {
+    id: "timer",
+    title: "Timer / Prescaler Frekansı",
+    badge: "Zamanlayıcı",
+    badgeColor: "badge-info",
+    category: "Gömülü Saat",
+    description: "Mikrodenetleyici saat frekansı ve prescaler bölücü ile hedef kesme frekansını ve register değerini bulun.",
+    icon: Cpu,
+    formula: "Ticks = F_clk / (Prescaler * F_hedef)",
+  },
+  {
+    id: "radix",
+    title: "Sayı Tabanı & Bit Dönüştürücü",
+    badge: "Binary / Hex / ASCII",
+    badgeColor: "badge-secondary",
+    category: "Veri Tipleri",
+    description: "8-bitlik register bitlerini tek tek değiştirerek anlık Onluk (Dec), Onaltılık (Hex) ve ASCII karşılığını görün.",
+    icon: Binary,
+    formula: "Bitwise 0b00101010 <-> 0x2A <-> 42",
+  },
+];
+
+export default function ToolsPage() {
+  const [activeTab, setActiveTab] = useState<ToolTab>("resistor");
 
   // 1. DİRENÇ HESAPLAYICI DURUMU
   const [band1, setBand1] = useState(1); // Kahverengi
@@ -199,77 +237,96 @@ export default function ToolsPage() {
               Direnç renk kodu, LED ön direnci, voltaj bölücü, mantık kapısı simülatörü, timer frekansı ve sayı tabanı dönüştürücüleri.
             </p>
           </div>
+        </div>
+      </div>
 
-          {/* Sekmeler */}
-          <div className="flex items-center gap-1 bg-base-200 p-1.5 rounded-2xl border border-base-300 overflow-x-auto shrink-0">
-            <button
-              onClick={() => setActiveTab("resistor")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "resistor"
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Zap className="w-3.5 h-3.5" />
-              <span>Direnç Renk Kodu</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("led_voltage")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "led_voltage"
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Lightbulb className="w-3.5 h-3.5 text-warning" />
-              <span>LED & Voltaj Bölücü</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("logic")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "logic"
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Radio className="w-3.5 h-3.5 text-accent" />
-              <span>Mantık Kapıları & Simülatör</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("timer")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "timer"
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Cpu className="w-3.5 h-3.5" />
-              <span>Timer / Prescaler</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("radix")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "radix"
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Binary className="w-3.5 h-3.5" />
-              <span>Bit & Radix</span>
-            </button>
-            <button
-              onClick={() => setActiveTab("input_testers")}
-              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
-                activeTab === "input_testers"
-                  ? "btn-secondary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Keyboard className="w-3.5 h-3.5 text-secondary" />
-              <span>Giriş Test Cihazları (Klavye/Fare/Gamepad)</span>
-              <span className="badge badge-secondary badge-xs font-mono text-[9px]">Yeni</span>
-            </button>
+      {/* 2. GİRİŞ TEST LABORATUVARI YÖNLENDİRME BANNERI */}
+      <div className="p-4 rounded-3xl bg-secondary/10 border border-secondary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+        <div className="flex items-center gap-3">
+          <div className="p-2.5 rounded-2xl bg-secondary/20 text-secondary">
+            <Keyboard className="w-5 h-5" />
           </div>
+          <div className="space-y-0.5">
+            <div className="font-bold text-base-content text-sm flex items-center gap-2">
+              <span>Donanım Giriş Test Laboratuvarı</span>
+              <span className="badge badge-secondary badge-xs font-mono font-bold">Yeni Sayfa</span>
+            </div>
+            <div className="text-base-content/70 text-xs">
+              Klavye tuş ve yazma hızı (WPM), fare tıklama (CPS) ve sensör polling rate (Hz) ile Gamepad titreşim/drift testleri ayrık laboratuvarımızda!
+            </div>
+          </div>
+        </div>
+        <Link
+          href="/tester"
+          className="btn btn-secondary btn-sm font-mono rounded-xl shrink-0 gap-1.5 shadow-sm"
+        >
+          <span>Test Laboratuvarını Aç</span>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
+      </div>
+
+      {/* 3. GÖRSEL ARAÇ SEÇİM KARTLARI (KOLAY SEÇİM EKRANI) */}
+      <div className="space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-xs font-mono font-bold uppercase tracking-wider text-base-content/60">
+            Kullanmak İstediğiniz Mühendislik Aracını Seçin:
+          </span>
+          <span className="text-xs font-mono text-base-content/40">
+            {ENGINEERING_TOOLS.length} Hesaplayıcı & Simülatör
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+          {ENGINEERING_TOOLS.map((card) => {
+            const isSelected = activeTab === card.id;
+            const Icon = card.icon;
+
+            return (
+              <div
+                key={card.id}
+                onClick={() => setActiveTab(card.id)}
+                className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-3 select-none ${
+                  isSelected
+                    ? "bg-base-100 border-primary shadow-md ring-2 ring-primary/30 scale-[1.02]"
+                    : "bg-base-100/70 border-base-300 hover:border-base-content/30 hover:bg-base-100"
+                }`}
+              >
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div
+                      className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                        isSelected
+                          ? "bg-primary text-primary-content shadow-xs"
+                          : "bg-base-200 text-base-content/70"
+                      }`}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className={`badge ${card.badgeColor} badge-xs font-mono font-bold text-[9px]`}>
+                      {card.badge}
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3
+                      className={`text-xs sm:text-sm font-bold leading-snug transition-colors ${
+                        isSelected ? "text-primary font-black" : "text-base-content"
+                      }`}
+                    >
+                      {card.title}
+                    </h3>
+                    <p className="text-[11px] text-base-content/60 line-clamp-2 mt-1 leading-relaxed">
+                      {card.description}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-base-content/5 text-[10px] font-mono text-base-content/50 truncate">
+                  <code>{card.formula}</code>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -961,56 +1018,6 @@ export default function ToolsPage() {
               <div className="text-xl font-black text-base-content truncate">{asciiChar}</div>
             </div>
           </div>
-        </div>
-      )}
-
-      {/* ======================================================== */}
-      {/* 7. GİRİŞ TEST CİHAZLARI (KLAVYE, FARE, GAMEPAD)          */}
-      {/* ======================================================== */}
-      {activeTab === "input_testers" && (
-        <div className="space-y-6 animate-in fade-in duration-150">
-          {/* Cihaz Seçim Butonları */}
-          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-base-200/80 border border-base-300 w-fit overflow-x-auto">
-            <button
-              onClick={() => setInputSubTab("keyboard")}
-              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
-                inputSubTab === "keyboard"
-                  ? "btn-secondary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Keyboard className="w-3.5 h-3.5" />
-              <span>⌨️ Klavye & Rollover (NKRO)</span>
-            </button>
-
-            <button
-              onClick={() => setInputSubTab("mouse")}
-              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
-                inputSubTab === "mouse"
-                  ? "btn-secondary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <MousePointer className="w-3.5 h-3.5" />
-              <span>🖱️ Fare & Polling Rate (Hz)</span>
-            </button>
-
-            <button
-              onClick={() => setInputSubTab("gamepad")}
-              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
-                inputSubTab === "gamepad"
-                  ? "btn-secondary shadow-xs font-bold"
-                  : "btn-ghost text-base-content/70"
-              }`}
-            >
-              <Gamepad2 className="w-3.5 h-3.5" />
-              <span>🎮 Gamepad & Joystick (Titreşim)</span>
-            </button>
-          </div>
-
-          {inputSubTab === "keyboard" && <KeyboardTester />}
-          {inputSubTab === "mouse" && <MouseTester />}
-          {inputSubTab === "gamepad" && <GamepadTester />}
         </div>
       )}
     </div>

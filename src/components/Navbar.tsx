@@ -18,6 +18,7 @@ import {
   ArrowRight,
   Code2,
   FolderGit2,
+  Keyboard,
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 
@@ -278,7 +279,27 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                           <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
-                          Direnç, LED, mantık kapıları ve klavye / fare / gamepad donanım test cihazları
+                          Direnç renk kodları, LED ön direnç, voltaj bölücü ve mantık kapıları
+                        </p>
+                      </div>
+                    </Link>
+
+                    {/* Giriş Test Laboratuvarı */}
+                    <Link
+                      href="/tester"
+                      onClick={closeDropdown}
+                      className="p-2.5 rounded-xl hover:bg-base-200/80 transition-colors flex items-start gap-3 group"
+                    >
+                      <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-500 group-hover:bg-cyan-500 group-hover:text-white transition-colors shrink-0 mt-0.5">
+                        <Keyboard className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-base-content group-hover:text-cyan-500 transition-colors flex items-center justify-between">
+                          <span>Giriş Test Laboratuvarı</span>
+                          <span className="badge badge-accent badge-xs font-mono text-[9px]">Yeni</span>
+                        </div>
+                        <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
+                          Klavye WPM, fare CPS, switch sekme, polling rate ve gamepad testleri
                         </p>
                       </div>
                     </Link>

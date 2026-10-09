@@ -16,6 +16,7 @@ import {
   TrendingUp,
   ArrowRight,
   FolderGit2,
+  Keyboard,
 } from "lucide-react";
 
 interface AppShellProps {
@@ -173,6 +174,18 @@ export default function AppShell({ children }: AppShellProps) {
                           <span>Mühendislik Hesaplayıcıları</span>
                         </div>
                         <ArrowRight className="w-3.5 h-3.5 text-base-content/40" />
+                      </Link>
+
+                      <Link
+                        href="/tester"
+                        onClick={() => setIsMobileDrawerOpen(false)}
+                        className="flex items-center justify-between p-2.5 rounded-xl hover:bg-base-200 text-xs font-semibold"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Keyboard className="w-4 h-4 text-cyan-500" />
+                          <span>Giriş Test Laboratuvarı</span>
+                        </div>
+                        <span className="badge badge-accent badge-xs font-mono">Yeni</span>
                       </Link>
 
                       <Link
