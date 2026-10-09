@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import {
   Wrench,
@@ -20,6 +20,9 @@ import {
   ArrowRight,
   Code2,
   Keyboard,
+  Search,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
 
@@ -54,73 +57,203 @@ function getNearestE12(val: number): number {
 }
 
 type ToolTab = "resistor" | "led_voltage" | "logic" | "timer" | "radix";
+type ToolCategory = "all" | "circuit" | "logic" | "embedded";
 
-interface EngineeringToolCard {
+interface EngineeringToolItem {
   id: ToolTab;
   title: string;
   badge: string;
   badgeColor: string;
-  category: string;
+  category: "circuit" | "logic" | "embedded";
+  categoryName: string;
+  tagline: string;
   description: string;
   icon: typeof Zap;
   formula: string;
+  accentBg: string;
+  accentText: string;
+  activeRing: string;
+  shortcut: string;
 }
 
-const ENGINEERING_TOOLS: EngineeringToolCard[] = [
+const CATEGORIES = [
+  { id: "all" as ToolCategory, label: "Tüm Araçlar (5)" },
+  { id: "circuit" as ToolCategory, label: "🔌 Devre & Donanım" },
+  { id: "logic" as ToolCategory, label: "🔣 Mantık & Sayı Tabanı" },
+  { id: "embedded" as ToolCategory, label: "⏱️ Gömülü Saat" },
+];
+
+const ENGINEERING_TOOLS: EngineeringToolItem[] = [
   {
     id: "resistor",
     title: "Direnç Renk Kodu",
     badge: "4-Bant / E12",
     badgeColor: "badge-primary",
-    category: "Temel Pasif",
+    category: "circuit",
+    categoryName: "Devre & Donanım",
+    tagline: "Ohm değeri, tolerans ve E12 serisi",
     description: "4-bantlı direnç renklerini seçerek ohm, tolerans ve en yakın standart E12 serisi değerini hesaplayın.",
     icon: Zap,
-    formula: "R = (D1*10 + D2) * 10^M",
+    formula: "R = (D1×10 + D2) × 10ᴹ",
+    accentBg: "bg-amber-500/15",
+    accentText: "text-amber-500",
+    activeRing: "ring-amber-500/50 border-amber-500 bg-amber-500/5",
+    shortcut: "1",
   },
   {
     id: "led_voltage",
-    title: "LED Direnci & Voltaj Bölücü",
+    title: "LED & Voltaj Bölücü",
     badge: "Ohm Kanunu",
     badgeColor: "badge-warning",
-    category: "Güç & Sinyal",
+    category: "circuit",
+    categoryName: "Devre & Donanım",
+    tagline: "LED ön direnci ve Vout gerilim bölücü",
     description: "LED ön direnci boyutu ve iki dirençli analog gerilim bölücü (Vout) formülü hesaplaması.",
     icon: Lightbulb,
     formula: "R_led = (Vs - Vf) / I_led",
+    accentBg: "bg-cyan-500/15",
+    accentText: "text-cyan-500",
+    activeRing: "ring-cyan-500/50 border-cyan-500 bg-cyan-500/5",
+    shortcut: "2",
   },
   {
     id: "logic",
-    title: "Mantık Kapıları & Simülatör",
+    title: "Mantık Kapıları",
     badge: "Sayısal Mantık",
     badgeColor: "badge-accent",
-    category: "Dijital Mantık",
+    category: "logic",
+    categoryName: "Mantık & Sayı Tabanı",
+    tagline: "AND, OR, XOR kapıları & doğruluk tablosu",
     description: "AND, OR, XOR, NAND, NOR, XNOR ve NOT kapılarını canlı girişlerle sürün ve doğruluk tablosunu inceleyin.",
     icon: Radio,
     formula: "Y = A · B (AND / OR / XOR)",
+    accentBg: "bg-purple-500/15",
+    accentText: "text-purple-500",
+    activeRing: "ring-purple-500/50 border-purple-500 bg-purple-500/5",
+    shortcut: "3",
   },
   {
     id: "timer",
-    title: "Timer / Prescaler Frekansı",
-    badge: "Zamanlayıcı",
+    title: "Timer / Prescaler",
+    badge: "Gömülü Saat",
     badgeColor: "badge-info",
-    category: "Gömülü Saat",
+    category: "embedded",
+    categoryName: "Gömülü Sistemler",
+    tagline: "MCU frekansı, Ticks & C kodu",
     description: "Mikrodenetleyici saat frekansı ve prescaler bölücü ile hedef kesme frekansını ve register değerini bulun.",
     icon: Cpu,
-    formula: "Ticks = F_clk / (Prescaler * F_hedef)",
+    formula: "Ticks = F_clk / (Prescaler × F_hedef)",
+    accentBg: "bg-emerald-500/15",
+    accentText: "text-emerald-500",
+    activeRing: "ring-emerald-500/50 border-emerald-500 bg-emerald-500/5",
+    shortcut: "4",
   },
   {
     id: "radix",
-    title: "Sayı Tabanı & Bit Dönüştürücü",
-    badge: "Binary / Hex / ASCII",
+    title: "Sayı Tabanı & Bit",
+    badge: "Bin / Hex / Dec",
     badgeColor: "badge-secondary",
-    category: "Veri Tipleri",
+    category: "logic",
+    categoryName: "Mantık & Sayı Tabanı",
+    tagline: "8-Bit register, Hex & ASCII",
     description: "8-bitlik register bitlerini tek tek değiştirerek anlık Onluk (Dec), Onaltılık (Hex) ve ASCII karşılığını görün.",
     icon: Binary,
-    formula: "Bitwise 0b00101010 <-> 0x2A <-> 42",
+    formula: "0b00101010 ⇄ 0x2A ⇄ 42",
+    accentBg: "bg-pink-500/15",
+    accentText: "text-pink-500",
+    activeRing: "ring-pink-500/50 border-pink-500 bg-pink-500/5",
+    shortcut: "5",
   },
 ];
 
 export default function ToolsPage() {
   const [activeTab, setActiveTab] = useState<ToolTab>("resistor");
+  const [selectedCategory, setSelectedCategory] = useState<ToolCategory>("all");
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // URL Query Param Entegrasyonu (?tab=...)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get("tab") as ToolTab;
+      if (tabParam && ENGINEERING_TOOLS.some((t) => t.id === tabParam)) {
+        setActiveTab(tabParam);
+      }
+    }
+  }, []);
+
+  const switchTab = (tab: ToolTab) => {
+    setActiveTab(tab);
+    if (typeof window !== "undefined") {
+      const url = new URL(window.location.href);
+      url.searchParams.set("tab", tab);
+      window.history.replaceState(null, "", url.toString());
+    }
+  };
+
+  // Kısayol Tuşları (1-5 ve [ / ] tuşları ile hızlı geçiş)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+
+      if (e.key === "1") switchTab("resistor");
+      else if (e.key === "2") switchTab("led_voltage");
+      else if (e.key === "3") switchTab("logic");
+      else if (e.key === "4") switchTab("timer");
+      else if (e.key === "5") switchTab("radix");
+      else if (e.key === "[" || (e.altKey && e.key === "ArrowLeft")) {
+        const curIdx = ENGINEERING_TOOLS.findIndex((t) => t.id === activeTab);
+        const prevIdx = (curIdx - 1 + ENGINEERING_TOOLS.length) % ENGINEERING_TOOLS.length;
+        switchTab(ENGINEERING_TOOLS[prevIdx].id);
+      } else if (e.key === "]" || (e.altKey && e.key === "ArrowRight")) {
+        const curIdx = ENGINEERING_TOOLS.findIndex((t) => t.id === activeTab);
+        const nextIdx = (curIdx + 1) % ENGINEERING_TOOLS.length;
+        switchTab(ENGINEERING_TOOLS[nextIdx].id);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeTab]);
+
+  // Arama ve Kategoriye göre filtrelenmiş araçlar
+  const filteredTools = useMemo(() => {
+    return ENGINEERING_TOOLS.filter((tool) => {
+      const matchesCategory =
+        selectedCategory === "all" || tool.category === selectedCategory;
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !q ||
+        tool.title.toLowerCase().includes(q) ||
+        tool.tagline.toLowerCase().includes(q) ||
+        tool.description.toLowerCase().includes(q) ||
+        tool.formula.toLowerCase().includes(q) ||
+        tool.badge.toLowerCase().includes(q);
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const activeTool = ENGINEERING_TOOLS.find((t) => t.id === activeTab) || ENGINEERING_TOOLS[0];
+
+  const handlePrevTool = () => {
+    const curIdx = ENGINEERING_TOOLS.findIndex((t) => t.id === activeTab);
+    const prevIdx = (curIdx - 1 + ENGINEERING_TOOLS.length) % ENGINEERING_TOOLS.length;
+    switchTab(ENGINEERING_TOOLS[prevIdx].id);
+  };
+
+  const handleNextTool = () => {
+    const curIdx = ENGINEERING_TOOLS.findIndex((t) => t.id === activeTab);
+    const nextIdx = (curIdx + 1) % ENGINEERING_TOOLS.length;
+    switchTab(ENGINEERING_TOOLS[nextIdx].id);
+  };
 
   // 1. DİRENÇ HESAPLAYICI DURUMU
   const [band1, setBand1] = useState(1); // Kahverengi
@@ -220,114 +353,228 @@ export default function ToolsPage() {
   const binVal = bits.join("");
   const asciiChar = decimalVal >= 32 && decimalVal <= 126 ? String.fromCharCode(decimalVal) : "Yazdırılamaz";
 
-  return (
-    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8 space-y-8 pb-20">
-      {/* 1. Başlık & Araç Seçici */}
-      <div className="border-b border-base-300 pb-6 space-y-3">
-        <div className="flex items-center gap-2 text-warning font-mono text-xs font-bold uppercase tracking-wider">
-          <Wrench className="w-4 h-4" />
-          <span>Mühendislik & Donanım Hesaplayıcıları</span>
-        </div>
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-base-content">
-              Geliştirici & Mühendislik Araçları
-            </h1>
-            <p className="text-sm sm:text-base text-base-content/70 mt-1">
-              Direnç renk kodu, LED ön direnci, voltaj bölücü, mantık kapısı simülatörü, timer frekansı ve sayı tabanı dönüştürücüleri.
-            </p>
-          </div>
-        </div>
-      </div>
+  // Araç değerlerini varsayılana sıfırla
+  const handleResetCurrentTool = () => {
+    if (activeTab === "resistor") {
+      setBand1(1);
+      setBand2(0);
+      setBandMult(2);
+      setBandTol(10);
+    } else if (activeTab === "led_voltage") {
+      setLedSupplyV(5.0);
+      setLedForwardV(2.0);
+      setLedCurrentmA(20);
+      setDividerVin(5.0);
+      setDividerR1(1000);
+      setDividerR2(2000);
+    } else if (activeTab === "logic") {
+      setSelectedGate("AND");
+      setInputA(1);
+      setInputB(0);
+    } else if (activeTab === "timer") {
+      setClockFreqMHz(16);
+      setTargetFreqHz(1000);
+      setPrescaler(64);
+    } else if (activeTab === "radix") {
+      setBits([0, 0, 1, 0, 1, 0, 1, 0]);
+    }
+  };
 
-      {/* 2. GİRİŞ TEST LABORATUVARI YÖNLENDİRME BANNERI */}
-      <div className="p-4 rounded-3xl bg-secondary/10 border border-secondary/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-        <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-2xl bg-secondary/20 text-secondary">
-            <Keyboard className="w-5 h-5" />
+  return (
+    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8 pb-20">
+      {/* 1. Üst Başlık & Sağda Donanım Test Lab Butonu */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-base-300">
+        <div className="space-y-1">
+          <div className="flex items-center gap-2 text-warning font-mono text-xs font-bold uppercase tracking-wider">
+            <Wrench className="w-4 h-4" />
+            <span>Mühendislik & Donanım Hesaplayıcıları</span>
           </div>
-          <div className="space-y-0.5">
-            <div className="font-bold text-base-content text-sm flex items-center gap-2">
-              <span>Donanım Giriş Test Laboratuvarı</span>
-              <span className="badge badge-secondary badge-xs font-mono font-bold">Yeni Sayfa</span>
-            </div>
-            <div className="text-base-content/70 text-xs">
-              Klavye tuş ve yazma hızı (WPM), fare tıklama (CPS) ve sensör polling rate (Hz) ile Gamepad titreşim/drift testleri ayrık laboratuvarımızda!
-            </div>
-          </div>
+          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-base-content">
+            Laboratuvar & Hesaplama Araçları
+          </h1>
+          <p className="text-xs sm:text-sm text-base-content/70">
+            Devre tasarımı, mantık simülasyonu, mikrodenetleyici saat ayarları ve sayı tabanı dönüşümleri.
+          </p>
         </div>
+
+        {/* Donanım Test Laboratuvarı Geçiş Butonu */}
         <Link
           href="/tester"
-          className="btn btn-secondary btn-sm font-mono rounded-xl shrink-0 gap-1.5 shadow-sm"
+          className="flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/20 hover:border-cyan-500/30 transition-all group shrink-0"
         >
-          <span>Test Laboratuvarını Aç</span>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <div className="p-2 rounded-xl bg-cyan-500 text-white shadow-xs">
+            <Keyboard className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-xs font-bold text-base-content group-hover:text-cyan-500 flex items-center gap-1.5 transition-colors">
+              <span>Giriş Test Laboratuvarı</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+            </div>
+            <div className="text-[11px] text-base-content/60">
+              Klavye WPM, Fare CPS & Gamepad Testi
+            </div>
+          </div>
         </Link>
       </div>
 
-      {/* 3. GÖRSEL ARAÇ SEÇİM KARTLARI (KOLAY SEÇİM EKRANI) */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="text-xs font-mono font-bold uppercase tracking-wider text-base-content/60">
-            Kullanmak İstediğiniz Mühendislik Aracını Seçin:
-          </span>
-          <span className="text-xs font-mono text-base-content/40">
-            {ENGINEERING_TOOLS.length} Hesaplayıcı & Simülatör
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-          {ENGINEERING_TOOLS.map((card) => {
-            const isSelected = activeTab === card.id;
-            const Icon = card.icon;
-
-            return (
-              <div
-                key={card.id}
-                onClick={() => setActiveTab(card.id)}
-                className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between space-y-3 select-none ${
-                  isSelected
-                    ? "bg-base-100 border-primary shadow-md ring-2 ring-primary/30 scale-[1.02]"
-                    : "bg-base-100/70 border-base-300 hover:border-base-content/30 hover:bg-base-100"
+      {/* 2. MODERN ARAÇ SEÇİM KONTROL PANELİ */}
+      <div className="space-y-4 bg-base-200/50 p-3 sm:p-4 rounded-3xl border border-base-300 shadow-xs">
+        {/* Filtre ve Arama Çubuğu */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          {/* Kategori Filtresi */}
+          <div className="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`btn btn-xs rounded-xl font-medium whitespace-nowrap transition-all ${
+                  selectedCategory === cat.id
+                    ? "btn-primary shadow-xs font-bold"
+                    : "btn-ghost text-base-content/70 hover:bg-base-200"
                 }`}
               >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Canlı Arama Inputu */}
+          <div className="relative w-full sm:w-64 shrink-0">
+            <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-base-content/40" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Araç veya formül ara..."
+              className="input input-xs w-full pl-8 pr-7 bg-base-100 border-base-300 rounded-xl focus:border-primary text-xs"
+            />
+            {searchQuery && (
+              <button
+                onClick={() => setSearchQuery("")}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-base-content/40 hover:text-base-content text-xs font-bold"
+              >
+                ✕
+              </button>
+            )}
+          </div>
+        </div>
+
+        {/* Araç Kartları Seçim Izgarası */}
+        {filteredTools.length === 0 ? (
+          <div className="p-6 text-center text-xs text-base-content/60 bg-base-100 rounded-2xl border border-base-300 space-y-1">
+            <p className="font-bold">Aramanıza uygun araç bulunamadı.</p>
+            <button
+              onClick={() => {
+                setSearchQuery("");
+                setSelectedCategory("all");
+              }}
+              className="text-primary hover:underline"
+            >
+              Filtreleri temizle
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5">
+            {filteredTools.map((tool) => {
+              const isSelected = activeTab === tool.id;
+              const Icon = tool.icon;
+
+              return (
+                <button
+                  key={tool.id}
+                  onClick={() => switchTab(tool.id)}
+                  className={`p-3 rounded-2xl border text-left transition-all duration-150 cursor-pointer flex flex-col justify-between gap-2.5 relative group ${
+                    isSelected
+                      ? `bg-base-100 shadow-md ring-2 ${tool.activeRing} scale-[1.01]`
+                      : "bg-base-100/70 border-base-300 hover:border-base-content/40 hover:bg-base-100"
+                  }`}
+                >
+                  {/* Kart Üst Bilgisi: İkon + Kısayol Tuşu */}
+                  <div className="flex items-center justify-between w-full">
                     <div
-                      className={`w-9 h-9 rounded-xl flex items-center justify-center transition-colors ${
+                      className={`w-8 h-8 rounded-xl flex items-center justify-center transition-colors ${
                         isSelected
-                          ? "bg-primary text-primary-content shadow-xs"
-                          : "bg-base-200 text-base-content/70"
+                          ? `${tool.accentBg} ${tool.accentText} shadow-xs font-bold`
+                          : "bg-base-200 text-base-content/60 group-hover:text-base-content"
                       }`}
                     >
-                      <Icon className="w-5 h-5" />
+                      <Icon className="w-4 h-4" />
                     </div>
-                    <span className={`badge ${card.badgeColor} badge-xs font-mono font-bold text-[9px]`}>
-                      {card.badge}
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="hidden sm:inline-block text-[10px] font-mono px-1.5 py-0.5 rounded-md bg-base-200/80 text-base-content/50 border border-base-300">
+                        {tool.shortcut}
+                      </span>
+                      {isSelected && (
+                        <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      )}
+                    </div>
                   </div>
 
+                  {/* Kart Başlığı ve Problem Özeti */}
                   <div>
                     <h3
                       className={`text-xs sm:text-sm font-bold leading-snug transition-colors ${
                         isSelected ? "text-primary font-black" : "text-base-content"
                       }`}
                     >
-                      {card.title}
+                      {tool.title}
                     </h3>
-                    <p className="text-[11px] text-base-content/60 line-clamp-2 mt-1 leading-relaxed">
-                      {card.description}
+                    <p className="text-[11px] text-base-content/60 leading-tight mt-0.5 line-clamp-1">
+                      {tool.tagline}
                     </p>
                   </div>
-                </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
 
-                <div className="pt-2 border-t border-base-content/5 text-[10px] font-mono text-base-content/50 truncate">
-                  <code>{card.formula}</code>
-                </div>
+        {/* 3. AKTİF ARAÇ BİLGİ VE KONTROL ŞERİDİ */}
+        {activeTool && (
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-base-300/80 text-xs">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <span className={`badge ${activeTool.badgeColor} badge-xs font-mono font-bold shrink-0`}>
+                {activeTool.badge}
+              </span>
+              <p className="text-base-content/70 truncate">
+                {activeTool.description}
+              </p>
+            </div>
+
+            <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+              <div className="hidden lg:flex items-center gap-1.5 px-2 py-0.5 rounded-lg bg-base-100 border border-base-300 font-mono text-[10px] text-base-content/60">
+                <span>Formül:</span>
+                <code>{activeTool.formula}</code>
               </div>
-            );
-          })}
-        </div>
+
+              <button
+                onClick={handleResetCurrentTool}
+                className="btn btn-ghost btn-xs gap-1 font-mono text-base-content/70 hover:text-base-content"
+                title="Bu aracın değerlerini varsayılana sıfırla"
+              >
+                <RotateCcw className="w-3 h-3" />
+                <span>Sıfırla</span>
+              </button>
+
+              <div className="flex items-center gap-1 border-l border-base-300 pl-2">
+                <button
+                  onClick={handlePrevTool}
+                  className="btn btn-ghost btn-xs btn-square"
+                  title="Önceki Araç (Kısayol: [ )"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={handleNextTool}
+                  className="btn btn-ghost btn-xs btn-square"
+                  title="Sonraki Araç (Kısayol: ] )"
+                >
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* ======================================================== */}
