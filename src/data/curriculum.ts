@@ -1,0 +1,503 @@
+export interface Lesson {
+  id: string;
+  title: string;
+  shortTitle: string;
+  readTime: string;
+  difficulty: "Başlangıç" | "Orta" | "İleri";
+  description: string;
+  hasPlayground: boolean;
+  category: "Design" | "Verification" | "Core";
+}
+
+export interface ModuleSection {
+  id: string;
+  number: number;
+  title: string;
+  description: string;
+  lessons: Lesson[];
+}
+
+export const CURRICULUM: ModuleSection[] = [
+  {
+    id: "basics",
+    number: 1,
+    title: "Giriş & Temeller",
+    description: "SystemVerilog mimarisi, RTL tasarımı ile doğrulama (verification) arasındaki farklar ve EDA simülasyon akışı.",
+    lessons: [
+      {
+        id: "intro",
+        title: "SystemVerilog Nedir? (Verilog vs SystemVerilog)",
+        shortTitle: "Giriş & Genel Bakış",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "Modern çiplerin tasarımı ve doğrulanmasında SystemVerilog'un yeri ve Verilog'dan farkları.",
+        hasPlayground: true,
+        category: "Core",
+      },
+      {
+        id: "testbench-basics",
+        title: "İlk Testbench ve Simülasyon Mantığı",
+        shortTitle: "Testbench Temelleri",
+        readTime: "8 dk",
+        difficulty: "Başlangıç",
+        description: "DUT (Design Under Test) kavramı, uyaran üretme ve $display, $monitor kullanımı.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "data-types",
+    number: 2,
+    title: "Veri Tipleri",
+    description: "2-durumlu ve 4-durumlu modern SystemVerilog veri tipleri, enum, struct ve kullanıcı tanımlı tipler.",
+    lessons: [
+      {
+        id: "logic-type",
+        title: "4-Durumlu Mantık: logic Veri Tipi",
+        shortTitle: "logic Veri Tipi",
+        readTime: "5 dk",
+        difficulty: "Başlangıç",
+        description: "0, 1, X, Z durumları ve reg/wire yerine tek tip mantığı: logic.",
+        hasPlayground: true,
+        category: "Core",
+      },
+      {
+        id: "2-state-types",
+        title: "2-Durumlu Tipler: bit, byte, int, longint",
+        shortTitle: "bit, byte, int Tipleri",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "Yüksek hızlı simülasyonlar için 2-durumlu (0 ve 1) veri tipleri.",
+        hasPlayground: true,
+        category: "Core",
+      },
+      {
+        id: "strings",
+        title: "Dizgiler (Strings) ve Formatlama",
+        shortTitle: "string Veri Tipi",
+        readTime: "5 dk",
+        difficulty: "Başlangıç",
+        description: "Metin manipülasyonu, len(), toupper() ve $sformatf fonksiyonları.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "enums",
+        title: "Numaralandırılmış Tipler (enum) & FSM",
+        shortTitle: "enum (Numaralandırma)",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Sonlu durum makineleri (FSM) ve tip güvenli durum tanımları.",
+        hasPlayground: true,
+        category: "Design",
+      },
+      {
+        id: "struct-union",
+        title: "Yapılar (struct) ve Birlikler (union)",
+        shortTitle: "struct & union",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Paketlenmiş (packed) ve paketlenmemiş veri paketleme mimarileri.",
+        hasPlayground: true,
+        category: "Core",
+      },
+      {
+        id: "typedef-alias",
+        title: "Özel Tipler: typedef ve alias",
+        shortTitle: "typedef & alias",
+        readTime: "4 dk",
+        difficulty: "Başlangıç",
+        description: "Okunabilir ve tekrar kullanılabilir tip tanımlamaları oluşturma.",
+        hasPlayground: false,
+        category: "Core",
+      },
+    ],
+  },
+  {
+    id: "arrays",
+    number: 3,
+    title: "Diziler & Koleksiyonlar",
+    description: "Packed, unpacked, dinamik diziler, kuyruklar (queues) ve ilişkisel hash haritaları.",
+    lessons: [
+      {
+        id: "packed-unpacked-arrays",
+        title: "Paketlenmiş (Packed) vs Paketlenmemiş Diziler",
+        shortTitle: "Packed / Unpacked Diziler",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Bit düzeyinde hafıza yerleşimi ve donanım register modelleri.",
+        hasPlayground: true,
+        category: "Design",
+      },
+      {
+        id: "dynamic-arrays",
+        title: "Dinamik Diziler (Dynamic Arrays)",
+        shortTitle: "Dinamik Diziler",
+        readTime: "6 dk",
+        difficulty: "Orta",
+        description: "Çalışma anında boyutlandırılabilir bellek ve testbench veri havuzları.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "queues",
+        title: "Kuyruklar (Queues): push, pop ve Arama",
+        shortTitle: "Kuyruklar (Queues)",
+        readTime: "8 dk",
+        difficulty: "Orta",
+        description: "FIFO ve paket kuyruklama için dahili SystemVerilog kuyruk mekanizması.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "associative-arrays",
+        title: "İlişkisel Diziler (Associative Arrays)",
+        shortTitle: "İlişkisel Diziler",
+        readTime: "6 dk",
+        difficulty: "İleri",
+        description: "Büyük seyrek bellek (sparse memory) modelleri ve anahtar-değer haritaları.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "array-methods",
+        title: "Dizi Manipülasyon Metodları",
+        shortTitle: "Dizi Metodları (sort/find)",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "find(), find_index(), sort(), reverse() ve sum() fonksiyonları.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "control-flow",
+    number: 4,
+    title: "Akış Kontrolü & Sentezlenebilir RTL",
+    description: "always_comb, always_ff blokları, döngüler ve modern dallanma mekanizmaları.",
+    lessons: [
+      {
+        id: "always-blocks",
+        title: "always_comb, always_ff ve always_latch",
+        shortTitle: "Modern always Blokları",
+        readTime: "8 dk",
+        difficulty: "Orta",
+        description: "Latch oluşumunu engelleyen ve sentez niyetini belirten modern RTL blokları.",
+        hasPlayground: true,
+        category: "Design",
+      },
+      {
+        id: "unique-priority",
+        title: "unique ve priority (if-else & case)",
+        shortTitle: "unique / priority",
+        readTime: "6 dk",
+        difficulty: "Orta",
+        description: "Eksik dalları yakalama ve paralel/öncelikli donanım kodlayıcıları.",
+        hasPlayground: true,
+        category: "Design",
+      },
+      {
+        id: "loops",
+        title: "Döngüler: for, foreach, repeat ve forever",
+        shortTitle: "Döngüler (Loops)",
+        readTime: "7 dk",
+        difficulty: "Başlangıç",
+        description: "Diziler üzerinde gezinme ve testbench saat/uyaran üreteçleri.",
+        hasPlayground: true,
+        category: "Core",
+      },
+    ],
+  },
+  {
+    id: "scheduling",
+    number: 5,
+    title: "Zamanlama Semantiği",
+    description: "Olay bölgeleri (event regions), delta döngüleri ve yarış durumlarının çözümü.",
+    lessons: [
+      {
+        id: "event-regions",
+        title: "SystemVerilog Zamanlama Bölgeleri (Stratified Queue)",
+        shortTitle: "Olay Bölgeleri",
+        readTime: "9 dk",
+        difficulty: "İleri",
+        description: "Preponed, Active, Observed, Reactive ve Postponed bölgeleri.",
+        hasPlayground: false,
+        category: "Core",
+      },
+      {
+        id: "delta-cycles-race",
+        title: "Delta Döngüleri & Yarış Durumları (Race Conditions)",
+        shortTitle: "Delta Döngüleri & #0",
+        readTime: "7 dk",
+        difficulty: "İleri",
+        description: "#0 gecikmesinin tehlikeleri ve engellenemeyen atamaların (<=) önemi.",
+        hasPlayground: true,
+        category: "Design",
+      },
+    ],
+  },
+  {
+    id: "oop",
+    number: 6,
+    title: "Nesne Yönelimli Programlama (OOP)",
+    description: "Sınıflar, kalıtım, polimorfizm, sanal metodlar ve $cast dinamik dönüşümü.",
+    lessons: [
+      {
+        id: "classes-basics",
+        title: "Sınıflar (Classes), Nesneler ve new() Kurucusu",
+        shortTitle: "Class & Nesne Mantığı",
+        readTime: "9 dk",
+        difficulty: "Orta",
+        description: "Donanım doğrulamada nesne yönelimli mimarinin temeli ve referans handle kavramı.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "inheritance-polymorphism",
+        title: "Kalıtım, Polimorfizm & Sanal Metodlar (virtual)",
+        shortTitle: "Kalıtım & Polimorfizm",
+        readTime: "10 dk",
+        difficulty: "İleri",
+        description: "Genişletilebilir testbench sınıfları ve çalışma anı polimorfizmi.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "casting",
+        title: "Tip Dönüşümü: Statik vs $cast Dinamik Dönüşüm",
+        shortTitle: "Tip Dönüşümü ($cast)",
+        readTime: "6 dk",
+        difficulty: "İleri",
+        description: "Üst sınıf ve alt sınıf handle'ları arasında güvenli geçiş.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "randomization",
+    number: 7,
+    title: "Rastgeleleştirme (Randomization)",
+    description: "rand, randc, pre_randomize, post_randomize ve rastgele test uyaranları.",
+    lessons: [
+      {
+        id: "rand-variables",
+        title: "rand ve randc Değişkenleri",
+        shortTitle: "rand & randc",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Kısıtlı rastgele testbench (Constrained Random Verification - CRV) temelleri.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "random-callbacks",
+        title: "pre_randomize ve post_randomize Metodları",
+        shortTitle: "pre/post_randomize",
+        readTime: "6 dk",
+        difficulty: "Orta",
+        description: "Rastgeleleştirme öncesi ve sonrası veri hazırlığı ile sağlama (checksum) hesaplama.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "constraints",
+    number: 8,
+    title: "Kısıtlar (Constraints)",
+    description: "Kısıt blokları, satır içi kısıtlar, koşullu kısıtlar ve solve-before mekanizması.",
+    lessons: [
+      {
+        id: "constraint-blocks",
+        title: "Kısıt Blokları (constraint): inside, dist, implication",
+        shortTitle: "Kısıt Blokları",
+        readTime: "9 dk",
+        difficulty: "Orta",
+        description: "Protokol uyumlu veri paketleri üretmek için kısıt kuralları yazımı.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "inline-soft-constraints",
+        title: "Satır İçi (with) & Esnek (soft) Kısıtlar",
+        shortTitle: "Inline & Soft Kısıtlar",
+        readTime: "7 dk",
+        difficulty: "İleri",
+        description: "Test senaryosuna özel kısıt ezme (override) ve soft kısıtlar.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "coverage",
+    number: 9,
+    title: "Fonksiyonel Kapsama (Functional Coverage)",
+    description: "Covergroup, coverpoint, cross coverage ve doğrulama tamamlanma kriterleri.",
+    lessons: [
+      {
+        id: "covergroup-basics",
+        title: "covergroup, coverpoint ve Bins Tanımları",
+        shortTitle: "Covergroup & Bins",
+        readTime: "8 dk",
+        difficulty: "İleri",
+        description: "Test edilmiş senaryoları ölçme ve kapsama hedefleri belirleme.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "cross-coverage",
+        title: "Çapraz Kapsama (Cross Coverage) & Seçenekler",
+        shortTitle: "Cross Coverage",
+        readTime: "8 dk",
+        difficulty: "İleri",
+        description: "İki veya daha fazla sinyalin ortak durum kombinasyonlarının doğrulanması.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "assertions",
+    number: 10,
+    title: "İfadeler (SVA - SystemVerilog Assertions)",
+    description: "Anlık ve zaman tabanlı concurrent assertion'lar, sequence ve property kuralları.",
+    lessons: [
+      {
+        id: "immediate-assertions",
+        title: "Anlık İfadeler (Immediate Assertions)",
+        shortTitle: "Immediate Assertions",
+        readTime: "6 dk",
+        difficulty: "Orta",
+        description: "Prosedürel bloklar içinde anlık durum doğrulama ve hata raporlama.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+      {
+        id: "concurrent-assertions",
+        title: "Eşzamanlı İfadeler: property ve sequence",
+        shortTitle: "Concurrent SVA & Property",
+        readTime: "10 dk",
+        difficulty: "İleri",
+        description: "Zamanla değişen protokol kurallarını (|->, |=>) saat darbeleriyle doğrulama.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "interfaces",
+    number: 11,
+    title: "Arayüzler & Modportlar",
+    description: "Interface yapısı, modport bağlantıları, saat blokları ve sanal arayüzler.",
+    lessons: [
+      {
+        id: "interface-modport",
+        title: "Arayüzler (interface) ve modport Kavramı",
+        shortTitle: "Interface & Modport",
+        readTime: "8 dk",
+        difficulty: "Orta",
+        description: "Sinyal karmaşasını sonlandırma, modüler protokol kablolaması.",
+        hasPlayground: true,
+        category: "Design",
+      },
+      {
+        id: "virtual-interface",
+        title: "Sanal Arayüzler (virtual interface) & Clocking Block",
+        shortTitle: "Virtual Interface",
+        readTime: "9 dk",
+        difficulty: "İleri",
+        description: "OOP tabanlı testbench sınıfları ile fiziksel donanım sinyallerini bağlama.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "threads-ipc",
+    number: 12,
+    title: "İş Parçacıkları & IPC",
+    description: "fork..join paralel süreçler, mailbox, semaphore ve event iletişimi.",
+    lessons: [
+      {
+        id: "fork-join",
+        title: "Paralel Süreçler: fork..join, join_any, join_none",
+        shortTitle: "fork..join İşlemleri",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Aynı anda birden fazla donanım aktörünü ve zaman aşımlarını çalıştırma.",
+        hasPlayground: true,
+        category: "Core",
+      },
+      {
+        id: "ipc-primitives",
+        title: "Süreçler Arası İletişim: mailbox, semaphore, event",
+        shortTitle: "IPC (Mailbox/Semaphore)",
+        readTime: "8 dk",
+        difficulty: "İleri",
+        description: "Thread-safe veri alışverişi ve kaynak kilitleme mekanizmaları.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "testbench-architecture",
+    number: 13,
+    title: "Testbench Mimarisi",
+    description: "UVM öncesi katmanlı testbench: Generator, Driver, Monitor, Scoreboard.",
+    lessons: [
+      {
+        id: "layered-testbench",
+        title: "Katmanlı Testbench Mimarisi (Layered Testbench)",
+        shortTitle: "Katmanlı Testbench",
+        readTime: "11 dk",
+        difficulty: "İleri",
+        description: "Gerçek dünya test ortamı bileşenleri ve uçtan uca doğrulama akışı.",
+        hasPlayground: true,
+        category: "Verification",
+      },
+    ],
+  },
+  {
+    id: "interview",
+    number: 14,
+    title: "Mülakat & Pratik Soru Bankası",
+    description: "En sık sorulan SystemVerilog & Donanım Doğrulama mülakat soruları ve yanıtları.",
+    lessons: [
+      {
+        id: "interview-prep",
+        title: "En Popüler 30+ SystemVerilog Mülakat Sorusu",
+        shortTitle: "Mülakat Hazırlığı",
+        readTime: "15 dk",
+        difficulty: "Orta",
+        description: "Teknik iş görüşmelerinde sorulan tuzak sorular, kod parçaları ve detaylı açıklamaları.",
+        hasPlayground: false,
+        category: "Core",
+      },
+    ],
+  },
+];
+
+export function getLessonById(id: string): { lesson: Lesson; module: ModuleSection } | null {
+  for (const modSection of CURRICULUM) {
+    const lesson = modSection.lessons.find((l) => l.id === id);
+    if (lesson) {
+      return { lesson, module: modSection };
+    }
+  }
+  return null;
+}
+
+export function getAdjacentLessons(id: string): { prev: Lesson | null; next: Lesson | null } {
+  const allLessons = CURRICULUM.flatMap((m) => m.lessons);
+  const index = allLessons.findIndex((l) => l.id === id);
+  if (index === -1) return { prev: null, next: null };
+  return {
+    prev: index > 0 ? allLessons[index - 1] : null,
+    next: index < allLessons.length - 1 ? allLessons[index + 1] : null,
+  };
+}
