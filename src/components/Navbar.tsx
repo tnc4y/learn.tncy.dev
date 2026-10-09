@@ -278,7 +278,7 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                           <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </div>
                         <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
-                          Direnç renk kodu, LED ön direnci, mantık kapısı ve timer çevirici
+                          Direnç, LED, mantık kapıları ve klavye / fare / gamepad donanım test cihazları
                         </p>
                       </div>
                     </Link>

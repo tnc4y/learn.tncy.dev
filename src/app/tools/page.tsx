@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Wrench,
   Cpu,
@@ -18,8 +18,14 @@ import {
   Layers,
   ArrowRight,
   Code2,
+  Keyboard,
+  MousePointer,
+  Gamepad2,
 } from "lucide-react";
 import CodeBlock from "@/components/CodeBlock";
+import KeyboardTester from "@/components/tools/KeyboardTester";
+import MouseTester from "@/components/tools/MouseTester";
+import GamepadTester from "@/components/tools/GamepadTester";
 
 // Renk kodları tablosu
 const COLOR_CODES = [
@@ -52,7 +58,31 @@ function getNearestE12(val: number): number {
 }
 
 export default function ToolsPage() {
-  const [activeTab, setActiveTab] = useState<"resistor" | "led_voltage" | "logic" | "timer" | "radix">("resistor");
+  const [activeTab, setActiveTab] = useState<
+    "resistor" | "led_voltage" | "logic" | "timer" | "radix" | "input_testers"
+  >("resistor");
+  const [inputSubTab, setInputSubTab] = useState<"keyboard" | "mouse" | "gamepad">("keyboard");
+
+  useEffect(() => {
+    try {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search);
+        const tabParam = params.get("tab");
+        if (tabParam === "keyboard") {
+          setActiveTab("input_testers");
+          setInputSubTab("keyboard");
+        } else if (tabParam === "mouse") {
+          setActiveTab("input_testers");
+          setInputSubTab("mouse");
+        } else if (tabParam === "gamepad") {
+          setActiveTab("input_testers");
+          setInputSubTab("gamepad");
+        } else if (tabParam === "input" || tabParam === "input_testers") {
+          setActiveTab("input_testers");
+        }
+      }
+    } catch {}
+  }, []);
 
   // 1. DİRENÇ HESAPLAYICI DURUMU
   const [band1, setBand1] = useState(1); // Kahverengi
@@ -226,6 +256,18 @@ export default function ToolsPage() {
             >
               <Binary className="w-3.5 h-3.5" />
               <span>Bit & Radix</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("input_testers")}
+              className={`btn btn-xs font-mono text-xs gap-1.5 rounded-xl whitespace-nowrap ${
+                activeTab === "input_testers"
+                  ? "btn-secondary shadow-xs font-bold"
+                  : "btn-ghost text-base-content/70"
+              }`}
+            >
+              <Keyboard className="w-3.5 h-3.5 text-secondary" />
+              <span>Giriş Test Cihazları (Klavye/Fare/Gamepad)</span>
+              <span className="badge badge-secondary badge-xs font-mono text-[9px]">Yeni</span>
             </button>
           </div>
         </div>
@@ -919,6 +961,56 @@ export default function ToolsPage() {
               <div className="text-xl font-black text-base-content truncate">{asciiChar}</div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ======================================================== */}
+      {/* 7. GİRİŞ TEST CİHAZLARI (KLAVYE, FARE, GAMEPAD)          */}
+      {/* ======================================================== */}
+      {activeTab === "input_testers" && (
+        <div className="space-y-6 animate-in fade-in duration-150">
+          {/* Cihaz Seçim Butonları */}
+          <div className="flex items-center gap-2 p-1.5 rounded-2xl bg-base-200/80 border border-base-300 w-fit overflow-x-auto">
+            <button
+              onClick={() => setInputSubTab("keyboard")}
+              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
+                inputSubTab === "keyboard"
+                  ? "btn-secondary shadow-xs font-bold"
+                  : "btn-ghost text-base-content/70"
+              }`}
+            >
+              <Keyboard className="w-3.5 h-3.5" />
+              <span>⌨️ Klavye & Rollover (NKRO)</span>
+            </button>
+
+            <button
+              onClick={() => setInputSubTab("mouse")}
+              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
+                inputSubTab === "mouse"
+                  ? "btn-secondary shadow-xs font-bold"
+                  : "btn-ghost text-base-content/70"
+              }`}
+            >
+              <MousePointer className="w-3.5 h-3.5" />
+              <span>🖱️ Fare & Polling Rate (Hz)</span>
+            </button>
+
+            <button
+              onClick={() => setInputSubTab("gamepad")}
+              className={`btn btn-xs font-mono gap-1.5 rounded-xl whitespace-nowrap transition-all ${
+                inputSubTab === "gamepad"
+                  ? "btn-secondary shadow-xs font-bold"
+                  : "btn-ghost text-base-content/70"
+              }`}
+            >
+              <Gamepad2 className="w-3.5 h-3.5" />
+              <span>🎮 Gamepad & Joystick (Titreşim)</span>
+            </button>
+          </div>
+
+          {inputSubTab === "keyboard" && <KeyboardTester />}
+          {inputSubTab === "mouse" && <MouseTester />}
+          {inputSubTab === "gamepad" && <GamepadTester />}
         </div>
       )}
     </div>
