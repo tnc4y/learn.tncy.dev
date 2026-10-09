@@ -17,6 +17,14 @@ export const metadata: Metadata = {
   title: "learn.tncy.dev | Modern Yazılım, Web & Donanım Platformu",
   description:
     "Web geliştirme, Python, Gömülü C, FPGA ve SystemVerilog için modern, interaktif ve uygulamalı öğrenme merkezi.",
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.png", sizes: "512x512", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({

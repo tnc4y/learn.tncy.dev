@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Terminal,
   BookOpen,
@@ -107,8 +108,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Sol: Karşılama Metni */}
           <div className="flex-1 space-y-5 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
-              <Sparkles className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold shadow-xs">
+              <Image
+                src="/logo.png"
+                alt="learn.tncy.dev"
+                width={18}
+                height={18}
+                className="w-4 h-4 object-contain"
+              />
               <span>Web • Gömülü • Donanım • Yazılım</span>
             </div>
 
@@ -488,9 +495,20 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mt-10 py-6 text-center text-xs text-base-content/50 border-t border-base-content/5 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <div>
-            learn.<span className="text-primary font-bold">tncy</span>.dev © 2026 • Modern Kodlama & Donanım Platformu
+        <div className="mt-10 py-6 text-center text-xs text-base-content/50 border-t border-base-content/5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center justify-center sm:justify-start gap-2.5">
+            <div className="w-6 h-6 rounded-md bg-emerald-500/10 border border-emerald-500/20 p-0.5 flex items-center justify-center shrink-0">
+              <Image
+                src="/logo.png"
+                alt="learn.tncy.dev Logo"
+                width={20}
+                height={20}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <span>
+              learn.<span className="text-primary font-bold">tncy</span>.dev © 2026 • Modern Kodlama & Donanım Platformu
+            </span>
           </div>
           <div className="font-mono text-[11px]">
             Next.js 16 • Tailwind CSS v4 • DaisyUI v5

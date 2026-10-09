@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Cpu,
   Terminal,
@@ -81,8 +82,15 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
             onClick={closeDropdown}
             className="flex items-center gap-2.5 font-bold tracking-tight text-lg group"
           >
-            <div className="p-1.5 rounded-lg bg-primary/10 border border-primary/20 text-primary group-hover:bg-primary group-hover:text-primary-content transition-all">
-              <Cpu className="w-5 h-5" />
+            <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center p-0.5 bg-emerald-500/10 border border-emerald-500/20 group-hover:border-emerald-500/40 group-hover:scale-105 transition-all shadow-xs shrink-0">
+              <Image
+                src="/logo.png"
+                alt="learn.tncy.dev Logo"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain"
+                priority
+              />
             </div>
             <div className="flex flex-col">
               <span className="font-mono font-extrabold text-base leading-tight">

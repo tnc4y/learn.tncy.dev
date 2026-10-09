@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import SearchModal from "./SearchModal";
@@ -54,7 +55,17 @@ export default function AppShell({ children }: AppShellProps) {
           <div className="w-80 max-w-[85vw] h-full bg-base-100 shadow-2xl flex flex-col animate-in slide-in-from-left duration-200">
             {/* Üst Başlık & Sekmeler */}
             <div className="p-3 border-b border-base-300 flex items-center justify-between">
-              <div className="flex items-center gap-1 bg-base-200 p-0.5 rounded-lg text-xs font-mono">
+              <div className="flex items-center gap-2">
+                <div className="relative w-7 h-7 rounded-lg overflow-hidden flex items-center justify-center p-0.5 bg-emerald-500/10 border border-emerald-500/20 shrink-0">
+                  <Image
+                    src="/logo.png"
+                    alt="learn.tncy.dev Logo"
+                    width={28}
+                    height={28}
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="flex items-center gap-1 bg-base-200 p-0.5 rounded-lg text-xs font-mono">
                 <button
                   onClick={() => setMobileDrawerTab("nav")}
                   className={`px-2.5 py-1 rounded-md font-bold transition-all ${
@@ -76,6 +87,7 @@ export default function AppShell({ children }: AppShellProps) {
                   Dersler
                 </button>
               </div>
+            </div>
 
               <button
                 onClick={() => setIsMobileDrawerOpen(false)}
