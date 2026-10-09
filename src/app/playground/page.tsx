@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import CodePlayground from "@/components/CodePlayground";
-import { Terminal, Sparkles, Sliders } from "lucide-react";
+import { Terminal, Sparkles, Sliders, Layers } from "lucide-react";
+import Link from "next/link";
 
 const EXAMPLES = [
   {
@@ -165,64 +166,129 @@ endmodule`,
       { name: "state", wave: "======", data: ["RED", "RED", "GREEN", "YELLOW", "RED"] },
     ],
   },
+  {
+    id: "pwm",
+    name: "PWM Led / Motor Sürücü",
+    description: "Darbe genişlik modülasyonu (PWM) ile LED parlaklığı ve motor hızı kontrolü.",
+    code: `// PWM Denetleyici Modülü ve Testbench
+module pwm_tb;
+  logic clk = 0;
+  logic [7:0] duty_cycle = 8'd128; // %50 Doluluk Oranı (Duty)
+  logic [7:0] counter = 0;
+  logic pwm_out;
+
+  always #5 clk = ~clk;
+
+  // PWM Karşılaştırma Mantığı
+  always_ff @(posedge clk) begin
+    counter <= counter + 1'b1;
+    pwm_out <= (counter < duty_cycle) ? 1'b1 : 1'b0;
+  end
+
+  initial begin
+    $display("=== PWM MODÜLÜ TESTİ BAŞLADI ===");
+    $display("[INFO] Duty Cycle: %0d / 255 (%%%0d Doluluk)", duty_cycle, (duty_cycle * 100) / 255);
+    #60;
+    $finish;
+  end
+
+  always @(posedge clk) begin
+    $display("[@%0tns] Counter=%0d | PWM_OUT=%b", $time, counter, pwm_out);
+  end
+endmodule`,
+    expectedOutput: [
+      "=== PWM MODÜLÜ TESTİ BAŞLADI ===",
+      "[INFO] Duty Cycle: 128 / 255 (%50 Doluluk)",
+      "[@15ns] Counter=1 | PWM_OUT=1",
+      "[@25ns] Counter=2 | PWM_OUT=1",
+      "[@35ns] Counter=3 | PWM_OUT=1",
+      "[@45ns] Counter=4 | PWM_OUT=1",
+      "[@55ns] Counter=5 | PWM_OUT=1",
+      "[SUCCESS] PWM dalga formu başarıyla üretildi.",
+    ],
+    signals: [
+      { name: "clk", wave: "010101010101" },
+      { name: "pwm_out", wave: "111111000000" },
+      { name: "counter[7:0]", wave: "======", data: ["0", "1", "2", "3", "4", "5"] },
+    ],
+  },
 ];
 
 export default function PlaygroundPage() {
   const [selectedExample, setSelectedExample] = useState(EXAMPLES[0]);
 
   return (
-    <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 py-8">
-      {/* Başlık Alanı */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-base-300">
-        <div>
-          <div className="flex items-center gap-2 text-primary font-mono text-xs font-bold uppercase tracking-wider mb-1">
-            <Terminal className="w-4 h-4" />
-            <span>W3Schools Tarzı Canlı Ortam</span>
+    <div className="flex-1 flex flex-col p-3 sm:p-5 max-w-[1600px] w-full mx-auto space-y-3">
+      {/* Üst Başlık & Hızlı Şablon Seçici */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-base-200/50 p-3 rounded-2xl border border-base-300">
+        <div className="flex items-center gap-3">
+          <div className="p-2 rounded-xl bg-primary/10 text-primary">
+            <Terminal className="w-5 h-5" />
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-base-content">
-            SystemVerilog Kendin Dene (Playground)
-          </h1>
-          <p className="text-sm text-base-content/70 mt-1">
-            Tarayıcınızda canlı kod yazın, düzenleyin, simüle edin ve sinyal dalga formunu anında görün.
-          </p>
+          <div>
+            <div className="flex items-center gap-2">
+              <h1 className="text-lg font-black tracking-tight text-base-content">
+                SystemVerilog Web IDE & Simülatör
+              </h1>
+              <span className="badge badge-primary badge-xs font-mono">v1.0 Pro</span>
+            </div>
+            <p className="text-xs text-base-content/60">
+              Ayrı terminal konsolu ve SVG zamanlama dalga formu ile tam ekran deneme ortamı.
+            </p>
+          </div>
         </div>
 
-        {/* Hazır Örnek Şablonları */}
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-base-content/60 font-semibold flex items-center gap-1">
-            <Sliders className="w-3.5 h-3.5" /> Şablon:
+        {/* Şablon Butonları */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <span className="text-[11px] text-base-content/50 font-mono font-bold flex items-center gap-1 mr-1">
+            <Sliders className="w-3 h-3" /> Şablon:
           </span>
           {EXAMPLES.map((ex) => (
             <button
               key={ex.id}
               onClick={() => setSelectedExample(ex)}
-              className={`btn btn-xs font-mono text-[11px] ${
-                selectedExample.id === ex.id ? "btn-primary shadow-xs" : "btn-outline"
+              className={`btn btn-xs font-mono text-[11px] rounded-lg ${
+                selectedExample.id === ex.id
+                  ? "btn-primary shadow-xs font-bold"
+                  : "btn-ghost border border-base-content/10"
               }`}
             >
               {ex.name}
             </button>
           ))}
+          <Link
+            href="/boards"
+            className="btn btn-warning btn-outline btn-xs font-mono text-[11px] rounded-lg ml-1 hidden sm:flex"
+          >
+            <Layers className="w-3 h-3" />
+            Kartlar
+          </Link>
         </div>
       </div>
 
-      {/* Seçili Örnek Açıklaması */}
-      <div className="my-4 p-3 bg-base-200/60 rounded-lg border border-base-300 text-xs text-base-content/80 flex items-center gap-2">
-        <Sparkles className="w-4 h-4 text-warning shrink-0" />
-        <span>
-          <strong>{selectedExample.name}:</strong> {selectedExample.description}
+      {/* Seçili Örnek Açıklama Şeridi */}
+      <div className="px-3 py-1.5 bg-base-200/30 rounded-lg border border-base-content/5 text-xs text-base-content/70 flex items-center justify-between">
+        <span className="flex items-center gap-1.5 truncate">
+          <Sparkles className="w-3.5 h-3.5 text-warning shrink-0" />
+          <strong className="text-base-content">{selectedExample.name}:</strong>{" "}
+          <span className="truncate">{selectedExample.description}</span>
+        </span>
+        <span className="text-[10px] font-mono text-base-content/40 hidden md:inline">
+          Kısayol: ⌘K ile dersler arasında ara
         </span>
       </div>
 
-      {/* Ana Editör & Simülatör Bileşeni */}
-      <CodePlayground
-        key={selectedExample.id}
-        title={selectedExample.name}
-        initialCode={selectedExample.code}
-        expectedOutput={selectedExample.expectedOutput}
-        signals={selectedExample.signals}
-        notes="Kodu dilediğiniz gibi değiştirebilir, yeni sinyaller ve $display ifadeleri ekleyerek anında test edebilirsiniz."
-      />
+      {/* Tam Ekran IDE Bileşeni */}
+      <div className="flex-1 min-h-[600px]">
+        <CodePlayground
+          key={selectedExample.id}
+          title={selectedExample.name}
+          initialCode={selectedExample.code}
+          expectedOutput={selectedExample.expectedOutput}
+          signals={selectedExample.signals}
+          mode="fullscreen"
+        />
+      </div>
     </div>
   );
 }

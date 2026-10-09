@@ -179,6 +179,57 @@ endmodule`}
         </div>
       </section>
 
+      {/* 2.5. GELİŞTİRME KARTLARI ANSİKLOPEDİSİ VİTRİNİ */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="p-8 rounded-3xl bg-gradient-to-br from-base-200 via-base-100 to-warning/5 border border-base-300 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 text-warning font-mono text-xs font-bold uppercase tracking-wider mb-1">
+                <Layers className="w-4 h-4" />
+                <span>Gömülü Donanım Rehberi</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-base-content">
+                Geliştirme Kartları Ansiklopedisi
+              </h2>
+              <p className="text-xs sm:text-sm text-base-content/70 mt-1">
+                Arduino Uno&apos;dan ESP32&apos;ye, STM32 ARM mimarisinden FPGA (Basys 3, DE10) ve Jetson AI kartlarına kadar her şey.
+              </p>
+            </div>
+            <Link href="/boards" className="btn btn-warning btn-sm font-mono text-xs shrink-0 gap-1 shadow-sm">
+              <span>Tüm Kartları İncele (12+ Kart)</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            {[
+              { name: "Arduino Uno", chip: "ATmega328P", tag: "MCU", color: "badge-primary" },
+              { name: "ESP32 DevKit", chip: "Dual LX6 240MHz", tag: "IoT", color: "badge-success" },
+              { name: "STM32 BluePill", chip: "Cortex-M3 72MHz", tag: "ARM", color: "badge-info" },
+              { name: "RPi Pico W", chip: "RP2040 + WiFi", tag: "MicroPython", color: "badge-secondary" },
+              { name: "Basys 3 FPGA", chip: "Artix-7 FPGA", tag: "SystemVerilog", color: "badge-warning" },
+              { name: "Jetson Nano", chip: "128-Core GPU", tag: "Edge AI", color: "badge-accent" },
+            ].map((b, idx) => (
+              <Link
+                key={idx}
+                href="/boards"
+                className="p-3 rounded-xl bg-base-100 border border-base-300 hover:border-warning/50 transition-all text-center space-y-1 group"
+              >
+                <span className={`badge badge-xs font-mono text-[9px] ${b.color}`}>
+                  {b.tag}
+                </span>
+                <div className="font-bold text-xs text-base-content group-hover:text-warning transition-colors truncate">
+                  {b.name}
+                </div>
+                <div className="text-[10px] text-base-content/50 font-mono truncate">
+                  {b.chip}
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. MÜFREDAT MODÜLLERİ (CURRICULUM GRID) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">

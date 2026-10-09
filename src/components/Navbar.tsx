@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu } from "lucide-react";
+import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu, Layers } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 
 interface NavbarProps {
@@ -41,12 +41,19 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
         </div>
 
         {/* Orta Alan: Navigasyon Linkleri */}
-        <div className="navbar-center hidden md:flex">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 gap-1 text-sm font-medium">
             <li>
               <Link href="/tutorial/intro" className="flex items-center gap-1.5 active:bg-primary">
                 <BookOpen className="w-4 h-4 text-primary" />
                 <span>Dersler</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/boards" className="flex items-center gap-1.5">
+                <Layers className="w-4 h-4 text-warning" />
+                <span>Geliştirme Kartları</span>
+                <span className="badge badge-xs badge-warning font-mono font-bold">Ansiklopedi</span>
               </Link>
             </li>
             <li>
