@@ -165,13 +165,13 @@ export default async function LessonPage({
               </section>
             ))}
 
-            {/* W3Schools Tarzı "Kendin Dene" (Playground) */}
+            {/* Canlı "Kendin Dene" (Playground) */}
             {content.playground && (
               <div className="my-10">
                 <div className="flex items-center gap-2 mb-3">
                   <Terminal className="w-5 h-5 text-primary" />
                   <h3 className="text-lg font-bold text-base-content">
-                    W3Schools Tarzı İnteraktif Simülatör
+                    İnteraktif Kod Düzenleyici & Simülatör
                   </h3>
                 </div>
                 <CodePlayground {...content.playground} />

@@ -6,7 +6,7 @@ export interface Lesson {
   difficulty: "Başlangıç" | "Orta" | "İleri";
   description: string;
   hasPlayground: boolean;
-  category: "Design" | "Verification" | "Core";
+  category: "Design" | "Verification" | "Core" | "Web" | "Embedded" | "Programming";
 }
 
 export interface ModuleSection {
@@ -18,6 +18,120 @@ export interface ModuleSection {
 }
 
 export const CURRICULUM: ModuleSection[] = [
+  {
+    id: "web-dev",
+    number: 1,
+    title: "Web Geliştirme",
+    description: "Modern web standartları: HTML5 semantik yapıları, CSS3 Flexbox/Grid ve JavaScript (ES6+).",
+    lessons: [
+      {
+        id: "html-intro",
+        title: "HTML5 Temelleri ve Sayfa İskeleti",
+        shortTitle: "HTML5 Temelleri",
+        readTime: "5 dk",
+        difficulty: "Başlangıç",
+        description: "Web sayfalarının iskeletini oluşturan semantik etiketler ve form yapıları.",
+        hasPlayground: false,
+        category: "Web",
+      },
+      {
+        id: "css-intro",
+        title: "CSS3 Temelleri & Flexbox Düzeni",
+        shortTitle: "CSS3 & Flexbox",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "Modern kutu modeli, renkler ve tek eksende esnek Flexbox hizalama.",
+        hasPlayground: false,
+        category: "Web",
+      },
+      {
+        id: "js-intro",
+        title: "Modern JavaScript (ES6+) & DOM",
+        shortTitle: "JavaScript (ES6+)",
+        readTime: "7 dk",
+        difficulty: "Orta",
+        description: "Dinamik web uygulamaları için let/const, olay dinleme ve asenkron programlama.",
+        hasPlayground: false,
+        category: "Web",
+      },
+    ],
+  },
+  {
+    id: "embedded-dev",
+    number: 2,
+    title: "Gömülü Sistemler & Mikrodenetleyiciler",
+    description: "Donanım programlama: Gömülü C ile register kontrolü, MicroPython ve Arduino ekosistemi.",
+    lessons: [
+      {
+        id: "embedded-c-intro",
+        title: "Gömülü C ve Bit Düzeyinde Donanım Kontrolü",
+        shortTitle: "Gömülü C (Register/Bit)",
+        readTime: "8 dk",
+        difficulty: "Orta",
+        description: "Mikrodenetleyicilerde bitwise işlemler, işaretçiler ve MMIO register kontrolü.",
+        hasPlayground: false,
+        category: "Embedded",
+      },
+      {
+        id: "micropython-intro",
+        title: "MicroPython ile ESP32 & Pico Donanım Kontrolü",
+        shortTitle: "MicroPython Temelleri",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "machine.Pin modülü ile GPIO kontrolü, PWM ve hızlı IoT prototipleme.",
+        hasPlayground: false,
+        category: "Embedded",
+      },
+      {
+        id: "arduino-intro",
+        title: "Arduino Temelleri: setup(), loop() ve Dijital I/O",
+        shortTitle: "Arduino Programlama",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "Standart Arduino yaşam döngüsü, sensör okuma ve dijital çıkış mantığı.",
+        hasPlayground: false,
+        category: "Embedded",
+      },
+    ],
+  },
+  {
+    id: "languages-dev",
+    number: 3,
+    title: "Programlama Dilleri",
+    description: "Sistem ve genel amaçlı modern programlama dilleri: Python, C++ ve Rust.",
+    lessons: [
+      {
+        id: "python-intro",
+        title: "Python 3 Temelleri & Veri Yapıları",
+        shortTitle: "Python 3 Temelleri",
+        readTime: "6 dk",
+        difficulty: "Başlangıç",
+        description: "Temiz sözdizimi, listeler, sözlükler (dict) ve list comprehension.",
+        hasPlayground: false,
+        category: "Programming",
+      },
+      {
+        id: "cpp-intro",
+        title: "Modern C++ (C++20) ve RAII Mimarisi",
+        shortTitle: "Modern C++ (C++20)",
+        readTime: "7 dk",
+        difficulty: "İleri",
+        description: "Akıllı işaretçiler (std::unique_ptr), bellek yönetimi ve RAII prensibi.",
+        hasPlayground: false,
+        category: "Programming",
+      },
+      {
+        id: "rust-intro",
+        title: "Rust: Sahiplik (Ownership) ve Bellek Güvenliği",
+        shortTitle: "Rust & Ownership",
+        readTime: "8 dk",
+        difficulty: "İleri",
+        description: "Garbage collector olmadan derleme anında %100 bellek güvenliği.",
+        hasPlayground: false,
+        category: "Programming",
+      },
+    ],
+  },
   {
     id: "basics",
     number: 1,

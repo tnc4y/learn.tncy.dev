@@ -1,0 +1,178 @@
+export interface LearningTrack {
+  id: string;
+  title: string;
+  category: "Web Geliştirme" | "Gömülü Sistemler" | "Donanım & FPGA" | "Programlama Dilleri";
+  iconName: string;
+  badge: string;
+  colorClass: string;
+  description: string;
+  lessonCount: number;
+  level: "Başlangıç" | "Orta" | "İleri";
+  topics: string[];
+  startLessonUrl: string;
+  isAvailable: boolean;
+}
+
+export const LEARNING_TRACKS: LearningTrack[] = [
+  // 1. Web Geliştirme
+  {
+    id: "html",
+    title: "HTML5",
+    category: "Web Geliştirme",
+    iconName: "FileCode2",
+    badge: "Web Temelleri",
+    colorClass: "badge-error",
+    description: "Web sayfalarının iskeletini oluşturan modern semantik etiketler, formlar, tablolar ve multimedya elemanları.",
+    lessonCount: 18,
+    level: "Başlangıç",
+    topics: ["Semantik Etiketler", "Form Doğrulama", "Audio/Video", "Tablolar", "Canvas"],
+    startLessonUrl: "/tutorial/html-intro",
+    isAvailable: true,
+  },
+  {
+    id: "css",
+    title: "CSS3",
+    category: "Web Geliştirme",
+    iconName: "Palette",
+    badge: "Stil & Tasarım",
+    colorClass: "badge-info",
+    description: "Modern web tasarımı, Flexbox ve Grid sistemleri, animasyonlar, responsive (duyarlı) tasarım kuralları ve değişkenler.",
+    lessonCount: 22,
+    level: "Başlangıç",
+    topics: ["Flexbox Düzeni", "CSS Grid", "Geçişler & Keyframes", "Medya Sorguları", "CSS Değişkenleri"],
+    startLessonUrl: "/tutorial/css-intro",
+    isAvailable: true,
+  },
+  {
+    id: "javascript",
+    title: "JavaScript (ES6+)",
+    category: "Web Geliştirme",
+    iconName: "Code2",
+    badge: "Etkileşim & Dinamizm",
+    colorClass: "badge-warning",
+    description: "Dinamik web uygulamaları için modern JavaScript: Arrow fonksiyonlar, DOM manipülasyonu, Asenkron programlama ve Fetch API.",
+    lessonCount: 30,
+    level: "Orta",
+    topics: ["DOM Manipülasyonu", "Async / Await", "Promises", "Event Listener", "ES6+ Modülleri"],
+    startLessonUrl: "/tutorial/js-intro",
+    isAvailable: true,
+  },
+
+  // 2. Gömülü Sistemler
+  {
+    id: "embedded-c",
+    title: "Gömülü C (Embedded C)",
+    category: "Gömülü Sistemler",
+    iconName: "Cpu",
+    badge: "Donanım Kontrolü",
+    colorClass: "badge-primary",
+    description: "Mikrodenetleyiciler için C programlama: Bit manipülasyonları, işaretçiler (pointers), bellek haritalı I/O (MMIO) ve kesmeler (interrupts).",
+    lessonCount: 24,
+    level: "Orta",
+    topics: ["Bitwise Operatörler", "Pointer Aritmetiği", "Register Erişimi", "Kesme (ISR) Mantığı", "Volatile Anahtar Kelimesi"],
+    startLessonUrl: "/tutorial/embedded-c-intro",
+    isAvailable: true,
+  },
+  {
+    id: "micropython",
+    title: "MicroPython",
+    category: "Gömülü Sistemler",
+    iconName: "Terminal",
+    badge: "Hızlı IoT",
+    colorClass: "badge-success",
+    description: "ESP32 ve Raspberry Pi Pico üzerinde Python ile hızlı prototipleme: GPIO kontrolü, sensör okuma, PWM, Wi-Fi ve MQTT protokolleri.",
+    lessonCount: 16,
+    level: "Başlangıç",
+    topics: ["GPIO Kontrolü", "I2C Sensör Okuma", "PWM Sinyali", "Wi-Fi Bağlantısı", "MQTT ile Veri Gönderme"],
+    startLessonUrl: "/tutorial/micropython-intro",
+    isAvailable: true,
+  },
+  {
+    id: "arduino",
+    title: "Arduino & Sensörler",
+    category: "Gömülü Sistemler",
+    iconName: "Layers",
+    badge: "Robotik & Prototip",
+    colorClass: "badge-accent",
+    description: "Arduino ekosistemiyle elektronik ve robotik: Dijital/analog I/O, motor sürücüler, ekranlar ve popüler sensör modülleri.",
+    lessonCount: 20,
+    level: "Başlangıç",
+    topics: ["pinMode & digitalWrite", "analogRead & PWM", "Ultrasonik Sensör", "I2C LCD Ekran", "Servo Motor"],
+    startLessonUrl: "/tutorial/arduino-intro",
+    isAvailable: true,
+  },
+
+  // 3. Donanım & FPGA
+  {
+    id: "systemverilog",
+    title: "SystemVerilog",
+    category: "Donanım & FPGA",
+    iconName: "Cpu",
+    badge: "Çip Tasarımı & Doğrulama",
+    colorClass: "badge-primary",
+    description: "Endüstri standardı donanım tanımlama ve doğrulama dili: Sentezlenebilir RTL, 4-durumlu logic, FSM, OOP sınıfları ve SVA ifadeleri.",
+    lessonCount: 36,
+    level: "İleri",
+    topics: ["logic & 4-State", "always_comb & always_ff", "FSM Tasarımı", "OOP Sınıfları", "SVA Assertions"],
+    startLessonUrl: "/tutorial/intro",
+    isAvailable: true,
+  },
+  {
+    id: "verilog-fpga",
+    title: "Verilog & FPGA",
+    category: "Donanım & FPGA",
+    iconName: "Activity",
+    badge: "Mantıksal Sentez",
+    colorClass: "badge-secondary",
+    description: "FPGA geliştirme temelleri: Mantık kapıları, flip-floplar, saat frekansı bölücüler ve Basys 3 / DE10-Lite üzerinde canlı donanım sentezi.",
+    lessonCount: 22,
+    level: "Orta",
+    topics: ["Kombinasyonel Mantık", "Ardışıl Devreler", "Frekans Bölücü", "FPGA Kısıt Dosyaları (XDC)", "7-Segment Sürücü"],
+    startLessonUrl: "/tutorial/verilog-fpga-intro",
+    isAvailable: true,
+  },
+
+  // 4. Genel Programlama Dilleri
+  {
+    id: "python",
+    title: "Python 3",
+    category: "Programlama Dilleri",
+    iconName: "Code2",
+    badge: "Genel Amaçlı & AI",
+    colorClass: "badge-info",
+    description: "Sözdizimi temiz, güçlü ve popüler genel programlama dili: Veri yapıları, fonksiyonlar, OOP, dosya işlemleri ve kütüphane ekosistemi.",
+    lessonCount: 28,
+    level: "Başlangıç",
+    topics: ["Listeler & Sözlükler", "Fonksiyonlar & Lambdalar", "OOP & Sınıflar", "Hata Yönetimi", "Dosya I/O"],
+    startLessonUrl: "/tutorial/python-intro",
+    isAvailable: true,
+  },
+  {
+    id: "cpp",
+    title: "Modern C++ (C++20)",
+    category: "Programlama Dilleri",
+    iconName: "Code2",
+    badge: "Yüksek Başarım",
+    colorClass: "badge-neutral",
+    description: "Sistem programlama, oyun motorları ve yüksek performans gerektiren mimariler: Bellek yönetimi, şablonlar (templates) ve STL.",
+    lessonCount: 26,
+    level: "İleri",
+    topics: ["Akıllı İşaretçiler (Smart Pointers)", "RAII & Bellek", "STL Konteynerleri", "Templates", "Lambda İfadeleri"],
+    startLessonUrl: "/tutorial/cpp-intro",
+    isAvailable: true,
+  },
+  {
+    id: "rust",
+    title: "Rust",
+    category: "Programlama Dilleri",
+    iconName: "Zap",
+    badge: "Bellek Güvenliği",
+    colorClass: "badge-warning",
+    description: "Garbage collector olmadan %100 bellek güvenliği sunan modern sistem dili: Ownership, borrowing, traits ve gömülü sistem desteği.",
+    lessonCount: 24,
+    level: "İleri",
+    topics: ["Ownership & Borrowing", "Lifetimes", "Pattern Matching", "Traits", "Async Rust"],
+    startLessonUrl: "/tutorial/rust-intro",
+    isAvailable: true,
+  },
+];

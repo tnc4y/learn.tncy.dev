@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "learn.tncy.dev | Modern SystemVerilog & Embedded Systems",
+  title: "learn.tncy.dev | Modern Yazılım, Web & Donanım Platformu",
   description:
-    "W3Schools benzeri modern, interaktif ve zengin içerikli SystemVerilog, FPGA ve Gömülü Sistemler öğrenme platformu.",
+    "Web geliştirme, Python, Gömülü C, FPGA ve SystemVerilog için modern, interaktif ve uygulamalı öğrenme merkezi.",
 };
 
 export default function RootLayout({

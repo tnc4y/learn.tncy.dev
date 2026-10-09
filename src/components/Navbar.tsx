@@ -34,7 +34,7 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                 learn.<span className="text-primary">tncy</span>.dev
               </span>
               <span className="text-[10px] text-base-content/60 uppercase font-mono tracking-wider">
-                SystemVerilog & Embedded
+                Yazılım & Donanım
               </span>
             </div>
           </Link>
@@ -53,14 +53,12 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
               <Link href="/boards" className="flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-warning" />
                 <span>Geliştirme Kartları</span>
-                <span className="badge badge-xs badge-warning font-mono font-bold">Ansiklopedi</span>
               </Link>
             </li>
             <li>
               <Link href="/playground" className="flex items-center gap-1.5">
                 <Terminal className="w-4 h-4 text-secondary" />
                 <span>Kendin Dene</span>
-                <span className="badge badge-xs badge-secondary font-mono">Live</span>
               </Link>
             </li>
             <li>
@@ -72,7 +70,7 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
             <li>
               <Link href="/tutorial/interview-prep" className="flex items-center gap-1.5">
                 <HelpCircle className="w-4 h-4 text-info" />
-                <span>Mülakat Soru Bankası</span>
+                <span>Mülakat Soruları</span>
               </Link>
             </li>
           </ul>
