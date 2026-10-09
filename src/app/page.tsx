@@ -14,6 +14,10 @@ import {
   Cpu,
   Check,
   Play,
+  HelpCircle,
+  Wrench,
+  TrendingUp,
+  Scale,
 } from "lucide-react";
 import { LEARNING_TRACKS } from "@/data/tracks";
 
@@ -363,48 +367,108 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-primary/50 transition-colors">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Link
+            href="/playground"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-primary/50 transition-all hover:-translate-y-0.5 group"
+          >
             <div className="card-body p-6 space-y-2">
-              <div className="p-2 w-fit rounded-lg bg-primary/10 text-primary">
+              <div className="p-2 w-fit rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-content transition-colors">
                 <Code2 className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base text-base-content">
+              <h3 className="font-bold text-base text-base-content group-hover:text-primary transition-colors">
                 Canlı Kod Düzenleyici & Simülatör
               </h3>
               <p className="text-xs text-base-content/70 leading-relaxed">
                 Her dersin içerisinde doğrudan düzenlenebilir kod editörü, terminal konsolu ve sinyal dalga formları.
               </p>
             </div>
-          </div>
+          </Link>
 
-          <div className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-secondary/50 transition-colors">
+          <Link
+            href="/boards"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-warning/50 transition-all hover:-translate-y-0.5 group"
+          >
             <div className="card-body p-6 space-y-2">
-              <div className="p-2 w-fit rounded-lg bg-secondary/10 text-secondary">
+              <div className="p-2 w-fit rounded-lg bg-warning/10 text-warning group-hover:bg-warning group-hover:text-warning-content transition-colors">
+                <Layers className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-base text-base-content group-hover:text-warning transition-colors">
+                Geliştirme Kartları & Pinout Şeması
+              </h3>
+              <p className="text-xs text-base-content/70 leading-relaxed">
+                Arduino, ESP32, Raspberry Pi Pico ve FPGA kartlarının detaylı pinout şemaları ve yan yana teknik karşılaştırma modu.
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/interview"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-info/50 transition-all hover:-translate-y-0.5 group"
+          >
+            <div className="card-body p-6 space-y-2">
+              <div className="p-2 w-fit rounded-lg bg-info/10 text-info group-hover:bg-info group-hover:text-info-content transition-colors">
+                <HelpCircle className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-base text-base-content group-hover:text-info transition-colors">
+                Teknik Mülakat & 3D Flashcard
+              </h3>
+              <p className="text-xs text-base-content/70 leading-relaxed">
+                Donanım, gömülü sistemler ve web mülakatlarında en sık sorulan 25+ kritik soru ve 3D çevrilebilir bilgi kartları.
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/tools"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-secondary/50 transition-all hover:-translate-y-0.5 group"
+          >
+            <div className="card-body p-6 space-y-2">
+              <div className="p-2 w-fit rounded-lg bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-content transition-colors">
+                <Wrench className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-base text-base-content group-hover:text-secondary transition-colors">
+                Mühendislik Hesaplama Araçları
+              </h3>
+              <p className="text-xs text-base-content/70 leading-relaxed">
+                4-Band direnç renk kodu hesaplayıcı, MCU timer kesme frekansı hesaplayıcı ve interaktif sayı tabanı dönüştürücü.
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/progress"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-success/50 transition-all hover:-translate-y-0.5 group"
+          >
+            <div className="card-body p-6 space-y-2">
+              <div className="p-2 w-fit rounded-lg bg-success/10 text-success group-hover:bg-success group-hover:text-success-content transition-colors">
+                <TrendingUp className="w-5 h-5" />
+              </div>
+              <h3 className="font-bold text-base text-base-content group-hover:text-success transition-colors">
+                Yerel İlerleme Takibi & JSON Portatifliği
+              </h3>
+              <p className="text-xs text-base-content/70 leading-relaxed">
+                Üyelik veya şifre gerekmeden tamamlanan derslerinizi kaydedin, başarı rozetleri kazanın ve JSON yedeği alın.
+              </p>
+            </div>
+          </Link>
+
+          <Link
+            href="/courses"
+            className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-accent/50 transition-all hover:-translate-y-0.5 group"
+          >
+            <div className="card-body p-6 space-y-2">
+              <div className="p-2 w-fit rounded-lg bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-content transition-colors">
                 <Globe className="w-5 h-5" />
               </div>
-              <h3 className="font-bold text-base text-base-content">
-                Uçtan Uca Tam Kapsam
+              <h3 className="font-bold text-base text-base-content group-hover:text-accent transition-colors">
+                11 Uzmanlık Alanı & 110+ Ders
               </h3>
               <p className="text-xs text-base-content/70 leading-relaxed">
                 Web frontend arayüzünden backend dillerine, oradan mikrodenetleyici C ve donanımsal FPGA çip tasarımına tam yolculuk.
               </p>
             </div>
-          </div>
-
-          <div className="card bg-base-200/60 border border-base-300 shadow-xs hover:border-accent/50 transition-colors">
-            <div className="card-body p-6 space-y-2">
-              <div className="p-2 w-fit rounded-lg bg-accent/10 text-accent">
-                <Activity className="w-5 h-5" />
-              </div>
-              <h3 className="font-bold text-base text-base-content">
-                Kendini Test Et Alıştırmaları
-              </h3>
-              <p className="text-xs text-base-content/70 leading-relaxed">
-                Her konunun sonunda kavram yanılgılarını önleyen ve öğrendiklerinizi pekiştiren interaktif soru ve cevap panelleri.
-              </p>
-            </div>
-          </div>
+          </Link>
         </div>
       </section>
 

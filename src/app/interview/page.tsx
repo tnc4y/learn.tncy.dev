@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { INTERVIEW_QUESTIONS, InterviewQuestion } from "@/data/interviewData";
+import CodeBlock from "@/components/CodeBlock";
 import {
   HelpCircle,
   Search,
@@ -223,11 +224,11 @@ export default function InterviewPage() {
 
                 {/* Varsa Kod Örneği */}
                 {currentQuestion.codeSnippet && (
-                  <div className="rounded-xl overflow-hidden border border-base-300 bg-[#1e1e2e] text-[#cdd6f4] p-3 text-xs font-mono max-h-36 overflow-y-auto">
-                    <pre>
-                      <code>{currentQuestion.codeSnippet.snippet}</code>
-                    </pre>
-                  </div>
+                  <CodeBlock
+                    code={currentQuestion.codeSnippet.snippet}
+                    language={currentQuestion.codeSnippet.language}
+                    className="max-h-48 text-xs"
+                  />
                 )}
               </div>
             )}
@@ -343,14 +344,10 @@ export default function InterviewPage() {
 
                       {/* Kod Parçacığı */}
                       {item.codeSnippet && (
-                        <div className="rounded-xl overflow-hidden border border-base-300 bg-[#1e1e2e] text-[#cdd6f4]">
-                          <div className="px-3 py-1.5 bg-base-300/40 border-b border-white/10 text-[10px] font-mono uppercase text-base-content/60">
-                            {item.codeSnippet.language}
-                          </div>
-                          <pre className="p-3.5 text-xs font-mono overflow-x-auto leading-relaxed">
-                            <code>{item.codeSnippet.snippet}</code>
-                          </pre>
-                        </div>
+                        <CodeBlock
+                          code={item.codeSnippet.snippet}
+                          language={item.codeSnippet.language}
+                        />
                       )}
                     </div>
                   )}

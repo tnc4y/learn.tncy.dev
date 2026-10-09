@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu, Layers, Wrench } from "lucide-react";
+import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu, Layers, Wrench, TrendingUp } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 
 interface NavbarProps {
@@ -77,6 +77,12 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
               <Link href="/tools" className="flex items-center gap-1.5">
                 <Wrench className="w-4 h-4 text-warning" />
                 <span>Araçlar</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/progress" className="flex items-center gap-1.5">
+                <TrendingUp className="w-4 h-4 text-success" />
+                <span>İlerleme</span>
               </Link>
             </li>
           </ul>

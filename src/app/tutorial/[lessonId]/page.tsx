@@ -6,6 +6,8 @@ import QuizExercise from "@/components/QuizExercise";
 import { getLessonById, getAdjacentLessons, CURRICULUM } from "@/data/curriculum";
 import { LESSONS_DATA } from "@/data/lessonsData";
 import LessonCompleteButton from "@/components/LessonCompleteButton";
+import LessonTracker from "@/components/LessonTracker";
+import CodeBlock from "@/components/CodeBlock";
 import {
   ChevronLeft,
   ChevronRight,
@@ -356,6 +358,9 @@ export default async function LessonPage({
           </ul>
         </div>
 
+        {/* İlerleme ve Son Açılan Ders Kaydı */}
+        <LessonTracker lessonId={lesson.id} />
+
         {/* Ders Başlık Alanı */}
         <div className="border-b border-base-300 pb-6 mb-8 space-y-3">
           <div className="flex flex-wrap items-center gap-2">
@@ -473,19 +478,12 @@ export default async function LessonPage({
 
                 {/* Kod Bloğu */}
                 {sec.code && (
-                  <div className="my-4 rounded-xl overflow-hidden border border-base-300 bg-[#1e1e2e] text-[#cdd6f4]">
-                    {sec.code.caption && (
-                      <div className="px-4 py-2 bg-base-300/40 border-b border-white/10 text-xs font-mono text-base-content/70 flex items-center justify-between">
-                        <span>{sec.code.caption}</span>
-                        <span className="uppercase text-[10px] tracking-wider text-primary">
-                          {sec.code.language}
-                        </span>
-                      </div>
-                    )}
-                    <pre className="p-4 text-xs sm:text-sm font-mono overflow-x-auto leading-relaxed">
-                      <code>{sec.code.snippet}</code>
-                    </pre>
-                  </div>
+                  <CodeBlock
+                    code={sec.code.snippet}
+                    language={sec.code.language}
+                    caption={sec.code.caption}
+                    className="my-4"
+                  />
                 )}
               </section>
             ))}
