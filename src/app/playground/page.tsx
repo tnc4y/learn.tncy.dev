@@ -15,6 +15,12 @@ interface PlaygroundTemplate {
   code: string;
   expectedOutput: string[];
   signals?: { name: string; wave: string; data?: string[] }[];
+  filename?: string;
+  language?: string;
+  engineBadge?: string;
+  terminalTitle?: string;
+  runButtonText?: string;
+  timePrecision?: string;
 }
 
 const TEMPLATES: PlaygroundTemplate[] = [
@@ -26,6 +32,12 @@ const TEMPLATES: PlaygroundTemplate[] = [
     categoryLabel: "Donanım & RTL",
     categoryColor: "badge-primary",
     description: "Saat (CLK) ve Reset (RST_N) kontrollü 4-bitlik binary sayaç ve testbench.",
+    filename: "counter_tb.sv",
+    language: "SystemVerilog",
+    engineBadge: "Verilator / Icarus",
+    terminalTitle: "Simülatör Konsolu (iverilog / $display)",
+    runButtonText: "Simülasyonu Çalıştır",
+    timePrecision: "1ps",
     code: `// 4-Bit Binary Sayaç ve Testbench
 module counter_tb;
   logic clk = 0;
@@ -77,6 +89,12 @@ endmodule`,
     categoryLabel: "Donanım & RTL",
     categoryColor: "badge-primary",
     description: "Toplama, Çıkarma, VE, VEYA ve XOR işlemlerini yürüten kombinasyonel ALU.",
+    filename: "alu_tb.sv",
+    language: "SystemVerilog",
+    engineBadge: "Verilator / Icarus",
+    terminalTitle: "Simülatör Konsolu (iverilog / $display)",
+    runButtonText: "Simülasyonu Çalıştır",
+    timePrecision: "1ps",
     code: `// Aritmetik Mantık Birimi (ALU) ve Testbench
 module alu_tb;
   logic [3:0] a, b;
@@ -133,6 +151,12 @@ endmodule`,
     categoryLabel: "Donanım & RTL",
     categoryColor: "badge-primary",
     description: "enum tipleriyle Kırmızı, Sarı ve Yeşil geçişlerini yöneten Moore FSM.",
+    filename: "traffic_fsm_tb.sv",
+    language: "SystemVerilog",
+    engineBadge: "Verilator / Icarus",
+    terminalTitle: "Simülatör Konsolu (iverilog / $display)",
+    runButtonText: "Simülasyonu Çalıştır",
+    timePrecision: "1ps",
     code: `// Trafik Lambası Durum Makinesi
 module traffic_fsm_tb;
   typedef enum logic [1:0] {
@@ -197,6 +221,12 @@ endmodule`,
     categoryLabel: "Web Geliştirme",
     categoryColor: "badge-error",
     description: "Modern JavaScript'te asenkron veri çekme ve Promise yönetimi.",
+    filename: "app.js",
+    language: "JavaScript (ES2024)",
+    engineBadge: "Node.js / V8",
+    terminalTitle: "Tarayıcı Geliştirici Konsolu (console.log)",
+    runButtonText: "JavaScript'i Çalıştır",
+    timePrecision: "Ağ Gecikmesi: ~100ms",
     code: `// Asenkron Veri Alma Simülasyonu
 async function kullaniciGetir(id) {
   console.log(\`[@0ms] Kullanıcı #\${id} için REST isteği gönderildi...\`);
@@ -232,6 +262,12 @@ baslat();`,
     categoryLabel: "Gömülü Sistemler",
     categoryColor: "badge-accent",
     description: "Arduino pinMode, analogWrite ve seri port üzerinden PWM sinyali sürme.",
+    filename: "sketch.ino",
+    language: "Arduino C++ (AVR)",
+    engineBadge: "ATmega328P Core Sim",
+    terminalTitle: "Seri Port Monitörü (115200 Baud)",
+    runButtonText: "Kodu Yükle & Çalıştır",
+    timePrecision: "16 MHz Saat",
     code: `// Arduino PWM ve Seri Port Kontrolü
 const int LED_PIN = 9;   // PWM destekli pin
 const int POT_PIN = A0;  // Analog giriş pini
@@ -268,6 +304,12 @@ void loop() {
     categoryLabel: "Gömülü & Robotik",
     categoryColor: "badge-warning",
     description: "ROS 2 Python (rclpy) ile periyodik LiDAR ve batarya telemetrisi yayınlayan Publisher düğümü.",
+    filename: "telemetry_node.py",
+    language: "Python 3 / ROS 2 rclpy",
+    engineBadge: "ROS 2 Humble / DDS",
+    terminalTitle: "ROS 2 Düğüm Günlüğü (rclpy logger)",
+    runButtonText: "Düğümü Başlat",
+    timePrecision: "DDS Döngüsü: 10Hz",
     code: `# ROS 2 rclpy Sensör Telemetri Düğümü
 import time
 
@@ -313,6 +355,12 @@ print("[FINISH] Düğüm yaşam döngüsü başarıyla tamamlandı.")`,
     categoryLabel: "Programlama Dilleri",
     categoryColor: "badge-info",
     description: "Python ile nesne yönelimli programlama, kapsülleme ve dize formatlama.",
+    filename: "sensor.py",
+    language: "Python 3.12",
+    engineBadge: "CPython Yorumlayıcı",
+    terminalTitle: "Python Konsolu (stdout)",
+    runButtonText: "Betiği Çalıştır",
+    timePrecision: "Yürütme: ~4ms",
     code: `# Python Nesne Yönelimli Sensör Modeli
 class SicaklikSensoru:
     def __init__(self, model: str, pin: int):
@@ -350,6 +398,12 @@ print(f"Ortalama Sıcaklık: {sensor.ortalama_hesapla():.2f}°C")`,
     categoryLabel: "Programlama Dilleri",
     categoryColor: "badge-warning",
     description: "Rust dilinde derleme anı bellek güvenliği ve referansla ödünç alma.",
+    filename: "main.rs",
+    language: "Rust 2021",
+    engineBadge: "rustc --release",
+    terminalTitle: "Terminal Çıktısı (stdout)",
+    runButtonText: "Derle ve Çalıştır",
+    timePrecision: "Sıfır Ek Maliyet",
     code: `// Rust Bellek Güvenliği ve Borrowing
 fn main() {
     println!("[START] Rust Bellek Modeli");
@@ -485,6 +539,12 @@ export default function PlaygroundPage() {
           initialCode={selectedTemplate.code}
           expectedOutput={selectedTemplate.expectedOutput}
           signals={selectedTemplate.signals}
+          filename={selectedTemplate.filename}
+          language={selectedTemplate.language}
+          engineBadge={selectedTemplate.engineBadge}
+          terminalTitle={selectedTemplate.terminalTitle}
+          runButtonText={selectedTemplate.runButtonText}
+          timePrecision={selectedTemplate.timePrecision}
           mode="fullscreen"
         />
       </div>

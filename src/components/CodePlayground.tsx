@@ -26,10 +26,17 @@ export interface PlaygroundProps {
   }[];
   notes?: string;
   mode?: "embedded" | "fullscreen";
+  filename?: string;
+  language?: string;
+  engineBadge?: string;
+  terminalTitle?: string;
+  runButtonText?: string;
+  runningText?: string;
+  timePrecision?: string;
 }
 
 export default function CodePlayground({
-  title = "İnteraktif SystemVerilog Deneme Alanı (Try It Yourself)",
+  title = "İnteraktif Kod Deneme Alanı (Try It Yourself)",
   initialCode,
   expectedOutput = [
     "[INFO:EDA] Compiling testbench.sv and dut.sv...",
@@ -41,21 +48,25 @@ export default function CodePlayground({
     "[@50ns] CLK: 0 | RST_N: 1 | OUT: 4'h3 | Durum: Sayma Devam (3)",
     "[SUCCESS] Testbench tamamlandı: 0 Hata, 0 Uyarı.",
   ],
-  signals = [
-    { name: "clk", wave: "010101010101" },
-    { name: "rst_n", wave: "001111111111" },
-    { name: "count[3:0]", wave: "========", data: ["0", "0", "1", "2", "3", "4"] },
-  ],
-  notes = "Kodu doğrudan düzenleyebilir ve 'Simülasyonu Çalıştır' ile anında test edebilirsiniz.",
+  signals,
+  notes = "Kodu doğrudan düzenleyebilir ve çalıştırma butonuyla anında test edebilirsiniz.",
   mode = "embedded",
+  filename = "testbench.sv",
+  language = "SystemVerilog",
+  engineBadge = "Icarus / Verilator Wasm",
+  terminalTitle = "Simülatör Konsolu (iverilog / $display)",
+  runButtonText = "Simülasyonu Çalıştır",
+  runningText = "Kodlar derleniyor ve yürütülüyor...",
+  timePrecision = "1ps",
 }: PlaygroundProps) {
   const [code, setCode] = useState(initialCode);
   const [isRunning, setIsRunning] = useState(false);
   const [hasRun, setHasRun] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(mode === "fullscreen");
+  const hasSignals = Boolean(signals && signals.length > 0);
   const [activeRightTab, setActiveRightTab] = useState<"both" | "waveform" | "terminal">(
-    mode === "fullscreen" ? "both" : "terminal"
+    mode === "fullscreen" && hasSignals ? "both" : "terminal"
   );
 
   const handleRun = () => {
@@ -99,14 +110,16 @@ export default function CodePlayground({
             <Terminal className="w-4 h-4 text-primary" />
             {title}
           </span>
-          <span className="badge badge-xs badge-neutral font-mono hidden sm:inline">
-            Icarus / Verilator Wasm
-          </span>
+          {engineBadge && (
+            <span className="badge badge-xs badge-neutral font-mono hidden sm:inline">
+              {engineBadge}
+            </span>
+          )}
         </div>
 
         {/* Eylem Butonları */}
         <div className="flex items-center gap-2">
-          {mode === "fullscreen" && (
+          {mode === "fullscreen" && hasSignals && (
             <div className="join join-horizontal bg-base-300/60 p-0.5 rounded-lg hidden md:flex mr-2">
               <button
                 onClick={() => setActiveRightTab("both")}
@@ -168,7 +181,7 @@ export default function CodePlayground({
             className="btn btn-primary btn-sm gap-1.5 font-mono text-xs shadow-sm"
           >
             <Play className={`w-3.5 h-3.5 ${isRunning ? "animate-spin" : ""}`} />
-            {isRunning ? "Simüle Ediliyor..." : "Simülasyonu Çalıştır"}
+            {isRunning ? (runningText ? "Çalıştırılıyor..." : "Simüle Ediliyor...") : runButtonText}
           </button>
         </div>
       </div>
@@ -185,8 +198,8 @@ export default function CodePlayground({
           <div className="bg-[#11111b] px-4 py-2 border-b border-white/5 flex items-center justify-between text-xs font-mono text-white/60">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary" />
-              <span className="text-white font-semibold">top_tb.sv</span>
-              <span className="text-white/40">• SystemVerilog</span>
+              <span className="text-white font-semibold">{filename}</span>
+              <span className="text-white/40">• {language}</span>
             </div>
             <span>UTF-8</span>
           </div>
@@ -222,8 +235,8 @@ export default function CodePlayground({
             isFs ? "w-full lg:w-1/2 flex flex-col bg-base-100 overflow-hidden" : "w-full"
           }`}
         >
-          {/* A. SİNYAL DALGA FORMU (WAVEFORM GÖRSELİ) */}
-          {(activeRightTab === "both" || activeRightTab === "waveform" || !isFs) && (
+          {/* A. SİNYAL DALGA FORMU (WAVEFORM GÖRSELİ - SADECE SİNYAL TANIMLIYSA) */}
+          {hasSignals && (activeRightTab === "both" || activeRightTab === "waveform" || !isFs) && (
             <div
               className={`${
                 isFs && activeRightTab === "both"
@@ -257,7 +270,7 @@ export default function CodePlayground({
                 </div>
 
                 {/* Sinyal Satırları */}
-                {signals.map((sig, sIdx) => (
+                {signals?.map((sig, sIdx) => (
                   <div key={sIdx} className="flex items-center gap-3">
                     <span className="w-20 text-right font-bold text-xs truncate text-primary font-mono shrink-0">
                       {sig.name}
@@ -292,22 +305,24 @@ export default function CodePlayground({
             </div>
           )}
 
-          {/* B. AYRI STANDALONE TERMİNAL (SIMULATOR CONSOLE) */}
-          {(activeRightTab === "both" || activeRightTab === "terminal" || !isFs) && (
+          {/* B. AYRI STANDALONE TERMİNAL (KONSOL) */}
+          {(!hasSignals || activeRightTab === "both" || activeRightTab === "terminal" || !isFs) && (
             <div
               className={`${
-                isFs && activeRightTab === "both"
+                isFs && hasSignals && activeRightTab === "both"
                   ? "h-1/2 flex flex-col"
                   : isFs
                   ? "flex-1 flex flex-col"
-                  : "border-t border-base-300"
-              } bg-[#0f141c] text-[#e6edf3] flex flex-col`}
+                  : hasSignals
+                  ? "border-t border-base-300"
+                  : "flex-1 flex flex-col"
+              } bg-[#0f141c] text-[#e6edf3] flex flex-col min-h-[220px]`}
             >
               {/* Terminal Başlığı */}
               <div className="bg-[#161b22] px-4 py-2 border-b border-white/5 flex items-center justify-between text-xs font-mono">
                 <div className="flex items-center gap-2 text-white/70">
                   <Terminal className="w-3.5 h-3.5 text-info" />
-                  <span>Simülatör Konsolu (iverilog / $display)</span>
+                  <span>{terminalTitle}</span>
                 </div>
 
                 <div className="flex items-center gap-2">
@@ -330,12 +345,12 @@ export default function CodePlayground({
               <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-1.5 leading-relaxed selection:bg-info/30">
                 {!hasRun && !isRunning ? (
                   <div className="text-white/40 italic py-6 text-center">
-                    Konsol hazır. Çıktıları görmek için &quot;Simülasyonu Çalıştır&quot; butonuna basın.
+                    Konsol hazır. Çıktıları görmek için &quot;{runButtonText}&quot; butonuna basın.
                   </div>
                 ) : isRunning ? (
                   <div className="flex items-center justify-center gap-2 py-8 text-primary">
                     <span className="loading loading-spinner loading-xs" />
-                    <span>SystemVerilog kodları derleniyor ve simüle ediliyor...</span>
+                    <span>{runningText}</span>
                   </div>
                 ) : (
                   expectedOutput.map((line, idx) => {
@@ -365,7 +380,7 @@ export default function CodePlayground({
               {/* Terminal Durum Çubuğu */}
               <div className="bg-[#161b22] px-4 py-1.5 border-t border-white/5 text-[11px] font-mono text-white/50 flex items-center justify-between">
                 <span>Durum: {isRunning ? "Çalışıyor" : hasRun ? "Tamamlandı" : "Beklemede"}</span>
-                <span>Zaman Hassasiyeti: 1ps</span>
+                {timePrecision && <span>{timePrecision}</span>}
               </div>
             </div>
           )}

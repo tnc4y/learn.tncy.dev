@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Sidebar from "@/components/Sidebar";
 import CodePlayground from "@/components/CodePlayground";
+import WebPreview from "@/components/WebPreview";
+import ConsoleOutputCard from "@/components/ConsoleOutputCard";
 import QuizExercise from "@/components/QuizExercise";
 import { getLessonById, getAdjacentLessons, CURRICULUM } from "@/data/curriculum";
 import { LESSONS_DATA } from "@/data/lessonsData";
@@ -368,6 +370,8 @@ export default async function LessonPage({
   const { prev, next } = getAdjacentLessons(lessonId);
 
   const fallback = getDynamicFallbackTemplate(course.id, lesson.title);
+  const isHardwareCourse = course.category === "Donanım & FPGA";
+  const isWebCourse = course.category === "Web Geliştirme";
 
   return (
     <div className="flex-1 flex max-w-7xl w-full mx-auto">
@@ -529,13 +533,13 @@ export default async function LessonPage({
               </section>
             ))}
 
-            {/* Canlı "Kendin Dene" (Playground) */}
-            {content.playground && (
+            {/* Canlı Donanım Simülatörü - Yalnızca Donanım / FPGA kursları için */}
+            {isHardwareCourse && content.playground && (
               <div className="my-10">
                 <div className="flex items-center gap-2 mb-3">
                   <Terminal className="w-5 h-5 text-primary" />
                   <h3 className="text-lg font-bold text-base-content">
-                    İnteraktif Kod Düzenleyici & Simülatör
+                    İnteraktif Donanım Düzenleyici & Simülatör
                   </h3>
                 </div>
                 <CodePlayground {...content.playground} />
@@ -546,27 +550,95 @@ export default async function LessonPage({
             {content.quiz && <QuizExercise quiz={content.quiz} />}
           </div>
         ) : (
-          /* Henüz detaylı metni yazılmamış dersler için dinamik kurs laboratuvarı */
+          /* Henüz detaylı metni yazılmamış dersler için dinamik çalışma alanı */
           <div className="space-y-6">
             <div className="alert alert-info bg-info/10 border-info/30">
               <Info className="w-5 h-5 text-info shrink-0" />
               <div className="space-y-1">
                 <h4 className="font-bold text-xs">
-                  {course.shortTitle} • Müfredat Hazırlık Aşamasında
+                  {course.shortTitle} • Müfredat & Ders Notu Hazırlanıyor
                 </h4>
                 <p className="text-xs leading-relaxed">
-                  Bu dersin detaylı teorik anlatımları ve kapsamlı testleri hazırlanmaktadır.
-                  Aşağıdaki canlı kod alanında ders konusuna ait örnek şablonu inceleyebilir ve
-                  kodları doğrudan düzenleyip çalıştırabilirsiniz.
+                  {lesson.description} Bu konuya ait temel örnek şablon ve çalışma alanı aşağıda sunulmuştur.
                 </p>
               </div>
             </div>
 
-            <CodePlayground
-              title={`${lesson.title} - Canlı Deneme Alanı`}
-              initialCode={fallback.code}
-              expectedOutput={fallback.output}
-            />
+            {/* A. WEB GELİŞTİRME (HTML, CSS, JAVASCRIPT - SİMÜLATÖR/DALGA FORMU OLMADAN) */}
+            {isWebCourse ? (
+              <WebPreview
+                title={lesson.title}
+                code={fallback.code}
+                language={
+                  course.id === "html"
+                    ? "html"
+                    : course.id === "css"
+                    ? "css"
+                    : "javascript"
+                }
+                expectedOutput={fallback.output}
+                description={
+                  course.id === "html"
+                    ? "HTML belgesinin yapısını inceleyebilir ve 'Tarayıcı Önizlemesi' sekmesinden canlı web çıktısını görebilirsiniz."
+                    : course.id === "css"
+                    ? "CSS kurallarını ve 'Tarayıcı Önizlemesi' sekmesinden stillendirilmiş bileşeni görebilirsiniz."
+                    : "JavaScript kodunu ve konsol çıktısını inceleyebilirsiniz."
+                }
+              />
+            ) : isHardwareCourse ? (
+              /* B. DONANIM & FPGA (SYSTEMVERILOG / VERILOG) */
+              lesson.hasPlayground ? (
+                <CodePlayground
+                  title={`${lesson.title} - EDA Simülatörü`}
+                  initialCode={fallback.code}
+                  expectedOutput={fallback.output}
+                  filename="testbench.sv"
+                  language="SystemVerilog"
+                  engineBadge="Icarus / Verilator Wasm"
+                  terminalTitle="Simülatör Konsolu (iverilog / $display)"
+                  runButtonText="Simülasyonu Çalıştır"
+                />
+              ) : (
+                <ConsoleOutputCard
+                  title={lesson.title}
+                  code={fallback.code}
+                  language="systemverilog"
+                  output={fallback.output}
+                  commandName="$ iverilog -g2012 testbench.sv && ./a.out"
+                  caption={`${lesson.title} - Donanım Modülü`}
+                />
+              )
+            ) : (
+              /* C. PROGRAMLAMA DİLLERİ & GÖMÜLÜ SİSTEMLER (PYTHON, RUST, C++, ARDUINO, ROS2, C) */
+              <ConsoleOutputCard
+                title={lesson.title}
+                code={fallback.code}
+                language={
+                  course.id === "embedded-c"
+                    ? "c"
+                    : course.id === "arduino"
+                    ? "cpp"
+                    : course.id === "ros2" || course.id === "micropython"
+                    ? "python"
+                    : course.id
+                }
+                output={fallback.output}
+                commandName={
+                  course.id === "python" || course.id === "micropython"
+                    ? "$ python3 main.py"
+                    : course.id === "ros2"
+                    ? "$ ros2 run robot_pkg telemetry_node"
+                    : course.id === "rust"
+                    ? "$ cargo run --release"
+                    : course.id === "cpp"
+                    ? "$ g++ -std=c++20 main.cpp && ./a.out"
+                    : course.id === "arduino"
+                    ? "$ arduino-cli compile --upload"
+                    : "$ gcc -Wall main.c && ./a.out"
+                }
+                caption={`${lesson.title} - ${course.shortTitle} Örnek Kodu`}
+              />
+            )}
           </div>
         )}
 
