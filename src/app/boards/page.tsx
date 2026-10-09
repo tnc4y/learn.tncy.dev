@@ -6,6 +6,7 @@ import { BOARD_PINOUTS, BoardPin } from "@/data/pinoutsData";
 import { HARDWARE_GUIDES, HardwareGuide } from "@/data/guidesData";
 import BoardIllustration from "@/components/BoardIllustration";
 import CodeBlock from "@/components/CodeBlock";
+import { InlineMarkdown } from "@/components/MarkdownRenderer";
 import {
   Cpu,
   Search,
@@ -551,7 +552,7 @@ export default function BoardsPage() {
                             </h4>
 
                             <p className="text-xs sm:text-sm text-base-content/80 leading-relaxed whitespace-pre-line pl-8">
-                              {step.description}
+                              <InlineMarkdown text={step.description} />
                             </p>
 
                             {/* Komut Kutusu */}
@@ -590,9 +591,11 @@ export default function BoardsPage() {
                                 >
                                   <div>
                                     <h5 className="font-bold uppercase tracking-wider text-[11px] mb-0.5">
-                                      {step.callout.title}
+                                      <InlineMarkdown text={step.callout.title} />
                                     </h5>
-                                    <p className="leading-relaxed">{step.callout.message}</p>
+                                    <p className="leading-relaxed">
+                                      <InlineMarkdown text={step.callout.message} />
+                                    </p>
                                   </div>
                                 </div>
                               </div>
@@ -1036,7 +1039,7 @@ export default function BoardsPage() {
                           {step.title}
                         </h5>
                         <p className="text-xs text-base-content/80 leading-relaxed whitespace-pre-line">
-                          {step.description}
+                          <InlineMarkdown text={step.description} />
                         </p>
                         {step.command && (
                           <CodeBlock code={step.command} language="bash" caption="Komut" />
@@ -1051,8 +1054,8 @@ export default function BoardsPage() {
                         {step.callout && (
                           <div className="alert alert-warning text-xs p-2.5">
                             <div>
-                              <strong>{step.callout.title}: </strong>
-                              <span>{step.callout.message}</span>
+                              <strong><InlineMarkdown text={step.callout.title} />: </strong>
+                              <span><InlineMarkdown text={step.callout.message} /></span>
                             </div>
                           </div>
                         )}

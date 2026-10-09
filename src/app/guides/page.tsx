@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { HARDWARE_GUIDES, HardwareGuide } from "@/data/guidesData";
 import CodeBlock from "@/components/CodeBlock";
+import { InlineMarkdown } from "@/components/MarkdownRenderer";
 import {
   Terminal,
   BookOpen,
@@ -371,7 +372,7 @@ export default function GuidesPage() {
                                     {step.title}
                                   </h3>
                                   <p className="text-xs text-base-content/75 leading-relaxed mt-1 whitespace-pre-line">
-                                    {step.description}
+                                    <InlineMarkdown text={step.description} />
                                   </p>
                                 </div>
                               </div>
@@ -453,9 +454,11 @@ export default function GuidesPage() {
                                   <Info className="w-4 h-4 text-info shrink-0 mt-0.5" />
                                 )}
                                 <div className="space-y-0.5">
-                                  <div className="font-bold text-xs">{step.callout.title}</div>
+                                  <div className="font-bold text-xs">
+                                    <InlineMarkdown text={step.callout.title} />
+                                  </div>
                                   <div className="opacity-90 leading-relaxed text-[11px]">
-                                    {step.callout.message}
+                                    <InlineMarkdown text={step.callout.message} />
                                   </div>
                                 </div>
                               </div>

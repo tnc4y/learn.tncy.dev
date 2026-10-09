@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { BLOG_POSTS, getBlogPostBySlug, getAllBlogSlugs } from "@/data/blogData";
 import CodeBlock from "@/components/CodeBlock";
+import MarkdownRenderer, { InlineMarkdown } from "@/components/MarkdownRenderer";
 import {
   ChevronLeft,
   Clock,
@@ -179,9 +180,7 @@ export default async function BlogPostPage({
                   {section.title}
                 </h2>
 
-                <div className="prose prose-sm max-w-none text-base-content/80 whitespace-pre-line leading-relaxed">
-                  {section.content}
-                </div>
+                <MarkdownRenderer content={section.content} />
 
                 {/* Uyarı & İpucu Kutusu */}
                 {section.callout && (
@@ -208,9 +207,11 @@ export default async function BlogPostPage({
                       )}
                       <div>
                         <h4 className="font-bold text-xs uppercase tracking-wider mb-1">
-                          {section.callout.title}
+                          <InlineMarkdown text={section.callout.title} />
                         </h4>
-                        <p className="text-xs leading-relaxed">{section.callout.message}</p>
+                        <p className="text-xs leading-relaxed">
+                          <InlineMarkdown text={section.callout.message} />
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -235,7 +236,7 @@ export default async function BlogPostPage({
                         <tr>
                           {section.table.headers.map((h, hIdx) => (
                             <th key={hIdx} className="text-base-content/80 font-bold">
-                              {h}
+                              <InlineMarkdown text={h} />
                             </th>
                           ))}
                         </tr>
@@ -248,7 +249,7 @@ export default async function BlogPostPage({
                                 key={cIdx}
                                 className={cIdx === 0 ? "font-bold text-base-content" : "text-base-content/80"}
                               >
-                                {cell}
+                                <InlineMarkdown text={cell} />
                               </td>
                             ))}
                           </tr>
@@ -274,7 +275,7 @@ export default async function BlogPostPage({
                 {post.keyTakeaways.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-2.5">
                     <Check className="w-4 h-4 text-success shrink-0 mt-0.5" />
-                    <span>{item}</span>
+                    <span><InlineMarkdown text={item} /></span>
                   </li>
                 ))}
               </ul>

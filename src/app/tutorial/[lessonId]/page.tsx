@@ -10,6 +10,7 @@ import { LESSONS_DATA } from "@/data/lessonsData";
 import LessonCompleteButton from "@/components/LessonCompleteButton";
 import LessonTracker from "@/components/LessonTracker";
 import CodeBlock from "@/components/CodeBlock";
+import MarkdownRenderer, { InlineMarkdown } from "@/components/MarkdownRenderer";
 import {
   ChevronLeft,
   ChevronRight,
@@ -456,7 +457,7 @@ export default async function LessonPage({
           </div>
 
           <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
-            {content?.subtitle || lesson.description}
+            <InlineMarkdown text={content?.subtitle || lesson.description} />
           </p>
 
           {lesson.id === "interview-prep" && (
@@ -484,9 +485,7 @@ export default async function LessonPage({
                   {sec.title}
                 </h2>
 
-                <div className="prose prose-sm max-w-none space-y-3 text-base-content/80 whitespace-pre-line leading-relaxed">
-                  {sec.content}
-                </div>
+                <MarkdownRenderer content={sec.content} />
 
                 {/* İpucu / Dikkat Kutuları (Callouts) */}
                 {sec.callout && (
@@ -513,9 +512,11 @@ export default async function LessonPage({
                       )}
                       <div>
                         <h4 className="font-bold text-xs uppercase tracking-wider mb-1">
-                          {sec.callout.title}
+                          <InlineMarkdown text={sec.callout.title} />
                         </h4>
-                        <p className="text-xs leading-relaxed">{sec.callout.message}</p>
+                        <p className="text-xs leading-relaxed">
+                          <InlineMarkdown text={sec.callout.message} />
+                        </p>
                       </div>
                     </div>
                   </div>
