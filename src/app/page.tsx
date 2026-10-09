@@ -11,8 +11,10 @@ import {
   Activity,
   Code2,
   Globe,
+  Cpu,
+  Check,
+  Play,
 } from "lucide-react";
-import CodePlayground from "@/components/CodePlayground";
 import { LEARNING_TRACKS } from "@/data/tracks";
 
 const CATEGORIES = [
@@ -23,8 +25,72 @@ const CATEGORIES = [
   { id: "Programlama Dilleri", label: "Programlama Dilleri" },
 ];
 
+const HERO_SNIPPETS = [
+  {
+    id: "sv",
+    label: "SystemVerilog",
+    category: "Donanım & RTL",
+    color: "badge-primary",
+    code: `// 4-Bit Sayıcı Donanım Bloğu
+module counter (input clk, rst_n, output logic [3:0] q);
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) q <= 4'h0;
+    else        q <= q + 1'b1;
+  end
+endmodule`,
+    output: "✓ Sentezlenebilir RTL derlendi. Saat dalga formu aktif.",
+    playgroundUrl: "/playground",
+  },
+  {
+    id: "html",
+    label: "HTML5 & Web",
+    category: "Web Geliştirme",
+    color: "badge-error",
+    code: `<!-- Modern Web Arayüzü -->
+<div class="card p-4 rounded-xl shadow-md">
+  <h2>Yazılım & Donanım</h2>
+  <button onclick="calistir()">Simülasyon Başlat</button>
+</div>`,
+    output: "✓ DOM ağacı yüklendi. CSS Flexbox/Grid düzeni aktif.",
+    playgroundUrl: "/courses",
+  },
+  {
+    id: "arduino",
+    label: "Arduino & C",
+    category: "Gömülü Sistemler",
+    color: "badge-accent",
+    code: `// Arduino Dijital I/O & PWM
+void setup() {
+  pinMode(13, OUTPUT);
+  Serial.begin(115200);
+}
+void loop() {
+  digitalWrite(13, HIGH); delay(500);
+  digitalWrite(13, LOW);  delay(500);
+}`,
+    output: "✓ Baud: 115200 | MCU GPIO register adresleri eşlendi.",
+    playgroundUrl: "/boards",
+  },
+  {
+    id: "python",
+    label: "Python 3",
+    category: "Programlama Dilleri",
+    color: "badge-info",
+    code: `# Cihaz Telemetrisi & Veri Analizi
+def telemetri_oku(cihaz="ESP32"):
+    return {"durum": "Aktif", "ram_kb": 520, "wifi": True}
+
+print(telemetri_oku())`,
+    output: "✓ {'durum': 'Aktif', 'ram_kb': 520, 'wifi': True} [Exit 0]",
+    playgroundUrl: "/courses",
+  },
+];
+
 export default function Home() {
   const [selectedCat, setSelectedCat] = useState("all");
+  const [activeSnippetIdx, setActiveSnippetIdx] = useState(0);
+
+  const activeSnippet = HERO_SNIPPETS[activeSnippetIdx];
 
   const filteredTracks = LEARNING_TRACKS.filter(
     (t) => selectedCat === "all" || t.category === selectedCat
@@ -33,101 +99,112 @@ export default function Home() {
   return (
     <div className="space-y-16 pb-16">
       {/* 1. HERO BÖLÜMÜ */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-base-200/60 via-base-100 to-base-100 border-b border-base-300 pt-12 pb-16 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-10">
+      <section className="relative overflow-hidden bg-gradient-to-b from-base-200/60 via-base-100 to-base-100 border-b border-base-300 pt-10 pb-14 px-4 sm:px-6">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
           {/* Sol: Karşılama Metni */}
-          <div className="flex-1 space-y-6 text-center lg:text-left">
+          <div className="flex-1 space-y-5 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-mono font-semibold">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Web • Gömülü • Donanım • Yazılım</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-base-content leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-base-content leading-tight">
               Yazılımdan Donanıma <span className="text-primary">Eksiksiz</span> Öğrenme Platformu
             </h1>
 
-            <p className="text-base sm:text-lg text-base-content/70 max-w-2xl leading-relaxed mx-auto lg:mx-0">
+            <p className="text-sm sm:text-base text-base-content/70 max-w-2xl leading-relaxed mx-auto lg:mx-0">
               HTML, CSS ve JavaScript&apos;ten Python, Modern C++ ve Rust&apos;a; Arduino ve ESP32&apos;den
               FPGA ve SystemVerilog çip tasarımına kadar uzanan interaktif, uygulamalı kodlama merkezi.
             </p>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-              <Link href="/courses" className="btn btn-primary gap-2 shadow-lg font-mono">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
+              <Link href="/courses" className="btn btn-primary btn-sm sm:btn-md gap-2 shadow-md font-mono">
                 <BookOpen className="w-4 h-4" />
                 Kursları Keşfet
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/playground" className="btn btn-outline gap-2 font-mono">
+              <Link href="/playground" className="btn btn-outline btn-sm sm:btn-md gap-2 font-mono">
                 <Terminal className="w-4 h-4 text-secondary" />
                 Canlı IDE & Simülatör
               </Link>
-              <Link href="/boards" className="btn btn-ghost gap-2 font-mono text-xs">
+              <Link href="/boards" className="btn btn-ghost btn-sm sm:btn-md gap-2 font-mono text-xs">
                 <Layers className="w-4 h-4 text-warning" />
                 Geliştirme Kartları
               </Link>
             </div>
 
             {/* İstatistik Rozetleri */}
-            <div className="grid grid-cols-3 gap-4 pt-4 max-w-md mx-auto lg:mx-0 border-t border-base-content/10">
+            <div className="grid grid-cols-3 gap-3 pt-3 max-w-md mx-auto lg:mx-0 border-t border-base-content/10">
               <div>
-                <div className="text-2xl font-black font-mono text-primary">11+</div>
-                <div className="text-xs text-base-content/60">Dil & Alan</div>
+                <div className="text-xl sm:text-2xl font-black font-mono text-primary">11+</div>
+                <div className="text-[11px] text-base-content/60">Ayrık Kurs</div>
               </div>
               <div>
-                <div className="text-2xl font-black font-mono text-secondary">100+</div>
-                <div className="text-xs text-base-content/60">Uygulamalı Ders</div>
+                <div className="text-xl sm:text-2xl font-black font-mono text-secondary">100+</div>
+                <div className="text-[11px] text-base-content/60">Uygulamalı Ders</div>
               </div>
               <div>
-                <div className="text-2xl font-black font-mono text-accent">%100</div>
-                <div className="text-xs text-base-content/60">Tarayıcıda Çalışma</div>
+                <div className="text-xl sm:text-2xl font-black font-mono text-accent">%100</div>
+                <div className="text-[11px] text-base-content/60">Tarayıcıda Canlı</div>
               </div>
             </div>
           </div>
 
-          {/* Sağ: Canlı İnteraktif Simülatör Önizlemesi */}
-          <div className="flex-1 w-full max-w-xl">
-            <div className="relative">
-              <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-primary/30 to-secondary/30 blur-xl opacity-50 -z-10" />
-              <CodePlayground
-                title="Canlı Kod Düzenleyici & Simülatör"
-                initialCode={`// 4-Bit Sayıcı ve Testbench
-module counter_tb;
-  logic clk = 0;
-  logic rst_n = 0;
-  logic [3:0] count;
+          {/* Sağ: Şık, Kompakt ve Hafif İnteraktif Kod Penceresi */}
+          <div className="w-full lg:w-[480px] shrink-0">
+            <div className="rounded-2xl border border-base-300 bg-[#1e1e2e] shadow-xl overflow-hidden text-[#cdd6f4]">
+              {/* macOS Tarzı Pencere Başlığı & Sekmeler */}
+              <div className="px-3 py-2.5 bg-[#181825] border-b border-white/10 flex items-center justify-between gap-2">
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <div className="w-2.5 h-2.5 rounded-full bg-error/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-warning/80" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-success/80" />
+                </div>
 
-  always #5 clk = ~clk;
+                {/* Dil / Alan Sekmeleri */}
+                <div className="flex items-center gap-1 overflow-x-auto">
+                  {HERO_SNIPPETS.map((snip, idx) => (
+                    <button
+                      key={snip.id}
+                      onClick={() => setActiveSnippetIdx(idx)}
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
+                        activeSnippetIdx === idx
+                          ? "bg-primary text-primary-content font-bold shadow-xs"
+                          : "text-white/60 hover:text-white hover:bg-white/5"
+                      }`}
+                    >
+                      {snip.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) count <= 4'h0;
-    else        count <= count + 1'b1;
-  end
+              {/* Kod İçeriği (Hafif & Kompakt) */}
+              <div className="p-3.5 font-mono text-xs overflow-x-auto leading-relaxed max-h-44">
+                <pre className="text-white/90">
+                  <code>{activeSnippet.code}</code>
+                </pre>
+              </div>
 
-  initial begin
-    $display("[START] Donanım Simülasyonu Çalışıyor...");
-    #12 rst_n = 1;
-    #40;
-    $display("[FINISH] Test bitti, count = %0d", count);
-    $finish;
-  end
-endmodule`}
-                expectedOutput={[
-                  "[INFO:SIM] Simulator initialized at 0.00ns",
-                  "[START] Donanım Simülasyonu Çalışıyor...",
-                  "[@15ns] CLK Yükselen Kenar: count = 0",
-                  "[@25ns] CLK Yükselen Kenar: count = 1",
-                  "[@35ns] CLK Yükselen Kenar: count = 2",
-                  "[@45ns] CLK Yükselen Kenar: count = 3",
-                  "[FINISH] Test bitti, count = 3",
-                  "[SUCCESS] 0 Hata, Simülasyon başarıyla tamamlandı.",
-                ]}
-                signals={[
-                  { name: "clk", wave: "010101010101" },
-                  { name: "rst_n", wave: "001111111111" },
-                  { name: "count[3:0]", wave: "======", data: ["0", "0", "1", "2", "3"] },
-                ]}
-                notes="'Simülasyonu Çalıştır' butonuna tıklayarak terminal çıktılarını ve saat darbesi dalga formunu canlı görün."
-              />
+              {/* Mini Terminal / Durum Şeridi */}
+              <div className="px-3.5 py-2 bg-[#11111b] border-t border-white/10 flex items-center justify-between text-[11px] font-mono">
+                <div className="flex items-center gap-1.5 text-success truncate">
+                  <Check className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{activeSnippet.output}</span>
+                </div>
+                <Link
+                  href={activeSnippet.playgroundUrl}
+                  className="text-primary hover:underline text-[10px] font-semibold shrink-0 ml-2"
+                >
+                  Dene →
+                </Link>
+              </div>
+            </div>
+
+            <div className="text-center mt-2">
+              <span className="text-[11px] text-base-content/50 font-mono">
+                Yukarıdaki sekmelerden dilleri değiştirip örnek kodları inceleyebilirsiniz.
+              </span>
             </div>
           </div>
         </div>

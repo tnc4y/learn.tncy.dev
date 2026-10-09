@@ -2,13 +2,29 @@
 
 import { useState } from "react";
 import CodePlayground from "@/components/CodePlayground";
-import { Terminal, Sparkles, Sliders, Layers } from "lucide-react";
+import { Terminal, Sparkles, Sliders, Layers, Cpu, Globe, Code2, Zap } from "lucide-react";
 import Link from "next/link";
 
-const EXAMPLES = [
+interface PlaygroundTemplate {
+  id: string;
+  name: string;
+  category: "hardware" | "web" | "embedded" | "languages";
+  categoryLabel: string;
+  categoryColor: string;
+  description: string;
+  code: string;
+  expectedOutput: string[];
+  signals?: { name: string; wave: string; data?: string[] }[];
+}
+
+const TEMPLATES: PlaygroundTemplate[] = [
+  // 1. DONANIM (SYSTEMVERILOG)
   {
     id: "counter",
     name: "4-Bit Sayaç (Counter)",
+    category: "hardware",
+    categoryLabel: "Donanım & RTL",
+    categoryColor: "badge-primary",
     description: "Saat (CLK) ve Reset (RST_N) kontrollü 4-bitlik binary sayaç ve testbench.",
     code: `// 4-Bit Binary Sayaç ve Testbench
 module counter_tb;
@@ -56,7 +72,10 @@ endmodule`,
   },
   {
     id: "alu",
-    name: "Basit ALU (Aritmetik Mantık Birimi)",
+    name: "Aritmetik Mantık Birimi (ALU)",
+    category: "hardware",
+    categoryLabel: "Donanım & RTL",
+    categoryColor: "badge-primary",
     description: "Toplama, Çıkarma, VE, VEYA ve XOR işlemlerini yürüten kombinasyonel ALU.",
     code: `// Aritmetik Mantık Birimi (ALU) ve Testbench
 module alu_tb;
@@ -109,7 +128,10 @@ endmodule`,
   },
   {
     id: "fsm",
-    name: "Trafik Lambası FSM (Durum Makinesi)",
+    name: "Trafik Lambası (FSM)",
+    category: "hardware",
+    categoryLabel: "Donanım & RTL",
+    categoryColor: "badge-primary",
     description: "enum tipleriyle Kırmızı, Sarı ve Yeşil geçişlerini yöneten Moore FSM.",
     code: `// Trafik Lambası Durum Makinesi
 module traffic_fsm_tb;
@@ -166,61 +188,169 @@ endmodule`,
       { name: "state", wave: "======", data: ["RED", "RED", "GREEN", "YELLOW", "RED"] },
     ],
   },
+
+  // 2. WEB GELİŞTİRME (HTML/JS)
   {
-    id: "pwm",
-    name: "PWM Led / Motor Sürücü",
-    description: "Darbe genişlik modülasyonu (PWM) ile LED parlaklığı ve motor hızı kontrolü.",
-    code: `// PWM Denetleyici Modülü ve Testbench
-module pwm_tb;
-  logic clk = 0;
-  logic [7:0] duty_cycle = 8'd128; // %50 Doluluk Oranı (Duty)
-  logic [7:0] counter = 0;
-  logic pwm_out;
+    id: "js-async",
+    name: "JavaScript: Async / Await API İstekleri",
+    category: "web",
+    categoryLabel: "Web Geliştirme",
+    categoryColor: "badge-error",
+    description: "Modern JavaScript'te asenkron veri çekme ve Promise yönetimi.",
+    code: `// Asenkron Veri Alma Simülasyonu
+async function kullaniciGetir(id) {
+  console.log(\`[@0ms] Kullanıcı #\${id} için REST isteği gönderildi...\`);
+  
+  // 100ms ağ gecikmesi simülasyonu
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ id, isim: "Ali Kaya", rol: "Gömülü Sistem Mühendisi" });
+    }, 100);
+  });
+}
 
-  always #5 clk = ~clk;
+async function baslat() {
+  const veri = await kullaniciGetir(42);
+  console.log("[@100ms] Yanıt Alındı:", JSON.stringify(veri));
+  console.log("[STATUS] DOM bileşeni başarıyla güncellendi.");
+}
 
-  // PWM Karşılaştırma Mantığı
-  always_ff @(posedge clk) begin
-    counter <= counter + 1'b1;
-    pwm_out <= (counter < duty_cycle) ? 1'b1 : 1'b0;
-  end
-
-  initial begin
-    $display("=== PWM MODÜLÜ TESTİ BAŞLADI ===");
-    $display("[INFO] Duty Cycle: %0d / 255 (%%%0d Doluluk)", duty_cycle, (duty_cycle * 100) / 255);
-    #60;
-    $finish;
-  end
-
-  always @(posedge clk) begin
-    $display("[@%0tns] Counter=%0d | PWM_OUT=%b", $time, counter, pwm_out);
-  end
-endmodule`,
+baslat();`,
     expectedOutput: [
-      "=== PWM MODÜLÜ TESTİ BAŞLADI ===",
-      "[INFO] Duty Cycle: 128 / 255 (%50 Doluluk)",
-      "[@15ns] Counter=1 | PWM_OUT=1",
-      "[@25ns] Counter=2 | PWM_OUT=1",
-      "[@35ns] Counter=3 | PWM_OUT=1",
-      "[@45ns] Counter=4 | PWM_OUT=1",
-      "[@55ns] Counter=5 | PWM_OUT=1",
-      "[SUCCESS] PWM dalga formu başarıyla üretildi.",
+      "[@0ms] Kullanıcı #42 için REST isteği gönderildi...",
+      '[@100ms] Yanıt Alındı: {"id":42,"isim":"Ali Kaya","rol":"Gömülü Sistem Mühendisi"}',
+      "[STATUS] DOM bileşeni başarıyla güncellendi.",
+      "[SUCCESS] Asenkron akış tamamlandı.",
     ],
-    signals: [
-      { name: "clk", wave: "010101010101" },
-      { name: "pwm_out", wave: "111111000000" },
-      { name: "counter[7:0]", wave: "======", data: ["0", "1", "2", "3", "4", "5"] },
+  },
+
+  // 3. GÖMÜLÜ SİSTEMLER (ARDUINO / C)
+  {
+    id: "arduino-blink",
+    name: "Arduino: LED & PWM Motor Kontrolü",
+    category: "embedded",
+    categoryLabel: "Gömülü Sistemler",
+    categoryColor: "badge-accent",
+    description: "Arduino pinMode, analogWrite ve seri port üzerinden PWM sinyali sürme.",
+    code: `// Arduino PWM ve Seri Port Kontrolü
+const int LED_PIN = 9;   // PWM destekli pin
+const int POT_PIN = A0;  // Analog giriş pini
+
+void setup() {
+  Serial.begin(115200);
+  pinMode(LED_PIN, OUTPUT);
+  Serial.println("[BOOT] Arduino Uno başlatıldı. 16MHz Saat Hazır.");
+}
+
+void loop() {
+  // Potansiyometreden 0-1023 oku, 0-255 PWM'e eşle:
+  int potDeger = 512; // Örnek okuma
+  int pwmCikis = map(potDeger, 0, 1023, 0, 255);
+  
+  analogWrite(LED_PIN, pwmCikis);
+  Serial.print("[INFO] Pot: ");
+  Serial.print(potDeger);
+  Serial.print(" => PWM Duty: ");
+  Serial.println(pwmCikis);
+  delay(1000);
+}`,
+    expectedOutput: [
+      "[BOOT] Arduino Uno başlatıldı. 16MHz Saat Hazır.",
+      "[INFO] Pot: 512 => PWM Duty: 127",
+      "[INFO] Pin 9 %50 doluluk oranıyla 490Hz kare dalga üretiyor.",
+      "[SUCCESS] Simülasyon çevrimi hatasız çalışıyor.",
+    ],
+  },
+
+  // 4. PROGRAMLAMA DİLLERİ (PYTHON / RUST)
+  {
+    id: "python-oop",
+    name: "Python 3: OOP ve Sensör Sınıfı",
+    category: "languages",
+    categoryLabel: "Programlama Dilleri",
+    categoryColor: "badge-info",
+    description: "Python ile nesne yönelimli programlama, kapsülleme ve dize formatlama.",
+    code: `# Python Nesne Yönelimli Sensör Modeli
+class SicaklikSensoru:
+    def __init__(self, model: str, pin: int):
+        self.model = model
+        self.pin = pin
+        self._okumalar = []
+
+    def veri_ekle(self, derece: float):
+        self._okumalar.append(derece)
+
+    def ortalama_hesapla(self) -> float:
+        if not self._okumalar:
+            return 0.0
+        return sum(self._okumalar) / len(self._okumalar)
+
+# Test Kullanımı:
+sensor = SicaklikSensoru("DHT22", 4)
+sensor.veri_ekle(23.4)
+sensor.veri_ekle(24.1)
+sensor.veri_ekle(23.9)
+
+print(f"Sensör Modeli: {sensor.model} (Pin: {sensor.pin})")
+print(f"Ortalama Sıcaklık: {sensor.ortalama_hesapla():.2f}°C")`,
+    expectedOutput: [
+      "[START] Python 3.12 Çekirdeği Hazırlandı.",
+      "Sensör Modeli: DHT22 (Pin: 4)",
+      "Ortalama Sıcaklık: 23.80°C",
+      "[FINISH] İşlem 4ms içinde tamamlandı.",
+    ],
+  },
+  {
+    id: "rust-ownership",
+    name: "Rust: Sahiplik (Ownership) & Borrowing",
+    category: "languages",
+    categoryLabel: "Programlama Dilleri",
+    categoryColor: "badge-warning",
+    description: "Rust dilinde derleme anı bellek güvenliği ve referansla ödünç alma.",
+    code: `// Rust Bellek Güvenliği ve Borrowing
+fn main() {
+    println!("[START] Rust Bellek Modeli");
+
+    let mut veri = String::from("learn.tncy.dev");
+    
+    // Veriyi referansla ödünç veriyoruz (&):
+    let uzunluk = uzunluk_olculer(&veri);
+    
+    // Veriyi değiştirmek için tekil mutable referans alıyoruz (&mut):
+    ekle(&mut veri, " - Donanım & Yazılım");
+
+    println!("Sonuç: {}", veri);
+    println!("İlk Uzunluk: {}", uzunluk);
+}
+
+fn uzunluk_olculer(s: &String) -> usize {
+    s.len()
+}
+
+fn ekle(s: &mut String, ek: &str) {
+    s.push_str(ek);
+}`,
+    expectedOutput: [
+      "[START] Rust Bellek Modeli",
+      "Sonuç: learn.tncy.dev - Donanım & Yazılım",
+      "İlk Uzunluk: 14",
+      "[SUCCESS] Sıfır bellek sızıntısı (Zero-Cost Abstraction).",
     ],
   },
 ];
 
 export default function PlaygroundPage() {
-  const [selectedExample, setSelectedExample] = useState(EXAMPLES[0]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [selectedTemplate, setSelectedTemplate] = useState<PlaygroundTemplate>(TEMPLATES[0]);
+
+  const filteredTemplates = TEMPLATES.filter(
+    (t) => selectedCategory === "all" || t.category === selectedCategory
+  );
 
   return (
     <div className="flex-1 flex flex-col p-3 sm:p-5 max-w-[1600px] w-full mx-auto space-y-3">
-      {/* Üst Başlık & Hızlı Şablon Seçici */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 bg-base-200/50 p-3 rounded-2xl border border-base-300">
+      {/* 1. Üst Başlık & Kategori / Şablon Seçici */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 bg-base-200/50 p-3.5 rounded-2xl border border-base-300">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-xl bg-primary/10 text-primary">
             <Terminal className="w-5 h-5" />
@@ -228,34 +358,58 @@ export default function PlaygroundPage() {
           <div>
             <div className="flex items-center gap-2">
               <h1 className="text-lg font-black tracking-tight text-base-content">
-                SystemVerilog Web IDE & Simülatör
+                Web IDE & Canlı Simülatör
               </h1>
-              <span className="badge badge-primary badge-xs font-mono">v1.0 Pro</span>
+              <span className="badge badge-primary badge-xs font-mono">Çok Dilli v2.0</span>
             </div>
             <p className="text-xs text-base-content/60">
-              Ayrı terminal konsolu ve SVG zamanlama dalga formu ile tam ekran deneme ortamı.
+              SystemVerilog, Web, Arduino ve Modern diller için tam ekran deneme ortamı.
             </p>
           </div>
         </div>
 
-        {/* Şablon Butonları */}
+        {/* Alan Filtresi & Şablonlar */}
         <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] text-base-content/50 font-mono font-bold flex items-center gap-1 mr-1">
-            <Sliders className="w-3 h-3" /> Şablon:
-          </span>
-          {EXAMPLES.map((ex) => (
-            <button
-              key={ex.id}
-              onClick={() => setSelectedExample(ex)}
-              className={`btn btn-xs font-mono text-[11px] rounded-lg ${
-                selectedExample.id === ex.id
-                  ? "btn-primary shadow-xs font-bold"
-                  : "btn-ghost border border-base-content/10"
-              }`}
-            >
-              {ex.name}
-            </button>
-          ))}
+          {/* Alan Sekmeleri */}
+          <div className="flex items-center gap-1 bg-base-100 p-1 rounded-xl border border-base-300 mr-2">
+            {[
+              { id: "all", label: "Tümü" },
+              { id: "hardware", label: "Donanım" },
+              { id: "web", label: "Web" },
+              { id: "embedded", label: "Gömülü" },
+              { id: "languages", label: "Diller" },
+            ].map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setSelectedCategory(cat.id)}
+                className={`px-2 py-0.5 rounded-lg text-[10px] font-mono transition-colors ${
+                  selectedCategory === cat.id
+                    ? "bg-primary text-primary-content font-bold shadow-xs"
+                    : "text-base-content/70 hover:bg-base-200"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Şablon Butonları */}
+          <div className="flex flex-wrap items-center gap-1">
+            {filteredTemplates.map((tpl) => (
+              <button
+                key={tpl.id}
+                onClick={() => setSelectedTemplate(tpl)}
+                className={`btn btn-xs font-mono text-[11px] rounded-lg ${
+                  selectedTemplate.id === tpl.id
+                    ? "btn-primary shadow-xs font-bold"
+                    : "btn-ghost border border-base-content/10"
+                }`}
+              >
+                {tpl.name}
+              </button>
+            ))}
+          </div>
+
           <Link
             href="/boards"
             className="btn btn-warning btn-outline btn-xs font-mono text-[11px] rounded-lg ml-1 hidden sm:flex"
@@ -266,26 +420,28 @@ export default function PlaygroundPage() {
         </div>
       </div>
 
-      {/* Seçili Örnek Açıklama Şeridi */}
-      <div className="px-3 py-1.5 bg-base-200/30 rounded-lg border border-base-content/5 text-xs text-base-content/70 flex items-center justify-between">
-        <span className="flex items-center gap-1.5 truncate">
-          <Sparkles className="w-3.5 h-3.5 text-warning shrink-0" />
-          <strong className="text-base-content">{selectedExample.name}:</strong>{" "}
-          <span className="truncate">{selectedExample.description}</span>
-        </span>
-        <span className="text-[10px] font-mono text-base-content/40 hidden md:inline">
-          Kısayol: ⌘K ile dersler arasında ara
+      {/* 2. Seçili Şablon Bilgi Şeridi */}
+      <div className="px-3.5 py-2 bg-base-200/40 rounded-xl border border-base-content/5 text-xs text-base-content/70 flex items-center justify-between">
+        <div className="flex items-center gap-2 truncate">
+          <span className={`badge ${selectedTemplate.categoryColor} badge-xs font-mono font-bold shrink-0`}>
+            {selectedTemplate.categoryLabel}
+          </span>
+          <strong className="text-base-content truncate">{selectedTemplate.name}:</strong>
+          <span className="truncate hidden sm:inline">{selectedTemplate.description}</span>
+        </div>
+        <span className="text-[10px] font-mono text-base-content/50 shrink-0 ml-2">
+          Kısayol: ⌘K arama
         </span>
       </div>
 
-      {/* Tam Ekran IDE Bileşeni */}
+      {/* 3. Tam Ekran IDE Bileşeni */}
       <div className="flex-1 min-h-[600px]">
         <CodePlayground
-          key={selectedExample.id}
-          title={selectedExample.name}
-          initialCode={selectedExample.code}
-          expectedOutput={selectedExample.expectedOutput}
-          signals={selectedExample.signals}
+          key={selectedTemplate.id}
+          title={selectedTemplate.name}
+          initialCode={selectedTemplate.code}
+          expectedOutput={selectedTemplate.expectedOutput}
+          signals={selectedTemplate.signals}
           mode="fullscreen"
         />
       </div>

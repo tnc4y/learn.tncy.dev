@@ -11,6 +11,7 @@ import {
   Terminal,
   BookOpen,
   Check,
+  CheckCircle2,
   Cpu,
   Code2,
   Zap,
@@ -43,6 +44,20 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
   const [isCourseDropdownOpen, setIsCourseDropdownOpen] = useState(false);
   const [filterText, setFilterText] = useState("");
   const [openModules, setOpenModules] = useState<Record<string, boolean>>({});
+  const [completedLessons, setCompletedLessons] = useState<string[]>([]);
+
+  // Tamamlanan dersleri localStorage'dan yükle
+  useEffect(() => {
+    const loadProgress = () => {
+      try {
+        const stored = localStorage.getItem("completed_lessons");
+        if (stored) setCompletedLessons(JSON.parse(stored));
+      } catch {}
+    };
+    loadProgress();
+    window.addEventListener("learn_progress_updated", loadProgress);
+    return () => window.removeEventListener("learn_progress_updated", loadProgress);
+  }, []);
 
   // URL değiştikçe ilgili kursu otomatik seç
   useEffect(() => {
@@ -99,6 +114,9 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
     (acc, m) => acc + m.lessons.length,
     0
   );
+  const courseLessons = activeCourse.modules.flatMap((m) => m.lessons);
+  const completedInCourse = courseLessons.filter((l) => completedLessons.includes(l.id)).length;
+  const progressPercent = totalCourseLessons > 0 ? Math.round((completedInCourse / totalCourseLessons) * 100) : 0;
 
   // Kurs İkon Yardımcısı
   const getCourseIcon = (iconName: string) => {
@@ -128,13 +146,23 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
     <aside className="w-full h-full flex flex-col bg-base-100 border-r border-base-300 select-none">
       {/* 1. KURS SEÇİCİ & BAŞLIK ALANI */}
       <div className="p-3 border-b border-base-300 space-y-2.5 bg-base-200/40">
-        <div className="flex items-center justify-between text-xs">
-          <span className="font-bold uppercase tracking-wider text-[10px] text-primary font-mono">
-            {activeCourse.category}
-          </span>
-          <span className="badge badge-sm badge-neutral font-mono text-[10px]">
-            {totalCourseLessons} Ders
-          </span>
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold uppercase tracking-wider text-[10px] text-primary font-mono">
+              {activeCourse.category}
+            </span>
+            <span className="badge badge-sm badge-neutral font-mono text-[10px]">
+              {completedInCourse}/{totalCourseLessons} (%{progressPercent})
+            </span>
+          </div>
+
+          {/* İlerleme Çubuğu */}
+          <div className="w-full bg-base-300 rounded-full h-1 overflow-hidden">
+            <div
+              className="bg-success h-full transition-all duration-300 rounded-full"
+              style={{ width: `${progressPercent}%` }}
+            />
+          </div>
         </div>
 
         {/* Kurs Seçim Açılır Menüsü */}
@@ -308,6 +336,9 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
                           }`}
                         >
                           <div className="flex items-center gap-1.5 truncate">
+                            {completedLessons.includes(lesson.id) && (
+                              <CheckCircle2 className="w-3.5 h-3.5 text-success shrink-0" />
+                            )}
                             <span className="truncate">{lesson.shortTitle}</span>
                           </div>
 

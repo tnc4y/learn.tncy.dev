@@ -5,6 +5,7 @@ import CodePlayground from "@/components/CodePlayground";
 import QuizExercise from "@/components/QuizExercise";
 import { getLessonById, getAdjacentLessons, CURRICULUM } from "@/data/curriculum";
 import { LESSONS_DATA } from "@/data/lessonsData";
+import LessonCompleteButton from "@/components/LessonCompleteButton";
 import {
   ChevronLeft,
   ChevronRight,
@@ -395,9 +396,14 @@ export default async function LessonPage({
             </span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-base-content">
-            {lesson.title}
-          </h1>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <h1 className="text-2xl sm:text-3xl font-black tracking-tight text-base-content">
+              {lesson.title}
+            </h1>
+            <div className="shrink-0">
+              <LessonCompleteButton lessonId={lesson.id} />
+            </div>
+          </div>
 
           <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
             {content?.subtitle || lesson.description}
@@ -511,52 +517,59 @@ export default async function LessonPage({
         )}
 
         {/* Alt Gezinme Butonları (Önceki & Sonraki Ders - Kurs İçi Kapsamlı) */}
-        <div className="mt-12 pt-6 border-t border-base-300">
-          <div className="flex items-center justify-between gap-4">
-            {prev ? (
-              <Link
-                href={`/tutorial/${prev.id}`}
-                className="btn btn-outline btn-sm sm:btn-md gap-2 normal-case font-normal text-left"
-              >
-                <ChevronLeft className="w-4 h-4" />
-                <div className="hidden sm:block">
-                  <div className="text-[10px] text-base-content/50 uppercase font-mono">
-                    Önceki Ders
+        <div className="mt-12 pt-6 border-t border-base-300 space-y-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+              {prev ? (
+                <Link
+                  href={`/tutorial/${prev.id}`}
+                  className="btn btn-outline btn-sm sm:btn-md gap-2 normal-case font-normal text-left"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                  <div className="hidden sm:block">
+                    <div className="text-[10px] text-base-content/50 uppercase font-mono">
+                      Önceki Ders
+                    </div>
+                    <div className="text-xs font-bold truncate max-w-44">{prev.shortTitle}</div>
                   </div>
-                  <div className="text-xs font-bold truncate max-w-44">{prev.shortTitle}</div>
-                </div>
-                <span className="sm:hidden text-xs">Önceki</span>
-              </Link>
-            ) : (
-              <div />
-            )}
+                  <span className="sm:hidden text-xs">Önceki</span>
+                </Link>
+              ) : (
+                <div />
+              )}
+            </div>
 
-            {next ? (
-              <Link
-                href={`/tutorial/${next.id}`}
-                className="btn btn-primary btn-sm sm:btn-md gap-2 normal-case font-normal text-right shadow-sm"
-              >
-                <div className="hidden sm:block">
-                  <div className="text-[10px] text-primary-content/70 uppercase font-mono">
-                    Sonraki Ders
+            {/* Dersi Tamamla Butonu */}
+            <div className="order-first sm:order-none">
+              <LessonCompleteButton lessonId={lesson.id} />
+            </div>
+
+            <div>
+              {next ? (
+                <Link
+                  href={`/tutorial/${next.id}`}
+                  className="btn btn-primary btn-sm sm:btn-md gap-2 normal-case font-normal text-right shadow-sm"
+                >
+                  <div className="hidden sm:block">
+                    <div className="text-[10px] text-primary-content/70 uppercase font-mono">
+                      Sonraki Ders
+                    </div>
+                    <div className="text-xs font-bold truncate max-w-44">{next.shortTitle}</div>
                   </div>
-                  <div className="text-xs font-bold truncate max-w-44">{next.shortTitle}</div>
-                </div>
-                <span className="sm:hidden text-xs">Sonraki</span>
-                <ChevronRight className="w-4 h-4" />
-              </Link>
-            ) : (
-              /* Kursun son dersine gelindiğinde */
-              <div className="flex items-center gap-2">
+                  <span className="sm:hidden text-xs">Sonraki</span>
+                  <ChevronRight className="w-4 h-4" />
+                </Link>
+              ) : (
+                /* Kursun son dersine gelindiğinde */
                 <Link
                   href="/courses"
-                  className="btn btn-success btn-sm sm:btn-md gap-2 normal-case font-normal text-success-content"
+                  className="btn btn-success btn-sm sm:btn-md gap-2 normal-case font-normal text-success-content shadow-sm"
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Kursu Tamamladın! Diğer Kurslar →</span>
                 </Link>
-              </div>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>
