@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu, Layers } from "lucide-react";
+import { Cpu, Terminal, BookOpen, HelpCircle, Search, Menu, Layers, Wrench } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 
 interface NavbarProps {
@@ -52,7 +52,7 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
             <li>
               <Link href="/boards" className="flex items-center gap-1.5">
                 <Layers className="w-4 h-4 text-warning" />
-                <span>Geliştirme Kartları</span>
+                <span>Kartlar</span>
               </Link>
             </li>
             <li>
@@ -68,9 +68,15 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
               </Link>
             </li>
             <li>
-              <Link href="/tutorial/interview-prep" className="flex items-center gap-1.5">
+              <Link href="/interview" className="flex items-center gap-1.5">
                 <HelpCircle className="w-4 h-4 text-info" />
-                <span>Mülakat Soruları</span>
+                <span>Mülakatlar</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/tools" className="flex items-center gap-1.5">
+                <Wrench className="w-4 h-4 text-warning" />
+                <span>Araçlar</span>
               </Link>
             </li>
           </ul>

@@ -408,6 +408,21 @@ export default async function LessonPage({
           <p className="text-sm sm:text-base text-base-content/70 leading-relaxed">
             {content?.subtitle || lesson.description}
           </p>
+
+          {lesson.id === "interview-prep" && (
+            <div className="alert alert-info bg-info/10 border-info/30 my-3">
+              <Sparkles className="w-5 h-5 text-info shrink-0" />
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
+                <div>
+                  <h4 className="font-bold text-xs uppercase tracking-wider text-info">İnteraktif Mülakat & Flashcard Simülatörü</h4>
+                  <p className="text-xs text-base-content/80">Bu konudaki tüm soruları 3D çevrilebilir bilgi kartlarıyla pratik yapmak için Mülakat Merkezini ziyaret edin.</p>
+                </div>
+                <Link href="/interview" className="btn btn-info btn-xs font-mono shrink-0">
+                  Flashcard Modunu Aç →
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Ders İçerik Bölümleri */}
