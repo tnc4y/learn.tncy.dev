@@ -20,6 +20,7 @@ import {
   Activity,
   Layers,
   ArrowRight,
+  Bot,
 } from "lucide-react";
 
 interface SidebarProps {
@@ -137,6 +138,8 @@ export default function Sidebar({ currentCourseId, onSelectLesson }: SidebarProp
         return <Zap className="w-4 h-4 text-warning shrink-0" />;
       case "Activity":
         return <Activity className="w-4 h-4 text-secondary shrink-0" />;
+      case "Bot":
+        return <Bot className="w-4 h-4 text-warning shrink-0" />;
       default:
         return <BookOpen className="w-4 h-4 text-primary shrink-0" />;
     }

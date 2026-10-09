@@ -1,7 +1,7 @@
 export interface HardwareGuide {
   id: string;
   title: string;
-  category: "Flashing & OS" | "Firmware & CLI" | "Embedded Linux" | "Geliştirici Ortamı (Arch/Hyprland)";
+  category: "Flashing & OS" | "Firmware & CLI" | "Embedded Linux" | "Geliştirici Ortamı (Arch/Hyprland)" | "Robotik & ROS 2";
   targetHardware: string[];
   readTime: string;
   difficulty: "Başlangıç" | "Orta" | "İleri Seviye";
@@ -353,6 +353,500 @@ sudo udevadm control --reload-rules && sudo udevadm trigger`,
           type: "success",
           title: "Sıfır Donma, Maksimum Üretkenlik",
           message: "Wayland ve Hyprland'in ultra düşük giriş gecikmesi sayesinde, kartı yeniden flashlarken veya terminalde yüzbinlerce satır UART logu akarken masaüstünüzde en ufak bir takılma yaşanmaz.",
+        },
+      },
+    ],
+  },
+
+  // 6. ARCH LINUX SIFIRDAN UEFI KURULUMU (GÖMÜLÜ GELİŞTİRİCİ İÇİN)
+  {
+    id: "arch-linux-install",
+    title: "Arch Linux Sıfırdan UEFI Kurulumu: Disk Bölme, Btrfs/Ext4, Pacstrap & GRUB",
+    category: "Geliştirici Ortamı (Arch/Hyprland)",
+    targetHardware: ["x86_64 PC / Laptop", "ThinkPad / Framework", "Geliştirici İş İstasyonu"],
+    readTime: "16 dk",
+    difficulty: "İleri Seviye",
+    summary: "Gömülü sistem ve donanım geliştiricileri için sıfırdan Arch Linux UEFI kurulum kılavuzu: cfdisk ile EFI + Root disk bölümleme, Btrfs alt hacimleri (subvolumes) veya Ext4, pacstrap ile temel sistem, chroot, GRUB bootloader, NetworkManager, PipeWire ve donanım yetkilendirmeleri.",
+    prerequisites: [
+      "En az 8GB USB Flash Bellek (Ventoy veya dd ile Arch ISO yazılmış)",
+      "UEFI modunda başlatılabilen bilgisayar (BIOS'ta Secure Boot KAPALI olmalıdır)",
+      "Kablolu Ethernet veya Wi-Fi internet erişimi",
+      "Hedef NVMe SSD / SATA disk üzerindeki verilerin yedeği",
+    ],
+    steps: [
+      {
+        title: "1. Canlı Ortamı Başlatma & UEFI / İnternet Doğrulaması",
+        description: "USB bellekten Arch Linux canlı (live) medyasını başlatın. İlk olarak sistemin gerçekten UEFI modunda açıldığını ve internet bağlantısının aktif olduğunu doğrulayın:",
+        command: "cat /sys/firmware/efi/fw_platform_size",
+        codeSnippet: {
+          language: "bash",
+          caption: "Ağ Bağlantısı & Zaman Senkronizasyonu",
+          code: `# 64 bit UEFI çıktısı (64) dönmelidir. Dosya yoksa sistem Legacy BIOS'ta açılmıştır.
+cat /sys/firmware/efi/fw_platform_size
+
+# Wi-Fi ile bağlanıyorsanız iwctl aracını kullanın:
+# iwctl
+#   [iwd]# station wlan0 scan
+#   [iwd]# station wlan0 get-networks
+#   [iwd]# station wlan0 connect "WIFI_ADINIZ"
+#   [iwd]# exit
+
+# Ağ bağlantısını test edin:
+ping -c 3 archlinux.org
+
+# Sistem saatini NTP ile internetten eşitleyin:
+timedatectl set-ntp true`,
+        },
+      },
+      {
+        title: "2. Disk Bölümleme (cfdisk ile EFI + Root)",
+        description: "Kurulum yapılacak NVMe veya SSD diski (örn: /dev/nvme0n1) cfdisk ile GPT tablosunda bölümlere ayırın:\n1. Bölüm: 1GB boyutunda 'EFI System' (Tip: EFI System)\n2. Bölüm: Kalan tüm alan 'Linux filesystem' (Tip: Linux root x86-64)",
+        command: "cfdisk /dev/nvme0n1",
+        callout: {
+          type: "warning",
+          title: "DİKKAT: Doğru Diski Seçin",
+          message: "'lsblk' çıktısını dikkatle inceleyin. Yanlışlıkla USB belleği veya yedek diskinizi silmemek için /dev/nvme0n1 veya /dev/sda sürücüsünün boyutunu teyit edin.",
+        },
+      },
+      {
+        title: "3. Dosya Sistemlerini Formatlama ve Bağlama (Mount)",
+        description: "EFI bölümünü FAT32, kök bölümü ise modern Ext4 veya anlık görüntü (snapshot) yetenekli Btrfs olarak formatlayıp bağlayın:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Formatlama ve Mount Komutları",
+          code: `# 1. EFI Bölümünü FAT32 formatla:
+mkfs.fat -F32 /dev/nvme0n1p1
+
+# 2. Kök (Root) Bölümünü Ext4 formatla:
+mkfs.ext4 -L ARCH_ROOT /dev/nvme0n1p2
+
+# 3. Kök dizini /mnt altına bağla:
+mount /dev/nvme0n1p2 /mnt
+
+# 4. EFI bağlama noktasını aç ve bağla:
+mkdir -p /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot`,
+        },
+      },
+      {
+        title: "4. Pacstrap ile Temel Çekirdek ve Paketleri Yükleme",
+        description: "Arch Linux'un temel çekirdek, firmware, derleyici ve metin düzenleyici araçlarını yeni diske indirin:",
+        command: "pacstrap -K /mnt base linux linux-firmware base-devel networkmanager sudo git vim neovim intel-ucode amd-ucode",
+        callout: {
+          type: "info",
+          title: "Microcode Paketleri",
+          message: "İşlemciniz Intel ise 'intel-ucode', AMD Ryzen ise 'amd-ucode' paketi işlemci donanım yamaları ve kararlılık için gereklidir.",
+        },
+      },
+      {
+        title: "5. Fstab Üretme ve Chroot ile Yeni Sisteme Geçiş",
+        description: "Disk UUID'lerini içeren dosya sistemi tablosunu (fstab) oluşturun ve yeni kurulan sisteme kök yetkisiyle geçin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Fstab ve Chroot",
+          code: `# Disk UUID tablosunu oluştur
+genfstab -U /mnt >> /mnt/etc/fstab
+
+# Fstab dosyasını kontrol et (nvme0n1p1 ve nvme0n1p2 satırları görünmelidir)
+cat /mnt/etc/fstab
+
+# Yeni kurulan sistemin içine geçiş yap:
+arch-chroot /mnt`,
+        },
+      },
+      {
+        title: "6. Saat Dilimi, Yerel Ayarlar (Locale) & Hostname",
+        description: "Chroot ortamında Türkiye saat dilimini, UTF-8 karakter setini ve bilgisayar ağ adını yapılandırın:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Sistem Kimliği Yapılandırması",
+          code: `# Saat dilimi (İstanbul)
+ln -sf /usr/share/zoneinfo/Europe/Istanbul /etc/localtime
+hwclock --systohc
+
+# Dil ve UTF-8 yereli (en_US.UTF-8 ve tr_TR.UTF-8 satırlarını açın)
+sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+sed -i 's/#tr_TR.UTF-8 UTF-8/tr_TR.UTF-8 UTF-8/' /etc/locale.gen
+locale-gen
+
+echo "LANG=en_US.UTF-8" > /etc/locale.conf
+
+# Bilgisayar adı (Hostname)
+echo "arch-embedded" > /etc/hostname
+cat << 'EOF' > /etc/hosts
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   arch-embedded.localdomain arch-embedded
+EOF`,
+        },
+      },
+      {
+        title: "7. Kullanıcı Ekleme & Seri Port (uucp/dialout) İzinleri",
+        description: "Root şifresini belirleyin ve günlük kullanım ile gömülü donanım geliştirme için sudo yetkili normal kullanıcı oluşturun:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Kullanıcı ve Grup Yetkilendirmesi",
+          code: `# Root parolasını belirle:
+passwd
+
+# 'tnc4y' kullanıcısını ekle (uucp ve dialout grupları USB seri port erişimi içindir):
+useradd -m -G wheel,uucp,dialout,storage,video,audio -s /bin/bash tnc4y
+passwd tnc4y
+
+# wheel grubuna sudo izni ver:
+sed -i 's/# %wheel ALL=(ALL:ALL) ALL/%wheel ALL=(ALL:ALL) ALL/' /etc/sudoers`,
+        },
+      },
+      {
+        title: "8. GRUB UEFI Bootloader Kurulumu",
+        description: "Bilgisayar açılırken Linux çekirdeğini yükleyecek UEFI GRUB önyükleyicisini kurun:",
+        codeSnippet: {
+          language: "bash",
+          caption: "GRUB ve EFI Kurulumu",
+          code: `# GRUB ve EFI araçlarını kur
+pacman -S --noconfirm grub efibootmgr
+
+# UEFI önyükleyici girdisini anakart NVRAM'ine yaz:
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+# Yapılandırma dosyasını oluştur:
+grub-mkconfig -o /boot/grub/grub.cfg`,
+        },
+      },
+      {
+        title: "9. NetworkManager & PipeWire Servislerini Etkinleştirme ve Çıkış",
+        description: "İlk açılışta internetin ve ses sunucusunun otomatik başlaması için servisleri açın, chroot'tan çıkıp bilgisayarı yeniden başlatın:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Servisleri Açma ve Yeniden Başlatma",
+          code: `# Ağ yöneticisini aç:
+systemctl enable NetworkManager
+
+# Ses altyapısını yükle ve hazırla
+pacman -S --noconfirm pipewire pipewire-pulse pipewire-alsa wireplumber
+
+# Chroot'tan çık ve diskleri ayır:
+exit
+umount -R /mnt
+reboot`,
+        },
+        callout: {
+          type: "success",
+          title: "Tebrikler: Arch Linux Başarıyla Kuruldu!",
+          message: "Sisteminiz açıldığında belirlediğiniz kullanıcı adı ve parolanızla giriş yapabilirsiniz. Bir sonraki kılavuzda Hyprland & Caelestia grafik ortamını kuracağız.",
+        },
+      },
+    ],
+  },
+
+  // 7. HYPRLAND & CAELESTIA DESKTOP SHELL KURULUMU
+  {
+    id: "hyprland-caelestia-setup",
+    title: "Hyprland & Caelestia Desktop Shell: Wayland, Kitty, Udev & Gömülü Dotfiles",
+    category: "Geliştirici Ortamı (Arch/Hyprland)",
+    targetHardware: ["Arch Linux", "Wayland", "AMD / Intel / NVIDIA GPU", "Gömülü Donanım Atölyesi"],
+    readTime: "13 dk",
+    difficulty: "Orta",
+    summary: "Wayland dinamik tiling pencere yöneticisi Hyprland üzerinde Caelestia masaüstü kabuğu ve dotfiles ekosistemini kurma: Kitty GPU terminali, Waybar durum çubuğu, udev seri port izinleri ve donanım mühendisleri için çoklu pencere iş akışı.",
+    prerequisites: [
+      "Arch Linux çalışan temel sistem ve sudo yetkili kullanıcı",
+      "Aktif internet bağlantısı",
+      "GPU sürücüleri (Mesa veya Nvidia)",
+    ],
+    steps: [
+      {
+        title: "1. Hyprland & Wayland Çekirdek Paketlerini Yükleme",
+        description: "Hyprland kompozitörünü, portal yöneticilerini, ekran görüntüsü ve pano araçlarını pacman ile kurun:",
+        command: "sudo pacman -S hyprland waybar kitty rofi-wayland swww xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-kde-agent grim slurp wl-clipboard ttf-jetbrains-mono-nerd noto-fonts-emoji",
+      },
+      {
+        title: "2. GPU Sürücüleri ve Hyprland Ortam Değişkenleri",
+        description: "Ekran kartınıza göre donanımsal ivmelendirmeyi etkinleştirin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "GPU Sürücüleri (Intel / AMD / Nvidia)",
+          code: `# Intel GPU için:
+sudo pacman -S mesa vulkan-intel intel-media-driver
+
+# AMD Radeon GPU için:
+sudo pacman -S mesa vulkan-radeon libva-mesa-driver
+
+# NVIDIA GPU için (Önemli env ayarları):
+sudo pacman -S nvidia-dkms nvidia-utils
+# ~/.config/hypr/hyprland.conf içine şu değişkenleri ekleyin:
+# env = LIBVA_DRIVER_NAME,nvidia
+# env = XDG_SESSION_TYPE,wayland
+# env = GBM_BACKEND,nvidia-drm
+# env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+# cursor:no_hardware_cursors = true`,
+        },
+      },
+      {
+        title: "3. Caelestia Dotfiles ve Arayüz Ekosisteminin Kurulumu",
+        description: "Caelestia temasını, Waybar stilini ve Kitty terminal yapılandırmasını kullanıcı dizinine yerleştirin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "~/.config Dizin Yapısı",
+          code: `# Yapılandırma dizinlerini oluştur
+mkdir -p ~/.config/hypr ~/.config/kitty ~/.config/waybar
+
+# Kitty yapılandırması (~/.config/kitty/kitty.conf):
+cat << 'EOF' > ~/.config/kitty/kitty.conf
+font_family      JetBrainsMono Nerd Font
+font_size        11.5
+background_opacity 0.92
+confirm_os_window_close 0
+enable_audio_bell no
+EOF`,
+        },
+      },
+      {
+        title: "4. Gömülü Donanım Mühendisleri İçin Hyprland Pencere Kuralları",
+        description: "Gömülü geliştirme yaparken GTKWave (dalga formu), PulseView (mantık analizörü) veya OpenOCD pencerelerinin tiling düzenini bozmaması için floating (yüzen pencere) kurallarını hyprland.conf dosyasına ekleyin:",
+        codeSnippet: {
+          language: "ini",
+          caption: "~/.config/hypr/hyprland.conf - Geliştirici Pencere Kuralları",
+          code: `# Donanım Araçları İçin Yüzen Pencere Kuralları:
+windowrule = float, ^(gtkwave)$
+windowrule = size 1200 800, ^(gtkwave)$
+
+windowrule = float, ^(PulseView)$
+windowrule = size 1300 850, ^(PulseView)$
+
+windowrule = float, ^(Saleae Logic)$
+windowrule = float, title:^(OpenOCD.*)$
+
+# Seri Monitör için Özel Workspace 2 Kuralı:
+windowrule = workspace 2, title:^(picocom.*)$
+
+# Varsayılan Kısayollar:
+# SUPER + Q  -> Kitty Terminal
+# SUPER + C  -> Aktif Pencereyi Kapat
+# SUPER + E  -> Dosya Yöneticisi
+# SUPER + R  -> Rofi Uygulama Menüsü
+# SUPER + V  -> Pencereyi Yüzen/Tiling Yap (Toggle Float)
+# SUPER + M  -> Çıkış`,
+        },
+      },
+      {
+        title: "5. ST-Link, J-Link ve USB-UART udev İzin Kuralları",
+        description: "Kart taktığınızda 'Permission denied' hatası almamak için kural dosyasını yazın ve udev'i yeniden yükleyin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "/etc/udev/rules.d/99-embedded.rules",
+          code: `sudo tee /etc/udev/rules.d/99-embedded.rules << 'EOF'
+# FTDI, CH340, CP2102 USB-UART Köprüleri
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", MODE="0666", GROUP="uucp"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", MODE="0666", GROUP="uucp"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", MODE="0666", GROUP="uucp"
+
+# ST-Link V2 / V3 Debugger
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="3748", MODE="0666", GROUP="uucp"
+ATTRS{idVendor}=="0483", ATTRS{idProduct}=="374b", MODE="0666", GROUP="uucp"
+
+# SEGGER J-Link
+ATTRS{idVendor}=="1366", MODE="0666", GROUP="uucp"
+
+# Raspberry Pi Pico Bootloader (RP2040)
+ATTRS{idVendor}=="2e8a", ATTRS{idProduct}=="0003", MODE="0666", GROUP="uucp"
+EOF
+
+sudo udevadm control --reload-rules && sudo udevadm trigger`,
+        },
+      },
+    ],
+  },
+
+  // 8. RASPBERRY PI 5 + ROS 2 + RPLIDAR & CAMERA HARİTALAMA
+  {
+    id: "raspberry-pi-ros2-lidar",
+    title: "Raspberry Pi 5 + ROS 2 Kurulumu: RPLIDAR & Pi Camera ile 2D Haritalama",
+    category: "Robotik & ROS 2",
+    targetHardware: ["Raspberry Pi 5", "Raspberry Pi 4", "RPLIDAR A1/A2", "Pi Camera V2/V3"],
+    readTime: "15 dk",
+    difficulty: "İleri Seviye",
+    summary: "Raspberry Pi 5 üzerinde ROS 2 Humble/Jazzy koşturarak RPLIDAR A1/A2 sensörü ile 360° LaserScan verisi alma, Pi Camera yayını açma, SLAM Toolbox ile gerçek zamanlı 2D oda haritası çıkarma ve haritayı kaydetme rehberi.",
+    prerequisites: [
+      "Raspberry Pi 5 (4GB veya 8GB RAM)",
+      "MicroSD Kart veya NVMe SSD üzerinde Raspberry Pi OS 64-bit Lite veya Ubuntu Server",
+      "RPLIDAR A1 veya A2 2D Lazer Sensörü (USB bağlantılı)",
+      "Wi-Fi bağlantısı ve SSH terminal erişimi",
+      "Aynı yerel ağda bir Ubuntu veya Linux bilgisayar (RViz2 görselleştirme için)",
+    ],
+    steps: [
+      {
+        title: "1. Raspberry Pi Üzerine ROS 2 Paket Depolarının Kurulması",
+        description: "Raspberry Pi terminalinde resmi ROS 2 depolarını ekleyin ve derleme araçlarını kurun:",
+        codeSnippet: {
+          language: "bash",
+          caption: "ROS 2 Kurulum Komutları",
+          code: `# GPG Anahtarı ve Depoyu Ekle
+sudo apt update && sudo apt install -y curl gnupg lsb-release
+sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(source /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
+
+# Paketleri güncelle ve ROS 2 Base yükle
+sudo apt update
+sudo apt install -y ros-humble-ros-base python3-colcon-common-extensions git build-essential
+
+# CycloneDDS Ağ Eklentisini Yükle (Düşük Wi-Fi gecikmesi için)
+sudo apt install -y ros-humble-rmw-cyclonedds-cpp
+echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
+source ~/.bashrc`,
+        },
+      },
+      {
+        title: "2. RPLIDAR USB Bağlantısı ve '/dev/rplidar' udev Kuralı",
+        description: "LiDAR'ı Raspberry Pi'nin mavi USB 3.0 portuna takın. Portun sistem yeniden başladığında değişmemesi için udev kuralı yazın:",
+        codeSnippet: {
+          language: "bash",
+          caption: "LiDAR Portunu /dev/rplidar Olarak Sabitleme",
+          code: `sudo tee /etc/udev/rules.d/99-rplidar.rules << 'EOF'
+KERNEL=="ttyUSB*", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", MODE:="0666", SYMLINK+="rplidar"
+EOF
+
+sudo udevadm control --reload-rules && sudo udevadm trigger
+# Portu kontrol edin:
+ls -l /dev/rplidar`,
+        },
+      },
+      {
+        title: "3. sllidar_ros2 Paketini Colcon ile Derleme",
+        description: "Slamtec'in resmi ROS 2 sürücüsünü bir çalışma alanında klonlayıp derleyin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "ROS 2 Çalışma Alanı ve Derleme",
+          code: `# Çalışma alanı oluştur
+mkdir -p ~/ros2_ws/src
+cd ~/ros2_ws/src
+
+# RPLIDAR sürücüsünü klonla
+git clone https://github.com/Slamtec/sllidar_ros2.git
+
+# Derle
+cd ~/ros2_ws
+colcon build --symlink-install
+
+# Ortamı yükle
+source install/setup.bash`,
+        },
+      },
+      {
+        title: "4. LiDAR Düğümünü Başlatma ve /scan Verisini Doğrulama",
+        description: "LiDAR motorunu başlatın ve saniyede 10 Hz hızında LaserScan mesajlarının aktığını terminalden doğrulayın:",
+        command: "ros2 launch sllidar_ros2 sllidar_a1_launch.py serial_port:=/dev/rplidar",
+        codeSnippet: {
+          language: "bash",
+          caption: "Ayrı Bir Terminalde Topic Kontrolü",
+          code: `# Konuları listele (/scan görünmelidir)
+ros2 topic list
+
+# Lazer tarama frekansını ölç (Yaklaşık 8.0 - 10.0 Hz olmalıdır)
+ros2 topic hz /scan
+
+# Canlı veriyi terminalden oku:
+ros2 topic echo /scan --field ranges`,
+        },
+      },
+      {
+        title: "5. SLAM Toolbox ile Canlı 2D Harita Çıkarma",
+        description: "Raspberry Pi üzerinde SLAM Toolbox paketini kurup haritalama düğümünü başlatın:",
+        codeSnippet: {
+          language: "bash",
+          caption: "SLAM Toolbox Başlatma",
+          code: `sudo apt install -y ros-humble-slam-toolbox
+
+# Canlı haritalamayı başlat (Online Synchronous SLAM)
+ros2 launch slam_toolbox online_sync_launch.py`,
+        },
+      },
+      {
+        title: "6. Uzak Bilgisayarda RViz2 ile Haritayı İzleme ve Diske Kaydetme",
+        description: "Aynı Wi-Fi ağındaki dizüstü bilgisayarınızda RViz2 açarak canlı lazer noktalarını ve yeşil/siyah oda duvarlarını izleyin. Harita tamamlandığında tek komutla kaydedin:",
+        codeSnippet: {
+          language: "bash",
+          caption: "Haritayı Diske Kaydetme Komutu",
+          code: `# Nav2 Map Server CLI ile haritayı diske yaz:
+sudo apt install -y ros-humble-nav2-map-server
+ros2 run nav2_map_server map_saver_cli -f ~/oda_haritasi
+
+# Sonuçta şu dosyalar üretilir:
+# 1. oda_haritasi.pgm -> 2D gri tonlamalı duvar haritası
+# 2. oda_haritasi.yaml -> Çözünürlük ve koordinat başlığı`,
+        },
+        callout: {
+          type: "success",
+          title: "Haritanız Hazır!",
+          message: "Oluşturduğunuz haritayı Nav2 navigasyon yığınına vererek robotunuzu belirli oda koordinatlarına otonom sürüş yaptırabilirsiniz.",
+        },
+      },
+    ],
+  },
+
+  // 9. RASPBERRY PI 5 DONANIM KONTROLÜ (KERNEL 6.6+ GPIOD)
+  {
+    id: "raspberry-pi-gpio-kernel",
+    title: "Raspberry Pi 5 Donanım Kontrolü: Kernel 6.6+ gpiod, libgpiod & Python",
+    category: "Embedded Linux",
+    targetHardware: ["Raspberry Pi 5", "RP1 Gömülü I/O Denetleyicisi"],
+    readTime: "9 dk",
+    difficulty: "Orta",
+    summary: "Raspberry Pi 5'in yeni RP1 güney köprüsü mimarisinde eski RPi.GPIO kütüphanesinin neden çalışmadığı ve modern Linux Kernel Character Device (gpiod / libgpiod / gpiozero) ile güvenli GPIO kontrolü.",
+    prerequisites: [
+      "Raspberry Pi 5",
+      "Raspberry Pi OS Bookworm 64-bit (Linux Kernel 6.6+)",
+      "Temel Python ve bash bilgisi",
+    ],
+    steps: [
+      {
+        title: "1. Raspberry Pi 5'te Ne Değişti? RP1 Çipi ve /dev/gpiochip4",
+        description: "Raspberry Pi 1-4 serisinde GPIO pinleri doğrudan Broadcom SoC üzerindeydi ve /dev/gpiomem bellek haritalamasıyla sürülüyordu. Raspberry Pi 5'te ise tüm 40-pin GPIO başlığı Raspberry Pi'nin kendi tasarladığı 'RP1' I/O çipine bağlanmıştır. Bu yüzden eski RPi.GPIO kütüphanesi 'This board is not supported' hatası verir. Yeni standart, Linux çekirdeğinin resmi karakter aygıtı arayüzü olan 'libgpiod'dur.",
+      },
+      {
+        title: "2. gpiod Terminal Araçları ile Pin Durumunu İnceleme",
+        description: "Sistem araçlarını kurun ve RP1 çipinin bacak haritasını terminalden dökün:",
+        codeSnippet: {
+          language: "bash",
+          caption: "gpiod Komut Satırı Araçları",
+          code: `# Araçları kur
+sudo apt update && sudo apt install -y gpiod python3-libgpiod python3-gpiozero
+
+# Raspberry Pi 5'teki GPIO çiplerini listele (RP1 genelde gpiochip4'tür):
+gpiodetect
+
+# Pinlerin kullanım durumunu gör (Hangi pinde UART, SPI veya I2C var):
+gpioinfo gpiochip4 | head -n 30
+
+# GPIO 17 pinini (Line 17) lojik 1 yap (LED yak):
+gpioset gpiochip4 17=1
+
+# GPIO 17 pinini oku:
+gpioget gpiochip4 17`,
+        },
+      },
+      {
+        title: "3. Python ile Modern ve Kararlı GPIO Kontrolü (gpiozero v2)",
+        description: "Raspberry Pi Vakfı'nın tavsiye ettiği gpiozero kütüphanesi Pi 5'in RP1 çipini otomatik tanır ve arka planda libgpiod kullanır:",
+        codeSnippet: {
+          language: "python",
+          caption: "led_button_pi5.py",
+          code: `from gpiozero import LED, Button
+from time import sleep
+
+# GPIO 17'ye LED, GPIO 27'ye buton bağlı:
+led = LED(17)
+buton = Button(27)
+
+print("Raspberry Pi 5 Donanım Kontrolü Başlatıldı...")
+
+while True:
+    if buton.is_pressed:
+        led.on()
+        print("Butona basıldı -> LED YANDI")
+    else:
+        led.off()
+    sleep(0.05)`,
         },
       },
     ],

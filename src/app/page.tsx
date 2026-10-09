@@ -117,8 +117,8 @@ export default function Home() {
             </h1>
 
             <p className="text-sm sm:text-base text-base-content/70 max-w-2xl leading-relaxed mx-auto lg:mx-0">
-              HTML, CSS ve JavaScript&apos;ten Python, Modern C++ ve Rust&apos;a; Arduino ve ESP32&apos;den
-              FPGA ve SystemVerilog çip tasarımına kadar uzanan interaktif, uygulamalı kodlama merkezi.
+              HTML, CSS ve JavaScript&apos;ten Python, Modern C++ ve Rust&apos;a; Arduino, ESP32 ve Raspberry Pi&apos;den
+              ROS 2 robotik ve FPGA SystemVerilog çip tasarımına kadar uzanan interaktif, uygulamalı kodlama merkezi.
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1">
@@ -127,9 +127,9 @@ export default function Home() {
                 Kursları Keşfet
                 <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="/playground" className="btn btn-outline btn-sm sm:btn-md gap-2 font-mono">
-                <Terminal className="w-4 h-4 text-secondary" />
-                Canlı IDE & Simülatör
+              <Link href="/guides" className="btn btn-secondary btn-sm sm:btn-md gap-2 font-mono">
+                <Terminal className="w-4 h-4" />
+                Nasıl Yapılır Kılavuzları
               </Link>
               <Link href="/boards" className="btn btn-ghost btn-sm sm:btn-md gap-2 font-mono text-xs">
                 <Layers className="w-4 h-4 text-warning" />
@@ -140,7 +140,7 @@ export default function Home() {
             {/* İstatistik Rozetleri */}
             <div className="grid grid-cols-3 gap-3 pt-3 max-w-md mx-auto lg:mx-0 border-t border-base-content/10">
               <div>
-                <div className="text-xl sm:text-2xl font-black font-mono text-primary">11+</div>
+                <div className="text-xl sm:text-2xl font-black font-mono text-primary">12+</div>
                 <div className="text-[11px] text-base-content/60">Ayrık Kurs</div>
               </div>
               <div>

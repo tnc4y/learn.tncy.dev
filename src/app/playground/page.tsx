@@ -261,6 +261,49 @@ void loop() {
       "[SUCCESS] Simülasyon çevrimi hatasız çalışıyor.",
     ],
   },
+  {
+    id: "ros2-telemetry-node",
+    name: "ROS 2: rclpy Sensör Telemetri Düğümü",
+    category: "embedded",
+    categoryLabel: "Gömülü & Robotik",
+    categoryColor: "badge-warning",
+    description: "ROS 2 Python (rclpy) ile periyodik LiDAR ve batarya telemetrisi yayınlayan Publisher düğümü.",
+    code: `# ROS 2 rclpy Sensör Telemetri Düğümü
+import time
+
+class TelemetriDugumu:
+    def __init__(self, dugum_adi="/robot/telemetry"):
+        self.dugum_adi = dugum_adi
+        self.sayac = 0
+        print(f"[BOOT] ROS 2 Düğümü Başlatıldı: {self.dugum_adi}")
+        print("[INFO:DDS] CycloneDDS discovery aktif (Domain ID: 0)")
+
+    def telemetri_yayinla(self, pil_yuzde, lidar_menzil_m):
+        self.sayac += 1
+        mesaj = {
+            "seq": self.sayac,
+            "topic": "/robot/telemetry",
+            "battery_pct": pil_yuzde,
+            "min_lidar_distance_m": lidar_menzil_m,
+            "status": "NORMAL" if lidar_menzil_m > 0.5 else "ENGEL_UYARISI"
+        }
+        print(f"[@Adım {self.sayac}] Topic: {mesaj['topic']} | Pil: %{mesaj['battery_pct']} | Ön Mesafe: {mesaj['min_lidar_distance_m']}m -> {mesaj['status']}")
+        return mesaj
+
+dugum = TelemetriDugumu()
+dugum.telemetri_yayinla(98, 2.45)
+dugum.telemetri_yayinla(97, 1.10)
+dugum.telemetri_yayinla(97, 0.38) # Engel algılandı
+print("[FINISH] Düğüm yaşam döngüsü başarıyla tamamlandı.")`,
+    expectedOutput: [
+      "[BOOT] ROS 2 Düğümü Başlatıldı: /robot/telemetry",
+      "[INFO:DDS] CycloneDDS discovery aktif (Domain ID: 0)",
+      "[@Adım 1] Topic: /robot/telemetry | Pil: %98 | Ön Mesafe: 2.45m -> NORMAL",
+      "[@Adım 2] Topic: /robot/telemetry | Pil: %97 | Ön Mesafe: 1.1m -> NORMAL",
+      "[@Adım 3] Topic: /robot/telemetry | Pil: %97 | Ön Mesafe: 0.38m -> ENGEL_UYARISI",
+      "[FINISH] Düğüm yaşam döngüsü başarıyla tamamlandı.",
+    ],
+  },
 
   // 4. PROGRAMLAMA DİLLERİ (PYTHON / RUST)
   {

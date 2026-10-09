@@ -101,6 +101,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
     startLessonUrl: "/tutorial/arduino-intro",
     isAvailable: true,
   },
+  {
+    id: "ros2",
+    title: "ROS 2 & Otonom Sistemler",
+    category: "Gömülü Sistemler",
+    iconName: "Bot",
+    badge: "Robotik & Otonomi",
+    colorClass: "badge-warning",
+    description: "Modern mobil robotlar (AMR) ve otonom sistemler için ROS 2 (Humble/Jazzy): DDS mimarisi, Düğümler (Nodes), Topic, Service & Action, colcon, Raspberry Pi donanım entegrasyonu, LiDAR & SLAM haritalama ve Nav2 otonom navigasyon.",
+    lessonCount: 15,
+    level: "Orta",
+    topics: ["DDS & QoS Mimarisi", "rclpy / rclcpp Düğümleri", "Raspberry Pi & RPLIDAR", "SLAM Haritalama", "Nav2 Otonom Navigasyon"],
+    startLessonUrl: "/tutorial/ros2-intro",
+    isAvailable: true,
+  },
 
   // 3. Donanım & FPGA
   {

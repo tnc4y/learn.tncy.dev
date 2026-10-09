@@ -186,6 +186,18 @@ export default function AppShell({ children }: AppShellProps) {
                         </div>
                         <span className="badge badge-success badge-xs font-mono">Yeni</span>
                       </Link>
+
+                      <Link
+                        href="/guides"
+                        onClick={() => setIsMobileDrawerOpen(false)}
+                        className="flex items-center justify-between p-2.5 rounded-xl hover:bg-base-200 text-xs font-semibold"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <Terminal className="w-4 h-4 text-secondary" />
+                          <span>Nasıl Yapılır & Kılavuzlar</span>
+                        </div>
+                        <span className="badge badge-secondary badge-xs font-mono">Cookbook</span>
+                      </Link>
                     </div>
                   </div>
 

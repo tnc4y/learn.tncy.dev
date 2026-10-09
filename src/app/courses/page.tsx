@@ -19,6 +19,7 @@ import {
   Zap,
   Activity,
   CheckCircle,
+  Bot,
 } from "lucide-react";
 
 const CATEGORIES = [
@@ -70,6 +71,8 @@ export default function CoursesPage() {
         return <Zap className="w-5 h-5 text-warning" />;
       case "Activity":
         return <Activity className="w-5 h-5 text-secondary" />;
+      case "Bot":
+        return <Bot className="w-5 h-5 text-warning" />;
       default:
         return <BookOpen className="w-5 h-5 text-primary" />;
     }

@@ -444,10 +444,11 @@ export default function BoardsPage() {
             </span>
             {[
               { id: "all", label: "Tüm Kılavuzlar" },
+              { id: "Robotik & ROS 2", label: "Robotik & ROS 2" },
+              { id: "Geliştirici Ortamı (Arch/Hyprland)", label: "Arch Linux & Hyprland" },
               { id: "Flashing & OS", label: "Raspberry Pi & OS" },
               { id: "Firmware & CLI", label: "ESP32 & Arduino CLI" },
               { id: "Embedded Linux", label: "Gömülü Linux & DTS" },
-              { id: "Geliştirici Ortamı (Arch/Hyprland)", label: "Arch Linux & Hyprland" },
             ].map((f) => (
               <button
                 key={f.id}

@@ -125,7 +125,7 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                   <div className="p-3 bg-base-100 rounded-2xl border border-base-300 shadow-2xl backdrop-blur-md space-y-1">
                     <div className="px-2 py-1 text-[10px] font-mono uppercase font-bold text-base-content/50 border-b border-base-content/5 mb-1 flex items-center justify-between">
                       <span>Öğrenme & Müfredat</span>
-                      <span className="badge badge-primary badge-xs">11 Kurs</span>
+                      <span className="badge badge-primary badge-xs">12 Kurs</span>
                     </div>
 
                     {/* Kurslar */}
@@ -299,6 +299,26 @@ export default function Navbar({ onToggleSidebar, onOpenSearch }: NavbarProps) {
                         </div>
                         <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
                           ESP32 IoT, FPGA VGA Pong, STM32 FreeRTOS ve Web Serial projeleri
+                        </p>
+                      </div>
+                    </Link>
+
+                    {/* Nasıl Yapılır & Kılavuzlar */}
+                    <Link
+                      href="/guides"
+                      onClick={closeDropdown}
+                      className="p-2.5 rounded-xl hover:bg-base-200/80 transition-colors flex items-start gap-3 group"
+                    >
+                      <div className="p-2 rounded-lg bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-secondary-content transition-colors shrink-0 mt-0.5">
+                        <Terminal className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs font-bold text-base-content group-hover:text-secondary transition-colors flex items-center justify-between">
+                          <span>Nasıl Yapılır (Kılavuzlar)</span>
+                          <span className="badge badge-secondary badge-xs font-mono text-[9px]">Cookbook</span>
+                        </div>
+                        <p className="text-[11px] text-base-content/60 leading-relaxed mt-0.5">
+                          Arch Linux UEFI, Hyprland & Caelestia, ROS 2 LiDAR haritalama ve flashing
                         </p>
                       </div>
                     </Link>

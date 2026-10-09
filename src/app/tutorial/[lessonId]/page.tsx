@@ -287,6 +287,47 @@ fn uzunluk_hesapla(s: &String) -> usize {
         ],
       };
 
+    case "ros2":
+      return {
+        code: `# ${lessonTitle} - ROS 2 (Humble / Jazzy)
+import rclpy
+from rclpy.node import Node
+from std_msgs.msg import String
+
+class SensorPublisherNode(Node):
+    def __init__(self):
+        super().__init__("sensor_publisher_node")
+        self.publisher_ = self.create_publisher(String, "/robot/telemetry", 10)
+        self.timer = self.create_timer(1.0, self.timer_callback)
+        self.counter = 0
+        self.get_logger().info("ROS 2 Düğümü Başlatıldı: /robot/telemetry")
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = f"LiDAR & Odometri Verisi #{self.counter} - Durum: AKTIF"
+        self.publisher_.publish(msg)
+        self.get_logger().info(f'Yayınlanan Veri: "{msg.data}"')
+        self.counter += 1
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = SensorPublisherNode()
+    # Simüle edilmiş telemetri döngüsü
+    node.timer_callback()
+    node.timer_callback()
+    rclpy.shutdown()
+
+if __name__ == "__main__":
+    main()`,
+        output: [
+          "[INFO] [sensor_publisher_node]: ROS 2 Düğümü Başlatıldı: /robot/telemetry",
+          '[INFO] [sensor_publisher_node]: Yayınlanan Veri: "LiDAR & Odometri Verisi #0 - Durum: AKTIF"',
+          '[INFO] [sensor_publisher_node]: Yayınlanan Veri: "LiDAR & Odometri Verisi #1 - Durum: AKTIF"',
+          "[ROS2:DDS] CycloneDDS peer discovery aktif, topic '/robot/telemetry' yayınlandı.",
+          "[SUCCESS] Düğüm yaşam döngüsü tamamlandı.",
+        ],
+      };
+
     default:
       return {
         code: `// ${lessonTitle}
