@@ -163,7 +163,11 @@ Sentez sonucunda mühendis şu **QoR (Quality of Results)** metriklerini inceler
     sections: [
       {
         title: "1. Yosys Mantık Sentezleyicisinin Mimarisi ve Çalışma Felsefesi",
-        content: `**Yosys (Yosys Open SYnthesis Suite)**, Clifford Wolf tarafından geliştirilen, açık kaynaklı ASIC ve FPGA mantık sentezi çatısıdır. Modern açık kaynak silikon tasarım dünyasının (OpenLane, efabless, Tiny Tapeout) belkemiğidir.
+        content: `
+
+![Yosys RTL Synthesis and Technology Mapping Flow](/images/rtl-synthesis/yosys-mapping.svg)
+
+**Yosys (Yosys Open SYnthesis Suite)**, Clifford Wolf tarafından geliştirilen, açık kaynaklı ASIC ve FPGA mantık sentezi çatısıdır. Modern açık kaynak silikon tasarım dünyasının (OpenLane, efabless, Tiny Tapeout) belkemiğidir.
 
 Yosys'in temel felsefesi **modüler geçişler (passes)** mimarisidir. Monolitik kapalı kutu araçların aksine, Yosys yüzlerce bağımsız C++ geçiş modülünden oluşur. Her geçiş iç veri yapısı olan **RTLIL (RTL Intermediate Language)** üzerinde belirli bir dönüşüm gerçekleştirir:
 
@@ -848,7 +852,11 @@ hilomap -hicell sky130_fd_sc_hd__conb_1 HI -locell sky130_fd_sc_hd__conb_1 LO
     sections: [
       {
         title: "1. Statik Zamanlama Analizi (STA) Nedir ve Dinamik Simülasyondan Farkı",
-        content: `**Statik Zamanlama Analizi (STA - Static Timing Analysis)**, bir dijital entegre devrenin tüm olası zamanlama yollarını girdi vektörlerinden (test senaryolarından) bağımsız olarak matematiksel yöntemlerle doğrulayan yöntemdir.
+        content: `
+
+![Static Timing Analysis Setup and Hold Time Margins](/images/rtl-synthesis/sta-setup-hold.svg)
+
+**Statik Zamanlama Analizi (STA - Static Timing Analysis)**, bir dijital entegre devrenin tüm olası zamanlama yollarını girdi vektörlerinden (test senaryolarından) bağımsız olarak matematiksel yöntemlerle doğrulayan yöntemdir.
 
 | Özellik | Dinamik Simülasyon (Gate-Level Sim) | Statik Zamanlama Analizi (STA) |
 | :--- | :--- | :--- |
@@ -1750,7 +1758,8 @@ DFT iki temel kavramı maksimize etmeyi amaçlar:
   * **Normal Mod ($SE = 0$):** Flip-flop $D$ girişinden normal fonksiyonel veriyi alır.
   * **Tarama Modu ($SE = 1$):** Flip-flop $SI$ (Scan In) girişinden test verisini alır.
 
-Devredeki tüm flip-floplar $SO ightarrow SI$ şeklinde birbirine seri bağlanarak devasa bir kaydırma yazmacı (**Scan Chain**) oluşturur.`,
+Devredeki tüm flip-floplar $SO 
+ightarrow SI$ şeklinde birbirine seri bağlanarak devasa bir kaydırma yazmacı (**Scan Chain**) oluşturur.`,
       },
       {
         title: "3. Tarama Testi Adımları: Shift (Öteleme) ve Capture (Yakalama) Fazları",
@@ -1894,11 +1903,15 @@ endmodule
         title: "4. Çok Bitlik Veri Geçişleri: Gray Kodu, Bus Senkronizasyonu ve Sinyal Çözülmesi",
         content: `**ÖLÜMCÜL HATA: Çok Bitlik Veriyolunu Çoklu 2-FF ile Senkronize Etmek!**
 Bir veri yolu (örneğin 4-bit \`data[3:0]\`) paralel 2-FF senkronizörlerden geçirilirse, hatlardaki minik gecikme farkları nedeniyle bazı bitler 1 çevrim önce, bazıları 1 çevrim sonra yakalanır:
-$$0011 ightarrow 0100 	ext{ geçişinde ara durumlar: } 0000 	ext{ veya } 0111 	ext{ (ÇÖP VERİ!)}$$
+$$0011 
+ightarrow 0100 	ext{ geçişinde ara durumlar: } 0000 	ext{ veya } 0111 	ext{ (ÇÖP VERİ!)}$$
 
 * **Gray Kodu Çözümü:**
   Sayaç veya işaretçi (pointer) geçişlerinde **Gray Kodu** kullanılır. Gray kodunda ardışık iki sayı arasında **sadece ve sadece 1 bit** değişir:
-  $$00 ightarrow 01 ightarrow 11 ightarrow 10$$
+  $$00 
+ightarrow 01 
+ightarrow 11 
+ightarrow 10$$
   Tek bir bit değiştiği için hiçbir zaman ara yanlış durum oluşamaz.`,
       },
       {

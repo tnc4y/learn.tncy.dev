@@ -222,7 +222,11 @@ endmodule`,
     sections: [
       {
         title: "1. Bu Bölümde Neler Öğreneceksiniz?",
-        content: `Bu bölümde yarı iletken terminolojisinde sıkça karıştırılan iki temel kavram olan Doğrulama (\`Verification\`) ve Sağlama (\`Validation\`) disiplinlerini derinlemesine inceleyeceksiniz:
+        content: `
+
+![Pre-Silicon Verification vs Post-Silicon Validation](/images/verification/verification-vs-validation.svg)
+
+Bu bölümde yarı iletken terminolojisinde sıkça karıştırılan iki temel kavram olan Doğrulama (\`Verification\`) ve Sağlama (\`Validation\`) disiplinlerini derinlemesine inceleyeceksiniz:
 
 - 'Tasarımı doğru mu yaptık?' (\`Verification\`) ile 'Doğru tasarımı mı yaptık?' (\`Validation\`) sorularının arkasındaki felsefe
 - Pre-Silicon Doğrulama (DV) ortamı: Simülasyon, emülasyon ve yazılımsal modeller
@@ -810,7 +814,11 @@ end
     sections: [
       {
         title: "1. Bu Bölümde Neler Öğreneceksiniz?",
-        content: `Bu bölümde donanım tasarım ve doğrulama süreçlerinin en etkili kalite kontrol aracı olan Önsav Tabanlı Doğrulama (\`Assertion-Based Verification - ABV\`) disiplinini inceleyeceksiniz:
+        content: `
+
+![SystemVerilog Assertions Hierarchical Structure](/images/verification/assertion-sva-property.svg)
+
+Bu bölümde donanım tasarım ve doğrulama süreçlerinin en etkili kalite kontrol aracı olan Önsav Tabanlı Doğrulama (\`Assertion-Based Verification - ABV\`) disiplinini inceleyeceksiniz:
 
 - ABV felsefesi: Hatanın kaynağına en yakın noktada, sıfır gecikmeyle yakalanması
 - Anlık Önsavlar (\`Immediate Assertions\`) ve Eşzamanlı Önsavlar (\`Concurrent Assertions\`) arasındaki farklar
@@ -1027,7 +1035,11 @@ Buna sektörde **Aşırı Kısıtlama (Over-Constraining)** denir ve formal doğ
     sections: [
       {
         title: "1. Bu Bölümde Neler Öğreneceksiniz?",
-        content: `Bu bölümde modern entegre devre doğrulama metodolojilerinin yönetim omurgası olan Kapsama Güdümlü Doğrulama (\`Coverage-Driven Verification - CDV\`) disiplinini inceleyeceksiniz:
+        content: `
+
+![Coverage-Driven Verification Closed Loop Architecture](/images/verification/crv-coverage-loop.svg)
+
+Bu bölümde modern entegre devre doğrulama metodolojilerinin yönetim omurgası olan Kapsama Güdümlü Doğrulama (\`Coverage-Driven Verification - CDV\`) disiplinini inceleyeceksiniz:
 
 - CDV metodolojisinin felsefesi: 'Neyi doğrulamak istiyoruz ve ne kadarını doğruladık?'
 - Kod Kapsaması (\`Code Coverage\`) türleri: Satır, Dal, Koşul, Geçiş ve FSM kapsaması
@@ -1386,7 +1398,11 @@ endmodule`,
     sections: [
       {
         title: "1. Bu Bölümde Neler Öğreneceksiniz?",
-        content: `Bu bölümde bir testin gerçekten başarılı sayılıp sayılmadığına karar veren mekanizmaları ve testbench'in kalbi olan Skorboard (\`Scoreboard\`) mimarisini inceleyeceksiniz:
+        content: `
+
+![Self-Checking Testbench: Scoreboard & Golden Reference Model](/images/verification/scoreboard-golden-model.svg)
+
+Bu bölümde bir testin gerçekten başarılı sayılıp sayılmadığına karar veren mekanizmaları ve testbench'in kalbi olan Skorboard (\`Scoreboard\`) mimarisini inceleyeceksiniz:
 
 - Bir testin başarılı (\`PASS\`) sayılması için zorunlu olan 3 bağımsız kriter
 - Skorboard nedir? Testbench hiyerarşisindeki yeri ve tarafsız hakem rolü

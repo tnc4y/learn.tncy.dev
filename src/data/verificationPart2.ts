@@ -723,7 +723,11 @@ Eğer bu kural çiğnenirse, simülasyon scoreboard'un 500 çevrim sonra patlama
     sections: [
       {
         title: "1. Bu Bölümde Neler Öğreneceksiniz?",
-        content: `Kod kapsaması (Code Coverage), donanım doğrulama sürecinin en nesnel ve vazgeçilmez metriklerinden biridir. Bu bölümde:
+        content: `
+
+![Hardware Verification: Code Coverage Metrics Breakdown](/images/verification/code-coverage-types.svg)
+
+Kod kapsaması (Code Coverage), donanım doğrulama sürecinin en nesnel ve vazgeçilmez metriklerinden biridir. Bu bölümde:
 - Kod kapsaması nedir ve simülatörler tarafından nasıl ölçülür?
 - Başlıca RTL kod kapsaması türleri: Line/Statement, Branch, Condition, Expression, Toggle ve FSM.
 - Her bir kapsama türünün yakaladığı yapısal donanım açıkları.

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 200" width="720" height="200" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#9333ea"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="719" height="199" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="360" y="26" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">Static Timing Analysis (STA): Setup & Hold Time Slack Budget</text>
+
+<g transform="translate(30, 45)">
+  <!-- Clock wave -->
+  <line x1="0" y1="40" x2="100" y2="40" stroke="#64748b" stroke-width="2"/>
+  <line x1="100" y1="40" x2="100" y2="10" stroke="#64748b" stroke-width="2"/>
+  <line x1="100" y1="10" x2="200" y2="10" stroke="#64748b" stroke-width="2"/>
+  <line x1="200" y1="10" x2="200" y2="40" stroke="#64748b" stroke-width="2"/>
+  <line x1="200" y1="40" x2="350" y2="40" stroke="#64748b" stroke-width="2"/>
+  <line x1="350" y1="40" x2="350" y2="10" stroke="#2563eb" stroke-width="2.5"/>
+  <line x1="350" y1="10" x2="450" y2="10" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="350" y="5" font-size="10" font-weight="bold" fill="#2563eb" text-anchor="middle">Capture Clock Edge</text>
+
+  <!-- Setup window -->
+  <rect x="270" y="60" width="80" height="30" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="310" y="80" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">T_setup</text>
+
+  <!-- Hold window -->
+  <rect x="350" y="60" width="70" height="30" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="385" y="80" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">T_hold</text>
+
+  <!-- Slack equations -->
+  <g transform="translate(480, 20)">
+    <rect x="0" y="0" width="180" height="100" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+    <text x="90" y="25" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">Zamanlama Denklemleri</text>
+    <text x="15" y="50" font-size="10" fill="#334155">Slack_setup = T_req - T_arr</text>
+    <text x="15" y="70" font-size="10" fill="#334155">Slack_hold = T_arr - T_req</text>
+    <text x="15" y="90" font-size="10" font-weight="bold" fill="#16a34a">Slack &gt;= 0 : ZAMANLAMA MET</text>
+  </g>
+</g>
+
+</svg>

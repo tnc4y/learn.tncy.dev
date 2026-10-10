@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 740 210" width="740" height="210" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#9333ea"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="739" height="209" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="370" y="26" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">Yosys Logic Synthesis & ABC Technology Mapping Flow</text>
+
+<g transform="translate(25, 45)">
+  <rect x="0" y="10" width="125" height="110" rx="6" fill="#f8fafc" stroke="#94a3b8"/>
+  <text x="62" y="32" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">RTL Girdisi</text>
+  <text x="62" y="55" font-size="10" fill="#64748b" text-anchor="middle">read_verilog -sv</text>
+  <text x="62" y="75" font-size="10" fill="#64748b" text-anchor="middle">hierarchy -top</text>
+  <text x="62" y="95" font-size="10" fill="#64748b" text-anchor="middle">proc; opt; memory;</text>
+
+  <line x1="125" y1="65" x2="165" y2="65" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="170" y="10" width="150" height="110" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+  <text x="245" y="32" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">Yosys İç Gösterim</text>
+  <text x="245" y="55" font-size="10" fill="#2563eb" text-anchor="middle">• RTLIL (Intermediate Logic)</text>
+  <text x="245" y="75" font-size="10" fill="#2563eb" text-anchor="middle">• techmap (Generic kapılar)</text>
+  <text x="245" y="95" font-size="10" fill="#2563eb" text-anchor="middle">• dfflegalize (FF polarite)</text>
+
+  <line x1="320" y1="65" x2="360" y2="65" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="365" y="10" width="170" height="110" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+  <text x="450" y="32" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">Berkeley ABC Motoru</text>
+  <text x="450" y="55" font-size="10" fill="#16a34a" text-anchor="middle">• abc -liberty sky130.lib</text>
+  <text x="450" y="75" font-size="10" fill="#16a34a" text-anchor="middle">• Boolean Matching &amp; Area</text>
+  <text x="450" y="95" font-size="10" fill="#16a34a" text-anchor="middle">• Sürücü Boyutlandırma</text>
+
+  <line x1="535" y1="65" x2="575" y2="65" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="580" y="10" width="125" height="110" rx="6" fill="#fdf4ff" stroke="#c084fc"/>
+  <text x="642" y="32" font-size="12" font-weight="bold" fill="#7e22ce" text-anchor="middle">Gate Netlist (.v)</text>
+  <text x="642" y="55" font-size="10" fill="#9333ea" text-anchor="middle">sky130_fd_sc_hd__nand2</text>
+  <text x="642" y="75" font-size="10" fill="#9333ea" text-anchor="middle">sky130_fd_sc_hd__dfxtp</text>
+  <text x="642" y="95" font-size="10" fill="#9333ea" text-anchor="middle">Alan &amp; Kapı Sayısı</text>
+</g>
+
+</svg>

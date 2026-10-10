@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 740 180" width="740" height="180" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="739" height="179" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="370" y="26" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">Hardware Verification: Code Coverage Metrics Breakdown</text>
+
+<g transform="translate(20, 45)">
+  <rect x="0" y="10" width="130" height="80" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="65" y="35" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Line Coverage</text>
+  <text x="65" y="55" font-size="9" fill="#3b82f6" text-anchor="middle">Satır Kapsaması</text>
+  <text x="65" y="75" font-size="8" fill="#64748b" text-anchor="middle">Tüm satırlar çalıştı mı?</text>
+
+  <rect x="142" y="10" width="130" height="80" rx="6" fill="#f0fdf4" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="207" y="35" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Branch Coverage</text>
+  <text x="207" y="55" font-size="9" fill="#16a34a" text-anchor="middle">Dal Kapsaması</text>
+  <text x="207" y="75" font-size="8" fill="#64748b" text-anchor="middle">if/else dalları test edildi mi?</text>
+
+  <rect x="284" y="10" width="130" height="80" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="349" y="35" font-size="11" font-weight="bold" fill="#b45309" text-anchor="middle">Condition Coverage</text>
+  <text x="349" y="55" font-size="9" fill="#d97706" text-anchor="middle">Koşul Kapsaması</text>
+  <text x="349" y="75" font-size="8" fill="#64748b" text-anchor="middle">Mantıksal terimler (A &amp;&amp; B)</text>
+
+  <rect x="426" y="10" width="130" height="80" rx="6" fill="#f5f3ff" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="491" y="35" font-size="11" font-weight="bold" fill="#6d28d9" text-anchor="middle">Toggle Coverage</text>
+  <text x="491" y="55" font-size="9" fill="#7c3aed" text-anchor="middle">Geçiş Kapsaması</text>
+  <text x="491" y="75" font-size="8" fill="#64748b" text-anchor="middle">0-&gt;1 ve 1-&gt;0 geçişleri</text>
+
+  <rect x="568" y="10" width="130" height="80" rx="6" fill="#fdf2f8" stroke="#ec4899" stroke-width="1.5"/>
+  <text x="633" y="35" font-size="11" font-weight="bold" fill="#be185d" text-anchor="middle">FSM Coverage</text>
+  <text x="633" y="55" font-size="9" fill="#db2777" text-anchor="middle">Durum Makinesi</text>
+  <text x="633" y="75" font-size="8" fill="#64748b" text-anchor="middle">Tüm durumlar &amp; geçişler</text>
+</g>
+
+</svg>

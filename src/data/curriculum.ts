@@ -4257,6 +4257,300 @@ export const COURSES: CourseTrack[] = [
   },
 
   // ========================================================
+  // IEEE 1801 UPF (UNIFIED POWER FORMAT)
+  // ========================================================
+  {
+  "id": "upf",
+  "title": "IEEE 1801 UPF (Unified Power Format)",
+  "shortTitle": "UPF",
+  "category": "Donanım & FPGA",
+  "icon": "Zap",
+  "badge": "Low-Power Çip Tasarımı",
+  "color": "badge-warning",
+  "description": "Multi-voltage ve power-gated SoC güç niyeti: Power domain'ler, supply set'ler, power shutoff (PSO), izolasyon hücreleri, seviye kaydırıcılar (level shifter), retansiyon yazmaçları, always-on ağları ve güç duyarlı simülasyon.",
+  "modules": [
+    {
+      "id": "upf-fundamentals",
+      "number": 1,
+      "title": "1. Fundamentals of Low Power Design",
+      "description": "Dynamic vs static leakage power dissipation, nanometer power challenges, and UPF design flow.",
+      "lessons": [
+        {
+          "id": "unified-power-format",
+          "title": "Fundamentals of Low Power Design",
+          "shortTitle": "Low Power Design",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering fundamentals of low power design with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "introduction-to-upf",
+          "title": "Introduction to UPF",
+          "shortTitle": "Introduction to UPF",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering introduction to upf with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-design-flow",
+          "title": "UPF Design Flow",
+          "shortTitle": "Design Flow",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf design flow with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "upf-architecture",
+      "number": 2,
+      "title": "2. Power Intent & Architecture",
+      "description": "Defining power domains, supply networks, supply sets, and operational power states.",
+      "lessons": [
+        {
+          "id": "upf-power-domains",
+          "title": "UPF Power Domains",
+          "shortTitle": "Power Domains",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power domains with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-supply-networks",
+          "title": "UPF Supply Networks",
+          "shortTitle": "Supply Networks",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf supply networks with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-supply-sets",
+          "title": "UPF Supply Sets",
+          "shortTitle": "Supply Sets",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf supply sets with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-power-states",
+          "title": "UPF Power States",
+          "shortTitle": "Power States",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power states with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "upf-strategies",
+      "number": 3,
+      "title": "3. Power Management Strategies",
+      "description": "Power shutoff (PSO), multi-voltage domains, retention registers, isolation cells, and level shifters.",
+      "lessons": [
+        {
+          "id": "upf-power-shutoff",
+          "title": "UPF Power Shutoff",
+          "shortTitle": "Power Shutoff",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power shutoff with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-multi-voltage-design",
+          "title": "UPF Multi Voltage Design",
+          "shortTitle": "Multi Voltage Design",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf multi voltage design with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-retention-strategies",
+          "title": "UPF Retention Strategies",
+          "shortTitle": "Retention Strategies",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf retention strategies with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-isolation-strategies",
+          "title": "UPF Isolation Strategies",
+          "shortTitle": "Isolation Strategies",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf isolation strategies with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-advanced-level-shifters",
+          "title": "UPF Advanced Level Shifters",
+          "shortTitle": "Advanced Level Shifters",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf advanced level shifters with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "upf-special-networks",
+      "number": 4,
+      "title": "4. Special Architectural Networks",
+      "description": "Feedthrough repeaters, always-on (AON) routing trees, and hierarchical UPF reuse.",
+      "lessons": [
+        {
+          "id": "upf-repeater-strategies",
+          "title": "UPF Repeater Strategies",
+          "shortTitle": "Repeater Strategies",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf repeater strategies with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-always-on-networks",
+          "title": "UPF Always On Networks",
+          "shortTitle": "Always On Networks",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf always on networks with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "hierarchical-upf",
+          "title": "Hierarchical UPF",
+          "shortTitle": "Hierarchical UPF",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering hierarchical upf with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "upf-verification",
+      "number": 5,
+      "title": "5. Power-Aware Verification",
+      "description": "Power-aware simulation (PAS), corruption semantics, static rule checking (LPS), and formal verification.",
+      "lessons": [
+        {
+          "id": "upf-power-aware-simulation",
+          "title": "UPF Power Aware Simulation",
+          "shortTitle": "Power Aware Simulation",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power aware simulation with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-verification-strategies",
+          "title": "UPF Verification Strategies",
+          "shortTitle": "Verification Strategies",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf verification strategies with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-debugging-power-intent",
+          "title": "UPF Debugging Power Intent",
+          "shortTitle": "Debugging Power Intent",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf debugging power intent with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-formal-verification",
+          "title": "UPF Formal Verification",
+          "shortTitle": "Formal Verification",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf formal verification with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    },
+    {
+      "id": "upf-implementation",
+      "number": 6,
+      "title": "6. Implementation & Optimization",
+      "description": "Power-aware synthesis, low-power standard cell libraries, dynamic optimization, and physical P&R implementation.",
+      "lessons": [
+        {
+          "id": "upf-power-aware-synthesis",
+          "title": "UPF Power Aware Synthesis",
+          "shortTitle": "Power Aware Synthesis",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power aware synthesis with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-library-cells-for-low-power",
+          "title": "UPF Library Cells for Low Power",
+          "shortTitle": "Library Cells for Low Power",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf library cells for low power with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-power-optimization",
+          "title": "UPF Power Optimization",
+          "shortTitle": "Power Optimization",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf power optimization with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        },
+        {
+          "id": "upf-physical-implementation",
+          "title": "UPF Physical Implementation",
+          "shortTitle": "Physical Implementation",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive IEEE 1801 UPF technical lesson covering upf physical implementation with interactive EDA simulation console.",
+          "hasPlayground": true,
+          "category": "Verification"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // 4. FPGA DONANIM TASARIMI & SENTEZ
   // ========================================================
   {

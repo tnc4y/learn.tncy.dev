@@ -11,7 +11,11 @@ export const RTL_SYNTHESIS_PART1: Record<string, LessonContent> = {
     sections: [
       {
         title: "1. Modern Dijital ASIC Tasarım Akışı ve RTL Seviyesi",
-        content: `Modern mikroişlemciler, grafik işlemciler ve yapay zekâ hızlandırıcıları milyarlarca transistörden oluşur. Bu karmaşıklıktaki bir sistemi transistör seviyesinde tek tek çizerek tasarlamak imkânsızdır. Bu nedenle modern dijital tasarım, yüksek soyutlama seviyelerinden fiziksel silikona doğru adım adım ilerleyen disiplinli bir çevrim (pipeline) izler.
+        content: `
+
+![RTL-to-Silicon ASIC Design Pipeline](/images/rtl-synthesis/rtl-asic-flow.svg)
+
+Modern mikroişlemciler, grafik işlemciler ve yapay zekâ hızlandırıcıları milyarlarca transistörden oluşur. Bu karmaşıklıktaki bir sistemi transistör seviyesinde tek tek çizerek tasarlamak imkânsızdır. Bu nedenle modern dijital tasarım, yüksek soyutlama seviyelerinden fiziksel silikona doğru adım adım ilerleyen disiplinli bir çevrim (pipeline) izler.
 
 Tasarım yolculuğunun başladığı temel soyutlama düzeyi **RTL (Register Transfer Level - Yazmaç Aktarım Düzeyi)** olarak adlandırılır. RTL seviyesinde tasarımcı; Verilog, SystemVerilog veya VHDL dillerini kullanarak verinin saat vuruşlarıyla yazmaçlar (flip-flop'lar) arasında nasıl aktarıldığını ve bu aktarım esnasında mantıksal fonksiyonlarla nasıl işlendiğini tanımlar. Örneğin \`assign sum = a + b;\` veya \`always @(posedge clk) q <= d;\` ifadeleri doğrudan kapı seviyesini değil, devrenin zamansal ve fonksiyonel davranışını soyutlar.`,
       },
@@ -100,7 +104,11 @@ endmodule`,
     sections: [
       {
         title: "1. Icarus Verilog Mimarisi ve İki Kademeli Simülasyon Felsefesi",
-        content: `\`Icarus Verilog\` (\`iverilog\`), Stephen Williams tarafından geliştirilen ve sayısal donanım dünyasında yaygın olarak kullanılan açık kaynaklı bir IEEE-1364 Verilog simülasyon ve sentez aracıdır.
+        content: `
+
+![Icarus Verilog Two-Stage Compilation & Simulation Architecture](/images/rtl-synthesis/icarus-stages.svg)
+
+\`Icarus Verilog\` (\`iverilog\`), Stephen Williams tarafından geliştirilen ve sayısal donanım dünyasında yaygın olarak kullanılan açık kaynaklı bir IEEE-1364 Verilog simülasyon ve sentez aracıdır.
 
 Birçok yorumlayıcı (interpreter) tabanlı simülatörün aksine Icarus Verilog, C derleyicilerine benzeyen **iki aşamalı (two-stage)** bir mimari kullanır:
 1. **Ön Derleme ve Elaboration Aşaması (\`iverilog\`):** HDL kaynak dosyalarını okur, sözdizimini denetler, modül hiyerarşisini bağlar ve optimize edilmiş bir ara kod (bytecode) dosyası üretir.

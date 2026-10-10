@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 200" width="720" height="200" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="719" height="199" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="360" y="26" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">UPF Retention Register Architecture: Live vs Shadow Balloon Latch</text>
+
+<g transform="translate(30, 45)">
+  <rect x="0" y="10" width="280" height="110" rx="6" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="140" y="34" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">Main D-Flip-Flop (Switchable VDD_CORE)</text>
+  <text x="140" y="58" font-size="10" fill="#dc2626" text-anchor="middle">Normal Operation: Fast Clocked Logic</text>
+  <text x="140" y="78" font-size="10" fill="#dc2626" text-anchor="middle">Power Shutoff (PSO): Powered OFF (0V)</text>
+  <text x="140" y="98" font-size="9" fill="#7f1d1d" text-anchor="middle">Loses volatile state if not retained</text>
+
+  <path d="M 280 45 L 415 45" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+  <text x="348" y="38" font-size="9" fill="#b91c1c" text-anchor="middle">SAVE</text>
+
+  <path d="M 415 85 L 280 85" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+  <text x="348" y="102" font-size="9" fill="#15803d" text-anchor="middle">RESTORE</text>
+
+  <rect x="420" y="10" width="270" height="110" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="555" y="34" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">Shadow Retention Latch (Always-On VDD_AON)</text>
+  <text x="555" y="58" font-size="10" fill="#92400e" text-anchor="middle">High-Vt Low Leakage Balloon Cell</text>
+  <text x="555" y="78" font-size="10" fill="#92400e" text-anchor="middle">Preserves register state across power gating</text>
+  <text x="555" y="98" font-size="9" font-weight="bold" fill="#15803d" text-anchor="middle">UPF: set_retention / set_retention_control</text>
+</g>
+
+</svg>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 700 180" width="700" height="180" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#9333ea"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="699" height="179" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="350" y="26" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">UPF Isolation Cell Operation (Clamp Low / High)</text>
+
+<g transform="translate(40, 45)">
+  <rect x="0" y="20" width="140" height="80" rx="6" fill="#fee2e2" stroke="#ef4444"/>
+  <text x="70" y="50" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">Kapatılan Alan (OFF)</text>
+  <text x="70" y="75" font-size="10" fill="#dc2626" text-anchor="middle">Çıkış = X (Yüzen / Z)</text>
+
+  <line x1="140" y1="60" x2="220" y2="60" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-red)"/>
+
+  <!-- Isolation gate -->
+  <rect x="225" y="15" width="180" height="90" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="315" y="42" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle">İzolasyon Hücresi (ISO)</text>
+  <text x="315" y="65" font-size="10" fill="#92400e" text-anchor="middle">Kontrol: ISO_EN = 1</text>
+  <text x="315" y="85" font-size="10" fill="#92400e" text-anchor="middle">Kelepçe Değeri: CLAMP = 0</text>
+
+  <line x1="405" y1="60" x2="485" y2="60" stroke="#16a34a" stroke-width="2" marker-end="url(#arrow-green)"/>
+
+  <rect x="490" y="20" width="150" height="80" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+  <text x="565" y="50" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Açık Kalan Alan (ON)</text>
+  <text x="565" y="75" font-size="10" font-weight="bold" fill="#16a34a" text-anchor="middle">Girdi = Kararlı 0 (Garantili)</text>
+</g>
+
+</svg>
