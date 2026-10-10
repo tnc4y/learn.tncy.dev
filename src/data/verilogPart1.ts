@@ -10,33 +10,32 @@ export const VERILOG_PART1: Record<string, LessonContent> = {
     subtitle: "ChipVerify Verilog Tutorial Bölüm 1: Verilog'a Giriş & Temeller. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog HDL Eğitimi: Temellerden Donanım Tasarımına** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Genel Bakış & Giriş: Verilog'a Başlarken",
+        content: `Cebinizdeki akıllı telefon, dizüstü bilgisayarınızdaki işlemci ve otomobilinizdeki kontrol ünitesi; bunların tümü aslında donanım tanımlama kodlarından oluşan metin dosyaları olarak geliştirilmeye başlandı. Verilog, donanım mühendislerinin bu çipleri ve dijital devreleri modellemek için yazdığı temel dillerden biridir; çip tasarımı (ASIC) veya FPGA programlama ve doğrulama (verification) alanında çalışmak isteyen herkes için vazgeçilmez bir yetkinliktir. Bu eğitim serisinde, ilk temel modülünüzden başlayarak sayaçlar (counters), sonlu durum makineleri (FSM), bellek blokları (memories) ve test ortamlarına (testbenches) kadar adım adım ilerleyeceksiniz. Verilog; sayısal (dijital) devreleri metin tabanlı olarak tanımlamak, simüle etmek ve sentezlemek (synthesis) için kullanılan standart bir dildir. Bu bölümde Verilog'un ne olduğu, tarihsel gelişimi, geleneksel yazılım dillerinden temel farkları ve donanım tasarımındaki kritik rolü kapsamlı biçimde ele alınmaktadır.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog'un ne olduğunu ve dijital devre tasarımında nasıl bir devrim yarattığını kavrayacaksınız.
+• Verilog ile C/C++, Python gibi geleneksel yazılım dilleri arasındaki temel kavramsal farkları (eşzamanlılık, zamanlama ve donanım modelleme) öğreneceksiniz.
+• Donanım soyutlama seviyelerini (abstraction layers) ve davranışsal modelleme (behavioral modeling) mantığını özümseyeceksiniz.
+• Doğru sözdizimi (syntax), port tanımları ve modül yapısını kullanarak ilk Verilog modülünüzü tasarlayacaksınız.`,
+      },
+      {
+        title: "3. Verilog Nedir? (Donanım Tanımlama Dili - HDL)",
+        content: `Verilog, bir Donanım Tanımlama Dilidir (Hardware Description Language - HDL). Kapılar (logic gates), flip-flop'lar, sayaçlar, karmaşık işlemciler ve tümleşik devrelerin (chip) metin tabanlı kodlarla tanımlanmasını sağlar. 1983-1984 yıllarında Gateway Design Automation bünyesinde mantıksal simülatörler için geliştirilmiştir. 1990 civarında Cadence tarafından satın alındıktan sonra kamuya açılmış, 1995'te IEEE 1364 standardı haline gelmiş ve 2001 ile 2005 yıllarında güncellenmiştir. 2009 yılında ise tüm Verilog özelliklerini kapsayan SystemVerilog (IEEE 1800) standardı ile birleştirilmiştir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog HDL Eğitimi: Temellerden Donanım Tasarımına** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Verilog hem ASIC (özel entegre devre) hem de FPGA (sahada programlanabilir kapı dizisi) tasarımlarında kullanılır. Yazılan kod iki temel amaca hizmet eder:
+1. Simülasyon (Simulation): Mantıksal simülatör, devrenin zamanlama ve işlevsel olarak beklenen mantıkta çalışıp çalışmadığını test eder.
+2. Sentez (Synthesis): Mantıksal sentez aracı (synthesis tool), bu kodu gerçek mantık kapıları ve flip-flop'lardan oluşan bir ağ listesine (gate-level netlist) dönüştürür.
+
+Verilog çeşitli soyutlama düzeylerini destekler: Kapı seviyesinde yapısal (structural) bağlantılar kurabilir, veri akışını ve saat darbelerine bağlı kayıt aktarımını RTL (Register Transfer Level) düzeyinde modelleyebilir veya devrenin üst düzey işlevini davranışsal (behavioral) olarak ifade edebilirsiniz. Büyük çipler hiyerarşik olarak tasarlanır; toplayıcı ve saklayıcı gibi küçük alt modüller birleştirilerek devasa mikroişlemciler inşa edilir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Getting Started with Verilog Verilog Tutorial Verilog Tutorial Why Learn Verilog? The phone in your pocket, the processor in your laptop and the controller in your car all started as text files of hardware description code. Verilog is one of the languages engineers use to write that code, and it is a core skill for anyone who wants to design or verify chips or FPGAs. In this tutorial series, you'll go from your first module to counters, state machines, memories and testbenches, one short article at a time. Verilog is a text-based language used to describe, simulate and synthesize digital circuits. This page explains what Verilog is, where it came from, how it differs from software languages, and how this tutorial is organized, so that you know what to expect before you write your first line of code. 12 min read | Beginner Level`,
+        title: "4. Gerçek Dünya Uygulamaları ve Endüstriyel Kullanım",
+        content: `Günümüzde mikroişlemciler, grafik işlemcileri (GPU), ağ anahtarlayıcıları (network switches), SSD/bellek denetleyicileri ve otomotiv elektroniğindeki güvenlik kontrol üniteleri Verilog veya onun gelişmiş standardı olan SystemVerilog ile tasarlanmaktadır. Tipik bir ticari ASIC çip projesi, yüzlerce mühendisin ayrı modüller halinde geliştirdiği ve hiyerarşik olarak birleştirdiği yüz binlerce, hatta milyonlarca satırlık RTL kodundan oluşur. Aynı Verilog altyapısı, bir hobi kartında veya endüstriyel sürücüde çalışan motor kontrolörleri ve video arayüzleri gibi FPGA projelerinde de birebir kullanılır.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `Understand what Verilog is and how it revolutionized digital circuit design Learn the key differences between Verilog and software programming languages Master the concept of hardware abstraction and behavioral modeling Write your first Verilog module with proper syntax and structure`,
-      },
-      {
-        title: "4. What is Verilog ?",
-        content: `Verilog is a hardware description language (HDL): a language for describing digital systems such as gates, flip-flops, counters, processors and complete chips as text. It was created in 1983 and 1984 at Gateway Design Automation as a language for its logic simulator. Cadence acquired Gateway around 1990 and soon after made the language public, and it was standardized as IEEE 1364 in 1995, with revisions in 2001 and 2005. In 2009 it was merged into the SystemVerilog standard, IEEE 1800, which still contains all of Verilog. Verilog is used to design both ASICs (custom chips) and FPGAs (programmable chips). The same code serves two purposes: Simulation: a simulator runs the code to check that the circuit behaves as intended Synthesis: a synthesis tool converts the code into a netlist of real gates and flip-flops Verilog supports several levels of description. You can describe a circuit structurally by connecting gates and smaller blocks, at the register transfer level (RTL) by describing how data moves between registers on each clock edge, or behaviorally by describing what the circuit does. Large designs are built hierarchically: small modules such as adders and flip-flops are combined into bigger blocks, which are combined into a complete chip. You can read more about these levels in Design Abstraction Layers .`,
-      },
-      {
-        title: "5. Real-World Application",
-        content: `Processors, graphics chips, network switches, storage controllers and the chips inside phones, cars and home appliances are designed with Verilog or its successor SystemVerilog. A typical chip project has hundreds of thousands of lines of RTL code, written by many engineers as separate modules and then connected into one design. The same language is used for small FPGA projects such as a motor controller or a video interface on a hobby board.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog HDL Eğitimi: Temellerden Donanım Tasarımına** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -52,8 +51,8 @@ module and_gate (input A, B, output Y);
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -74,7 +73,8 @@ endmodule`,
     end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// and_gate.v
@@ -99,41 +99,26 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 1: Verilog'a Giriş & Temeller. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog HDL'e Giriş ve Donanım Modelleme Felsefesi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog HDL'e Giriş ve Donanım Modelleme Felsefesi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Genel Bakış & Giriş: Verilog Diline Giriş",
+        content: `Verilog, mühendislerin kapı seviyesinde şematik (schematic) devre çizimleri yapmak yerine sayısal devre davranışlarını metin tabanlı kodlarla tanımlamasını sağlayan standart bir Donanım Tanımlama Dilidir (HDL). Bu sayede otomatik sentez araçları (synthesis tools), yazılan davranışsal veya RTL tanımlarını ASIC ve FPGA çiplerinde fiziksel silikon karşılığı olan gerçek mantık bloklarına dönüştürür.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog HDL'e Giriş ve Donanım Modelleme Felsefesi Şeması](/images/verilog/intro-verilog-flash-1.PNG)
-
-![Verilog HDL'e Giriş ve Donanım Modelleme Felsefesi Şeması](/images/verilog/intro-verilog-flash2.PNG)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog'un ne olduğunu ve HDL'lerin donanım tasarım süreçlerini manuel şematik çizimlerden çıkarıp nasıl devrimsel biçimde hızlandırdığını öğreneceksiniz.
+• Verilog'un kapı seviyesindeki karmaşık şematikleri davranışsal ve RTL kodlama ile nasıl soyutladığını göreceksiniz.
+• Portlar, sinyal tipleri ve yordamsal blokları (always, initial) içeren temel Verilog modül mimarisini inceleyeceksiniz.
+• Tasarımların simülasyon ortamında doğrulanmasını sağlayan testbench (test ortamı) mantığını kavrayacaksınız.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Getting Started with Verilog Introduction to Verilog Introduction to Verilog Verilog is a Hardware Description Language (HDL) that allows engineers to describe digital circuit behavior using text-based code instead of drawing gate-level schematics, enabling automated synthesis tools to convert behavioral descriptions into actual hardware implementations used in ASICs and FPGAs. 12 min read | Beginner`,
+        title: "3. Mantık Kapılarından Donanım Tanımlamaya",
+        content: `Flip-flop gibi sıralı (ardışıl) bir sayısal eleman, NAND ve NOR gibi temel kombinasyonel mantık kapılarıyla oluşturulabilir. Bir flip-flop'un istenen işlevi yerine getirmesi, bu kapıların belirli bir topolojide geri beslemeli olarak bağlanmasıyla sağlanır. Geleneksel dijital tasarımda bu bağlantılar, doğruluk tablosundan (truth table) elde edilen Karnaugh haritaları (K-map) ve Boole cebri sadeleştirmeleriyle hesaplanırdı. Doğruluk tablosu, hangi giriş kombinasyonlarının hangi çıkış değerlerini ürettiğini belirler. Örneğin D tipi bir flip-flop devresinde, aktif-düşük sıfırlama (rstn) ve veri (d) girişlerinin durumuna göre çıkış (q) değeri belirlenir; rstn=1 ve d=1 olduğunda saat darbesiyle q çıkışı 1 olur. Donanım dilleri, tasarımcıyı bu kapıları tek tek birbirine bağlama zorunluluğundan kurtarır.`,
       },
       {
-        title: "4. What You'll Learn",
-        content: `What Verilog is and why hardware description languages revolutionized digital design How Verilog abstracts gate-level schematics into behavioral code The basic structure of a Verilog module including ports, signals, and behavioral blocks How testbenches verify hardware designs through simulation`,
+        title: "4. Donanım Şematiği ve Kara Kutu (Black-Box) Soyutlaması",
+        content: `Donanım şematiği (hardware schematic), istenen bir donanım işlevselliğini elde etmek için lojik kapıların ve elemanların elektriksel olarak nasıl bağlanması gerektiğini gösteren ayrıntılı bir devre şemasıdır. Ancak giriş-çıkış transfer fonksiyonunu ve davranışını bildiğimiz bir yapının iç bağlantı detaylarını gizleyerek onu bir 'kara kutu' (black-box) olarak paketleyebiliriz. Verilog tam olarak bunu sağlar: Giriş ve çıkış portlarını tanımlar, devrenin iç mantığını ise ister kapı seviyesinde ister davranışsal kodlarla tanımlayarak modüler ve yeniden kullanılabilir bir yapı sunar.`,
       },
-      {
-        title: "5. From Gates to Hardware Description",
-        content: `A digital element such as a flip-flop can be represented with combinational gates like NAND and NOR. The functionality of a flip-flop is achieved by the connection of a certain set of gates in a particular manner. How the gates have to be connected is usually figured out by solving K-map from the truth table. The truth table is nothing but a table that tells us what inputs combine together to give what values of output. Shown in the image below is an electronic circuit that represents a D-flip flop and the corresponding truth table. The output q becomes 1 only when rstn and d are both having a value of 1.`,
-      },
-      {
-        title: "6. What is a hardware schematic ?",
-        content: `A hardware schematic is a diagram that shows how the combinational gates should be connected to achieve a particular hardware functionality. In this case, it is the set of NAND gates connected like shown towards the left in the image above. However, if we know what values of inputs contribute to make the output have a value of 1, then we can essentially hide the internal details of the connections and encapsulate it into a black-box. This block provides us with certain inputs and outputs that is similar to the hardware schematic made up of combinational gates.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog HDL'e Giriş ve Donanım Modelleme Felsefesi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -156,8 +141,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -177,7 +162,8 @@ module dff ( 	input 		d, 			// Inputs to the design should start with "input"
 	end
 endmodule 							// End of module`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module [design_name] ( [port_list] );
@@ -209,25 +195,27 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 1: Verilog'a Giriş & Temeller. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Hello World: İlk Modül ve Simülasyon Çıktısı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog ile İlk Adım: Hello World Simülasyonu",
+        content: `Yeni bir programlama veya donanım dilini öğrenirken en klasik ve etkili başlangıç her zaman bir 'Hello World' örneğidir. Verilog'da tüm kodlar modüller (module ... endmodule) içerisine yazılır ve her modül belirli bir donanım bloğunu veya simülasyon ortamını temsil eder.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Hello World: İlk Modül ve Simülasyon Çıktısı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+// Tek satırlı yorumlar çift eğik çizgi '//' ile başlar
+// Test ortamı modülü: giriş-çıkış portu olmayan bağımsız tepe modül
+module tb;
+  // initial bloğu simülasyon zamanı 0 anında başlar ve bir kez çalıştırılır
+  initial begin
+    // $display bir Verilog sistem görevidir (system task) ve konsola çıktı basar
+    $display("Hello World !");
+  end
+endmodule
+
+Yukarıdaki örnekte tb adındaki modül, harici giriş-çıkış portu bulundurmadığı için bir tepe simülasyon modülü (top-level testbench) olarak görev yapar. initial bloğu, simülasyon başladığında (zaman 0) tetiklenir. $display ifadesi ise C dilindeki printf benzeri bir sistem görevidir; donanıma sentezlenemez (non-synthesizable), yalnızca simülasyon ortamında tasarımcıya hata ayıklama (debug) ve konsol mesajı sunma amacıyla kullanılır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Getting Started with Verilog Verilog Hello World Verilog Hello World It's always best to get started using a very simple example, and none serves the purpose best other than "Hello World !". // Single line comments start with double forward slash "//" // Verilog code is always written inside modules, and each module represents a digital block with some functionality module tb; // Initial block is another construct typically used to initialize signal nets and variables for simulation initial // Verilog supports displaying signal values to the screen so that designers can debug whats wrong with their circuit // For our purposes, we'll simply display "Hello World" $display ("Hello World !"); endmodule A module called tb with no input-output ports act as the top module for the simulation. The initial block starts and executes the first statement at time 0 units. $display is a Verilog system task used to display a formatted string to the console and cannot be synthesized into hardware. Its primarily used to help with testbench and design debug. In this case, the text message displayed onto the screen is "Hello World !". Output $ /usr/bin/vvp simulation Hello World !  `,
+        title: "2. Sentezlenebilirlik İpucu: Simülasyon ve Donanım Ayrımı",
+        content: `Donanım tasarımında en kritik prensiplerden biri, simülasyona özgü yapılar ile sentezlenebilir (synthesizable) RTL yapıları arasındaki ayrımdır. $display, $monitor, $finish gibi sistem görevleri ve initial blokları (genel ASIC tasarımında) doğrudan mantık kapılarına dönüştürülemez; bunlar yalnızca testbench ortamında devrenin çalışmasını doğrulamak için kullanılır. Gerçek bir silikon çipte veya FPGA lojik hücrelerinde hayat bulacak devreler için always, assign ve uygun donanım veri tipleri (wire, reg) kullanılmalıdır.`,
       },
-      {
-        title: "3. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "3. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Hello World: İlk Modül ve Simülasyon Çıktısı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -248,7 +236,8 @@ module tb;
 		$display ("Hello World !");
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Single line comments start with double forward slash "//"
@@ -279,43 +268,26 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 1: Verilog'a Giriş & Temeller. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. ASIC & SoC Çip Tasarım Akışı (Design Flow)",
+        content: `ASIC (Uygulamaya Özel Entegre Devre) ve SoC (Sistem Çipi) tasarım akışı; bir çip fikrinin ilk sistem gereksinimlerinden başlayarak mimari modelleme, RTL kodlama, işlevsel doğrulama (verification), mantıksal sentez (logic synthesis), fiziksel yerleşim (physical design / layout), zamanlama analizi ve üretim sonrası doğrulamaya (post-silicon validation) kadar uzanan sistematik mühendislik metodolojisidir. Yarı iletken endüstrisinde akıllı telefonlardan süper bilgisayarlara kadar tüm özel silikon çipler bu çok aşamalı akış takip edilerek üretilir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona) Şeması](/images/verilog/design_flow.png)
-
-![ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona) Şeması](/images/verilog/soc_architecture_diagram.svg)
-
-![ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona) Şeması](/images/verilog/uvm_scoreboard.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Müşteri gereksinimlerinden çipin fabrikadan çıkıp test edilmesine kadar uzanan uçtan uca ASIC tasarım akışını öğreneceksiniz.
+• RTL tasarımı, işlevsel doğrulama ve mantıksal sentezin Verilog kodlarını fiziksel silikon transistörlerine nasıl dönüştürdüğünü kavrayacaksınız.
+• Çip geliştirme sürecinde mimari, RTL tasarım, doğrulama (DV), DFT ve fiziksel tasarım (PD) mühendislik ekiplerinin rollerini anlayacaksınız.
+• NVIDIA, Apple, Intel ve Qualcomm gibi küresel yarı iletken devlerinin modern işlemcileri geliştirirken uyguladığı endüstri standardı pratikleri inceleyeceksiniz.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Getting Started with Verilog ASIC Design Flow ASIC Design Flow ASIC design flow is the systematic methodology for transforming a chip concept from initial requirements through architecture, RTL design, verification, synthesis, physical implementation, and validation--a multi-stage process used by semiconductor companies to develop custom integrated circuits for applications ranging from smartphones to data centers. 15 min read | Beginner to Intermediate`,
+        title: "3. VLSI Nedir? (Çok Geniş Ölçekli Tümleşim)",
+        content: `VLSI (Very Large Scale Integration - Çok Geniş Ölçekli Tümleşim), milyonlarca veya milyarlarca transistörün tek bir silikon yarı iletken pul (die) üzerinde birleştirilerek entegre devreler (IC) oluşturulmasını sağlayan üretim ve tasarım teknolojisidir. VLSI; modern mikroişlemcilerin, grafik kartlarının, bellek çiplerinin ve yapay zeka hızlandırıcılarının küçük boyutlarda, yüksek hızlarda ve düşük maliyetle üretilebilmesini sağlamıştır. Güncel VLSI süreçleri nanometre altı ölçeklerde çalışmaktadır. TSMC, Samsung ve Intel gibi yarı iletken dökümhaneleri (foundries), 5nm, 3nm ve 2nm sınıfı ileri üretim düğümlerinde tek bir çip üzerinde onlarca milyar transistörü bir araya getirerek rekor düzeyde enerji verimliliği ve hesaplama performansı sunmaktadır.`,
       },
       {
-        title: "4. What You'll Learn",
-        content: `The complete ASIC design flow from requirements gathering through post-silicon validation How RTL design, verification, and synthesis transform HDL code into physical chips The roles of different engineering teams (architects, designers, verification, physical design) in chip development Industry practices used by companies like Intel, NVIDIA, and Qualcomm to develop modern processors`,
+        title: "4. Gerçek Dünya Örneği: İleri Düğüm Entegrasyonu",
+        content: `Apple M3 veya NVIDIA Blackwell mimarileri gibi gelişmiş işlemciler, TSMC'nin 3nm/4nm teknolojisiyle tek bir silikon kalıp üzerinde 25 milyardan 200 milyara kadar transistör barındırmaktadır. Bu yongalar; CPU çekirdekleri, çok çekirdekli GPU blokları, derin öğrenme hızlandırıcıları (NPU/Neural Engine), PCIe/DDR bellek kontrolcüleri ve yüksek hızlı I/O arayüzlerini tek bir SoC üzerinde birleştirmektedir. Milyarlarca transistörün kusursuz çalışması, ancak disiplinli bir RTL tasarımı ve katı doğrulama akışları sayesinde mümkündür.`,
       },
-      {
-        title: "5. What is VLSI?",
-        content: `VLSI stands for Very Large Scale Integration, a technology used to create integrated circuits (ICs) by combining millions or billions of transistors into a single chip. VLSI technology revolutionized electronics by enabling compact, powerful, and cost-effective microprocessors, memory chips, digital signal processors, and advanced electronic devices. Modern VLSI processes operate at nanometer-scale nodes. As of 2024, leading-edge processes have reached 3nm technology nodes, with feature sizes enabling the integration of tens of billions of transistors on a single chip. Companies like TSMC, Samsung, and Intel manufacture processors using 5nm, 3nm, and emerging 2nm process nodes, delivering unprecedented performance and power efficiency.`,
-      },
-      {
-        title: "6. Real-World Application",
-        content: `Apple M3 Processor: Apple's M3 processor, manufactured on TSMC's 3nm process, integrates over 25 billion transistors on a single die. This includes CPU cores, GPU cores, neural engine, memory controllers, and I/O interfaces--demonstrating the massive integration density enabled by modern VLSI technology.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **ASIC ve SoC Çip Tasarım Akışı (Fikirden Silikona)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -353,8 +325,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -372,7 +344,8 @@ ff_lt u_ff_lt_122 (
  .q (_net_76) // Flip-flop output
 );`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module ram_single_port
@@ -419,43 +392,31 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 1: Verilog'a Giriş & Temeller. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Donanım Tasarımında Soyutlama Seviyeleri (Abstraction Layers)",
+        content: `Milyarlarca transistörden oluşan karmaşık bir dijital çipi doğrudan transistör veya fiziksel yerleşim seviyesinde tasarlamak insan zihni ve mühendislik araçları için imkansızdır. Bu karmaşıklığı yönetebilmek için donanım tasarımı hiyerarşik soyutlama seviyelerine (abstraction layers) bölünür. Bu bölümde sistem mimarisinden fiziksel maskeye kadar uzanan tasarım düzeyleri ele alınmaktadır.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı) Şeması](/images/verilog/if_else_if_schematic.png)
-
-![Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı) Şeması](/images/verilog/4x2_encoder_truth_table.png)
-
-![Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı) Şeması](/images/verilog/dal_transistor_view.svg)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Sayısal tasarımın beş temel soyutlama katmanını (Sistem/Mimari, RTL, Kapı/Şematik, Transistör ve Fiziksel Yerleşim) öğreneceksiniz.
+• Yukarıdan-aşağıya (top-down) ve aşağıdan-yukarıya (bottom-up) tasarım metodolojileri arasındaki farkları kavrayacaksınız.
+• Karmaşık bir çip tasarımında mimari gereksinimleri RTL kodlarına bölme stratejilerini öğreneceksiniz.
+• Hangi donanım mühendisliği görevi için hangi soyutlama seviyesinin en uygun olduğunu ayırt edebileceksiniz.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Getting Started with Verilog Design Abstraction Layers Design Abstraction Layers 5 min read | Beginner`,
+        title: "3. Endüstriyel İş Bölümü ve Ekipler Arası Entegrasyon",
+        content: `Modern SoC (System-on-Chip) projelerinde yüzlerce mühendis aynı anda farklı soyutlama katmanlarında çalışır. Sistem mimarları C++/Python ile performans modelleri geliştirip spesifikasyonları belirler; RTL tasarım mühendisleri Verilog/SystemVerilog ile mantıksal mimariyi yazar; mantıksal doğrulama (DV) mühendisleri UVM ile işlevselliği test eder; sentez mühendisleri RTL kodunu standart hücre kütüphanelerine (gate-level netlist) eşler; fiziksel tasarım (PD) ekipleri ise saat ağacı sentezi (CTS), yerleşim ve yönlendirme (place & route) yaparak silikon maskelerini hazırlar. Bu soyutlama disiplini, milyarlarca transistörün hatasız üretilmesini mümkün kılan temel unsurdur.`,
       },
       {
-        title: "4. What You'll Learn",
-        content: `Understand the five abstraction layers in digital design: architecture, RTL, schematic, transistor, and physical Recognize the differences between top-down and bottom-up design methodologies Apply abstraction concepts to organize complex chip designs Identify which abstraction level is appropriate for different design tasks Before we look at more details of the Verilog language, it would be good to understand the different layers of abstraction in chip design. Design abstraction enables engineers to manage complexity by working at different levels of detail.`,
+        title: "4. Tasarım Soyutlama Katmanlarının Detayları",
+        content: `Tasarım soyutlama katmanları, bir donanım sisteminin tanımlanabileceği farklı ayrıntı düzeylerini ifade eder. Bu katmanlar, tasarımcıların alt düzey silikon veya fiziksel detaylarda boğulmadan doğrudan sistem fonksiyonelliğine ve mimariye odaklanmasını sağlar:
+1. Sistem Seviyesi (System / Architectural Level): İşlemci komut seti (ISA), veri yolu protokolleri ve bellek mimarisinin tanımlandığı en üst seviye.
+2. RTL Seviyesi (Register Transfer Level): Verilerin saat darbeleriyle yazmaçlar (registers) arasında nasıl aktarıldığını ve kombinasyonel lojikle nasıl işlendiğini Verilog ile tanımlayan ana seviye.
+3. Kapı Seviyesi (Gate Level): AND, OR, XOR gibi mantık kapılarından ve flip-flop'lardan oluşan netlist seviyesi.
+4. Devre / Transistör Seviyesi (Switch / Transistor Level): NMOS ve PMOS transistör modellerinin elektriksel seviyede ele alındığı katman.
+5. Fiziksel Seviye (Physical / Layout Level): Çipin silikon üzerindeki difüzyon, polikristal ve metal katmanlarının geometrik çizimleri (GDSII/OASIS).`,
       },
-      {
-        title: "5. Real-World Application",
-        content: `In modern SoC design, different teams work at different abstraction layers simultaneously. Architecture teams define system-level specifications, RTL designers write Verilog code, synthesis engineers optimize gate-level netlists, and physical design teams create layouts--all working on the same chip but at different abstraction levels. This division of labor enables teams of hundreds of engineers to collaborate on billion-transistor designs.`,
-      },
-      {
-        title: "6. Design Abstraction",
-        content: `Design abstraction layers refer to the different levels of detail at which a hardware system can be described. These layers facilitate the design process by allowing designers to focus on specific aspects of the system without getting bogged down by lower-level details.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Donanım Tasarımında Soyutlama Seviyeleri (Davranışsal, RTL, Kapı)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -483,8 +444,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -494,7 +455,8 @@ and a1 (n1, a, b);
 and a2 (n2, c, d);
 or  o1 (out, n1, n2);`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module alu_32b (a, b, operation, result);
@@ -531,41 +493,22 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 2: Geliştirme Araçları & Simülatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Simülasyon ve Mantıksal Sentez Araçları** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Geliştirme Ortamı: Simülasyon ve Sentez Araçları",
+        content: `Sayısal tasarım öğrenirken, yazdığınız Verilog kodlarını hayata geçiren EDA (Electronic Design Automation) yazılım araçlarını tanımak, dilin sözdizimini öğrenmek kadar kritiktir. İlk testbench'inizi yazıp dalga formlarını (waveforms) incelemekten, karmaşık tasarımları gerçek FPGA veya ASIC donanımlarında sentezlemeye kadar ihtiyaç duyacağınız tüm temel araç zinciri bu bölümde ele alınmaktadır.`,
+      },
+      {
+        title: "2. Tasarım Akışında EDA Araçlarının Rolü",
+        content: `Verilog ile kod yazdığınızda aslında bir yazılım değil, dijital donanımın mimari bir tarifini oluşturursunuz. Ancak bu donanım tarifinin beklendiği gibi çalıştığını doğrulamak ve silikon üzerinde fiziksel kapılara dönüştürmek için özelleşmiş EDA araçlarına ihtiyaç duyulur. Bu araçları, kodunuzu doğrulayan (simülatörler) ve onu çalışan fiziksel devrelere çeviren (sentezleyiciler) yüksek teknolojili derleyiciler ve dönüştürücüler olarak düşünebilirsiniz.`,
+      },
+      {
+        title: "3. Sayısal Simülatörler (Logic Simulators)",
+        content: `Simülasyon, bir donanım mühendisinin geliştirme sürecinde en çok vakit geçirdiği alandır. Devrenizi pahalı silikon üretimine göndermeden veya FPGA'e programlamadan önce sanal bir laboratuvar ortamında mantıksal ve zamanlamasal olarak test etmenizi sağlar. Endüstride Synopsys VCS, Cadence Xcelium ve Siemens Questa/ModelSim gibi ticari simülatörlerin yanı sıra açık kaynaklı Icarus Verilog (iverilog) ve Verilator araçları yaygın olarak kullanılır. Simülasyon sonuçları genellikle VCD veya FSDB formatında dalga formu dosyalarına kaydedilir ve GTKWave gibi dalga formu görüntüleyicilerinde incelenir.`,
+      },
+      {
+        title: "4. Çevrim İçi ve Bulut Tabanlı Simülasyon Ortamları",
+        content: `Modern öğrenme süreçlerinde EDA araçlarının karmaşık kurulumlarıyla uğraşmadan tarayıcı üzerinden Verilog/SystemVerilog kodu yazmayı, simüle etmeyi ve dalga formlarını analiz etmeyi sağlayan bulut tabanlı geliştirme ortamları (IDE) mevcuttur. Bu platformlar sayesinde mühendisler ve öğrenciler, hızlı prototipleme yapabilir, testbench çalıştırabilir ve donanım mantığını anında interaktif olarak doğrulayabilir.`,
+      }
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Simülasyon ve Mantıksal Sentez Araçları** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Simülasyon ve Mantıksal Sentez Araçları Şeması](/images/verilog/cv-lab-sim.png)
-
-![Verilog Simülasyon ve Mantıksal Sentez Araçları Şeması](/images/verilog/edaplayground.png)
-
-![Verilog Simülasyon ve Mantıksal Sentez Araçları Şeması](/images/verilog/cv-lab-synth.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
-      },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Tools & Environment Simulation & Synthesis Tools Simulation & Synthesis Tools As a student learning digital design, understanding the tools that bring your Verilog code to life is just as important as mastering the language itself. This guide will walk you through the essential tools you'll encounter in your digital design journey, from writing your first testbench to implementing complex designs on actual hardware.`,
-      },
-      {
-        title: "4. Getting Started",
-        content: `When you write Verilog code, you're creating a description of digital hardware. But to verify that your design works correctly and eventually implement it on real chips, you need specialized tools. Think of these tools as translators and validators that transform your code into working digital circuits.`,
-      },
-      {
-        title: "5. Simulation Tools",
-        content: `Simulation is where you'll spend most of your time as a student. It's like having a virtual laboratory where you can test the functionality of your digital circuits before converting them into hardware.`,
-      },
-      {
-        title: "6. ChipVerify Lab",
-        content: `ChipVerify Lab is a web-based integrated development environment (IDE) that allows users to write, simulate, and verify Verilog/SystemVerilog code directly in their browser without any installation. It is a cloud-based platform designed for engineers to practice digital design, and analyze waveforms, making it a comprehensive tool for learning and testing.`,
-      },
     ],
     playground: {
       initialCode: `// Verilog Simülasyon ve Mantıksal Sentez Araçları
@@ -594,41 +537,41 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 3: Temel Sözdizimi & Modül Yapısı. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Sözdizimi, Tanımlayıcılar ve Kod Standartları** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Temel Sözdizimi ve Yapısal Kurallar",
+        content: `Verilog sözdizimi (syntax); donanım tanımlama kodlarının yazımında uyulması gereken leksikal kuralları, belirteç (token) yapısını ve yapısal standartları belirler. Sayı formatları, tanımlayıcılar (identifiers), anahtar kelimeler (keywords) ve operatörler gibi temel kuralları doğru kavramak; hem simülasyonda beklenen sonucu veren hem de sentez araçları tarafından hatasız donanıma dönüştürülen temiz RTL tasarımları yazmanın temel şartıdır.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Tek ve çok satırlı yorum standartlarını ve Verilog'da boşluk (whitespace) kurallarını öğreneceksiniz.
+• Sayı sabitlerini farklı tabanlarda (ikili/binary, onaltılı/hex, sekizli/octal, onlu/decimal) bit genişliği belirterek doğru tanımlamayı kavrayacaksınız.
+• Tanımlayıcı (identifier) isimlendirme kurallarını ve rezerve anahtar kelimelerden (reserved keywords) kaçınma yollarını öğreneceksiniz.
+• İfadeler içerisinde birli (unary), ikili (binary) ve üçlü (ternary / koşullu) operatörleri doğru kullanmayı öğreneceksiniz.`,
+      },
+      {
+        title: "3. Leksikal Kurallar ve Büyük/Küçük Harf Duyarlılığı",
+        content: `Verilog'un leksikal kuralları büyük ölçüde C programlama diline benzer; kaynak kod bir belirteç (token) dizisi olarak işlenir. Bu belirteçler yorumlar, anahtar sözcükler, sayılar, dizgiler veya boşluk karakterleri olabilir. Verilog'da her ifade ve bildirim noktalı virgül (;) ile sonlandırılmalıdır.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Sözdizimi, Tanımlayıcılar ve Kod Standartları** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Önemli Kural: Verilog büyük/küçük harfe duyarlıdır (case-sensitive). Örneğin data_out ile DATA_OUT veya var_a ile var_A birbirinden tamamen farklı iki sinyal olarak değerlendirilir. Harf uyumsuzlukları, simülasyon ve sentez aşamalarında en sık karşılaşılan tanımsız sinyal hatalarının başında gelir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Sözdizimi, Tanımlayıcılar ve Kod Standartları Şeması](/images/verilog/verilog_keywords_2.png)
+        title: "4. Yorum Satırları (Comments) ve Kullanım Pratikleri",
+        content: `Verilog'da açıklama satırları iki farklı şekilde yazılır:
+1. Tek satırlık yorumlar: // ile başlar ve satır sonuna kadar derleyici tarafından yok sayılır.
+2. Çok satırlık blok yorumlar: /* ile başlar ve */ ile biter. Çok satırlı blok yorumlar iç içe yerleştirilemez (nested comments geçersizdir); çünkü ilk karşılaşılan */ işareti tüm blok yorumu kapatır ve sözdizimi hatasına yol açar. Ancak blok yorumların içinde // tek satır yorumları yer alabilir.
 
-![Verilog Sözdizimi, Tanımlayıcılar ve Kod Standartları Şeması](/images/verilog/verilog_keywords.png)
+// Tek satırlık açıklama
+integer a; // Bu noktadan satır sonuna kadar olan kısım derleyici tarafından yok sayılır
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+/*
+  Çok satırlı blok açıklama:
+  Burası büyük kod bloklarını geçici olarak devre dışı bırakmak veya
+  ayrıntılı modül dokümantasyonu yazmak için idealdir.
+*/
+
+Pratik İpucu: Hızlı açıklamalar için //, hata ayıklama sırasında geniş kod parçalarını geçici olarak kapatmak için /* ... */ kullanılması tavsiye edilir.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Basic Syntax & Structure Verilog Syntax Verilog Syntax Verilog syntax defines the lexical conventions and structural rules for writing hardware description code. Understanding these fundamental elements--from operators and number formats to identifiers and keywords--is essential for writing correct, readable RTL designs that synthesize properly. 10 min read | Beginner`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Use proper commenting styles and understand whitespace handling in Verilog Specify numbers in different bases (binary, hex, octal) with correct sizing Follow identifier naming rules and avoid reserved keywords Apply unary, binary, and ternary operators correctly in expressions`,
-      },
-      {
-        title: "5. Lexical Conventions",
-        content: `Lexical conventions in Verilog are similar to C in the sense that it contains a stream of tokens. A lexical token may consist of one or more characters and tokens can be comments, keywords, numbers, strings or white space. All lines should be terminated by a semi-colon ; . Verilog is case-sensitive , so var_a and var_A are different identifiers. This is a common source of bugs when referencing signals.`,
-      },
-      {
-        title: "6. Comments",
-        content: `There are two ways to write comments in Verilog: A single line comment starts with // and tells Verilog compiler to treat everything after this point to the end of the line as a comment. A multiple-line comment starts with /* and ends with */ and cannot be nested. However, single line comments can be nested in a multiple line comment. // This is a single line comment // Creates an int variable called a integer a; // Everything to the right of // is ignored by compiler /* This is a multiple-line or block comment All of this text is ignored by the compiler */ /* This is /* an invalid nested block comment */ // ERROR: The first */ closes the comment */ // This becomes a syntax error /* However, // single-line comments inside block comments are okay // because // doesn't end the block comment */ // This is also okay ///////////// Still a valid comment - multiple // in a row Use single-line comments ( // ) for brief explanations and block comments ( /* */ ) for disabling large sections of code during debugging.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Sözdizimi, Tanımlayıcılar ve Kod Standartları** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -664,8 +607,8 @@ block comment */ // ERROR: The first */ closes the comment
 ///////////// Still a valid comment - multiple // in a row`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -678,7 +621,8 @@ block comment */ // ERROR: The first */ closes the comment
  wire b; // Same as: wire b;
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// This is a single line comment
@@ -723,43 +667,62 @@ block comment */ // ERROR: The first */ closes the comment
     subtitle: "ChipVerify Verilog Tutorial Bölüm 3: Temel Sözdizimi & Modül Yapısı. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Modül Mimarisi (module ... endmodule)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Modül Yapısı (Modules)",
+        content: `Modül (module), Verilog'da belirli bir donanım işlevini yerine getiren temel yapı taşıdır. Sayısal devre tasarımının en temel yapı birimi olan modüller; diğer modüllerin içine hiyerarşik olarak yerleştirilebilir (instantiation) ve üst seviyedeki bir modül, alt seviyedeki modüllerle giriş ve çıkış portları (ports) üzerinden haberleşir. Bu yapı modüler, yeniden kullanılabilir ve ölçeklenebilir bir donanım mimarisi kurmayı sağlar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog modül sözdizimini, port tanımlama standartlarını ve modül çağırma (instantiation) tekniklerini öğreneceksiniz.
+• Alt modülleri bir araya getirerek hiyerarşik ve karmaşık sayısal sistemler inşa etmeyi kavrayacaksınız.
+• Tasarım (RTL) modülleri ile portsuz tepe simülasyon modülleri (testbench) arasındaki farkı anlayacaksınız.
+• Modül sınırları ötesindeki dahili sinyallere simülasyonda erişmek için hiyerarşik isimlendirme kurallarını kullanmayı öğreneceksiniz.`,
+      },
+      {
+        title: "3. Modül Sözdizimi ve Yapısal Özellikler",
+        content: `Her modül module anahtar kelimesi ile başlar ve endmodule ile biter. Modül ismi anahtar kelimeden hemen sonra belirtilir ve ardından opsiyonel port listesi parantez içinde tanımlanır:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Modül Mimarisi (module ... endmodule)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Modül Mimarisi (module ... endmodule) Şeması](/images/verilog/dff_module.png)
+// Temel ANSI stili modül sözdizimi
+module modul_adi (
+  input  wire clk,
+  input  wire rst_n,
+  input  wire data_in,
+  output reg  data_out
+);
+  // Dahili sinyal bildirimleri (wire, reg, integer vb.)
+  // Veri akışı ifadeleri (assign)
+  // Yordamsal bloklar (always, initial)
+  // Alt modül çağrıları (instantiations)
+endmodule
 
-![Verilog Modül Mimarisi (module ... endmodule) Şeması](/images/verilog/dff_sync_reset_schematic.png)
+Temel Kurallar ve Özellikler:
+• Kapsam (Scope): Tüm yürütülebilir donanım tanımları module ... endmodule blokları arasında yer almalıdır. Dışarıda kod bulunamaz.
+• Birden Fazla Modül: Tek bir kaynak dosyasında birden fazla modül yer alabilir ve herhangi bir sırada tanımlanabilir; simülatör ve sentezleyiciler bağımlılıkları isim üzerinden çözer.
+• Port Listesi: Testbench modüllerinde port listesi boş bırakılabilir (module tb; ... endmodule).
+• Yeniden Kullanılabilirlik (Reusability): Bir modül tasarlandıktan sonra aynı veya farklı projelerde benzersiz örnek isimleriyle (instance name) defalarca çağrılabilir.`,
+      },
+      {
+        title: "4. Örnek: D Tipi Flip-Flop (DFF) Modülü",
+        content: `Aşağıdaki örnekte üç giriş (d, clk, rstn) ve bir çıkış (q) portuna sahip senkron sıfırlamalı bir D Flip-Flop (DFF) modülü tanımlanmıştır. rstn pini aktif-düşük (active-low) sıfırlama görevi görür; saat sinyalinin yükselen kenarında (posedge clk) rstn sıfır ise çıkış 0 yapılır, aksi takdirde d girişi çıkışa (q) aktarılır:
 
-![Verilog Modül Mimarisi (module ... endmodule) Şeması](/images/verilog/dff_shift_reg_schematic.png)
+module dff (
+  input      d,     // Veri girişi
+  input      clk,   // Saat sinyali
+  input      rstn,  // Aktif-düşük senkron reset
+  output reg q      // Saklayıcı çıkışı (prosedürel blokta sürüldüğü için reg)
+);
+  // Sıralı (ardışıl) mantık bloğu: Her pozitif saat darbesinde tetiklenir
+  always @ (posedge clk) begin
+    if (!rstn)
+      q <= 1'b0; // Non-blocking atama: çıkış sıfırlanır
+    else
+      q <= d;    // Non-blocking atama: veri çıkışa aktarılır
+  end
+endmodule
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Burada sıralı lojik tasarlandığı için atamalarda mutlaka bloklamayan (<= / non-blocking) atama operatörü kullanılmıştır.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Basic Syntax & Structure Verilog Module Verilog Module A module is a block of Verilog code that implements a certain functionality. Modules can be embedded within other modules and a higher level module can communicate with its lower level modules using their input and output ports. They are the fundamental building blocks of digital hardware design, enabling modular, reusable, and hierarchical design methodologies.`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Understand Verilog module syntax, port declarations, and instantiation techniques Build hierarchical designs by nesting modules to create complex systems Differentiate between top-level and sub-modules in design and testbench contexts Use hierarchical naming conventions to access signals across module boundaries`,
-      },
-      {
-        title: "5. Syntax",
-        content: `A module should be enclosed within module and endmodule keywords. Name of the module should be given right after the module keyword and an optional list of ports may be declared as well. Note that ports declared in the list of port declarations cannot be redeclared within the body of the module. // Basic module syntax with port list module <name> ([port_list]); // Variable declarations (wires, regs, integers, etc.) // Dataflow statements (assign, always, initial blocks) // Function and task definitions // Sub-module instantiations endmodule // A module can have an empty portlist (typically for testbenches) module testbench_top; // Testbench logic without external ports endmodule All variable declarations, dataflow statements, functions or tasks and lower module instances if any, must be defined within the module and endmodule keywords. There can be multiple modules with different names in the same file and can be defined in any order. Aspect Module Characteristics Notes Scope All code must be within module...endmodule No executable code allowed outside modules Multiple Modules One file can contain multiple modules Defined in any order; simulator resolves dependencies Port List Optional (can be empty for testbenches) Declared ports cannot be redeclared in module body Reusability Same module can be instantiated multiple times Each instance has unique identifier Hierarchy Modules can contain sub-module instances Forms tree structure with top-level root`,
-      },
-      {
-        title: "6. Example",
-        content: `The module dff represents a D flip flop which has three input ports d , clk , rstn and one output port q . Contents of the module describe how a D flip flop should behave for different combinations of inputs. Here, input d is always assigned to output q at positive edge of clock if rstn is high because it is an active low reset. // Module called "dff" has 3 inputs and 1 output port module dff ( input d, // Data input input clk, // Clock signal input rstn, // Active-low synchronous reset output reg q); // Registered output (must be 'reg' for sequential logic) // Sequential logic block: executes on every positive clock edge always @ (posedge clk) begin if (!rstn) // Reset condition (active-low: rstn=0 triggers reset) q <= 0; // Non-blocking assignment: reset output to 0 else q <= d; // Non-blocking assignment: capture input data end endmodule `,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Modül Mimarisi (module ... endmodule)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -783,8 +746,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -804,7 +767,8 @@ module dff (  input 			d,       // Data input
 	end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Basic module syntax with port list
@@ -837,39 +801,45 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 3: Temel Sözdizimi & Modül Yapısı. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Port Bildirimleri (input, output, inout)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Port Yapısı ve Giriş-Çıkış Arayüzleri",
+        content: `Portlar, bir modülün dış dünyayla ve diğer modüllerle haberleşmesini sağlayan giriş, çıkış ve iki yönlü sinyal terminalleridir. Bir modülü baskılı devre kartı (PCB) üzerine yerleştirilmiş fiziksel bir entegre devre gibi düşündüğünüzde; çipin iç mantığıyla iletişim kurmanın tek yolu onun harici bacaklarıdır (pins). Verilog'daki portlar tam olarak bu fiziksel pinlere karşılık gelir ve modülün sinyal alıp göndermesini sağlar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Üç temel port yönünü (input, output, inout) ve her birinin donanımdaki karşılığını öğreneceksiniz.
+• Geleneksel Verilog-1995 tarzı ile modern ANSI-C (Verilog-2001) port bildirim sözdizimini kavrayacaksınız.
+• Aritmetik işlemlerde taşma ve işaret hatalarını önlemek için işaretli (signed) ve işaretsiz port tanımlarını öğreneceksiniz.
+• Port tanımlarında sık yapılan geçersiz yeniden bildirim (illegal redeclaration) ve sürücü çakışması hatalarını önlemeyi öğreneceksiniz.`,
+      },
+      {
+        title: "3. Port Türleri ve Yön Bildirimleri",
+        content: `Verilog, modüller arası haberleşme için üç temel port yönü sunar:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Port Bildirimleri (input, output, inout)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Port Bildirimleri (input, output, inout) Şeması](/images/verilog/verilog-ports.png)
+1. input (Giriş Portu): Modül dışından sadece veri alır, modül içinden sürülemez. Saat sinyalleri, sıfırlama (reset), kontrol sinyalleri ve giriş verileri için kullanılır.
+2. output (Çıkış Portu): Modül içinde üretilen sonuçları dış dünyaya aktarır. Durum bayrakları, hesaplanan veri yolları ve kontrol çıkışları için kullanılır.
+3. inout (İki Yönlü Port - Bidirectional): Hem veri alabilir hem de veri gönderebilir. Tristate (üç durumlu) tamponlar aracılığıyla çift yönlü veri hatları (örneğin I2C SDA hattı, bellek veri yolları) için kullanılır.
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Varsayılan Veri Tipi Kuralı: Portlar varsayılan olarak wire tipindedir. Eğer bir çıkış portu modül içindeki bir yordamsal bloktan (always veya initial) doğrudan sürülecekse, açıkça output reg olarak bildirilmelidir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Basic Syntax & Structure Verilog Ports Verilog Ports Ports are a set of signals that act as inputs and outputs to a particular module and are the primary way of communicating with it. Think of a module as a fabricated chip placed on a PCB and it becomes quite obvious that the only way to communicate with the chip is through its pins. Ports are like pins and are used by the design to send and receive signals from the outside world. 7 min read | Beginner`,
+        title: "4. Port Bildirim Sözdizimi",
+        content: `Portlar; yönü, veri tipi, işaret durumu ve bit genişliği belirtilerek tanımlanır:
+
+// ANSI Verilog-2001 Stili (Modern ve Önerilen):
+module ornek_modul (
+  input  wire       clk,        // 1-bit saat girişi (wire)
+  input  wire [7:0] data_in,    // 8-bit veri girişi
+  inout  wire [7:0] data_bus,   // 8-bit iki yönlü veri yolu
+  output wire       ready,      // wire tipi kombinasyonel çıkış
+  output reg  [7:0] data_out    // always bloğunda sürülen reg tipi çıkış
+);
+  // Modül gövdesi
+endmodule
+
+Not: Modern tasarımlarda sinyalin yönünü, tipini ve bit aralığını tek satırda belirten ANSI-C stili bildirim, kod karmaşasını ve hata riskini ortadan kaldırdığı için endüstri standardıdır.`,
       },
-      {
-        title: "4. What You'll Learn",
-        content: `Understand the three port types (input, output, inout) and when to use each Master port declaration syntax from Verilog 1995 and ANSI-C 2001 styles Apply signed and unsigned port attributes correctly to avoid arithmetic bugs Recognize common port declaration pitfalls and illegal redeclaration patterns`,
-      },
-      {
-        title: "5. Types of Ports",
-        content: `Verilog provides three fundamental port types for module communication: Port Type Description Use Cases input The design module can only receive values from outside using its input ports Clock signals, data inputs, control signals, reset output The design module can only send values to the outside using its output ports Computed results, status flags, data outputs inout The design module can either send or receive values using its inout ports (bidirectional) Memory data buses, I2C/SPI data lines, tri-state buses Default Port Type: Ports are by default considered as nets of type wire . If you need an output port to be driven by a register (from an always block), you must explicitly declare it as output reg .`,
-      },
-      {
-        title: "6. Syntax",
-        content: `Ports can be declared with various attributes specifying their direction, data type, and bit width: input [net_type] [range] list_of_names; // Input port inout [net_type] [range] list_of_names; // Input & Output port (bidirectional) output [net_type] [range] list_of_names; // Output port driven by a wire output [var_type] [range] list_of_names; // Output port driven by a variable (reg)`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Port Bildirimleri (input, output, inout)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -885,8 +855,8 @@ output [net_type] [range] list_of_names;    // Output port driven by a wire
 output [var_type] [range] list_of_names;    // Output port driven by a variable (reg)`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -903,7 +873,8 @@ output [var_type] [range] list_of_names;    // Output port driven by a variable 
 
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `input  [net_type] [range] list_of_names;    // Input port
@@ -928,41 +899,38 @@ output [var_type] [range] list_of_names;    // Output port driven by a variable 
     subtitle: "ChipVerify Verilog Tutorial Bölüm 3: Temel Sözdizimi & Modül Yapısı. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Modül Örnekleme ve Hiyerarşik Donanım Tasarımı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Hiyerarşik Tasarım ve Modül Çağırma (Instantiation)",
+        content: `Karmaşık sayısal sistemler, daha küçük ve doğrulanmış alt modüllerin hiyerarşik bir ağaç yapısında bir araya getirilmesiyle inşa edilir. Bir modülün başka bir modül içerisinde çağrılıp donanım kopyasının oluşturulmasına modül örnekleme (instantiation) adı verilir. Üst modülün içindeki sinyaller, alt modülün portlarına iki yöntemle bağlanabilir: Sıralı liste yöntemi (by position / ordered list) veya isme göre bağlantı yöntemi (by name).`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Modül çağırma (instantiation) mantığını ve hiyerarşik donanım tasarımındaki kritik rolünü öğreneceksiniz.
+• İsimle port bağlama (.port(sinyal)) ile sırayla port bağlama yöntemlerini ve aralarındaki farkları kavrayacaksınız.
+• Gerçek projelerde modül örnekleme pratiklerini ve kod örneklerini inceleyeceksiniz.
+• Port eşleşmelerinde yapılan yaygın hataları ve endüstri standardı en iyi uygulamaları öğreneceksiniz.`,
+      },
+      {
+        title: "3. Modül Örnekleme Sözdizimi ve Yöntemleri",
+        content: `Bir modülü çağırmak için önce modülün tipi, ardından o örneğe verilecek benzersiz isim (instance name) ve port bağlantıları yazılır:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Modül Örnekleme ve Hiyerarşik Donanım Tasarımı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Modül Örnekleme ve Hiyerarşik Donanım Tasarımı Şeması](/images/verilog/shift_reg_floating_ports_schematic.png)
+// 1. İsme Göre Bağlantı (Bağlantı İsimle - Şiddetle Tavsiye Edilen Yöntem):
+modul_adi u_ornek_adi (
+  .port1 (baglanacak_sinyal1),
+  .port2 (baglanacak_sinyal2),
+  .cikis (baglanacak_cikis)
+);
 
-![Modül Örnekleme ve Hiyerarşik Donanım Tasarımı Şeması](/images/verilog/unconnected_port.png)
+// 2. Sıralı Liste ile Bağlantı (Pozisyonel - Hata Riskine Açık):
+modul_adi u_ornek_adi (baglanacak_sinyal1, baglanacak_sinyal2, baglanacak_cikis);
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Endüstriyel Tasarım Kuralı: Gerçek projelerde her zaman isme göre bağlantı (.port_name(signal_name)) tercih edilmelidir. Sıralı bağlantıda alt modüldeki portların sırası değiştiğinde sinyaller yanlış eşleşebilir ve bu durum simülasyonda veya silikonda tespit edilmesi son derece güç donanım felaketlerine yol açabilir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Basic Syntax & Structure Verilog Module Instantiations Verilog Module Instantiations As we saw in a previous article , bigger and complex designs are built by integrating multiple modules in a hierarchical manner. Modules can be instantiated within other modules and ports of these instances can be connected with other signals inside the parent module. These port connections can be done via an ordered list or by name.`,
+        title: "4. Sıralı Liste Yöntemi ve Riskleri",
+        content: `Sıralı liste (ordered list) yönteminde, üst modüldeki sinyaller alt modülün tanımlandığı orijinal port sırasına göre virgülle ayrılarak yazılır. Sözdizimi daha kısa görünse de, port sayısı arttıkça yanlış bağlantı yapma riski katlanarak büyür. Bir portun atlanması veya yerinin kayması halinde derleyici her zaman hata vermez ve hatalı sinyaller birbiriyle eşleşir. Bu nedenle basit testbench'ler haricinde endüstriyel tasarımlarda sıralı liste bağlantısı önerilmez.`,
       },
-      {
-        title: "4. What You'll Learn",
-        content: `What Verilog Module Instantiations is and when to use it Syntax and usage patterns for Verilog Module Instantiations Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "5. Syntax",
-        content: `The basic syntax for Verilog Module Instantiations: // Basic form Instantiations parameters; // Example usage // See code examples below for detailed usage Parameters: Specific parameters depend on the context. See examples for common usage patterns.`,
-      },
-      {
-        title: "6. Port Connection by ordered list",
-        content: `One method of making the connection between the port expressions listed in a module instantiation with the signals inside the parent module is by the ordered list .`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Modül Örnekleme ve Hiyerarşik Donanım Tasarımı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -979,8 +947,8 @@ Instantiations parameters;
 // See code examples below for detailed usage`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1000,7 +968,8 @@ Instantiations parameters;
 		 // c is at position 4, and hence connection is with o
 	endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Basic form
@@ -1026,43 +995,35 @@ Instantiations parameters;
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Veri Tipleri: wire, reg ve integer Farkı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Veri Tipleri ve 4 Seviyeli Mantık Sistemi",
+        content: `Verilog'da veri tiplerinin temel amacı, fiziksel devrelerdeki iki ana unsuru modellemektir: Kapılar ve modüller arasında elektriksel sinyali ileten fiziksel bağlantılar (nets / wires) ile saat darbeleri arasında veriyi saklayan hafıza elemanları (variables / regs / flip-flops). Bu veri tipleri, dijital dünyadaki mantıksal ve elektriksel durumları birebir temsil eder.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog'un 4 değerli mantık sistemini (0, 1, X, Z) ve bunların donanımdaki fiziksel anlamlarını kavrayacaksınız.
+• Ağ tipleri (wire) ile değişken tipleri (reg) arasındaki kritik farkları ve ne zaman kullanılacaklarını öğreneceksiniz.
+• Test ortamlarında (testbench) kullanılan integer, time, real gibi ek veri tiplerinin işlevini anlayacaksınız.
+• Hangi veri tiplerinin donanıma sentezlenebilir (synthesizable), hangilerinin yalnızca simülasyona özgü olduğunu ayırt edeceksiniz.`,
+      },
+      {
+        title: "3. Verilog 4 Seviyeli Mantık Değerleri (0, 1, X, Z)",
+        content: `Verilog'daki çoğu veri tipi (real ve event hariç) 4 seviyeli lojik sistemdeki şu değerlerden birini alabilir:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Veri Tipleri: wire, reg ve integer Farkı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Veri Tipleri: wire, reg ve integer Farkı Şeması](/images/verilog/values.svg)
+• 0 (Lojik Sıfır): Düşük gerilim seviyesi (GND / Ground), yanlış (false) durumu.
+• 1 (Lojik Bir): Yüksek gerilim seviyesi (Vdd / Besleme voltajı), doğru (true) durumu.
+• x veya X (Bilinmeyen - Unknown): Değerin 0 mı 1 mi olduğunun belirsiz olduğu durum (başlatılmamış flip-flop'lar veya sürücü çakışmaları).
+• z veya Z (Yüksek Empedans - High Impedance): Giriş veya hattın elektriksel olarak boşa çıkarıldığı, hiçbir aktif sürücüye bağlı olmadığı durum (tristate/açık devre).
 
-![Verilog Veri Tipleri: wire, reg ve integer Farkı Şeması](/images/verilog/nets_variables.png)
+Dalga formu görüntüleyicilerde (waveform viewer) genellikle 0 ve 1 seviyeleri çizgiyle, X kırmızı renkle (hata/belirsizlik uyarısı), Z ise ortada düz turuncu/mavi çizgiyle gösterilir.`,
+      },
+      {
+        title: "4. Mantık Değerlerinin Donanımsal Karşılığı ve 'X' Yayılımı",
+        content: `Verilog donanım modelleme dili olduğu için değer kümesi gerçek silikon fiziğine dayanır. Lojik 1 seviyesi, kullanılan üretim düğümüne bağlı olarak 0.8V ile 3.3V arasındaki besleme gerilimini (Vdd), Lojik 0 ise 0V toprak seviyesini (GND) temsil eder.
 
-![Verilog Veri Tipleri: wire, reg ve integer Farkı Şeması](/images/verilog/wire.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Donanım Mühendisliği Notu: Boole cebirindeki 'fark etmez' (don't care - X) kavramı ile Verilog simülasyonundaki X tamamen farklıdır! Verilog'da X, mantıksal değerin bilinmediğini (örneğin güç verildiğinde henüz reset sinyali almamış bir flip-flop içeriğini veya aynı hatta iki zıt sürücünün aynı anda 0 ve 1 basmasını) ifade eder. X değeri girdiği mantık kapılarının çıkışını da X yaparak devrede yayılan bir belirsizliğe dönüşebilir. Bir pine hiçbir sürücü bağlı değilse, hat yüksek empedansta kalır ve Z değeri alır.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Data Types Verilog Data Types 8 min read | Beginner The primary intent of data-types in the Verilog language is to represent data storage elements like bits in a flip-flop and transmission elements like wires that connect between logic gates and sequential structures.`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Understand Verilog's 4-value logic system (0, 1, X, Z) and its hardware implications Master the difference between nets (wire) and variables (reg) for proper hardware modeling Use integer, time, real, and string data types for testbench and modeling tasks Recognize when each data type is appropriate for synthesis vs simulation`,
-      },
-      {
-        title: "5. What values do variables hold ?",
-        content: `Almost all data-types can only have one of the four different values as given below except for real and event data types. 0 represents a logic zero, or a false condition 1 represents a logic one, or a true condition x represents an unknown logic value (can be zero or one) z represents a high-impedance state The following image shows how these values are represented in timing diagrams and simulation waveforms. Most simulators use this convention where red stands for X and orange in the middle stands for high-impedance or Z .`,
-      },
-      {
-        title: "6. What does the verilog value-set imply ?",
-        content: `Since Verilog is essentially used to describe hardware elements like flip-flops and combinational logic like NAND and NOR, it has to model the value system found in hardware. A logic one would represent the voltage supply V dd which can range anywhere between 0.8V to more than 3V based on the fabrication technology node. A logic zero would represent ground and hence a value of 0V. X or x means that the value is simply unknown at the time, and could be either 0 or 1. This is quite different from the way X is treated in boolean logic, where it means "don't care". As with any incomplete electric circuit, the wire that is not connected to anything will have a high-impedance at that node and is represented by Z or z . Even in verilog, any unconnected wire will result in a high impedance.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Veri Tipleri: wire, reg ve integer Farkı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1075,8 +1036,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
           snippet: `wire [3:0] 	n0; 		// 4-bit wire -> this is a vector`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1092,7 +1053,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	assign abc = a & b | c;
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `wire [3:0] 	n0; 		// 4-bit wire -> this is a vector`,
@@ -1114,43 +1076,43 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Skaler ve Vektör Veri Hatları (Veri Yolları)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Skaler ve Vektör Veri Tanımları (Scalar & Vector)",
+        content: `Sayısal sistemlerde hem tek bir kontrol biti (örneğin bir flip-flop veya bayrak sinyali) hem de çok bitlik veri yolları (örneğin 32-bitlik bir işlemci veri yolu veya 16-bitlik bir saklayıcı) modellenmelidir. Bu amaçla Verilog; tek bitlik sinyalleri skaler (scalar), çok bitlik gruplanmış sinyalleri ise vektör (vector) olarak adlandırılan net ve reg tipleriyle tanımlar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Skaler ve vektör kavramlarını, ne zaman tek bit ne zaman çok bitlik vektör tanımlanacağını öğreneceksiniz.
+• Vektör tanımlama sözdizimini, MSB/LSB aralık kurallarını ([msb:lsb]) kavrayacaksınız.
+• Vektörler üzerinde tek bit seçimi (bit-select) ve parça seçimi (part-select) operasyonlarını inceleyeceksiniz.
+• Aralık taşmaları, indeksleme hataları ve sentezlenebilir veri yolu pratiklerini öğreneceksiniz.`,
+      },
+      {
+        title: "3. Skaler ve Vektör Tanımlama Kuralları",
+        content: `Köşeli parantez içinde bit aralığı belirtilmeyen bir wire veya reg bildirimi tek bitliktir ve skaler (scalar) olarak adlandırılır. Köşeli parantez ile aralık ([msb:lsb]) belirtildiğinde ise çok bitlik bir vektör (vector) oluşturulur:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Skaler ve Vektör Veri Hatları (Veri Yolları)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Skaler ve Vektör Veri Hatları (Veri Yolları) Şeması](/images/verilog/scalar-vector.png)
+wire        ready;      // 1-bit skaler net
+wire [7:0]  data_bus;   // 8-bit vektör net (bit 7 en anlamlı, bit 0 en anlamsız)
+reg         parity;     // 1-bit skaler reg
+reg  [31:0] addr;       // 32-bit vektör reg (adres veri yolu)
 
-![Skaler ve Vektör Veri Hatları (Veri Yolları) Şeması](/images/verilog/bit-select.png)
+Kritik Kurallar:
+• Bit Aralığı: Genellikle sol taraftaki değer en anlamlı biti (MSB - Most Significant Bit), sağ taraftaki değer ise en anlamsız biti (LSB - Least Significant Bit) belirtir (ör. [7:0]). Bu küçükten-büyüğe (little-endian) standart biçimdir.
+• Sabit İfade Zorunluluğu: Vektör aralığındaki MSB ve LSB değerleri derleme zamanında bilinen sabit ifadeler (constant expressions veya parametreler) olmalıdır. Değişkenler aralık sınırlarında kullanılamaz (ör. wire [my_var:0] a; geçersizdir).`,
+      },
+      {
+        title: "4. Bit Seçimi (Bit-Select) ve Aralık Kuralları",
+        content: `Çok bitlik bir vektörün belirli bir tek bitine erişmek veya atama yapmak için indeksleme işlemi yapılır; buna bit seçimi (bit-select) denir:
 
-![Skaler ve Vektör Veri Hatları (Veri Yolları) Şeması](/images/verilog/part-select.png)
+reg [7:0] addr; // 8-bitlik reg: bit indisleri 7, 6, 5, 4, 3, 2, 1, 0
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+addr[0] = 1'b1; // 0. bite (LSB) 1 atanır
+addr[3] = 1'b0; // 3. bite 0 atanır
+// addr[8] = 1'b1; // HATA: 8. bit mevcut değildir (out-of-bounds)
+
+Simülasyon Davranışı: Tanımlı aralığın dışındaki bir bite (out-of-bounds) erişilmeye çalışıldığında veya indeks değeri x veya z olduğunda, okunan değer x (bilinmeyen) olarak döner. Bu durum tasarımcıların indeks taşmalarını ve mantık hatalarını tespit etmesine yardımcı olur.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Scalar and Vector Verilog Scalar and Vector Verilog needs to represent individual bits as well as groups of bits. For example, a single bit sequential element is a flip-flop. However a 16-bit sequential element is a register that can hold 16 bits. For this purpose, Verilog has scalar and vector nets and variables.`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `What Verilog scalar and vector is and when to use it Syntax and usage patterns for Verilog scalar and vector Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "5. Scalar and Vector",
-        content: `A net or reg declaration without a range specification is considered 1-bit wide and is a scalar . If a range is specified, then the net or reg becomes a multibit entity known as a vector . wire o_nor; // single bit scalar net wire [7:0] o_flop; // 8-bit vector net reg parity; // single bit scalar variable reg [31:0] addr; // 32 bit vector variable to store address The code examples shown above are synthesizable and can be implemented in hardware. Always simulate your design before synthesis to verify correct functionality. The range gives the ability to address individual bits in a vector. The most significant bit of the vector should be specified as the left hand value in the range while the least significant bit of the vector should be specified on the right. wire [msb:lsb] name; integer my_msb; wire [15:0] priority; // msb = 15, lsb = 0 wire [my_msb: 2] prior; // illegal A 16 bit wide net called priority will be created in the example above. Note that the msb and lsb should be a constant expression and cannot be substituted by a variable. But they can be any integer value - positive, negative or zero; and the lsb value can be greater than, equal to or less than msb value.`,
-      },
-      {
-        title: "6. Bit-selects",
-        content: `Any bit in a vectored variable can be individually selected and assigned a new value as shown below. This is called as a bit-select . If the bit-select is out of bounds or the bit-select is x or z , then the value returned will be x . reg [7:0] addr; // 8-bit reg variable [7, 6, 5, 4, 3, 2, 1, 0] addr [0] = 1; // assign 1 to bit 0 of addr addr [3] = 0; // assign 0 to bit 3 of addr addr [8] = 1; // illegal : bit8 does not exist in addr`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Skaler ve Vektör Veri Hatları (Veri Yolları)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1166,8 +1128,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	reg [31:0] addr; // 32 bit vector variable to store address`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1178,7 +1140,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	wire [15:0] priority; // msb = 15, lsb = 0
 	wire [my_msb: 2] prior; // illegal`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `wire 	 o_nor; // single bit scalar net
@@ -1203,43 +1166,35 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Net Tipleri: wire, wand, wor ve tri Yapıları** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog'daki fiziksel ağ tiplerini (net types), donanımsal karşılıklarını ve kullanım senaryolarını öğreneceksiniz.
+• wire, tri, wand, wor gibi farklı net tiplerinin sözdizimini ve çözümleme kurallarını kavrayacaksınız.
+• Çoklu sürücü (multiple drivers), kablolu mantık (wired-logic) ve tristate hat modelleme örneklerini inceleyeceksiniz.
+• Sürücü çakışması (contention), X yayılımı ve sentezlenebilirlik açısından en iyi pratikleri öğreneceksiniz.`,
+      },
+      {
+        title: "2. Verilog Fiziksel Ağ Tipleri (Net Types Tablosu)",
+        content: `Verilog'da net tipleri, sayısal devrelerdeki elemanlar arasındaki fiziksel elektriksel bağlantıları modeller. Net'ler kendi içlerinde değer saklamaz; aldıkları değer o hatta bağlı sürücülerin (drivers) anlık durumuna göre belirlenir ve bağlantısız kaldıklarında varsayılan değerleri z (yüksek empedans) olur:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Net Tipleri: wire, wand, wor ve tri Yapıları** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+• wire: En yaygın net tipi; sürekli atama (assign) ve modül bağlantılarında tekil sürücülü hatları modeller.
+• tri: Çoklu sürücüye (tristate) sahip paylaşımlı veri yollarını modeller (wire ile aynı sözdizimine sahiptir).
+• wand / triand: Kablolu VE (wired-AND) mantığını modeller; hatta bağlı birden fazla sürücünün değerleri mantıksal VE işlemine tabi tutulur (açık kolektör hatları gibi).
+• wor / trior: Kablolu VEYA (wired-OR) mantığını modeller; sürücüler mantıksal VEYA işlemine tabi tutulur.
+• tri0 / tri1: Entegre üzerinde indirme (pull-down) veya çekme (pull-up) direnci olan hatları modeller; sürücü olmadığında sırasıyla 0 veya 1 değerini alırlar.
+• supply0 / supply1: Sırasıyla sabit mantıksal toprak (GND - 0) ve besleme (Vdd - 1) gerilim hatlarını modeller.
+• uwire: SystemVerilog/Verilog-2005 ile gelen, hata önleme amacıyla birden fazla sürücüye izin vermeyen (unresolved wire) tiptir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Net Tipleri: wire, wand, wor ve tri Yapıları Şeması](/images/verilog/wire_tri_truth_table.png)
+        title: "3. Wire ve Tri Ağları Arasındaki Farklar ve Çakışma Yönetimi",
+        content: `wire ve tri, Verilog'da tamamen aynı sözdizimine ve simülasyon çözümleme tablosuna sahip iki net tipidir. Farklı isimlendirilmelerinin temel amacı, tasarımcının kodun amacını net bir şekilde belgelemesidir:
 
-![Verilog Net Tipleri: wire, wand, wor ve tri Yapıları Şeması](/images/verilog/wor_trior_truth_table.png)
+• wire: Genellikle tek bir kaynak (tek mantık kapısı veya tek bir assign ifadesi) tarafından sürülen tek yönlü standart bağlantılar için kullanılır.
+• tri (Tristate): Aynı hatta birden fazla sürücünün bağlı olduğu, farklı zaman dilimlerinde farklı bileşenlerin hattı aktif olarak sürdüğü paylaşımlı veri yollarını (bus) ve tristate yapıları modellemek için kullanılır.
 
-![Verilog Net Tipleri: wire, wand, wor ve tri Yapıları Şeması](/images/verilog/wand_triand_truth_table.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Sürücü Çakışması (Bus Contention): Hem wire hem de tri ağlarında eşit elektriksel kuvvete sahip iki farklı sürücü aynı anda zıt değerler basarsa (biri 1, diğeri 0), hatta kısa devre benzeri bir çakışma meydana gelir ve Verilog simülatörü bu sinyalin değerini anında x (bilinmeyen) olarak çözümler.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Net Types Verilog Net Types `,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `What Verilog Net Types is and when to use it Syntax and usage patterns for Verilog Net Types Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "5. Net Types",
-        content: `In Verilog, net types are used to model physical connections between components in digital circuits. They do not store values, its value is determined by the values of its drivers and the default value of a net is typically 'z' (high impedance) when left unconnected. Net Type Description wire Connects elements with continuous assignment tri Connects elements with multiple drivers wor Creates wired OR configurations wand Creates wired AND configurations trior Creates wired OR configurations with multiple drivers triand Creates wired AND configurations with multiple drivers tri0 Models nets with resistive pulldown devices tri1 Models nets with resistive pullup devices trireg Stores a value and is used to model charge storage nodes uwire Models nets that can should be driven only by a single driver supply0 Models power supply with a low level of strength supply1 Models power supply with a high level of strength`,
-      },
-      {
-        title: "6. Wire and tri nets",
-        content: `Wire and tri are two types of nets in Verilog that serve as connections between elements in a digital circuit model. While they are functionally identical and share the same syntax, they are given different names to help designers convey the intended purpose of the net within the model. Wire nets: Typically used for connections driven by a single source Ideal for representing nets controlled by one gate or one continuous assignment The name "wire" suggests a simple, unidirectional connection Tri (short for tristate) nets: Commonly used for nets that may have multiple drivers Suitable for modeling buses or other shared connections where different components might drive the net at different times The name tri implies the possibility of multiple drivers and the potential use of high-impedance states When multiple drivers of the same strength drive conflicting values on a wire or tri net in Verilog, the result is indeed an unknown (x) value.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Net Tipleri: wire, wand, wor ve tri Yapıları** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1294,8 +1249,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1336,7 +1291,8 @@ endmodule`,
     end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module tb;
@@ -1400,33 +1356,33 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Operatörleri: Mantıksal, Bitsel ve Karşılaştırma** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Operatörleri ve Donanım Sentezi Karşılıkları",
+        content: `Verilog operatörleri; matematiksel hesaplamaları, mantıksal karşılaştırmaları ve bit seviyesinde manipülasyonları gerçekleştirerek dijital devre davranışını tanımlamamızı sağlar. Bir RTL tasarımcısı için en kritik yetkinlik, yazdığı her operatörün mantıksal sentez aracı tarafından fiziksel olarak hangi kapılara, toplayıcılara (adders), karşılaştırıcılara (comparators) veya kaydırıcılara (shifters) dönüştürüleceğini tam olarak öngörebilmektir. Bu bölümde temel operatörler ve donanımsal karşılıkları ayrıntılı olarak incelenmektedir.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Aritmetik operatörleri (+, -, *, /, %, **) ve bunların donanım sentezindeki alan/gecikme maliyetlerini öğreneceksiniz.
+• Mantıksal operatörler (&&, ||, !) ile bit düzeyinde operatörler (&, |, ^, ~) arasındaki farkı kavrayacaksınız.
+• Eşitlik operatörlerini (==, !=) ve simülasyonda X/Z karşılaştırması yapan vaka eşitlik operatörlerini (===, !==) doğru kullanmayı öğreneceksiniz.
+• Mantıksal ve aritmetik kaydırma operatörleriyle (<<, >>, <<<, >>>) 2'nin kuvvetleriyle hızlı çarpma/bölme işlemlerini donanımda en az maliyetle gerçekleştirmeyi öğreneceksiniz.`,
+      },
+      {
+        title: "3. Aritmetik Operatörler ve Sentezlenebilirlik Analizi",
+        content: `Aritmetik operatörler matematiksel işlemleri yürütür ve sentez araçları tarafından toplayıcı (adder), çıkarıcı (subtractor), çarpıcı (multiplier) gibi donanım devrelerine dönüştürülür:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Operatörleri: Mantıksal, Bitsel ve Karşılaştırma** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+• + / -: Toplayıcı ve çıkarıcı devrelerine (carry-lookahead veya ripple-carry) sentezlenir.
+• *: Kombinasyonel veya ardışıl donanımsal çarpıcı bloklarına (FPGA DSP dilimleri veya ASIC MAC üniteleri) sentezlenir.
+• / ve %: Bölme ve mod operatörleri son derece büyük, yavaş ve pahalı kombinasyonel mantık devreleri üretir. Bölen 2'nin bir kuvveti olmadığı sürece sentezlenebilir RTL'de doğrudan bölme operatörü kullanmaktan kaçınılmalı, bunun yerine kaydırma (>>) veya ardışıl durum makineleri tercih edilmelidir. Sıfıra bölme durumunda sonuç X olur.
+• **: Üs alma operatörü yalnızca simülasyon içindir, donanıma sentezlenemez.
+
+Sonuç Bit Genişliği Dikkat Uyarısı: İki adet 8-bitlik sayının çarpımı 16-bitlik bir sonuç üretir (45 x 9 = 405 = 0x195). Eğer sonuç 8-bitlik bir değişkene atanırsa üst bitler budanır (truncation) ve hatalı sonuç (0x95 = 149) elde edilir. RTL tasarımında hedef yazmacın bit genişliği taşmaları karşılayacak şekilde tanımlanmalıdır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Operators Verilog Operators Verilog operators enable mathematical computations, logical comparisons, and bit manipulations essential for describing digital circuit behavior. Understanding how synthesis tools translate these operators into hardware gates, comparators, adders, and shifters is fundamental to writing efficient RTL code. Data that cannot be processed is quite useless, there'll always be some form of calculation required in digital circuits and computer systems. Let's look at some of the operators in Verilog that would enable synthesis tools realize appropriate hardware elements. 15 min read | Beginner to Intermediate`,
+        title: "4. Endüstriyel Uygulama: DSP ve Aritmetik Hızlandırıcılar",
+        content: `Sayısal İşaret İşleme (DSP) ve Yapay Zeka Hızlandırıcıları: Modern donanımlarda en kritik aritmetik işlem Sonuc = Sonuc + (a * b) formülüne dayanan Çarpma-Biriktirme (MAC - Multiply-Accumulate) işlemidir. AMD/Xilinx ve Intel gibi FPGA üreticileri, yongalarının içine 18x25 veya 27x27 bit donanımsal çarpıcılar ve 48-bit akümülatörler içeren sertleştirilmiş özel DSP blokları yerleştirir. Bu bloklar FIR filtreleri, FFT algoritmaları ve derin öğrenme matris çarpımlarında Verilog aritmetik operatörlerinin en yüksek saat frekansında çalışmasını sağlar.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `Apply arithmetic operators (+, -, *, /, %, **) and understand their hardware synthesis implications Distinguish between logical operators (&&, ||, !) and bitwise operators (&, |, ^, ~) Use equality operators (==, !=, ===, !==) correctly for X/Z handling in verification Implement shift operations (<<, >>, <<<, >>>) for efficient multiplication/division by powers of 2`,
-      },
-      {
-        title: "4. Verilog Arithmetic Operators",
-        content: `Arithmetic operators perform mathematical computations and synthesize into adders, subtractors, multipliers, and dividers. If the second operand of a division or modulus operator is zero, then the result will be X. If either operand of the power operator is real, then the result will also be real. The result will be 1 if the second operand of a power operator is 0 (a 0 ). Operator Description Synthesis Hardware a + b a plus b Adder (ripple-carry or carry-lookahead) a - b a minus b Subtractor (two's complement adder) a * b a multiplied by b Multiplier (combinational or pipelined) a / b a divided by b Divider (expensive, avoid in RTL if possible) a % b a modulo b (remainder) Divider with remainder output a ** b a to the power of b Not synthesizable (simulation only) Division and Modulus: Division ( / ) and modulus ( % ) operators create large, slow combinational logic. Avoid in synthesizable RTL unless b is a power of 2 (use shifts instead). The power operator ( ** ) is for simulation only and does not synthesize. An example of how arithmetic operators are used is given below. module des; reg [7:0] data1; reg [7:0] data2; initial begin data1 = 45; // 8-bit value data2 = 9; // 8-bit value $display ("Add + = %d", data1 + data2); // 45 + 9 = 54 $display ("Sub - = %d", data1 - data2); // 45 - 9 = 36 $display ("Mul * = %d", data1 * data2); // 45 * 9 = 405, truncated to 8 bits = 149 $display ("Div / = %d", data1 / data2); // 45 / 9 = 5 (integer division) $display ("Mod %% = %d", data1 % data2); // 45 % 9 = 0 (no remainder) $display ("Pow ** = %d", data2 ** 2); // 9^2 = 81 (simulation only) end endmodule Output ncsim> run Add + = 54 Sub - = 36 Mul * = 149 Div / = 5 Mod % = 0 Pow ** = 81 ncsim: *W,RNQUIE: Simulation is complete. Result Width: Multiplication of 8-bit x 8-bit produces up to 16-bit result (45 x 9 = 405 = 0x195). When stored in 8-bit register, upper bits are truncated, giving 0x95 = 149.`,
-      },
-      {
-        title: "5. Real-World Application",
-        content: `DSP Arithmetic Units: Companies like Texas Instruments and Analog Devices design DSP processors with dedicated MAC (Multiply-Accumulate) units that execute result = result + (a * b) in a single cycle. Modern FPGAs from Xilinx and Intel have hard DSP blocks containing 18x25 or 27x27 multipliers with 48-bit accumulators, optimized for the arithmetic operators used in FIR filters, FFTs, and matrix operations.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Operatörleri: Mantıksal, Bitsel ve Karşılaştırma** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1454,8 +1410,8 @@ endmodule`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1483,7 +1439,8 @@ endmodule`,
  end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module des;
@@ -1520,33 +1477,38 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Aritmetik Operatörleri ve İşaretli Sayılar** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. İkili ve Birli Aritmetik Operatörlerin Donanımsal Karşılıkları",
+        content: `Verilog aritmetik operatörlerinin gerçek donanım bileşenlerine nasıl dönüştüğünü tam olarak kavramak, yüksek performanslı ve verimli sentezlenebilir kod yazmanın temel anahtarıdır. C programlama diline benzer bir sözdizimi sunan Verilog aritmetik operatörleri; iki işlenen üzerinde çalışan ikili (binary) ve tek bir işlenen üzerinde çalışan birli (unary) operatörler olarak iki ana gruba ayrılır.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• İkili ve birli aritmetik operatörlerin donanım sentez mekanizmasını öğreneceksiniz.
+• reg ve integer tipleri üzerinde aritmetik işlemlerin donanım devrelerine nasıl eşlendiğini kavrayacaksınız.
+• İşaretli (signed) ve işaretsiz (unsigned) aritmetik hesaplamalarda ikiye tümleyen (two's complement) mantığını öğreneceksiniz.
+• Gerçek sayılar (real), tanımsız durumlar (X, Z) ve sentezlenemeyen yapılarla ilgili kritik kuralları özümseyeceksiniz.`,
+      },
+      {
+        title: "3. İkili (Binary) Aritmetik Operatörler ve Donanım Karşılıkları",
+        content: `Sentezlenebilirlik ilkesine göre, bir işlemin donanıma aktarılabilmesi için ayrık ikili değerler (0 ve 1) üzerinde çalışan fiziksel devre elemanlarına doğrudan eşlenebilmesi gerekir. reg, wire ve integer tipleri üzerindeki standart aritmetik operatörler sentez araçları tarafından şu devrelere dönüştürülür:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Aritmetik Operatörleri ve İşaretli Sayılar** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+• + (Toplama): Carry-lookahead veya ripple-carry toplayıcı devreleri.
+• - (Çıkarma): İkiye tümleyen (two's complement) mantığıyla çalışan toplayıcı/çıkarıcı devreleri.
+• * (Çarpma): Giriş boyutuna göre dizi çarpıcı (array multiplier) veya Wallace-tree çarpıcı blokları.
+• / (Bölme) & % (Mod Alma): Ardışıl veya kombinasyonel bölücü mantık devreleri; çok fazla lojik alan kapladığı için genellikle sentezlenebilir RTL'de kaçınılır. Bölen sıfır ise sonuç x olur.
+• ** (Üs Alma): Genellikle sentezlenemez (yalnızca simülasyona özgüdür).
+
+Önemli X ve Z Değeri Kuralı: Bir aritmetik operatörün işlenenlerindeki herhangi bir bit x (bilinmeyen) veya z (yüksek empedans) değerine sahipse, simülasyonda tüm işlemin sonucu doğrudan x haline gelir. Bu nedenle gerçek donanım tasarımlarında bilinmeyen durumların aritmetik bloklara sızmaması için uygun sıfırlama (reset) mekanizmaları kurulmalıdır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Arithmetic Operators Verilog Arithmetic Operators Understanding how Verilog's arithmetic operators translate into actual hardware is crucial for writing efficient and synthesizable code. Verilog provides a set of arithmetic operators similar to those found in C programming, categorized as binary (operating on two operands) and unary (operating on a single operand).`,
+        title: "4. Birli (Unary) Aritmetik Operatörler ve Kayan Nokta Kısıtlamaları",
+        content: `Birli (unary) aritmetik operatörler tek bir işlenen üzerinde çalışır:
+• +m: İşlenenin değerini değiştirmez; doğrudan sinyalin kendisi olarak sentezlenir.
+• -m: İşlenenin aritmetik işaretini tersine çevirir. İşaretli (signed) tipler için donanımda ikiye tümleyen (two's complement: ~m + 1) devresi oluşturur.
+
+Kayan Nokta (real) ve Sentez Kısıtlaması: Verilog'da kayan noktalı (floating-point) sayıları temsil eden real ve realtime veri tipleri bulunur. Standart mantıksal sentez araçları, bu tipler üzerindeki temel aritmetik operatörlerden karmaşık IEEE-754 kayan nokta donanımları (FPU) çıkaramaz! Bu nedenle, real veya realtime işlenen içeren hiçbir aritmetik ifade sentezlenemez (non-synthesizable); bu tür yapılar yalnızca simülasyon ve testbench modellemesinde kullanılır.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `What Verilog Arithmetic Operators is and when to use it Syntax and usage patterns for Verilog Arithmetic Operators Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "4. Binary Arithmetic Operators",
-        content: `The core principle for synthesizability is that the operation must map directly to physical hardware components that operate on discrete binary values (0s and 1s). In Verilog, this generally means operations on reg and integer data types are synthesizable. When you use these operators with reg or integer types, synthesis tools infer standard digital circuits. Operator Description Synthesis + Performs addition Adder circuits (e.g., ripple-carry adders, carry-lookahead adders) - Performs subtraction Subtractor circuits, often implemented using adders and two's complement for the subtrahend * Performs multiplication Depending on the size of the operands, this can be a simple array multiplier or a more complex Wallace tree multiplier / Performs division Divider circuits and may use iterative algorithms. Integer division truncates any fractional part towards zero. % Modulus - returns the remainder of a division Synthesizes alongside a divider or as part of a specialized remainder circuit. The sign of the result matches the sign of the first operand ** Raises the first operand to the power of the second Generally not synthesizable. If the second operand (divisor) is zero, the result is x. Hardware implementation must handle this (e.g., a division-by-zero flag). Important Note on X and Z Values: For any arithmetic operator, if any bit of an operand holds an unknown (x) or high-impedance (z) value, the entire result will be x. While this is a Verilog simulation behavior, in hardware, 'x' and 'z' values often represent undefined states, and their propagation can lead to unexpected synthesis results or warnings. Good design practice involves avoiding 'x' and 'z' states in critical logic. module arithmetic(input [7:0] data1, data2, output reg [7:0] sum ,diff, product, div, modulus); always @ (data1, data2) begin sum = data1 + data2; diff = data1 - data2; product = data1 * data2; div = data1 / data2; modulus = data1 % data2; end endmodule`,
-      },
-      {
-        title: "5. Unary Arithmetic Operators",
-        content: `Operator Description Synthesis +m Essentially m, it has no effect on the operand's value This is trivial and synthesizes directly as the operand itself -m Performs negation on the operand For signed integer or signed reg types, this implies a two's complement negation The primary distinction for non-synthesizable arithmetic operators lies in the data types they operate on. Verilog includes real and realtime data types, which represent floating-point numbers. Standard hardware synthesis tools generally cannot infer complex floating-point units from basic arithmetic operators when applied to real or realtime operands. Such operations are primarily for simulation and verification purposes, where the simulator can perform the floating-point calculations. So, all binary and unary arithmetic operators (+, -, *, /, +m, -m) become non-synthesizable if any operand is a real or realtime type.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Aritmetik Operatörleri ve İşaretli Sayılar** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1568,8 +1530,8 @@ endmodule`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1586,7 +1548,8 @@ initial begin
  $display("Result with truncation: answer = %h", answer);
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module arithmetic(input [7:0] data1, data2, output reg [7:0] sum ,diff, product, div, modulus);
@@ -1617,33 +1580,53 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 4: Veri Tipleri & Operatörler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Birleştirme (Concatenation) ve Çoğaltma ({})** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Birleştirme Operatörü (Concatenation \`{}\`)",
+        content: `Verilog'da birden fazla tek bitlik veya çok bitlik sinyal, küme parantezleri { ve } ile aralarına virgül konularak daha geniş bir veri yolu veya yazmaç oluşturacak şekilde uç uca birleştirilebilir. Bu işleme birleştirme (concatenation) adı verilir. Birleştirme işleminde sinyallerin yanı sıra ifadeler ve bit genişliği açıkça belirtilmiş sabitler (sized constants) de kullanılabilir. Birleştirmenin toplam bit genişliğinin sentez aracı tarafından hesaplanabilmesi için birleştirilen her bir parçanın bit genişliği derleme anında kesin olarak bilinmelidir.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Birleştirme operatörünün ({}) donanım tasarımındaki rolünü ve veri yolu oluşturma tekniklerini öğreneceksiniz.
+• Boyutsuz sabitlerin (unsized constants) oluşturduğu riskleri ve boyutlandırma kurallarını kavrayacaksınız.
+• Tekrarlama operatörü ({N{...}}) ile bit çoğaltma ve işaret uzatma (sign-extension) yöntemlerini inceleyeceksiniz.
+• Atamanın sol ve sağ tarafında birleştirme kullanımına dair sentezlenebilir pratikleri öğreneceksiniz.`,
+      },
+      {
+        title: "3. Birleştirme Operatörü Kod Örnekleri ve Çalışma Mantığı",
+        content: `Birleştirme operatöründe parçalar en soldan en sağa doğru sırayla yerleştirilir. En soldaki eleman en anlamlı bitleri (MSB), en sağdaki ise en anlamsız bitleri (LSB) oluşturur:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Birleştirme (Concatenation) ve Çoğaltma ({})** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+wire a, b;              // 1-bitlik teller
+wire [1:0] res;         // 2-bitlik sonuç teli
+assign res = {a, b};    // res[1] = a, res[0] = b
+
+wire [2:0] c;
+wire [7:0] res1;
+// 1-bit b, 1-bit a, 2-bit c[1:0], 2-bit 00, 1-bit c[2] -> Toplam 8 bit
+assign res1 = {b, a, c[1:0], 2'b00, c[2]};
+
+Sol Tarafta (LHS) Birleştirme: Birleştirme operatörü atamanın sol tarafında da kullanılabilir! Örneğin bir toplayıcıda elde (carry) bitini ve toplamı tek işlemde yakalamak için:
+
+wire [7:0] a, b;
+wire [7:0] sum;
+wire       cout;
+assign {cout, sum} = a + b; // 9-bitlik toplama sonucu elde bitiyle birlikte ayrıştırılır`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Data Types & Operators Verilog Concatenation Verilog Concatenation Multi-bit Verilog wires and variables can be clubbed together to form a bigger multi-net wire or variable using concatenation operators { and } separated by commas. Concatenation is also allowed to have expressions and sized constants as operands in addition to wires and variables. Size of each operand must be known in order to calculate the complete size of concatenation.`,
+        title: "4. Tekrarlama Operatörü (\`{N{...}}\`) ve İşaret Uzatma",
+        content: `Bir sinyalin veya bit örüntüsünün belirli sayıda tekrarlanması gerektiğinde tekrarlama operatörü (replication operator) kullanılır. Sözdizimi {N{ifade}} biçimindedir; burada N negatif olmayan bir tamsayı sabiti olmalıdır (X, Z veya değişken olamaz):
+
+wire        a;
+wire [6:0]  res;
+assign res = {7{a}}; // 'a' biti 7 kez tekrarlanır (örneğin a=1 ise 7'b1111111)
+
+// 8-bitlik bir sinyali 16 bite işaret uzatma (sign-extension) örneği:
+wire signed [7:0]  veri_8bit;
+wire signed [15:0] veri_16bit;
+assign veri_16bit = {{8{veri_8bit[7]}}, veri_8bit};
+
+Kritik Kural: Tekrarlama ifadesi atamanın sol tarafında (LHS) yer alamaz ve output ya da inout portlarına doğrudan bağlanamaz.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `What Verilog Concatenation is and when to use it Syntax and usage patterns for Verilog Concatenation Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "4. Verilog Concatenation Example",
-        content: `wire a, b; // 1-bit wire wire [1:0] res; // 2-bit wire to store a and b // res[1] follows a, and res[0] follows b assign res = {a, b}; wire [2:0] c; wire [7:0] res1; // res[0] follows c[2] // res[2:1] is always 0 // res[4:3] follows c[1:0] // res[5] follows a // res[6] follows b assign res1 = {b, a, c[1:0], 2'b00, c[2]}; Here is a working design example of concatenation of inputs to form different outputs. Concatenated expressions can be simply displayed or assigned to any wire or variable, not necessarily outputs. module des (input [1:0] a, input [2:0] b, output [4:0] out1, output [3:0] out2 ); assign out1 = {a, b}; assign out2 = {a[1], 2'b01, b[2]}; endmodule module tb; reg [1:0] a; reg [2:0] b; wire [4:0] out1; wire [3:0] out2; des u0 (a, b, out1, out2); initial begin a <= 0; b <= 0; $monitor("[%0t] a=%b b=%b, out1=%b out2=%b", $time, a, b, out1, out2); #10 a <= 3; #5 b <= 5; #10 a <= 2; #5 b <= 1; #10 $finish; end endmodule Note that out2[2:1] is always a constant 2'b01. Output xcelium> run [0] a=00 b=000, out1=00000 out2=0010 [10] a=11 b=000, out1=11000 out2=1010 [15] a=11 b=101, out1=11101 out2=1011 [25] a=10 b=101, out1=10101 out2=1011 [30] a=10 b=001, out1=10001 out2=1010 Simulation complete via $finish(1) at time 40 NS + 0 `,
-      },
-      {
-        title: "5. Replication Operator",
-        content: `When the same expression has to be repeated for a number of times, a replication constant is used which needs to be a non-negative number and cannot be X, Z or any variable. This constant number is also enclosed within braces along with the original concatenation operator and indicates the total number of times the expression will be repeated. wire a; wire [6:0] res; assign res = {7{a}}; {2'bz{2'b0}} // Illegal to have Z as replication constant {2'bx{2'b0}} // Illegal to have X as replication constant Replication expressions cannot appear on the left hand side of any assignment and cannot be connected to output or inout ports. module des; reg [1:0] a; reg [2:0] b; initial begin a <= 2; b <= 4; #10; $display("a=%b b=%b res=%b", a, b, {{2{a}}, {3{b}}}); end endmodule Note that a got repeated twice and b got repeated thrice. Output xcelium> run a=10 b=100 res= 1010 100100100 xmsim: *W,RNQUIE: Simulation is complete. Operands will be evaluated only once when the replication expression is executed even if the constant is zero. The Verilog replication operator {} is commonly used in digital design to create bit patterns for initializing registers, memory arrays, or lookup tables. Here is an example: Suppose we want to initialize a 16-bit register counter to count from 0 to 15 in a clock cycle. We can use the replication operator to create a bit pattern that represents the binary values 0 to 15, and assign it to the counter register: module counter(input clk, output reg [15:0] counter); always @(posedge clk) begin counter <= counter + 1; end // Initialize counter to 0 on reset initial begin counter <= {16{1'b0}}; end endmodule`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Birleştirme (Concatenation) ve Çoğaltma ({})** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1671,8 +1654,8 @@ endmodule`,
 	assign res1 = {b, a, c[1:0], 2'b00, c[2]};`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1711,7 +1694,8 @@ module tb;
  end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `wire 		a, b; 		// 1-bit wire
@@ -1748,43 +1732,40 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 5: Diziler, Bellekler & Parametreler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Dizileri ve Bellek Modelleme (RAM & ROM)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Dizileri ve Bellek Modelleme (Arrays & Memories)",
+        content: `Sayısal sistemlerde RAM, ROM, yazmaç öbekleri (register files) ve FIFO kuyrukları gibi veri depolama yapılarını modellemek için çok elemanlı dizilere (arrays) ihtiyaç duyulur. Verilog; reg, wire ve integer veri tipleri için çok boyutlu dizi tanımlamayı destekleyerek donanımsal belleklerin ve lookup tablolarının kolayca modellenmesini sağlar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Verilog dizilerinin ve bellek yapılarının tanımlanma kurallarını öğreneceksiniz.
+• Vektör (vector reg) ile dizi belleği (array of regs / memory) arasındaki temel farkları kavrayacaksınız.
+• Çok boyutlu dizilere (multi-dimensional arrays) erişim ve indeksleme pratiklerini göreceksiniz.
+• Bellek bloklarının FPGA Block RAM (BRAM) veya dağıtık RAM olarak sentezlenmesindeki en iyi yöntemleri öğreneceksiniz.`,
+      },
+      {
+        title: "3. Dizi ve Bellek Tanımlama Sözdizimi",
+        content: `Bir değişken veya net tanımlanırken tanımlayıcı isminden sonra bir adres aralığı belirtilirse bir dizi (array) oluşturulur. reg, wire, integer ve real tiplerinde diziler tanımlanabilir:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Dizileri ve Bellek Modelleme (RAM & ROM)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Dizileri ve Bellek Modelleme (RAM & ROM) Şeması](/images/verilog/memory.png)
+reg        y1 [11:0];         // 12 elemanlı, her biri 1-bit skaler reg dizisi
+wire [7:0] y2 [3:0];          // 4 elemanlı, her biri 8-bit vektör net dizisi
+reg  [7:0] ram [0:1023];      // 1024 derinliğinde, her biri 8-bitlik bellek (RAM)
+reg  [7:0] y3 [0:1][0:3];     // 2 satır x 4 sütunluk 2 boyutlu 8-bit reg dizisi
 
-![Verilog Dizileri ve Bellek Modelleme (RAM & ROM) Şeması](/images/verilog/verilog_arrays_register_schematic.png)
+Kritik Fark (Vektör vs. Bellek): N-bitlik tek bir vektör (reg [N-1:0] r;) ile her biri 1-bit olan N elemanlı bir dizi (reg r [0:N-1];) aynı şey DEĞİLDİR! Vektörler tek bir saat darbesinde bütünüyle okunup yazılabilir ve mantıksal işlemlere girebilir; ancak dizilerde aynı anda yalnızca adreslenen tek bir elemana erişilebilir.`,
+      },
+      {
+        title: "4. Dizilere Değer Atama ve İndeksleme Kuralları",
+        content: `Standart Verilog-2001'de bir dizinin tüm elemanlarına tek bir atama ile değer verilemez (y1 = 0; geçersizdir). Her elemana kendi indeks numarası belirtilerek ayrı ayrı atanmalıdır:
 
-![Verilog Dizileri ve Bellek Modelleme (RAM & ROM) Şeması](/images/verilog/verilog_array_schematic.png)
+// Geçerli eleman atamaları:
+y2[0]       = 8'ha2; // 0. indekse 0xA2 atanır
+y2[2]       = 8'h1c; // 2. indekse 0x1C atanır
+y3[1][2]    = 8'hdd; // 2D dizide 1. satır, 2. sütuna 0xDD atanır
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Tüm belleği sıfırlamak veya dosyadan yüklemek için simülasyonda for döngüleri ya da $readmemb / $readmemh sistem görevleri kullanılır.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Arrays Memories & Parameters Verilog Arrays and Memories Verilog Arrays and Memories `,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `What Verilog Arrays and Memories is and when to use it Syntax and usage patterns for Verilog Arrays and Memories Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "5. What is a Verilog array ?",
-        content: `An array declaration of a net or variable can be either scalar or vector. Any number of dimensions can be created by specifying an address range after the identifier name and is called a multi-dimensional array. Arrays are allowed in Verilog for reg , wire , integer and real data types. reg y1 [11:0]; // y is a scalar reg array of depth=12, each 1-bit wide wire [0:7] y2 [3:0] // y is an 8-bit vector net with a depth of 4 reg [7:0] y3 [0:1][0:3]; // y is a 2D array rows=2,cols=4 each 8-bit wide An index for every dimension has to be specified to access a particular element of an array and can be an expression of other variables. An array can be formed for any of the different data-types supported in Verilog. Note that a memory of n 1-bit reg is not the same as an n-bit vector reg.`,
-      },
-      {
-        title: "6. Array Assignment",
-        content: `y1 = 0; // Illegal - All elements can't be assigned in a single go y2[0] = 8'ha2; // Assign 0xa2 to index=0 y2[2] = 8'h1c; // Assign 0x1c to index=2 y3[1][2] = 8'hdd; // Assign 0xdd to rows=1 cols=2 y3[0][0] = 8'haa; // Assign 0xaa to rows=0 cols=0`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Dizileri ve Bellek Modelleme (RAM & ROM)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1799,8 +1780,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	reg [7:0] y3 [0:1][0:3]; // y is a 2D array rows=2,cols=4 each 8-bit wide`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1812,7 +1793,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	y3[1][2] = 8'hdd; 	// Assign 0xdd to rows=1 cols=2
 	y3[0][0] = 8'haa; 	// Assign 0xaa to rows=0 cols=0`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `reg y1 [11:0]; // y is a scalar reg array of depth=12, each 1-bit wide
@@ -1836,41 +1818,54 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
     subtitle: "ChipVerify Verilog Tutorial Bölüm 5: Diziler, Bellekler & Parametreler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Parametrik Modül Tasarımı (parameter ve defparam)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Parametrelerin (parameter, localparam) modüler ve yeniden kullanılabilir donanım tasarımındaki rolünü öğreneceksiniz.
+• Modül çağrımı sırasında parametre ezme (parameter override - defparam ve #()) yöntemlerini kavrayacaksınız.
+• ANSI stili parametrelendirilmiş modül şablonlarını ve kod örneklerini inceleyeceksiniz.
+• Derleme zamanı sabitleri ile çalışma zamanı değişkenleri arasındaki farkı anlayarak sık yapılan hataları önleyeceksiniz.`,
+      },
+      {
+        title: "2. Verilog Parametreleri Nedir? (Derleme Zamanı Sabitleri)",
+        content: `Parametreler, bir modülün farklı özellik ve boyutlarla (örneğin farklı veri yolu genişlikleri veya FIFO derinlikleri) yeniden kullanılmasını sağlayan derleme zamanı sabitleridir. Örneğin parametrik olarak tasarlanmış bir toplayıcı, modül örneklendiğinde tek bir parametre değeri değiştirilerek 4-bit, 8-bit, 16-bit veya 64-bitlik bir toplayıcıya dönüştürülebilir:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Parametrik Modül Tasarımı (parameter ve defparam)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Parametrik Modül Tasarımı (parameter ve defparam) Şeması](/images/verilog/2bit_up_counter_schematic.png)
+parameter DATA_WIDTH = 32;          // Varsayılan değeri 32 olan parametre
+parameter FIFO_DEPTH = 256;         // FIFO derinlik parametresi
+parameter [7:0] CONST_VAL = 8'h5A;  // Bit genişliği tanımlanmış parametre
 
-![Parametrik Modül Tasarımı (parameter ve defparam) Şeması](/images/verilog/4bit_down_counter_schematic.png)
+Temel Kural: Parametreler derleme/sentez zamanı sabitleridir. Simülasyonun veya donanımın çalışma zamanında (runtime) değerleri değiştirilemez. Sinyal isimleriyle çakışamazlar.`,
+      },
+      {
+        title: "3. Modül Parametre Bildirimi ve Ezme (Override) Yöntemleri",
+        content: `Parametreler modül tanımlanırken varsayılan değerlerle belirtilir ve modül örneklendiğinde istenen yeni değerlerle ezilebilir (override):
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+// Modern ANSI Stili Parametrik Modül Bildirimi:
+module fifo_buffer #(
+  parameter DATA_WIDTH = 32,
+  parameter FIFO_DEPTH = 512
+) (
+  input  wire                  clk,
+  input  wire                  rst_n,
+  input  wire [DATA_WIDTH-1:0] wdata,
+  output wire [DATA_WIDTH-1:0] rdata
+);
+  // Dahili bellek ve kontrol mantığı
+endmodule
+
+// Üst Modülde Çağrılırken Parametre Ezme:
+fifo_buffer #(
+  .DATA_WIDTH(64),  // 32 yerine 64-bit olarak özelleştirildi
+  .FIFO_DEPTH(1024) // 512 yerine 1024 derinlik olarak özelleştirildi
+) u_fifo_custom (
+  .clk   (clk),
+  .rst_n (rst_n),
+  .wdata (veri_yolu),
+  .rdata (okunan_veri)
+);
+
+En İyi Pratik: Eski defparam kullanımı hiyerarşik belirsizliklere yol açabildiği için modern standartlarda önerilmez. Her zaman #(.PARAM(deger)) biçimindeki doğrudan örnekleme sözdizimi kullanılmalıdır.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Arrays Memories & Parameters Verilog Parameters Verilog Parameters `,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `What Verilog Parameters is and when to use it Syntax and usage patterns for Verilog Parameters Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "5. What are Verilog Parameters ?",
-        content: `Parameters are Verilog constructs that allow a module to be reused with a different specification. For example, a 4-bit adder can be parameterized to accept a value for the number of bits and new parameter values can be passed in during module instantiation. So, an N-bit adder can become a 4-bit, 8-bit or 16-bit adder. They are like arguments to a function that are passed in during a function call. parameter MSB = 7; // MSB is a parameter with a constant value 7 parameter REAL = 4.5; // REAL holds a real number parameter FIFO_DEPTH = 256, MAX_WIDTH = 32; // Declares two parameters parameter [7:0] f_const = 2'd3; // 2 bit value is converted to 8 bits; 8'd3 Parameters are basically constants and hence it's illegal to modify their value at runtime. It is illegal to redeclare a name that is already used by a net, variable or another parameter. There are two major types of parameters, module and specify and both accepts a range specification. But, they are normally made as wide as the value to be stored requires them to be and hence a range specification is not necessary.`,
-      },
-      {
-        title: "6. Module Parameters",
-        content: `Module parameters can be used to override parameter definitions within a module and this makes the module have a different set of parameters at compile time. A parameter can be modified with the defparam statement or in the module instance statement. It is a common practice to use uppercase letters in names for the parameter to make them instantly noticeable. The module shown below uses parameters to specify the bus width, data width and the depth of FIFO within the design, and can be overriden with new values when the module is instantiated or by using defparam statements. // Verilog 1995 style port declaration module design_ip ( addr, wdata, write, sel, rdata); parameter BUS_WIDTH = 32, DATA_WIDTH = 64, FIFO_DEPTH = 512; input addr; input wdata; input write; input sel; output rdata; wire [BUS_WIDTH-1:0] addr; wire [DATA_WIDTH-1:0] wdata; reg [DATA_WIDTH-1:0] rdata; reg [7:0] fifo [FIFO_DEPTH]; // Design code goes here ... endmodule In the new ANSI style of Verilog port declaration, you may declare parameters as show below. module design_ip #(parameter BUS_WIDTH=32, parameter DATA_WIDTH=64) ( input [BUS_WIDTH-1:0] addr, // Other port declarations );`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Parametrik Modül Tasarımı (parameter ve defparam)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1889,8 +1884,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	parameter [7:0] f_const = 2'd3; // 2 bit value is converted to 8 bits; 8'd3`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1921,7 +1916,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	 // Design code goes here ...
 	endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `parameter MSB = 7; // MSB is a parameter with a constant value 7
@@ -1949,43 +1945,40 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
     subtitle: "ChipVerify Verilog Tutorial Bölüm 6: Yordamsal initial & always Blokları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog initial Block** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog \`initial\` Bloğu ve Simülasyon Başlatma",
+        content: `Verilog'da initial bloğu, simülasyon başladığında (zaman 0) yalnızca bir kez çalışan temel bir yordamsal (procedural) bloktur. Testbench ortamlarında sinyalleri başlangıç durumuna getirmek (initialization), saat ve reset uyarımlarını (stimulus) sürmek ve test senaryolarını sırayla yürütmek için kullanılır. Sürekli tekrarlanan always bloklarının aksine, initial blokları ASIC tasarımlarında genellikle donanıma sentezlenemez (non-synthesizable) ve yalnızca simülasyona özgüdür.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Testbench başlatma ve uyarım üretimi için initial bloğunun ne zaman ve nasıl kullanılacağını öğreneceksiniz.
+• Gecikme ifadeleriyle (#zaman) sıralı test senaryoları ve zamanlama dalgaları oluşturmayı kavrayacaksınız.
+• Simülasyon zamanı 0'da eşzamanlı başlayan birden fazla initial bloğunun paralel çalışma dinamiğini öğreneceksiniz.
+• ASIC sentezi ile FPGA başlatma değerleri arasındaki initial davranış farklarını kavrayacaksınız.`,
+      },
+      {
+        title: "3. İşlev ve Sentezlenebilirlik Sınırları",
+        content: `initial bloğu içerisindeki ifadeler sırayla yürütülür ve blok sonlandığında tekrar çalıştırılmaz:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog initial Block** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog initial Block Şeması](/images/verilog/initial-flash-1.PNG)
+module tb;
+  reg clk;
+  reg rst_n;
 
-![Verilog initial Block Şeması](/images/verilog/initial-flash-3.png)
+  // Simülasyon uyarımı üretimi
+  initial begin
+    clk = 0;
+    rst_n = 0;   // Reset aktif
+    #20 rst_n = 1; // 20 zaman birimi sonra reset kaldırılır
+    #100 $finish; // Simülasyonu sonlandır
+  end
 
-![Verilog initial Block Şeması](/images/verilog/initial-flash-2.PNG)
+  // Saat sinyali üretimi
+  always #5 clk = ~clk; // 10 zaman birimi periyotlu saat
+endmodule
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Sentezlenebilirlik Notu: Standart ASIC tasarım akışında initial blokları sentez araçları tarafından tamamen yok sayılır (veya hata verir). FPGA'lerde ise bazı sentezleyiciler FPGA konfigürasyon anında (power-up / bitstream yüklemesi) register'lara başlangıç değeri atamak için initial bloğunu desteklese de, taşınabilir ve güvenilir RTL tasarımı için devre sıfırlaması her zaman açıkça bir reset pini üzerinden yapılmalıdır.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Procedural Blocks Verilog initial Block Verilog initial Block The Verilog initial block executes once at the start of simulation (time 0) and is essential for testbench initialization, setting up test scenarios, and driving stimulus. Unlike always blocks which run continuously, initial blocks are strictly for simulation and do not synthesize into hardware. 8 min read | Beginner`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Understand when and why to use initial blocks for testbench initialization Apply delays within initial blocks to create sequential stimulus Use multiple initial blocks running in parallel for complex test scenarios Recognize that initial blocks are simulation-only and non-synthesizable A set of Verilog statements are usually executed sequentially in a simulation. These statements are placed inside a procedural block. There are mainly two types of procedural blocks in Verilog - initial and always .`,
-      },
-      {
-        title: "5. Syntax",
-        content: `// Single statement (no begin/end needed) initial [single statement] // Multiple statements (requires begin/end) initial begin [statement 1] [statement 2] ... [statement N] end`,
-      },
-      {
-        title: "6. What is the initial block used for?",
-        content: `An initial block is not synthesizable and hence cannot be converted into a hardware schematic with digital elements. Hence initial blocks do not serve much purpose than to be used in simulations. These blocks are primarily used to initialize variables and drive design ports with specific values. Non-Synthesizable: initial blocks are for simulation only. Synthesis tools ignore them completely. Use initial in testbenches for initialization and stimulus, not in RTL design modules.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog initial Block** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2008,8 +2001,8 @@ initial begin
 end`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2025,7 +2018,8 @@ end`,
     end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Single statement (no begin/end needed)
@@ -2057,41 +2051,53 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 6: Yordamsal initial & always Blokları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog always Block** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog \`always\` Bloğu ve Yordamsal Mantık",
+        content: `always bloğu, Verilog'un hem kombinasyonel hem de ardışıl (sıralı / sequential) mantık devrelerini tanımlamak için kullanılan en güçlü ve en temel yordamsal bloğudur. Blok içindeki ifadeler prosedürel olarak yürütülür, ancak blok bir bütün olarak duyarlılık listesindeki (sensitivity list) olaylara bağlı olarak sürekli ve eşzamanlı olarak tetiklenir.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Duyarlılık listelerini (sensitivity list) ve olay tabanlı (event-driven) yürütme mantığını öğreneceksiniz.
+• Seviye duyarlı (level-sensitive) kombinasyonel bloklar ile kenar duyarlı (edge-sensitive) ardışıl bloklar arasındaki farkı kavrayacaksınız.
+• İstenmeyen latch (yetkisiz mandal) oluşumunu engelleyen sentez şablonlarını öğreneceksiniz.
+• always bloklarında bloklayan (=) ve bloklamayan (<=) atamaların ne zaman kullanılacağını özümseyeceksiniz.`,
+      },
+      {
+        title: "3. Sözdizimi ve Duyarlılık Listesi Belirteçleri",
+        content: `Bir always bloğu, @ operatörünü takip eden parantez içindeki olaya göre tetiklenir. Birden fazla ifade varsa begin ... end bloğu arasına alınmalıdır:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog always Block** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog always Block Şeması](/images/verilog/assign-combo.PNG)
+// Tek satırlık ifade
+always @ (olay)
+  ifade;
 
-![Verilog always Block Şeması](/images/verilog/assign-combo-wave.PNG)
+// Çok satırlı yordamsal blok
+always @ (olay) begin
+  ifade1;
+  ifade2;
+end
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Olay (Event), sinyallerin değer değişimini (@ (a or b) veya modern sözdiziminde @ (*)) ya da saat sinyalinin yükselen/düşen kenarını (@ (posedge clk) / @ (negedge rst_n)) ifade eder.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Procedural Blocks Verilog always Block Verilog always Block An always block is one of the procedural blocks in Verilog. Statements inside an always block are executed sequentially.`,
+        title: "4. Duyarlılık Listesi (Sensitivity List) ve Latch Oluşumu",
+        content: `Duyarlılık listesi, always bloğunun ne zaman tetikleneceğini belirleyen sinyal grubudur:
+
+1. Seviye Duyarlı (Kombinasyonel Mantık): Girdilerden herhangi biri değiştiğinde çalışır. Verilog-2001 ile gelen @(*) tüm okunan sinyalleri otomatik listeye ekler ve eksik sinyal kaynaklı simülasyon-sentez uyuşmazlıklarını önler:
+
+always @ (*) begin
+  out = a & b;
+end
+
+2. Kenar Duyarlı (Ardışıl Mantık - Flip-Flop): Yalnızca saat veya asenkron resetin yükselen/düşen kenarında tetiklenir:
+
+always @ (posedge clk or negedge rst_n) begin
+  if (!rst_n) q <= 1'b0;
+  else        q <= d;
+end
+
+Kritik Uyarı: Kombinasyonel bir always bloğunda bir çıkış tüm koşullarda (if-else dallarının tamamında) atanmazsa, sentez aracı değerin korunması gerektiğini varsayar ve istenmeyen bir mandal (inferred latch) üretir; bu da zamanlama analizinde ciddi hatalara yol açar.`,
       },
-      {
-        title: "4. What You'll Learn",
-        content: `Master sensitivity lists and event-driven execution for combinational and sequential logic Understand the critical difference between level-sensitive and edge-sensitive always blocks Apply synthesis templates to avoid latches and ensure proper hardware inference Recognize when to use blocking ( = ) vs nonblocking ( <= ) assignments in always blocks`,
-      },
-      {
-        title: "5. Syntax",
-        content: `always @ (event) [statement] always @ (event) begin [multiple statements] end The always block is executed at some particular event. The event is defined by a sensitivity list.`,
-      },
-      {
-        title: "6. What is the sensitivity list ?",
-        content: `A sensitivity list is the expression that defines when the always block should be executed and is specified after the @ operator within parentheses ( ) . This list may contain either one or a group of signals whose value change will execute the always block. In the code shown below, all statements inside the always block get executed whenever the value of signals a or b change. // Level-sensitive: Execute always block whenever value of "a" or "b" change // This is used for combinational logic always @ (a or b) begin [statements] end`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog always Block** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2109,8 +2115,8 @@ always @ (event) begin
 end`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2121,7 +2127,8 @@ always @ (a or b) begin
 	[statements]
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `always @ (event)
@@ -2148,33 +2155,43 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 6: Yordamsal initial & always Blokları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Yordamsal Kontrol Blokları** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Kontrol Blokları ve Akış Denetimi",
+        content: `Sayısal devrelerin davranışı; koşullu durumlar, çoklu yol seçicileri (multiplexers) ve kontrol mantığı olmadan modellenemez. Verilog; donanım akışını kontrol etmek ve karar mekanizmaları kurmak için if-else, case, for ve forever gibi prosedürel kontrol blokları sunar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• if-else-if karar bloklarını ve donanımdaki öncelikli kodlayıcı (priority encoder / mux) karşılıklarını öğreneceksiniz.
+• Eksik else durumlarının yol açtığı yetkisiz latch tuzaklarını ve bunlardan kaçınma yollarını kavrayacaksınız.
+• forever, repeat, while ve for döngü yapılarının simülasyon ve sentezdeki yerini öğreneceksiniz.
+• Donanıma sentezlenebilir kontrol akışı yazmanın temel kurallarını inceleyeceksiniz.`,
+      },
+      {
+        title: "3. \`if-else-if\` Koşul Yapısı ve Donanımsal Öncelik Mantığı",
+        content: `if-else-if blokları, belirli koşulların doğruluğuna göre kararlar üretmek için kullanılır. C dilindeki yapıya çok benzemekle birlikte donanımda çok önemli bir mimari anlama sahiptir: if-else-if zinciri bir öncelik yapısı (priority logic) oluşturur. İlk koşul en yüksek önceliğe sahiptir ve sonraki koşullar ancak önceki koşullar sağlanmadığında değerlendirilir; bu da donanımda kaskat bağlı çoklayıcılar (multiplexers) veya öncelikli kodlayıcılar (priority encoders) üretir:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Yordamsal Kontrol Blokları** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+if (kosul_1) begin
+  // En yüksek öncelikli durum
+end else if (kosul_2) begin
+  // İkinci öncelikli durum
+end else begin
+  // Varsayılan (default) durum
+end
+
+Latch Uyarısı: Kombinasyonel lojik tanımlarken tüm olası durumların son bir else bloğu ile kapsandığından emin olunmalıdır; aksi halde devre mevcut durumu hafızada tutmaya çalışarak istenmeyen bir latch sentezler.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Procedural Blocks Verilog Control Blocks Verilog Control Blocks Hardware behavior cannot be implemented without conditional statements and other ways to control the flow of logic. Verilog has a set of control flow blocks and mechanisms to achieve the same.`,
+        title: "4. \`forever\` Döngüsü ve Testbench Saat Üretimi",
+        content: `forever döngüsü, içindeki ifadeleri simülasyon boyunca sonsuza kadar kesintisiz olarak yürütür:
+
+initial begin
+  clk = 0;
+  forever #5 clk = ~clk; // Her 5 zaman biriminde saat sinyalini tersle
+end
+
+Kritik Sentez Kuralı: forever döngüsü kesinlikle sentezlenemez (non-synthesizable). İçinde zaman gecikmesi (#delay) olmayan bir forever döngüsü simülatörün zaman ilerlemeden sonsuz döngüye girmesine (hang) sebep olur. Bu nedenle yalnızca testbench'lerde ve mutlaka bir gecikme ifadesiyle birlikte kullanılmalıdır.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `What Verilog Control Blocks is and when to use it Syntax and usage patterns for Verilog Control Blocks Practical examples with code demonstrations Common mistakes and best practices`,
-      },
-      {
-        title: "4. if-else-if",
-        content: `This conditional statement is used to make a decision about whether certain statements should be executed or not. This is very similar to the if-else-if statements in C. If the expression evaluates to true, then the first statement will be executed. If the expression evaluates to false and if an else part exists, the else part will be executed. Syntax // if statement without else part if (expression) [statement] // if statment with an else part if (expression) [statement] else [statement] // if else for multiple statements should be // enclosed within "begin" and "end" if (expression) begin [multiple statements] end else begin [multiple statements] end // if-else-if statement if (expression) [statement] else if (expression) [statement] else [statement] The code examples shown above are synthesizable and can be implemented in hardware. Always simulate your design before synthesis to verify correct functionality. The else part of an if-else is optional and can cause a confusion if an else is omitted in a nested if sequence. To avoid this confusion, it's easier to always associate the else to the previous if that lacks an else. Another way is to enclose statements within a begin-end block. The last else part handles none-of-the-above or default case where none of the other conditions were satisfied. Click here to read more about if-else-if Loops provide a way of executing single or multiple statements within a block one or more number of times. There are four different types of looping statements in Verilog.`,
-      },
-      {
-        title: "5. forever loop",
-        content: `This will continuously execute the statements within the block. forever [statement] forever begin [multiple statements] end`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Yordamsal Kontrol Blokları** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2211,8 +2228,8 @@ end`,
 		[statement]`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2224,7 +2241,8 @@ end`,
 		[multiple statements]
 	end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// if statement without else part
@@ -2270,43 +2288,50 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 6: Yordamsal initial & always Blokları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Blok İfadeleri: begin-end ve fork-join Paralel Çalışma** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Blok İfadeleri: Sıralı ve Paralel Yürütme",
+        content: `Birden fazla yordamsal ifadeyi tek bir sözdizimsel blok halinde gruplamak için blok ifadeleri (block statements) kullanılır. Verilog'da iki temel blok yapısı bulunur: İfadelerin sırayla yürütüldüğü sıralı bloklar (begin ... end) ve ifadelerin eşzamanlı olarak paralel başlatıldığı paralel bloklar (fork ... join). Blok ifadeleri; yapılandırılmış akış kontrolü, yerel değişken kapsamı (scoping) ve eşzamanlı donanım modelleme olanağı sağlar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Sıralı bloklarda (begin-end) kümülatif zamanlama ve adımlı yürütme mantığını öğreneceksiniz.
+• Paralel bloklarda (fork-join) eşzamanlı iş parçacıklarını ve bağımsız zamanlamayı kavrayacaksınız.
+• İsimlendirilmiş blokların (begin : blok_adi) yerel değişken tanımlama ve disable komutuyla döngü kırma amaçlı kullanımını göreceksiniz.
+• Sıralı bloklardaki bağıl (relative) gecikmeler ile paralel bloklardaki mutlak (absolute) gecikme anlambilimini ayırt edeceksiniz.`,
+      },
+      {
+        title: "3. Sıralı Bloklar (\`begin ... end\`) ve Kümülatif Gecikme",
+        content: `begin ve end anahtar sözcükleri arasına sarılan ifadeler yazılış sırasına göre birbiri ardına yürütülür. Blok içerisindeki gecikme değerleri bir önceki ifadenin tamamlandığı zamana göre kümülatif (birikimli / relative) olarak işlenir:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Blok İfadeleri: begin-end ve fork-join Paralel Çalışma** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Blok İfadeleri: begin-end ve fork-join Paralel Çalışma Şeması](/images/verilog/initial-begin-end-verilog.png)
+initial begin
+  #10 a = 1; // Zaman 10 anında a = 1
+  #20 b = 2; // Zaman 10+20 = 30 anında b = 2
+  #5  c = 3; // Zaman 30+5 = 35 anında c = 3
+end
 
-![Blok İfadeleri: begin-end ve fork-join Paralel Çalışma Şeması](/images/verilog/fork-join-verilog.png)
+Tüm ifadeler sırayla icra edildikten sonra yürütme akışı bir sonraki bloğa geçer. Sentezlenebilir RTL kodlarında tüm prosedürel bloklar begin-end yapısını kullanır.`,
+      },
+      {
+        title: "4. İsimlendirilmiş Bloklar (Named Blocks) ve Yerel Değişken Kapsamı",
+        content: `Sıralı bloklar iki şekilde yazılabilir:
 
-![Blok İfadeleri: begin-end ve fork-join Paralel Çalışma Şeması](/images/verilog/fork-join2-verilog.png)
+// 1. Temel Sıralı Blok:
+begin
+  ifade1;
+  ifade2;
+end
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+// 2. İsimlendirilmiş Sıralı Blok (Named Block):
+begin : my_block
+  integer i; // Yalnızca bu bloğa özgü yerel değişken tanımlanabilir
+  for (i = 0; i < 8; i = i + 1) begin
+    if (kosul) disable my_block; // C'deki 'break' gibi bloğu terk eder
+  end
+end
+
+İsimlendirilmiş bloklar, simülatörde hiyerarşik erişim yolu (scope) oluşturur ve disable ifadesiyle belirli bir bloğu erken sonlandırma olanağı sunar.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Procedural Blocks Verilog Block statements Verilog Block statements There are ways to group a set of statements together that are syntactically equivalent to a single statement and are known as block statements . There are two kinds of block statements: sequential ( begin-end ) and parallel ( fork-join ). Block statements enable structured control flow, scoped variable declarations, and concurrent execution modeling.`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Master sequential blocks ( begin-end ) for ordered statement execution with cumulative delays Understand parallel blocks ( fork-join ) for concurrent execution with independent timing Apply named blocks for hierarchical references, disabling, and local variable scoping Differentiate delay semantics: relative delays in sequential vs. absolute delays in parallel blocks`,
-      },
-      {
-        title: "5. Sequential Blocks",
-        content: `Statements are wrapped using begin and end keywords and will be executed sequentially in the given order, one after the other. Delay values are treated relative to the time of execution of the previous statement (cumulative delays). After all the statements within the block are executed, control may be passed elsewhere.`,
-      },
-      {
-        title: "6. Syntax",
-        content: `// Basic begin-end block begin statement1; // Executes first statement2; // Executes after statement1 completes statement3; // Executes after statement2 completes end // Named begin-end block (for hierarchical access and disable) begin : block_name [local variable declarations] // Optional: variables scoped to this block [statements] // Executed sequentially end`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Blok İfadeleri: begin-end ve fork-join Paralel Çalışma** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2330,8 +2355,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	end`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2351,7 +2376,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 	end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Basic begin-end block
@@ -2384,33 +2410,36 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 7: Atama İfadeleri & Blocking/Non-Blocking. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Atama Mekanizmaları: Sürekli ve Yordamsal** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Atama Türleri (Assignments) ve Temel İlkeler",
+        content: `Sinyallere (nets) ve değişkenlere (variables) değer aktarma işlemlerine atama (assignment) adı verilir. Farklı atama türlerini ve hangisinin nerede kullanılması gerektiğini tam olarak anlamak, doğru ve güvenilir Verilog kodu yazmanın temel direğidir. Yanlış atama türünün seçilmesi; simülasyon ile donanım arasında uyuşmazlıklara (simulation-synthesis mismatch), yarış koşullarına (race conditions) ve hatalı devre sentezine yol açar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Üç temel atama formunu (yordamsal / procedural, sürekli / continuous ve yordamsal sürekli) öğreneceksiniz.
+• Her bir atama tipinin sol tarafında (LHS) yasal olarak hangi veri tipinin (wire vs reg) yer alabileceğini kavrayacaksınız.
+• Bloklayan (=) ve bloklamayan (<=) atamaların donanım mantığındaki ayrımını öğreneceksiniz.
+• İleri düzey testbench hata ayıklama işlemlerinde kullanılan force ve release komutlarını tanıyacaksınız.`,
+      },
+      {
+        title: "3. Üç Temel Atama Mekanizması",
+        content: `Verilog üç temel atama mekanizması sunar:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Atama Mekanizmaları: Sürekli ve Yordamsal** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+1. Sürekli Atamalar (Continuous Assignments): assign anahtar kelimesiyle wire türündeki ağlara yapılır. Kombinasyonel mantığı modeller ve sağ taraftaki herhangi bir sinyal değiştiği anda sürekli olarak sol tarafa yansıtılır.
+2. Yordamsal Atamalar (Procedural Assignments): always, initial, görev (task) ve fonksiyon (function) blokları içerisinde yapılır. Sol tarafında mutlaka reg veya integer gibi değişken tipleri yer almalıdır.
+3. Yordamsal Sürekli Atamalar (Procedural Continuous Assignments): assign/deassign ve force/release yapılarıdır. Genellikle simülasyon ve testbench ortamlarında belirli sinyalleri geçici olarak ezmek (override) için kullanılır, sentezlenemez.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Assignments Verilog Assignments Verilog Assignments Placing values onto nets and variables are called assignments. Understanding the different assignment types and when to use each is fundamental to writing correct Verilog code. Choosing the wrong assignment type can lead to synthesis errors, simulation mismatches, or incorrect hardware behavior. 8 min read | Beginner to Intermediate`,
+        title: "4. Atama Yapısı: Sol Taraf (LHS) ve Sağ Taraf (RHS)",
+        content: `Bir atama ifadesi sol taraf (LHS - Left-Hand Side) ve sağ taraf (RHS - Right-Hand Side) olmak üzere iki ana kısımdan oluşur:
+
+• assign LHS = RHS; -> Sürekli atama (LHS mutlaka wire türünde bir net olmalıdır).
+• LHS = RHS; -> Bloklayan prosedürel atama (LHS mutlaka reg türünde bir değişken olmalıdır).
+• LHS <= RHS; -> Bloklamayan prosedürel atama (LHS mutlaka reg türünde bir değişken olmalıdır).
+
+Sağ taraf (RHS) bir değere indirgenebilen herhangi bir operatör veya sinyal kombinasyonunu içerebilir. Sol taraf (LHS) ise bu sonucun aktarılacağı hedef donanım sinyalini gösterir.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `Master the three assignment forms: procedural, continuous, and procedural continuous Understand what can legally appear on the left-hand side (LHS) of each assignment type Apply blocking ( = ) and non-blocking ( <= ) assignments correctly in procedural blocks Recognize when to use assign/deassign and force/release for advanced testbench control`,
-      },
-      {
-        title: "4. Three Basic Assignment Forms",
-        content: `Verilog provides three fundamental assignment mechanisms: Procedural - Used in always , initial , tasks, and functions Continuous - Used with assign keyword for combinational logic Procedural Continuous - Used with assign/deassign and force/release for overriding assignments`,
-      },
-      {
-        title: "5. Assignment Structure",
-        content: `An assignment has two parts - right-hand side (RHS) and left-hand side (LHS) with an equal symbol ( = ) or a less than-equal symbol ( <= ) in between: LHS = RHS; // Blocking assignment LHS <= RHS; // Non-blocking assignment assign LHS = RHS; // Continuous assignment The RHS can contain any expression that evaluates to a final value, while the LHS indicates a net or a variable to which the value in RHS is being assigned.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Atama Mekanizmaları: Sürekli ve Yordamsal** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2425,8 +2454,8 @@ LHS <= RHS;    // Non-blocking assignment
 assign LHS = RHS;  // Continuous assignment`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2457,7 +2486,8 @@ assign LHS = RHS;  // Continuous assignment`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `LHS = RHS;     // Blocking assignment
@@ -2481,43 +2511,38 @@ assign LHS = RHS;  // Continuous assignment`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 7: Atama İfadeleri & Blocking/Non-Blocking. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **assign İfadeleri ile Sürekli Atama (Continuous Assignment)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• assign ifadesiyle sürekli atama (continuous assignment) yaparak kombinasyonel mantık modellemeyi öğreneceksiniz.
+• wire (sürekli atanan ağ) ile reg (prosedürel atanan değişken) arasındaki temel farkı kavrayacaksınız.
+• assign ifadelerinde birleştirme ({}), parça seçimi ([msb:lsb]) ve tekrarlama operatörlerini kullanmayı öğreneceksiniz.
+• Çoklu sürücü çakışmalarını ve boşta kalan hatlardaki yüksek empedans (Z) durumlarını analiz edebileceksiniz.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **assign İfadeleri ile Sürekli Atama (Continuous Assignment)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Fiziksel Benzetim: Breadboard üzerindeki elektriksel bir kabloyu düşünün; kablonun bir ucuna +5V uygulandığı sürece diğer uca bağlı lamba yanacaktır. Verilog'daki assign ifadesi tam olarak bu fiziksel kabloyu temsil eder; sağ taraftaki mantık ifadesinin değeri sürekli olarak sol taraftaki wire teline aktarılır.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![assign İfadeleri ile Sürekli Atama (Continuous Assignment) Şeması](/images/verilog/assign-flash-1.PNG)
+        title: "2. Sürekli Atama Sözdizimi ve Gecikme Modellemesi",
+        content: `Sürekli atama sözdizimi assign anahtar kelimesi ile başlar:
 
-![assign İfadeleri ile Sürekli Atama (Continuous Assignment) Şeması](/images/verilog/and_schematic.png)
+assign <net_ifadesi> = [surucu_kuvveti] [gecikme] <ifade_veya_sabit>;
 
-![assign İfadeleri ile Sürekli Atama (Continuous Assignment) Şeması](/images/verilog/assign-combo.PNG)
+// Örnekler:
+assign out = a & b;              // Temel VE kapısı
+assign #5 out_delayed = a ^ b;   // 5 zaman birimi gecikmeli XOR (simülasyon için)
+assign {cout, sum} = a + b + cin;// Elde bitli toplayıcı
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Gecikme (#delay) parametresi, mantık kapılarının yayılım gecikmesini (propagation delay) simülasyon ortamında modellemek için kullanılır; sentez araçları bu gecikme değerlerini fiziksel kütüphane gecikmeleriyle değiştirdiği için genellikle RTL'de gecikme yazılmaz.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Assignments Verilog assign statement Verilog assign statement `,
+        title: "3. \`assign\` İfadelerinde Katı Kurallar ve Özellikler",
+        content: `assign ifadelerini kullanırken uyulması gereken kesin kurallar:
+
+1. Sol Taraf (LHS): Her zaman bir wire (skaler, vektör veya bunların birleştirmesi) olmalıdır. Kesinlikle bir reg tipi sol tarafta yer alamaz!
+2. Sağ Taraf (RHS): wire, reg, sabitler, operatörler ve fonksiyon çağrılarını içerebilir.
+3. Sürekli Aktiflik: Sağ taraftaki (RHS) herhangi bir işlenenin değeri değiştiği anda ifade anında yeniden hesaplanır ve sol taraftaki net güncellenir.
+4. Eşzamanlılık (Concurrency): Modül içerisindeki tüm assign satırları birbirine paralel olarak aynı anda çalışır; kod satırlarının alt alta yazılma sırası devrenin işleyişini değiştirmez.`,
       },
-      {
-        title: "4. What You'll Learn",
-        content: `Master continuous assignments with assign for modeling combinational logic Understand the critical difference between wire (continuous) and reg (procedural) assignments Apply concatenation, part-select, and replication operators in assign statements Recognize multiple driver conflicts and high-impedance (Z) states from undriven nets Signals of type wire or a similar wire like data type requires the continuous assignment of a value. For example, consider an electrical wire used to connect pieces on a breadboard. As long as the +5V battery is applied to one end of the wire, the component connected to the other end of the wire will get the required voltage. In Verilog, this concept is realized by the assign statement where any wire or other similar wire like data-types can be driven continuously with a value. The value can either be a constant or an expression comprising of a group of signals.`,
-      },
-      {
-        title: "5. Assign Syntax",
-        content: `The assignment syntax starts with the keyword assign followed by the signal name which can be either a single signal or a concatenation of different signal nets. The drive strength and delay are optional and are mostly used for dataflow modeling than synthesizing into real hardware. The expression or signal on the right hand side is evaluated and assigned to the net or expression of nets on the left hand side. assign <net_expression> = [drive_strength] [delay] <expression of different signals or constant value> Delay values are useful for specifying delays for gates and are used to model timing behavior in real hardware because the value dictates when the net should be assigned with the evaluated value.`,
-      },
-      {
-        title: "6. Rules",
-        content: `There are some rules that need to be followed when using an assign statement: LHS should always be a scalar or vector net or a concatenation of scalar or vector nets and never a scalar or vector register. RHS can contain scalar or vector registers and function calls. Whenever any operand on the RHS changes in value, LHS will be updated with the new value. assign statements are also called continuous assignments and are always active`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **assign İfadeleri ile Sürekli Atama (Continuous Assignment)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2530,8 +2555,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
           snippet: `assign <net_expression> = [drive_strength] [delay] <expression of different signals or constant value>`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2589,7 +2614,8 @@ assign z = {x[1:0], y};
 /
 // ... (testbench devamı)`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `assign <net_expression> = [drive_strength] [delay] <expression of different signals or constant value>`,
@@ -2611,33 +2637,41 @@ assign z = {x[1:0], y};
     subtitle: "ChipVerify Verilog Tutorial Bölüm 7: Atama İfadeleri & Blocking/Non-Blocking. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Kritik Fark: Engelleyen (=) ve Engellemeyen (<=) Atamalar** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Bloklayan (\`=\`) ve Bloklamayan (\`<=\`) Atamalar",
+        content: `Bloklayan (=) ve bloklamayan (<=) atamalar arasındaki farkı ve zamanlama anlambilimini kavramak, doğru ve güvenilir Verilog kodu yazmanın en temel kuralıdır. Yanlış atama operatörünün seçilmesi; simülasyon ile sentezlenmiş netlist arasında uyumsuzluklara, yarış koşullarına (race conditions) ve testbench ortamında kusursuz görünen devrenin gerçek silikon çipte veya FPGA üzerinde tamamen çökmesine yol açar.`,
+      },
+      {
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `• Bloklayan (=) ve bloklamayan (<=) atamaların yürütme anlambilimini (semantics) öğreneceksiniz.
+• Verilog simülatör olay kuyruğunda zaman adımı değerlendirme sırasını kavrayacaksınız.
+• Kombinasyonel mantık, ardışıl (saatli) mantık ve testbench'ler için doğru atama kurallarını öğreneceksiniz.
+• Atama türlerinin yanlış karıştırılmasından kaynaklanan yarış koşullarını tespit edip önleyebileceksiniz.`,
+      },
+      {
+        title: "3. Atama Türleri Karşılaştırması ve Altın Kurallar",
+        content: `Donanım Tasarımının İki Altın Kuralı:
+1. Kombinasyonel mantık bloklarında (always @(*)) her zaman BLOKLAYAN (=) atama kullanın.
+2. Sıralı/Ardışıl mantık bloklarında (always @(posedge clk)) her zaman BLOKLAMAYAN (<=) atama kullanın!
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Kritik Fark: Engelleyen (=) ve Engellemeyen (<=) Atamalar** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+| Özellik | Bloklayan (=) | Bloklamayan (<=) |
+| :--- | :--- | :--- |
+| Yürütme Sırası | Sıralı (Bir sonraki satırı bloke eder) | Eşzamanlı (Zaman adımının sonuna ertelenir) |
+| RHS Değerlendirme | Anında satır başında hesaplanır | İfade çalıştırıldığında anlık örneklenir |
+| LHS Güncellenme | Hemen o anda güncellenir | Simülasyon zaman adımının sonunda güncellenir |
+| Temel Kullanım | Kombinasyonel lojik, testbench'ler | Ardışıl lojik (Flip-flop, saklayıcılar) |
+| Sentez Karşılığı | Mantık kapıları (registersız) | Kaydediciler (Flip-Flop dizileri) |
+| Yarış Riski | Ardışıl lojikte kullanılırsa yüksek | Düşük (deterministik saat kenarı davranışı) |`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Assignments Verilog Blocking & Non-Blocking Verilog Blocking & Non-Blocking Understanding the difference between blocking ( = ) and non-blocking ( <= ) assignments is critical for writing correct Verilog code. The wrong choice can lead to simulation mismatches, race conditions, and synthesized hardware that behaves differently than your testbench. 8 min read | Beginner to Intermediate`,
+        title: "4. Bloklayan Atama Dinamiği ve Simülasyon Sırası",
+        content: `Bloklayan atamalar (=), prosedürel bir blok içinde yazıldıkları sırayla birbiri ardına icra edilir. Bir satırdaki atama tamamen bitmeden altındaki satıra geçilmez (yani sonraki ifadeleri 'bloke eder'). Ancak bu durum, başka bir paralel blokta (initial veya always) eşzamanlı çalışan kodları durdurmaz.
+
+Simülasyon Çıktısı Analizi: Testbench ortamında zaman 0 anında paralel başlayan iki initial bloğunda, ilk blokta 'a' atandıktan hemen sonra display çağrıldığında, henüz 'b' ve 'c' atanmadığı için ekranda 0xXX görülür. Ardından gelen atamalar adım adım sırayla yürütülür.
+
+Ardışıl Devrelerde Bloklayan Atama Tehlikesi: Eğer bir shift register (kaydırmalı saklayıcı) zincirinde q2 = q1; q1 = d; şeklinde bloklayan atama kullanılırsa, tek bir saat darbesinde veri doğrudan en başından en sonuna kadar akar ve zincirleme flip-flop davranışı kaybolur! İşte bu yüzden saatli devrelerde her zaman bloklamayan (<=) atama kullanılmalıdır.`,
       },
-      {
-        title: "3. What You'll Learn",
-        content: `Master the execution semantics of blocking ( = ) versus non-blocking ( <= ) assignments Understand time-step evaluation and how assignments are scheduled in Verilog simulators Apply the correct assignment type for combinational logic, sequential logic, and testbenches Recognize and avoid race conditions caused by improper mixing of assignment types`,
-      },
-      {
-        title: "4. Assignment Types Comparison",
-        content: `Aspect Blocking ( = ) Non-Blocking ( <= ) Execution Order Sequential - blocks until complete Concurrent - schedules for end of time-step When RHS Evaluated Immediately before assignment At statement execution, assigned later When LHS Updated Immediately At end of current time-step Primary Use Case Combinational logic, testbenches Sequential (clocked) logic Synthesis Result Combinational logic (no registers) Registers (flip-flops) Race Condition Risk High if mixed with non-blocking Low - deterministic scheduling`,
-      },
-      {
-        title: "5. Blocking Assignments",
-        content: `Blocking assignment statements are assigned using = and are executed one after the other in a procedural block. Each statement must complete before the next one executes. However, this will not prevent execution of statements that run in a parallel block. module tb; reg [7:0] a, b, c, d, e; initial begin a = 8'hDA; // Execute first $display ("[%0t] a=0x%0h b=0x%0h c=0x%0h", $time, a, b, c); // Then display (b, c still unassigned) b = 8'hF1; // Then assign b $display ("[%0t] a=0x%0h b=0x%0h c=0x%0h", $time, a, b, c); // Display again (c still unassigned) c = 8'h30; // Finally assign c $display ("[%0t] a=0x%0h b=0x%0h c=0x%0h", $time, a, b, c); // Display all assigned values end initial begin // This block runs in parallel with the first block d = 8'hAA; // Execute first in this block $display ("[%0t] d=0x%0h e=0x%0h", $time, d, e); // Display (e still unassigned) e = 8'h55; // Then assign e $display ("[%0t] d=0x%0h e=0x%0h", $time, d, e); // Display both assigned end endmodule Note that there are two initial blocks which are executed in parallel when simulation starts. Statements are executed sequentially in each block and both blocks finish at time 0ns. To be more specific, variable a gets assigned first, followed by the display statement which is then followed by all other statements. This is visible in the output where variables b and c are 8'hxx in the first display statement because their assignments have not been executed yet when the first $display is called. Output ncsim> run [0] a=0xda b=0xx c=0xx [0] a=0xda b=0xf1 c=0xx [0] a=0xda b=0xf1 c=0x30 [0] d=0xaa e=0xx [0] d=0xaa e=0x55 ncsim: *W,RNQUIE: Simulation is complete.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Kritik Fark: Engelleyen (=) ve Engellemeyen (<=) Atamalar** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2668,8 +2702,8 @@ assign z = {x[1:0], y};
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2694,7 +2728,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module tb;

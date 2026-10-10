@@ -10,39 +10,19 @@ export const VERILOG_PART5: Record<string, LessonContent> = {
     subtitle: "ChipVerify Verilog Tutorial Bölüm 27: Mantıksal Sentez & Kodlama Kuralları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mantıksal Sentez Temelleri: RTL'den Kapı Netlistine** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mantıksal Sentez Temelleri: RTL'den Kapı Netlistine** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Sentez (Synthesis) Nedir?",
+        content: `Verilog sentezi (synthesis); dijital devreleri ve sistemleri tanımlayan üst düzey Verilog kodunun, donanım düzeyinde fiziksel olarak gerçeklenebilecek alt düzey bir devre gösterimine dönüştürülmesi sürecidir. Bu dönüşümün sonucunda genellikle kapı seviyesinde bir netlist (gate-level netlist) elde edilir. Netlist; hedef donanımda (FPGA veya ASIC) fiziksel olarak eşlenebilen mantık kapıları (logic gates) ve flip-flop'lar gibi temel donanım bileşenlerinin ara bağlantılarını içerir. Sentez araçları sadece soyut RTL kodunu dönüştürmekle kalmaz, aynı zamanda tasarımı alan (area), zamanlama (timing) ve güç tüketimi (power consumption) gibi kısıtlara göre optimize eder.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Mantıksal Sentez Temelleri: RTL'den Kapı Netlistine Şeması](/images/verilog/verilog-synthesis.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Sentez İşlemi Nasıl Gerçekleştirilir?",
+        content: `Sentez süreci, kural olarak yazmaç aktarım düzeyinde (Register Transfer Level - RTL) yazılmış ve sentezlenebilir (synthesizable) Verilog alt kümesine uyan kodlarla başlar. Sentez aracı; mantık optimizasyonu algoritmaları uygulayarak kapı sayısını azaltır ve performansı artırır. Tasarımcının belirlediği zamanlama kısıtları (timing constraints), sentez aracına hız ve başarım optimizasyonunda rehberlik eder. Son çıktı, devreyi temel mantık kapıları ve flip-flop'lar cinsinden tanımlayan kapı seviyesi bir netlist'tir. Sektörde Synopsys Design Compiler, Cadence Genus, Xilinx/AMD Vivado ve Intel Quartus gibi sentez araçları kullanılır. Farklı sentez araçları RTL kodunu farklı optimizasyon stratejileriyle yorumlayabileceğinden, sentezlenmiş netlist sonuçları araçtan araca değişiklik gösterebilir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Synthesis Verilog Synthesis Verilog Synthesis `,
+        title: "3. Sentez Kısıt Dosyası (SDC) Nedir ve Nasıl Kullanılır?",
+        content: `Sentez Kısıt Dosyası (Synthesis Constraint File), dijital tasarımlarda zamanlama, alan ve güç hedeflerini tanımlamak için endüstri standardı olan Synopsys Design Constraints (SDC) formatında yazılır. Sentez aşamasında SDC dosyası, Synopsys Design Compiler gibi araçlara optimizasyon hedeflerini bildirir. Örnek bir SDC kısıt dosyası yapısı: # SDC dosya sürümü: set_version 2.1 # Saat tanımı (100 MHz clock): create_clock -period 10 [get_ports clk] # Giriş gecikme kısıtları: set_input_delay -max 2 [get_ports data_in[*]] -clock [get_clocks clk] ; set_input_delay -min 1 [get_ports data_in[*]] -clock [get_clocks clk] # Çıkış gecikme kısıtları: set_output_delay -max 3 [get_ports data_out[*]] -clock [get_clocks clk] ; set_output_delay -min 1 [get_ports data_out[*]] -clock [get_clocks clk] # Çıkış yük kapasitansı: set_load 0.01 [get_ports data_out[*]] # Yanlış yollar (false path): set_false_path -from [get_ports reset] -to [get_ports data_out[*]] # Maksimum fanout sınırı: set_max_fanout 10 [get_ports data_in[*]] Bu kısıtlar olmadan sentez aracı devreyi hedeflenen zamanlama toleranslarına (setup ve hold) göre optimize edemez.`,
       },
-      {
-        title: "4. What is synthesis ?",
-        content: `Verilog synthesis is the process of transforming high-level Verilog code, which describes digital circuits, into a lower-level representation that can be implemented in hardware. This transformation typically results in a netlist, which consists of logical components like gates and flip-flops that can be physically realized in an FPGA or ASIC. Synthesis converts abstract descriptions of designs (written in Verilog) into a format that can be mapped to physical hardware components. The synthesis process optimizes the design for various constraints such as area, timing, and power consumption.`,
-      },
-      {
-        title: "5. How is synthesis done ?",
-        content: `The process begins with a synthesizable subset of Verilog code, typically written at the Register Transfer Level (RTL). The synthesis tool applies algorithms to optimize the logic, reducing the number of gates and improving performance. Specify timing constraints to guide the synthesis tool in optimizing for speed and performance.The final output is a netlist that describes the circuit in terms of basic logic gates and flip-flops. Various tools are available for Verilog synthesis, including Synopsys Design Compiler, Cadence Genus, Xilinx Vivado, etc. Different synthesis tools may interpret Verilog code differently, leading to variations in synthesized output.`,
-      },
-      {
-        title: "6. What is a synthesis constraint file ?",
-        content: `A Synthesis Constraint File is typically written in the Synopsys Design Constraints (SDC) format, which is used to specify timing, area, and power constraints for digital designs. During synthesis, the SDC file guides tools like Synopsys Design Compiler to optimize the logic based on specified constraints. # Set the version of the SDC file set_version 2.1 # Define the clock create_clock -period 10 [get_ports clk] ; # 100 MHz clock # Set input delay constraints set_input_delay -max 2 [get_ports data_in[*]] -clock [get_clocks clk] set_input_delay -min 1 [get_ports data_in[*]] -clock [get_clocks clk] # Set output delay constraints set_output_delay -max 3 [get_ports data_out[*]] -clock [get_clocks clk] set_output_delay -min 1 [get_ports data_out[*]] -clock [get_clocks clk] # Set load capacitance on output ports set_load 0.01 [get_ports data_out[*]] # Define false paths (if any) set_false_path -from [get_ports reset] -to [get_ports data_out[*]] # Set maximum fanout for specific ports set_max_fanout 10 [get_ports data_in[*]]`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mantıksal Sentez Temelleri: RTL'den Kapı Netlistine** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -76,8 +56,8 @@ set_false_path -from [get_ports reset] -to [get_ports data_out[*]]
 set_max_fanout 10 [get_ports data_in[*]]`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -95,7 +75,8 @@ set_max_fanout 10 [get_ports data_in[*]]`,
     end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `# Set the version of the SDC file
@@ -138,43 +119,23 @@ set_max_fanout 10 [get_ports data_in[*]]`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 27: Mantıksal Sentez & Kodlama Kuralları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Kodlama Tarzının Senteze Etkisi (Coding Style Effect)",
+        content: `Verilog, dijital devreleri ve sistemleri tasarlamak için kullanılan bir donanım açıklama dilidir (HDL). Verilog kodunu tutarlı ve modüler bir tarzda yazmak; kodun okunabilirliğini, bakım kolaylığını ve hatasız olmasını sağlamak açısından son derece önemlidir. Daha da önemlisi, kodlama tarzı sentez sürecini doğrudan etkiler. Üst düzey Verilog kodunun kapı seviyesinde bir netlist'e dönüştürülme biçimi, RTL'deki ifade şekline bağlıdır. İyi yapılandırılmış bir kodlama tarzı; daha az donanım kaynağı, daha küçük silikon alanı (area) ve daha düşük güç tüketimi sağlar. Aynı Mod-3 sayıcı (counter) işlevini gerçekleştiren farklı yazım şekilleri, sentez aracının reset ve karşılaştırma mantığını sentezlemesinde belirgin donanım farklılıklarına yol açar. Alan, güç ve yeniden kullanılabilirlik arasında mühendislik dengeleri (trade-offs) mevcuttur.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi Şeması](/images/verilog/3modcnt_andbits.png)
-
-![Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi Şeması](/images/verilog/3modcnt_eq3.png)
-
-![Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi Şeması](/images/verilog/3modcnt_reduction_and.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Örnek 1: Boole Mantık İfadeleriyle Mod-3 Sayıcı",
+        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn | out[1] & out[0]) out <= 0; else out <= out + 1; end endmodule Sentez Analizi: Sentez aracı bu yapıyı doğrudan tanımlandığı gibi tek bir AND ve tek bir OR kapısı kullanarak gerçekler. Minimum kapı sayısı ve basit bir lojik yapı elde edilir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Synthesis Verilog Coding Style Effect Verilog Coding Style Effect Verilog is a hardware description language (HDL) used for designing digital circuits and systems. Writing Verilog code with a consistent and organized style is important to make the code maintainable, readable, and error-free. Verilog coding style can have a significant impact on the synthesis process, where your high-level Verilog code is converted into a gate-level netlist that can be implemented on an FPGA or ASIC. A well-structured and organized Verilog codebase can lead to more efficient synthesis with less hardware, and save area and power. Consider the following three implementations of a Mod-3 counter that results in hardware circuits with different logic elements. An adder to increment and flops to store the counter value are the two must-have elements to implement a counter. The difference lies in how the synthesis tool uses the hardware description to implement the reset logic. Its worthwhile to remember that there are trade-offs for each approach like area over power and reusability.`,
+        title: "3. Örnek 2: Öncelikli if-else İfadeleriyle Mod-3 Sayıcı",
+        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (out == 3) out <= 0; else out <= out + 1; end endmodule Sentez Analizi: Sentez aracı bu yapıyı öncelik mantığı (priority logic) içeren iki kademeli çoklayıcı (multiplexer) devresi olarak sentezler. Karşılaştırıcı (comparator) ve iki MUX kullanımı, ilk yaklaşıma göre daha fazla kapı, dolayısıyla daha yüksek alan ve güç tüketimi anlamına gelir.`,
       },
       {
-        title: "4. Example #1",
-        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn | out[1] & out[0]) out <= 0; else out <= out + 1; end endmodule Note that the synthesis tool implemented the hardware logic exactly as described using an AND and OR gate.`,
+        title: "4. Örnek 3: İndirgeme Operatörü (Reduction Operator) ile Mod-3 Sayıcı",
+        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (&out) out <= 0; else out <= out + 1; end endmodule Sentez Analizi: Sentez aracı tek bir MUX ve tek bir indirgeme AND bileşeni sentezler. RTL kodundaki küçük bir operatör tercihinin bile kapı seviyesinde mimariyi ve zamanlama yollarını nasıl doğrudan etkilediği açıkça görülmektedir.`,
       },
-      {
-        title: "5. Example #2",
-        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (out == 3) out <= 0; else out <= out + 1; end endmodule Note that synthesis resulted in two multiplexer circuit which has a lot more gates than the previous result, and thereby have higher area and power.`,
-      },
-      {
-        title: "6. Example #3",
-        content: `module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (&out) out <= 0; else out <= out + 1; end endmodule Note that synthesis resulted in a single MUX and a reduction AND element as described by the Verilog RTL code. `,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Kodlama Tarzının Sentez Sonucuna ve Alan/Gecikmeye Etkisi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -194,8 +155,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -212,7 +173,8 @@ endmodule`,
   end 
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module cntr_mod3 (input clk, rstn, output reg [1:0] out);
@@ -241,43 +203,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 28: Zamanlama Analizi & SDF Açıklamaları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Zamanlama Denetimleri (Timing Checks) Nedir?",
+        content: `Dijital devre tasarımında zamanlama denetimleri (timing checks), devrenin hedeflenen zamanlama gereksinimlerini karşıladığını garanti altına almak için vazgeçilmezdir. Bu denetimler, sinyallerin izin verilen zaman sınırları içinde yayıldığını doğrulayarak kurulum zamanı (setup time) ve tutma zamanı (hold time) ihlallerini tespit eder. Zamanlama denetimleri bir Verilog modülü içinde mutlaka specify bloğu içerisine yerleştirilmelidir: specify // Zamanlama denetim ifadeleri endspecify Önemli Not: Zamanlama denetimleri $ karakteriyle başlasa da klasik simülatör sistem görevleri (system tasks) değildir; simülatörün zamanlama motoruna doğrudan bağlı özel specify yönergeleridir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal Şeması](/images/verilog/sta_timing.svg)
-
-![Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal Şeması](/images/verilog/sta_setup.svg)
-
-![Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal Şeması](/images/verilog/timing_check_setup.svg)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Referans ve Veri Olayları (Reference and Data Events)",
+        content: `Tüm zamanlama denetimleri iki temel olaya dayanır: Referans Olayı (Reference Event) ve Veri Olayı (Data Event). Her iki olay da Boole koşullarıyla sınırlandırılabilir. Referans Olayı: Diğer olayları ölçmek için bir zaman referans noktası belirleyen sinyal geçişidir. Genellikle saat kenarları (posedge clk veya negedge clk) gibi kritik kontrol sinyalleridir. Örneğin kurulum zamanı denetiminde referans olayı saatin yükselen kenarıdır. Veri Olayı: Referans olayına göre zamanlaması izlenen sinyaldir; tipik olarak yazmaç veya flip-flop'ların veri girişleridir. Örneğin tutma zamanı denetiminde veri olayı, saat kenarını takip eden veri sinyali geçişidir. specify $setup(data_signal, posedge clk, setup_time_limit); // posedge clk referans olayıdır $hold(posedge clk, data_signal, hold_time_limit); // data_signal veri olayıdır endspecify Zamanlama denetimleri yalnızca koşullar sağlandığında ihlalleri raporlar.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Timing Analysis Verilog Timing Checks Verilog Timing Checks `,
+        title: "3. Zaman Damgası ve Denetim Olayları (Timestamp and Timecheck Events)",
+        content: `Zamanlama denetimlerinin simülasyon ortamında değerlendirilmesi iki olayın zamanına dayanır: Zaman Damgası Olayı (Timestamp Event) ve Zaman Denetimi Olayı (Timecheck Event). Timestamp sinyalinde bir mantıksal geçiş gerçekleştiğinde, simülatör bu geçişin tam simülasyon anını kaydeder (damgalar). Timecheck sinyalinde bir geçiş meydana geldiğinde ise simülatör kaydedilen zaman damgasını mevcut zamanla karşılaştırarak ihlalin (setup veya hold violation) gerçekleşip gerçekleşmediğini değerlendirir.`,
       },
-      {
-        title: "4. What are timing checks ?",
-        content: `Timing checks in digital design are critical for ensuring that a circuit meets its specified timing requirements. They help verify that signals propagate through the circuit within the allowed time constraints, preventing issues such as setup and hold time violations. Timing checks must be placed inside a specify block in a Verilog module. specify // Timing check statements endspecify Note! Timing checks are not system tasks although they begin with $ .`,
-      },
-      {
-        title: "5. What are reference and data events ?",
-        content: `All timing checks involve a reference event and a data event, each of which can be associated with boolean conditions. The reference event is a signal transition that establishes a point in time for measuring other events. It is typically associated with clock edges (e.g., posedge or negedge) or other significant control signals. For example, in a setup time check, the reference event would be the rising edge of a clock signal. The data event is the signal whose timing is being monitored relative to the reference event. This signal typically represents data inputs to registers or flip-flops. For instance, in a hold time check, the data event would be the stable state of a data signal immediately following the clock edge defined by the reference event. specify $setup(data_signal, posedge clk, setup_time_limit); // posedge clk is reference event $hold(posedge clk, data_signal, hold_time_limit); // data_signal is the data event endspecify Timing checks will only detect reference and data events when their corresponding conditions are satisfied.`,
-      },
-      {
-        title: "6. What are timestamp and timecheck events ?",
-        content: `The evaluation of timing checks relies on the times of two events, referred to as the timestamp event and the timecheck event. When there is a transition on the timestamp event signal, the simulator records (or "stamps") the time of that transition for later use in assessing the timing check. Conversely, a transition on the timecheck event signal prompts the simulator to evaluate the timing check to determine if a violation has occurred.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Statik Zamanlama Kontrolleri: $setup, $hold, $recovery, $removal** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -292,8 +230,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endspecify`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -303,7 +241,8 @@ endspecify`,
     $hold(posedge clk, data_signal, hold_time_limit);       // data_signal is the data event
 endspecify`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `specify
@@ -327,39 +266,15 @@ endspecify`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 28: Zamanlama Analizi & SDF Açıklamaları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Standart Gecikme Formatı (SDF) ve $sdf_annotate ile Doğrulama** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Standart Gecikme Formatı (SDF) ve $sdf_annotate ile Doğrulama** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Standart Gecikme Formatı (SDF) Nedir?",
+        content: `Standart Gecikme Formatı (SDF - Standard Delay Format), elektronik tasarım otomasyonunda (EDA) dijital devrelerin zamanlama bilgilerini ifade etmek için geliştirilmiş bir IEEE standardıdır (IEEE 1497). SDF dosyaları ASCII metin formatındadır; mantık kapısı gecikmelerini (cell delays), yol gecikmelerini (path delays), ara bağlantı gecikmelerini (interconnect delays) ve zamanlama kısıt denetimlerini (setup, hold, recovery, removal vb.) içerir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Standart Gecikme Formatı (SDF) ve $sdf_annotate ile Doğrulama Şeması](/images/verilog/sdf-example.svg)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. SDF Ne İçin Kullanılır ve Tasarım Akışındaki Yeri Nedir?",
+        content: `SDF, statik zamanlama analizi (STA) ile dinamik simülasyon arasında köprü görevi görür ve dijital devrelerdeki gecikmelerin simülasyonda en yüksek doğrulukla modellenmesini sağlar. Zamanlama Gösterimi: Kapıların, flip-flop'ların ve ara bağlantı hatlarının gerçek fiziksel gecikmelerini standart bir formatta sunar. Birlikte Çalışabilirlik (Interoperability): Ortak bir endüstri standardı olduğu için farklı EDA araçları (sentez, yerleşim-yönlendirme P&R, STA ve simülatörler) arasında sorunsuz veri alışverişi sağlar. Geri Besleme (Back-Annotation): Fiziksel yerleşim sonrasında çıkarılan parazitik gecikmeler SDF dosyası aracılığıyla kapı seviyesi netlist simülatörüne aktarılır (gate-level simulation with SDF). Böylece simülasyon, çip üretildiğinde oluşacak gerçek silikon gecikmelerini yansıtır. İleriye Dönük Bilgilendirme (Forward Annotation): Sentez öncesinde veya erken aşamalarda optimizasyon algoritmalarını yönlendirmek amacıyla gecikme tahminleri sağlamak için de kullanılabilir.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Timing Analysis Standard Delay Format (SDF) Standard Delay Format (SDF) `,
-      },
-      {
-        title: "4. What is SDF ?",
-        content: `Standard Delay Format (SDF) is an IEEE standard (IEEE 1497) used extensively in electronic design automation (EDA) for representing timing information associated with digital circuits. It is in ASCII format and includes path and interconnect delays and timing constraint checks.`,
-      },
-      {
-        title: "5. What is it used for ?",
-        content: `SDF serves as a bridge between dynamic and static timing analysis, allowing for accurate representation of delays within digital circuits. It is widely used in various stages of the design flow to ensure that timing requirements are met. Timing Representation : SDF provides a standardized way to describe delays associated with digital components, including gates, flip-flops, and interconnects. This is essential for ensuring that the design meets its timing requirements. Interoperability : By using a common format, SDF facilitates communication between different EDA tools. This allows designers to use various tools for synthesis, simulation, and timing analysis without worrying about compatibility issues. Back-Annotation : SDF is often used for back-annotation, where timing data calculated during the post-layout phase is added to the simulation environment. This helps ensure that simulations reflect the actual delays present in the physical implementation of the design. Forward Annotation : In some cases, SDF can also be used for forward annotation, where timing information is provided to tools before synthesis to guide optimization processes.`,
-      },
-      {
-        title: "6. Structure of SDF",
-        content: `An SDF file consists of several key sections:`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "3. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Standart Gecikme Formatı (SDF) ve $sdf_annotate ile Doğrulama** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -379,8 +294,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 (TIMESCALE 1ns)`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "4. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -391,7 +306,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
           (INTERCONNECT (0.1::0.2) (0.3::0.4))
           (CELL (0.5::0.6) (0.7::0.8)))))`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `(SDFVERSION "3.10")
@@ -420,33 +336,19 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
     subtitle: "ChipVerify Verilog Tutorial Bölüm 28: Zamanlama Analizi & SDF Açıklamaları. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog sdf_annotate** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog sdf_annotate** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. SDF Geri Beslemesi (Back-Annotation) Nedir?",
+        content: `SDF Geri Beslemesi (SDF Back-annotation), bir Standard Delay Format (SDF) dosyasındaki yol gecikmeleri (path delays), specparam değerleri, zamanlama kısıt limitleri ve ara bağlantı gecikmelerinin kapı seviyesi netlist simülasyonuna aktarılması işlemidir. Bu teknik, dijital tasarımın zamanlama davranışlarının sentez ve fiziksel yerleşim (layout) sonrasında gerçeğe uygun şekilde doğrulanması için hayati öneme sahiptir. Simülasyon sırasında netlist'teki her bir hücre ve sinyal hattı, varsayılan kütüphane gecikmeleri yerine SDF dosyasından okunan gerçek fiziksel gecikme değerleriyle güncellenir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Timing Analysis Verilog sdf_annotate Verilog sdf_annotate `,
+        title: "2. $sdf_annotate Sistem Görevi",
+        content: `Verilog'da SDF dosyasını simülasyona dahil etmek için $sdf_annotate sistem görevi kullanılır. Bu komut, simülatöre belirtilen SDF dosyasını okumasını ve içerisindeki gecikme verilerini hiyerarşide hedeflenen modül örneğine (instance) uygulamasını söyler: initial begin $sdf_annotate("/path/to/timing_data.sdf", top_level_instance); end Bu komut tipik olarak testbench içerisinde initial bloğunun başında çağrılır.`,
       },
       {
-        title: "3. What is SDF Backannotation ?",
-        content: `SDF backannotation refers to the process of incorporating timing information like path delays, specparam values, timing constraint values and interconnect delays from a Standard Delay Format (SDF) file into a netlist during simulation. This technique is crucial for ensuring that the timing characteristics of a digital design are accurately represented, particularly after synthesis and layout. During simulation, each cell in the netlist retrieves its corresponding delay values from the SDF file. These delays are then annotated to the relevant instances or paths in the netlist, effectively replacing or modifying the default timing values that were initially assigned during synthesis.`,
+        title: "3. SDF Annotator ve Simülasyon Raporlarının İncelenmesi",
+        content: `SDF Annotator, SDF zamanlama verilerini ayrıştırıp Verilog simülatörünün veri yapılarına işleyen araç bileşenidir. Eşleşmeyen bir durumla karşılaştığında uyarı (warning) üretir: elab: *W, SBNFSDF: Attempt to annotate specify block data of instance tb.DUT.path_to_cell of module example, which has no specify block <path/to/timing_data.sdf>, line 56531>. SDF dosyası Verilog timing yapısı dışındaki bilgileri de içerebilir; ilgili olmayan yapılar uyarısız göz ardı edilir. SDF dosyasında tanımlanmamış bir zamanlama parametresi varsa simülasyonda önceki varsayılan değerini korur. Örnek SDF istatistik raporu: Compiled SDF file: /path/to/timing_data.sdf, Backannotation scope: tb.DUT.path_to_module_inst, Total Annotated Path Delays = 12412 / 12412 (%100.0). Mühendislik İpucu: Kapı seviyesi simülasyonların doğruluğundan emin olmak için SDF annotator log dosyasını her zaman inceleyin ve ek açıklama oranının (annotation percentage) %100'e yakın olduğunu teyit edin.`,
       },
-      {
-        title: "4. $sdf_annotate",
-        content: `The $sdf_annotate system task in Verilog is commonly used to implement backannotation. This command tells the simulator to read the specified SDF file and apply its timing information to the designated instance of the design. initial begin $sdf_annotate("/path/to/timing_data.sdf", top_level_instance); end`,
-      },
-      {
-        title: "5. SDF Annotator",
-        content: `An SDF annotator is any tool that can back-annotate SDF data to a Verilog simulator. It should issue a warning if it encounters data that it cannot annotate. elab: *W, SBNFSDF: Attempt to annotate specify block data of instance tb.DUT.path_to_cell of module example, which has no specify block <path/to/timing_data.sdf>, line 56531> An SDF file may include various constructs that are unrelated to specify path delays, specparam values, timing check constraints, or interconnect delays. All constructs not relevant to Verilog timing should be ignored without warnings. If the SDF file lacks a value for a specific Verilog timing parameter, that parameter should remain unmodified during back-annotation, retaining its pre-backannotation value. Annotating SDF timing data: Compiled SDF file: /path/to/timing_data.sdf Backannotation scope: tb.DUT.path_to_module_inst // Other info SDF statistics: No of Pathdelays = 12412 ... Annotated = 100.0% Total Annotated Path Delays 12412 12412 $period 113 0 $width 1214 0 $setup 63234 62412 $hold 63234 62412 Always review the SDF annotator tool log to ensure simulations are conducted with a high percentage of annotations.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog sdf_annotate** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -461,15 +363,16 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 end`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
           caption: "verilog-sdf-annotate_tb.v - Simülasyon Testbench",
           snippet: `elab: *W, SBNFSDF: Attempt to annotate specify block data of instance tb.DUT.path_to_cell of module example, which has no specify block <path/to/timing_data.sdf>, line 56531>`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `initial begin
@@ -493,33 +396,23 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 29: Yardımcı Fonksiyonlar & Matematik. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Fonksiyonları (function ... endfunction)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Fonksiyonları (function ... endfunction)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Verilog Matematik Fonksiyonlarına Giriş",
+        content: `Verilog matematik fonksiyonları, donanım açıklamalarında ve test ortamlarında sabit ifadeler (constant expressions) yerine kullanılabilen yardımcı sistem fonksiyonlarıdır. Hem tamsayı (integer) hem de gerçel sayı (real/floating-point) tabanlı matematiksel işlemleri destekler.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Utility Functions Verilog Math Functions Verilog Math Functions Verilog math functions can be used in place of constant expressions and supports both integer and real maths.`,
+        title: "2. Tamsayı Matematik Fonksiyonları ($clog2)",
+        content: `Verilog'daki en kritik tamsayı matematik fonksiyonu $clog2'dir. Verilen argümanın 2 tabanındaki logaritmasının yukarı yuvarlanmış tamsayı değerini (ceiling of log2) döndürür. Dijital tasarımda bu fonksiyon, belirli bir bellek boyutunu, FIFO derinliğini veya modül parametresini adreslemek için gereken minimum adres yolu bit genişliğini otomatik olarak hesaplamada standarttır. Örneğin tasarımda 7 paralel toplayıcı varsa, bunları adreslemek için gereken bit sayısı $clog2(7) = 3 olarak hesaplanır: module des #(parameter NUM_UNITS = 7) (input [$clog2(NUM_UNITS)-1:0] active_unit); initial $monitor("active_unit = %d", active_unit); endmodule. Bu fonksiyonun parametrik port tanımlarında kullanılması kodun genelleştirilebilirliğini ve yeniden kullanılabilirliğini (reusability) artırır.`,
       },
       {
-        title: "3. Integer Math Functions",
-        content: `The function $clog2 returns the ceiling of log 2 of the given argument. This is typically used to calculate the minimum width required to address a memory of given size. For example, if the design has 7 parallel adders, then the minimum number of bits required to represent all 7 adders is $clog2 of 7 that yields 3. module des #(parameter NUM_UNITS = 7) // Use of this system function helps to reduce the // number of input wires to this module (input [$clog2(NUM_UNITS)-1:0] active_unit); initial $monitor("active_unit = %d", active_unit); endmodule \`define NUM_UNITS 5 module tb; integer i; reg [\`NUM_UNITS-1:0] active_unit; des #(.NUM_UNITS(\`NUM_UNITS)) u0(active_unit); initial begin active_unit = 1; #10 active_unit = 7; #10 active_unit = 8; end endmodule Note that the signal active_unit has 3-bits to store total 5 units. Output xcelium> run active_unit = 001 active_unit = 111 active_unit = 000 xmsim: *W,RNQUIE: Simulation is complete. `,
+        title: "3. Gerçel Sayı (Real) Matematik Fonksiyonları",
+        content: `Verilog; gerçel sayı (real) türündeki argümanları kabul eden ve gerçel sonuç döndüren zengin bir matematiksel fonksiyon kümesine sahiptir. Başlıca fonksiyonlar: $ln(x) doğal logaritma, $log10(x) 10 tabanında logaritma, $exp(x) üstel fonksiyon (e^x), $sqrt(x) karekök, $pow(x, y) üs alma (x^y), $floor(x) tabana yuvarlama, $ceil(x) tavana yuvarlama, $sin(x)/$cos(x)/$tan(x) radyan cinsinden trigonometrik fonksiyonlar, $asin/$acos/$atan ters trigonometrik fonksiyonlar, $hypot(x, y) hipotenüs sqrt(x^2 + y^2), $sinh/$cosh/$tanh hiperbolik fonksiyonlardır. Örnek testbench: module tb; real x, y; initial begin x = 10000; $display("$log10(%0.3f) = %0.3f", x, $log10(x)); x = 25; $display("$sqrt(%0.3f) = %0.3f", x, $sqrt(x)); x = 5; y = 3; $display("$pow(%0.3f, %0.3f) = %0.3f", x, y, $pow(x, y)); end endmodule.`,
       },
       {
-        title: "4. Real Math Functions",
-        content: `These system functions accept real arguments and return a real number. Function Description $ln(x) Natural logarithm log(x) $log10(x) Decimal Logarithm log10(x) $exp(x) Exponential of x (e x ) where e=2.718281828... $sqrt(x) Square root of x $pow(x, y) x y $floor(x) Floor x $ceil(x) Ceiling x $sin(x) Sine of x where x is in radians $cos(x) Cosine of x where x is in radians $tan(x) Tangent of x where x is in radians $asin(x) Arc-Sine of x $acos(x) Arc-Cosine of x $atan(x) Arc-tangent of x $atan2(x, y) Arc-tangent of x/y $hypot(x, y) Hypotenuse of x and y : sqrt(x x + y y ) $sinh(x) Hyperbolic Sine of x $cosh(x) Hyperbolic-Cosine of x $tanh(x) Hyperbolic-Tangent of x $asinh(x) Arc-hyperbolic Sine of x $acosh(x) Arc-hyperbolic Cosine of x $atanh(x) Arc-hyperbolic tangent of x module tb; real x, y; initial begin x = 10000; $display("$log10(%0.3f) = %0.3f", x, $log10(x)); x = 1; $display("$ln(%0.3f) = %0.3f", x, $ln(x)); x = 2; $display("$exp(%0.3f) = %0.3f", x, $exp(x)); x = 25; $display("$sqrt(%0.3f) = %0.3f", x, $sqrt(x)); x = 5; y = 3; $display("$pow(%0.3f, %0.3f) = %0.3f", x, y, $pow(x, y)); x = 2.7813; $display("$floor(%0.3f) = %0.3f", x, $floor(x)); x = 7.1111; $display("$ceil(%0.3f) = %0.3f", x, $ceil(x)); x = 30 * (22.0/7.0) / 180; // convert 30 degrees to radians $display("$sin(%0.3f) = %0.3f", x, $sin(x)); x = 90 * (22.0/7.0) / 180; $display("$cos(%0.3f) = %0.3f", x, $cos(x)); x = 45 * (22.0/7.0) / 180; $display("$tan(%0.3f) = %0.3f", x, $tan(x)); x = 0.5; $display("$asin(%0.3f) = %0.3f rad, %0.3f deg", x, $asin(x), $asin(x) * 7.0/22.0 * 180); x = 0; $display("$acos(%0.3f) = %0.3f rad, %0.3f deg", x, $acos(x), $acos(x) * 7.0/22.0 * 180); x = 1; $display("$atan(%0.3f) = %0.3f rad, %f deg", x, $atan(x), $atan(x) * 7.0/22.0 * 180); end endmodule Output xcelium> run $log10(10000.000) = 4.000 $ln(1.000) = 0.000 $exp(2.000) = 7.389 $sqrt(25.000) = 5.000 $pow(5.000, 3.000) = 125.000 $floor(2.781) = 2.000 $ceil(7.111) = 8.000 $sin(0.524) = 0.500 $cos(1.571) = -0.001 $tan(0.786) = 1.001 $asin(0.500) = 0.524 rad, 29.988 deg $acos(0.000) = 1.571 rad, 89.964 deg $atan(1.000) = 0.785 rad, 44.981895 deg xmsim: *W,RNQUIE: Simulation is complete.  `,
+        title: "4. Tasarım İpucu: Sentezlenebilirlik ve Matematik Fonksiyonları",
+        content: `Donanım Mühendisliği Tasarım İpucu: $clog2 fonksiyonu modern sentez araçları (Vivado, Design Compiler, Quartus vb.) tarafından tam olarak desteklenir ve parametrik port/yazmaç boyutlandırmalarında standart olarak kullanılır. Ancak diğer gerçel sayı ve trigonometrik fonksiyonlar ($sin, $cos, $sqrt, $pow vb.) sentezlenemez (non-synthesizable). Bu fonksiyonlar yalnızca testbench modelleme, analog/karışık sinyal (AMS) simülasyonları veya derleme zamanında arama tabloları (lookup table - LUT) oluşturmak için kullanılır.`,
       },
-      {
-        title: "5. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Fonksiyonları (function ... endfunction)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -609,6 +502,60 @@ endmodule`,
 endmodule`,
         },
       },
+{
+        title: "6. Simülasyon ve Testbench Kodu",
+        content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
+        code: {
+          language: "verilog",
+          caption: "verilog-math-functions_tb.v - Simülasyon Testbench",
+          snippet: `module tb;
+  real x, y;
+  
+  initial begin
+    x = 10000;
+    $display("$log10(%0.3f) = %0.3f", x, $log10(x));
+    
+    x = 1;
+    $display("$ln(%0.3f) = %0.3f", x, $ln(x));
+    
+    x = 2;
+    $display("$exp(%0.3f) = %0.3f", x, $exp(x));
+    
+    x = 25;
+    $display("$sqrt(%0.3f) = %0.3f", x, $sqrt(x));
+    
+    x = 5;
+    y = 3;
+    $display("$pow(%0.3f, %0.3f) = %0.3f", x, y, $pow(x, y));
+    
+    x = 2.7813;
+    $display("$floor(%0.3f) = %0.3f", x, $floor(x));
+    
+    x = 7.1111;
+    $display("$ceil(%0.3f) = %0.3f", x, $ceil(x));
+    
+    x = 30 * (22.0/7.0) / 180;   // convert 30 degrees to radians
+    $display("$sin(%0.3f) = %0.3f", x, $sin(x));
+    
+    x = 90 * (22.0/7.0) / 180;
+    $display("$cos(%0.3f) = %0.3f", x, $cos(x));
+    
+    x = 45 * (22.0/7.0) / 180;
+    $display("$tan(%0.3f) = %0.3f", x, $tan(x));
+    
+    x = 0.5;
+    $display("$asin(%0.3f) = %0.3f rad, %0.3f deg", x, $asin(x), $asin(x) * 7.0/22.0 * 180);
+    
+    x = 0;
+    $display("$acos(%0.3f) = %0.3f rad, %0.3f deg", x, $acos(x), $acos(x) * 7.0/22.0 * 180);
+    
+    x = 1;
+    $display("$atan(%0.3f) = %0.3f rad, %f deg", x, $atan(x), $atan(x) * 7.0/22.0 * 180);    
+  end
+endmodule`,
+        },
+      }
+
     ],
     playground: {
       initialCode: `module des 
@@ -654,33 +601,23 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 29: Yardımcı Fonksiyonlar & Matematik. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Fonksiyonları (function ... endfunction)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Fonksiyonları (function ... endfunction)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Verilog Tür Dönüşüm Fonksiyonlarına Giriş",
+        content: `Verilog'da tür dönüşüm fonksiyonları; tamsayılar (integer), gerçel sayılar (real) ve ikili bit temsilleri (bit representations) arasında veri dönüşümü gerçekleştirmek için kullanılır. Bu fonksiyonlar özellikle simülasyon ve testbench ortamlarında farklı veri tiplerinin manipülasyonunu ve temsilini kolaylaştırır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Utility Functions Verilog Conversion Functions Verilog Conversion Functions In Verilog, conversion functions are used to convert data between different formats, specifically between integers, real numbers, and bit representations. These functions facilitate the manipulation and representation of data types within a simulation environment.`,
+        title: "2. $rtoi Fonksiyonu (Real to Integer)",
+        content: `Gerçel bir sayıyı tamsayıya (integer) dönüştürür. Bu fonksiyon, gerçel sayının kesirli kısmını kırparak (truncate ederek) tamsayı kısmını almak istediğinizde kullanılır: integer int_val; int_val = $rtoi(192.15); // int_val değeri 192 olur.`,
       },
       {
-        title: "3. $rtoi",
-        content: `Converts a real number to an integer. This function is used when you want to truncate the fractional part of a real number and obtain its integer representation. integer $rtoi(real_val); // For example, 192.15 becomes 192`,
+        title: "3. $itor Fonksiyonu (Integer to Real)",
+        content: `Bir tamsayıyı gerçel sayıya (real) dönüştürür. Tamsayı değerlerle başlayan ancak gerçel sayılar içeren hassas hesaplamalar yapılması gereken durumlarda kullanılır: real real_val; real_val = $itor(192); // real_val değeri 192.0 olur.`,
       },
       {
-        title: "4. $itor",
-        content: `Converts an integer to a real number. This function is used when you want to perform calculations involving real numbers but start with an integer value. real $itor(int_val); // For example, 192 becomes 192.0`,
+        title: "4. $realtobits Fonksiyonu (Real to Bits)",
+        content: `Gerçel bir sayıyı 64-bit IEEE 754 standartlarındaki ikili (bit) eşdeğerine dönüştürür. Bu fonksiyon, kayan noktalı sayıların (floating-point) belleklerde saklanması, veri yollarında iletilmesi veya ikili formatta paketlenmesi gerektiğinde kullanılır: reg [63:0] bits; bits = $realtobits(real_val);. Ters dönüşüm için ise $bitstoreal fonksiyonu kullanılır.`,
       },
-      {
-        title: "5. $realtobits",
-        content: `Converts a real number to its binary (bit) equivalent. This function is helpful when you need to represent floating-point values in binary form for storage or transmission. [63:0] $realtobits(real_val);`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Fonksiyonları (function ... endfunction)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -693,15 +630,16 @@ endmodule`,
           snippet: `integer     $rtoi(real_val);   // For example, 192.15 becomes 192`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
           caption: "verilog-conversion-functions_tb.v - Simülasyon Testbench",
           snippet: `real        $itor(int_val);    // For example, 192 becomes 192.0`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `integer     $rtoi(real_val);   // For example, 192.15 becomes 192`,
@@ -723,23 +661,14 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 30: Örnek Projeler & Pratik Devreler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Examples** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Verilog Uygulama Örnekleri ve Tasarım Modelleri",
+        content: `Verilog ile dijital tasarım pratiği için temel yapı taşlarından karmaşık sistem mimarilerine kadar uzanan yaygın örnekler: Temel Elemanlar: Merhaba Dünya (Hello World), JK Flip-Flop, Asenkron Sıfırlamalı D Flip-Flop, T Flip-Flop, D Mandalı (D Latch). Sayıcılar (Counters): 4-bit İleri/Geri Sayıcı, Dalgalı Sayıcı (Ripple Counter), Halka Sayıcı (Straight Ring Counter), Johnson Sayıcı, Mod-N Sayıcı, Gray Sayıcı. Dijital Kombinasyonel ve Ardışıl Bloklar: n-bit Kaydırmalı Yazmaç (Shift Register), İkiliden Gray Koda Dönüştürücü (Binary to Gray Converter), Öncelikli Kodlayıcı (Priority Encoder), 4x1 Çoklayıcı (Multiplexer), Tam Toplayıcı (Full Adder). Bellek ve İletişim Blokları: Tek Portlu RAM (Single Port RAM), Örüntü Dedektörü (Pattern Detector), Sonlu Durum Makineli Dizi Dedektörü (Sequence Detector), Senkron FIFO (Synchronous FIFO), Yığın Bellek (Stack / LIFO).`,
+      },
+      {
+        title: "2. Tasarım Özeti: Donanım Mimarisi ve En İyi Uygulamalar",
+        content: `Donanım Mühendisliği Tasarım İlkeleri: 1. Kombinasyonel ve Ardışıl Blok Ayrımı: Kombinasyonel mantık için always @(*), ardışıl mantık için always @(posedge clk) bloklarını net bir şekilde ayırın. 2. Atama Kuralları: Ardışıl mantıkta yarış durumlarını (race conditions) önlemek için mutlaka engellemeyen atama (<=), kombinasyonel bloklarda ise engelleyen atama (=) kullanın. 3. İstenmeyen Mandal (Latch) Çıkarımını Önleme: Kombinasyonel always bloklarında tüm if-else dallarını tamamlayın ve case yapılarında mutlaka bir default kolu tanımlayın; aksi takdirde sentez aracı istem dışı latch üretecektir.`,
+      }
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Examples** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Genel Bakış & Giriş",
-        content: `Examples & Practice Verilog Examples Verilog Examples Hello World! Flip-Flops and Latches JK Flip Flop D Flip-Flop Async Reset Verilog T Flip Flop D Latch Counters 4-bit counter Ripple Counter Straight Ring Counter Johnson Counter Mod-N Counter Gray Counter Digital Elements n-bit Shift Register Binary to Gray Converter Priority Encoder 4x1 multiplexer Full adder Misc Single Port RAM Verilog Pattern Detector Verilog Sequence Detector Synchronous FIFO Verilog Stack or LIFO `,
-      },
-      {
-        title: "3. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
     ],
     playground: {
       initialCode: `// Verilog Examples
@@ -768,33 +697,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 1)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 1)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. İki Yazmacın Değerini Geçici Değişken Kullanarak ve Kullanmadan Takas Etme (Swap)",
+        content: `1. Geçici Değişken Kullanarak Takas: always @(posedge clk) begin temp = b; b = a; a = temp; end. 2. Geçici Değişken Kullanmadan Takas (Donanım Yaklaşımı): always @(posedge clk) begin a <= b; b <= a; end. Çalışma Mantığı: Engellemeyen atamalar (non-blocking assignment <=) geçerli saat kenarında (delta cycle) tüm ifadelerin sağ tarafındaki (RHS) değerleri örnekler ve döngünün sonunda sol taraflara (LHS) eşzamanlı olarak atar. Donanımda bu durum, çıkışları birbirinin girişine bağlı iki paralel flip-flop'a karşılık gelir ve ek bir saklayıcıya gerek duyulmaz.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 1 Verilog Interview Questions Set 1 `,
+        title: "2. Verilog'da Dosya Giriş/Çıkış (File I/O) İşlemleri",
+        content: `Verilog; simülasyon ve testbench ortamlarında dosyalardan veri okumak ve dosyalara veri yazmak için zengin bir dosya G/Ç altyapısı sunar. Bu işlemler C programlama dilindeki standart dosya işlemlerine benzer. Sık kullanılan sistem görevleri: $fopen (dosya açma), $fclose (dosya kapatma), $fdisplay ve $fwrite (biçimlendirilmiş veri yazma), $fscanf (biçimlendirilmiş veri okuma), $readmemh ve $readmemb (bellek dizilerini hex veya binary dosyalardan doğrudan doldurma). Bu görevler yalnızca simülasyon amaçlıdır ve sentezlenemez.`,
       },
       {
-        title: "3. Write Verilog code to swap contents of two registers with and without a temporary register?",
-        content: `Swapping Contents of Two Registers using a Temporary Register: always @(posedge clk) begin temp = b; b = a; a = temp; end Swapping contents of two registers without a temporary register: always @(posedge clk) begin a <= b; b <= a; end This is because a non-blocking assignment captures the RHS of all statements in a given delta cycle and assigns them at the end of the cycle. Read more on Verilog Blocking & Non-Blocking statements.`,
+        title: "3. İfadeler Arası (Inter-statement) ve İfade İçi (Intra-statement) Gecikme Farkı",
+        content: `İfadeler Arası Gecikme (Inter-statement Delay): Gecikme (#delay) ifadenin en solundadır (#10 a = b;). Simülatör 10 zaman birimi bekler, süre dolduğunda b'nin o anki değerini örnekler ve a'ya atar. İfade İçi Gecikme (Intra-statement Delay): Gecikme atama operatörünün sağındadır (a = #10 b; veya a <= #10 b;). b'nin değeri hemen o an örneklenir, ancak sol taraftaki a değişkenine atanması 10 zaman birimi geciktirilir. Bu fark simülasyonda sinyal örnekleme anını ve yarış durumlarını doğrudan etkiler.`,
       },
-      {
-        title: "4. Elaborate on the file operation support in Verilog.",
-        content: `Verilog supports file I/O operations - reading from and writing into files. Verilog file operations work very similar to those of C programming language. Some of the commonly used Verilog system tasks are $fopen , $fscanf , $fdisplay , $fwrite , $fclose . Read more on Verilog File IO Operations .`,
-      },
-      {
-        title: "5. Difference between inter statement and intra statement delay?",
-        content: `Inter statement delay refers to the delay between two statements. It represents the time difference between the completion of one statement and the start of another statement. Intra statement delay refers to the delay within a single statement. It represents the time difference between the start of a statement and the execution of a specific operation within that statement. Read more on Verilog Inter and Intra Assignment Delay .`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 1)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -811,8 +726,8 @@ endmodule`,
 end`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -822,7 +737,8 @@ end`,
     b <= a;
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `always @(posedge clk) begin
@@ -848,33 +764,19 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 2)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 2)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. HDL Simülatörleri Nedir ve Ne İşe Yarar?",
+        content: `HDL (Donanım Açıklama Dili) simülatörleri, dijital donanım tasarımı ve doğrulamasında (verification) kullanılan kritik yazılım araçlarıdır. Verilog ve VHDL gibi donanım açıklama dillerinde yazılmış dijital devrelerin mantıksal ve zamana bağlı elektriksel davranışlarını simüle ederler. Simülatörler, tasarımcıların devrelerini fiziksel bir donanıma (FPGA veya ASIC) aktarmadan önce işlevsellik, zamanlama ve performans açısından test etmelerine olanak tanır. Mikroişlemciler, FPGA ve ASIC gibi karmaşık dijital sistemlerin tasarım ve doğrulama süreçlerinde vazgeçilmezdirler. Bağımsız yazılım araçları, grafiksel kullanıcı arayüzlü (GUI) entegre geliştirme ortamları (IDE) veya bulut tabanlı platformlar olarak bulunurlar.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 2 Verilog Interview Questions Set 2 `,
+        title: "2. Sürekli Atama (Continuous Assignment) Nedir?",
+        content: `Verilog'da sürekli atama (continuous assignment), bir tele (wire veya net) girişler değiştikçe sürekli olarak değer atamak için kullanılır. Bir olaya veya koşula bağlı olarak tetiklenen prosedürel atamaların (always blokları içindeki atamalar) aksine, sürekli atamalar daima aktiftir ve giriş ifadelerindeki en ufak bir değişimde çıkışı anında günceller. Sürekli atama assign anahtar kelimesi ve ardından gelen mantıksal ifade ile tanımlanır. Tipik olarak çıkışın yalnızca o anki girişlere bağlı olduğu kombinasyonel mantık devrelerini modellemek için kullanılır: assign out = (a & b) | c; // (a ve b)'nin c ile mantıksal VEYA sonucunu out teline atar. assign enable = (reset_n & enable_i); // reset_n ve enable_i mantıksal VE sonucunu enable teline atar.`,
       },
       {
-        title: "3. What are HDL simulators ?",
-        content: `HDL (Hardware Description Language) simulators are software tools used in the design and testing of digital hardware. They simulate the behavior of digital circuits written in hardware description languages such as Verilog and VHDL. HDL simulators allow designers to test the functionality, timing, and performance of their designs before they are implemented in physical hardware. They are essential tools in the design and verification of complex digital systems such as microprocessors, FPGAs, and ASICs. HDL simulators come in different forms, including standalone software tools, integrated development environments (IDEs), and cloud-based platforms.`,
+        title: "3. \`define Direktifi Değişken Tabanlı Metin İkamesi İçin Kullanılabilir mi?",
+        content: `Hayır, Verilog'da \`define direktifi değişken tabanlı dinamik metin ikamesi için kullanılamaz; yalnızca derleme öncesi sabit metin (literal text) ikamesi yapabilir. \`define, C dilindeki preprocessor direktiflerine benzer şekilde bir derleyici önişlemci yönergesidir ve simülasyon/derleme öncesi kaynak koddaki metinleri birebir değiştirir. Çalışma zamanı değişkenleri (runtime variables) önişlemci aşamasında henüz var olmadığından bir değişkenin içeriğine göre metin ikamesi yapmak mümkün değildir. Dinamik veya yapılandırılabilir donanım davranışları için önişlemci makroları yerine Verilog modül parametreleri (parameter, localparam) veya SystemVerilog yapıları (generate blokları) tercih edilmelidir.`,
       },
-      {
-        title: "4. What do you understand by continuous assignment ?",
-        content: `In Verilog, a continuous assignment statement allows the designer to assign a value to a signal or a wire continuously as long as the input changes. Unlike procedural assignments, which assign values to signals triggered by an event or a condition, continuous assignments are always active and assign values to signals based on their inputs. A continuous assignment statement in Verilog is represented by the keyword assign followed by the expression that describes the signal. A continuous assignment is typically used with combinational logic circuits where the output depends solely on the input. // Assigns the logical OR of (a and b) and c to the signal "out" assign out = (a & b) | c; // Assigns the logical AND of reset_n and enable_i to "enable" assign enable = (reset_n & enable_i); Read more on Verilog assign statement .`,
-      },
-      {
-        title: "5. Can \`define be used for text substitution through variable instead of literal substitution ?",
-        content: `Unfortunately, no, the \`define directive in Verilog does not allow for text substitution through variables. The \`define directive is used in Verilog to define a macro, which is a piece of code that is replaced with a predefined value or string of text during compilation. The \`define macro can be used for literal substitutions only, where the pre-defined text is replaced with the actual text value defined. For example, the following code defines a macro named "DATA_WIDTH" with the value "32": \`define DATA_WIDTH 32 This macro can be used in the Verilog source code to specify a data width of 32 bits, as shown below: wire [\`DATA_WIDTH-1:0] data_bus; During compilation, the \`define macro is replaced with the pre-defined value "32", resulting in the following code: wire [32-1:0] data_bus; However, the \`define directive does not allow for variable substitution, and it cannot be used to replace text with variables. Therefore, the pre-defined text value cannot be replaced with variables during compilation. Also read on Verilog \`ifdef Conditional Compilation .`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 2)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -890,7 +792,8 @@ assign out = (a & b) | c;
 // Assigns the logical AND of reset_n and enable_i to "enable"
 assign enable = (reset_n & enable_i);`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// Assigns the logical OR of (a and b) and c to the signal "out"
@@ -990,33 +893,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 5)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 5)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Verilog Simülasyon Regresyonlarında Dikkat Edilmesi Gereken Kritik Noktalar",
+        content: `Simülasyon regresyonları (regression testing), dijital devre tasarım doğrulama döngüsünün hayati bir parçasıdır. Tasarımın farklı çalışma koşulları ve parametreler altındaki davranışını belirlemek için yüzlerce veya binlerce test senaryosunun otomatik olarak çalıştırılmasını kapsar. Regresyon yürütülürken dikkat edilmesi gereken temel noktalar: 1. Test Kapsamı (Test Coverage): Devrenin hedeflenen spesifikasyonları eksiksiz karşıladığından emin olmak için tüm olası sınır durumların (corner cases) ve kod dallarının test edilmesi şarttır. 2. Ölçeklenebilirlik (Scalability): Tasarım karmaşıklaştıkça test sayısı hızla artar; regresyon ortamı ve testbench mimarisi sunucu çiftliklerinde paralel koşulabilecek şekilde ölçeklenebilir olmalıdır. 3. Hata Ayıklama Yetenekleri (Debugging Capabilities): Hatalı testlerin hızla tespit edilmesi için kapsamlı loglama, tohum (seed) saklama ve dalga biçimi kaydı sağlanmalıdır. 4. Simülasyon Doğruluğu: Simülasyonun elektriksel ve zamansal doğruluğu, test kapsamının derinliğini ve güvenilirliğini doğrudan belirler.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 5 Verilog Interview Questions Set 5 `,
+        title: "2. assign ve Prosedürel İfadelerde Gecikme Belirtmenin Yan Etkileri",
+        content: `Gecikmeler (#delay) donanımda sentezlenemez (non-synthesizable). Sentez araçları assign, blocking veya non-blocking prosedürel ifadelerde belirtilen tüm gecikme değerlerini tamamen yok sayar. Eğer tasarımın mantıksal işlevselliği bu gecikmelerin varlığına bağımlıysa, RTL simülasyonu ile sentezlenmiş kapı seviyesi netlist arasında fonksiyonel tutarsızlıklar (simulation-synthesis mismatch) ortaya çıkar: z <= #5 x; // #5 gecikmesi sentezde yok sayılır! #10 z <= x; // #10 gecikmesi sentezde yok sayılır!`,
       },
       {
-        title: "3. Illustrate a few important considerations in Verilog simulation regressions.",
-        content: `Simulation regressions are a vital part of the design cycle for digital circuits. Simulation regressions involve running a wide range of tests on a circuit design to determine how it behaves under different conditions. There are several important considerations to keep in mind when executing simulation regressions, including: Test Coverage : The goal of a simulation regression is to test the circuit design thoroughly to ensure that it meets the required specifications. Therefore, test coverage is crucial to ensure that all the possible scenarios are simulated. Scalability : As the design of a digital circuit becomes more complex, the number of tests required to verify its functionality increases. Therefore, it is essential to ensure that simulation regressions are scalable, and the testbench can be easily modified as per the design. Debugging Capabilities : It is essential to have a comprehensive debugging capability to identify the faults encountered during simulation regression. Simulation Accuracy : The accuracy of the simulation directly impacts the breadth and depth of test coverage.`,
+        title: "3. Birden Fazla Sürecin Aynı Değişkene Yazmasının Yan Etkileri (Multi-Driver)",
+        content: `Birden fazla sürecin (proses veya always bloğunun) aynı değişkene eşzamanlı yazması dijital tasarımda ciddi yan etkilere yol açar: 1. Yarış Durumları (Data Races): Uygun senkronizasyon olmadan aynı değişkene eşzamanlı erişim belirsizlik yaratır. Simülatörün işletim sırasına göre tahmin edilemeyen sonuçlar doğar. 2. Tutarsız Değerler (Inconsistent Values): Bir süreç değişkeni güncellerken diğeri eski değeri okuyabilir. 3. Atomik Olmayan Güncellemeler: Güncelleme çok adımlı gerçekleştiğinde kısmi güncellemeler ve tanımsız durumlar (X durumu) oluşur. 4. Kilitlenmeler (Deadlocks) ve Sentez Hataları: Çoğu linting ve sentez aracı aynı hatta birden fazla sürücü bağlandığında (multiple driver contention) doğrudan hata verir; donanımda bu durum kısa devre ve aşırı akıma karşılık gelir.`,
       },
-      {
-        title: "4. Illustrate the side effect of specifying delays in assign statements.",
-        content: `Delays are not synthesizable and synthesis tools ignore any kind of delays specified in assignment, blocking or non-blocking procedural statements. If the functionality depends upon the presence of the delay, then a mismatch in functional simulation will be seen between the model and the synthesized netlist. z <= #5 x; // #5 will be ignored #10 z <= x; // #10 will be ignored`,
-      },
-      {
-        title: "5. Illustrate the side effects of multiple processes writing to the same variable.",
-        content: `Some potential side effects of multiple processes writing to the same variable include: Data Races : Concurrent access to the same variable without proper synchronization can lead to data races. A data race occurs when two or more processes access the same shared variable and at least one of the processes modifies the variable. This can result in unpredictable output or program crashes. Inconsistent Values : Multiple updates to the same variable by different processes can result in inconsistent data values. For example, one process might read the variable before another process has finished modifying it, resulting in the use of an outdated value. Non-Atomic Updates : Updating a shared variable is not necessarily an atomic operation, meaning that the update can require several steps to complete. If two or more processes try to update the same variable simultaneously, this can result in partial updates, corrupt data, or race conditions in simulations. Deadlocks : When multiple processes try to update the same variable in a circular manner, it can result in a deadlock. Deadlock is a situation where two or more processes are waiting for each other to release a resource, but neither process can make any progress. Most of the linting and synthesis tools can detect this and throw an error.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 5)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1030,8 +919,8 @@ endmodule`,
 #10 z <= x;     // #10 will be ignored`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1052,7 +941,8 @@ endmodule`,
 	end                          
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `z <= #5 x; 		// #5 will be ignored
@@ -1075,33 +965,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 6)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 6)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Verilog'daki Temel Veri Türleri Nelerdir?",
+        content: `Verilog'da donanım öğelerini ve sinyalleri temsil etmek için kullanılan temel veri türleri şunlardır: Wire: Modüller ve mantık kapıları arasındaki fiziksel bağlantı hatlarını temsil eder. Bir telin yalnızca bir sürücüsü olabilir (tri-state durumlar hariç); bir modülden çıkış, diğerine giriş olarak bağlanır. Reg: Verilog tasarımında yazmaçları veya veri saklama öğelerini temsil eder. Yalnızca prosedürel bloklar (always, initial) içerisinde değer atanabilir; duruma göre flip-flop veya kombinasyonel mantık olarak sentezlenir. Integer: 32-bit işaretli tamsayıları temsil eder (-2147483648 ile 2147483647 arası). Genellikle döngü sayaçlarında ve testbench ortamlarında kullanılır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 6 Verilog Interview Questions Set 6 `,
+        title: "2. Verilog Ne İçin Kullanılır?",
+        content: `Verilog; dijital devreleri ve tümleşik sistemleri tasarlamak, modellemek ve simüle etmek için kullanılan standart bir Donanım Açıklama Dilidir (HDL). Haberleşme, tüketici elektroniği, otomotiv, savunma sanayii ve endüstriyel otomasyon gibi pek çok alanda özel entegre devrelerin (ASIC) ve sahada programlanabilir kapı dizilerinin (FPGA) tasarımı ve doğrulanmasında yaygın olarak kullanılır.`,
       },
       {
-        title: "3. What are the main data types in Verilog ?",
-        content: `In Verilog, there are several data types that can be used to represent different types of data. The main data types in Verilog include: Wire : A wire is used for simple connectivity between Verilog modules. It represents a net that can only have one driver and will be used as an output from one module and input to another. Reg : A reg is used to represent registers or memory elements in a Verilog design. It is used to store and manipulate data within a Verilog module. Integer : An integer is a data type used to represent signed integers in Verilog. It has a range of -2147483648 to 2147483647. Read more on Verilog Data Types .`,
+        title: "3. Verilog Kodlarını Simüle Etmek İçin Hangi Yazılımlar Kullanılır?",
+        content: `Verilog kodlarını simüle etmek için endüstride ve akademide kullanılan başlıca yazılım araçları: ModelSim / Questa (Siemens/Mentor): Yaygın kullanılan güçlü GUI ve hata ayıklama yeteneklerine sahip simülatör. Xcelium (Cadence): Çok çekirdekli yüksek hızlı simülasyon ve gelişmiş doğrulama paketi. VCS (Synopsys): Büyük ölçekli karmaşık ASIC/SoC doğrulamalarında endüstri standardı derleyici tabanlı yüksek performanslı simülatör. Icarus Verilog: Açık kaynaklı, hızlı ve ücretsiz Verilog simülatörü. Xilinx/AMD Vivado: Xilinx FPGA tasarımları için yerleşik simülatör ve sentez ortamı. Intel Quartus Prime: Intel/Altera FPGA aileleri için entegre simülasyon ve sentez ortamı. Simülatör seçimi projenin karmaşıklığına, simülasyon hızına ve lisans bütçesine göre belirlenir.`,
       },
-      {
-        title: "4. What is Verilog used for?",
-        content: `Verilog is a hardware description language (HDL) used to design, model, and simulate digital circuits and systems. It is commonly used in the design and verification of integrated circuits (ICs) and field programmable gate arrays (FPGAs) for various applications in communications, consumer electronics, automotive and industrial automation. Check out Verilog Tutorial .`,
-      },
-      {
-        title: "5. What software is used to simulate Verilog code?",
-        content: `There are several software tools that can be used to simulate Verilog code. Some of the most popular Verilog simulation software tools include: ModelSim : ModelSim is a popular Verilog simulation and debugging tool developed by Mentor Graphics. It offers a comprehensive solution for designing and verifying digital designs and offers both GUI-based and command-line interfaces. Xcelium : Xcelium is yet another popular Verilog simulator from Cadence which has a suite of other debugging tools as well. VCS : VCS is another popular Verilog simulator developed by Synopsys. It offers high-performance simulation and is widely used for complex designs and verification of ICs and FPGAs. Icarus Verilog : Icarus Verilog is a free and open-source simulator for Verilog designs. It offers fast and efficient simulations and supports both Verilog and SystemVerilog languages. Xilinx Vivado : Vivado is a popular Verilog simulator and synthesis tool developed by Xilinx (now part of AMD, which acquired Xilinx in 2022). It offers a comprehensive solution for designing and verifying complex digital circuits and systems. Quartus II : Quartus II is a popular Verilog simulator and synthesis tool developed by Intel (formerly Altera). It offers a comprehensive solution for designing, simulating, and implementing digital circuits and systems using Verilog and VHDL languages. Overall, the choice of Verilog simulator depends on the specific requirements of the design, such as simulation speed, complexity, and tool compatibility.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 6)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1120,8 +996,8 @@ end
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1132,7 +1008,8 @@ always @(posedge clk) begin
 end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module latch(input enable, input data, output reg q);
@@ -1160,39 +1037,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 7)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 7)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. $stop ve $finish Sistem Görevleri Arasındaki Farklar",
+        content: `$stop, simülasyonu çağrıldığı noktada askıya alır (duraklatır). Simülatör işletim sisteminde arka planda çalışmaya devam eder ve araç lisansı serbest bırakılmaz. Tasarımcı sinyalleri ve dalga biçimlerini inceledikten sonra simülasyonu kaldığı yerden sürdürebilir; bu nedenle hata ayıklamada (debugging) tercih edilir. $finish ise simülasyon sürecini derhal ve tamamen sonlandırır, kontrolü işletim sistemine devreder ve simülasyon lisansını serbest bırakır. Test senaryosu tamamlandığında testbench'in en sonunda kullanılır.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Verilog Mülakat Soruları ve Çözümleri (Soru Seti 7) Şeması](/images/verilog/dff_using_mux.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. D Flip-Flop ile Frekans Bölücü (f/2) Devresi Tasarımı",
+        content: `D flip-flop kullanılarak bir saat frekansını ikiye bölen (divide-by-2) devre, ters çıkışın (Q') doğrudan veri girişine (D) geri bağlanmasıyla gerçekleştirilir: Giriş saati (clk) D flip-flop'un saat girişine bağlanır. Flip-flop'un ters çıkışı Q', D girişine geri beslenir. Saatin her yükselen kenarında flip-flop D girişindeki terslenmiş değeri örnekleyerek Q çıkışına aktarır. Böylece çıkış her saat darbesinde durum değiştirir ve giriş frekansının yarısı (f/2) frekansında, %50 doluluk oranına sahip yeni bir saat sinyali elde edilir. Güvenilir çalışma için giriş saatinin doluluk oranının dengeli olması ve flip-flop kurulum/tutma (setup/hold) zamanlarının karşılanması şarttır.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 7 Verilog Interview Questions Set 7 `,
+        title: "3. Verilog'da $random Sistem Görevi Nedir ve Nasıl Çalışır?",
+        content: `$random, her çağrıldığında 32-bit işaretli sözde rastgele (pseudo-random) bir tamsayı üreten yerleşik bir sistem fonksiyonudur. Sözdizimi: $random(seed);. Belirli bir seed (tohum) değeri verilirse, aynı tohum her simülasyon koşumunda birebir aynı rastgele sayı dizisini üretir; bu özellik hata ayıklamada hataların tekrarlanabilir (reproducible) olmasını sağlar. Pozitif bir aralıkta sayı üretmek için mutlak değer veya modülo operatörleri ({$random} % N) ile birlikte kullanılır.`,
       },
-      {
-        title: "4. Difference between $stop and $finish.",
-        content: `$stop is used to suspend the simulation at the point where it is called, simulator license is not released and still runs as a process in host operating system. User has to restart it, typically by manually resuming the simulation from the paused point. $finish immediately terminates the simulation process and passes control back to the operating system, and license is released because simulation has exited. $stop is useful for debugging and inspection of intermediate results in the design, allowing designers to examine signals, waveforms, or variables at a specific point in execution, while $finish is used at the end of the simulation, indicating that the design has completed its operation.`,
-      },
-      {
-        title: "5. Design frequency/2 circuit using D flip flop",
-        content: `A frequency divider by 2 can be designed using a D flip-flop as follows: _________________ | ________ | | | | | '--->|D Q'|---' | | | Q |---- clk/2 |___^____| | clk _______| The input clock signal Clk is connected to the D input of the D flip-flop. The output of the flip-flop, Q, is connected back to the D input through an inverter to create a divide-by-2 circuit. When the clock rises from low to high, the D flip-flop captures the value of the D input and outputs it on Q. At the same time, the inverted output Q' feeds it back to the D input. Thus, the output Q changes state on every positive edge of the clock, resulting in a frequency that is half of the input frequency. Note that the input clock signal should have a duty cycle close to 50% to ensure reliable operation of the flip-flop. It is also important to ensure that the setup and hold times of the flip-flop are met to avoid timing errors.`,
-      },
-      {
-        title: "6. What is $random in Verilog ?",
-        content: `$random is a system task that generates a new 32-bit random integer on every call with a seed value of 0 by default. The optional seed value is used to specify the starting point for the random number generator, and if specified, $random generates the same sequence of random numbers every time it is called with the same seed value. It has the following syntax: $random(seed);`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 7)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1205,8 +1062,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
           snippet: `assign #5 a = b;`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1219,7 +1076,8 @@ begin
     a = c;
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `assign #5 a = b;`,
@@ -1241,33 +1099,19 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 8)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 8)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Mod-3 Sayıcı (Modulo-3 Counter) Verilog Kodu",
+        content: `Bir Mod-3 sayıcı 3 duruma (0, 1, 2) sahiptir ve en az 2 flip-flop gerektirir (2^2 = 4 > 3). Sayıcı 2 değerine ulaştığında veya rstn sinyali aktif olduğunda sıfırlanmalıdır: module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (&out) out <= 0; else out <= out + 1; end endmodule. Burada &out (indirgeme AND operatörü), out[1] ve out[0] aynı anda 1 olduğunda aktif olur; alternatif olarak out == 2 koşulu da doğrudan kullanılabilir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 8 Verilog Interview Questions Set 8 `,
+        title: "2. Var Olan Parametre Değerlerini Ezme (Override) Yöntemleri",
+        content: `Verilog'da alt modüllerde tanımlı parameter değerleri iki farklı şekilde ezilebilir: 1. Modül Örneklemesi Sırasında (Önerilen Yöntem): module abc #(parameter RESET_VAL = 4) (input ..., output ...); endmodule module xyz (); abc #(.RESET_VAL(10)) u_abc (...); endmodule. 2. defparam Anahtar Kelimesi ile: module xyz (); abc u_abc (...); defparam u_abc.RESET_VAL = 10; endmodule. Not: Modern tasarım standartlarında defparam kullanımı derleyici taşınabilirliği sorunları nedeniyle tavsiye edilmez; doğrudan modül örnekleme sözdizimi (#) tercih edilmelidir.`,
       },
       {
-        title: "3. Give the code for a mod-3 counter",
-        content: `A modulo-3 counter has 3 states (0, 1, 2) and requires 2 flip-flops. module cntr_mod3 (input clk, rstn, output reg [1:0] out); always @(posedge clk) begin if (!rstn) out <= 0; else if (&out) out <= 0; else out <= out + 1; end endmodule`,
+        title: "3. Sentez (Synthesis) Nedir ve Tasarım Akışındaki Yeri Nedir?",
+        content: `Sentez, üst düzey donanım açıklama dili (HDL - Verilog/VHDL) kodunun, hedef teknolojiye (ASIC standart hücre kütüphanesi veya FPGA mimarisi) uygun mantık kapıları ve flip-flop'lardan oluşan kapı seviyesinde bir netlist'e dönüştürülmesi sürecidir. Sentez aracı; RTL kodunun işlevselliğini analiz eder, Boole mantığı indirgemeleriyle alanı ve gecikmeyi optimize eder ve devreyi hedef kütüphanedeki gerçek hücrelere eşler (technology mapping). Üretilen netlist daha sonra yerleşim ve yönlendirme (Place & Route) araçları tarafından fiziksel yerleşimde kullanılır.`,
       },
-      {
-        title: "4. How can you override the existing parameter value?",
-        content: `In Verilog, you can override the existing parameter value in two ways: In module instantiation module abc (input ..., output ...); parameter RESET_VAL = 4; endmodule module xyz (); abc u_abc #(.RESET_VAL (10)) ( ... ); endmodule Using defparam module abc (input ..., output ...); parameter RESET_VAL = 4; endmodule module xyz (); abc u_abc ( ... ); defparam u_abc.RESET_VAL = 10; endmodule Read more on Verilog Parameters .`,
-      },
-      {
-        title: "5. What is Synthesis?",
-        content: `Synthesis is the process of converting a high-level hardware description language (HDL) code, such as Verilog or VHDL, into a gate-level netlist that can be used for physical implementation of a digital circuit on an integrated circuit (IC) or field-programmable gate array (FPGA). The synthesis process involves analyzing the HDL code to determine the intended functionality of the circuit, optimizing the design for the desired performance and resource utilization, and generating a gate-level netlist that describes the circuit in terms of logic gates and flip-flops. The synthesis tool analyzes the HDL code and performs a series of transformations to optimize the design. This can involve simplifying logic expressions, removing redundant logic, optimizing resource usage, and mapping the design to a specific target technology, such as an FPGA or ASIC. The synthesis tool then generates a gate-level netlist that can be processed by other tools to perform place-and-route, to create a physical layout of the circuit, and finally to generate the programming files that can be used to program the target device. Read more on ASIC Design Flow .`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 8)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1290,8 +1134,8 @@ end`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1304,7 +1148,8 @@ endmodule`,
   	abc 	u_abc #(.RESET_VAL (10)) ( ... );
   endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module cntr_mod3 (input clk, rstn, output reg [1:0] out);
@@ -1336,33 +1181,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 9)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 9)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. FIFO'ların (First-In-First-Out) Farklı Uygulama Alanları",
+        content: `FIFO (İlk Giren İlk Çıkar) bellekler dijital tasarımlarda yaygın olarak kullanılır: 1. Bellek ve Veri Tamponlama: Bellek denetleyicileri ve I/O arayüzlerinde veri akış hızını dengelemek için kullanılır. 2. Ağ Yönlendirme ve Anahtarlama (Routers & Switches): Paketlerin sıralı depolanması ve iletilmesi için anahtarlarda kullanılır. 3. Saat Alanı Geçişleri (Clock Domain Crossing - CDC): Farklı saat frekanslarında veya fazlarında çalışan bağımsız saat alanları arasında veri kaybı olmadan güvenli aktarım sağlamak için asenkron FIFO'lar esastır. 4. Multimedya Uygulamaları: Ses ve video işleme hatlarında kesintisiz veri akışı sağlamak için tampon görevi görür. 5. Gerçek Zamanlı Sistemler ve Veri Toplama: Sensörlerden veya ADC'lerden gelen verilerin gecikmesiz işlenmesini sağlar. 6. Grafik İşleme (GPU): Piksel ve çizim komutlarının boru hattında (pipeline) düzenli aktarılmasını sağlar.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 9 Verilog Interview Questions Set 9 `,
+        title: "2. Verilog'da Sinyal Gücü (Signal Strength) Nasıl Tanımlanır?",
+        content: `Verilog'da sinyal gücü, hattın elektriksel sürüş kabiliyetini modellemek için kullanılır. Birden fazla sürücü aynı hatta bağlandığında hangi mantıksal değerin baskın olacağını belirler. İki tür güç tanımlanır: 1. Sürüş Gücü (Drive Strength): Mantık kapılarının ve atamaların çıkışlarındaki elektriksel seviyeyi belirtir. Seviyeler en güçlüden zayıfa: Lojik 1 için supply1 (besleme), strong1 (güçlü - varsayılan), pull1 (çekme), weak1 (zayıf); Lojik 0 için supply0, strong0, pull0, weak0'dır. Yüksek empedans durumları highz1 ve highz0'dır. 2. Yük Gücü (Charge Strength): Yalnızca trireg net türlerinde kapasitif yük depolamasını modeller (small, medium, large).`,
       },
       {
-        title: "3. What are all different applications of FIFO?",
-        content: `FIFOs (First-In-First-Out) are used in a wide range of applications where data needs to be buffered or stored temporarily. Some of the most common applications of FIFOs include: Memory and data buffering : FIFOs are commonly used for buffering data in memory or I/O controllers to ensure a smooth flow of data between different systems or devices. Network routing and switching : In networking equipment such as routers and switches, FIFOs are used to store packets of data from different sources and route them to their destination in the correct order. Multimedia applications : In multimedia applications such as audio and video processing, FIFOs are used to buffer data streams to ensure smooth playback without any glitches or interruptions. Real-time applications : In real-time systems such as industrial automation and control systems, FIFOs are used to synchronize the flow of data and ensure that it is processed in real-time without any delays. Data acquisition : FIFOs are used in data acquisition systems to temporarily store data from sensors, ADCs, and other data sources before it is processed or transmitted. Graphics processing : In graphics processing units (GPUs), FIFOs are used to temporarily store data such as rendering commands and pixel data before it is processed and displayed on a screen. Overall, FIFOs have a wide range of applications in different fields where data needs to be stored and processed in a controlled and efficient manner.`,
+        title: "3. %50 Doluluk Oranına Sahip 5'e Bölücü Saat Devresi Tasarımı",
+        content: `Tek sayılı bir saat bölücüde (divide-by-5) %50 doluluk oranı (duty cycle) elde etmek için hem yükselen hem de düşen saat kenarları birlikte kullanılır: 1. Mod-5 sayıcı (0'dan 4'e) tasarlanır. 2. Sayıcının belirli bir bitinden yükselen kenarda çalışan bir clkA sinyali elde edilir. 3. Bu sinyal düşen kenarda tetiklenen bir flip-flop ile yarım periyot geciktirilerek clkB sinyali oluşturulur. 4. clkA ve clkB mantıksal VEYA (|) işlemine tabi tutularak %50 doluluk oranına sahip clk50 çıkışı elde edilir: module clk_div5 (input clk, rstn, output clk50); wire clkA; reg clkB; reg [2:0] count; always @(posedge clk or negedge rstn) begin if (!rstn) count <= 0; else if (count == 4) count <= 0; else count <= count + 1; end assign clkA = count[1]; always @(negedge clk) clkB <= clkA; assign clk50 = clkA | clkB; endmodule`,
       },
-      {
-        title: "4. How can you define strength in Verilog",
-        content: `In Verilog, strength is a measure of the signal's electrical characteristics. It indicates how strongly the signal is driven or resisted by the driver. Verilog defines two types of signal strengths, which are: Charge Strength : This is used only with trireg nets and is used to model charge storage which specifies the relative size of the capacitance i.e. small, medium or large. Drive Strength : This indicates the strength of the logic values on the output terminals of the gate instance, and can be of strength1 specified by supply1 , strong1 , pull1 and weak1 or strength0 specified by supply0 , strong0 , pull0 and weak0 .`,
-      },
-      {
-        title: "5. Design divide-by-5 module.",
-        content: `A divide-by-5 module takes an input clock signal and produces an output that is 1/5th the frequency of the input signal. Design a mod-5 counter, and take the output from the flop that is high for 2 clocks and feed it to a negative edge triggered FF. Then do a logical OR of the delayed version with the original to get the required clock output. module clk_div5 (input clk, rstn, output clk50); wire clkA; reg clkB; reg [2:0] count; always @(posedge clk or negedge rstn) begin if (!rstn) count <= 0; else if (count == 4) count <= 0; else count <= count + 1; end assign clkA = count[1]; always@(negedge clk) clkB <= clkA; assign clk50 = clkA | clkB; endmodule`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 9)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1395,8 +1226,8 @@ endmodule`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1414,7 +1245,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module clk_div5 (input clk, rstn, output clk50);
@@ -1456,33 +1288,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 10)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 10)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Aynı Tele Birden Fazla assign Yapıldığında Sentezlenen Mantık Nedir?",
+        content: `Standart bir lojik tel (wire) birden fazla assign ifadesiyle sürülmeye çalışıldığında, sentez aracı birden fazla sürücü hatası (multiple driver contention error) verir; çünkü iki kapı çıkışını birbirine bağlamak fiziksel kısa devre oluşturur: wire out; assign out = a & b; assign out = a | b; // Hata: multiple drivers. Ancak üç durumlu (tri-state, 1'bz) tamponlarla sürülen bir veri yolunda birden fazla assign ifadesi geçerlidir; aynı anda yalnızca bir sürücünün etkin olması koşuluyla geçerli bir çift yönlü/ortak veri yolu (tri-state bus) sentezlenir: wire out; assign out = sel1 ? (a & b) : 1'bz; assign out = sel2 ? (a | b) : 1'bz;`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 10 Verilog Interview Questions Set 10 `,
+        title: "2. Koşullu Atamalar (? :) Sentezde Ne Şekilde Çıkarılır?",
+        content: `Verilog'daki üçlü koşul operatörü (? :), sentez araçları tarafından doğrudan bir Çoklayıcı (Multiplexer - MUX) olarak çıkarılır (infer edilir). Bir çoklayıcı, seçme girişinin (sel) mantıksal değerine göre girişlerden birini çıkışa aktarır: assign out = sel ? in0 : in1; // sel 1 ise in0, 0 ise in1 seçilir.`,
       },
       {
-        title: "3. What logic is inferred when there are multiple assign statements targeting the same wire for synthesis ?",
-        content: `The synthesis tool will give a syntax error for a wire that is an output port of a module if it is driven by more than one source. wire out; assign out = a & b; // Elsewhere in the code, another assign to // the same wire will cause multiple driver error assign out = a | b; However, it is okay to drive a 3-state wire by multiple assign statements. wire out; // sel1 and sel2 cannot be 1 at the same time assign out = sel1 ? a & b : 1'bz; assign out = sel2 ? a | b : 1'bz;`,
+        title: "3. İç İçe Koşul Operatörlerinde Sentezlenen Donanım Mimarisi",
+        content: `Tek bir sürekli atamada birden fazla koşul operatörü iç içe (nested) kullanıldığında, sentez aracı hiyerarşik (kademeli) bir çoklayıcı ağacı (multiplexer hierarchy) sentezler: assign out = sel1 ? (sel2 ? in3 : in4) : (sel3 ? in5 : in6);. Bu ifade donanımsal olarak şu yapıya eşdeğerdir: wire net1, net2; assign net1 = sel2 ? in3 : in4; assign net2 = sel3 ? in5 : in6; assign out = sel1 ? net1 : net2;. Sentez aracı zamanlama kısıtlarına göre bu MUX ağacını optimize eder.`,
       },
-      {
-        title: "4. What do conditional assignments get inferred into?",
-        content: `Conditional assignments ? : in Verilog get inferred into multiplexers during synthesis. A multiplexer selects one of a number of inputs based on the values of the select inputs. // Assign in0 to out if sel = 1 else in1 assign out = sel ? in0 : in1;`,
-      },
-      {
-        title: "5. What is the logic that gets synthesized when conditional operators in a single continuous assignment are nested?",
-        content: `In Verilog, when conditional operators in a single continuous assignment are nested, the synthesis tool will infer a hierarchy of multiplexers. assign out = sel1 ? (sel2 ? in3 : in4) : (sel3 ? in5 : in6); // Which is the same as wire net1, net2; assign net1 = sel2 ? in3 : in4; assign net2 = sel3 ? in5 : in6; assign out = sel1 ? net1 : net2;`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 10)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1501,8 +1319,8 @@ assign out = a & b;
 assign out = a | b;`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1513,7 +1331,8 @@ assign out = a | b;`,
 assign out = sel1 ? a & b : 1'bz;
 assign out = sel2 ? a | b : 1'bz;`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `wire out;
@@ -1578,33 +1397,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 12)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 12)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. casex ve casez İfadelerinin Standart case'e Göre Farkları ve Avantajları",
+        content: `Standart case ifadesinde bitlerin kesin olarak (0, 1, X, Z) eşleşmesi gerekir. casez: Yalnızca Z ve ? (soru işareti) bitlerini önemsiz (don't care) olarak kabul eder. casex: Hem X (tanımsız) hem de Z (yüksek empedans) bitlerini don't care kabul eder: casex (abc) 3'bx00: out = a & b; 3'b10x: out = a | b; default: out = ~(a & b); endcase. Avantajları: 1. Sentez Optimizasyonu: Öncelikli kodlayıcılarda gereksiz karşılaştırma mantıklarını eleyerek daha az kapı ve daha küçük alan sağlar. 2. Kod Okunabilirliği: Karmaşık bit maskelemelerini tek bir tabloda temiz şekilde ifade eder. Dikkat: casex simülasyonda beklenmeyen X yayılımlarını don't care sayarak gerçek donanım hatalarını maskeleyebileceği için endüstride çoğunlukla casez tercih edilir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 12 Verilog Interview Questions Set 12 `,
+        title: "2. Senkron ve Asenkron Durum Makineleri (FSM) Arasındaki Farklar",
+        content: `Senkron Durum Makineleri (Synchronous FSM): Durum geçişleri ortak bir saat sinyalinin kenarı (posedge clk) ile tetiklenir. Saat yükseldiğinde makine mevcut duruma ve girişlere göre bir sonraki duruma geçer ve çıkışları günceller. Tasarımı, zamanlama analizi (STA) ve doğrulaması güvenli ve öngörülebilirdir. Asenkron Durum Makineleri (Asynchronous FSM): Ortak bir saat sinyali kullanmaz; durum geçişleri giriş sinyallerindeki seviye veya kenar değişimleriyle doğrudan tetiklenir. Saat ağına ihtiyaç duymadıkları için daha hızlı tepki verebilir ve saat dinamik gücü harcamazlar; ancak yarış durumları (race conditions), tehlikeler (hazards) ve parazitlere (glitches) karşı son derece hassas olduklarından tasarımı ve zamanlama garantisi oldukça zordur.`,
       },
       {
-        title: "3. Explain the differences and advantages of casex and casez over the case statement?",
-        content: `casex has to be used when both X and Z needs to be treated as don't care for comparisons with the case item. casez on the other hand only treats Z as don't care. casex (abc) 3'bx00 : out = a & b; // same as 3'b000 and 3'b100 3'b10x : out = a | b; // same as 3'b100 and 3'b101 default : out = ~(a & b); // for cases where bits in abc can be X or Z endcase Here are a couple of advantages: Synthesis optimization : casex and casez can be optimized more effectively by synthesis tools than the case statement. This is because casex and casez allow for more efficient encoding of the match conditions, reducing the number of gates required to implement the logic. Code readability : casex and casez can make Verilog code more readable and concise. This is because they allow for more complex matching logic to be expressed in a single statement, rather than requiring multiple if-else statements.`,
+        title: "3. Mealy ve Moore Durum Makineleri Arasındaki Mimari Farklar",
+        content: `Moore Durum Makinesi: Çıkışlar yalnızca mevcut duruma (current state) bağlıdır. Çıkış bir saat çevrimi boyunca kararlıdır ve girişlerdeki parazitlerden (glitches) etkilenmez. Durum geçişleri mevcut durum ve girişlere göre belirlenir. Kombinasyonel yollar genellikle daha kısadır, bu da yüksek çalışma frekanslarına olanak tanır. Mealy Durum Makinesi: Çıkışlar hem mevcut duruma hem de o anki giriş sinyallerine bağlıdır. Girişteki anlık değişimler durum geçişini beklemeden doğrudan çıkışa yansıyabileceği için çıkışlar glitch oluşumuna daha yatkındır. Genellikle Moore makinesine göre daha az sayıda durumla gerçeklenebilir. Ancak girişten çıkışa uzanan doğrudan kombinasyonel yol nedeniyle kritik yol uzayabilir ve çalışma frekansı düşebilir.`,
       },
-      {
-        title: "4. What are the differences between synchronous and asynchronous state machines?",
-        content: `Synchronous state machines have a clock input that triggers state transitions at specific times. When the clock signal rises, the state machine updates its output values and transitions to the next state based on its current state and input values. Asynchronous state machines do not require a clock signal as they are triggered by input signals that are not synchronized in time. Each input signal can trigger a state transition at any time, independent of any clock signal. Asynchronous state machines can be more complex to design and test due to the possibility of race conditions and glitches, but they can be more efficient and consume less power compared to synchronous state machines.`,
-      },
-      {
-        title: "5. Illustrate the differences between Mealy and Moore state machines.",
-        content: `Mealy State Machine: Outputs are a function of both current state and inputs. Output may not be stable for one clock cycle as it is a function of input and current state. Output is prone to glitches. State transitions are based on both the current state and input signals. If inputs are not registered, combinational paths could potentially be larger than Moore machine, less operating frequency. Moore State Machine: Output is based solely on the current state Output is stable for one clock cycle. Output is not prone to glitches. State transitions are based solely on the current state. Combinational paths are typically shorter with no involvement of inputs.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 12)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1621,8 +1426,8 @@ endmodule`,
 endcase`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1637,7 +1442,8 @@ case (1'b1)
 	cur_state[3] : // Assign next state
 endcase`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `casex (abc)
@@ -1663,33 +1469,19 @@ endcase`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 31: Verilog Mülakat Soruları & Çözümleri. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 13)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 13)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Büyük Tasarımları Bölümleme (Partitioning) Sırasında Dikkat Edilmesi Gerekenler",
+        content: `Karmaşık bir SoC veya FPGA tasarımını hiyerarşik bloklara bölerken göz önünde bulundurulması gereken faktörler: 1. Tasarım Boyutu ve Karmaşıklığı: Modüller bağımsız olarak sentezlenebilecek, simüle edilebilecek ve yönetilebilecek makul boyutlara bölünmelidir. 2. Saat Alanları (Clock Domains): Aynı saat alanına ait mantık blokları tek bir modül altında toplanmalı, saat alanı geçişleri (CDC) açıkça belirlenmiş senkronizatör bloklarıyla izole edilmelidir. 3. Kritik Zamanlama Yolları: Zamanlama kapanışını (timing closure) kolaylaştırmak için kritik kombinasyonel yollar modül sınırlarını geçmemeli ve modül çıkışları kaydedilmelidir (registered outputs). 4. Üretici ve Fiziksel Kısıtlar: Hedef ASIC teknolojisi veya FPGA katman sınırları (SLR die boundaries) fiziksel yerleşimde gözetilmelidir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Interview Preparation Verilog Interview Questions Set 13 Verilog Interview Questions Set 13 `,
+        title: "2. Farklı Saat Alanları Arasında Kontrol Bilgisini Güvenli Aktarma (CDC Senkronizasyonu)",
+        content: `Farklı saat alanları arasında kontrol sinyallerini aktarırken yarı kararlılık (metastability) ve veri kaybını önlemek için şu yöntemler uygulanır: 1. İki Kademeli Flip-Flop Senkronizatörü (2-FF Synchronizer): Tek bitlik kontrol sinyalleri için hedef saat alanında ardışık iki flip-flop kullanılarak yarı kararlılık olasılığı kabul edilebilir MTBF seviyelerine indirilir. 2. Saat Çarpıklığı (Clock Skew) ve Veri Kararlılığı: Sinyalin hedef saat kenarı tarafından güvenilir yakalanabilmesi için yeterince uzun süre kararlı tutulması sağlanmalıdır (darbe uzatma veya el sıkışma / handshake protokolü). 3. Asenkron FIFO: Çok bitlik veri veya kontrol bilgileri için Gray kodlu işaretçilere sahip asenkron FIFO kullanılmalıdır. 4. Simülasyon ve Kapsamlı Doğrulama: SpyGlass CDC veya Questa CDC gibi araçlarla yapısal CDC kontrolleri yapılmalı ve köşe senaryolar simüle edilmelidir.`,
       },
       {
-        title: "3. What are a few considerations while partitioning large designs?",
-        content: `Size and complexity of the design : A large design will need to be partitioned into a number of smaller designs. This can affect how the design is divided into different sections and the size of each partition. Clock Domains : It is recommended to group logic belonging to same clock domain in a single block, and clock domain crossings done thorugh a synchronizer. Specific design requirements : Specific design requirements, such as timing or power constraints, will affect how the design is partitioned. Vendor's requirements : The vendor's requirements must also be considered as the partitioning of designs will be determined largely by their manufacturing capabilities.`,
+        title: "3. Farklı Veri Genişlikleri ve Saat Alanları Arasında Güvenli Veri Aktarımı",
+        content: `Farklı saat alanlarında çalışan ve farklı veri yolu genişliklerine (örneğin 64-bit yazma, 16-bit okuma) sahip mimariler arasında veri aktarımı için en güvenli bileşen Asimetrik Asenkron FIFO'dur (Asymmetric Dual-Clock FIFO). Bu yapı sayesinde bağımsız yazma ve okuma saatleri arasında CDC güvenliği sağlanırken, veri yolu genişliği dönüşümü (gearbox) FIFO bellek dizisi içinde donanım seviyesinde şeffaf ve güvenilir şekilde gerçekleştirilir.`,
       },
-      {
-        title: "4. How can I reliably convey control information across clock domains?",
-        content: `Use a two-flop synchronizer : A two-flop synchronizer is a common technique used to safely transfer data between clock domains. It consists of two registers placed in series, one in each clock domain, to ensure reliable transfer of data across domains. Be aware of clock skew : Clock skew can occur between different clock domains and can adversely affect the timing of the control signal. To mitigate this, compensate for the clock skew by adding a delay buffer. Consider using asynchronous FIFOs : Asynchronous FIFOs are used to transfer data between clock domains that have different clock frequencies. By implementing flow control and arbitration logic, asynchronous FIFOs can help avoid data loss, blocking, or lock-up. Simulate and verify : Always simulate and verify the design with all possible corner-case scenarios to ensure that control information is reliably transferred across different clock domains.`,
-      },
-      {
-        title: "5. What is a safe strategy to transfer data of different buswidths and across different clock domains?",
-        content: `An asymmetrical FIFO is an ideal component for this purpose where the bus width between the write side and the read sides are different. Read more on Synchronous FIFO .`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Verilog Mülakat Soruları ve Çözümleri (Soru Seti 13)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1705,8 +1497,8 @@ endcase`,
 assign out = out & in;`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1726,7 +1518,8 @@ always_comb begin
 	out = (a & b) ^ (c | d);
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `// A simple example shown below has output depedent on itself

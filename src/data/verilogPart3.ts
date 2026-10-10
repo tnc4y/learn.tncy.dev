@@ -10,43 +10,107 @@ export const VERILOG_PART3: Record<string, LessonContent> = {
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. 4-Bit Sayıcı (Counter) Mimarisi ve Çalışma Prensibi",
+        content: `4-bit binary sayıcı (counter), 4'b0000 (0) değerinden başlayarak her aktif saat darbesinde (clock edge) birer birer artarak 4'b1111 (15) değerine kadar sayar ve ardından tekrar 4'b0000 değerine dönerek başa sarar (rollover). Aktif bir saat sinyali (clk) sağlandığı ve aktif-düşük reset (active-low reset, rstn) lojik 1 seviyesinde tutulduğu sürece sayma işlemi kesintisiz devam eder.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı Şeması](/images/verilog/4-bit_counter_1.png)
+Başa sarma (rollover) mekanizması, sayıcı maksimum değeri olan 4'b1111 seviyesine ulaştığında ve bir sonraki artırma işlemi geldiğinde gerçekleşir: Toplam sonucu 5'b10000 (16) olmaya çalışır; ancak tasarım yalnızca 4-bit çıkış desteklediğinden en anlamlı bit (MSB - 5. bit) taşma nedeniyle kırpılır (discard edilir) ve geriye kalan 4 bit 4'b0000 değerini üretir.
+Sayma dizisi: 0000 -> 0001 -> 0010 -> ... -> 1110 -> 1111 -> (rollover) -> 0000 -> 0001 -> ...
 
-![4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı Şeması](/images/verilog/4-bit_counter_2.png)
+Tasarım temel olarak iki giriş sinyaline sahiptir: Senkron tetiklemeyi sağlayan saat sinyali (clk) ve devreyi sıfırlayan aktif-düşük sıfırlama sinyali (rstn). Aktif-düşük reset, pin lojik 0 (1'b0) olduğunda devrenin sıfırlandığı anlamına gelir. Devrenin 4-bitlik out çıkışı ise güncel sayıcı değerini dış dünyaya sunar.`,
+      },
+      {
+        title: "2. Verilog ile 4-Bit Sayıcı Tasarımı",
+        content: `module counter (
+    input clk,            // Sayıcının yukarı saymasını sağlayan saat girişi
+    input rstn,           // Gerektiğinde sayıcıyı 0'a sıfırlayan aktif-düşük reset girişi
+    output reg [3:0] out  // Sayıcı değerini veren 4-bit çıkış portu
+);
 
-![4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı Şeması](/images/verilog/4-bit-counter-wave.PNG)
+    // clk sinyalinin yükselen kenarında (0->1) tetiklenen ardışıl always bloğu
+    always @ (posedge clk) begin
+        if (!rstn)
+            out <= 4'b0000;  // Reset aktif (0) ise çıkışı sıfırla
+        else
+            out <= out + 1;  // Reset pasif (1) ise sayıcıyı 1 artır
+    end
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+endmodule
+
+counter modülü giriş olarak clk ve aktif-düşük reset (rstn, adındaki 'n' harfi active-low olduğunu simgeler) pinlerine; çıkış olarak ise 4-bitlik out kaydına (reg) sahiptir.
+
+always @ (posedge clk) bloğu, saat sinyalinin her 0 -> 1 geçişinde (yükselen kenar / rising edge) tetiklenen ardışıl (sequential) bir lojik bloğudur. Blok içerisinde öncelikli olarak senkron reset kontrolü (if (!rstn)) yapılır: Eğer rstn lojik 0 ise out çıkışı 0 değerine çekilir. Reset sinyali de-assert edildiğinde (lojik 1 olduğunda) ise else dalı çalışarak her saat darbesinde out değerine 1 eklenir. Ardışıl lojikte yarış durumlarını (race condition) önlemek için mutlaka non-blocking atama (<=) operatörü kullanılmalıdır.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Counters 4-bit counter 4-bit counter The 4-bit counter starts incrementing from 4'b0000 to 4'b1111 and then rolls over back to 4'b0000. It will keep counting as long as it is provided with a running clock and reset is held high. The rollover happens when the most significant bit of the final addition gets discarded. When counter is at a maximum value of 4'b1111 and gets one more count request, the counter tries to reach 5'b10000 but since it can support only 4-bits, the MSB will be discarded resulting in 0. 0000 0001 0010 ... 1110 1111 rolls over 0000 0001 ... The design contains two inputs one for the clock and another for an active-low reset. An active-low reset is one where the design is reset when the value of the reset pin is 0. There is a 4-bit output called out which essentially provides the counter values.`,
+        title: "3. 4-Bit Sayıcı Testbench Simülasyonu ve Çıktı Analizi",
+        content: `Tasarımın beklendiği gibi saydığını doğrulamak için bir testbench modülü oluşturulur. Testbench modülü tb_counter olarak adlandırılır ve simülasyonda en üst modül (top-module) olduğu için herhangi bir port giriş/çıkışına ihtiyaç duymaz. Ancak clk ve rstn sinyallerini üretmek için reg tipinde değişkenler, tasarımın out çıkışını gözlemlemek için ise wire tipinde bağlantı tanımlanır.
+
+module tb_counter;
+    reg clk;          // Tasarımın saat girişini sürmek için iç reg sinyali
+    reg rstn;         // Tasarıma aktif-düşük reset sürmek için iç reg sinyali
+    wire [3:0] out;   // Tasarımın çıkışına bağlanacak wire net
+
+    // Sayıcı tasarımının örneğe dönüştürülmesi (instantiation)
+    counter c0 (
+        .clk  (clk),
+        .rstn (rstn),
+        .out  (out)
+    );
+
+    // 100 MHz saat sinyali üretimi (periyot = 10ns, yarı periyot #5)
+    always #5 clk = ~clk;
+
+    // Test uyaranlarının (stimulus) sürüldüğü initial bloğu
+    initial begin
+        // 1. Simülasyon başlangıcında sinyalleri başlat
+        clk <= 0;
+        rstn <= 0;
+
+        // 2. Belirli aralıklarla reset sinyalini uygula ve kaldır
+        #20 rstn <= 1;
+        #80 rstn <= 0;
+        #50 rstn <= 1;
+
+        // 3. 170ns sonunda simülasyonu sonlandır
+        #20 $finish;
+    end
+endmodule
+
+Simülasyon Çıktısı (Waveform / Console Log):
+ncsim> run
+[0ns]   clk=0 rstn=0 out=0xx
+[5ns]   clk=1 rstn=0 out=0x0
+[10ns]  clk=0 rstn=0 out=0x0
+[15ns]  clk=1 rstn=0 out=0x0
+[20ns]  clk=0 rstn=1 out=0x0
+[25ns]  clk=1 rstn=1 out=0x1
+[30ns]  clk=0 rstn=1 out=0x1
+[35ns]  clk=1 rstn=1 out=0x2
+[40ns]  clk=0 rstn=1 out=0x2
+[45ns]  clk=1 rstn=1 out=0x3
+[50ns]  clk=0 rstn=1 out=0x3
+[55ns]  clk=1 rstn=1 out=0x4
+[60ns]  clk=0 rstn=1 out=0x4
+[65ns]  clk=1 rstn=1 out=0x5
+[70ns]  clk=0 rstn=1 out=0x5
+[75ns]  clk=1 rstn=1 out=0x6
+[80ns]  clk=0 rstn=1 out=0x6
+[85ns]  clk=1 rstn=1 out=0x7
+[90ns]  clk=0 rstn=1 out=0x7
+[95ns]  clk=1 rstn=1 out=0x8
+[100ns] clk=0 rstn=0 out=0x8
+[105ns] clk=1 rstn=0 out=0x0
+[110ns] clk=0 rstn=0 out=0x0
+...
+[150ns] clk=0 rstn=1 out=0x0
+[155ns] clk=1 rstn=1 out=0x1
+[160ns] clk=0 rstn=1 out=0x1
+[165ns] clk=1 rstn=1 out=0x2
+Simulation complete via $finish(1) at time 170 NS
+
+Analiz: Testbench çıktısı incelendiğinde; aktif-düşük reset sıfır olduğunda sayıcı 0 değerine sıfırlanır. Yaklaşık 150ns anında rstn sinyali de-assert edildiğinde (1 olduğunda), sayıcı takip eden ilk yükselen saat kenarından itibaren 0'dan yukarı doğru artmaya devam eder.`,
       },
-      {
-        title: "4. Electronic Counter Design",
-        content: `module counter ( input clk, // Declare input port for clock to allow counter to count up input rstn, // Declare input port for reset to allow the counter to be reset to 0 when required output reg[3:0] out); // Declare 4-bit output port to get the counter values // This always block will be triggered at the rising edge of clk (0->1) // Once inside this block, it checks if the reset is 0, if yes then change out to zero // If reset is 1, then design should be allowed to count up, so increment counter always @ (posedge clk) begin if (! rstn) out <= 0; else out <= out + 1; end endmodule The module counter has a clock and active-low reset (denoted by n ) as inputs and the counter value as a 4-bit output. The always block is always executed whenever the clock transitions from 0 to 1 which signifies a rising edge or a positive edge. The output is incremented only if reset is held high or 1, achieved by the if-else block. If reset is found to be low at the positive edge of clock, then output is reset to a default value of 4'b0000.`,
-      },
-      {
-        title: "5. Testbench",
-        content: `We can instantiate the design into our testbench module to verify that the counter is counting as expected. The testbench module is named tb_counter and ports are not required since this is the top-module in simulation. However we do need to have internal variables to generate, store and drive clock and reset. For that purpose, we have declared two variables of type reg for clock and reset. We also need a wire type net to make the connection with the design's output, else it will default to a 1-bit scalar net. Clock is generated via always block which will give a period of 10 time units. The initial block is used to set initial values to our internal variables and drive the reset value to the design. The design is instantiated in the testbench and connected to our internal variables, so that it will get the values when we drive them from the testbench. We don't have any $display statements in our testbench and hence we will not see any message in the console. module tb_counter; reg clk; // Declare an internal TB variable called clk to drive clock to the design reg rstn; // Declare an internal TB variable called rstn to drive active low reset to design wire [3:0] out; // Declare a wire to connect to design output // Instantiate counter design and connect with Testbench variables counter c0 ( .clk (clk), .rstn (rstn), .out (out)); // Generate a clock that should be driven to design // This clock will flip its value every 5ns -> time period = 10ns -> freq = 100 MHz always #5 clk = ~clk; // This initial block forms the stimulus of the testbench initial begin // 1. Initialize testbench variables to 0 at start of simulation clk <= 0; rstn <= 0; // 2. Drive rest of the stimulus, reset is asserted in between #20 rstn <= 1; #80 rstn <= 0; #50 rstn <= 1; // 3. Finish the stimulus after 170ns #20 $finish; end endmodule Output ncsim> run [0ns] clk=0 rstn=0 out=0xx [5ns] clk=1 rstn=0 out=0x0 [10ns] clk=0 rstn=0 out=0x0 [15ns] clk=1 rstn=0 out=0x0 [20ns] clk=0 rstn=1 out=0x0 [25ns] clk=1 rstn=1 out=0x1 [30ns] clk=0 rstn=1 out=0x1 [35ns] clk=1 rstn=1 out=0x2 [40ns] clk=0 rstn=1 out=0x2 [45ns] clk=1 rstn=1 out=0x3 [50ns] clk=0 rstn=1 out=0x3 [55ns] clk=1 rstn=1 out=0x4 [60ns] clk=0 rstn=1 out=0x4 [65ns] clk=1 rstn=1 out=0x5 [70ns] clk=0 rstn=1 out=0x5 [75ns] clk=1 rstn=1 out=0x6 [80ns] clk=0 rstn=1 out=0x6 [85ns] clk=1 rstn=1 out=0x7 [90ns] clk=0 rstn=1 out=0x7 [95ns] clk=1 rstn=1 out=0x8 [100ns] clk=0 rstn=0 out=0x8 [105ns] clk=1 rstn=0 out=0x0 [110ns] clk=0 rstn=0 out=0x0 [115ns] clk=1 rstn=0 out=0x0 [120ns] clk=0 rstn=0 out=0x0 [125ns] clk=1 rstn=0 out=0x0 [130ns] clk=0 rstn=0 out=0x0 [135ns] clk=1 rstn=0 out=0x0 [140ns] clk=0 rstn=0 out=0x0 [145ns] clk=1 rstn=0 out=0x0 [150ns] clk=0 rstn=1 out=0x0 [155ns] clk=1 rstn=1 out=0x1 [160ns] clk=0 rstn=1 out=0x1 [165ns] clk=1 rstn=1 out=0x2 Simulation complete via $finish(1) at time 170 NS + 0 Note that the counter resets to 0 when the active-low reset becomes 0, and when reset is de-asserted at around 150ns, the counter starts counting from the next occurence of the positive edge of clock. `,
-      },
-      {
-        title: "6. Hardware Schematic",
-        content: ``,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **4-Bit İleri/Geri Senkron Sayıcı (Counter) Tasarımı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -72,8 +136,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -108,7 +172,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module counter (  input clk,               // Declare input port for clock to allow counter to count up
@@ -143,41 +208,18 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Dalgalı Asenkron Sayıcı (Ripple Counter) ve DFF Mimarisi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Dalgalı Asenkron Sayıcı (Ripple Counter) ve DFF Mimarisi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Asenkron Ripple Counter Mimarisi ve D Tipi Flip-Flop Yapısı",
+        content: `Ripple counter (dalgalı sayıcı), ilk flip-flop haricindeki tüm flip-flop'ların bir önceki flip-flop'un çıkışı (genellikle Q veya Q_bar) tarafından tetiklendiği asenkron (asynchronous) bir sayıcı mimarisidir. Senkron sayıcıların aksine ortak bir global saat sinyali (common clock) kullanılmaz; her basamak bir öncekinin çıkışındaki durum değişimini saat darbesi olarak algılar. Bu mimaride saat sinyali zincirleme bir şekilde ilk basamaktan son basamağa doğru 'dalgalanarak' (ripple) yayıldığı için devre bu ismi almıştır.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Dalgalı Asenkron Sayıcı (Ripple Counter) ve DFF Mimarisi Şeması](/images/verilog/ripple-counter.png)
-
-![Dalgalı Asenkron Sayıcı (Ripple Counter) ve DFF Mimarisi Şeması](/images/verilog/ripple_counter_schematic.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Asenkron Ripple Counter Tasarım İpuçları ve Zamanlama Kısıtları",
+        content: `Mühendislik İpucu & Zamanlama Analizi:
+1. Birikimli Yayılım Gecikmesi (Accumulated Propagation Delay): Ripple counter yapılarında her flip-flop'un yayılım gecikmesi (t_pd) bir sonraki katın saat girişi üzerinde gecikmeye yol açar. N bitlik bir sayıcıda toplam gecikme N x t_pd olur. Bu durum, yüksek saat frekanslarında son basamağın saatinde ciddi kaymalara (clock skew) sebep olur.
+2. Glitch ve Geçersiz Ara Durumlar: Basamaklar aynı anda güncellenmediği için geçiş anlarında çıkışlarda nanosaniyeler mertebesinde geçersiz ara kodlar (glitch / sahte durumlar) oluşur. Eğer bu çıkışlar kombinasyonel bir kod çözücüye (decoder) bağlıysa sistemde hatalı tetiklemeler meydana gelebilir.
+3. Tasarım Tercihi: Modern FPGA ve ASIC mimarilerinde ripple counter kullanımı önerilmez. Bunun yerine global clock ağını (BUFG / clock tree) kullanan ve tüm flip-flop'ların aynı saat kenarında tetiklendiği senkron binary counter mimarileri tercih edilmelidir.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Counters Verilog Ripple Counter Verilog Ripple Counter A ripple counter is an asynchronous counter in which all the flops except the first are clocked by the output of the preceding flop.`,
-      },
-      {
-        title: "4. Design",
-        content: `module dff ( input d, input clk, input rstn, output reg q, output qn); always @ (posedge clk or negedge rstn) if (!rstn) q <= 0; else q <= d; assign qn = ~q; endmodule module ripple ( input clk, input rstn, output [3:0] out); wire q0; wire qn0; wire q1; wire qn1; wire q2; wire qn2; wire q3; wire qn3; dff dff0 ( .d (qn0), .clk (clk), .rstn (rstn), .q (q0), .qn (qn0)); dff dff1 ( .d (qn1), .clk (q0), .rstn (rstn), .q (q1), .qn (qn1)); dff dff2 ( .d (qn2), .clk (q1), .rstn (rstn), .q (q2), .qn (qn2)); dff dff3 ( .d (qn3), .clk (q2), .rstn (rstn), .q (q3), .qn (qn3)); assign out = {qn3, qn2, qn1, qn0}; endmodule`,
-      },
-      {
-        title: "5. Testbench",
-        content: `module tb_ripple; reg clk; reg rstn; wire [3:0] out; ripple r0 ( .clk (clk), .rstn (rstn), .out (out)); always #5 clk = ~clk; initial begin rstn <= 0; clk <= 0; repeat (4) @ (posedge clk); rstn <= 1; repeat (25) @ (posedge clk); $finish; end endmodule `,
-      },
-      {
-        title: "6. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "3. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Dalgalı Asenkron Sayıcı (Ripple Counter) ve DFF Mimarisi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -242,8 +284,8 @@ module ripple ( input clk,
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "4. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -271,7 +313,8 @@ endmodule`,
    end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module dff (   input d,
@@ -345,33 +388,30 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Mod-N Sayıcı Tasarımı ve Periyodik Kesme Darbesi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Mod-N Sayıcı (Modulo-N Counter) Nedir?",
+        content: `Temel binary sayıcılar 0 ile 2^N - 1 arasında sayarak doğal olarak başa sararlar; bu durum çok daha geniş ve esnek bir kavramın özel bir halidir. Bir Mod-N sayıcı (modulo-N counter), sıfıra sıfırlanmadan önce tam olarak N adet durumdan (state) geçen bir sayıcıdır. Buradaki N değerine sayıcının modülü (modulus) denir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Mod-N Sayıcı Tasarımı ve Periyodik Kesme Darbesi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Örneğin, 4-bitlik bir binary sayıcı 16 durumlu bir Mod-16 sayıcı, 3-bitlik bir sayıcı ise Mod-8 sayıcıdır. Ancak Mod-N sayıcıları dijital tasarımda bu kadar kritik ve ilginç kılan asıl senaryo, N değerinin ikinin kuvveti olmadığı (non-power of two) durumlardır. Gerçek dijital sistemlerde Mod-5, Mod-6, Mod-10 (onluk sayıcı), Mod-12 (saat sistemleri) ve Mod-60 (dakika/saniye sayıcıları) gibi yapılar her yerde karşımıza çıkar. Bu tür sayıcıları tasarlamak, yalnızca register genişliğini seçmenin ötesinde bilinçli mimari kararlar almayı gerektirir.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Counters Verilog Mod-N counter Verilog Mod-N counter `,
+        title: "2. Sayma Dizisi ve Frekans Bölme (Frequency Division) Özelliği",
+        content: `Bir Mod-N sayıcının sayma dizisi oldukça basittir: Sayıcı her aktif saat darbesinde değerini 1 artırır ve N-1 değerine ulaştığında, bir sonraki aktif saat darbesinde doğal olarak değil, devre mantığıyla zorlanarak tekrar 0'a döner.
+Tam sayma döngüsü şöyledir:
+0 -> 1 -> 2 -> 3 -> ... -> (N-1) -> 0 -> 1 -> ...
+
+Sayıcı tam bir döngüde tam olarak N farklı durumu ziyaret eder. Bu durum sayıcıya olağanüstü bir frekans bölme yeteneği kazandırır. Giriş saat frekansı f_clk olan bir Mod-N sayıcının çıkış periyodik darbe frekansı:
+f_out = f_clk / N
+şeklinde hesaplanır. Örneğin 1 MHz saat sinyali ile sürülen bir Mod-10 sayıcı, her 10 çevrimde bir çıkış darbesi üreterek 100 kHz frekansında bir sinyal elde edilmesini sağlar. Bu özellik; UART baud rate üretimi, gerçek zamanlı saat (RTC) tasarımı ve saat bölücü (clock divider) mantıklarının temel yapı taşıdır.`,
       },
       {
-        title: "3. What Is a Mod-N Counter?",
-        content: `If you've already worked with basic binary counters — circuits that count from 0 to 2^N − 1 and roll over — you've been using a specific case of a much broader concept. A Mod-N counter (short for modulo-N counter) is a counter that cycles through exactly N states before resetting back to zero. The value N is called the modulus of the counter. Binary counters are special cases of this: a 4-bit binary counter is a Mod-16 counter, and a 3-bit binary counter is a Mod-8 counter. But what makes Mod-N counters interesting — and what this article is really about — is the case where N is not a power of two. Mod-5, Mod-6, Mod-10, Mod-12, Mod-60: these are everywhere in real digital systems, and implementing them requires deliberate design choices that go beyond simply choosing a register width.`,
+        title: "3. Sıfırlama Mimarisi: Senkron ve Asenkron Reset Yaklaşımları",
+        content: `N değeri 2'nin kuvveti olmadığında, sayıcı register bitlerinin dolmasıyla doğal olarak (rollover) sıfırlanamaz. Bu nedenle sıfırlama işlemini donanımsal mantık ile sizin kontrol etmeniz gerekir. Dijital tasarımda bu kontrolü sağlamak için iki temel yaklaşım bulunur:
+
+1. Senkron Karşılaştırıcı Yaklaşımı (Tavsiye Edilen): always @(posedge clk) bloğu içinde sayıcı değeri kontrol edilir. Sayıcı N-1 değerine ulaştığında, bir sonraki yükselen saat kenarında değer 0'a yüklenir. Bu yöntem tamamen saat senkronudur ve yarış durumları (glitch) oluşturmaz.
+2. Kombinasyonel Asenkron Reset Yaklaşımı: Sayıcı N değerine ulaştığı anda kombinasyonel kapılarla flip-flop'ların asenkron reset pinleri tetiklenir. Ancak bu yaklaşım, dar glitch'lere ve kararsızlıklara yol açtığı için modern FPGA ve ASIC sentezleme araçlarında kesinlikle kaçınılması gereken tehlikeli bir yöntemdir.`,
       },
-      {
-        title: "4. Counting Sequence",
-        content: `The counting sequence of a Mod-N counter is simple to describe: the counter increments by 1 on each active clock edge, and when it reaches a count of N − 1, the very next clock edge resets it to 0. The full cycle is: 0 → 1 → 2 → 3 → ... → (N−1) → 0 → 1 → ... The counter visits exactly N distinct states per complete cycle. This is why the output frequency of a Mod-N counter, given an input clock of frequency f_clk, is: f_out = f_clk / N This frequency division property is arguably the most useful thing a Mod-N counter does. A Mod-10 counter driven by a 1 MHz clock produces an output pulse every 10 cycles — effectively a 100 kHz signal. That's the heartbeat of real-world timekeeping, baud rate generation, and clock management logic.`,
-      },
-      {
-        title: "5. How to reset",
-        content: `Since N is not always a power of two, the counter cannot simply "roll over" naturally. You have to force the reset yourself. There are two main architectural approaches to this, and understanding the difference between them is critical for any Verilog designer.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Mod-N Sayıcı Tasarımı ve Periyodik Kesme Darbesi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -402,8 +442,8 @@ endmodule`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -434,7 +474,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module modN_ctr 
@@ -474,39 +515,32 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Halka Sayıcı (Ring Counter) ve 1-Hot Durum Mantığı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Halka Sayıcı (Ring Counter) Mimarisi ve Çalışma Mantığı",
+        content: `Halka sayıcı (ring counter), kapalı döngü (closed-loop) şeklinde birbirine bağlanmış bir kaydırmalı kaydedicidir (shift register). Bir dizi flip-flop uç uca eklenir ve son flip-flop'un çıkışı doğrudan ilk flip-flop'un veri girişine bağlanır.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Halka Sayıcı (Ring Counter) ve 1-Hot Durum Mantığı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Her saat kenarında, her flip-flop solundaki komşusunun değerini kopyalar ve dizinin en sağındaki bit doğrudan en sol başa geri beslenir. Geri besleme yolunda hiçbir tersleyici (inverter), XOR kapısı veya karşılaştırıcı lojiği bulunmaz; yalnızca son çıkışı ilk girişe bağlayan yalın bir iletken hat (wire) vardır. Bu basit mimari sayesinde tek bir aktif bit (lojik 1), bir ray üzerinde dönen bilye gibi her saat darbesinde bir basamak ilerleyerek kaydedici içinde sonsuz bir döngüde dolaşır. Diğer tüm bitler lojik 0 seviyesindedir. N adet flip-flop ile, aktif bitin bulunabileceği her konuma karşılık gelen tam olarak N adet farklı çıkış durumu elde edilir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Halka Sayıcı (Ring Counter) ve 1-Hot Durum Mantığı Şeması](/images/verilog/ring-counter.png)
+        title: "2. 4-Bit Halka Sayıcı Çalışma Adımları ve One-Hot Kodlama",
+        content: `Halka sayıcının davranışını netleştirmek için 4-bitlik bir örneği adım adım inceleyelim. Kaydedici en soldaki bitte tek bir '1' olacak şekilde başlatılır:
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Saat Çevrimi | Q3 | Q2 | Q1 | Q0 | Durum Tanımı
+Reset        | 1  | 0  | 0  | 0  | Başlangıç Durumu
+1            | 0  | 1  | 0  | 0  | 1 Sağa Kaydı
+2            | 0  | 0  | 1  | 0  | 1 Sağa Kaydı
+3            | 0  | 0  | 0  | 1  | 1 Sağa Kaydı
+4 (= Reset)  | 1  | 0  | 0  | 0  | Başa Geri Döndü
+
+Görüldüğü gibi tek bir '1' biti Q3'ten Q0'a doğru ilerler ve dördüncü saat kenarında tekrar Q3'e döner. 4 flip-flop, 4 durum ve periyot 4'tür. Bu sayıcı türü one-hot kodlamalı (one-hot encoding) bir Mod-N sayıcıdır: Her an yalnızca tek bir flip-flop '1' durumundadır. One-hot kodlama; FSM (Sonlu Durum Makineleri) tasarımlarında kod çözme mantığına (decoder) ihtiyaç duymadan doğrudan durum çıkışlarını kontrol etmeyi sağladığı için yüksek hızlı dijital tasarımda son derece yaygın kullanılır.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Counters Verilog Ring Counter Verilog Ring Counter `,
+        title: "3. Kaydırma Yönü ve Kritik Başlatma (Initialization) Gereksinimi",
+        content: `Halka sayıcı, flip-flop'ların bağlantı sırasına göre sağa veya sola doğru kayacak şekilde tasarlanabilir. Sağa kaydırmada i konumundaki flip-flop, solundaki i+1 konumundaki değeri alır; sola kaydırmada ise tam tersidir. İki yön de geçerli tasarımlardır ve seçim genellikle sonraki kod çözme mantığının gereksinimine göre yapılır.
+
+Ancak başlatma (initialization) mekanizması son derece kritiktir ve üzerinde titizlikle durulmalıdır. Halka sayıcı mutlaka kaydedicide tam olarak tek bir 1 ve diğer tüm bitler 0 olacak şekilde başlatılmalıdır. Gerçek donanımda güç verildiğinde (power-up) tüm flip-flop'lar 0 olarak başlarsa, sıfırlar halka içinde sonsuza kadar dolaşır ve sayıcı hiçbir zaman aktif duruma geçemez (patolojik kilitlenme durumu). Benzer şekilde birden fazla '1' biti yüklenirse, tüm bu bitler döngüde dolaşır ve one-hot özelliği tamamen bozulur. Bu nedenle tasarımda kendi kendini düzelten (self-correcting) mantık veya güvenilir bir reset yapısı zorunludur.`,
       },
-      {
-        title: "4. What Is a Ring Counter?",
-        content: `A ring counter is a closed-loop shift register — a chain of flip-flops connected end to end, where the output of the last flip-flop feeds directly back into the input of the first. On every clock edge, each flip-flop copies the value of its neighbor to the left, and the value that "falls off" the right end immediately reappears at the left end. There is no inverter in the feedback path, no XOR logic, no comparator — just a wire looping the last output back to the first input. The result of this simple architecture is elegant: a single active bit (a logic 1) circulates endlessly around the register like a ball rolling around a track, advancing one position per clock cycle. Every other bit in the register holds a 0. With N flip-flops, you get exactly N distinct output states, one for each position the active bit can occupy.`,
-      },
-      {
-        title: "5. How It Works",
-        content: `To understand how a ring counter behaves, let's trace a 4-bit example in detail. The register is initialized with a single 1 in the leftmost position: Clock Cycle Q3 Q2 Q1 Q0 Reset 1 0 0 0 1 0 1 0 0 2 0 0 1 0 3 0 0 0 1 4 (= Reset) 1 0 0 0 The single 1 marches from Q3 down to Q0, then wraps back to Q3 on the fourth clock edge. Four flip-flops, four states, period of four. The counter is called a Mod-N counter in one-hot encoding — with N flip-flops, you get N states, and at any given moment exactly one flip-flop holds a 1. That phrase — one-hot — is important and worth locking in. A one-hot encoding is any state representation where exactly one bit is active (high) at a time. Ring counters are the hardware embodiment of one-hot encoding, and one-hot state machines are a major topic in digital design that flows directly from understanding ring counters.`,
-      },
-      {
-        title: "6. Shift Direction & Initialization",
-        content: `A ring counter can shift in either direction depending on how you wire the flip-flops. Shifting right means each flip-flop at position i copies the value from position i+1 on the left; shifting left is the reverse. Both directions are valid designs and the choice typically depends on which direction makes the downstream decoding logic most convenient. Initialization is non-negotiable and more nuanced than it first appears. The ring counter must start with exactly one 1 in the register and all other positions at 0. If you power up the circuit and all flip-flops come up as 0 — which is entirely possible in real hardware — you have a pathological state: the all-zeros pattern will circulate forever and the counter produces no useful output at all. Similarly, if two or more 1s are present, they will all circulate and the one-hot property is broken.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Halka Sayıcı (Ring Counter) ve 1-Hot Durum Mantığı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -538,8 +572,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -568,7 +602,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module ring_ctr  #(parameter WIDTH=4) 
@@ -609,39 +644,38 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Johnson (Möbius) Sayıcı ve 2N Durum Mimarisi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Johnson Sayıcı (Twisted Ring Counter) Mimarisi",
+        content: `Dijital tasarım ve Verilog öğrenirken temel binary sayıcılardan sonra karşılaşacağınız en zarif devrelerden biri Johnson sayıcıdır (bazen burulmuş halka sayıcı / twisted ring counter veya sürünen kod sayıcı / creeping code counter olarak da adlandırılır). Sıralı mantık devreleri için mükemmel bir tasarım sezgisi kazandıran bu devre, donanım kaynaklarını en verimli şekilde kullanan mimarilerden biridir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Johnson (Möbius) Sayıcı ve 2N Durum Mimarisi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Johnson sayıcı, özünde bir geri besleme döngüsüne sahip kaydırmalı kaydedicidir; ancak çok kritik bir farkla: Son flip-flop'un çıkışı doğrudan ilk flip-flop'a bağlanmak yerine, son flip-flop'un terslenmiş (complemented) çıkışı ilk flip-flop'un girişine geri beslenir. Geri besleme yolundaki bu tek lojik NOT işlemi, devrenin tüm çalışma dinamiğini baştan sona değiştirir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Johnson (Möbius) Sayıcı ve 2N Durum Mimarisi Şeması](/images/verilog/johnson-counter.png)
+        title: "2. Halka Sayıcı ile Johnson Sayıcı Karşılaştırması",
+        content: `Johnson sayıcıyı tam anlamak için onu yakın akrabası olan standart halka sayıcı ile karşılaştırmak büyük fayda sağlar:
+- Standart Halka Sayıcı: N adet flip-flop ile yalnızca N adet benzersiz durum (state) üretebilir. Geri besleme doğrudan bağlanır ve tek bir '1' biti halkada döner.
+- Johnson Sayıcı: Aynı N adet flip-flop zincirini kullanır ancak geri besleme sinyalini tersler. Böylece önce zincirin başından birler girmeye başlar ve tüm flip-flop'ları doldurur; ardından sıfırlar girerek kaydediciyi temizler. Sonuç olarak tam 2N adet benzersiz durum elde edilir.
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Bu, Johnson sayıcının en büyük avantajıdır: Aynı sayıda flip-flop kullanarak standart halka sayıcının iki katı kadar durum elde edersiniz (örneğin 4 flip-flop ile 8 durum).`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Counters Verilog Johnson Counter Verilog Johnson Counter `,
+        title: "3. 4-Bit Johnson Sayıcı Çalışma Prensibi ve Durum Tablosu",
+        content: `4-bitlik bir Johnson sayıcının çalışma adımlarını inceleyelim. Tüm flip-flop'ların reset durumunda 0 olduğunu varsayalım (Q = 4'b0000). Her yükselen saat kenarındaki durum geçişleri şöyledir:
+
+Saat Çevrimi | Q3 | Q2 | Q1 | Q0 | Açıklama
+Reset        | 0  | 0  | 0  | 0  | Başlangıç Durumu
+1            | 1  | 0  | 0  | 0  | ~Q0 (1) Q3'e girdi
+2            | 1  | 1  | 0  | 0  | 1'ler sağa kayıyor
+3            | 1  | 1  | 1  | 0  | 1'ler yayılıyor
+4            | 1  | 1  | 1  | 1  | Tümü 1 oldu
+5            | 0  | 1  | 1  | 1  | ~Q0 (0) Q3'e girdi
+6            | 0  | 0  | 1  | 1  | 0'lar sağa kayıyor
+7            | 0  | 0  | 0  | 1  | 0'lar yayılıyor
+8 (= Reset)  | 0  | 0  | 0  | 0  | Tümü 0 oldu (Döngü Başa Döndü)
+
+Her çevrimde kaydedici sağa bir basamak kayar ve en sola giren yeni bit, en sağdaki bitin tersidir (~Q0). Q0 sıfır olduğu sürece sola 1 girer; Q0 bir olduğunda ise sola 0 girmeye başlar. Sadece 4 flip-flop ile 8 durum üretilir. Ayrıca ardışık her geçişte yalnızca tek bir bit değiştiği için Johnson sayıcı durumları kod çözerken glitch oluşturmaz.`,
       },
-      {
-        title: "4. What is a Johnson Counter ?",
-        content: `When you start learning digital design and Verilog, one of the first counters you'll encounter after basic binary counters is the Johnson counter — sometimes called a twisted ring counter or creeping code counter. It's an elegant circuit that punches above its weight in terms of usefulness, and understanding it builds solid intuition for sequential logic design. A Johnson counter is a type of shift register connected in a feedback loop, but with a twist — literally. Instead of feeding the output of the last flip-flop back to the first flip-flop directly (as in a standard ring counter), you feed back the inverted (complemented) output. This single inversion changes everything about how the circuit behaves.`,
-      },
-      {
-        title: "5. The Ring Counter vs. The Johnson Counter",
-        content: `Before diving deeper, it helps to contrast the Johnson counter with its close cousin, the ring counter. In a standard ring counter with N flip-flops, a single logic 1 bit circulates through the chain. The last flip-flop's output connects directly back to the first flip-flop's input. With 4 flip-flops, a ring counter cycles through 4 unique states before repeating. The Johnson counter takes that same chain of flip-flops but inverts the feedback signal. Instead of a 1 recirculating, a 1 gets shifted in from one end, fills all flip-flops with 1s, then a 0 starts to push through from the other end. The result is a sequence that visits 2N unique states — double what a plain ring counter of the same size can produce. This is the Johnson counter's superpower: you get more states out of fewer flip-flops.`,
-      },
-      {
-        title: "6. How It Works: Step by Step",
-        content: `Let's walk through a 4-bit Johnson counter to build up a clear picture. Assume all four flip-flops start at 0 (reset state). Here's the state sequence you'll see on each rising clock edge: Clock Cycle Q3 Q2 Q1 Q0 Reset 0 0 0 0 1 1 0 0 0 2 1 1 0 0 3 1 1 1 0 4 1 1 1 1 5 0 1 1 1 6 0 0 1 1 7 0 0 0 1 8 (= Reset) 0 0 0 0 What's happening here? On each clock cycle, the shift register moves all bits one position to the right. The new bit entering from the left is the inverted value of the rightmost bit (Q0). So when Q0 is 0, a 1 gets inserted on the left. When Q0 eventually becomes 1, a 0 gets inserted. The result: 1s march in from the left, filling up the register, then 0s march in, clearing it out — before the whole cycle repeats. Eight unique states, with only four flip-flops.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Johnson (Möbius) Sayıcı ve 2N Durum Mimarisi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -673,8 +707,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -703,7 +737,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module johnson_ctr #(parameter WIDTH=4) 
@@ -744,33 +779,29 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 15: Sayıcı Devreleri (Counters). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Gray Kodlu Sayıcı ve Saat Bölgesi Geçişleri (CDC)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Gray Kodlu Sayıcı (Gray Counter) Nedir?",
+        content: `Yansıtılmış ikili sayıcı (reflected binary counter) veya kısaca Gray sayıcı, ilk bakışta büyüleyici bir özelliğe sahip olan özel bir ardışıl devredir: Standart binary sayıcılar gibi 2^N adet durumun tamamını sayar, ancak kritik bir farkla — her saat çevriminde durumlardan yalnızca tek bir bit değişir (Hamming mesafesi = 1).`,
+      },
+      {
+        title: "2. Binary Geçiş Glitch'leri ve Gray Kodunun Çözümü",
+        content: `Gray sayıcının mantığını kavramak için öncelikle çözdüğü temel donanım problemini anlamak gerekir: Binary sayıcılardaki geçiş glitch'leri (transition glitches).
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Gray Kodlu Sayıcı ve Saat Bölgesi Geçişleri (CDC)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Standart 3-bit binary bir sayıcı düşünelim. Sayıcı 011 (desimal 3) değerinden 100 (desimal 4) değerine geçerken her üç bit aynı anda değişmek zorundadır: Bit 0 (1->0), Bit 1 (1->0) ve Bit 2 (0->1). Teoride her üç flip-flop aynı saat kenarında anında güncellenir. Ancak gerçek silikon donanımda her flip-flop ve mantık kapısının fiziksel yayılım gecikmesi (propagation delay) ve hat uzunlukları birbirinden farklıdır. Bu nedenle üç bit kesinlikle aynı anda değişemez; biri diğerinden birkaç pikosaniye önce değişebilir.
+
+Bu mikroskobik zaman aralığında sayıcı çıkışı amaçlanmayan sahte ara durumlardan geçer. Örneğin 011 -> 100 geçişinde çıkışta çok kısa bir an için 111, 000 veya 110 gibi hayalet durumlar (ghost states) parlayabilir. Eğer bu çıkışa bağlı bir kombinasyonel kod çözücü (decoder), durum makinesi (FSM) veya çoklayıcı (MUX) varsa, bu sahte ara durumları algılayarak sisteme istenmeyen sahte darbeler (glitch) üretir. Yüksek hızlı veya gürültüye duyarlı tasarımlarda bu durum ölümcül fonksiyonel hatalara yol açar.
+
+Gray sayıcı bu sorunu kökünden çözer: Hangi geçiş olursa olsun her saat darbesinde daima ve yalnızca tek bir bit değiştiği için hiçbir ara durum, hayalet kod veya glitch oluşamaz.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `Counters Verilog Gray Counter Verilog Gray Counter `,
+        title: "3. Asenkron FIFO'larda Gray Kod Kullanımı ve Saat Alanı Geçişi (CDC)",
+        content: `Gray sayıcıların ileri seviye dijital tasarımdaki en kritik ve yaygın kullanım alanı Asenkron FIFO'lardır (Async FIFO). Asenkron FIFO, yazma portu bir saat alanında (örneğin 100 MHz write clock), okuma portu ise tamamen bağımsız ve asenkron başka bir saat alanında (örneğin 33 MHz read clock) çalışan çift saatli bir bellek tamponudur.
+
+Buradaki en büyük mühendislik zorluğu, yazma ve okuma işaretçilerinin (pointers) saat alanı sınırından (Clock Domain Crossing - CDC) karşı tarafa güvenli bir şekilde aktarılmasıdır. Eğer ikili (binary) bir sayıcı işaretçi olarak kullanılırsa; örneğin 0111 değerinden 1000 değerine geçiş anında (4 bitin birden değiştiği an) hedef saat alanı sinyali örneklerse, sinyallerin farklı gecikmelerinden dolayı tamamen bozuk ve anlamsız bir değer okuyabilir. Bu da FIFO'nun taşmasına (overflow) veya boşken okunmasına (underflow) neden olarak veri kaybına yol açar.
+
+Buna karşılık Gray kodunda her adımda yalnızca tek bir bit değiştiği için hedef saat alanı sinyali geçiş anında yakalasa bile ya eski değeri ya da yeni değeri doğru olarak okur; asla bozulmuş bir ara değer okuyamaz. Bu nedenle profesyonel tüm Asenkron FIFO tasarımlarında Gray işaretçiler endüstri standardıdır.`,
       },
-      {
-        title: "3. What is a Gray Counter ?",
-        content: `Sometimes called a reflected binary counter or simply a Gray code counter - it's one of those circuits that seems almost magical at first: a counter that counts through all 2^N states like a binary counter, but with a crucial twist — only a single bit changes with every clock cycle.`,
-      },
-      {
-        title: "4. The Problem Gray Code Solves",
-        content: `Before understanding the Gray counter, you need to understand the problem it was invented to fix: transition glitches in binary counters. Take a standard 3-bit binary counter. At some point, it needs to transition from 011 (decimal 3) to 100 (decimal 4). All three bits change simultaneously: bit 0 goes from 1 to 0, bit 1 goes from 1 to 0, and bit 2 goes from 0 to 1. In theory, all three flip-flops update at the same clock edge and everything is fine. In practice, however, real flip-flops and gates have slightly different propagation delays. Those three bits don't switch at exactly the same instant — one might change a few picoseconds before another. In that tiny window of time, the counter output passes through intermediate states that were never intended. For example, during the 011 → 100 transition, you might briefly see 111 or 000 or 110 flicker through for nanoseconds. If any combinational logic is watching the counter output — a decoder, a state machine, a multiplexer — it may react to those ghost states and produce unwanted glitches: spurious pulses, incorrect outputs, or in worst cases, actual functional errors. In high-speed or noise-sensitive designs, this is a serious problem. The Gray counter solves this completely by ensuring that no matter what transition occurs, only one bit ever changes at a time. With only one bit changing, there are no intermediate states, no ghost codes, and no glitches. Click here to read more on Gray Code !`,
-      },
-      {
-        title: "5. Asynchronous FIFOs (the most important use case)",
-        content: `This is the application you'll encounter most often in advanced digital design. An asynchronous FIFO is a memory buffer that has a write port clocked by one clock domain and a read port clocked by a different, asynchronous clock domain. The challenge is safely passing the read and write pointers across the clock domain boundary. Passing a binary counter across clock domains is dangerous. If the counter transitions from 0111 to 1000 (a 4-bit change) and the receiving clock samples it in the middle of the transition, it may read an entirely wrong value, causing the FIFO to malfunction. Since only one bit changes in Gray code, even if the receiving clock samples at an unfortunate moment, it will read either the old value or the new value — never a corrupted intermediate. Gray pointers in async FIFOs are so standard that you'll almost never see a properly designed async FIFO using binary pointers.`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Gray Kodlu Sayıcı ve Saat Bölgesi Geçişleri (CDC)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -841,6 +872,39 @@ endmodule`,
 endmodule`,
         },
       },
+{
+        title: "5. Simülasyon ve Testbench Kodu",
+        content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
+        code: {
+          language: "verilog",
+          caption: "verilog-gray-counter_tb.v - Simülasyon Testbench",
+          snippet: `module tb;
+  parameter N = 4;
+  
+  reg clk;
+  reg rstn;
+  wire [N-1:0] out;
+  
+  gray_ctr u0 (	.clk(clk),
+               .rstn(rstn),
+               .out(out));
+  
+  always #10 clk = ~clk;
+  
+  initial begin
+    {clk, rstn} <= 0;
+    
+    $monitor ("T=%0t rstn=%0b out=0x%0h", $time, rstn, out);
+    
+    repeat(2) @ (posedge clk);
+    rstn <= 1;
+    repeat(20) @ (posedge clk);
+    $finish;
+  end
+endmodule`,
+        },
+      }
+
     ],
     playground: {
       initialCode: `module gray_ctr
@@ -888,43 +952,104 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 16: Kaydırmalı Kaydediciler (Shift Registers). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. N-Bit Çift Yönlü Kaydırmalı Kaydedici (Bidirectional Shift Register)",
+        content: `Dijital elektronikte kaydırmalı kaydedici (shift register), bir flip-flop'un q çıkışının bir sonraki flip-flop'un d veri girişine seri olarak bağlandığı ardışıl bir flip-flop zinciridir. Tüm flip-flop'lar aynı saat sinyali ile tetiklendiğinden, kaydedicide tutulan bit dizisi her saat darbesinde bir konum kaydırılır.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Örneğin, 5-bitlik sağa kaydırmalı bir kaydedicinin başlangıç değeri 10110 ise ve seri veri girişine sürekli 0 verilirse:
+- 1. saat darbesinde: 01011
+- 2. saat darbesinde: 00101
+- 3. saat darbesinde: 00010
+değerleri elde edilir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register) Şeması](/images/verilog/shift-register.png)
+        title: "2. Parametrik Çift Yönlü Kaydırmalı Kaydedici Verilog Tasarımı",
+        content: `module shift_reg #(parameter MSB=8) (
+    input d,                      // Kaydırmalı kaydediciye giren seri veri
+    input clk,                    // Tüm flip-flop'ları tetikleyen saat sinyali
+    input en,                     // Kaydırma işlemini aktif/pasif yapan enable sinyali
+    input dir,                    // Kaydırma yönü (0: sola kaydır, 1: sağa kaydır)
+    input rstn,                   // Aktif-düşük sıfırlama (reset) girişi
+    output reg [MSB-1:0] out      // Kaydedicideki tüm bitlerin paralel çıkışı
+);
 
-![N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register) Şeması](/images/verilog/8b_shift_register_schematic.png)
+    // Saat sinyalinin yükselen kenarında tetiklenen ardışıl blok
+    always @ (posedge clk) begin
+        if (!rstn)
+            out <= 0;             // Reset aktifse çıkışı sıfırla
+        else begin
+            if (en) begin
+                case (dir)
+                    1'b0 : out <= {out[MSB-2:0], d};  // Sola kaydır, en sağa yeni bit ekle
+                    1'b1 : out <= {d, out[MSB-1:1]};  // Sağa kaydır, en sola yeni bit ekle
+                endcase
+            end else
+                out <= out;       // Enable pasifse mevcut değeri koru
+        end
+    end
 
-![N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register) Şeması](/images/verilog/n-bit-shift-register-tb.png)
+endmodule
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Açıklama: Bu tasarım MSB parametresi ile bit genişliği dinamik olarak ayarlanabilen esnek bir mimaridir (MSB=8 ise 8-bit, MSB=16 ise 16-bit). Verilog'un bitiştirme operatörü (concatenation, {}) kullanılarak kaydırma işlemi donanımsal düzeyde çok verimli şekilde gerçekleştirilmiştir:
+- Sola kaydırmada (dir = 0): Çıkışın en anlamlı biti atılır, diğer bitler bir sola kayar ve en anlamsız bite giriş pini d eklenir ({out[MSB-2:0], d}).
+- Sağa kaydırmada (dir = 1): Çıkışın en anlamsız biti atılır, bitler sağa kayar ve en anlamlı bite d yerleştirilir ({d, out[MSB-1:1]}).`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Shift Registers Verilog n-bit Bidirectional Shift Register Verilog n-bit Bidirectional Shift Register In digital electronics, a shift register is a cascade of flip-flops where the output pin q of one flop is connected to the data input pin (d) of the next. Because all flops work on the same clock, the bit array stored in the shift register will shift by one position. For example, if a 5-bit right shift register has an initial value of 10110 and the input to the shift register is tied to 0, then the next pattern will be 01011 and the next 00101.`,
+        title: "3. Shift Register Testbench Doğrulaması ve Dalga Biçimi Analizi",
+        content: `module tb_sr;
+    parameter MSB = 16;      // 16-bit genişlik parametresi
+    reg data, clk, en, dir, rstn;
+    wire [MSB-1:0] out;
+
+    // 16-bit shift register örneği oluşturuluyor
+    shift_reg #(MSB) sr0 (
+        .d    (data),
+        .clk  (clk),
+        .en   (en),
+        .dir  (dir),
+        .rstn (rstn),
+        .out  (out)
+    );
+
+    // 50 MHz saat üretimi (T = 20ns)
+    always #10 clk = ~clk;
+
+    initial begin
+        clk <= 0; en <= 0; dir <= 0; rstn <= 0; data <= 'h1;
+    end
+
+    initial begin
+        // 1. Reset uygula ve kaldır
+        rstn <= 0;
+        #20 rstn <= 1; en <= 1;
+
+        // 2. 7 saat çevrimi boyunca veri pinine alternatif değerler sür
+        repeat (7) @ (posedge clk) data <= ~data;
+
+        // 3. Kaydırma yönünü değiştir (sağa kaydırma) ve 7 çevrim veri sür
+        #10 dir <= 1;
+        repeat (7) @ (posedge clk) data <= ~data;
+
+        // 4. Veri sürmeden 7 çevrim serbest kaydırmaya izin ver
+        repeat (7) @ (posedge clk);
+
+        $finish;
+    end
+
+    initial $monitor ("rstn=%0b data=%b, en=%0b, dir=%0b, out=%b", rstn, data, en, dir, out);
+endmodule
+
+Simülasyon Log Özeti:
+Log çıktısında görüldüğü üzere, rstn=1 ve en=1 yapıldıktan sonra sola kaydırma modunda (dir=0) data pininden giren bitler sırayla sağdan girerek sola doğru ilerler. dir=1 yapıldığında ise bitler soldan girip sağa doğru kayarak tüm register içeriğini dönüştürür. en=0 durumunda ise kaydedici mevcut durumunu korur.`,
       },
       {
-        title: "4. Design",
-        content: `This shift register design has five inputs and one n-bit output and the design is parameterized using parameter MSB to signify width of the shift register. If n is 4, then it becomes a 4-bit shift register. If n is 8, then it becomes an 8-bit shift register. This shift register has a few key features: Can be enabled or disbled by driving en pin of the design Can shift to the left as well as right when dir is driven If rstn is pulled low, it will reset the shift register and output will become 0 Input data value of the shift register can be controlled by d pin module shift_reg #(parameter MSB=8) ( input d, // Declare input for data to the first flop in the shift register input clk, // Declare input for clock to all flops in the shift register input en, // Declare input for enable to switch the shift register on/off input dir, // Declare input to shift in either left or right direction input rstn, // Declare input to reset the register to a default value output reg [MSB-1:0] out); // Declare output to read out the current value of all flops in this register // This always block will "always" be triggered on the rising edge of clock // Once it enters the block, it will first check to see if reset is 0 and if yes then reset register // If no, then check to see if the shift register is enabled // If no => maintain previous output. If yes, then shift based on the requested direction always @ (posedge clk) if (!rstn) out <= 0; else begin if (en) case (dir) 0 : out <= {out[MSB-2:0], d}; 1 : out <= {d, out[MSB-1:1]}; endcase else out <= out; end endmodule`,
+        title: "4. Kaydırmalı Kaydedici (Shift Register) Tasarım ve Donanım İpuçları",
+        content: `Mühendislik İpuçları & Uygulama Alanları:
+1. Seri-Paralel ve Paralel-Seri Dönüşüm: Shift register'lar SPI, I2C ve UART gibi seri haberleşme protokollerinde gelen seri veri akışını paralel byte'lara dönüştürmek (SIPO - Serial-In Parallel-Out) veya paralel veriyi seri hatta aktarmak (PISO - Parallel-In Serial-Out) için temel donanım bloğudur.
+2. Gecikme Hatları (Delay Lines): Dijital sinyal işleme (DSP) ve ardışıl lojikte bir veri akışını tam N saat çevrimi geciktirmek için basit shift register yapıları kullanılır.
+3. FPGA SRL Mimarisi: Modern FPGA'lerde (örneğin Xilinx/AMD UltraScale mimarisi) shift register'lar ayrı ayrı flip-flop'lar yerine özel LUT donanımları (SRL16E / SRL32E) içinde sentezlenerek çok büyük alan ve güç tasarrufu sağlar.`,
       },
-      {
-        title: "5. Testbench",
-        content: `The testbench is used to verify the functionality of this shift register. The design is instantiated into the top module and the inputs are driven with different values. The design behavior for each of the inputs can be observed at the output pin out . module tb_sr; parameter MSB = 16; // [Optional] Declare a parameter to represent number of bits in shift register reg data; // Declare a variable to drive d-input of design reg clk; // Declare a variable to drive clock to the design reg en; // Declare a variable to drive enable to the design reg dir; // Declare a variable to drive direction of shift registe reg rstn; // Declare a variable to drive reset to the design wire [MSB-1:0] out; // Declare a wire to capture output from the design // Instantiate design (16-bit shift register) by passing MSB and connect with TB signals shift_reg #(MSB) sr0 ( .d (data), .clk (clk), .en (en), .dir (dir), .rstn (rstn), .out (out)); // Generate clock time period = 20ns, freq => 50MHz always #10 clk = ~clk; // Initialize variables to default values at time 0 initial begin clk <= 0; en <= 0; dir <= 0; rstn <= 0; data <= 'h1; end // Drive main stimulus to the design to verify if this works initial begin // 1. Apply reset and deassert reset after some time rstn <= 0; #20 rstn <= 1; en <= 1; // 2. For 7 clocks, drive alternate values to data pin repeat (7) @ (posedge clk) data <= ~data; // 4. Shift direction and drive alternate value to data pin for another 7 clocks #10 dir <= 1; repeat (7) @ (posedge clk) data <= ~data; // 5. Drive nothing for next 7 clocks, allow shift register to simply shift based on dir repeat (7) @ (posedge clk); // 6. Finish the simulation $finish; end // Monitor values of these variables and print them into the logfile for debug initial $monitor ("rstn=%0b data=%b, en=%0b, dir=%0b, out=%b", rstn, data, en, dir, out); endmodule The time when shift register is enabled is highlighted in green in the log given below. The time when it shifts its direction is highlighted in yellow. The time when data input pin remains constant is highlighted in blue. Output ncsim> run rstn=0 data=1, en=0, dir=0, out=xxxxxxxxxxxxxxxx rstn=0 data=1, en=0, dir=0, out=0000000000000000 rstn=1 data=1, en=1, dir=0, out=0000000000000000 rstn=1 data=0, en=1, dir=0, out=0000000000000001 rstn=1 data=1, en=1, dir=0, out=0000000000000010 rstn=1 data=0, en=1, dir=0, out=0000000000000101 rstn=1 data=1, en=1, dir=0, out=0000000000001010 rstn=1 data=0, en=1, dir=0, out=0000000000010101 rstn=1 data=1, en=1, dir=0, out=0000000000101010 rstn=1 data=0, en=1, dir=0, out=0000000001010101 rstn=1 data=0, en=1, dir=1, out=0000000001010101 rstn=1 data=1, en=1, dir=1, out=0000000000101010 rstn=1 data=0, en=1, dir=1, out=1000000000010101 rstn=1 data=1, en=1, dir=1, out=0100000000001010 rstn=1 data=0, en=1, dir=1, out=1010000000000101 rstn=1 data=1, en=1, dir=1, out=0101000000000010 rstn=1 data=0, en=1, dir=1, out=1010100000000001 rstn=1 data=1, en=1, dir=1, out=0101010000000000 rstn=1 data=1, en=1, dir=1, out=1010101000000000 rstn=1 data=1, en=1, dir=1, out=1101010100000000 rstn=1 data=1, en=1, dir=1, out=1110101010000000 rstn=1 data=1, en=1, dir=1, out=1111010101000000 rstn=1 data=1, en=1, dir=1, out=1111101010100000 rstn=1 data=1, en=1, dir=1, out=1111110101010000 Simulation complete via $finish(1) at time 430 NS + 0  `,
-      },
-      {
-        title: "6. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **N-Bit Çift Yönlü Kaydırmalı Kaydedici (Shift Register)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -961,8 +1086,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1024,7 +1149,8 @@ endmodule`,
    // Monitor values of these variables and print them into the logfile f
 // ... (testbench devamı)`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module shift_reg  #(parameter MSB=8) (  input d,                      // Declare input for data to the first flop in the shift register
@@ -1070,41 +1196,43 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 17: Sonlu Durum Makineleri (FSM: Mealy & Moore). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Sonlu Durum Makineleri (FSM: Mealy ve Moore Standart Kodlama)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Sonlu Durum Makinesi (FSM) Türleri ve Durum Kodlama Yöntemleri",
+        content: `Dijital tasarımda sonlu durum makineleri (Finite State Machine - FSM), çıkışların üretilme şekline ve durumların binary olarak nasıl kodlandığına göre sınıflandırılır:
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Sonlu Durum Makineleri (FSM: Mealy ve Moore Standart Kodlama)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Sonlu Durum Makineleri (FSM: Mealy ve Moore Standart Kodlama) Şeması](/images/verilog/verilog-fsm.svg)
+1. Çıkış Üretim Yöntemine Göre FSM Türleri:
+- Moore FSM: Çıkışlar yalnızca mevcut duruma (current state) bağlıdır. Girişlerdeki anlık değişimler çıkışa doğrudan yansımaz; bu nedenle Moore makineleri glitch'lere karşı çok daha kararlıdır ve çıkış zamanlaması daha öngörülebilirdir.
+- Mealy FSM: Çıkışlar hem mevcut duruma hem de o anki giriş sinyallerine bağlıdır. Mealy makineleri genellikle Moore makinelerine kıyasla daha az sayıda durumla tasarlanabilir ve girişlere anında tepki verir; ancak giriş hattındaki glitch'ler doğrudan çıkışa yansıyabilir.
 
-![Sonlu Durum Makineleri (FSM: Mealy ve Moore Standart Kodlama) Şeması](/images/verilog/verilog-fsm-elab.jpg)
+2. Durum Kodlama (State Encoding) Yöntemleri:
+- Binary Encoding: Durumlar standart binary sayılarla temsil edilir (00, 01, 10, 11). N adet durum için ceil(log2(N)) adet flip-flop yeterlidir. Kaynak tasarrufu sağlar ancak durum geçiş lojiği daha karmaşık olabilir.
+- One-Hot Encoding: Her duruma bir flip-flop ayrılır ve her an yalnızca bir flip-flop '1' (hot) olur (örneğin 0001, 0010, 0100, 1000). FPGA mimarilerinde flip-flop sayısı bol ve kombinasyonel kod çözme lojiği çok hızlı olduğu için genellikle one-hot kodlama tercih edilir.`,
+      },
+      {
+        title: "2. Verilog ile FSM Kodlama Şablonu (1-Always vs 2-Always Yaklaşımı)",
+        content: `Verilog'da FSM tasarımları tek bir always bloğu veya iki ayrı always bloğu kullanılarak kodlanabilir. Endüstri standardı ve en çok tavsiye edilen yöntem İki Always Bloklu (2-Always Block) Yapıdır:
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+1. Ardışıl (Clocked) Always Bloğu: Sadece mevcut durumun (cur_state) saat kenarında güncellenmesini ve senkron/asenkron reset mantığını yönetir (cur_state <= next_state).
+2. Kombinasyonel Always Bloğu: Mevcut duruma ve giriş sinyallerine bakarak bir sonraki durumu (next_state) hesaplayan case yapısını barındırır.
+
+Çıkış Lojiğinin Yönetimi: Çıkışlar, kombinasyonel blok içinde hesaplanabileceği gibi, daha temiz bir mimari için ayrı assign ifadeleriyle veya kayıtlı çıkış (registered output) sağlamak adına üçüncü bir ardışıl blok ile de atanabilir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `State Machines Verilog FSM Verilog FSM `,
+        title: "3. Ardışıl Always Bloğu ve Non-Blocking Atama Kuralları",
+        content: `Bir FSM'de durum geçişleri yalnızca aktif saat kenarında gerçekleşir. Standart ardışıl durum bloğu şu şekildedir:
+
+always @ (posedge clk or negedge resetn) begin
+    if (!resetn) begin
+        cur_state <= IDLE;       // Reset anında başlangıç durumuna dön
+    end else begin
+        cur_state <= next_state; // Saat kenarında bir sonraki duruma geç
+    end
+end
+
+Kritik Kural: Ardışıl (sequential / clocked) always blokları içerisinde daima ve istisnasız non-blocking atama (<=) kullanılmalıdır!
+Non-blocking atamalar, donanımdaki eşzamanlı flip-flop kayıt davranışını birebir modeller. Eşzamanlı çalışan bloklar arasındaki yarış durumlarını (race conditions) ortadan kaldırır ve simülasyon-donanım uyumsuzluğunu önler.`,
       },
-      {
-        title: "4. Types of FSMs",
-        content: `There are two classifications of state machines based on the nature of their output generation: Moore : In this type, the outputs depend solely on the current state. Mealy : In contrast, this type generates one or more outputs that are influenced by both the current state and one or more inputs. Beyond categorizing state machines by their output generation methods, they are also frequently classified based on the state encoding used. State encoding refers to how the different states of a state machine are represented in binary form. Binary : Each state is represented using standard binary numbers (e.g., 00, 01, 10, 11). One-Hot : Each state is represented by a binary vector where only one bit is '1' (hot) and all others are '0'.`,
-      },
-      {
-        title: "5. Verilog FSM Structure",
-        content: `FSMs in Verilog can be written in either a single always block or two always blocks. The two always block method is most recommended for its straightforward structure and ease of understanding and consists of: A sequential or clocked always block for present state logic A combinational always block for next state logic Output assignments can be handled in two ways: Included within the combinational next-state always block Implemented as separate continuous assignments`,
-      },
-      {
-        title: "6. Sequential Always Block",
-        content: `Note that the state of a finite state machine (FSM) changes only at the clock edge. always @ (posedge clk) begin // If reset is asserted, go back to IDLE state if (! resetn) begin cur_state <= IDLE; // Else transition to the next state end else begin cur_state <= next_state; end end Always use only non-blocking assignments in the sequential always block ! Verilog nonblocking assignments emulate the behavior of pipelined registers found in actual hardware, effectively reducing the likelihood of race conditions in Verilog.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Sonlu Durum Makineleri (FSM: Mealy ve Moore Standart Kodlama)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1126,8 +1254,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 end`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1153,7 +1281,8 @@ always @(*) begin
     endcase
 end`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `always @ (posedge clk) begin
@@ -1184,33 +1313,74 @@ end`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 17: Sonlu Durum Makineleri (FSM: Mealy & Moore). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **FSM ile Dizi Algılayıcı (Sequence Detector: 1011 Algılama)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Dizi Dedektörü (Sequence Detector) Mimarisi ve FSM Tabanı",
+        content: `FSM tasarımlarının dijital elektronikteki en klasik ve temel örneklerinden biri dizi dedektörleridir (sequence detector). Dizi dedektörü, seri olarak gelen bir ikili bit akışı (bit stream) içerisinde önceden tanımlanmış belirli bir deseni (örneğin 1011 dizisini) arayan ve bu desen yakalandığında çıkışında lojik 1 darbesi üreten ardışıl bir devredir.`,
+      },
+      {
+        title: "2. 1011 Dizi Dedektörü Testbench Simülasyonu ve Hata Analizi",
+        content: `module tb;
+    reg clk, in, rstn;
+    wire out;
+    reg [1:0] l_dly;
+    reg tb_in;
+    integer i;
+    integer loop = 1;
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **FSM ile Dizi Algılayıcı (Sequence Detector: 1011 Algılama)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+    always #10 clk = ~clk;
+
+    // 1011 dedektör örneği
+    det_1011 u0 (
+        .clk  (clk),
+        .rstn (rstn),
+        .in   (in),
+        .out  (out)
+    );
+
+    initial begin
+        clk <= 0; rstn <= 0; in <= 0;
+        repeat (5) @ (posedge clk);
+        rstn <= 1;
+
+        // Belirli test paterni uygulanıyor
+        @(posedge clk) in <= 1;
+        @(posedge clk) in <= 0;
+        @(posedge clk) in <= 1;
+        @(posedge clk) in <= 1; // 1011 tamamlandı -> out=1 beklenir
+        @(posedge clk) in <= 0;
+        @(posedge clk) in <= 0;
+        @(posedge clk) in <= 1;
+        @(posedge clk) in <= 1;
+        @(posedge clk) in <= 0;
+        @(posedge clk) in <= 1;
+        @(posedge clk) in <= 1; // 1011 tekrar tamamlandı -> out=1 beklenir
+
+        // Rastgele uyarım döngüsü
+        for (i = 0 ; i < loop; i = i + 1) begin
+            l_dly = $random;
+            repeat (l_dly) @ (posedge clk);
+            tb_in = $random;
+            in <= tb_in;
+        end
+
+        #100 $finish;
+    end
+endmodule
+
+Simülasyon Çıktısı Analizi:
+Simülasyon çıktısında T=190 ve T=330 anlarında out=1 üretilmektedir. Ancak tasarımdaki yaygın hata (bug): Dizi tespit edildikten sonra durum makinesinin sonraki duruma geçişidir. Özellikle örtüşen (overlapping) dizi tespitinde 1011 dizisinin sonundaki '1', bir sonraki olası 1011 dizisinin ilk biti olarak kabul edilmelidir. Eğer FSM doğrudan IDLE durumuna dönerse örtüşen dizileri kaçırır.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `State Machines Verilog Sequence Detector Verilog Sequence Detector A very common example of an FSM is that of a sequence detector where the hardware design is expected to detect when a fixed pattern is seen in a stream of binary bits that are input to it.`,
+        title: "3. Dizi Dedektörlerinde Örtüşme (Overlapping) ve FSM Durum Tasarımı",
+        content: `Mühendislik İpuçları & Tasarım Kriterleri:
+1. Örtüşen (Overlapping) vs Örtüşmeyen (Non-overlapping) Tasarım:
+- Örtüşmeyen (Non-overlapping) dedektörlerde 1011 dizisi bulunduktan sonra durum makinesi sıfırlanır ve yeni dizi için 4 yeni bit beklenir (1011011 akışında yalnızca 1 kez çıkış verir).
+- Örtüşen (Overlapping) dedektörlerde dizinin son biti, yeni bir dizinin başlangıcı olabilir (1011011 akışında iki kez 1011 tespit edilir ve 2 kez çıkış verir).
+2. Mealy vs Moore Çıkış Zamanlaması:
+- Mealy dedektöründe son bit geldiği anda saat çevrimi içinde anında out=1 üretilir (0 çevrim gecikme).
+- Moore dedektöründe ise FSM başarı durumuna bir sonraki saat darbesinde geçtiği için çıkış bir saat çevrimi gecikmeyle üretilir.`,
       },
-      {
-        title: "3. Example",
-        content: `module det_1011 ( input clk, input rstn, input in, output out ); parameter IDLE = 0, S1 = 1, S10 = 2, S101 = 3, S1011 = 4; reg [2:0] cur_state, next_state; assign out = cur_state == S1011 ? 1 : 0; always @ (posedge clk) begin if (!rstn) cur_state <= IDLE; else cur_state <= next_state; end always @ (cur_state or in) begin case (cur_state) IDLE : begin if (in) next_state = S1; else next_state = IDLE; end S1: begin if (in) next_state = IDLE; else next_state = S10; end S10 : begin if (in) next_state = S101; else next_state = IDLE; end S101 : begin if (in) next_state = S1011; else next_state = IDLE; end S1011: begin next_state = IDLE; end endcase end endmodule`,
-      },
-      {
-        title: "4. Testbench",
-        content: `module tb; reg clk, in, rstn; wire out; reg [1:0] l_dly; reg tb_in; integer i; integer loop = 1; always #10 clk = ~clk; det_1011 u0 ( .clk(clk), .rstn(rstn), .in(in), .out(out) ); initial begin clk <= 0; rstn <= 0; in <= 0; repeat (5) @ (posedge clk); rstn <= 1; // Generate a directed pattern @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 1; // Pattern is completed @(posedge clk) in <= 0; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 1; // Pattern completed again // Or random stimulus using a for loop that drives a random // value of input N times for (i = 0 ; i < loop; i = i + 1) begin l_dly = $random; repeat (l_dly) @ (posedge clk); tb_in = $random; in <= tb_in; end // Wait for sometime before quitting simulation #100 $finish; end endmodule Output ncsim> run T=10 in=0 out=0 T=30 in=0 out=0 T=50 in=0 out=0 T=70 in=0 out=0 T=90 in=0 out=0 T=110 in=1 out=0 T=130 in=0 out=0 T=150 in=1 out=0 T=170 in=1 out=0 T=190 in=0 out=1 T=210 in=0 out=0 T=230 in=1 out=0 T=250 in=1 out=0 T=270 in=0 out=0 T=290 in=1 out=0 T=310 in=1 out=0 T=330 in=1 out=1 T=350 in=1 out=0 T=370 in=1 out=0 T=390 in=1 out=0 Simulation complete via $finish(1) at time 410 NS + 0 There is a bug in the design. Can you find it ?  `,
-      },
-      {
-        title: "5. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **FSM ile Dizi Algılayıcı (Sequence Detector: 1011 Algılama)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1272,8 +1442,8 @@ end`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1325,7 +1495,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module det_1011 ( input clk,
@@ -1396,33 +1567,17 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 17: Sonlu Durum Makineleri (FSM: Mealy & Moore). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Kayan Pencere ile Desen Dedektörü Devresi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Kayan Pencere ile Desen Dedektörü Devresi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Gelişmiş Örüntü Dedektörü (Pattern Detector) Mimarisi",
+        content: `Örüntü dedektörleri (pattern detectors), seri bit dizilerinde belirli bit şablonlarını yakalamak için optimize edilmiş durum makineleridir. Basit dizi dedektörlerine kıyasla daha uzun veya karmaşık bit desenlerini tespit etmek için tasarlanırlar ve telekomünikasyon çerçeveleme (framing), paket başlığı senkronizasyonu (preamble/sync word detection) gibi kritik donanım bloklarında kullanılırlar.`,
       },
       {
-        title: "2. Genel Bakış & Giriş",
-        content: `State Machines Verilog Pattern Detector Verilog Pattern Detector A previous example explored a simple sequence detector. Here is another example for a pattern detector which detects a slightly longer pattern.`,
+        title: "2. Örüntü Dedektörlerinde Durum Sayısı Optimizasyonu ve Glitch Koruması",
+        content: `Mühendislik İpuçları:
+1. Paket Başlığı Senkronizasyonu (Frame Sync): Ethernet (0x55 ön eki), PCIe veya UART gibi protokollerde gelen veri akışının nerede başladığını anlamak için 8, 16 veya 32-bit uzunluğundaki benzersiz örüntüler dedektörler ile yakalanır.
+2. Durum Patlamasını Önleme: Çok uzun dizilerde (örneğin 32-bit sync word) geleneksel FSM yerine kaydırmalı kaydedici + karşılaştırıcı (shift register + comparator) mimarisi kullanmak donanım kaynaklarını ve lojik karmaşıklığını ciddi oranda azaltır.`,
       },
-      {
-        title: "3. Design",
-        content: `module det_110101 ( input clk, input rstn, input in, output out ); parameter IDLE = 0, S1 = 1, S11 = 2, S110 = 3, S1101 = 4, S11010 = 5, S110101 = 6; reg [2:0] cur_state, next_state; assign out = cur_state == S110101 ? 1 : 0; always @ (posedge clk) begin if (!rstn) cur_state <= IDLE; else cur_state <= next_state; end always @ (cur_state or in) begin case (cur_state) IDLE : begin if (in) next_state = S1; else next_state = IDLE; end S1: begin if (in) next_state = S11; else next_state = IDLE; end S11: begin if (!in) next_state = S110; else next_state = S11; end S110 : begin if (in) next_state = S1101; else next_state = IDLE; end S1101 : begin if (!in) next_state = S11010; else next_state = IDLE; end S11010: begin if (in) next_state = S110101; else next_state = IDLE; end S110101: begin if (in) next_state = S1; else next_state = IDLE; // Bug 2 end endcase end endmodule`,
-      },
-      {
-        title: "4. Testbench",
-        content: `module tb; reg clk, in, rstn; wire out; integer l_dly; always #10 clk = ~clk; det_110101 u0 ( .clk(clk), .rstn(rstn), .in(in), .out(out) ); initial begin clk <= 0; rstn <= 0; in <= 0; repeat (5) @ (posedge clk); rstn <= 1; @(posedge clk) in <= 1; @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 1; @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; @(posedge clk) in <= 0; @(posedge clk) in <= 1; #100 $finish; end endmodule Output ncsim> run T=10 in=0 out=0 T=30 in=0 out=0 T=50 in=0 out=0 T=70 in=0 out=0 T=90 in=0 out=0 T=110 in=1 out=0 T=130 in=1 out=0 T=150 in=0 out=0 T=170 in=1 out=0 T=190 in=0 out=0 T=210 in=1 out=0 T=230 in=1 out=1 T=250 in=1 out=0 T=270 in=0 out=0 T=290 in=1 out=0 T=310 in=0 out=0 T=330 in=1 out=0 T=350 in=1 out=1 T=370 in=1 out=0 T=390 in=1 out=0 T=410 in=1 out=0 Simulation complete via $finish(1) at time 430 NS + 0  `,
-      },
-      {
-        title: "5. Quiz",
-        content: `No quiz questions available for this article. &nbsp;&nbsp;Prev Article Next Article&nbsp;&nbsp;`,
-      },
-      {
-        title: "6. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "3. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Kayan Pencere ile Desen Dedektörü Devresi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1497,8 +1652,8 @@ endmodule`,
 endmodule`,
         },
       },
-      {
-        title: "7. Simülasyon ve Testbench Kodu",
+{
+        title: "4. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1537,7 +1692,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module det_110101 ( input clk,
@@ -1621,43 +1777,76 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 18: Kenar Dedektörleri & Kod Dönüştürücüler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Yükselen Kenar Dedektörü (Positive Edge Detector) Nedir?",
+        content: `Yükselen kenar dedektörü (positive edge detector), izlediği giriş sinyali 0'dan 1'e geçtiğinde (yükselen kenar / positive edge anında) tam olarak bir saat çevrimi genişliğinde temiz bir lojik 1 darbesi (pulse) üreten temel bir dijital lojik devresidir.`,
+      },
+      {
+        title: "2. Geciktirme ve Mantıksal VE Tabanlı Kenar Dedektörü Tasarımı",
+        content: `module pos_edge_det (
+    input clk,        // Devrenin saat sinyali
+    input sig,        // Yükselen kenarı tespit edilecek giriş sinyali
+    output pe         // Yükselen kenar oluştuğunda 1 saat çevrimi '1' olan çıkış
+);
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi) Şeması](/images/verilog/ped-bd2.png)
+    reg sig_dly;      // Giriş sinyalinin 1 saat çevrimi gecikmiş halini tutan flip-flop
 
-![Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi) Şeması](/images/verilog/ped-bd.png)
+    // sig_dly sinyalinin sig'den tam 1 saat çevrimi geride kalmasını sağlayan blok
+    always @ (posedge clk) begin
+        sig_dly <= sig;
+    end
 
-![Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi) Şeması](/images/verilog/fig1.png)
+    // Kombinasyonel lojik: Mevcut sinyal İLE gecikmiş sinyalin tersi
+    assign pe = sig & ~sig_dly;
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+endmodule
+
+Açıklama:
+Pozitif kenar yakalama mantığı iki adımdan oluşur:
+1. Giriş sinyali (sig), bir D flip-flop (sig_dly) üzerinden geçirilerek tam 1 saat çevrimi geciktirilir.
+2. Kombinasyonel olarak mevcut sinyal ile geciktirilmiş sinyalin tersi VE (AND) işlemine tabi tutulur: pe = sig & ~sig_dly.
+Sinyal 0 -> 1 geçişi yaptığı anda sig = 1 olurken, gecikmiş sinyal henüz önceki değerinde (sig_dly = 0) kalır. Bu sayede ~sig_dly = 1 olur ve pe = 1 & 1 = 1 çıkar. Bir sonraki saat kenarında sig_dly de 1 olacağı için ~sig_dly = 0 olur ve çıkış tekrar 0 seviyesine düşer.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Edge Detectors & Converters Verilog Positive Edge Detector Verilog Positive Edge Detector A positive edge detector will send out a pulse whenever the signal it is monitoring changes from 0 to 1 (positive edge).`,
+        title: "3. Kenar Dedektörü Testbench Simülasyonu",
+        content: `module tb;
+    reg sig;
+    reg clk;
+    wire pe;
+
+    // Kenar dedektörü tasarımı bağlanıyor
+    pos_edge_det ped0 (
+        .sig (sig),
+        .clk (clk),
+        .pe  (pe)
+    );
+
+    // 100 MHz saat sinyali (Periyot = 10ns)
+    always #5 clk = ~clk;
+
+    initial begin
+        clk <= 0;
+        sig <= 0;
+        #15 sig <= 1;
+        #20 sig <= 0;
+        #15 sig <= 1;
+        #10 sig <= 0;
+        #20 $finish;
+    end
+endmodule
+
+Açıklama: Testbench içerisinde sig sinyali belirli aralıklarla 0 ve 1 seviyelerine sürülür. sig sinyalinin her 0 -> 1 geçişinde çıkışta tam bir saat periyodu (10ns) boyunca yüksek seviyede kalan bir darbe (pe = 1) gözlemlenir. 1 -> 0 düşen kenar geçişlerinde ise çıkış kesinlikle 0 kalır.`,
       },
       {
-        title: "4. Design",
-        content: `The idea behind a positive edge detector is to delay the original signal by one clock cycle, take its inverse and perform a logical AND with the original signal. module pos_edge_det ( input sig, // Input signal for which positive edge has to be detected input clk, // Input signal for clock output pe); // Output signal that gives a pulse when a positive edge occurs reg sig_dly; // Internal signal to store the delayed version of signal // This always block ensures that sig_dly is exactly 1 clock behind sig always @ (posedge clk) begin sig_dly <= sig; end // Combinational logic where sig is AND with delayed, inverted version of sig // Assign statement assigns the evaluated expression in the RHS to the internal net pe assign pe = sig & ~sig_dly; endmodule The module shown above is named pos_edge_det and has two inputs and one output. The design aims to detect the positive edge of input sig , and output pe . So we expect to see a pulse on pe whenever sig changes from value 0 to 1. We create an internal signal called sig_dly of type reg that can store a single clock cycle delayed version of sig , and is achieved by the always block. Output pe is an implicit variable of type wire and can be assigned only by a continous assignment. Hence we have used the assign statement to assign an expression to pe . The expression simply takes sig and does a logical AND with the inversion of sig .`,
+        title: "4. Sentezlenen Donanım Şematiği ve Kapı Seviyesi Analiz",
+        content: `Bu davranışsal Verilog modeli Xilinx Vivado FPGA tasarım aracıyla sentezlendiğinde donanım şematiği şu elemanlardan oluşur:
+- 1 saat çevrimlik gecikmeyi oluşturan bir adet D Tipi Flip-Flop (FDRE).
+- Flip-flop çıkışına bağlı bir evirici (inverter / NOT kapısı).
+- Orijinal giriş ile evirici çıkışını birleştiren bir VE (AND) kapısı.
+
+Modern FPGA mimarilerinde bu kombinasyonel yapı (NOT + AND kapıları) doğrudan 1 adet LUT (Look-Up Table) hücresine eşlenir ve minimum yayılım gecikmesiyle çalışır.`,
       },
-      {
-        title: "5. Testbench",
-        content: `In order to simulate our design, we have to place the module of our verilog code inside a testbench . The testbench simply holds our design and provides us a way to send in signals as inputs and observe the outputs to make sure that it operates as required. module tb; reg sig; // Declare internal TB signal called sig to drive the sig pin of the design reg clk; // Declare internal TB signal called clk to drive clock to the design // Instantiate the design in TB and connect with signals in TB pos_edge_det ped0 ( .sig(sig), .clk(clk), .pe(pe)); // Generate a clock of 100MHz always #5 clk = ~clk; // Drive stimulus to the design initial begin clk <= 0; sig <= 0; #15 sig <= 1; #20 sig <= 0; #15 sig <= 1; #10 sig <= 0; #20 $finish; end endmodule Clock for our design is generated by the always block which toggles clk every 5 time units, there by generating a clock with period = 10 time units. Basic design stimulus is written within the initial block which makes the simulator advance in time and drive the design with specific values appropriately. `,
-      },
-      {
-        title: "6. Hardware Schematic",
-        content: `The behavioral model in Verilog was synthesized using Xilinx Vivado FPGA design tool and the hardware schematic has been generated as shown below. It can be seen that the one clock delay is implemented using a DFF and the output of the flip flop is wired to the input of an AND gate through an inverter. These digital elements are substituted with logical cells that belong to a real cell library for a given technology node.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Pozitif Kenar Dedektörü (Single-Cycle Strobe Üretimi)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1684,8 +1873,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1714,7 +1903,8 @@ endmodule`,
 	end	
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module pos_edge_det ( input sig,            // Input signal for which positive edge has to be detected
@@ -1750,41 +1940,19 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 18: Kenar Dedektörleri & Kod Dönüştürücüler. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **İkili (Binary) - Gray Kod Dönüştürücü Devresi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. İkiliden Gray Koda Dönüşüm (Binary to Gray Code Conversion)",
+        content: `Gray kodu, ardışık her iki değer arasında yalnızca tek bir bitin değiştiği (Hamming mesafesi = 1) özel bir ikili kodlama sistemidir. Standart binary veriyi Gray koda dönüştürmek, özellikle asenkron FIFO işaretçilerinde ve döner enkoder (rotary encoder) arabirimlerinde veri bütünlüğünü sağlamak için en sık kullanılan dijital lojik işlemlerinden biridir.`,
+      },
+      {
+        title: "2. Donanım Şematiği ve Kaydırma Operatörü (>>) Sentez Analizi",
+        content: `Binary'den Gray koda dönüşüm mantıksal olarak gray = bin ^ (bin >> 1) bağıntısıyla ifade edilir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **İkili (Binary) - Gray Kod Dönüştürücü Devresi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Donanım ve Sentez Analizi:
+Sağa kaydırma (>>) operatörü sabit bir kaydırma (constant shift) olduğu için donanımda aktif bir shift register veya çoklayıcı üretmez; sadece iletken hatların (routing/wiring) bir bit kaydırılarak XOR kapılarına bağlanması şeklinde sentezlenir.
+Ancak değişken bir kaydırma operatörü kullanılırsa donanımda çok katmanlı MUX ağları ve kaydırmalı kaydedici yapıları sentezlenebilir, bu da gereksiz alan ve güç tüketimine yol açar. Bu nedenle dönüşümün doğrudan bit düzeyinde XOR kapıları (bin[N-1] ^ bin[N-2]) ile yazılması en temiz ve öngörülebilir donanım sentezini garanti eder.`,
       },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![İkili (Binary) - Gray Kod Dönüştürücü Devresi Şeması](/images/verilog/verilog_binary_to_gray_xor.png)
-
-![İkili (Binary) - Gray Kod Dönüştürücü Devresi Şeması](/images/verilog/verilog_binary_to_gray_shift.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
-      },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Edge Detectors & Converters Verilog Binary to Gray Verilog Binary to Gray Gray code is a binary code where each successive value differs from the previous value by only one bit.`,
-      },
-      {
-        title: "4. Implementation #1",
-        content: `module bin2gray #(parameter N=4) ( input [N-1:0] bin, output [N-1:0] gray); genvar i; generate for(i = 0; i < N-1; i = i + 1) begin assign gray[i] = bin[i] ^ bin[i+1]; end endgenerate assign gray[N-1] = bin[N-1]; endmodule`,
-      },
-      {
-        title: "5. Implementation #2",
-        content: `module bin2gray #(parameter N=4) ( input [N-1:0] bin, output [N-1:0] gray); assign gray = bin ^ (bin >> 1); endmodule`,
-      },
-      {
-        title: "6. Hardware Schematic",
-        content: `Note that the second implementation resulted in the synthesis of a shift register as implied by the >> operator and will occupy more area and power. `,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "3. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **İkili (Binary) - Gray Kod Dönüştürücü Devresi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1808,8 +1976,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "4. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1821,7 +1989,8 @@ endmodule`,
   
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module bin2gray #(parameter N=4) ( input  [N-1:0] bin, 
@@ -1854,41 +2023,31 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 19: Bellek Elemanları (RAM, FIFO, LIFO). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Tek Portlu Senkron RAM Bellek Tasarımı** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Tek Portlu RAM (Single-Port RAM) Nedir ve Nasıl Çalışır?",
+        content: `Tek portlu RAM (Single-Port Random Access Memory), aynı anda yalnızca tek bir bellek adresine erişilmesine (okuma veya yazma) izin veren temel bir dijital bellek bileşenidir. Dijital sistemlerde veri depolamak için kullanılan en yalın ve en yaygın bellek bloklarından biridir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Tek Portlu Senkron RAM Bellek Tasarımı** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Tek portlu bir RAM'de her bellek hücresi sabit sayıda bit saklar (genellikle 8, 16, 32 veya 64 bit gibi ikinin kuvveti genişlikte kelimeler - word).
+- Okuma İşlemi (Read): Belirtilen adreste depolanan veri bellek çıkış hattına aktarılır.
+- Yazma İşlemi (Write): Giriş hattındaki yeni veri belirtilen adrese yazılarak önceki verinin üzerine kaydedilir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Tek Portlu Senkron RAM Bellek Tasarımı Şeması](/images/verilog/single_port_ram.png)
+        title: "2. Neden 'Tek Portlu' Olarak Adlandırılır?",
+        content: `Tek portlu RAM olarak adlandırılmasının nedeni, bellek dizisine erişen yalnızca tek bir adres ve veri yolu (port) bulunmasıdır. Bu mimari kısıt nedeniyle okuma ve yazma işlemleri aynı saat çevriminde farklı adreslerde eşzamanlı olarak gerçekleştirilemez.
 
-![Tek Portlu Senkron RAM Bellek Tasarımı Şeması](/images/verilog/single_port_ram_ar_aw.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Eğer bir yazma işlemi yapılıyorsa okuma işlemi beklemek zorundadır; tersi durumda okuma yapılıyorsa yazma işlemi gerçekleştirilemez. Eşzamanlı okuma ve yazma ihtiyacı olan yüksek bant genişlikli tasarımlarda bunun yerine Çift Portlu RAM (Dual-Port RAM) mimarileri tercih edilir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Memory Elements Verilog Single Port RAM Verilog Single Port RAM `,
+        title: "3. Tek Portlu RAM Arayüz Sinyalleri ve Kontrol Hatları",
+        content: `Tek portlu bir RAM modülü aşağıdaki temel sinyal gruplarından oluşur:
+1. Adres Hatları (addr): Erişilmek istenen bellek hücresini seçer. Adres hattının bit genişliği (K), RAM'in adresleyebileceği maksimum derinliği (2^K kelime) belirler.
+2. Veri Hatları (data_in / data_out): Belleğe yazılacak veya bellekten okunacak gerçek veriyi taşır.
+3. Kontrol Sinyalleri:
+   - Saat (clk): Senkron bellek işlemlerini tetikler.
+   - Yazma Yetkilendirme (we - Write Enable): Bu sinyal lojik 1 olduğunda yazma işlemi tetiklenir; lojik 0 olduğunda bellek okuma modundadır.
+   - Yonga Seçimi (cs - Chip Select): Bellek bloğunu bütünüyle aktif veya pasif hale getirir.`,
       },
-      {
-        title: "4. What is a single port RAM ?",
-        content: `A single-port RAM (Random Access Memory) is a type of digital memory component that allows data to be read from and written to a single memory location (address) at a time. It is a simple form of memory that provides a basic storage mechanism for digital systems. Each memory location in a single-port RAM can store a fixed number of bits (usually a power of 2, such as 8, 16, 32, etc.). During a read operation, the data stored at a specific address is retrieved. During a write operation, new data is stored at a specific address, replacing the previous data.`,
-      },
-      {
-        title: "5. Why is it called single port ?",
-        content: `A single-port RAM has only one data port, which means that read and write operations cannot occur simultaneously at different addresses. If a write operation is in progress, a read operation must wait, and vice versa.`,
-      },
-      {
-        title: "6. Signals",
-        content: `Single-port RAMs have address lines that are used to select the memory location to be accessed. The number of address lines determines the maximum number of memory locations that the RAM can hold. Data lines are used to carry the actual data to be read from or written to the memory location. Control signals, such as read enable (read request) and write enable (write request), are used to initiate specific memory operations.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Tek Portlu Senkron RAM Bellek Tasarımı** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -1929,8 +2088,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -1978,7 +2137,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module single_port_sync_ram 
@@ -2028,41 +2188,36 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 19: Bellek Elemanları (RAM, FIFO, LIFO). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Senkron FIFO (First-In First-Out) Kuyruk Belleği Mimarisi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Senkron FIFO (Synchronous FIFO) Mimarisi ve Çalışma Prensibi",
+        content: `Senkron FIFO (First-In, First-Out), verilerin yazıldığı sıra ile okunduğu, tek bir saat alanı (single clock domain) altında çalışan bir tampon bellek (buffer) mimarisidir. Hem okuma hem de yazma işlemleri aynı saat sinyali ile senkronize olarak gerçekleştirilir.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Senkron FIFO (First-In First-Out) Kuyruk Belleği Mimarisi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+'Senkron' olarak adlandırılmasının temel sebebi; okuma ve yazma işaretçilerinin (read/write pointers), durum bayraklarının (full/empty) ve bellek veri transferlerinin tamamının tek bir ortak saat sinyalinin aktif kenarında güncellenmesidir. Senkron FIFO'lar temel olarak veri üretim hızı ile veri işleme hızı arasındaki anlık farkları tolere etmek (rate-mismatch buffering) amacıyla kullanılır. Örneğin bir kaynaktan ani paket patlamaları (burst traffic) geldiğinde sistem bu veriyi FIFO'da depolar ve tüketici birim kendi hızında güvenle okur.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Senkron FIFO (First-In First-Out) Kuyruk Belleği Mimarisi Şeması](/images/verilog/sync_fifo.svg)
+        title: "2. FIFO Derinliği (Depth) ve Genişliği (Width) Nasıl Hesaplanır?",
+        content: `Bir FIFO'nun boyutlandırılması iki temel parametreye dayanır:
+- FIFO Genişliği (Width): FIFO'nun her bir hücresinde saklanan veri bit sayısını (veri yolu genişliğini, örneğin 8-bit, 32-bit, 64-bit) ifade eder. Tek bir işlemde ne kadar bit yazılıp okunacağını belirler.
+- FIFO Derinliği (Depth): FIFO'nun aynı anda saklayabileceği toplam kelime (girdi) sayısını temsil eder.
 
-![Senkron FIFO (First-In First-Out) Kuyruk Belleği Mimarisi Şeması](/images/verilog/sync_fifo_wave2.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Derinlik Hesaplama Formülü:
+Veri patlaması (burst) sırasında veri kaybı yaşanmaması için gereken minimum derinlik:
+Derinlik = ((Yazma Hızı - Okuma Hızı) * Patlama Süresi) / Saat Periyodu
+Doğru boyutlandırılmamış bir FIFO, taşma (overflow) nedeniyle kritik veri kayıplarına sebep olur.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Memory Elements Synchronous FIFO Synchronous FIFO `,
+        title: "3. Temel FIFO Giriş/Çıkış Portları ve Durum Bayrakları",
+        content: `Bir senkron FIFO'nun ana arayüz bileşenleri şunlardır:
+1. Veri Portları: Belleğe yeni veri yazmak için wr_data ve bellekten veri okumak için rd_data portları.
+2. İşaretçiler (Pointers):
+   - Yazma İşaretçisi (wr_ptr): Yeni verinin yazılacağı sonraki boş adresi takip eder.
+   - Okuma İşaretçisi (rd_ptr): Okunacak sonraki geçerli verinin adresini takip eder.
+3. Kontrol Sinyalleri: Yazma isteği (wr_en) ve okuma isteği (rd_en).
+4. Durum Bayrakları (Status Flags):
+   - Dolu Bayrağı (full): FIFO tamamen dolduğunda lojik 1 olur ve veri okunana kadar yeni yazma işlemlerini engeller.
+   - Boş Bayrağı (empty): FIFO'da okunacak veri kalmadığında lojik 1 olur ve yeni veri yazılana kadar okuma işlemlerini durdurur.`,
       },
-      {
-        title: "4. What is a synchronous FIFO ?",
-        content: `A synchronous FIFO (First-In-First-Out) is a type of data buffer used in digital systems that operates under a single clock domain, meaning both read and write operations occur using the same clock signal. This design ensures that data is processed in the order it was received, which is critical for maintaining data integrity in various applications. A synchronous FIFO is called "synchronous" because it uses synchronized clocks to control the read and write operations. The read and write pointers of the FIFO are updated synchronously with the clocks, and data is transferred between the FIFO and the external circuit synchronously with the clocks. Synchronous FIFOs are primarily used to buffer data when the rate of data transfer exceeds the rate of data processing. This is particularly important in high-speed systems where timing discrepancies can lead to data loss or corruption.`,
-      },
-      {
-        title: "5. What does depth and width indicate ?",
-        content: `The depth of a FIFO refers to the total number of data entries it can hold at any given time. It determines how much data can be buffered between the writing and reading processes. Depth = (Writing Rate - Reading Rate)/Clock Frequency The width of a FIFO refers to the number of bits that can be stored in each entry or slot within the FIFO. It essentially defines how much data can be written or read in one operation.`,
-      },
-      {
-        title: "6. What are the main IO ports ?",
-        content: `Data ports : It contains two ports, write and read, where the write port is used to write data into the FIFO, and the read port is used to read data from the FIFO. Pointers : It contains two pointers, write and read, where the write pointer tracks the position where new data will be written and the read pointer tracks the position from where data will be read. Both pointers are updated synchronously with the clock. Status Flags : When full , it indicates that no more data can be written until some is read and ]empty indicates that there is no data available to read.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Senkron FIFO (First-In First-Out) Kuyruk Belleği Mimarisi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2122,8 +2277,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2208,7 +2363,8 @@ endmodule`,
   end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module sync_fifo #(parameter DEPTH=8, DWIDTH=16) 
@@ -2277,41 +2433,29 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 19: Bellek Elemanları (RAM, FIFO, LIFO). Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Yığın (Stack / LIFO) Donanım Bellek Devresi** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Yığın (Stack / LIFO) Bellek Mimarisi Nedir?",
+        content: `LIFO (Last In, First Out - Son Giren İlk Çıkar), verilerin eklenme sırasının tersi yönde işlendiği temel bir bellek organizasyon prensibidir. LIFO mimarisine göre depolanan en son veri elemanı, ilk çıkartılacak olan elemandır.
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Yığın (Stack / LIFO) Donanım Bellek Devresi** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+Bu konsept üst üste dizilmiş tabaklara benzer: En son konulan tabak en üsttedir ve ilk olarak o alınır; en alttaki ilk tabağa ulaşmak için ise üstteki tüm tabakların sırayla kaldırılması gerekir.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Yığın (Stack / LIFO) Donanım Bellek Devresi Şeması](/images/verilog/verilog-stack-lifo.svg)
+        title: "2. Push ve Pop İşlemleri ile Yığın İşaretçisi (SP) Mantığı",
+        content: `LIFO prensibi donanımsal bir yığın (stack) veri yapısı olarak şu temel operasyonlarla çalışır:
+- Push (Ekleme): Yeni bir veri elemanı yığının en üstüne eklenir. Bu işlem sırasında Yığın İşaretçisi (Stack Pointer - sp) bir basamak güncellenir.
+- Pop (Çıkarma): Yığının en üstündeki eleman bellekten okunur ve yığından çıkarılır. Stack Pointer güncellenir.
+- Tepe Elemanı (Top of Stack): Yığına en son eklenen eleman daima tepede yer alır ve doğrudan erişilebilen tek elemandır.
 
-![Yığın (Stack / LIFO) Donanım Bellek Devresi Şeması](/images/verilog/verilog-stack-lifo-wave.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Donanımda yığın kapasitesi aşıldığında overflow, boşken çekilmeye çalışıldığında underflow bayrakları üretilerek sistem kilitlenmeleri önlenir.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Memory Elements Verilog Stack or LIFO Verilog Stack or LIFO `,
+        title: "3. Yığın Yapısının Donanım ve İşlemci Mimarilerindeki Kullanım Alanları",
+        content: `Yığın mimarisi bilgisayar mimarisinde ve gömülü işlemcilerde (CPU/MCU) hayati fonksiyonlara sahiptir:
+1. Fonksiyon Çağrıları ve Dönüş Adresleri: Bir alt program veya fonksiyon çağrıldığında (call), program sayacının dönüş adresi (return address) ve işlemci yazmaçları yığına itilir (push). Fonksiyon tamamlandığında (ret) bu değerler yığından çekilerek (pop) ana programa sorunsuz dönülür.
+2. Kesme (Interrupt) Yönetimi: Bir donanım kesmesi meydana geldiğinde işlemcinin o anki durumu (context - PSR, PC, genel amaçlı yazmaçlar) donanımsal yığına yedeklenir.
+3. Özyinelemeli (Recursive) İşlemler ve İfade Ayrıştırma: Derleyicilerde ve matematiksel işlem birimlerinde parantez ve işlem önceliklerinin çözülmesinde LIFO yapıları kullanılır.`,
       },
-      {
-        title: "4. What is a stack or LIFO ?",
-        content: `LIFO, which stands for Last In, First Out, is a data organization method commonly used in digital design and computer science. The LIFO principle dictates that the most recently added item is the first one to be removed. This concept is analogous to a stack of plates, where the last plate placed on top is the first one to be taken off.`,
-      },
-      {
-        title: "5. How does it work ?",
-        content: `LIFO is the fundamental principle behind the stack data structure: New elements are added to the top (push operation) Elements are removed from the top (pop operation) The most recently added element is always at the top`,
-      },
-      {
-        title: "6. Where is a stack mostly used ?",
-        content: `LIFO is used in various aspects of memory management and program execution, but is most often used for function calls. When a function is called, its parameters and return address are pushed onto a stack. When the function returns, these values are popped off.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "4. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Yığın (Stack / LIFO) Donanım Bellek Devresi** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2372,8 +2516,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "5. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2448,7 +2592,8 @@ endmodule`,
     end
 endmodule`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module lifo #(parameter WIDTH = 32, parameter DEPTH = 16)(
@@ -2518,43 +2663,34 @@ endmodule`,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 20: Saat Üreteçleri & Buton Debounce. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
-
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
+        title: "1. Saat Sinyali (Clock) ve Dijital Devrelerdeki Senkronizasyon",
+        content: `Saat sinyali (clock), ardışıl dijital devrelerin kalbidir. Bir devredeki tüm flip-flop'ların, durum makinelerinin ve veri yollarının birbiriyle kusursuz bir senkronizasyon içinde ve öngörülebilir zamanlamayla çalışmasını sağlayan periyodik bir kare dalgadır.`,
       },
       {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü Şeması](/images/verilog/clk_period.png)
-
-![Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü Şeması](/images/verilog/clk_duty_cycle.png)
-
-![Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü Şeması](/images/verilog/clk_phase.png)
-
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+        title: "2. Dijital Saat Sinyalinin Temel Özellikleri",
+        content: `Bir dijital saat sinyalinin davranışını ve performansını tanımlayan temel parametreler:
+- Frekans (f): Sinyalin birim zamandaki (genellikle 1 saniye) çevrim sayısı.
+- Periyot (T): Tek bir saat çevriminin tamamlanması için geçen süre.
+- Görev Döngüsü (Duty Cycle): Sinyalin bir periyot içinde lojik 1 seviyesinde kaldığı sürenin yüzdesi.
+- Saat Fazı (Clock Phase) ve Kayması (Skew): Saat sinyalinin diğer referans saatlere göre zaman düzlemindeki göreli konumu ve gecikmesi.`,
       },
       {
-        title: "3. Genel Bakış & Giriş",
-        content: `Clock & Timing Verilog Clock Generator Verilog Clock Generator Clocks are fundamental to building digital circuits as it allows different blocks to be in sync with each other.`,
+        title: "3. Saat Periyodu ve Frekans Bağıntısı (T = 1/f)",
+        content: `Frekans, belirli bir zaman aralığında kaç çevrim gerçekleştiğini belirtir (Hz). Saat periyodu (T) ise tam 1 çevrimin (yükselen kenardan bir sonraki yükselen kenara kadar) tamamlanması için geçen süredir.
+Aralarındaki temel ilişki:
+T = 1 / f
+Örneğin 100 MHz frekansındaki bir saat sinyalinin periyodu:
+T = 1 / (100 * 10^6 Hz) = 10 ns
+olarak hesaplanır. Verilog testbench'lerinde always #5 clk = ~clk; ifadesi her 5 ns'de bir sinyali tersleyerek 10 ns periyotlu (100 MHz) bir saat sinyali üretir.`,
       },
       {
-        title: "4. Properties of a clock",
-        content: `The key properties of a digital clock are its frequency which determines the clock period , its duty cycle and the clock phase in relation to other clocks.`,
+        title: "4. Görev Döngüsü (Duty Cycle) ve Zamanlama Bütçesi",
+        content: `Görev döngüsü (Duty Cycle), saat sinyalinin bir periyot boyunca lojik 1 (yüksek seviye / T_high) seviyesinde kaldığı sürenin toplam periyoda (T_total) oranıdır ve genellikle yüzde (%) olarak ifade edilir:
+Duty Cycle = (T_high / T_total) * 100%
+İdeal bir dijital saat sinyalinde bu oran %50'dir (T_high = T_low). Ancak saat ağlarındaki gecikmeler, PLL/DLL jitter'ı veya asimetrik sürücüler bu oranı bozabilir. Çift kenar tetiklemeli (DDR) sistemlerde %50 görev döngüsü, hem yükselen hem düşen kenarda veri transferi yapıldığı için son derece kritik bir zamanlama gereksinimidir.`,
       },
-      {
-        title: "5. Clock Period",
-        content: `The frequency indicates how many cycles can be found in a certain period of time. And hence the clock period is the time taken to complete 1 cycle.`,
-      },
-      {
-        title: "6. Clock Duty Cycle",
-        content: `The amount of time the clock is high compared to its time period defines the duty cycle.`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Simülasyon İçin Saat Üreteci (Clock Generator) ve Faz Kontrolü** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2662,6 +2798,41 @@ endmodule`,
 endmodule`,
         },
       },
+{
+        title: "6. Simülasyon ve Testbench Kodu",
+        content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
+        code: {
+          language: "verilog",
+          caption: "verilog-clock-generator_tb.v - Simülasyon Testbench",
+          snippet: `module tb;
+  wire clk1;
+  wire clk2;
+  wire clk3;
+  wire clk4;
+  reg  enable;
+  reg [7:0] dly;
+  
+  clock_gen u0(enable, clk1);
+  clock_gen #(.FREQ(200000)) u1(enable, clk2);
+  clock_gen #(.FREQ(400000)) u2(enable, clk3);
+  clock_gen #(.FREQ(800000)) u3(enable, clk4);
+  
+  initial begin
+    enable <= 0;
+    
+    for (int i = 0; i < 10; i= i+1) begin
+      dly = $random;
+      #(dly) enable <= ~enable;      
+      $display("i=%0d dly=%0d", i, dly);
+      #50;
+    end
+    
+    #50 $finish;
+  end
+endmodule`,
+        },
+      }
+
     ],
     playground: {
       initialCode: `\`timescale 1ns/1ps
@@ -2731,43 +2902,44 @@ module clock_gen (	input      enable,
     subtitle: "ChipVerify Verilog Tutorial Bölüm 20: Saat Üreteçleri & Buton Debounce. Sentezlenebilir RTL mimarisi, dalga biçimleri ve endüstri standartları.",
     sections: [
       {
-        title: "1. Neler Öğreneceksiniz? (Genel Bakış)",
-        content: `Bu derste **Mekanik Buton Titreşim Önleyici (Debounce Circuit)** konusunu teorik temelleri, RTL donanım sentezi kuralları ve simülasyon testbench adımlarıyla inceleyeceğiz.
+        title: "1. Buton Sıçraması Önleme (Debounce) Devresi Mimarisi",
+        content: `Debounce (sıçrama önleme) devresi; mekanik butonlar, anahtarlar veya rölelerden gelen gürültülü kontak sinyallerini filtreleyerek her bir fiziksel basış için dijital sisteme tam olarak tek bir temiz geçiş ileten kritik bir arayüz devresidir. Verilog ile yazılmış bir debouncer, öncelikle ham giriş sinyalini sistem saatine senkronize eder (metastability koruması), ardından giriş sinyali sabit bir süre boyunca (genellikle 5ms - 20ms) kararlı bir seviyede kaldığında çıkış durumunu günceller.`,
+      },
+      {
+        title: "2. Debounce Tasarımında Öğrenilecek Temel Konular",
+        content: `Bu bölümde öğreneceğiniz temel mühendislik ilkeleri:
+- Mekanik kontak sıçramasının (mechanical bounce) fiziksel nedenleri ve dijital devreler üzerindeki yıkıcı etkileri.
+- İki kademeli senkronizör (input synchronizer) içeren Sayıcı Tabanlı Debounce (Counter-Based Debouncer) devresinin Verilog ile tasarımı.
+- Kaydırmalı Kaydedici Tabanlı Debounce (Shift Register Debouncer) devresi ile karşılaştırma ve kaynak tüketimi analizi.
+- Gerçek donanım için sıçrama süresinin doğru boyutlandırılması ve simülasyonda bekleme sürelerini kısaltarak hızlı test etme stratejileri.`,
+      },
+      {
+        title: "3. Mekanik Kontak Sıçraması Nedir ve Neden Filtrelenmelidir?",
+        content: `Mekanik buton ve anahtarlar basıldığında 0'dan 1'e anında ve pürüzsüz bir geçiş yapamazlar. Metal kontaklar birbirine çarptığında mekanik esneklik nedeniyle oturana kadar mikrosaniyelik aralıklarla defalarca temas eder ve ayrılır (bounce).
 
-### 📌 Bu Bölümde Öğrenecekleriniz:
-- **Mekanik Buton Titreşim Önleyici (Debounce Circuit)** kavramının sayısal çip tasarımındaki (ASIC & FPGA) rolü
-- Sentezlenebilir (synthesizable) RTL mimari kuralları ve bellek/kapı çıkarımları
-- IEEE 1364 Verilog standartlarına uygun modül ve sinyal tanımlama
-- Simülasyon araçlarında sinyal doğrulama ve dalga biçimi analizi`,
-      },
-      {
-        title: "2. Donanım Mimarisi & Devre Şeması",
-        content: `![Mekanik Buton Titreşim Önleyici (Debounce Circuit) Şeması](/images/verilog/debounce-bounce-timing.svg)
+Tipik bir sıçrama süresi 5 ms ile 20 ms arasında sürer. 50 MHz saat frekansında çalışan bir dijital sistem için 10 ms'lik bir süre, tam 500.000 saat çevrimine karşılık gelir!
 
-![Mekanik Buton Titreşim Önleyici (Debounce Circuit) Şeması](/images/verilog/debounce-counter-block.svg)
+Debounce devresi kullanılmadığında, dijital lojik her bir sıçramayı ayrı bir kenar geçişi olarak algılar. Sonuç olarak kullanıcı butona tek bir kez bastığında:
+- Sayıcılar onlarca kez artabilir,
+- Durum makineleri istenmeyen durumlara atlayabilir,
+- Menüler kontrolsüz şekilde kayabilir.
 
-![Mekanik Buton Titreşim Önleyici (Debounce Circuit) Şeması](/images/verilog/debounce-shift-block.svg)
+Debounce işlemi, bu sahte darbe fırtınasını tek ve temiz bir lojik seviye değişimine dönüştürür.`,
+      },
+      {
+        title: "4. Sayıcı Tabanlı Debounce Mantığı ve Zamanlayıcı Boyutlandırma",
+        content: `En güvenilir ve yaygın kullanılan yöntem Sayıcı Tabanlı Debounce (Counter-Based Debouncer) mimarisidir.
 
-Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış portları ve saat darbesi altındaki sinyal geçişleri gösterilmektedir. Fiziksel silikonda her bir blok bağımsız bir mantık öbeğine karşılık gelir.`,
+Çalışma Mantığı:
+1. Buton sinyali önce 2 kademeli D flip-flop senkronizörü ile sistem saatine senkronize edilir (metastabiliteyi önlemek için).
+2. Giriş seviyesinde bir değişiklik algılandığında bir dahili sayaç sıfırlanır ve saymaya başlar.
+3. Giriş sinyali belirlenen eşik süresi (örneğin 10 ms) boyunca kesintisiz olarak aynı seviyede kalırsa, sayaç hedefe ulaşır ve çıkış pini yeni seviyeye güncellenir.
+4. Eğer eşik süresi dolmadan giriş tekrar değişirse (sıçrama gürültüsü), sayaç sıfırlanır ve kararlı durum yeniden beklenir.
+
+Bu sayede tüm yüksek frekanslı mekanik gürültü donanımsal olarak elenir.`,
       },
-      {
-        title: "3. Genel Bakış & Giriş",
-        content: `Clock & Timing Verilog Debounce Circuit Verilog Debounce Circuit A debounce circuit filters the noisy signal from a mechanical button or switch so that one press produces exactly one clean transition. In Verilog, a debouncer synchronizes the raw input to the clock, then changes its output only after the input has stayed at a new level for a fixed time, typically a few milliseconds. 12 min read | Beginner Level`,
-      },
-      {
-        title: "4. What You'll Learn",
-        content: `Why mechanical contacts bounce, and what bouncing does to digital logic Write a counter-based debouncer with an input synchronizer Write a shift register debouncer and compare the two approaches Size the debounce time for real hardware and test the debouncer efficiently in simulation`,
-      },
-      {
-        title: "5. What is debouncing ?",
-        content: `Mechanical buttons and switches do not make a clean transition from 0 to 1. When the contacts close, they bounce against each other, making and breaking contact many times before settling. A typical bounce lasts about 5 to 20 ms, which is hundreds of thousands of cycles of a 50 MHz clock. Digital logic sees every bounce as a separate edge. Without debouncing, one press can register as several presses: a counter increments several times, a state machine skips states, or an action runs repeatedly. Debouncing replaces the burst of edges with a single clean change.`,
-      },
-      {
-        title: "6. Counter Based Debouncer",
-        content: `The most common and reliable approach waits until the input has been stable for a set time before passing it on:`,
-      },
-      {
-        title: "7. Örnek Verilog RTL & Doğrulama Kodu",
+{
+        title: "5. Örnek Verilog RTL & Doğrulama Kodu",
         content: `Aşağıdaki kod bloğu **Mekanik Buton Titreşim Önleyici (Debounce Circuit)** için sentezlenebilir Verilog modülünü ve sinyal yapısını göstermektedir:`,
         callout: {
           type: "tip",
@@ -2829,8 +3001,8 @@ Yukarıdaki blok diyagramında devrenin donanım yerleşimi, giriş/çıkış po
 endmodule`,
         },
       },
-      {
-        title: "8. Simülasyon ve Testbench Kodu",
+{
+        title: "6. Simülasyon ve Testbench Kodu",
         content: `Tasarımın doğru çalıştığını teyit etmek için girişlere uyaran (stimulus) uygulayan testbench modülü:`,
         code: {
           language: "verilog",
@@ -2896,7 +3068,8 @@ endmodule`,
                 b
 // ... (testbench devamı)`,
         },
-      },
+      }
+
     ],
     playground: {
       initialCode: `module debouncer #(
