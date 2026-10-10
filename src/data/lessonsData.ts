@@ -13,6 +13,8 @@ import { HTML_LESSONS } from "./htmlLessons";
 import { DIGITAL_FUNDAMENTALS_LESSONS } from "./digitalFundamentalsLessons";
 import { FPGA_LESSONS } from "./fpgaLessons";
 import { UVM_LESSONS } from "./uvmLessons";
+import { RTL_SYNTHESIS_LESSONS } from "./rtlSynthesisLessons";
+import { VERIFICATION_LESSONS } from "./verificationLessons";
 
 export interface LessonContent {
   id: string;
@@ -45,6 +47,8 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...VERILOG_LESSONS,
   ...FPGA_LESSONS,
   ...UVM_LESSONS,
+  ...RTL_SYNTHESIS_LESSONS,
+  ...VERIFICATION_LESSONS,
   ...EMBEDDED_C_LESSONS,
   ...MAKER_LESSONS,
   ...SYSTEMS_LESSONS,
