@@ -11,6 +11,7 @@ import { CSS_LESSONS } from "./cssLessons";
 import { JAVASCRIPT_LESSONS } from "./javascriptLessons";
 import { HTML_LESSONS } from "./htmlLessons";
 import { DIGITAL_FUNDAMENTALS_LESSONS } from "./digitalFundamentalsLessons";
+import { FPGA_LESSONS } from "./fpgaLessons";
 
 export interface LessonContent {
   id: string;
@@ -41,6 +42,7 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...SYSTEMVERILOG_LESSONS,
   ...ROS2_LESSONS,
   ...VERILOG_LESSONS,
+  ...FPGA_LESSONS,
   ...EMBEDDED_C_LESSONS,
   ...MAKER_LESSONS,
   ...SYSTEMS_LESSONS,

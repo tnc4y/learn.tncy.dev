@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" width="720" height="300" font-family="Arial, Helvetica, sans-serif">
+  <title>Button bounce and debounced output</title>
+  <rect width="720" height="300" fill="#ffffff"/>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#374151"/>
+    </marker>
+  </defs>
+  <!-- guide lines -->
+  <g stroke="#9ca3af" stroke-width="1" stroke-dasharray="4 4">
+    <line x1="200" y1="20" x2="200" y2="250"/>
+    <line x1="300" y1="20" x2="300" y2="250"/>
+    <line x1="480" y1="20" x2="480" y2="250"/>
+  </g>
+  <!-- signal labels -->
+  <g font-family="Consolas, 'Courier New', monospace" font-size="14" fill="#111827" text-anchor="end">
+    <text x="100" y="62">ideal</text>
+    <text x="100" y="132">button_in</text>
+    <text x="100" y="202">button_out</text>
+  </g>
+  <!-- ideal press -->
+  <path d="M120,70 H200 V40 H700" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <!-- raw bouncing input -->
+  <path d="M120,140 H200 V110 H215 V140 H228 V110 H250 V140 H262 V110 H280 V140 H290 V110 H700" fill="none" stroke="#dc2626" stroke-width="2.5"/>
+  <!-- debounced output -->
+  <path d="M120,210 H480 V180 H700" fill="none" stroke="#059669" stroke-width="2.5"/>
+  <!-- bounce bracket -->
+  <path d="M200,232 V240 H300 V232" fill="none" stroke="#374151" stroke-width="1.5"/>
+  <text x="250" y="258" font-size="13" fill="#374151" text-anchor="middle">bounce</text>
+  <text x="250" y="274" font-size="12" fill="#6b7280" text-anchor="middle">(5 to 20 ms)</text>
+  <!-- debounce time arrow -->
+  <line x1="302" y1="236" x2="478" y2="236" stroke="#374151" stroke-width="1.5" marker-start="url(#arr)" marker-end="url(#arr)"/>
+  <text x="390" y="258" font-size="13" fill="#374151" text-anchor="middle">debounce time</text>
+  <text x="390" y="274" font-size="12" fill="#6b7280" text-anchor="middle">(counter reaches COUNTER_MAX)</text>
+  <!-- event labels -->
+  <g font-size="12" fill="#374151" text-anchor="middle">
+    <text x="200" y="14">press</text>
+    <text x="300" y="14">input settles</text>
+    <text x="480" y="14">output changes</text>
+  </g>
+</svg>
