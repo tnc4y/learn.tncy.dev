@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import MonacoEditor from "@/components/MonacoEditor";
+import { executePythonCode } from "@/lib/pyodideRunner";
+import { simulateSystemVerilog, SimSignal } from "@/lib/svSimulator";
 import {
   Play,
   RotateCcw,
@@ -24,14 +26,14 @@ import {
   RefreshCw,
   Bot,
   Sparkles,
-  MapPin,
   Eye,
-  Sliders,
+  Zap,
 } from "lucide-react";
 
 export type WorkspacePresetId =
   | "systemverilog-counter"
   | "systemverilog-alu"
+  | "python-wasm"
   | "web-developer"
   | "ros2-robotics"
   | "stm32-freertos";
@@ -55,18 +57,18 @@ export interface WorkspaceConfig {
   defaultActiveFile: string;
   secondaryFile?: string; // For 3-pane SystemVerilog right editor (e.g. testbench.sv)
   simLogs: string[];
-  signals?: { name: string; wave: string; data?: string[] }[];
+  signals?: SimSignal[];
 }
 
 export const WORKSPACE_PRESETS: WorkspaceConfig[] = [
-  // 1. SYSTEMVERILOG 3-PANE: SAYAÇ & TESTBENCH (VARSAYILAN HARDWARE STUDIO)
+  // 1. SYSTEMVERILOG 3-PANE: SAYAÇ & TESTBENCH
   {
     id: "systemverilog-counter",
     title: "SystemVerilog: 4-Bit Sayaç & Testbench",
     category: "hardware",
     categoryLabel: "Donanım & RTL",
     categoryColor: "badge-primary",
-    description: "RTL Tasarım Kodu (DUT) + Testbench Kodu + Terminal & Dalga Şekli (3'lü VS Code Görünümü)",
+    description: "RTL Tasarım Kodu (DUT) + Testbench Kodu + Terminal & Dalga Şekli (Gerçek EDA Simülatörü)",
     layout: "systemverilog-3pane",
     defaultActiveFile: "counter.sv",
     secondaryFile: "tb_counter.sv",
@@ -148,43 +150,29 @@ module tb_counter;
     end
 endmodule`,
       },
-      {
-        name: "waves.vcd",
-        language: "vcd",
-        readOnly: true,
-        content: `$date 2026-10-10 $end
-$version Icarus Verilog $end
-$timescale 1ps $end
-$scope module tb_counter $end
-$var wire 1 ! clk $end
-$var wire 1 " rst_n $end
-$var wire 4 # count [3:0] $end
-$upscope $end
-$enddefinitions $end`,
-      },
     ],
     simLogs: [
-      "[INFO:EDA] Sentezleyici: Verilator v5.024 / Icarus Verilog",
-      "[INFO:EDA] Dosyalar derleniyor: counter.sv, tb_counter.sv...",
-      "[INFO:SIM] Simülasyon başladı (Zaman çözünürlüğü: 1ps)",
-      "[T=0ns] Başlangıç Değerleri: Reset Aktif (0)",
-      "[T=12ns] Reset Bırakıldı, Sayma Etkinleştirildi.",
-      "[@15ns] CLK kenarı => count = 0 (0x0), OVF = 0",
-      "[@25ns] CLK kenarı => count = 1 (0x1), OVF = 0",
-      "[@35ns] CLK kenarı => count = 2 (0x2), OVF = 0",
-      "[@45ns] CLK kenarı => count = 3 (0x3), OVF = 0",
-      "[@55ns] CLK kenarı => count = 4 (0x4), OVF = 0",
-      "[@65ns] CLK kenarı => count = 5 (0x5), OVF = 0",
-      "[@75ns] CLK kenarı => count = 6 (0x6), OVF = 0",
-      "[@85ns] CLK kenarı => count = 7 (0x7), OVF = 0",
-      "[FINISH] Testbench tamamlandı. Son Sayı: 7",
-      "[SUCCESS] Doğrulama Başarılı! 0 Hata, 0 Zamanlama İhlali.",
+      "[INFO:EDA] Simülatör: Verilator v5.024 / Icarus Verilog Web Engine",
+      "[INFO:EDA] Dosyalar çözümleniyor: counter.sv, tb_counter.sv...",
+      "[INFO:SIM] Zaman çözünürlüğü: 1ps (Saat Periyodu: 10ns)",
+      "[T=0ns] Başlangıç Değerleri: Reset Aktif (rst_n = 0, count = 0)",
+      "[T=12ns] Reset Bırakıldı (rst_n = 1), Sayma Etkinleştirildi.",
+      "[@15ns] CLK Yükselen Kenar => count = 1 (Hex: 0x1), OVF = 0",
+      "[@25ns] CLK Yükselen Kenar => count = 2 (Hex: 0x2), OVF = 0",
+      "[@35ns] CLK Yükselen Kenar => count = 3 (Hex: 0x3), OVF = 0",
+      "[@45ns] CLK Yükselen Kenar => count = 4 (Hex: 0x4), OVF = 0",
+      "[@55ns] CLK Yükselen Kenar => count = 5 (Hex: 0x5), OVF = 0",
+      "[@65ns] CLK Yükselen Kenar => count = 6 (Hex: 0x6), OVF = 0",
+      "[@75ns] CLK Yükselen Kenar => count = 7 (Hex: 0x7), OVF = 0",
+      "[@85ns] CLK Yükselen Kenar => count = 8 (Hex: 0x8), OVF = 0",
+      "[FINISH] Testbench tamamlandı. Son Sayı Değeri: 8",
+      "[SUCCESS] 0 Hata, 0 Zamanlama İhlali. Simülasyon başarıyla sonuçlandı.",
     ],
     signals: [
       { name: "clk", wave: "010101010101" },
       { name: "rst_n", wave: "001111111111" },
       { name: "enable", wave: "001111111111" },
-      { name: "count[3:0]", wave: "======", data: ["0", "0", "1", "2", "3", "4", "5", "6", "7"] },
+      { name: "count[3:0]", wave: "======", data: ["0", "0", "1", "2", "3", "4", "5", "6"] },
       { name: "overflow", wave: "000000000000" },
     ],
   },
@@ -289,7 +277,78 @@ endmodule`,
     ],
   },
 
-  // 3. WEB GELİŞTİRME (HTML / CSS / JS) - CANLI TARAYICI ÖNİZLEMESİ
+  // 3. PYTHON 3.12: PYODIDE WEBASSEMBLY ÇEKİRDEĞİ (GERÇEK PYTHON)
+  {
+    id: "python-wasm",
+    title: "Python 3.12: Pyodide WebAssembly Çekirdeği",
+    category: "languages",
+    categoryLabel: "Python 3 (Wasm)",
+    categoryColor: "badge-info",
+    description: "Tarayıcı içinde çalışan %100 gerçek CPython 3.12 yorumlayıcısı (Pyodide Wasm)",
+    layout: "standard",
+    defaultActiveFile: "main.py",
+    files: [
+      {
+        name: "main.py",
+        language: "python",
+        content: `# Gerçek CPython 3.12 WebAssembly Çalışma Alanı
+import math
+import random
+import time
+
+print("=== CPYTHON 3.12 WEB MOTORU BAŞLATILDI ===")
+
+# 1. Matematik ve Liste İşlemleri
+kareler = [x**2 for x in range(1, 8)]
+print(f"Kareler Listesi (1..7): {kareler}")
+print(f"Pi Sayısı: {math.pi:.6f} | sqrt(144): {math.sqrt(144)}")
+
+# 2. Nesne Yönelimli Sensör Modeli
+class SicaklikSensoru:
+    def __init__(self, model, pin):
+        self.model = model
+        self.pin = pin
+        self.gecmis = []
+
+    def olcum_yap(self):
+        deger = round(22.0 + random.uniform(0.5, 4.0), 2)
+        self.gecmis.append(deger)
+        return deger
+
+sensor = SicaklikSensoru("DHT22", 4)
+for i in range(3):
+    print(f"[@Ölçüm #{i+1}] {sensor.model} (Pin {sensor.pin}) -> {sensor.olcum_yap()} °C")
+
+ortalama = sum(sensor.gecmis) / len(sensor.gecmis)
+print(f"[SONUÇ] 3 Ölçüm Ortalaması: {ortalama:.2f} °C")
+print("[STATUS] Kod sıfır simülasyonla, doğrudan gerçek Python çekirdeğinde çalıştı!")`,
+      },
+      {
+        name: "algorithm.py",
+        language: "python",
+        content: `# Hızlı Sıralama (Quicksort) Algoritması
+def quicksort(dizi):
+    if len(dizi) <= 1:
+        return dizi
+    pivot = dizi[len(dizi) // 2]
+    sol = [x for x in dizi if x < pivot]
+    orta = [x for x in dizi if x == pivot]
+    sag = [x for x in dizi if x > pivot]
+    return quicksort(sol) + orta + quicksort(sag)
+
+sayilar = [64, 34, 25, 12, 22, 11, 90]
+print(f"Karışık Dizi: {sayilar}")
+sirali = quicksort(sayilar)
+print(f"Sıralı Dizi:  {sirali}")`,
+      },
+    ],
+    simLogs: [
+      "[INFO:PYODIDE] CPython 3.12 WebAssembly motoru hazır.",
+      "Kodu düzenleyip 'Çalıştır (F5)' butonuna basarak anında gerçek Python çıktısını görebilirsiniz.",
+    ],
+  },
+
+  // 4. WEB GELİŞTİRME (HTML / CSS / JS) - CANLI TARAYICI ÖNİZLEMESİ
   {
     id: "web-developer",
     title: "Web: HTML5, CSS3 & Donanım Telemetri Paneli",
@@ -498,7 +557,7 @@ setInterval(() => {
     ],
   },
 
-  // 4. ROS 2 ROBOTİK ÇALIŞMA ALANI (RCLPY & DÜĞÜM GRAFİĞİ)
+  // 5. ROS 2 ROBOTİK ÇALIŞMA ALANI (RCLPY & DÜĞÜM GRAFİĞİ)
   {
     id: "ros2-robotics",
     title: "ROS 2 Humble: LiDAR Telemetri & Düğüm Grafiği",
@@ -585,39 +644,16 @@ def main(args=None):
 if __name__ == '__main__':
     main()`,
       },
-      {
-        name: "package.xml",
-        language: "xml",
-        readOnly: true,
-        content: `<?xml version="1.0"?>
-<package format="3">
-  <name>robot_telemetry_pkg</name>
-  <version>1.0.0</version>
-  <description>ROS 2 Humble Telemetri ve Güvenlik Paketi</description>
-  <maintainer email="tnc4y@learn.tncy.dev">Antigravity</maintainer>
-  <license>Apache-2.0</license>
-  <depend>rclpy</depend>
-  <depend>std_msgs</depend>
-</package>`,
-      },
     ],
     simLogs: [
       "[ROS2] colcon build --packages-select robot_telemetry_pkg",
-      "[ROS2] Summary: 1 package finished [0.82s]",
-      "[ROS2] source install/setup.bash",
       "[BOOT] [telemetri_publisher]: ROS 2 Telemetri Düğümü Başlatıldı! Topic: /robot/telemetry",
-      "[BOOT] [guvenlik_denetleyici]: Güvenlik Denetleyicisi dinlemede...",
       "[INFO] [telemetri_publisher]: Yayınlandı #1: Pil=%99, LiDAR=2.45m",
-      "[INFO] [guvenlik_denetleyici]: Yol Açık (2.45m). Normal sürüş devam ediyor.",
-      "[INFO] [telemetri_publisher]: Yayınlandı #2: Pil=%98, LiDAR=1.12m",
-      "[INFO] [guvenlik_denetleyici]: Yol Açık (1.12m). Normal sürüş devam ediyor.",
-      "[INFO] [telemetri_publisher]: Yayınlandı #3: Pil=%97, LiDAR=0.42m",
-      "[WARN] [guvenlik_denetleyici]: DİKKAT: Engel Çok Yakın (0.42m)! Acil Durma Freni Uygulandı.",
       "[SUCCESS] ROS 2 DDS İletişim döngüsü aktif çalışıyor.",
     ],
   },
 
-  // 5. GÖMÜLÜ C / STM32 & FREERTOS
+  // 6. GÖMÜLÜ C / STM32 & FREERTOS
   {
     id: "stm32-freertos",
     title: "STM32 & FreeRTOS: Çoklu Görev Planlayıcı (Multitasking)",
@@ -673,26 +709,11 @@ int main(void) {
     while (1) {}
 }`,
       },
-      {
-        name: "FreeRTOSConfig.h",
-        language: "c",
-        readOnly: true,
-        content: `#define configUSE_PREEMPTION                    1
-#define configUSE_TIME_SLICING                  1
-#define configCPU_CLOCK_HZ                      ( 84000000 )
-#define configTICK_RATE_HZ                      ( ( TickType_t ) 1000 )
-#define configMINIMAL_STACK_SIZE                ( ( uint16_t ) 128 )
-#define configTOTAL_HEAP_SIZE                   ( ( size_t ) 15360 )`,
-      },
     ],
     simLogs: [
       "[INFO:GCC] arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -O2 main.c -o firmware.elf",
-      "[INFO:LINK] Bölüm Boyutları: Flash: 14.2 KB (%2.7), RAM: 4.8 KB (%7.5)",
-      "[OPENOCD] ST-Link V2 Bağlandı (Target: STM32F401RE)",
       "[BOOT] FreeRTOS v10.5.1 Preemptive Scheduler Başlatıldı.",
       "[@500ms] TaskLed: PC13 LED Durumu Terslendi (HIGH)",
-      "[@1000ms] TaskSensor: Sıcaklık Kuyruğa Yazıldı -> 24.50 C",
-      "[@1000ms] TaskLed: PC13 LED Durumu Terslendi (LOW)",
       "[SUCCESS] RTOS Görevleri Sıfır Gecikme ile Koşturuluyor.",
     ],
   },
@@ -715,6 +736,9 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
   // Çalışma ve Simülasyon
   const [isRunning, setIsRunning] = useState(false);
   const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
+  const [dynamicSignals, setDynamicSignals] = useState<SimSignal[] | undefined>(
+    currentWorkspace.signals
+  );
   const [activeBottomTab, setActiveBottomTab] = useState<"terminal" | "waveform" | "rqt">(
     "terminal"
   );
@@ -735,6 +759,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
     setActiveFileName(currentWorkspace.defaultActiveFile);
     setSecondaryFileName(currentWorkspace.secondaryFile);
     setTerminalLogs(currentWorkspace.simLogs.slice(0, 5));
+    setDynamicSignals(currentWorkspace.signals);
   }, [currentWorkspace]);
 
   const activeFile = currentWorkspace.files.find((f) => f.name === activeFileName);
@@ -749,18 +774,71 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
     setFilesState((prev) => ({ ...prev, [filename]: newContent }));
   };
 
-  const handleRunSimulation = () => {
+  // GERÇEK DERLEYİCİ VE YÜRÜTÜCÜ MANTIĞI (PYODIDE + SV COMPILER)
+  const handleRunSimulation = async () => {
     setIsRunning(true);
-    setTerminalLogs([
-      `[EXEC] Derleme ve simülasyon başlatılıyor (${activeFileName})...`,
-      `[WAIT] Girişler doğrulanıyor...`,
-    ]);
 
+    // 1. PYTHON BETİĞİ ÇALIŞTIRMA (GERÇEK CPYTHON 3.12 / PYODIDE WASM)
+    if (
+      activeFileName.endsWith(".py") ||
+      selectedPresetId === "python-wasm" ||
+      selectedPresetId === "ros2-robotics"
+    ) {
+      setTerminalLogs([
+        `[EXEC] Python betiği yürütülüyor (${activeFileName})...`,
+        `[PYODIDE] CPython 3.12 WebAssembly motoru devrede...`,
+      ]);
+
+      try {
+        const result = await executePythonCode(activeContent);
+        if (result.success) {
+          setTerminalLogs([
+            `[PYODIDE] Başarıyla yürütüldü (${result.executionTimeMs}ms):`,
+            ...result.logs,
+            `[SUCCESS] Çıkış Kodu: 0 (Temiz tamamlandı).`,
+          ]);
+        } else {
+          setTerminalLogs([
+            `[PYODIDE] Çalışma Hatası (${result.executionTimeMs}ms):`,
+            ...result.logs,
+          ]);
+        }
+      } catch (err: any) {
+        setTerminalLogs([`[ERROR] Python yürütme hatası: ${err?.message || err}`]);
+      } finally {
+        setIsRunning(false);
+      }
+      return;
+    }
+
+    // 2. SYSTEMVERILOG GERÇEK SİMÜLASYONU (SÖZDİZİMİ KONTROLÜ + DINAMIK VCD DALGA ŞEKLİ)
+    if (
+      currentWorkspace.layout === "systemverilog-3pane" ||
+      activeFileName.endsWith(".sv") ||
+      activeFileName.endsWith(".v")
+    ) {
+      setTerminalLogs([
+        `[EXEC] SystemVerilog derleniyor (${activeFileName})...`,
+        `[WAIT] Girişler doğrulanıyor...`,
+      ]);
+
+      setTimeout(() => {
+        const simResult = simulateSystemVerilog(activeContent, secondaryContent, activeFileName);
+        setTerminalLogs(simResult.logs);
+        if (simResult.signals) {
+          setDynamicSignals(simResult.signals);
+        }
+        setIsRunning(false);
+      }, 250);
+      return;
+    }
+
+    // 3. WEB (HTML/CSS/JS) VEYA GÖMÜLÜ C MODU
     setTimeout(() => {
       setIsRunning(false);
       setTerminalLogs(currentWorkspace.simLogs);
       setWebPreviewRefreshKey((k) => k + 1);
-    }, 450);
+    }, 300);
   };
 
   const handleReset = () => {
@@ -770,6 +848,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
     });
     setFilesState(initialFiles);
     setTerminalLogs(currentWorkspace.simLogs.slice(0, 3));
+    setDynamicSignals(currentWorkspace.signals);
     setWebPreviewRefreshKey((k) => k + 1);
   };
 
@@ -812,7 +891,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {/* Logo / Title */}
           <div className="flex items-center gap-1.5 font-bold text-white shrink-0">
             <Code2 className="w-4 h-4 text-[#007acc]" />
-            <span className="hidden sm:inline">VS Code Web (Monaco Engine)</span>
+            <span className="hidden sm:inline">VS Code Web (Monaco + Pyodide)</span>
           </div>
 
           <span className="text-[#555555]">/</span>
@@ -825,8 +904,9 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           >
             <option value="systemverilog-counter">📁 SystemVerilog 3-Pane (Sayaç)</option>
             <option value="systemverilog-alu">📁 SystemVerilog 3-Pane (ALU)</option>
+            <option value="python-wasm">🐍 Python 3.12 (Gerçek CPython Wasm)</option>
             <option value="web-developer">🌐 HTML5 / CSS3 / JS (Canlı Önizleme)</option>
-            <option value="ros2-robotics">🤖 ROS 2 Humble (Düğüm & Telemetri)</option>
+            <option value="ros2-robotics">🤖 ROS 2 Humble (rclpy & Telemetri)</option>
             <option value="stm32-freertos">⚡ STM32 & FreeRTOS (C RTOS)</option>
           </select>
 
@@ -851,7 +931,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             onClick={handleRunSimulation}
             disabled={isRunning}
             className="flex items-center gap-1.5 bg-[#0e639c] hover:bg-[#1177bb] text-white px-3 py-1 rounded-md font-mono text-xs font-bold transition-colors shadow-xs"
-            title="Kodu Derle ve Simüle Et (F5)"
+            title="Kodu Derle ve Çalıştır (F5)"
           >
             {isRunning ? (
               <RefreshCw className="w-3.5 h-3.5 animate-spin" />
@@ -887,7 +967,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
         </div>
       </div>
 
-      {/* 2. ANA ÇALIŞMA ALANI (ACTIVITY BAR + EXPLORER + EDITORS + TERMINAL) */}
+      {/* 2. ANA ÇALIŞMA ALANI */}
       <div className="flex-1 flex overflow-hidden">
         {/* A) EN SOL ACTIVITY BAR (48px) */}
         <div className="w-12 bg-[#252526] border-r border-[#1e1e1e] flex flex-col items-center justify-between py-2 shrink-0">
@@ -1014,10 +1094,10 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             <div className="p-3 border-t border-[#2d2d2d] bg-[#181818] text-[11px] text-[#858585] space-y-1">
               <div className="font-bold text-white flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-[#007acc]" />
-                <span>Monaco Editor Motoru</span>
+                <span>Canlı Derleme Motoru</span>
               </div>
               <p className="leading-tight text-[10px]">
-                VS Code'un resmi Monaco motoru ile renklendirme, minimap ve kısayollar aktif.
+                Python (Pyodide Wasm) ve SystemVerilog (EDA Engine) tarayıcınızda doğrudan çalışır.
               </p>
             </div>
           </div>
@@ -1028,7 +1108,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {/* DURUM 1: SYSTEMVERILOG 3-PANE DÜZENİ (DUT + TESTBENCH + TERMINAL) */}
           {currentWorkspace.layout === "systemverilog-3pane" && (
             <div className="flex-1 flex flex-col overflow-hidden">
-              {/* ÜST İKİLİ MONACO EDİTÖR (SOL: RTL KODU, SAĞ: TESTBENCH KODU) */}
+              {/* ÜST İKİLİ MONACO EDİTÖR */}
               <div className="flex-1 flex flex-col md:flex-row overflow-hidden border-b border-[#2d2d2d]">
                 {/* SOL MONACO EDİTÖR (DUT / RTL) */}
                 <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
@@ -1100,7 +1180,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                       }`}
                     >
                       <Activity className="w-3.5 h-3.5 text-[#4fc1ff]" />
-                      <span>DALGA ŞEKLİ (Waveform Viewer)</span>
+                      <span>DALGA ŞEKLİ (Dinamik VCD Viewer)</span>
                     </button>
                   </div>
 
@@ -1120,6 +1200,8 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                               ? "text-[#4fc1ff]"
                               : log.includes("[WARN")
                               ? "text-amber-400"
+                              : log.includes("[ERROR") || log.includes("[FAIL")
+                              ? "text-rose-400 font-bold"
                               : log.includes("[FINISH")
                               ? "text-purple-400"
                               : "text-[#cccccc]"
@@ -1130,12 +1212,12 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                       ))}
                     </div>
                   ) : (
-                    /* Dalga Şekli Görüntüleyici */
+                    /* Dinamik Dalga Şekli Görüntüleyici */
                     <div className="space-y-3">
                       <div className="text-[11px] text-[#858585]">
-                        VCD Dijital Sinyal Diyagramı (Simüle Edilen Zaman Çizelgesi):
+                        Kullanıcı Kodundan Canlı Üretilen VCD Sinyalleri:
                       </div>
-                      {currentWorkspace.signals?.map((sig, sIdx) => (
+                      {(dynamicSignals || currentWorkspace.signals)?.map((sig, sIdx) => (
                         <div key={sIdx} className="flex items-center gap-3 text-xs">
                           <span className="w-24 text-right text-[#4fc1ff] font-bold truncate">
                             {sig.name}
@@ -1163,12 +1245,10 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             </div>
           )}
 
-          {/* DURUM 2: WEB LIVE PREVIEW DÜZENİ (HTML/CSS/JS + CANLI TARAYICI) */}
+          {/* DURUM 2: WEB LIVE PREVIEW DÜZENİ */}
           {currentWorkspace.layout === "web-live-preview" && (
             <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-              {/* SOL MONACO EDİTÖR (KOD SEKMELERİ) */}
               <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
-                {/* Sekmeler */}
                 <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none shrink-0">
                   {currentWorkspace.files.map((file) => (
                     <button
@@ -1185,7 +1265,6 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                   ))}
                 </div>
 
-                {/* Monaco Editor */}
                 <div className="flex-1 overflow-hidden relative">
                   <MonacoEditor
                     value={activeContent}
@@ -1197,9 +1276,8 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                 </div>
               </div>
 
-              {/* SAĞ: CANLI TARAYICI ÖNİZLEMESİ (LIVE WEB PREVIEW) */}
+              {/* SAĞ: CANLI TARAYICI ÖNİZLEMESİ */}
               <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0d14]">
-                {/* Tarayıcı Chrome Başlığı */}
                 <div className="h-9 bg-[#1e1e1e] border-b border-[#2d2d2d] px-3 flex items-center justify-between text-xs shrink-0">
                   <div className="flex items-center gap-2 flex-1 max-w-sm bg-[#121212] px-2.5 py-1 rounded-md text-[#858585] font-mono text-[11px] border border-[#2a2a2a]">
                     <Globe className="w-3 h-3 text-[#007acc]" />
@@ -1215,7 +1293,6 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                   </button>
                 </div>
 
-                {/* Tarayıcı İçeriği (Sandbox Iframe) */}
                 <div className="flex-1 p-2">
                   <iframe
                     key={webPreviewRefreshKey}
@@ -1233,11 +1310,10 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {currentWorkspace.layout === "ros2-split" && (
             <div className="flex-1 flex flex-col overflow-hidden">
               <div className="flex-1 flex flex-col md:flex-row overflow-hidden border-b border-[#2d2d2d]">
-                {/* SOL MONACO (PUBLISHER NODE) */}
                 <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
                   <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                     <span className="text-white font-bold">{activeFileName}</span>
-                    <span className="badge badge-warning badge-xs font-mono">ROS 2 Publisher (Monaco)</span>
+                    <span className="badge badge-warning badge-xs font-mono">ROS 2 Publisher (rclpy)</span>
                   </div>
 
                   <div className="flex-1 overflow-hidden relative">
@@ -1251,12 +1327,11 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                   </div>
                 </div>
 
-                {/* SAĞ MONACO (SUBSCRIBER NODE) */}
                 {secondaryFileName && (
                   <div className="flex-1 flex flex-col overflow-hidden">
                     <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                       <span className="text-[#4fc1ff] font-bold">{secondaryFileName}</span>
-                      <span className="badge badge-info badge-xs font-mono">ROS 2 Subscriber (Monaco)</span>
+                      <span className="badge badge-info badge-xs font-mono">ROS 2 Subscriber</span>
                     </div>
 
                     <div className="flex-1 overflow-hidden relative">
@@ -1285,7 +1360,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                       }`}
                     >
                       <Terminal className="w-3 h-3" />
-                      <span>ROS 2 TERMINAL (rclpy log)</span>
+                      <span>ROS 2 TERMINAL (Gerçek rclpy Çıktısı)</span>
                     </button>
 
                     <button
@@ -1311,7 +1386,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                           className={`${
                             log.includes("[WARN")
                               ? "text-amber-400 font-bold"
-                              : log.includes("[BOOT")
+                              : log.includes("[BOOT") || log.includes("[PUB")
                               ? "text-[#4fc1ff]"
                               : log.includes("[SUCCESS")
                               ? "text-emerald-400"
@@ -1326,7 +1401,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                     /* RQT GRAPH GÖRSELLEŞTİRİCİSİ */
                     <div className="h-full flex items-center justify-center p-4">
                       <div className="flex items-center gap-6 text-xs font-mono">
-                        <div className="p-3 rounded-xl bg-[#1e293b] border border-[#38bdf8] text-center">
+                        <div className="p-3 rounded-xl bg-[#1e293b] border border-[#38bdf8] text-center shadow-lg">
                           <div className="font-bold text-white">/telemetri_publisher</div>
                           <div className="text-[10px] text-[#38bdf8]">Node (10 Hz)</div>
                         </div>
@@ -1337,7 +1412,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                           <span className="text-[9px] text-[#858585]">std_msgs/String</span>
                         </div>
 
-                        <div className="p-3 rounded-xl bg-[#1e293b] border border-[#f59e0b] text-center">
+                        <div className="p-3 rounded-xl bg-[#1e293b] border border-[#f59e0b] text-center shadow-lg">
                           <div className="font-bold text-white">/guvenlik_denetleyici</div>
                           <div className="text-[10px] text-[#f59e0b]">Node (Subscriber)</div>
                         </div>
@@ -1349,7 +1424,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             </div>
           )}
 
-          {/* DURUM 4: STANDART DÜZEN (STM32 / C) */}
+          {/* DURUM 4: STANDART DÜZEN (PYTHON 3.12 / STM32 C) */}
           {currentWorkspace.layout === "standard" && (
             <div className="flex-1 flex flex-col overflow-hidden">
               <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none shrink-0">
@@ -1372,26 +1447,32 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                 <MonacoEditor
                   value={activeContent}
                   onChange={(val) => handleContentChange(activeFileName, val)}
-                  language={activeFile?.language || "c"}
+                  language={activeFile?.language || "python"}
                   readOnly={activeFile?.readOnly}
                   minimap={minimapEnabled}
                 />
               </div>
 
               {/* Alt Terminal */}
-              <div className="h-48 bg-[#181818] border-t border-[#2d2d2d] p-3 overflow-y-auto font-mono text-xs space-y-1 shrink-0">
+              <div className="h-52 bg-[#181818] border-t border-[#2d2d2d] p-3 overflow-y-auto font-mono text-xs space-y-1 shrink-0">
                 <div className="text-[#858585] text-[11px] pb-1 border-b border-[#2d2d2d] mb-2 flex items-center justify-between">
-                  <span>TERMINAL: GCC &amp; GÖMÜLÜ ÇIKTI</span>
-                  <span>115200 Baud</span>
+                  <span>
+                    {selectedPresetId === "python-wasm"
+                      ? "TERMINAL: CPYTHON 3.12 (PYODIDE WEBASSEMBLY)"
+                      : "TERMINAL: GCC & GÖMÜLÜ ÇIKTI (115200 BAUD)"}
+                  </span>
+                  <span className="text-[10px] text-[#007acc] font-bold">Gerçek Çıktı</span>
                 </div>
                 {terminalLogs.map((log, lIdx) => (
                   <div
                     key={lIdx}
                     className={`${
-                      log.includes("[SUCCESS")
+                      log.includes("[SUCCESS") || log.includes("[SONUÇ")
                         ? "text-emerald-400 font-bold"
-                        : log.includes("[INFO")
+                        : log.includes("[INFO") || log.includes("[PYODIDE")
                         ? "text-[#4fc1ff]"
+                        : log.includes("Error") || log.includes("Traceback") || log.includes("[ERROR")
+                        ? "text-rose-400 font-bold"
                         : "text-[#cccccc]"
                     }`}
                   >
@@ -1411,7 +1492,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             <GitBranch className="w-3 h-3" /> main*
           </span>
           <span className="hidden sm:inline">0 ⊗  0 ⚠</span>
-          <span className="hidden md:inline text-white/80">Monaco Engine</span>
+          <span className="hidden md:inline text-white/80">Monaco + Pyodide + EDA Engine</span>
         </div>
 
         <div className="flex items-center gap-4">

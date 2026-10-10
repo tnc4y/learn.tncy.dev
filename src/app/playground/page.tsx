@@ -23,6 +23,7 @@ function PlaygroundContent() {
   // Harici Proje ID'lerini Playground Şablonlarına Eşle
   const mapPresetParam = (param: string | null): WorkspacePresetId => {
     if (!param) return "systemverilog-counter";
+    if (param.includes("python")) return "python-wasm";
     if (param.includes("ros2")) return "ros2-robotics";
     if (param.includes("web") || param.includes("serial")) return "web-developer";
     if (param.includes("stm32") || param.includes("freertos") || param.includes("can"))
@@ -98,6 +99,18 @@ function PlaygroundContent() {
           >
             <Globe className="w-3.5 h-3.5 text-error" />
             Web Canlı Önizleme (HTML/CSS)
+          </button>
+
+          <button
+            onClick={() => setActivePreset("python-wasm")}
+            className={`btn btn-xs font-mono text-[11px] rounded-lg ${
+              activePreset === "python-wasm"
+                ? "btn-primary shadow-xs font-bold"
+                : "btn-ghost border border-base-content/10"
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-info" />
+            Python 3 (Gerçek Wasm)
           </button>
 
           <button
