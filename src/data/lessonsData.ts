@@ -8,6 +8,7 @@ import { MAKER_LESSONS } from "./makerLessons";
 import { SYSTEMS_LESSONS } from "./systemsLessons";
 import { WEB_LESSONS } from "./webLessons";
 import { CSS_LESSONS } from "./cssLessons";
+import { JAVASCRIPT_LESSONS } from "./javascriptLessons";
 
 export interface LessonContent {
   id: string;
@@ -43,6 +44,7 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...SYSTEMS_LESSONS,
   ...WEB_LESSONS,
   ...CSS_LESSONS,
+  ...JAVASCRIPT_LESSONS,
 
   // ==========================================
   // SYSTEMVERILOG
