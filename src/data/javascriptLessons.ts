@@ -1,6 +1,7 @@
 import { LessonContent } from "./lessonsData";
+import { JAVASCRIPT_ADVANCED_LESSONS } from "./javascriptAdvancedLessons";
 
-export const JAVASCRIPT_LESSONS: Record<string, LessonContent> = {
+const CORE_JAVASCRIPT_LESSONS: Record<string, LessonContent> = {
   // ========================================================
   // MODÜL 1: JAVASCRIPT TEMELLERİ & DEĞİŞKENLER
   // ========================================================
@@ -1509,4 +1510,9 @@ async function metniKopyala(metin) {
       explanation: "Doğru! 'clearInterval(timerId)' fonksiyonu setInterval tarafından döndürülen zamanlayıcı kimliğini alarak periyodik döngüyü sonlandırır.",
     },
   },
+};
+
+export const JAVASCRIPT_LESSONS: Record<string, LessonContent> = {
+  ...CORE_JAVASCRIPT_LESSONS,
+  ...JAVASCRIPT_ADVANCED_LESSONS,
 };
