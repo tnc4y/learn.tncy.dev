@@ -23,6 +23,7 @@ import {
   Terminal,
   BookOpen,
   Sparkles,
+  Globe,
 } from "lucide-react";
 
 export function generateStaticParams() {
@@ -544,6 +545,25 @@ export default async function LessonPage({
                   </h3>
                 </div>
                 <CodePlayground {...content.playground} />
+              </div>
+            )}
+
+            {/* Canlı Web Önizleyicisi - Web kursları için (HTML/CSS) */}
+            {isWebCourse && content.playground && (
+              <div className="my-10">
+                <div className="flex items-center gap-2 mb-3">
+                  <Globe className="w-5 h-5 text-info" />
+                  <h3 className="text-lg font-bold text-base-content">
+                    İnteraktif Web Düzenleyici & Canlı Tarayıcı Önizlemesi
+                  </h3>
+                </div>
+                <WebPreview
+                  title={content.title}
+                  code={content.playground.initialCode}
+                  language={course.id === "html" ? "html" : course.id === "css" ? "css" : "javascript"}
+                  expectedOutput={content.playground.expectedOutput}
+                  description="Aşağıdaki kodları düzenleyebilir; masaüstü, tablet ve mobil cihaz görünümlerinde sonucun nasıl göründüğünü anlık olarak test edebilirsiniz."
+                />
               </div>
             )}
 

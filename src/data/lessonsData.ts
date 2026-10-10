@@ -7,6 +7,7 @@ import { EMBEDDED_C_LESSONS } from "./embeddedCLessons";
 import { MAKER_LESSONS } from "./makerLessons";
 import { SYSTEMS_LESSONS } from "./systemsLessons";
 import { WEB_LESSONS } from "./webLessons";
+import { CSS_LESSONS } from "./cssLessons";
 
 export interface LessonContent {
   id: string;
@@ -41,6 +42,7 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...MAKER_LESSONS,
   ...SYSTEMS_LESSONS,
   ...WEB_LESSONS,
+  ...CSS_LESSONS,
 
   // ==========================================
   // SYSTEMVERILOG
