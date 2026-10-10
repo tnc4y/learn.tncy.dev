@@ -1,6 +1,7 @@
 import { QuizQuestion } from "@/components/QuizExercise";
 import { PlaygroundProps } from "@/components/CodePlayground";
 import { SYSTEMVERILOG_LESSONS } from "./systemverilogLessons";
+import { ROS2_LESSONS } from "./ros2Lessons";
 
 export interface LessonContent {
   id: string;
@@ -29,6 +30,7 @@ export interface LessonContent {
 
 export const LESSONS_DATA: Record<string, LessonContent> = {
   ...SYSTEMVERILOG_LESSONS,
+  ...ROS2_LESSONS,
 
   // ==========================================
   // SYSTEMVERILOG

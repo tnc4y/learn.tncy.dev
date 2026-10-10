@@ -6,10 +6,14 @@ import KeyboardSpeedTester from "@/components/tools/KeyboardSpeedTester";
 import MouseTester from "@/components/tools/MouseTester";
 import MouseSpeedTester from "@/components/tools/MouseSpeedTester";
 import GamepadTester from "@/components/tools/GamepadTester";
+import ScreenTester from "@/components/tools/ScreenTester";
+import AudioTester from "@/components/tools/AudioTester";
 import {
   Keyboard,
   MousePointer,
   Gamepad2,
+  Monitor,
+  Headphones,
   Sparkles,
   Zap,
   Timer,
@@ -20,14 +24,14 @@ import {
   Layers,
 } from "lucide-react";
 
-type TesterTab = "keyboard" | "keyboard_speed" | "mouse" | "mouse_speed" | "gamepad";
+type TesterTab = "keyboard" | "keyboard_speed" | "mouse" | "mouse_speed" | "gamepad" | "screen" | "audio";
 
 interface ToolCard {
   id: TesterTab;
   title: string;
   badge: string;
   badgeColor: string;
-  category: "Klavye" | "Fare" | "Gamepad";
+  category: "Klavye" | "Fare" | "Gamepad" | "Ekran" | "Ses";
   description: string;
   icon: typeof Keyboard;
   features: string[];
@@ -84,6 +88,26 @@ const TOOL_CARDS: ToolCard[] = [
     icon: Gamepad2,
     features: ["W3C Gamepad API", "2D Drift Radarı", "Tetik Basınç Barı", "Titreşim (Rumble) Testi"],
   },
+  {
+    id: "screen",
+    title: "Ekran & Monitör Testi",
+    badge: "Ölü Piksel & Hz",
+    badgeColor: "badge-primary",
+    category: "Ekran",
+    description: "Ölü/sıkışmış pikseller, 144Hz/240Hz UFO akıcılık testi, panel ghosting ve 256 seviyeli renk gradyan bantlanması.",
+    icon: Monitor,
+    features: ["Tam Ekran Ölü Piksel", "Yenileme Hızı (Hz)", "Ghosting / Tepki Süresi", "Renk Bantlanması"],
+  },
+  {
+    id: "audio",
+    title: "Ses & Hoparlör / Mikrofon Testi",
+    badge: "Stereo & Spektrum",
+    badgeColor: "badge-secondary",
+    category: "Ses",
+    description: "Kulaklık Sol/Sağ stereo kanal ayrımı, 20Hz-20kHz frekans süpürme, subwoofer bas titreşimi ve canlı mikrofon dB seviye ölçümü.",
+    icon: Headphones,
+    features: ["Stereo L/R Testi", "20Hz - 20kHz Sweep", "Subwoofer Bas Titreşimi", "Canlı Mikrofon FFT"],
+  },
 ];
 
 export default function TesterPage() {
@@ -114,12 +138,12 @@ export default function TesterPage() {
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-black tracking-tight text-base-content">
-          Giriş Cihazları Test <span className="text-secondary">Laboratuvarı</span>
+          Donanım & Çevre Birimleri Test <span className="text-secondary">Laboratuvarı</span>
         </h1>
 
         <p className="text-sm sm:text-base text-base-content/75 leading-relaxed">
-          Klavye, fare ve oyun kollarınızı tarayıcınızda donanımsal olarak test edin; tuş algılama,
-          N-Key Rollover, yazma hızı (WPM), tıklama hızı (CPS), çift tık mikroswitch hataları ve analog joystick drift ölçümlerini gerçekleştirin.
+          Klavye, fare, oyun kolu, monitör ve ses aygıtlarınızı tarayıcınızda donanımsal olarak test edin; tuş algılama,
+          yazma hızı (WPM), tıklama hızı (CPS), analog drift, ölü piksel, yenileme hızı (Hz), stereo kanal ve mikrofon frekans analizlerini gerçekleştirin.
         </p>
       </div>
 
@@ -134,7 +158,7 @@ export default function TesterPage() {
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-3">
           {TOOL_CARDS.map((card) => {
             const isSelected = activeTab === card.id;
             const Icon = card.icon;
@@ -181,7 +205,7 @@ export default function TesterPage() {
 
                 <div className="flex flex-wrap gap-1 pt-1 border-t border-base-content/5">
                   {card.features.slice(0, 2).map((feat, fIdx) => (
-                    <span key={fIdx} className="badge badge-neutral badge-xs font-mono text-[9px]">
+                    <span key={fIdx} className="px-1.5 py-0.5 rounded bg-base-200 border border-base-content/10 text-base-content/75 font-mono text-[9px]">
                       {feat}
                     </span>
                   ))}
@@ -199,6 +223,8 @@ export default function TesterPage() {
         {activeTab === "mouse" && <MouseTester />}
         {activeTab === "mouse_speed" && <MouseSpeedTester />}
         {activeTab === "gamepad" && <GamepadTester />}
+        {activeTab === "screen" && <ScreenTester />}
+        {activeTab === "audio" && <AudioTester />}
       </div>
     </div>
   );
