@@ -2,6 +2,11 @@ import { QuizQuestion } from "@/components/QuizExercise";
 import { PlaygroundProps } from "@/components/CodePlayground";
 import { SYSTEMVERILOG_LESSONS } from "./systemverilogLessons";
 import { ROS2_LESSONS } from "./ros2Lessons";
+import { VERILOG_LESSONS } from "./verilogLessons";
+import { EMBEDDED_C_LESSONS } from "./embeddedCLessons";
+import { MAKER_LESSONS } from "./makerLessons";
+import { SYSTEMS_LESSONS } from "./systemsLessons";
+import { WEB_LESSONS } from "./webLessons";
 
 export interface LessonContent {
   id: string;
@@ -31,6 +36,11 @@ export interface LessonContent {
 export const LESSONS_DATA: Record<string, LessonContent> = {
   ...SYSTEMVERILOG_LESSONS,
   ...ROS2_LESSONS,
+  ...VERILOG_LESSONS,
+  ...EMBEDDED_C_LESSONS,
+  ...MAKER_LESSONS,
+  ...SYSTEMS_LESSONS,
+  ...WEB_LESSONS,
 
   // ==========================================
   // SYSTEMVERILOG
