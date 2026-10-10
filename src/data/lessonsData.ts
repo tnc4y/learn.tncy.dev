@@ -9,6 +9,7 @@ import { SYSTEMS_LESSONS } from "./systemsLessons";
 import { WEB_LESSONS } from "./webLessons";
 import { CSS_LESSONS } from "./cssLessons";
 import { JAVASCRIPT_LESSONS } from "./javascriptLessons";
+import { HTML_LESSONS } from "./htmlLessons";
 
 export interface LessonContent {
   id: string;
@@ -45,6 +46,7 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...WEB_LESSONS,
   ...CSS_LESSONS,
   ...JAVASCRIPT_LESSONS,
+  ...HTML_LESSONS,
 
   // ==========================================
   // SYSTEMVERILOG
