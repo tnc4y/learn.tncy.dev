@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1122" />
+      <stop offset="100%" stop-color="#121a30" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bg)" />
+
+  <!-- Title Badge -->
+  <rect x="50" y="35" width="220" height="28" rx="14" fill="#6366f1" fill-opacity="0.2" stroke="#818cf8" stroke-width="1.5" />
+  <text x="160" y="54" fill="#a5b4fc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">MICRO-ROS &amp; ESP32 ROBOT</text>
+
+  <!-- Left: Architecture Diagram -->
+  <g transform="translate(60, 95)">
+    <rect width="320" height="285" rx="14" fill="#1e293b" stroke="#475569" stroke-width="2" />
+    
+    <!-- Micro-ROS Agent Host -->
+    <rect x="25" y="25" width="270" height="60" rx="8" fill="#0f172a" stroke="#6366f1" stroke-width="1.5" />
+    <text x="160" y="52" fill="#f8fafc" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">ROS 2 Host (PC / RPi)</text>
+    <text x="160" y="72" fill="#818cf8" font-family="monospace" font-size="10" text-anchor="middle">micro-ROS Agent (UDP/Serial 115200)</text>
+
+    <!-- Communication Bridge -->
+    <path d="M160 85 V 135" stroke="#facc15" stroke-width="3" stroke-dasharray="4,3" />
+
+    <!-- Micro-ROS Node on ESP32 -->
+    <rect x="25" y="135" width="270" height="120" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="160" y="165" fill="#f8fafc" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">ESP32 micro-ROS Client</text>
+    <text x="160" y="190" fill="#38bdf8" font-family="monospace" font-size="11" text-anchor="middle">rclc_executor / FreeRTOS</text>
+    <text x="160" y="215" fill="#22c55e" font-family="monospace" font-size="10" text-anchor="middle">Topics: /odom, /cmd_vel, /battery</text>
+    <text x="160" y="240" fill="#cbd5e1" font-family="monospace" font-size="10" text-anchor="middle">Quadrature Encoders (PID 50Hz)</text>
+  </g>
+
+  <!-- Right: Hardware Motor & Driver Board -->
+  <g transform="translate(420, 95)">
+    <rect width="330" height="285" rx="14" fill="#0f172a" stroke="#334155" stroke-width="2" />
+
+    <!-- L298N / Dual H-Bridge -->
+    <rect x="40" y="30" width="250" height="110" rx="10" fill="#991b1b" stroke="#f87171" stroke-width="2" />
+    <rect x="70" y="45" width="190" height="35" rx="4" fill="#1e293b" />
+    <text x="165" y="68" fill="#fca5a5" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">L298N DUAL H-BRIDGE</text>
+    <text x="165" y="115" fill="#ffffff" font-family="monospace" font-size="11" text-anchor="middle">PWM Sol &amp; Sağ Motor Sürücü</text>
+
+    <!-- Wheels & Encoders -->
+    <g transform="translate(50, 165)">
+      <rect x="0" y="0" width="100" height="85" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5" />
+      <text x="50" y="35" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">SOL MOTOR</text>
+      <text x="50" y="60" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">330 RPM + ENC</text>
+
+      <rect x="130" y="0" width="100" height="85" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1.5" />
+      <text x="180" y="35" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">SAĞ MOTOR</text>
+      <text x="180" y="60" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="middle">330 RPM + ENC</text>
+    </g>
+
+    <text x="165" y="272" fill="#a5b4fc" font-family="monospace" font-size="11" text-anchor="middle">Diferansiyel Kinematik Odometri</text>
+  </g>
+</svg>
