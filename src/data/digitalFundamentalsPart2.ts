@@ -850,10 +850,12 @@ endmodule`,
 Sayısal Sinyal İşleme (DSP), ses/video filtreleri ve sinir ağlarında (AI/ML) kesirli sayılar standart tam sayı toplayıcılarıyla işlenebilen **Sabit Noktalı (Fixed-Point)** formatta tutulur.`,
       },
       {
-        title: "2. Qm.n Formatı",
-        content: `- **m:** Tam kısım bit sayısı.
+        title: "2. Qm.n Formatı ve Bit Yerleşimi",
+        content: `![Q-Format bit yerleşimi: İşaret biti, tam sayı kısmı ve kesir basamakları](/images/digital/4.5-q-format-bit-layout.svg)
+
+- **m:** Tam kısım bit sayısı.
 - **n:** Kesirli kısım bit sayısı.
-Örneğin **Q4.4** formatında 8 bitlik bir sayıda en sağdaki 4 bit kesirdir ve her birinin ağırlığı \`2^-1 = 0.5\`, \`2^-2 = 0.25\`, \`2^-3 = 0.125\`, \`2^-4 = 0.0625\` olarak hesaplanır.`,
+Örneğin **Q4.4** formatında 8 bitlik bir sayıda en soldaki bit işaret, sonraki 3 bit tam kısım, en sağdaki 4 bit ise kesirdir. Her bir kesir bitinin ağırlığı sırasıyla \`2^-1 = 0.5\`, \`2^-2 = 0.25\`, \`2^-3 = 0.125\`, \`2^-4 = 0.0625\` olarak hesaplanır. Standart bir tam sayı DSP bloğu ile yüksek hızlı kesirli aritmetik bu sayede gerçekleştirilir.`,
       },
     ],
     playground: {

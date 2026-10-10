@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 186" width="660" height="186" role="img" aria-label="Symbols for the NOT, AND and OR logic gates" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs></defs>
+<rect x="0.5" y="0.5" width="659" height="185" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<polyline points="60.0,90.0 94.0,90.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<polygon points="90,68 90,112 128,90" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<circle cx="133" cy="90" r="5" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<polyline points="138.0,90.0 170.0,90.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<text x="54" y="94" font-size="12" fill="#1f2937" text-anchor="end" font-weight="bold">A</text>
+<text x="176" y="94" font-size="12" fill="#1f2937" text-anchor="start" font-weight="bold">Y</text>
+<text x="110" y="36" font-size="14" fill="#2563eb" text-anchor="middle" font-weight="bold">NOT</text>
+<text x="110" y="146" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">output is the opposite of the input</text>
+<text x="110" y="164" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">0 -> 1,  1 -> 0</text>
+<polyline points="276.0,78.0 310.0,78.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="276.0,102.0 310.0,102.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<path d="M306,66 H330 A24,24 0 0 1 330,114 H306 Z" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<polyline points="354.0,90.0 390.0,90.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<text x="270" y="82" font-size="12" fill="#1f2937" text-anchor="end" font-weight="bold">A</text>
+<text x="270" y="106" font-size="12" fill="#1f2937" text-anchor="end" font-weight="bold">B</text>
+<text x="396" y="94" font-size="12" fill="#1f2937" text-anchor="start" font-weight="bold">Y</text>
+<text x="330" y="36" font-size="14" fill="#2563eb" text-anchor="middle" font-weight="bold">AND</text>
+<text x="330" y="146" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">1 only if ALL inputs are 1</text>
+<text x="330" y="164" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">only 1,1 gives 1</text>
+<polyline points="500.0,78.0 534.0,78.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="500.0,102.0 534.0,102.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<path d="M522,66 Q538,90 522,114 Q558,114 578,90 Q558,66 522,66 Z" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<polyline points="578.0,90.0 610.0,90.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round"/>
+<text x="494" y="82" font-size="12" fill="#1f2937" text-anchor="end" font-weight="bold">A</text>
+<text x="494" y="106" font-size="12" fill="#1f2937" text-anchor="end" font-weight="bold">B</text>
+<text x="616" y="94" font-size="12" fill="#1f2937" text-anchor="start" font-weight="bold">Y</text>
+<text x="550" y="36" font-size="14" fill="#2563eb" text-anchor="middle" font-weight="bold">OR</text>
+<text x="550" y="146" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">1 if ANY input is 1</text>
+<text x="550" y="164" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">only 0,0 gives 0</text>
+</svg>

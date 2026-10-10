@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 286" width="660" height="286" role="img" aria-label="Effect of positive clock skew on setup and hold" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="skew-15803d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker></defs>
+<rect x="0.5" y="0.5" width="659" height="285" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="138" y="70" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">clk at FF1 (launch)</text>
+<polyline points="150.0,76.0 190.0,76.0 190.0,56.0 290.0,56.0 290.0,76.0 390.0,76.0 390.0,56.0 490.0,56.0 490.0,76.0 590.0,76.0 590.0,56.0 620.0,56.0 620.0,56.0" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="130" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">clk at FF2 (capture)</text>
+<polyline points="150.0,136.0 230.0,136.0 230.0,116.0 330.0,116.0 330.0,136.0 430.0,136.0 430.0,116.0 530.0,116.0 530.0,136.0 630.0,136.0 630.0,116.0 620.0,116.0 620.0,116.0" fill="none" stroke="#d9480f" stroke-width="2.2" stroke-linejoin="round"/>
+<polyline points="190.0,40.0 190.0,250.0" fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="4 4" stroke-linejoin="round"/>
+<polyline points="390.0,40.0 390.0,250.0" fill="none" stroke="#6b7280" stroke-width="1" stroke-dasharray="4 4" stroke-linejoin="round"/>
+<polyline points="230.0,100.0 230.0,250.0" fill="none" stroke="#d9480f" stroke-width="1" stroke-dasharray="4 4" stroke-linejoin="round"/>
+<polyline points="430.0,100.0 430.0,250.0" fill="none" stroke="#d9480f" stroke-width="1" stroke-dasharray="4 4" stroke-linejoin="round"/>
+<polyline points="190.0,170.0 230.0,170.0" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linejoin="round"/>
+<text x="210" y="164" font-size="10" fill="#b91c1c" text-anchor="middle" font-weight="bold">skew</text>
+<polyline points="190.0,205.0 430.0,205.0" fill="none" stroke="#15803d" stroke-width="2" stroke-linejoin="round"/>
+<polyline points="350.0,205.0 430.0,205.0" fill="none" stroke="#15803d" stroke-width="2" stroke-linejoin="round" marker-end="url(#skew-15803d)"/>
+<text x="300" y="198" font-size="10" fill="#15803d" text-anchor="middle" font-weight="bold">setup window = period + skew (more time)</text>
+<polyline points="190.0,238.0 230.0,238.0" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linejoin="round"/>
+<text x="240" y="232" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="bold">hold must now cover the skew too (less margin)</text>
+<text x="390" y="272" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">positive skew: the capturing clock arrives later than the launching clock</text>
+</svg>

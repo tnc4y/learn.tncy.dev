@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 276" width="660" height="276" role="img" aria-label="Learning roadmap after digital design fundamentals" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="road-15803d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="road-2563eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="road-6b7280" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker><marker id="road-7c3aed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker><marker id="road-d9480f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker></defs>
+<rect x="0.5" y="0.5" width="659" height="275" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="250" y="20" width="160" height="50" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/><text x="330.0" y="42.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Digital design</text><text x="330.0" y="58.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">+ Verilog RTL</text>
+<polyline points="330.0,70.0 90.0,104.0" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-6b7280)"/>
+<rect x="20" y="106" width="140" height="34" rx="6" fill="#ede9fe" stroke="#7c3aed" stroke-width="1.8"/><text x="90.0" y="127.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Verification</text>
+<rect x="28" y="150" width="124" height="28" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="1.2"/>
+<text x="90" y="168" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">SystemVerilog</text>
+<polyline points="90.0,178.0 90.0,188.0" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-7c3aed)"/>
+<rect x="28" y="188" width="124" height="28" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="1.2"/>
+<text x="90" y="206" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">UVM</text>
+<polyline points="90.0,216.0 90.0,226.0" fill="none" stroke="#7c3aed" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-7c3aed)"/>
+<rect x="28" y="226" width="124" height="28" rx="5" fill="#ffffff" stroke="#7c3aed" stroke-width="1.2"/>
+<text x="90" y="244" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Formal / assertions</text>
+<polyline points="330.0,70.0 250.0,104.0" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-6b7280)"/>
+<rect x="180" y="106" width="140" height="34" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/><text x="250.0" y="127.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">RTL design</text>
+<rect x="188" y="150" width="124" height="28" rx="5" fill="#ffffff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="250" y="168" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Micro-architecture</text>
+<polyline points="250.0,178.0 250.0,188.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-2563eb)"/>
+<rect x="188" y="188" width="124" height="28" rx="5" fill="#ffffff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="250" y="206" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">CDC, low power</text>
+<polyline points="250.0,216.0 250.0,226.0" fill="none" stroke="#2563eb" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-2563eb)"/>
+<rect x="188" y="226" width="124" height="28" rx="5" fill="#ffffff" stroke="#2563eb" stroke-width="1.2"/>
+<text x="250" y="244" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Synthesis + STA</text>
+<polyline points="330.0,70.0 410.0,104.0" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-6b7280)"/>
+<rect x="340" y="106" width="140" height="34" rx="6" fill="#fde0cf" stroke="#d9480f" stroke-width="1.8"/><text x="410.0" y="127.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Physical design</text>
+<rect x="348" y="150" width="124" height="28" rx="5" fill="#ffffff" stroke="#d9480f" stroke-width="1.2"/>
+<text x="410" y="168" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Floorplan, place, route</text>
+<polyline points="410.0,178.0 410.0,188.0" fill="none" stroke="#d9480f" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-d9480f)"/>
+<rect x="348" y="188" width="124" height="28" rx="5" fill="#ffffff" stroke="#d9480f" stroke-width="1.2"/>
+<text x="410" y="206" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Timing closure</text>
+<polyline points="410.0,216.0 410.0,226.0" fill="none" stroke="#d9480f" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-d9480f)"/>
+<rect x="348" y="226" width="124" height="28" rx="5" fill="#ffffff" stroke="#d9480f" stroke-width="1.2"/>
+<text x="410" y="244" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Power / signal integrity</text>
+<polyline points="330.0,70.0 570.0,104.0" fill="none" stroke="#6b7280" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-6b7280)"/>
+<rect x="500" y="106" width="140" height="34" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="570.0" y="127.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Hands-on practice</text>
+<rect x="508" y="150" width="124" height="28" rx="5" fill="#ffffff" stroke="#15803d" stroke-width="1.2"/>
+<text x="570" y="168" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Open-source simulators</text>
+<polyline points="570.0,178.0 570.0,188.0" fill="none" stroke="#15803d" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-15803d)"/>
+<rect x="508" y="188" width="124" height="28" rx="5" fill="#ffffff" stroke="#15803d" stroke-width="1.2"/>
+<text x="570" y="206" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Open synthesis + P&amp;R</text>
+<polyline points="570.0,216.0 570.0,226.0" fill="none" stroke="#15803d" stroke-width="1.4" stroke-linejoin="round" marker-end="url(#road-15803d)"/>
+<rect x="508" y="226" width="124" height="28" rx="5" fill="#ffffff" stroke="#15803d" stroke-width="1.2"/>
+<text x="570" y="244" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="normal">Open 130 nm PDK</text>
+</svg>

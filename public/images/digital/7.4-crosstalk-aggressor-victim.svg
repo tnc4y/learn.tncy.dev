@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 640 232" width="640" height="232" role="img" aria-label="Crosstalk from an aggressor wire onto a victim wire" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs></defs>
+<rect x="0.5" y="0.5" width="639" height="231" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<polygon points="30,68.3 30,91.7 51.06,80" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<polyline points="51.1,80.0 330.0,80.0" fill="none" stroke="#b91c1c" stroke-width="3" stroke-linejoin="round"/>
+<text x="180" y="66" font-size="11" fill="#b91c1c" text-anchor="middle" font-weight="bold">aggressor (switching)</text>
+<polygon points="30,148.3 30,171.7 51.06,160" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<polyline points="51.1,160.0 330.0,160.0" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round"/>
+<text x="180" y="188" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="bold">victim (should stay quiet)</text>
+<polyline points="90.0,80.0 90.0,112.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="80.0,112.0 100.0,112.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="80.0,120.0 100.0,120.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="90.0,120.0 90.0,160.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="160.0,80.0 160.0,112.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="150.0,112.0 170.0,112.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="150.0,120.0 170.0,120.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="160.0,120.0 160.0,160.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="230.0,80.0 230.0,112.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="220.0,112.0 240.0,112.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="220.0,120.0 240.0,120.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="230.0,120.0 230.0,160.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="300.0,80.0 300.0,112.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<polyline points="290.0,112.0 310.0,112.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="290.0,120.0 310.0,120.0" fill="none" stroke="#6b7280" stroke-width="3" stroke-linejoin="round"/>
+<polyline points="300.0,120.0 300.0,160.0" fill="none" stroke="#6b7280" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="336" y="124" font-size="10" fill="#6b7280" text-anchor="start" font-weight="normal">coupling capacitance</text>
+<text x="540" y="30" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Waveforms</text>
+<polyline points="470.0,100.0 520.0,100.0 540.0,60.0 620.0,60.0" fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="462" y="84" font-size="10" fill="#b91c1c" text-anchor="end" font-weight="bold">aggr.</text>
+<path d="M470,170 H522 C530,170 534,140 542,140 C554,140 570,170 590,170 H620" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+<text x="462" y="164" font-size="10" fill="#2563eb" text-anchor="end" font-weight="bold">victim</text>
+<text x="542" y="130" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="bold">glitch</text>
+<polyline points="470.0,200.0 620.0,200.0" fill="none" stroke="#6b7280" stroke-width="1" stroke-linejoin="round"/>
+<text x="545" y="216" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">time</text>
+</svg>

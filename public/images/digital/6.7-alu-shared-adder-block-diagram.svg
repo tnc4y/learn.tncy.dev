@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 326" width="660" height="326" role="img" aria-label="ALU built around one shared adder" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="alu-15803d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#15803d"/></marker><marker id="alu-1f2937" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2937"/></marker><marker id="alu-2563eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker></defs>
+<rect x="0.5" y="0.5" width="659" height="325" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="36" y="84" font-size="13" fill="#1f2937" text-anchor="end" font-weight="bold">A</text>
+<text x="36" y="164" font-size="13" fill="#1f2937" text-anchor="end" font-weight="bold">B</text>
+<polyline points="42,80 296,80" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<circle cx="70" cy="80" r="3.5" fill="#1f2937"/>
+<polyline points="70,80 70,222 296,222" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<polyline points="42,160 126,160" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<circle cx="96" cy="160" r="3.5" fill="#1f2937"/>
+<polyline points="96,160 96,258 296,258" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<rect x="126" y="140" width="110" height="40" rx="6" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.8"/><text x="181.0" y="164.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">B XOR SUB</text>
+<polyline points="236,160 296,160" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<rect x="296" y="56" width="124" height="124" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/><text x="358.0" y="115.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">ADDER</text><text x="358.0" y="131.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">A + B + cin</text>
+<rect x="296" y="200" width="124" height="76" rx="6" fill="#fde0cf" stroke="#d9480f" stroke-width="1.8"/><text x="358.0" y="235.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">LOGIC</text><text x="358.0" y="251.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">AND / OR / XOR</text>
+<polygon points="470,60 506,80 506,262 470,282" fill="#ffffff" stroke="#1f2937" stroke-width="2"/>
+<text x="488" y="176" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">MUX</text>
+<polyline points="420,118 470,118" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<polyline points="420,238 470,238" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<polyline points="506,171 606,171" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#alu-1f2937)"/>
+<text x="614" y="175" font-size="13" fill="#1f2937" text-anchor="start" font-weight="bold">Y</text>
+<circle cx="560" cy="171" r="3.5" fill="#1f2937"/>
+<polyline points="560,171 560,228" fill="none" stroke="#15803d" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#alu-15803d)"/>
+<polyline points="400,56 400,38 640,38 640,254 628,254" fill="none" stroke="#15803d" stroke-width="1.8" stroke-linejoin="round"/>
+<line x1="630" y1="254" x2="622" y2="254" stroke="#15803d" stroke-width="1.8" marker-end="url(#alu-15803d)"/>
+<text x="520" y="32" font-size="10" fill="#15803d" text-anchor="middle" font-weight="normal">carry out</text>
+<rect x="520" y="228" width="100" height="52" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="570.0" y="251.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">FLAGS</text><text x="570.0" y="267.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">Z  N  C  V</text>
+<text x="181" y="314" font-size="11" fill="#2563eb" text-anchor="middle" font-weight="bold">op[2:0] (control)</text>
+<polyline points="181,302 181,180" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<text x="186" y="216" font-size="10" fill="#2563eb" text-anchor="start" font-weight="bold">SUB</text>
+<polyline points="181,194 270,194 270,172" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<line x1="270" y1="172" x2="294" y2="172" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#alu-2563eb)"/>
+<text x="262" y="188" font-size="10" fill="#2563eb" text-anchor="end" font-weight="bold">cin</text>
+<polyline points="181,290 488,290 488,272" fill="none" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<text x="496" y="302" font-size="10" fill="#2563eb" text-anchor="start" font-weight="normal">select</text>
+</svg>

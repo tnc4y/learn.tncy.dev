@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 326" width="720" height="326" role="img" aria-label="Layers of a digital chip from physics to systems" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="ladder-6b7280" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker><marker id="ladder-7c3aed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#7c3aed"/></marker></defs>
+<rect x="0.5" y="0.5" width="719" height="325" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="200" y="250" width="260" height="40" rx="6" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.8"/><text x="330.0" y="267.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Materials and physics</text><text x="330.0" y="283.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">why silicon can act as a switch</text>
+<polyline points="330.0,250.0 330.0,240.0" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ladder-6b7280)"/>
+<rect x="180" y="198" width="300" height="40" rx="6" fill="#fde0cf" stroke="#d9480f" stroke-width="1.8"/><text x="330.0" y="215.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Transistors</text><text x="330.0" y="231.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">tiny electrically controlled switches</text>
+<polyline points="330.0,198.0 330.0,188.0" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ladder-6b7280)"/>
+<rect x="160" y="146" width="340" height="40" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="330.0" y="163.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Logic gates</text><text x="330.0" y="179.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">NOT, AND, OR ... built from transistors</text>
+<polyline points="330.0,146.0 330.0,136.0" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ladder-6b7280)"/>
+<rect x="140" y="94" width="380" height="40" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="330.0" y="111.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Building blocks</text><text x="330.0" y="127.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">adders, multiplexers, flip-flops, memory</text>
+<polyline points="330.0,94.0 330.0,84.0" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ladder-6b7280)"/>
+<rect x="120" y="42" width="420" height="40" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/><text x="330.0" y="59.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">Systems</text><text x="330.0" y="75.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">processors, controllers, whole chips</text>
+<polyline points="590.0,270.0 590.0,52.0" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linejoin="round" marker-end="url(#ladder-7c3aed)"/>
+<text x="604" y="160" font-size="10" fill="#7c3aed" text-anchor="start" font-weight="bold">each layer is built</text>
+<text x="604" y="174" font-size="10" fill="#7c3aed" text-anchor="start" font-weight="bold">from the one below</text>
+<text x="330" y="312" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">Designers work mostly in the upper layers, but the lower layers decide speed, power, and cost.</text>
+</svg>

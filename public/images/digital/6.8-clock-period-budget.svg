@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 246" width="660" height="246" role="img" aria-label="Clock period budget for the critical path" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs></defs>
+<rect x="0.5" y="0.5" width="659" height="245" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="60" y="36" font-size="12" fill="#1f2937" text-anchor="start" font-weight="bold">Clock period 1000 ps (1.0 GHz): positive slack</text>
+<rect x="60" y="50" width="27.0" height="30" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="73.5" y="98" font-size="10" fill="#9ca3af" text-anchor="middle" font-weight="bold">clk-to-q 50</text>
+<rect x="87.0" y="50" width="378.0" height="30" fill="#fde0cf" stroke="#d9480f" stroke-width="1.5"/>
+<text x="276.0" y="69" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">logic 700</text>
+<rect x="465.0" y="50" width="16.200000000000003" height="30" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="473.1" y="98" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="bold">setup 30</text>
+<rect x="481.2" y="50" width="118.80000000000001" height="30" fill="#dcfce7" stroke="#15803d" stroke-width="1.5"/>
+<text x="540.6" y="69" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">slack 220</text>
+<polyline points="60,40 60,90" fill="none" stroke="#1f2937" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="600.0,40 600.0,90" fill="none" stroke="#1f2937" stroke-width="1.2" stroke-linejoin="round"/>
+<text x="60" y="136" font-size="12" fill="#1f2937" text-anchor="start" font-weight="bold">Clock period 780 ps (about 1.28 GHz): zero slack - the fastest this path allows</text>
+<rect x="60" y="150" width="27.0" height="30" fill="#f3f4f6" stroke="#9ca3af" stroke-width="1.5"/>
+<text x="73.5" y="198" font-size="10" fill="#9ca3af" text-anchor="middle" font-weight="bold">clk-to-q 50</text>
+<rect x="87.0" y="150" width="378.0" height="30" fill="#fde0cf" stroke="#d9480f" stroke-width="1.5"/>
+<text x="276.0" y="169" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">logic 700</text>
+<rect x="465.0" y="150" width="16.200000000000003" height="30" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
+<text x="473.1" y="198" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="bold">setup 30</text>
+<polyline points="60,140 60,190" fill="none" stroke="#1f2937" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="481.2,140 481.2,190" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linejoin="round"/>
+<text x="489.2" y="170" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="bold">any faster fails setup</text>
+<text x="60" y="232" font-size="10" fill="#6b7280" text-anchor="start" font-weight="normal">clock period must cover: clock-to-Q of the launching flop + logic delay + setup time of the capturing flop</text>
+</svg>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 304" width="660" height="304" role="img" aria-label="Asynchronous FIFO with Gray-code pointer synchronization" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="fifo-2563eb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2563eb"/></marker><marker id="fifo-d9480f" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#d9480f"/></marker></defs>
+<rect x="0.5" y="0.5" width="659" height="303" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="20" y="30" width="250" height="240" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="1.4" opacity="0.5"/>
+<text x="145" y="50" font-size="12" fill="#2563eb" text-anchor="middle" font-weight="bold">write domain (wclk)</text>
+<rect x="390" y="30" width="250" height="240" rx="10" fill="#fde0cf" stroke="#d9480f" stroke-width="1.4" opacity="0.5"/>
+<text x="515" y="50" font-size="12" fill="#d9480f" text-anchor="middle" font-weight="bold">read domain (rclk)</text>
+<rect x="245" y="110" width="170" height="70" rx="6" fill="#ffffff" stroke="#1f2937" stroke-width="1.8"/><text x="330.0" y="142.0" font-size="12" fill="#1f2937" text-anchor="middle" font-weight="bold">dual-port RAM</text><text x="330.0" y="158.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">write port | read port</text>
+<rect x="40" y="70" width="150" height="44" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/><text x="115.0" y="89.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">wptr (binary)</text><text x="115.0" y="105.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">addresses the RAM</text>
+<rect x="40" y="140" width="150" height="40" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/><text x="115.0" y="164.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">wptr to Gray</text>
+<rect x="470" y="70" width="150" height="44" rx="6" fill="#ffffff" stroke="#d9480f" stroke-width="1.8"/><text x="545.0" y="89.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">rptr (binary)</text><text x="545.0" y="105.0" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">addresses the RAM</text>
+<rect x="470" y="140" width="150" height="40" rx="6" fill="#ffffff" stroke="#d9480f" stroke-width="1.8"/><text x="545.0" y="164.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">rptr to Gray</text>
+<polyline points="190.0,92.0 245.0,125.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#fifo-2563eb)"/>
+<polyline points="470.0,92.0 415.0,125.0" fill="none" stroke="#d9480f" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#fifo-d9480f)"/>
+<polyline points="115.0,114.0 115.0,140.0" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#fifo-2563eb)"/>
+<polyline points="545.0,114.0 545.0,140.0" fill="none" stroke="#d9480f" stroke-width="1.8" stroke-linejoin="round" marker-end="url(#fifo-d9480f)"/>
+<polyline points="190.0,170.0 230.0,170.0 230.0,222.0 470.0,222.0" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round" marker-end="url(#fifo-2563eb)"/>
+<rect x="300" y="206" width="60" height="32" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="330.0" y="226.0" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">2-FF</text>
+<rect x="470" y="204" width="150" height="36" rx="6" fill="#ffffff" stroke="#d9480f" stroke-width="1.8"/><text x="545.0" y="226.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">compare -> empty</text>
+<polyline points="470.0,160.0 440.0,160.0 440.0,252.0 260.0,252.0 190.0,252.0" fill="none" stroke="#d9480f" stroke-width="2" stroke-linejoin="round" marker-end="url(#fifo-d9480f)"/>
+<rect x="300" y="236" width="60" height="32" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="330.0" y="256.0" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">2-FF</text>
+<rect x="40" y="234" width="150" height="36" rx="6" fill="#ffffff" stroke="#2563eb" stroke-width="1.8"/><text x="115.0" y="256.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">compare -> full</text>
+<text x="330" y="290" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">only Gray-coded pointers cross, one bit changes per step</text>
+</svg>

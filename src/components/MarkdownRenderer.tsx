@@ -14,12 +14,13 @@ interface InlineMarkdownProps {
 }
 
 function createInlineRegex() {
-  // 1-3: Links [text](url)
-  // 4-5: Inline code `code`
-  // 6-7: Bold Italic ***text***
-  // 8-9: Bold **text**
-  // 10-11: Italic *text*
-  return /(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\*\*\*([^*]+?)\*\*\*)|(\*\*([^*]+?)\*\*)|((?<!\*)\*([^*]+?)\*(?!\*))/g;
+  // 1-3: Images ![alt](url)
+  // 4-6: Links [text](url)
+  // 7-8: Inline code `code`
+  // 9-10: Bold Italic ***text***
+  // 11-12: Bold **text**
+  // 13-14: Italic *text*
+  return /(!\[([^\]]*)\]\(([^)]+)\))|(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\*\*\*([^*]+?)\*\*\*)|(\*\*([^*]+?)\*\*)|((?<!\*)\*([^*]+?)\*(?!\*))/g;
 }
 
 /**
@@ -48,9 +49,23 @@ export function renderInline(
     const key = `${keyPrefix}-${keyIndex++}`;
 
     if (match[1]) {
+      // Image ![alt](url)
+      const alt = match[2];
+      const src = match[3];
+      nodes.push(
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          key={key}
+          src={src}
+          alt={alt}
+          className="inline-block max-h-60 rounded my-1 border border-base-300"
+          loading="lazy"
+        />
+      );
+    } else if (match[4]) {
       // Link [text](url)
-      const linkText = match[2];
-      const linkUrl = match[3];
+      const linkText = match[5];
+      const linkUrl = match[6];
       const isExternal = linkUrl.startsWith("http://") || linkUrl.startsWith("https://");
       nodes.push(
         <a
@@ -63,9 +78,9 @@ export function renderInline(
           {renderInline(linkText, `${key}-link`, depth + 1)}
         </a>
       );
-    } else if (match[4]) {
+    } else if (match[7]) {
       // Inline code `code`
-      const code = match[5];
+      const code = match[8];
       nodes.push(
         <code
           key={key}
@@ -74,25 +89,25 @@ export function renderInline(
           {code}
         </code>
       );
-    } else if (match[6]) {
+    } else if (match[9]) {
       // Bold italic ***text***
-      const inner = match[7];
+      const inner = match[10];
       nodes.push(
         <strong key={key} className="font-extrabold text-base-content">
           <em className="italic">{renderInline(inner, `${key}-bi`, depth + 1)}</em>
         </strong>
       );
-    } else if (match[8]) {
+    } else if (match[11]) {
       // Bold **text**
-      const inner = match[9];
+      const inner = match[12];
       nodes.push(
         <strong key={key} className="font-extrabold text-base-content">
           {renderInline(inner, `${key}-b`, depth + 1)}
         </strong>
       );
-    } else if (match[10]) {
+    } else if (match[13]) {
       // Italic *text*
-      const inner = match[11];
+      const inner = match[14];
       nodes.push(
         <em key={key} className="italic text-base-content/90">
           {renderInline(inner, `${key}-i`, depth + 1)}
@@ -129,6 +144,7 @@ type MarkdownBlock =
   | { type: "code"; lang: string; code: string }
   | { type: "heading"; level: number; text: string }
   | { type: "blockquote"; text: string }
+  | { type: "image"; alt: string; src: string }
   | { type: "table"; headers: string[]; rows: string[][] };
 
 function parseMarkdownBlocks(text: string): MarkdownBlock[] {
@@ -201,6 +217,20 @@ function parseMarkdownBlocks(text: string): MarkdownBlock[] {
       flushTable();
       const lang = line.trim().slice(3).trim();
       currentCode = { lang, lines: [] };
+      continue;
+    }
+
+    // Image (![alt](src))
+    const imgMatch = line.trim().match(/^!\[(.*?)\]\((.*?)\)$/);
+    if (imgMatch) {
+      flushParagraph();
+      flushList();
+      flushTable();
+      blocks.push({
+        type: "image",
+        alt: imgMatch[1],
+        src: imgMatch[2],
+      });
       continue;
     }
 
@@ -453,6 +483,26 @@ export default function MarkdownRenderer({
                   </tbody>
                 </table>
               </div>
+            );
+
+          case "image":
+            return (
+              <figure key={idx} className="my-6 flex flex-col items-center">
+                <div className="rounded-xl overflow-hidden border border-base-300 bg-base-200/40 p-3 shadow-xs max-w-full flex justify-center items-center">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={block.src}
+                    alt={block.alt}
+                    className="max-h-[500px] w-auto max-w-full object-contain rounded-lg mx-auto"
+                    loading="lazy"
+                  />
+                </div>
+                {block.alt && (
+                  <figcaption className="text-xs text-base-content/65 text-center mt-2 italic max-w-lg">
+                    {block.alt}
+                  </figcaption>
+                )}
+              </figure>
             );
 
           default:

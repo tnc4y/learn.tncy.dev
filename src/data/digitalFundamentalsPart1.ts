@@ -2,96 +2,293 @@ import { LessonContent } from "./lessonsData";
 
 export const DIGITAL_FUNDAMENTALS_PART1: Record<string, LessonContent> = {
   // ========================================================
-  // BÖLÜM 1: SAYISAL TASARIMA GİRİŞ
+  // BÖLÜM 1: SAYISAL TASARIMA GİRİŞ (CHIPVERIFY DIGITAL FUNDAMENTALS)
   // ========================================================
   "df-intro": {
     id: "df-intro",
     badge: "Bölüm 1 • Giriş",
-    readingTime: "8 dk okuma",
+    readingTime: "12 dk okuma",
     level: "Başlangıç Seviyesi",
     title: "Sayısal Tasarım Nedir? (What is Digital Design?)",
-    subtitle: "Analog vs Dijital sinyaller, bit kavramı, anahtarlar ile mantıksal kararlar ve bir çipin soyutlama katmanları.",
+    subtitle:
+      "Analog ve dijital sinyaller, bit kavramı, anahtarlar ile mantıksal kararlar, transistörler, mantık kapıları ve bir çipin soyutlama katmanları.",
     sections: [
       {
-        title: "1. Analog ve Dijital Dünyanın Karşılaştırması",
-        content: `Doğadaki neredeyse tüm fiziksel büyüklükler (sıcaklık, ses, ışık şiddeti, basınç) **analog** yani sürekli ve kesintisizdir. Bir reosta (dimmer) lambanın parlaklığını sonsuz ara değerde ayarlayabilir. Ancak analog sinyallerin en büyük zayıflığı **gürültüdür (noise)**: iletim hatlarındaki en ufak bir elektromanyetik dalgalanma analog veriyi bozar ve her kopyalamada hata katlanarak artar.
+        title: "1. Neden Dijital Tasarım Öğrenmelisiniz?",
+        content: `Cebinizdeki akıllı telefon, saniyede milyarlarca kez açılıp kapanan milyarlarca minik anahtar (transistör) içeren gelişmiş bir silikon çipe sahiptir. Bu anahtarlar kameranızı, mesajlarınızı, müziğinizi ve açtığınız her uygulamayı çalıştırır.
 
-Buna karşılık **dijital (sayısal) sistemler** yalnızca iki kesin durumu tanır: **0 (LOW)** ve **1 (HIGH)**. Sinyal voltajındaki küçük dalgalanmalar (örneğin 1.0V yerine 0.92V gelmesi) anlamı değiştirmez; devre bunu yine "1" olarak yorumlar. Bu gürültü bağışıklığı sayesinde dijital veri milyonlarca kez mükemmel ve hatasız kopyalanabilir.`,
-      },
-      {
-        title: "2. Anahtarlar Nasıl Mantıksal Kararlar Alır?",
-        content: `Bir pili, bir lambayı ve iki adet mekanik anahtarı (A ve B) düşünün:
-- **Seri Bağlantı (AND Mantığı):** Akımın lambaya ulaşması için hem A'nın **VE** hem de B'nin kapalı olması gerekir. Biri bile açıksa lamba yanmaz.
-- **Paralel Bağlantı (OR Mantığı):** Akım iki koldan birinden geçebilir; lambanın yanması için A'nın **VEYA** B'nin kapalı olması yeterlidir.
+**Dijital tasarım**, bu anahtarları faydalı işler yapacak şekilde düzenleme sanatıdır ve mühendisliğidir. Henüz elektronik bilmenize gerek yok: Bu eğitim serisi sıradan bir lamba anahtarından başlayarak gerçek bir çipin nasıl bir araya getirildiğinin net bir resmini sunar.
 
-İşte modern bilgisayarların tüm zekası bu basit prensibe dayanır! Mekanik anahtarlar yerine elektrik voltajıyla açılıp kapanan minik anahtarlar yani **transistörler** kullanılır.`,
-        code: {
-          language: "verilog",
-          caption: "seatbelt_logic.v - Temel Karar Mantığı",
-          snippet: `// Emniyet kemeri uyarısı: Koltukta oturan var VE kemer takılı DEĞİL ise alarm çal
-module seatbelt_logic (
-    input  wire seat_occupied, // 1: Koltuk dolu
-    input  wire belt_buckled,  // 1: Kemer takılı
-    output wire alarm          // 1: Alarm çalar
-);
-    // & = AND, ~ = NOT kapısı
-    assign alarm = seat_occupied & ~belt_buckled;
-endmodule`,
+Dijital tasarım, yalnızca iki değerle (**0** ve **1**) çalışan elektronik devreler kurma zanaatıdır. Bir bilgisayarın yaptığı her şey — bir fotoğrafı ekranda göstermek, sayıları toplamak, bir şarkıyı çalmak — transistör adı verilen mikroskobik anahtarlar tarafından taşınan ve birleştirilen bu basit değerlere indirgenir.`,
+        callout: {
+          type: "info",
+          title: "Neden Dijital Tasarım?",
+          message:
+            "Telefonunuzdaki işlemcide saniyede milyarlarca kez anahtarlanan 15+ milyar transistör bulunur. Dijital tasarım, bu devasa transistör denizini organize ederek güvenilir işlemciler, GPU'lar ve donanımlar üretmenizi sağlar.",
         },
       },
       {
-        title: "3. Bir Çipin Soyutlama Katmanları (Abstraction Layers)",
-        content: `Modern bir GPU veya işlemci milyarlarca transistör içerir. Hiçbir mühendis bu transistörleri tek tek elle çizmez. Çip tasarımı bir piramit gibi katmanlara ayrılmıştır:
-1. **Katı Hal Fiziği:** Silikonun iletkenliği ve elektron hareketleri.
-2. **MOSFET Transistörler:** Voltaj kontrollü nano-ölçekli anahtarlar.
-3. **Standart Mantık Kapıları:** NOT, AND, OR, NAND, NOR hücreleri.
-4. **Bileşik & Ardışıl Bloklar:** Toplayıcılar, multiplexer'lar, kaydediciler.
-5. **RTL & Mimariler:** Verilog/SystemVerilog ile yazılan işlemciler ve veri yolları.`,
+        title: "2. Bu Bölümde Neler Öğreneceksiniz?",
+        content: `Bu kapsamlı giriş dersini tamamladığınızda:
+- **"Dijital" kavramının gerçek anlamını** ve bilgisayarların neden yalnızca 0 ve 1 kullandığını kavrayacaksınız.
+- **Basit anahtarların seri ve paralel bağlanarak** nasıl AND (VE) ve OR (VEYA) gibi mantıksal kararlar alabildiğini göreceksiniz.
+- **Transistörün** ve **mantık kapısının (logic gate)** en temel fiziksel çalışma prensibini anlayacaksınız.
+- Bir silikon çipin **katı hal fiziğinden sistem seviyesine kadar katmanlar halinde nasıl inşa edildiğini** (soyutlama piramidi) öğreneceksiniz.`,
+      },
+      {
+        title: "3. Analog vs. Dijital: İki Temel Felsefe",
+        content: `Bir odayı aydınlatmanın iki yolunu düşünün:
+1. Bir **reosta (dimmer)** düğmesi, parlaklığı pürüzsüz bir aralıkta herhangi bir seviyeye ayarlayabilir (az, çok veya aradaki sonsuz sayıda değer).
+2. Standart bir **lamba anahtarının** ise yalnızca iki konumu vardır: **AÇIK (ON)** veya **KAPALI (OFF)**.
+
+Elektronik dünyası da aynı iki temel tarza ayrılır:
+
+| Özellik | Analog | Dijital |
+| :--- | :--- | :--- |
+| **Günlük Hayat Örneği** | Dimmer düğmesi, vinil plak, cıvalı termometre | Normal lamba anahtarı, MP3 müzik dosyası, dijital saat |
+| **İzin Verilen Değerler** | Pürüzsüz sürekli bir aralıktaki herhangi bir değer | Yalnızca iki kesin değer: **0** ve **1** |
+| **Gürültünün (Noise) Etkisi** | Değeri doğrudan bozar, hatalar katlanarak birikir | Genellikle hiçbir etkisi yoktur (gürültü marjı) |
+| **Kopyalama Kararlılığı** | Her kopya bir öncekinden biraz daha bozuktur | Kopyalar %100 mükemmeldir, bozulmaz |
+
+![Analog ve dijital sinyallerin karşılaştırması: Analog sinyal pürüzsüz bir aralıkta herhangi bir değeri alırken, dijital sinyal yalnızca net bir LOW (0) veya HIGH (1) bandındadır; küçük gürültü dalgalanmaları anlamını bozmaz.](/images/digital/0.1-analog-vs-digital.svg)
+
+Dijital mimarinin en büyük süper gücü tablonun üçüncü satırındadır: Dijital bir devre, yalnızca "net olarak YÜKSEK" ile "net olarak DÜŞÜK" seviyelerini ayırt etmek zorundadır. Voltajdaki küçük bir çalkantı (örneğin 1.0 V yerine 0.92 V gelmesi) bir 1'i 0'a dönüştürmez. Böylece bilgi bozulmadan milyonlarca kez iletilebilir, saklanabilir ve kopyalanabilir.`,
+      },
+      {
+        title: "4. Bitler: 0'lar ve 1'ler Dünyası",
+        content: `Tek bir 0 veya 1 değerine **bit** (binary digit - ikili basamak) denir. Gerçek bir elektronik devre içinde bit, bir tel üzerindeki elektriksel voltajdır:
+- **0 (LOW):** Sıfır volta yakın bir voltaj (genellikle 0.0V - 0.2V arası).
+- **1 (HIGH):** Besleme voltajına ($V_{DD}$) yakın bir voltaj (modern gelişmiş bir çip içinde ~0.8V - 1.0V; birçok mikrodeneleyicide veya devre kartında 3.3V veya 5V).
+
+Tek bir bit yalnızca EVET/HAYIR veya AÇIK/KAPALI diyebilir. Ancak bit grupları bir araya geldiğinde çok daha fazlasını ifade edebilir; çünkü her eklenen bit, olası kombinasyon sayısını **ikiye katlar**:
+
+| Bit Sayısı ($N$) | Olası Durum Sayısı ($2^N$) | Ne İçin Yeterlidir? |
+| :---: | :---: | :--- |
+| **1 bit** | $2^1 = 2$ | Evet / Hayır, Açık / Kapalı |
+| **2 bit** | $2^2 = 4$ | Dört mevsim (İlkbahar, Yaz, Sonbahar, Kış) |
+| **8 bit (1 Bayt)** | $2^8 = 256$ | Alfabedeki bir harf (ASCII) veya bir rengin tonu |
+| **24 bit (3 Bayt)** | $2^{24} \approx 16.7\text{ Milyon}$ | Ekranınızdaki tek bir pikselin rengi (Kırmızı, Yeşil, Mavi için 8'er bit) |
+
+\`\`\`
+3 Bit ile Sayma: Her kombinasyon farklı bir sayısal değerdir:
+
+  000    001    010    011    100    101    110    111
+   0      1      2      3      4      5      6      7
+
+3 bit -> 2 x 2 x 2 = 8 farklı durum (0'dan 7'ye kadar)
+\`\`\`
+
+> **Hızlı Soru-Cevap:** 4 bit kaç farklı durum oluşturabilir?  
+> **Cevap:** 16 ($2 \times 2 \times 2 \times 2 = 16$; 0000'dan 1111'e kadar olan 16 farklı desen).`,
+      },
+      {
+        title: "5. Anahtarlar Mantıksal Kararlar Alabilir",
+        content: `İşte tüm dijital elektroniğin ve bilgisayar biliminin temel çekirdek fikri: **Birlikte bağlanan anahtarlar mantıksal kararlar alabilir.**
+
+Bir pil, bir lamba ve iki anahtar (A ve B) düşünün:
+
+![İki sıradan mekanik anahtar doğrudan mantıksal karar üretir. Seri bağlantıda akım yalnızca her iki anahtar da kapalıyken akar (AND). Paralel bağlantıda ise herhangi biri kapalıysa akar (OR).](/images/digital/0.1-switches-series-and-parallel.svg)
+
+- **Seri Bağlantı (Biri diğerinin ardında):** Akım ancak A **VE** B anahtarlarının her ikisi de kapalı olduğunda lambaya ulaşabilir. Lamba yalnızca A AND B devredeyken yanar.
+- **Paralel Bağlantı (Yan yana kollar):** Akım kollardan herhangi birinden akabilir. Lambanın yanması için A **VEYA** B anahtarından birinin kapalı olması yeterlidir.
+
+"Kapalı anahtar" ve "lamba yanıyor" durumuna **1**, "açık anahtar" ve "lamba sönük" durumuna **0** dersek, tüm olasılıkları bir **doğruluk tablosunda (truth table)** listeleyebiliriz:
+
+| A Girişi | B Girişi | Seri Bağlantı (A AND B) | Paralel Bağlantı (A OR B) |
+| :---: | :---: | :---: | :---: |
+| 0 | 0 | **0** | **0** |
+| 0 | 1 | **0** | **1** |
+| 1 | 0 | **0** | **1** |
+| 1 | 1 | **1** | **1** |`,
+        callout: {
+          type: "tip",
+          title: "Bunu Günlük Hayatta Nerede Görüyorsunuz?",
+          message:
+            "Aynı anda iki anahtarın çevrilmesini gerektiren bir banka kasası bir AND (VE) mantığıdır. Merdivenin hem altından hem üstünden açılabilen aydınlatma devresi bir OR (VEYA) mantığıdır. Kapağı kapalı VE başlat düğmesine basılmış olduğunda çalışan bir mikrodalga fırın da mantıktır. Çip içinde bu kararlar elle değil, transistörlerle alınır.",
+        },
+      },
+      {
+        title: "6. Transistörler: Elektrikle Kontrol Edilen Minik Anahtarlar",
+        content: `Mekanik bir lamba anahtarını açıp kapatmak için bir parmağa ihtiyaç vardır. **Transistör** ise bir parmak yerine **voltaj ile açılıp kapatılan** elektronik bir anahtardır.
+
+Kontrol girişine (Gate) YÜKSEK (HIGH) bir voltaj uygulandığında anahtar kapanır ve akım iletir; DÜŞÜK (LOW) bir voltaj uygulandığında ise anahtar açılır ve devreyi keser.
+
+Bu tek özellik çip dünyasındaki her şeyi değiştirir:
+Bir transistör bir voltaj ile kontrol edildiği için ve kendi çıkışı da bir voltaj ürettiği için, **bir transistör doğrudan diğer bir transistörü kontrol edebilir!**
+
+Böylece birbirine bağlanan transistör zincirleri, hiçbir insan müdahalesi olmadan saniyede milyonlarca veya milyarlarca kez kendi kendine karmaşık mantıksal kararlar alabilir.
+
+Modern transistörlerin hareketli hiçbir mekanik parçası yoktur ve boyutları inanılmaz derecede küçüktür. Tek bir insan saçı teli kalınlığına yan yana **1000'den fazla modern transistör** sığabilir! Tırnak büyüklüğündeki küçük bir silikon parçasına 15-20 milyar transistörün sığabilmesinin sırrı budur.`,
+      },
+      {
+        title: "7. Mantık Kapıları: Belirli Bir Görevi Olan Küçük Devreler",
+        content: `Belirli bir mantıksal kararı yürütmek üzere birbirine bağlanmış birkaç transistörden oluşan temel devreye **mantık kapısı (logic gate)** adı verilir. Başlangıç için üç temel kapı yeterlidir:
+
+![Üç temel mantık kapısı: NOT, AND ve OR. Bir hesap makinesinden en güçlü yapay zeka işlemcisine kadar her dijital devre bu kapıların kombinasyonlarıyla inşa edilir.](/images/digital/0.1-basic-logic-gates.svg)
+
+| Kapı | Mantıksal Kural | Günlük Hayat Karşılığı |
+| :--- | :--- | :--- |
+| **NOT (Değil)** | Çıkış, girişin tam tersidir (0 ise 1, 1 ise 0) | "Kapı kapalı DEĞİL ise uyarı lambasını yak" |
+| **AND (Ve)** | Çıkış, yalnızca tüm girişler 1 ise 1 olur | İki anahtarlı banka kasası |
+| **OR (Veya)** | Çıkış, girişlerden en az biri 1 ise 1 olur | İki düğmeli merdiven aydınlatması |
+
+Bu kapıları birbirine bağlayarak akla gelebilecek her şey inşa edilebilir: Sayıları toplayan devreler (toplayıcılar), sinyaller arasında seçim yapan çoğullayıcılar (multiplexer) ve bir biti hafızasında tutan bellek elemanları (flip-flop).
+
+Bellek devreleri ile **saat (clock)** adı verilen düzenli ritmik bir sinyal birleştiğinde, çip adım adım komutları yürüten bir işlemciye (CPU) dönüşür.
+
+> **Hızlı Soru-Cevap:** Bir otomobilin emniyet kemeri uyarısı: Koltukta oturan varsa (1) VE emniyet kemeri takılı DEĞİLSE (0) alarm çalmalıdır. Hangi kapılara ihtiyacınız vardır?  
+> **Cevap:** Emniyet kemeri sinyalinin tersini almak için bir **NOT kapısı**, ardından bu sonucu koltuk sensörüyle birleştirmek için bir **AND kapısı**. Alarm = \`koltuk & ~kemer\`.`,
+      },
+      {
+        title: "8. Donanımı Kod ile Tanımlamak (HDL & Verilog)",
+        content: `Günümüzde hiçbir donanım mühendisi milyarlarca transistörü tek tek elle çizmez. Tasarımcılar, devrenin yapmasını istedikleri davranışı **Verilog** veya **SystemVerilog** gibi bir Donanım Tanımlama Dili (HDL) ile kod olarak tarif ederler:`,
+        code: {
+          language: "verilog",
+          caption: "seatbelt_alarm.v - Donanım Tanımlama Dili (HDL) Örneği",
+          snippet: `// Emniyet kemeri uyarısı: Koltuk dolu VE kemer takılı değilse alarm çal
+module seatbelt_alarm (
+    input  wire seat_taken,   // 1: Koltukta oturan var
+    input  wire belt_on,      // 1: Kemer takılı
+    output wire alarm         // 1: Alarm uyarı sesi çalmalı
+);
+    // & mantıksal AND (VE) demektir, ~ mantıksal NOT (Tersleme) demektir
+    assign alarm = seat_taken & ~belt_on;
+endmodule`,
+        },
+        callout: {
+          type: "success",
+          title: "Sentez Araçları (Synthesis Tools) Ne Yapar?",
+          message:
+            "Bir sentez yazılımı (Synopsys Design Compiler, Vivado vb.) bu Verilog kodunu okur ve silikon dökümhanesinin kütüphanesinden uygun fiziksel kapıları (bir NOT kapısı ve bir AND kapısı) otomatik olarak yerleştirip bağlar.",
+        },
+      },
+      {
+        title: "9. Büyük Resim: Bir Çip Katmanlar Halinde İnşa Edilir",
+        content: `Karmaşık bir çipi anlamanın en kolay yolu onu bir soyutlama piramidi (katmanlar bütünü) olarak görmektir. Her katman bir altındakinin detaylarını gizler; böylece bir mimar tek tek elektronları veya transistörleri düşünmek yerine bloklar ve veri yolları düzeyinde tasarım yapabilir:
+
+![Bir dijital çipin soyutlama katmanları: Katı hal fiziğinden transistörlere, mantık kapılarından sistem bloklarına kadar her katman bir altındakinin detaylarını gizler.](/images/digital/0.1-chip-abstraction-layers.svg)
+
+| Katman | Cevapladığı Temel Mühendislik Sorusu |
+| :--- | :--- |
+| **Malzemeler & Katı Hal Fiziği** | Bir parça saf silikon nasıl elektrik iletebilir ve anahtar gibi davranabilir? |
+| **Transistörler (MOSFET)** | Bir voltaj anahtarı nasıl açıp kapatır ve bu anahtarlama ne kadar hızlıdır? |
+| **Mantık Kapıları (Logic Gates)** | NOT, AND, OR hücrelerini oluşturmak için transistörler nasıl bağlanır? |
+| **Yapı Taşları (Building Blocks)** | Kapılar toplayıcılar, seçiciler (MUX), kaydediciler ve sayaçlara nasıl dönüşür? |
+| **Sistemler & Çipler (VLSI & SoC)** | Bloklar, saat ağaçları, veri yolları ve güç dağıtım hatları üretilebilir bir çipe nasıl evrilir? |
+
+Bu eğitim serisi, işte bu merdiveni en alt basamağından başlayarak tırmanır: Silikonun fiziğinden başlar, transistörler ve kapılar üzerinden geçerek Verilog kodunu gerçek bir fiziksel çipe dönüştüren adımlara kadar uzanır.`,
+        callout: {
+          type: "warning",
+          title: "Alt Katmanlar Neden Hayatidir?",
+          message:
+            "Çoğu çip tasarımcısı günlerini üst katmanlarda Verilog yazarak geçirir. Ancak bir çipin ne kadar hızlı çalışacağını, ne kadar ısınacağını ve pilinin ne kadar dayanacağını alt katmanlardaki fizik belirler. Alttaki fiziksel gerçekliği bilen mühendisler, en yüksek performanslı ve verimli çipleri tasarlayanlardır.",
+        },
+      },
+      {
+        title: "10. Sayısal Tasarımda En Sık Yapılan Yanılgılar",
+        content: `Dijital mantığa yeni başlayanların sıklıkla düştüğü kritik yanılgılar:
+
+1. **Yanılgı #1: "Dijital voltajlar tam olarak 0.0V veya tam olarak besleme voltajıdır."**  
+   Gerçek fizikte voltajlar asla kusursuz değildir. "0" demek "yeterince düşük bir voltaj aralığı", "1" ise "yeterince yüksek bir voltaj aralığı" demektir. Bu tolerans payı (gürültü marjı), dijital devreleri gürültüye karşı bağışık kılan şeydir.
+2. **Yanılgı #2: "Bir çip, bilgisayar programı gibi satır satır çalışır."**  
+   Yazılım programları işlemcide komutları sırayla çalıştırır. Donanım ise tamamen farklıdır: Bir devredeki her kapı **aynı anda, paralel olarak** çalışır. Kodla tarif edilse bile yazılan her satır fiziksel olarak sürekli devrededir.
+3. **Yanılgı #3: "Analog artık önemsizdir."**  
+   Gigahertz frekanslarına çıkıldığında iletim telleri, endüktans ve kapasitans nedeniyle analog davranmaya başlar. Dijital soyutlama mükemmeldir ancak altında her zaman fizik kuralları yatar.`,
+      },
+      {
+        title: "11. Uygulama Alıştırması & Mühendislik Zorlukları",
+        content: `Kendinizi test edin: Aşağıdaki iki günlük hayat devresinin doğruluk tablolarını çıkarın ve seri mi yoksa paralel anahtarlarla mı kurulacağını belirleyin:
+
+1. **Araç Tavan Lambası:** Sürücü kapısı açık (1) VEYA yolcu kapısı açık (1) olduğunda tavan lambası yanmalıdır (1).
+2. **Kasa Güvenlik Kilidi:** Kasa ancak Anahtar A çevrilmiş (1) VE Anahtar B çevrilmiş (1) olduğunda açılmalıdır (1).
+
+| Giriş A | Giriş B | Tavan Lambası (OR) | Kasa Kilidi (AND) |
+| :---: | :---: | :---: | :---: |
+| 0 (Kapalı/Çevrilmemiş) | 0 (Kapalı/Çevrilmemiş) | **0** | **0** |
+| 0 | 1 | **1** | **0** |
+| 1 | 0 | **1** | **0** |
+| 1 | 1 | **1** | **1** |
+
+- **Tavan Lambası:** **Paralel anahtarlar** gerektirir (akım herhangi bir koldan geçebilir).
+- **Kasa Kilidi:** **Seri anahtarlar** gerektirir (akımın geçmesi için her iki anahtarın da kapalı olması zorunludur).`,
+      },
+      {
+        title: "12. Özet ve Sonraki Adım",
+        content: `Bu temel giriş bölümünde öğrendikleriniz:
+- Dijital devreler yalnızca iki değer (0 ve 1) kullanır; bu sayede gürültüye dayanıklıdır ve kusursuz kopyalanır.
+- Bir bit, bir kablo üzerindeki DÜŞÜK veya YÜKSEK voltajdır. Bitler gruplanarak sayılar, harfler ve renkler kodlanır.
+- Seri bağlı anahtarlar bir **AND** kararı; paralel bağlı anahtarlar bir **OR** kararı üretir.
+- Transistör voltajla kontrol edilen bir anahtardır; bu sayede bir transistör diğerini tetikleyebilir.
+- Mantık kapıları (NOT, AND, OR) transistör kümeleridir ve tüm işlemcilerin yapı taşıdır.
+- Donanım tasarımı fizik, transistörler, kapılar ve sistemler olarak katmanlar halinde inşa edilir.
+
+Bir sonraki derste bu piramidin en temeline iniyoruz: **Katı Hal Fiziği, Yarı İletkenler ve Silikon Kristalleri!**`,
       },
     ],
     playground: {
-      title: "Temel Mantık Kapıları ve Emniyet Kemeri Uyarısı",
-      filename: "testbench.v",
+      title: "Verilog ile Emniyet Kemeri Uyarı Mantığı ve Testbench",
+      filename: "tb_seatbelt.v",
       language: "verilog",
-      initialCode: `module tb_seatbelt;
-  reg seat_occupied;
-  reg belt_buckled;
+      initialCode: `// Emniyet Kemeri Mantık Modülü ve Testbench
+module seatbelt_logic (
+    input  wire seat_taken, // 1: Koltukta oturan var
+    input  wire belt_on,    // 1: Emniyet kemeri takılı
+    output wire alarm       // 1: Uyarı sesi çalmalı
+);
+    // Koltuk dolu VE kemer takılı DEĞİLSE alarm çal:
+    assign alarm = seat_taken & ~belt_on;
+endmodule
+
+module tb_seatbelt;
+  reg  seat;
+  reg  belt;
   wire alarm;
 
-  // Tasarım Mantığı: Koltuk dolu VE kemer takılı DEĞİL ise alarm
-  assign alarm = seat_occupied & ~belt_buckled;
+  // Tasarım birimini (DUT) bağla:
+  seatbelt_logic dut (
+    .seat_taken(seat),
+    .belt_on(belt),
+    .alarm(alarm)
+  );
 
   initial begin
-    $display("=== Emniyet Kemeri Mantık Testi ===");
-    $display("Zaman | Koltuk | Kemer | ALARM");
-    $monitor("%4t |   %b    |   %b   |   %b", $time, seat_occupied, belt_buckled, alarm);
+    $display("==================================================");
+    $display("   EMNİYET KEMERİ DİJİTAL MANTIK TESTİ (VERILOG)  ");
+    $display("==================================================");
+    $display(" Zaman | Koltuk (seat) | Kemer (belt) | ALARM ");
+    $monitor(" %4t  |      %b        |      %b       |   %b   ", $time, seat, belt, alarm);
 
-    seat_occupied = 0; belt_buckled = 0; #10;
-    seat_occupied = 1; belt_buckled = 0; #10; // Alarm çalmalı (1 & ~0 = 1)
-    seat_occupied = 1; belt_buckled = 1; #10; // Kemer takıldı, alarm susmalı (1 & ~1 = 0)
-    seat_occupied = 0; belt_buckled = 1; #10;
+    // Test Senaryoları:
+    seat = 0; belt = 0; #10; // Koltuk boş -> Alarm yok (0)
+    seat = 1; belt = 0; #10; // Biri oturdu, kemer takılı değil -> ALARM ÇALMALI (1)
+    seat = 1; belt = 1; #10; // Kemer takıldı -> Alarm susmalı (0)
+    seat = 0; belt = 1; #10; // Koltuk boşaldı, kemer takılı -> Alarm yok (0)
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== Emniyet Kemeri Mantık Testi ===",
-        "Zaman | Koltuk | Kemer | ALARM",
-        "   0 |   0    |   0   |   0",
-        "  10 |   1    |   0   |   1 (ALARM ÇALDI!)",
-        "  20 |   1    |   1   |   0 (Kemer takıldı, sustu)",
-        "  30 |   0    |   1   |   0",
+        "==================================================",
+        "   EMNİYET KEMERİ DİJİTAL MANTIK TESTİ (VERILOG)  ",
+        "==================================================",
+        " Zaman | Koltuk (seat) | Kemer (belt) | ALARM ",
+        "    0  |      0        |      0       |   0   ",
+        "   10  |      1        |      0       |   1   ",
+        "   20  |      1        |      1       |   0   ",
+        "   30  |      0        |      1       |   0   ",
       ],
     },
     quiz: {
-      question: "Analog sinyaller yerine dijital (sayısal) sinyallerin kullanılmasının en büyük mühendislik avantajı nedir?",
+      question:
+        "İki mekanik anahtarın bir lambaya SERİ olarak bağlanması hangi temel mantık kapısına karşılık gelir ve lamba ne zaman yanar?",
       options: [
-        "A) Analog sinyallerin asla kablodan geçememesi",
-        "B) Gürültüye (noise) karşı yüksek bağışıklık ve bilginin hatasız kopyalanabilmesi",
-        "C) Dijital devrelerin hiç elektrik enerjisi tüketmemesi",
-        "D) Dijital sinyallerin ışık hızından hızlı hareket etmesi",
+        "A) OR (Veya) Kapısı — Anahtarlardan herhangi biri kapalı olduğunda lamba yanar.",
+        "B) AND (Ve) Kapısı — Yalnızca her iki anahtar da kapalı olduğunda lamba yanar.",
+        "C) NOT (Değil) Kapısı — Anahtarlar açık olduğunda lamba kendiliğinden yanar.",
+        "D) XOR Kapısı — Anahtarlardan yalnızca biri kapalı olduğunda lamba yanar.",
       ],
       correctIndex: 1,
-      explanation: "Doğru! Dijital sinyaller yalnızca iki voltaj aralığını (0 ve 1) baz aldığı için küçük voltaj parazitleri veriyi bozmaz ve veri sonsuz kez kusursuz kopyalanabilir.",
+      explanation:
+        "Doğru! Seri bağlantıda akım bir anahtardan çıkıp diğerine girmek zorundadır. Devrenin tamamlanması için hem birinci VE hem de ikinci anahtarın kapalı (1) olması şarttır; bu da doğrudan AND mantığıdır.",
     },
   },
 
@@ -101,659 +298,779 @@ endmodule`,
   "df-semiconductors": {
     id: "df-semiconductors",
     badge: "Bölüm 2 • Katı Hal Fiziği",
-    readingTime: "8 dk okuma",
+    readingTime: "10 dk okuma",
     level: "Başlangıç Seviyesi",
-    title: "İletkenler, Yalıtkanlar ve Yarı İletkenler (Semiconductors)",
-    subtitle: "Enerji bant aralığı (Bandgap), Silikon (Si) kristal kafesi ve kovalent bağ mimarisi.",
+    title: "Yarı İletken Fiziği: İletkenler, Yalıtkanlar ve Silikon",
+    subtitle:
+      "Valans ve iletim bantları, enerji aralığı (bandgap), silikon kristal yapısı ve içsel (intrinsic) taşıyıcı yoğunluğu.",
     sections: [
       {
-        title: "1. Enerji Bantları: Değerlik (Valence) ve İletim (Conduction) Bandı",
-        content: `Katı maddelerdeki elektronların bulunabileceği enerji seviyeleri bantlar halindedir:
-- **Değerlik Bandı (Valence Band):** Atom çekirdeğine bağlı, kovalent bağları oluşturan elektronların bulunduğu alt enerji bandı.
-- **İletim Bandı (Conduction Band):** Bağlardan kopup madde içinde serbestçe hareket edebilen ve elektrik akımını ileten elektronların bandı.
-- **Bant Aralığı (Bandgap - Eg):** Bu iki seviye arasındaki yasak enerji bölgesidir.
-  - **İletkenler (Metaller):** Bantlar birbiriyle örtüşür (Eg = 0 eV); oda sıcaklığında sayısız serbest elektron bulunur.
-  - **Yalıtkanlar (Kuvars, Cam):** Bant aralığı çok geniştir (Eg > 5 eV); elektronların iletim bandına atlaması imkansıza yakındır.
-  - **Yarı İletkenler (Silikon, Germanyum):** Orta büyüklükte bir aralığa sahiptir (Silikon için Eg ≈ 1.12 eV). Dışarıdan küçük bir enerji verildiğinde veya katkılandığında kontrollü iletken olurlar.`,
+        title: "1. Elektrik Akımının Temeli: Elektronlar Nasıl Hareket Eder?",
+        content: `Elektrik akımı, yüklü parçacıkların (elektronların) bir iletken boyunca net hareketidir. Ancak bir malzemenin elektriği ne kadar iyi ileteceği, atomik düzeydeki enerji bant yapısı tarafından belirlenir:
+- **Valans Bandı (Valence Band):** Atom çekirdeğine bağlı, kovalent bağları oluşturan elektronların bulunduğu alt enerji seviyesidir.
+- **İletim Bandı (Conduction Band):** Çekirdekten serbest kalmış, kristal örgü içinde özgürce hareket ederek akım taşıyabilen elektronların bulunduğu üst enerji seviyesidir.
+- **Yasak Enerji Aralığı (Bandgap - $E_g$):** Elektronların bulunamayacağı enerji boşluğudur. Bir elektronun akım taşıyabilmesi için valans bandından iletim bandına sıçraması gerekir.`,
       },
       {
-        title: "2. Neden Silikon (Silicon)?",
-        content: `Silikon periyodik tablonun IV. grubunda yer alır; 4 değerlik elektronuna sahiptir ve elmas kristal kafes yapısında komşu 4 silikon atomuyla kovalent bağ kurar.
-Silikonun mikroçip endüstrisinin temeli olmasının 3 ana sebebi vardır:
-1. Yerkabuğunda kum (SiO2) olarak bolca bulunur ve ucuzdur.
-2. Yüksek sıcaklıklarda dahi kararlı kristal kafes yapısını korur.
-3. Havayla veya oksijenle temas ettiğinde yüzeyinde mükemmel bir yalıtkan olan silikon dioksit (SiO2) cam tabakası kendiliğinden oluşur.`,
+        title: "2. Malzemelerin Enerji Aralığına Göre Sınıflandırılması",
+        content: `Doğadaki katı malzemeler yasak enerji aralığına ($E_g$) göre üçe ayrılır:
+
+| Malzeme Türü | Enerji Aralığı ($E_g$) | Davranış & Özellik | Örnekler |
+| :--- | :---: | :--- | :--- |
+| **İletkenler (Conductors)** | $\\sim 0\\text{ eV}$ (Bantlar çakışır) | Oda sıcaklığında trilyonlarca serbest elektron vardır; küçük bir voltajla devasa akım akar. | Bakır (Cu), Alüminyum (Al), Altın (Au) |
+| **Yalıtkanlar (Insulators)** | $> 5 - 9\\text{ eV}$ (Çok geniş) | Valans elektronları çekirdeğe çok sıkı bağlıdır; oda sıcaklığında iletim bandına elektron geçemez. | Silikon dioksit ($SiO_2$), Cam, Elmas |
+| **Yarı İletkenler (Semiconductors)** | $\\sim 1.1\\text{ eV}$ (Orta aralık) | Ne tam iletken ne tam yalıtkandır; iletkenliği sıcaklıkla veya katkılama ile trilyon kat değiştirilebilir! | Silikon (Si), Germanyum (Ge), Galyum Arsenür (GaAs) |`,
+      },
+      {
+        title: "3. Silikon (Si): Modern Dünyanın Kalbi",
+        content: `Periyodik cetvelin 4. grubunda yer alan **Silikon (Si)**, dış kabuğunda 4 valans elektronuna sahiptir. Kusursuz bir silikon kristalinde her silikon atomu, komşu dört atomla kovalent bağ kurarak bir elmas kristal örgüsü oluşturur.
+
+Mutlak sıfır noktasında ($0\\text{ K} = -273.15^\\circ\\text{C}$) tüm elektronlar kovalent bağlara kilitlidir; silikon mükemmel bir yalıtkandır.
+
+Ancak oda sıcaklığında ($300\\text{ K} \\approx 27^\\circ\\text{C}$) ortamdaki termal enerji, bazı kovalent bağları koparır. Bağdan kurtulan elektron iletim bandına geçerek **serbest elektron** haline gelir. Geride bıraktığı boşluğa ise pozitif yüklü bir parçacık gibi davranan **delik (hole)** denir.
+
+İçsel (katkısız) silikonda elektron sayısı delik sayısına eşittir:
+$$n = p = n_i$$
+Oda sıcaklığında silikonun içsel taşıyıcı yoğunluğu $n_i \\approx 1.5 \\times 10^{10}\\text{ cm}^{-3}$'tür. Saf silikonun bir santimetreküpünde yaklaşık $5 \\times 10^{22}$ silikon atomu olduğu düşünülürse, her trilyon atomdan yalnızca birkaçı serbest elektron üretir. Bu nedenle saf silikon bir çip yapmak için yetersizdir.`,
       },
     ],
     playground: {
-      title: "Sıcaklığa Bağlı Silikon İletkenlik Modeli",
-      filename: "testbench.v",
+      title: "Yarı İletken Termal Taşıyıcı Yoğunluğu Simülasyonu",
+      filename: "tb_semiconductors.v",
       language: "verilog",
-      initialCode: `module tb_semiconductor;
-  // Saf silikonda sıcaklık arttıkça kırılan kovalent bağ ve iletkenlik artışı modeli
+      initialCode: `// Sıcaklıkla İçsel Taşıyıcı Üretimi (n_i) Prensibi
+module tb_semiconductor;
   integer sicaklik_kelvin;
-  real termal_gerilim_mV; // Vt = k*T/q
+  real termal_enerji_eV;
+  real k_boltzmann;
 
   initial begin
-    $display("=== Silikon Termal Gerilim (Vt) Analizi ===");
-    $display("T (Kelvin) | T (C) | Vt = kT/q (mV)");
-    
-    for (sicaklik_kelvin = 250; sicaklik_kelvin <= 400; sicaklik_kelvin = sicaklik_kelvin + 50) begin
-      // Boltzmann sabiti k/q ≈ 0.08617 mV/K
-      termal_gerilim_mV = sicaklik_kelvin * 0.08617;
-      $display("  %4d K   | %3d C |   %5.2f mV", 
-               sicaklik_kelvin, sicaklik_kelvin - 273, termal_gerilim_mV);
-    end
-    $display("[SONUÇ] 300K oda sıcaklığında termal voltaj standart 25.85 mV civarındadır.");
+    k_boltzmann = 8.617e-5; // eV/K
+    $display("=== Silikon Termal Enerji Analizi ===");
+    $display("Sıcaklık (K) | Ortam Sıcaklığı (°C) | Termal Voltaj (kT/q) | Durum");
+
+    sicaklik_kelvin = 77; // Sıvı Azot
+    termal_enerji_eV = k_boltzmann * sicaklik_kelvin;
+    $display("%7d K   |      -196 °C         |      %5.3f V         | Taşıyıcılar Donuk (Yalıtkan)", sicaklik_kelvin, termal_enerji_eV);
+
+    sicaklik_kelvin = 300; // Oda Sıcaklığı
+    termal_enerji_eV = k_boltzmann * sicaklik_kelvin;
+    $display("%7d K   |       +27 °C         |      %5.3f V         | Yarı İletken Aktif (n_i)", sicaklik_kelvin, termal_enerji_eV);
+
+    sicaklik_kelvin = 400; // Çalışan Sıcak Bir Çip (127 °C)
+    termal_enerji_eV = k_boltzmann * sicaklik_kelvin;
+    $display("%7d K   |      +127 °C         |      %5.3f V         | Kaçak Akım Artışı!", sicaklik_kelvin, termal_enerji_eV);
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== Silikon Termal Gerilim (Vt) Analizi ===",
-        "T (Kelvin) | T (C) | Vt = kT/q (mV)",
-        "   250 K   | -23 C |   21.54 mV",
-        "   300 K   |  27 C |   25.85 mV (Oda sıcaklığı)",
-        "   350 K   |  77 C |   30.16 mV",
-        "   400 K   | 127 C |   34.47 mV",
-        "[SONUÇ] 300K oda sıcaklığında termal voltaj standart 25.85 mV civarındadır.",
+        "=== Silikon Termal Enerji Analizi ===",
+        "Sıcaklık (K) | Ortam Sıcaklığı (°C) | Termal Voltaj (kT/q) | Durum",
+        "     77 K   |      -196 °C         |      0.007 V         | Taşıyıcılar Donuk (Yalıtkan)",
+        "    300 K   |       +27 °C         |      0.026 V         | Yarı İletken Aktif (n_i)",
+        "    400 K   |      +127 °C         |      0.034 V         | Kaçak Akım Artışı!",
       ],
     },
     quiz: {
-      question: "Saf bir silikon (Si) atomunun değerlik yörüngesinde kaç elektron bulunur ve komşu atomlarla kaç kovalent bağ kurar?",
+      question: "Silikonun iletkenler ve yalıtkanlardan en kritik farkı nedir?",
       options: [
-        "A) 2 elektron, 2 bağ",
-        "B) 4 elektron, 4 bağ",
-        "C) 8 elektron, 8 bağ",
-        "D) 3 elektron, 6 bağ",
+        "A) Silikonun elektriği hiçbir zaman iletmemesi",
+        "B) Yasak enerji aralığının (~1.1 eV) orta büyüklükte olması sayesinde iletkenliğinin katkılama ve voltajla kontrol edilebilmesi",
+        "C) Silikonun oda sıcaklığında sıvı olması",
+        "D) Sadece manyetik alan üretmesi",
       ],
       correctIndex: 1,
-      explanation: "Doğru! Silikon IV. grup elementi olduğundan en dış yörüngesinde 4 değerlik elektronu vardır ve 4 komşu atomla kovalent bağ oluşturur.",
-    },
-  },
-
-  "df-doping": {
-    id: "df-doping",
-    badge: "Bölüm 2 • Katı Hal Fiziği",
-    readingTime: "7 dk okuma",
-    level: "Başlangıç Seviyesi",
-    title: "Katkılama (Doping) Nedir? (N-Tipi ve P-Tipi Yarı İletkenler)",
-    subtitle: "Saf silikona yabancı atom enjeksiyonu: Fosfor (Donor) ile N-tipi, Bor (Akseptör) ile P-tipi oluşumu.",
-    sections: [
-      {
-        title: "1. Neden Katkılama (Doping) Yaparız?",
-        content: `Saf (intrensek) silikon oda sıcaklığında çok az serbest elektrona sahiptir ve neredeyse yalıtkan gibidir. İletkenliğini trilyonlarca kat artırmak ve akım türünü kontrol etmek için kristal kafese milyonda bir oranında yabancı atomlar eklenir; bu işleme **Doping (Katkılama)** denir.`,
-      },
-      {
-        title: "2. N-Tipi Yarı İletken (Elektron Fazlası - Donörler)",
-        content: `Silikona V. gruptan 5 değerlik elektronu olan bir atom (örneğin **Fosfor - P** veya **Arsenik - As**) eklendiğinde:
-- 4 elektron silikonla kovalent bağ kurar.
-- 5. elektron boşa çıkar ve çok az enerjiyle serbest kalıp kafeste serbestçe dolaşır.
-- Bu atomlara elektron bağışladıkları için **Donör (Verici)** denir.
-- **N-tipi** yarı iletkende çoğunluk taşıyıcıları **elektronlar (negatif yük)**, azınlık taşıyıcıları ise boşluklardır (holler).`,
-      },
-      {
-        title: "3. P-Tipi Yarı İletken (Boşluk Fazlası - Akseptörler)",
-        content: `Silikona III. gruptan 3 değerlik elektronu olan bir atom (örneğin **Bor - B**) eklendiğinde:
-- 3 elektron silikonla bağ kurar, 4. bağda bir elektron eksik kalır!
-- Bu eksik bağa **Boşluk (Hole)** denir. Komşu bir elektron bu boşluğu doldurduğunda boşluk yer değiştirir; adeta pozitif yüklü bir parçacık gibi davranır.
-- Bu atomlara elektron kabul ettikleri için **Akseptör (Alıcı)** denir.
-- **P-tipi** yarı iletkende çoğunluk taşıyıcıları **boşluklar (pozitif yük)**, azınlık taşıyıcıları ise elektronlardır.`,
-      },
-    ],
-    playground: {
-      title: "N-Tipi ve P-Tipi Taşıyıcı Yoğunluğu Simülasyonu",
-      filename: "testbench.v",
-      language: "verilog",
-      initialCode: `module tb_doping;
-  // Kütle Etkisi Yasası: n * p = ni^2 (Oda sıcaklığında ni ≈ 1.5e10 cm^-3)
-  real Nd; // Donor yoğunluğu (cm^-3)
-  real Na; // Akseptör yoğunluğu (cm^-3)
-  real n, p; // Elektron ve delik yoğunlukları
-
-  initial begin
-    $display("=== Katkılama (Doping) Taşıyıcı Analizi ===");
-    
-    // 1. N-Tipi Silikon (Nd = 1e16 cm^-3 Fosfor)
-    Nd = 1.0e16;
-    n = Nd; // Çoğunluk elektronlar
-    p = (2.25e20) / n; // Azınlık delikler = ni^2 / n
-    $display("1. N-Tipi (Fosfor Katkılı, Nd = 1e16):");
-    $display("   Elektron Yoğunluğu (n) = %e cm^-3 (ÇOĞUNLUK)", n);
-    $display("   Boşluk Yoğunluğu   (p) = %e cm^-3 (AZINLIK)", p);
-
-    // 2. P-Tipi Silikon (Na = 1e17 cm^-3 Bor)
-    Na = 1.0e17;
-    p = Na; // Çoğunluk boşluklar
-    n = (2.25e20) / p; // Azınlık elektronlar
-    $display("\\n2. P-Tipi (Bor Katkılı, Na = 1e17):");
-    $display("   Boşluk Yoğunluğu   (p) = %e cm^-3 (ÇOĞUNLUK)", p);
-    $display("   Elektron Yoğunluğu (n) = %e cm^-3 (AZINLIK)", n);
-
-    $finish;
-  end
-endmodule`,
-      expectedOutput: [
-        "=== Katkılama (Doping) Taşıyıcı Analizi ===",
-        "1. N-Tipi (Fosfor Katkılı, Nd = 1e16):",
-        "   Elektron Yoğunluğu (n) = 1.000000e+16 cm^-3 (ÇOĞUNLUK)",
-        "   Boşluk Yoğunluğu   (p) = 2.250000e+04 cm^-3 (AZINLIK)",
-        "2. P-Tipi (Bor Katkılı, Na = 1e17):",
-        "   Boşluk Yoğunluğu   (p) = 1.000000e+17 cm^-3 (ÇOĞUNLUK)",
-        "   Elektron Yoğunluğu (n) = 2.250000e+03 cm^-3 (AZINLIK)",
-      ],
-    },
-    quiz: {
-      question: "Saf silikona Bor (B) atomu eklendiğinde hangi tip yarı iletken oluşur ve çoğunluk yük taşıyıcısı ne olur?",
-      options: [
-        "A) N-tipi oluşur, çoğunluk elektronlardır",
-        "B) P-tipi oluşur, çoğunluk pozitif yüklü boşluklardır (holler)",
-        "C) İletken metal oluşur",
-        "D) Tam yalıtkan cam oluşur",
-      ],
-      correctIndex: 1,
-      explanation: "Doğru! Bor 3 değerlik elektronuna sahip bir III. grup elementi olduğundan silikon kafesinde elektron eksikliği yani 'boşluk' (hole) yaratır ve P-tipi yarı iletken oluşturur.",
-    },
-  },
-
-  "df-pn-junction": {
-    id: "df-pn-junction",
-    badge: "Bölüm 2 • Katı Hal Fiziği",
-    readingTime: "8 dk okuma",
-    level: "Orta Seviye",
-    title: "PN Eklemi ve Diyot Mimarisi (The PN Junction)",
-    subtitle: "Fakirleşmiş bölge (Depletion Region), dahili elektrik alanı (Vbi) ve ileri/ters kutuplama mekanizması.",
-    sections: [
-      {
-        title: "1. PN Eklemi Bir Araya Geldiğinde Ne Olur?",
-        content: `P-tipi ve N-tipi iki yarı iletken parça tek bir kristal üzerinde birleştiğinde temas yüzeyinde inanılmaz bir fiziksel olay gerçekleşir:
-1. **Difüzyon:** N bölgesindeki bol elektronlar P bölgesine doğru, P bölgesindeki bol boşluklar N bölgesine doğru akmaya başlar.
-2. **Yük Tutulması:** N tarafından ayrılan elektronlar geride pozitif donör iyonları (\`+\`), P tarafından ayrılan boşluklar geride negatif akseptör iyonları (\`-\`) bırakır.
-3. **Fakirleşmiş Bölge (Depletion Region):** Arayüzde hareketli yüklerden arınmış sabit iyon tabakası oluşur. Bu iyonlar N'den P'ye doğru bir **dahili elektrik alanı (Built-in Potential - Vbi)** üretir (Silikon için yaklaşık 0.7V).
-4. Bu elektrik alanı difüzyonu dengeler ve akış durur.`,
-      },
-      {
-        title: "2. İleri Kutuplama (Forward Bias) vs Ters Kutuplama (Reverse Bias)",
-        content: `- **İleri Kutuplama (P'ye +, N'ye -):** Dış voltaj dahili elektrik alanını zayıflatır, fakirleşmiş bölge daralır. Gerilim 0.7V eşiğini aştığı anda çığ gibi akım akar (Diyot iletime geçer).
-- **Ters Kutuplama (P'ye -, N'ye +):** Dış voltaj dahili elektrik alanını destekler, fakirleşmiş bölge daha da genişler! Akım geçişi engellenir (Yalnızca piko-amper seviyesinde minik bir kaçak akım akar). Bu, tek yönlü akım vanasıdır (diyot).`,
-      },
-    ],
-    playground: {
-      title: "PN Eklemi Akım-Gerilim (I-V) Eğrisi Simülatörü",
-      filename: "testbench.v",
-      language: "verilog",
-      initialCode: `module tb_pn_junction;
-  // Shockley Diyot Denklemi: Id = Is * (e^(Vd / Vt) - 1)
-  real Vd; // Diyot gerilimi (Volt)
-  real Is; // Doyum akımı (10^-14 Amper)
-  real Vt; // Termal gerilim (0.026 V)
-  real Id_mA; // Diyot akımı (miliamper)
-
-  initial begin
-    Is = 1.0e-14;
-    Vt = 0.026;
-    $display("=== PN Eklemi (Diyot) I-V Karakteristiği ===");
-    $display("Vd (Volt) | Akım Durumu");
-
-    // Ters Kutuplama
-    Vd = -2.0;
-    $display("%7.2f V | ~0 mA (Ters Kutuplama - İletim YOK, Blokaj)", Vd);
-
-    Vd = 0.0;
-    $display("%7.2f V |  0.0 mA (Denge Durumu)", Vd);
-
-    Vd = 0.5;
-    $display("%7.2f V |  0.002 mA (Eşik altı, sızıntı)", Vd);
-
-    Vd = 0.7;
-    $display("%7.2f V |  5.0 mA (EŞİK AŞILDI! Üstel İletim Başladı)", Vd);
-
-    Vd = 0.75;
-    $display("%7.2f V | 34.2 mA (Tam İletken)", Vd);
-    
-    $display("\\n[ÖZET] Silikon PN eklemi ~0.7V eşiğinde aniden tam iletime geçer.");
-    $finish;
-  end
-endmodule`,
-      expectedOutput: [
-        "=== PN Eklemi (Diyot) I-V Karakteristiği ===",
-        "Vd (Volt) | Akım Durumu",
-        "  -2.00 V | ~0 mA (Ters Kutuplama - İletim YOK, Blokaj)",
-        "   0.00 V |  0.0 mA (Denge Durumu)",
-        "   0.50 V |  0.002 mA (Eşik altı, sızıntı)",
-        "   0.70 V |  5.0 mA (EŞİK AŞILDI! Üstel İletim Başladı)",
-        "   0.75 V | 34.2 mA (Tam İletken)",
-        "[ÖZET] Silikon PN eklemi ~0.7V eşiğinde aniden tam iletime geçer.",
-      ],
-    },
-    quiz: {
-      question: "Silikon bir PN ekleminde serbest yüklerden arınmış 'fakirleşmiş bölge' (depletion region) tarafından oluşturulan dahili gerilim eşiği oda sıcaklığında yaklaşık kaç volttur?",
-      options: ["A) 0.1 V", "B) 0.7 V", "C) 3.3 V", "D) 5.0 V"],
-      correctIndex: 1,
-      explanation: "Doğru! Silikon PN ekleminin dahili potansiyeli (built-in voltage) oda sıcaklığında yaklaşık 0.65V - 0.7V arasındadır; diyot bu voltaj aşıldığında iletime geçer.",
-    },
-  },
-
-  "df-carriers-temperature": {
-    id: "df-carriers-temperature",
-    badge: "Bölüm 2 • Katı Hal Fiziği",
-    readingTime: "7 dk okuma",
-    level: "Orta Seviye",
-    title: "Yük Taşıyıcıları, Akım & Sıcaklık Bağımlılığı",
-    subtitle: "Sürüklenme (Drift) vs Difüzyon akımı, elektron hareketliliği (Mobility μ) ve ısınan çiplerin yavaşlama sebebi.",
-    sections: [
-      {
-        title: "1. İki Temel Akım Mekanizması: Sürüklenme ve Difüzyon",
-        content: `Bir yarı iletkende akım iki farklı itici güçle akar:
-- **Sürüklenme Akımı (Drift Current):** Elektrik alanının (\`E\`) etkisiyle yüklerin voltaj yönünde sürüklenmesidir (\`J_drift = q · n · μ · E\`).
-- **Difüzyon Akımı (Diffusion Current):** Yüksek yoğunluklu bölgeden düşük yoğunluklu bölgeye doğru yoğunluk gradyanı sebebiyle rastgele yayılmadır (\`J_diff = q · D · dn/dx\`).`,
-      },
-      {
-        title: "2. Taşıyıcı Hareketliliği (Mobility - μ) ve Sıcaklık Etkisi",
-        content: `Elektronlar kafes içinde serbestçe akarken silikon atomlarının termal titreşimlerine çarparlar.
-- **Elektron vs Boşluk:** Elektronların hareketliliği (\`μn ≈ 1400 cm²/V·s\`), boşlukların hareketliliğinden (\`μp ≈ 450 cm²/V·s\`) yaklaşık **2.5 ila 3 kat daha fazladır**! Bu yüzden NMOS transistörler PMOS'tan çok daha hızlıdır.
-- **Sıcaklık Artarsa Ne Olur?** Sıcaklık arttıkça kristal kafes atomları daha şiddetli titrer ve elektronlara daha sık çarpar. Sonuç olarak **hareketlilik (mobility) düşer ve çip yavaşlar!** Yüksek sıcaklıkta çalışan işlemcilerin frekans düşürmesinin (thermal throttling) temel fiziksel nedeni budur.`,
-      },
-    ],
-    playground: {
-      title: "Sıcaklığa Bağlı Elektron Hareketliliği (Mobility) Hesabı",
-      filename: "testbench.v",
-      language: "verilog",
-      initialCode: `module tb_mobility;
-  // Kafes saçılması modeli: mu(T) = mu0 * (T / 300)^(-1.5)
-  integer T;
-  real mu_elektron;
-  real mu_delik;
-
-  initial begin
-    $display("=== Sıcaklığa Göre Taşıyıcı Hareketliliği (cm^2/V*s) ===");
-    $display("Sıcaklık | Elektron Hızı (μn) | Delik Hızı (μp) | Oran (μn/μp)");
-
-    for (T = 300; T <= 420; T = T + 30) begin
-      // T=300K'de mu_n=1400, mu_p=450
-      mu_elektron = 1400.0 * ( (300.0 / T) ** 1.5 );
-      mu_delik    = 450.0  * ( (300.0 / T) ** 1.5 );
-      $display(" %3d K   |    %6.1f cm^2/Vs   |  %6.1f cm^2/Vs  |   %4.2f", 
-               T, mu_elektron, mu_delik, mu_elektron / mu_delik);
-    end
-
-    $display("\\n[FİZİKSEL GERÇEK] Çip 300K'den 420K'e (147 C) ısındığında hız %%40 düşer!");
-    $finish;
-  end
-endmodule`,
-      expectedOutput: [
-        "=== Sıcaklığa Göre Taşıyıcı Hareketliliği (cm^2/V*s) ===",
-        "Sıcaklık | Elektron Hızı (μn) | Delik Hızı (μp) | Oran (μn/μp)",
-        " 300 K   |    1400.0 cm^2/Vs   |   450.0 cm^2/Vs  |   3.11",
-        " 330 K   |    1214.3 cm^2/Vs   |   390.3 cm^2/Vs  |   3.11",
-        " 360 K   |    1065.7 cm^2/Vs   |   342.5 cm^2/Vs  |   3.11",
-        " 390 K   |     944.3 cm^2/Vs   |   303.5 cm^2/Vs  |   3.11",
-        " 420 K   |     843.4 cm^2/Vs   |   271.1 cm^2/Vs  |   3.11",
-        "[FİZİKSEL GERÇEK] Çip 300K'den 420K'e (147 C) ısındığında hız %40 düşer!",
-      ],
-    },
-    quiz: {
-      question: "Silikonda elektron hareketliliğinin (mobility) pozitif delik (hole) hareketliliğinden yaklaşık 3 kat daha fazla olmasının dijital devre tasarımındaki doğrudan sonucu nedir?",
-      options: [
-        "A) PMOS transistörlerin NMOS'tan daha hızlı olması",
-        "B) Eşit akım ve hız elde etmek için PMOS transistörlerin NMOS'tan 2-3 kat daha geniş (W) tasarlanması gerekmesi",
-        "C) Deliklerin akım taşımaktan vazgeçmesi",
-        "D) Tüm çiplerin yalnızca tek bir transistörle üretilmesi",
-      ],
-      correctIndex: 1,
-      explanation: "Doğru! Boşluklar daha yavaş hareket ettiği için, CMOS kapılarında yükselme ve düşme sürelerini dengelemek amacıyla PMOS transistörün kanal genişliği (W) NMOS'un yaklaşık 2-3 katı yapılır.",
+      explanation:
+        "Doğru! Silikonun ~1.1 eV bandgap'e sahip olması, atomik düzeyde kontrollü katkılama (doping) yapılarak iletkenliğinin trilyonlarca kat hassasiyetle ayarlanabilmesini sağlar.",
     },
   },
 
   // ========================================================
-  // BÖLÜM 3: THE MOSFET (TRANSİSTÖR MİMARİSİ)
+  // BÖLÜM 2: WHAT IS DOPING ? (KATKILAMA)
+  // ========================================================
+  "df-doping": {
+    id: "df-doping",
+    badge: "Bölüm 2 • Katı Hal Fiziği",
+    readingTime: "11 dk okuma",
+    level: "Başlangıç Seviyesi",
+    title: "Katkılama Nedir? (What is Doping? N-Tipi ve P-Tipi)",
+    subtitle:
+      "N-tipi (donör) ve P-tipi (akseptör) yarı iletkenler, çoğunluk ve azınlık taşıyıcıları, oran kuralı ve Multi-Threshold kütüphaneleri.",
+    sections: [
+      {
+        title: "1. Saf Silikon Neden Yetersizdir?",
+        content: `Saf (içsel) silikonda oda sıcaklığında serbest elektron sayısı son derece azdır ($n_i \\approx 1.5 \\times 10^{10}\\text{ cm}^{-3}$). Akım taşımak için yeterli yük taşıyıcısı bulunmadığından saf silikon pratik bir transistör yapmaya yetmez.
+
+Silikonun iletkenliğini trilyonlarca kat artırmanın yolu **katkılama (doping)** işlemidir: Silikon kristal örgüsü içerisine milyonda bir oranında yabancı atomlar (safsızlıklar) enjekte edilir.`,
+      },
+      {
+        title: "2. N-Tipi Katkılama: Fazladan Elektron Eklemek",
+        content: `Periyodik cetvelin 5. grubunda yer alan elementler (örneğin **Fosfor - P** veya **Arsenik - As**) dış kabuklarında 5 valans elektronuna sahiptir.
+
+Silikon kafesindeki bir Si atomunun yerine bir Fosfor atomu yerleştiğinde:
+- Fosforun 4 elektronu komşu silikon atomlarıyla kovalent bağ kurar.
+- 5. elektron ise hiçbir bağa katılmaz, çekirdeğe çok zayıf bağlıdır ve oda sıcaklığındaki termal enerjiyle kolayca serbest kalır!
+
+Bu tip yabancı atomlara elektron bağışladıkları için **Donör (Verici)** atomlar ($N_D$) denir. Serbest negatif elektronların çoğunlukta olduğu bu malzemeye **N-Tipi Yarı İletken** denir.
+- **Çoğunluk Taşıyıcıları (Majority Carriers):** Negatif elektronlar ($n$).
+- **Azınlık Taşıyıcıları (Minority Carriers):** Termal olarak üretilen pozitif delikler ($p$).`,
+      },
+      {
+        title: "3. P-Tipi Katkılama: Delikler (Boşluklar) Yaratmak",
+        content: `Periyodik cetvelin 3. grubunda yer alan elementler (örneğin **Bor - B**) dış kabuklarında yalnızca 3 valans elektronuna sahiptir.
+
+Silikon kafesine bir Bor atomu yerleştiğinde:
+- Bor komşu 4 silikon atomuyla bağ kurmak ister ama elinde 3 elektron vardır; 4. bağda bir elektron eksik kalır!
+- Bu eksiklik bir **delik (hole)** oluşturur. Komşu bir kovalent bağdan elektron bu deliğe atlayabilir, bu da deliğin kristal içinde pozitif bir parçacık gibi serbestçe hareket etmesini sağlar.
+
+Bu atomlara dışarıdan elektron kabul edebildikleri için **Akseptör (Alıcı)** atomlar ($N_A$) denir. Pozitif deliklerin çoğunlukta olduğu bu malzemeye **P-Tipi Yarı İletken** denir.
+- **Çoğunluk Taşıyıcıları:** Pozitif delikler ($p$).
+- **Azınlık Taşıyıcıları:** Negatif serbest elektronlar ($n$).`,
+      },
+      {
+        title: "4. Kütle Hareketi Kanunu ve Taşıyıcı Dengesi",
+        content: `Termodinamik dengede bir yarı iletkende elektron ve delik yoğunluklarının çarpımı daima sabittir:
+$$n \\cdot p = n_i^2$$
+
+Eğer silikona yüksek oranda donör katkılanırsa ($N_D = 10^{17}\\text{ cm}^{-3}$):
+$$n \\approx N_D = 10^{17}\\text{ cm}^{-3}$$
+$$p = \\frac{n_i^2}{n} = \\frac{(1.5 \\times 10^{10})^2}{10^{17}} = 2.25 \\times 10^3\\text{ cm}^{-3}$$
+Görüldüğü üzere çoğunluk taşıyıcıları (elektronlar) azınlık taşıyıcılarına (delikler) kıyasla trilyonlarca kat daha fazladır!`,
+      },
+      {
+        title: "5. Çip Tasarımında Nerede Kullanılır? Multi-Threshold Kütüphaneleri",
+        content: `Modern bir CMOS çipinde transistörlerin eşik gerilimi ($V_{th}$) doğrudan kanal altındaki katkılama konsantrasyonuyla ayarlanır:
+- **LVT (Low-Vth Cells):** Düşük katkılama -> Hızlı anahtarlar ama yüksek sızıntı/kaçak akım (Kritik yollarda kullanılır).
+- **SVT (Standard-Vth Cells):** Standart hız ve dengeli güç.
+- **HVT (High-Vth Cells):** Yüksek katkılama -> Yavaş anahtarlar ama mikroskobik kaçak akım (Pil tasarrufu için kritik olmayan bloklarda kullanılır).`,
+      },
+    ],
+    playground: {
+      title: "Katkılama Taşıyıcı Yoğunluğu ve n*p = n_i^2 Doğrulama Testi",
+      filename: "tb_doping.v",
+      language: "verilog",
+      initialCode: `module tb_doping;
+  real ni;
+  real Nd;
+  real n;
+  real p;
+
+  initial begin
+    ni = 1.5e10; // Silikon ni = 1.5e10 cm^-3
+    Nd = 1.0e17; // Donör katkılama yoğunluğu
+
+    n = Nd;
+    p = (ni * ni) / n;
+
+    $display("=== N-Tipi Silikon Taşıyıcı Analizi ===");
+    $display("İçsel Yoğunluk (ni)     : %e cm^-3", ni);
+    $display("Donör Katkısı (Nd)      : %e cm^-3", Nd);
+    $display("Çoğunluk (Elektronlar n): %e cm^-3", n);
+    $display("Azınlık (Delikler p)    : %e cm^-3", p);
+    $display("n * p Çarpımı           : %e (ni^2 = 2.25e20 olmalı)", n * p);
+    $finish;
+  end
+endmodule`,
+      expectedOutput: [
+        "=== N-Tipi Silikon Taşıyıcı Analizi ===",
+        "İçsel Yoğunluk (ni)     : 1.500000e+10 cm^-3",
+        "Donör Katkısı (Nd)      : 1.000000e+17 cm^-3",
+        "Çoğunluk (Elektronlar n): 1.000000e+17 cm^-3",
+        "Azınlık (Delikler p)    : 2.250000e+03 cm^-3",
+        "n * p Çarpımı           : 2.250000e+20 (ni^2 = 2.25e20 olmalı)",
+      ],
+    },
+    quiz: {
+      question: "Saf silikona 5 valans elektronlu Fosfor atomu eklendiğinde ne oluşur?",
+      options: [
+        "A) P-Tipi yarı iletken ve serbest delikler",
+        "B) N-Tipi yarı iletken ve serbest elektronlar",
+        "C) Silikon tamamen yalıtkan hale gelir",
+        "D) Silikon erir",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Doğru! 5 valans elektronlu Fosforun 4 elektronu kovalent bağ kurarken 5. elektronu serbest kalarak N-Tipi (Negatif yüklü taşıyıcı zengini) yarı iletken oluşturur.",
+    },
+  },
+
+  // ========================================================
+  // BÖLÜM 2: THE PN JUNCTION (PN EKLEMİ)
+  // ========================================================
+  "df-pn-junction": {
+    id: "df-pn-junction",
+    badge: "Bölüm 2 • Katı Hal Fiziği",
+    readingTime: "11 dk okuma",
+    level: "Orta Seviye",
+    title: "PN Eklemi ve Diyot Karakteristiği (The PN Junction)",
+    subtitle:
+      "Tüketim bölgesi (depletion region), dahili potansiyel (Vbi), ileri/ters kutuplama ve CMOS çiplerindeki parazitik eklemler.",
+    sections: [
+      {
+        title: "1. P-Tipi ve N-Tipi Karşılaştığında Ne Olur?",
+        content: `P-tipi ve N-tipi yarı iletkenler aynı kristal yapı içinde bir araya getirildiğinde sınır bölgesinde muazzam bir taşıyıcı yoğunluğu farkı oluşur:
+- N tarafındaki serbest elektronlar difüzyonla P tarafına doğru akar.
+- P tarafındaki delikler ise N tarafına doğru difüze olur.
+
+Elektronlar ve delikler sınırda karşılaştıklarında birbirlerini nötrlerler (rekombinasyon). Ancak bu durum sınırda geride iyonlaşmış hareketsiz atom çekirdekleri bırakır:
+- N tarafında elektronunu kaybeden donör atomlar pozitif yüklü iyonlar ($N_D^+$) olarak kalır.
+- P tarafında delik kaybeden akseptör atomlar negatif yüklü iyonlar ($N_A^-$) olarak kalır.`,
+      },
+      {
+        title: "2. Tüketim Bölgesi (Depletion Region) ve Dahili Potansiyel ($V_{bi}$)",
+        content: `Bu hareketsiz iyonlar sınırda serbest taşıyıcılardan arındırılmış bir bölge meydana getirir: Buna **tüketim bölgesi (depletion region)** veya boşalmış bölge denir.
+
+Pozitif iyonlardan negatif iyonlara doğru yönelen dahili bir elektrik alan oluşur. Bu elektrik alan daha fazla elektronun karşıya geçmesini engeller ve denge kurulur. Bu potansiyel bariyerine **Dahili Potansiyel (Built-in Potential - $V_{bi}$)** denir:
+$$V_{bi} = \\frac{kT}{q} \\ln\\left(\\frac{N_A N_D}{n_i^2}\\right)$$
+Silikon için oda sıcaklığında $V_{bi}$ tipik olarak **0.6 V - 0.8 V** arasındadır.`,
+      },
+      {
+        title: "3. İleri ve Ters Kutuplama (Forward vs Reverse Bias)",
+        content: `| Kutuplama Türü | Uygulanan Voltaj | Tüketim Bölgesi | Akım Durumu |
+| :--- | :--- | :--- | :--- |
+| **Denge (Sıfır Voltaj)** | $V = 0\\text{ V}$ | Kararlı genişlik | Net akım sıfırdır. |
+| **İleri Kutuplama (Forward Bias)** | $P > N$ ($V > 0.7\\text{ V}$) | Daralır ve bariyer çöker | Devasa difüzyon akımı akar (AÇIK). |
+| **Ters Kutuplama (Reverse Bias)** | $N > P$ ($V < 0\\text{ V}$) | Genişler | Akım akmaz, sadece pikoamper seviyesinde kaçak akım akar (KAPALI). |
+
+> **CMOS Çiplerinde PN Eklemleri Nerededir?**  
+> Her MOSFET transistörünün Source ve Drain bölgeleri gövdeyle (Body/Substrate) birer PN eklemi oluşturur! Bir NMOS transistöründe N+ Source/Drain ile P-Substrate her zaman **Ters Kutuplanmış** tutulur; aksi takdirde çipin tüm besleme akımı gövdeye akarak çipi yakar!`,
+      },
+    ],
+    playground: {
+      title: "PN Eklem Dahili Potansiyel (Vbi) Hesaplayıcı",
+      filename: "tb_pn_junction.v",
+      language: "verilog",
+      initialCode: `module tb_pn_junction;
+  real Vt;  // Termal voltaj kT/q (~0.0259V)
+  real Na;  // P-tarafı akseptör
+  real Nd;  // N-tarafı donör
+  real ni;  // İçsel taşıyıcı
+  real Vbi; // Dahili potansiyel
+
+  initial begin
+    Vt = 0.0259;
+    ni = 1.5e10;
+    Na = 1.0e17;
+    Nd = 1.0e17;
+
+    // Vbi = Vt * ln(Na*Nd / ni^2)
+    Vbi = Vt * $ln((Na * Nd) / (ni * ni));
+
+    $display("=== PN Eklemi Dahili Potansiyel (Vbi) ===");
+    $display("Na Katkısı       : %e cm^-3", Na);
+    $display("Nd Katkısı       : %e cm^-3", Nd);
+    $display("Dahili Bariyer Vbi: %5.3f Volt (Tipik silikon eşiği: ~0.7V)", Vbi);
+    $finish;
+  end
+endmodule`,
+      expectedOutput: [
+        "=== PN Eklemi Dahili Potansiyel (Vbi) ===",
+        "Na Katkısı       : 1.000000e+17 cm^-3",
+        "Nd Katkısı       : 1.000000e+17 cm^-3",
+        "Dahili Bariyer Vbi: 0.814 Volt (Tipik silikon eşiği: ~0.7V)",
+      ],
+    },
+    quiz: {
+      question: "Bir PN eklemine TERS kutuplama uygulandığında tüketim bölgesine ne olur?",
+      options: [
+        "A) Tüketim bölgesi tamamen yok olur",
+        "B) Tüketim bölgesi genişler ve akım akışı engellenir",
+        "C) Diyot patlar",
+        "D) Doğru akım sonsuza gider",
+      ],
+      correctIndex: 1,
+      explanation:
+        "Doğru! Ters kutuplama (N tarafına pozitif voltaj) uygulandığında dış voltaj dahili elektrik alanla aynı yönde etki ederek taşıyıcıları sınırdan uzaklaştırır ve tüketim bölgesini daha da genişletir.",
+    },
+  },
+
+  // ========================================================
+  // BÖLÜM 2: CARRIERS, CURRENT & TEMPERATURE
+  // ========================================================
+  "df-carriers-temperature": {
+    id: "df-carriers-temperature",
+    badge: "Bölüm 2 • Katı Hal Fiziği",
+    readingTime: "10 dk okuma",
+    level: "Orta Seviye",
+    title: "Taşıyıcı İletimi ve Sıcaklık Etkileri (Carriers & Temperature)",
+    subtitle:
+      "Sürüklenme (drift), difüzyon, Einstein ilişkisi, sıcaklıkla azalan mobilite ve termal kaçak (thermal runaway).",
+    sections: [
+      {
+        title: "1. Taşıyıcı İletiminin İki Mekanizması: Drift ve Difüzyon",
+        content: `Yarı iletkende akım iki temel fiziksel kuvvetle taşınır:
+1. **Sürüklenme (Drift):** Elektrik alanın ($E$) yüklü parçacıklara uyguladığı elektrostatik kuvvet sonucu oluşan hareket:
+   $$v_d = \\mu \\cdot E$$
+   Burada $\\mu$ (mobilite), elektronların veya deliklerin kristal içinde ne kadar kolay hızlandığını belirtir.
+2. **Difüzyon (Diffusion):** Taşıyıcıların yoğun bölgeden seyrek bölgeye doğru rastgele termal saçılmayla yayılması:
+   $$J_{diff} = q D_n \\frac{dn}{dx}$$
+
+Bu iki mekanizma **Einstein İlişkisi** ile birbirine bağlıdır:
+$$\\frac{D}{\\mu} = \\frac{kT}{q} = V_t$$`,
+      },
+      {
+        title: "2. Sıcaklığın İki Zıt Etkisi",
+        content: `Bir çip ısındığında (örneğin $25^\\circ\\text{C}$'den $105^\\circ\\text{C}$'ye çıktığında) transistörlerde iki büyük değişim gerçekleşir:
+
+1. **Taşıyıcı Mobilitesi Düşer (Çip Yavaşlar!):** Kristal kafes atomları yüksek sıcaklıkta şiddetle titreşir (fonon saçılması). Elektronlar atomlara çarpmaktan hızlanamaz; mobilite $\\mu(T) \\propto T^{-1.5}$ ile düşer. Bu yüzden sıcak bir çip daha yavaş çalışır ve maksimum frekansı düşer!
+2. **Termal Kaçak Akım Katlanarak Artar:** İçsel taşıyıcı üretimi $n_i$ sıcaklıkla üssel artar. Bu durum transistör kapalıyken bile akmasına sebep olan **eşikaltı kaçak akımını (subthreshold leakage)** dramatik biçimde artırır!`,
+      },
+    ],
+    playground: {
+      title: "Sıcaklıkla Mobilite Düşüşü ve Çip Frekans Kaybı",
+      filename: "tb_temp_mobility.v",
+      language: "verilog",
+      initialCode: `module tb_temp;
+  real T_oda;
+  real T_sicak;
+  real mu_oda;
+  real mu_sicak;
+
+  initial begin
+    T_oda = 300.0;   // 27 °C
+    T_sicak = 398.0; // 125 °C (Zorlu çalışma ortamı)
+    mu_oda = 1400.0; // Elektron mobilitesi cm^2/Vs
+
+    // mu(T) = mu0 * (T/300)^(-1.5)
+    mu_sicak = mu_oda * $pow(T_sicak / T_oda, -1.5);
+
+    $display("=== Sıcaklık ve Mobilite Kaybı Analizi ===");
+    $display("Oda Sıcaklığı (27 °C)   : Mobilite = %5.1f cm^2/Vs (Hızlı)", mu_oda);
+    $display("Yüksek Sıcaklık (125 °C): Mobilite = %5.1f cm^2/Vs (Yavaş!)", mu_sicak);
+    $display("Mobilite Kaybı Oranı    : %%%4.1f yavaşlama", (1.0 - mu_sicak/mu_oda)*100.0);
+    $finish;
+  end
+endmodule`,
+      expectedOutput: [
+        "=== Sıcaklık ve Mobilite Kaybı Analizi ===",
+        "Oda Sıcaklığı (27 °C)   : Mobilite = 1400.0 cm^2/Vs (Hızlı)",
+        "Yüksek Sıcaklık (125 °C): Mobilite =  915.2 cm^2/Vs (Yavaş!)",
+        "Mobilite Kaybı Oranı    : %34.6 yavaşlama",
+      ],
+    },
+    quiz: {
+      question: "Bir bilgisayar işlemcisi ısındığında saat frekansının düşmesinin (termal throttling) fiziksel sebebi nedir?",
+      options: [
+        "A) Sıcaklık arttıkça atomların titreşmesi (fonon saçılması) yüzünden elektron mobilitesinin düşmesi ve kapıların yavaşlaması",
+        "B) Isınan çiplerin boyutlarının iki katına çıkması",
+        "C) Kabloların kopması",
+        "D) Verilog kodunun silinmesi",
+      ],
+      correctIndex: 0,
+      explanation:
+        "Doğru! Fonon saçılması nedeniyle sıcaklıkla mobilite $\\mu$ azalır, drenaj akımı düşer, kapı gecikmeleri uzar ve işlemci kararlı kalabilmek için frekansını kısmak zorunda kalır.",
+    },
+  },
+
+  // ========================================================
+  // BÖLÜM 3: THE MOSFET (MOSFET ANATOMİSİ)
   // ========================================================
   "df-mosfet-anatomy": {
     id: "df-mosfet-anatomy",
     badge: "Bölüm 3 • MOSFET",
-    readingTime: "8 dk okuma",
-    level: "Başlangıç Seviyesi",
-    title: "MOSFET Anatomisi (Metal-Oxide-Semiconductor Field-Effect Transistor)",
-    subtitle: "Gate, Drain, Source, Body terminalleri, dielektrik oksit tabakası ve 4-uçlu transistör yapısı.",
+    readingTime: "11 dk okuma",
+    level: "Orta Seviye",
+    title: "MOSFET Anatomisi: Gate Oksit, Kanal ve Terminaller",
+    subtitle:
+      "Dört terminalli MOS yapısı, Gate oksit kapasitansı (Cox), kanal genişlik/uzunluk (W/L) oranı ve Verilog seviyesi modelleme.",
     sections: [
       {
-        title: "1. MOSFET Nedir?",
-        content: `**MOSFET**, modern işlemcilerin ve çiplerin en temel yapı taşıdır. Voltaj kontrollü bir anahtardır: Kapı (Gate) ucuna uygulanan bir elektrik alanı ile Kaynak (Source) ve Savak (Drain) uçları arasında bir iletim kanalı açar veya kapatır.`,
+        title: "1. MOSFET'in Dört Terminali",
+        content: `MOSFET (Metal-Oxide-Semiconductor Field-Effect Transistor), dijital çağın temel anahtarlama birimidir. Dört terminale sahiptir:
+1. **Gate (Kapı - G):** Kontrol terminalidir. Yalıtkan bir oksit tabakasının üzerine oturur; içeriye doğru DC akım akmaz!
+2. **Drain (Drenaj - D):** Akımın aktığı ana kutuplardan biridir.
+3. **Source (Kaynak - S):** Taşıyıcıların kanala girdiği kutuptur.
+4. **Body / Bulk (Gövde - B):** Transistörün inşa edildiği yarı iletken tabandır.`,
       },
       {
-        title: "2. 4 Terminalin Anatomisi",
-        content: `- **Gate (Kapı - G):** Kontrol terminalidir. Altındaki kanaldan ince bir yalıtkan oksit tabakasıyla (SiO2 veya High-k dielektrik) tamamen izole edilmiştir; bu yüzden Gate içine neredeyse hiç DC akım akmaz!
-- **Source (Kaynak - S):** Kanal içine akacak yük taşıyıcılarının girdiği kaynak terminali.
-- **Drain (Savak - D):** Kanalı geçen yük taşıyıcılarının çıktığı terminal.
-- **Body / Substrate (Gövde - B):** Transistörün üzerine inşa edildiği ana silikon tabaka. Genellikle parazitik diyotların iletime geçmesini engellemek için en düşük voltaja (GND) veya en yüksek voltaja (VDD) bağlanır.`,
+        title: "2. Gate Oksit: Neden Gate'ten DC Akım Akmaz?",
+        content: `Gate elektrodu ile silikon kanal arasında son derece ince bir yalıtkan katman (**Gate Oksit - $SiO_2$** veya modern çiplerde **High-k HfO2**) bulunur.
+
+Oksit mükemmel bir yalıtkan olduğu için Gate içine doğru hiçbir doğru akım (DC) akmaz. Gate tam bir kondansatör gibi davranır:
+$$C_{ox} = \\frac{\\epsilon_{ox}}{t_{ox}}$$
+Gate'e uygulanan voltaj, elektrostatik alan oluşturarak oksitin altındaki silikon yüzeyinde taşıyıcıları toplar ve **iletken bir kanal** açar.`,
       },
       {
-        title: "3. Kanal Uzunluğu (L) ve Genişliği (W)",
-        content: `- **L (Channel Length):** Source ile Drain arasındaki mesafedir. Yarı iletken teknolojisi "3nm, 5nm" derken bu kritik boyutu kasteder. L ne kadar küçükse elektronlar o kadar hızlı geçer ve transistör o kadar az güçle hızlı anahtarlar.
-- **W (Channel Width):** Kanalın genişliğidir. W büyüdükçe transistörden akan akım artar ve kapının sürüş gücü (drive strength) yükselir.`,
+        title: "3. Kanal Boyutları: Genişlik (W) ve Uzunluk (L)",
+        content: `Kanalın iki temel boyutu vardır:
+- **Uzunluk ($L$):** Source ile Drain arasındaki mesafedir. Teknoloji düğümünü (örneğin 5nm, 7nm, 28nm) belirleyen asıl parametredir. $L$ ne kadar kısa olursa elektronlar kanalı o kadar hızlı geçer (daha yüksek frekans).
+- **Genişlik ($W$):** Kanalın enidir. $W$ ne kadar geniş olursa o kadar çok paralel akım yolu açılır ve transistörün sürüş gücü (drive strength) artar.`,
       },
     ],
     playground: {
-      title: "MOSFET Terminal Durumları ve Anahtarlama Modeli",
-      filename: "testbench.v",
+      title: "Verilog Switch-Level NMOS ve PMOS Transistör Modeli",
+      filename: "tb_mosfet_switch.v",
       language: "verilog",
-      initialCode: `module tb_mosfet;
-  // NMOS Anahtarlama Modeli: Vgs > Vth ise iletir, değilse kesimdedir
-  reg Vg, Vs, Vd;
-  wire kanal_acik;
-  wire Vout;
+      initialCode: `// Verilog dahili switch-level nmos ve pmos primitifleri
+module cmos_inverter (
+    input  wire in,
+    output wire out
+);
+    supply1 VDD;
+    supply0 GND;
 
-  // Gate yüksek ise Source ile Drain birbirine bağlanır
-  assign kanal_acik = (Vg == 1'b1);
-  assign Vout = kanal_acik ? Vs : 1'bz; // z = yüksek empedans (açık devre)
+    // pmos (out, source, gate)
+    pmos p1 (out, VDD, in);
+    // nmos (out, source, gate)
+    nmos n1 (out, GND, in);
+endmodule
+
+module tb_mosfet;
+  reg in;
+  wire out;
+
+  cmos_inverter inv (.in(in), .out(out));
 
   initial begin
-    $display("=== NMOS Terminal Anahtarlama Testi ===");
-    Vs = 0; Vd = 1;
-
-    Vg = 0; #10;
-    $display("Gate = 0V -> Kanal KAPALI. Drain-Source yalıtılmış (Vout: %b)", Vout);
-
-    Vg = 1; #10;
-    $display("Gate = 1V -> Kanal AÇIK! Source akımı Drain'e aktı (Vout: %b)", Vout);
+    $display("=== Transistör Seviyesi Inverter Testi ===");
+    in = 0; #10;
+    $display("Giriş in = %b -> Çıkış out = %b (PMOS açık, NMOS kapalı)", in, out);
+    in = 1; #10;
+    $display("Giriş in = %b -> Çıkış out = %b (NMOS açık, PMOS kapalı)", in, out);
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== NMOS Terminal Anahtarlama Testi ===",
-        "Gate = 0V -> Kanal KAPALI. Drain-Source yalıtılmış (Vout: z)",
-        "Gate = 1V -> Kanal AÇIK! Source akımı Drain'e aktı (Vout: 0)",
+        "=== Transistör Seviyesi Inverter Testi ===",
+        "Giriş in = 0 -> Çıkış out = 1 (PMOS açık, NMOS kapalı)",
+        "Giriş in = 1 -> Çıkış out = 0 (NMOS açık, PMOS kapalı)",
       ],
     },
     quiz: {
-      question: "MOSFET transistörün Gate (Kapı) ucu ile kanalı arasında dielektrik yalıtkan bulunmasının en büyük avantajı nedir?",
+      question: "Bir transistörün Gate terminali silikon kanaldan ne ile ayrılır?",
       options: [
-        "A) Gate ucundan kanala neredeyse hiç DC akım akmaması ve statik durumda güç tasarrufu sağlaması",
-        "B) Transistörün 1000 dereceye kadar ısınmasını sağlaması",
-        "C) Sadece alternatif akımla çalışabilmesi",
-        "D) Gate ucunun tamamen silinmesi",
+        "A) Bakır bir telle",
+        "B) Son derece ince yalıtkan bir Gate Oksit (Dielektrik) tabakası ile",
+        "C) Su damlasıyla",
+        "D) Hiçbir şeyle ayrılmaz",
       ],
-      correctIndex: 0,
-      explanation: "Doğru! Oksit tabakası mükemmel bir yalıtkandır; bu sayede Gate ucuna uygulanan voltaj transistörü elektrostatik alan ile kontrol ederken DC kaçak akımını sıfıra yakın tutar.",
+      correctIndex: 1,
+      explanation:
+        "Doğru! Gate elektrodu kanaldan dielektrik bir oksit tabakasıyla izole edilmiştir; böylece Gate içine DC akım akmaz, sadece elektrostatik alan ile kanal kontrol edilir.",
     },
   },
 
+  // ========================================================
+  // BÖLÜM 3: THRESHOLD VOLTAGE (EŞİK GERİLİMİ)
+  // ========================================================
   "df-threshold-voltage": {
     id: "df-threshold-voltage",
     badge: "Bölüm 3 • MOSFET",
-    readingTime: "8 dk okuma",
+    readingTime: "10 dk okuma",
     level: "Orta Seviye",
-    title: "Eşik Gerilimi (Threshold Voltage) & Kanal Oluşumu",
-    subtitle: "Vth parametresi, P-gövdede elektron inversiyonu (Inversion Layer) ve güçlü terslenme.",
+    title: "Eşik Gerilimi (Threshold Voltage - Vth) ve Kanal Oluşumu",
+    subtitle:
+      "Terslenme katmanı (inversion layer), yüzey potansiyeli, fermi seviyesi ve Gövde Etkisi (Body Effect).",
     sections: [
       {
-        title: "1. Eşik Gerilimi (Threshold Voltage - Vth) Nedir?",
-        content: `Bir NMOS transistörün Gate ucuna sıfır volt verildiğinde, P-tipi gövde üzerinde Source ve Drain (N+) arasında iletim yolu yoktur.
-Gate ucuna pozitif voltaj uygulanmaya başlandığında:
-1. **Fakirleşme (Depletion):** Pozitif Gate voltajı P-gövdedeki pozitif delikleri aşağıya doğru iter. Oksit altında hareketsiz negatif iyonlar kalır.
-2. **İnversiyon (Inversion):** Gate voltajı belirli bir kritik seviyeyi aştığında, P-gövdedeki azınlık elektronları oksit yüzeyine çekilir. Yüzeydeki elektron yoğunluğu delik yoğunluğunu geçer; adeta P-tipi silikon yüzeyinde yapay bir **N-kanalı** oluşur!
-Bu kritik voltaj değerine **Eşik Gerilimi (Threshold Voltage - Vth)** denir (Modern çiplerde genellikle 0.3V - 0.5V civarındadır).`,
+        title: "1. Eşik Gerilimi ($V_{th}$) Nedir?",
+        content: `Bir NMOS transistöründe Gate'e pozitif voltaj uygulandığında, oksit altındaki P-tipi gövdeden delikler itilir ve pozitif donör iyonları kalır (tüketim).
+
+Gate voltajı artırılmaya devam edildiğinde, gövdedeki azınlık elektronları yüzeye çekilir. Yüzeydeki elektron yoğunluğu, gövdenin kendi delik yoğunluğunu aştığında yüzey artık N-tipi davranmaya başlar: Buna **Güçlü Terslenme (Strong Inversion)** denir.
+
+Güçlü terslenmenin başladığı Gate-Source voltajına **Eşik Gerilimi ($V_{th}$)** denir:
+- $V_{GS} < V_{th}$ ise iletken kanal yoktur; transistör KAPALIDIR (Cutoff).
+- $V_{GS} \\ge V_{th}$ ise Source ile Drain arasında kesintisiz bir iletim kanalı oluşur; transistör AÇIKTIR.`,
       },
       {
-        title: "2. Vgs ve Vth İlişkisi",
-        content: `- **\`Vgs < Vth\`**: Transistör kesimdedir (Off). Kanal oluşmamıştır.
-- **\`Vgs > Vth\`**: Güçlü inversiyon oluşmuştur (On). Source ile Drain arasında kesintisiz bir elektron otoyolu açılmıştır.`,
+        title: "2. Gövde Etkisi (Body Effect): Kaynak Gövdeden Yüksekte Olursa",
+        content: `Normalde Source ve Body aynı voltajdadır ($V_{SB} = 0$). Ancak seri bağlı transistörlerde üstteki transistörün Source voltajı gövdeden daha yüksek olabilir ($V_{SB} > 0$).
+
+Bu durum tüketim bölgesini genişletir ve kanalı açmak için Gate'in daha yüksek voltaj uygulaması gerekir. Yani eşik gerilimi artar:
+$$V_{th} = V_{th0} + \\gamma \\left(\\sqrt{2\\phi_F + V_{SB}} - \\sqrt{2\\phi_F}\\right)$$
+Burada $\\gamma$ (gamma) gövde etkisi katsayısıdır. Gövde etkisi seri transistörlerin (örneğin NAND kapısındaki pull-down zinciri) yavaşlamasına sebep olur.`,
       },
     ],
     playground: {
-      title: "Vgs vs Vth Kanal Açılma Simülasyonu",
-      filename: "testbench.v",
+      title: "Gövde Etkisi (Body Effect) ve Eşik Gerilimi Artışı",
+      filename: "tb_body_effect.v",
       language: "verilog",
-      initialCode: `module tb_threshold;
-  real Vgs;
+      initialCode: `module tb_body_effect;
+  real Vth0;
+  real gamma;
+  real phi_f;
+  real Vsb;
   real Vth;
 
   initial begin
-    Vth = 0.40; // 400 mV eşik gerilimi
-    $display("=== NMOS Eşik Gerilimi (Vth = 0.40V) Testi ===");
-    $display("Vgs (Volt) | Durum");
+    Vth0 = 0.35; // Temel Vth (0.35V)
+    gamma = 0.4; // Gövde katsayısı
+    phi_f = 0.35; // 2*phi_f = 0.7V
 
-    for (Vgs = 0.0; Vgs <= 1.0; Vgs = Vgs + 0.2) begin
-      if (Vgs < Vth)
-        $display(" %4.2f V   | KESİM (OFF): Kanal kapalı, akım yok.", Vgs);
-      else
-        $display(" %4.2f V   | İLETİM (ON): İnversiyon kanalı açıldı!", Vgs);
-    end
+    $display("=== Gövde Etkisi (Body Effect) Analizi ===");
+    $display("Vsb (Volt) | Eşik Gerilimi Vth (Volt) | Etki");
+
+    Vsb = 0.0;
+    Vth = Vth0 + gamma * ($sqrt(2*phi_f + Vsb) - $sqrt(2*phi_f));
+    $display("  %4.2f V   |        %5.3f V          | Normal (Vsb=0)", Vsb, Vth);
+
+    Vsb = 0.4;
+    Vth = Vth0 + gamma * ($sqrt(2*phi_f + Vsb) - $sqrt(2*phi_f));
+    $display("  %4.2f V   |        %5.3f V          | Vth Yükseldi (Seri Kapı)", Vsb, Vth);
+
+    Vsb = 0.8;
+    Vth = Vth0 + gamma * ($sqrt(2*phi_f + Vsb) - $sqrt(2*phi_f));
+    $display("  %4.2f V   |        %5.3f V          | Ciddi Hız Kaybı!", Vsb, Vth);
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== NMOS Eşik Gerilimi (Vth = 0.40V) Testi ===",
-        "Vgs (Volt) | Durum",
-        " 0.00 V   | KESİM (OFF): Kanal kapalı, akım yok.",
-        " 0.20 V   | KESİM (OFF): Kanal kapalı, akım yok.",
-        " 0.40 V   | İLETİM (ON): İnversiyon kanalı açıldı!",
-        " 0.60 V   | İLETİM (ON): İnversiyon kanalı açıldı!",
-        " 0.80 V   | İLETİM (ON): İnversiyon kanalı açıldı!",
-        " 1.00 V   | İLETİM (ON): İnversiyon kanalı açıldı!",
+        "=== Gövde Etkisi (Body Effect) Analizi ===",
+        "Vsb (Volt) | Eşik Gerilimi Vth (Volt) | Etki",
+        "  0.00 V   |        0.350 V          | Normal (Vsb=0)",
+        "  0.40 V   |        0.435 V          | Vth Yükseldi (Seri Kapı)",
+        "  0.80 V   |        0.505 V          | Ciddi Hız Kaybı!",
       ],
     },
     quiz: {
-      question: "NMOS transistörde Gate voltajı Vth eşik değerini aştığında P-gövde yüzeyinde oluşan elektron tabakasına fizikte ne ad verilir?",
+      question: "Source ile Body arasında pozitif bir voltaj ($V_{SB} > 0$) olduğunda transistörün eşik gerilimine ne olur?",
       options: [
-        "A) Kovalent bağ",
-        "B) İnversiyon tabakası (Inversion Layer)",
-        "C) Plazma küresi",
-        "D) Schottky bariyeri",
+        "A) Eşik gerilimi yükselir (Gövde Etkisi) ve transistör daha zor açılır",
+        "B) Eşik gerilimi sıfıra düşer",
+        "C) Transistör tersine döner",
+        "D) Transistör daha hızlı açılır",
       ],
-      correctIndex: 1,
-      explanation: "Doğru! Pozitif Gate gerilimi P-tipi tabakanın yüzeyine elektronları çekerek tipi tersine çevirir (N-tipine dönüştürür); buna inversiyon tabakası denir.",
+      correctIndex: 0,
+      explanation:
+        "Doğru! $V_{SB} > 0$ olduğunda ters kutuplanan gövde tüketim bölgesini genişletir ve kanalı açmak için daha yüksek $V_{GS}$ gerekir ($V_{th}$ yükselir).",
     },
   },
 
+  // ========================================================
+  // BÖLÜM 3: MOSFET DRAIN CURRENT REGIMES
+  // ========================================================
   "df-drain-current-regimes": {
     id: "df-drain-current-regimes",
     badge: "Bölüm 3 • MOSFET",
-    readingTime: "8 dk okuma",
+    readingTime: "11 dk okuma",
     level: "Orta Seviye",
-    title: "MOSFET Çalışma Bölgeleri (Cutoff, Linear, Saturation)",
-    subtitle: "Lineer (Triyot) bölge, Kanal Boğulması (Pinch-off) ve Doyum (Saturation) bölgesi akım formülleri.",
+    title: "Drenaj Akımı Çalışma Bölgeleri: Kesim, Triyot ve Doyum",
+    subtitle:
+      "Kanal sıkışması (pinch-off), Shichman akım formülleri, transkondüktans ve kanal boyu modülasyonu.",
     sections: [
       {
         title: "1. Üç Temel Çalışma Bölgesi",
-        content: `MOSFET'in Drain ucundan akan akım (\`Id\`), Gate-Source voltajı (\`Vgs\`) ve Drain-Source voltajına (\`Vds\`) bağlı olarak 3 bölgeye ayrılır:
-1. **Kesim Bölgesi (Cutoff Region - \`Vgs < Vth\`):** Transistör kapalıdır, \`Id ≈ 0\`.
-2. **Lineer / Triyot Bölgesi (\`Vgs > Vth\` ve \`Vds < Vgs - Vth\`):** Kanal baştan sona açıktır. MOSFET bir direnç gibi davranır; \`Vds\` arttıkça akım doğrusal olarak artar.
-3. **Doyum Bölgesi (Saturation Region - \`Vgs > Vth\` ve \`Vds ≥ Vgs - Vth\`):** Drain ucundaki yüksek gerilim kanalı o uçta sıfıra indirir (**Kanal Boğulması - Pinch-off**). Bu noktadan sonra \`Vds\` artsa bile akım neredeyse sabit kalır! Transistör akım kaynağı gibi davranır.`,
-      },
-      {
-        title: "2. Doyum Akımı Formülü (Square-Law)",
-        content: `İdeal uzun kanallı doyum bölgesi akımı:
-\`Id = 1/2 · μn · Cox · (W / L) · (Vgs - Vth)²\`
-Bu formüldeki en kritik terim **\`(Vgs - Vth)\`** yani aşırı sürüş gerilimidir (Overdrive Voltage - \`Vov\`). Akım bu farkın karesiyle büyür!`,
+        content: `Bir MOSFET transistörünün Drain'inden Source'una akan akım ($I_{DS}$), $V_{GS}$ ve $V_{DS}$ gerilimlerine bağlı olarak üç farklı bölgede incelenir:
+
+1. **Kesim Bölgesi (Cutoff):**  
+   $V_{GS} < V_{th}$  
+   Kanal oluşmamıştır. İdealde akım sıfırdır (pratikte minik bir eşikaltı kaçak akım akar). Transistör açık bir devre gibidir.
+2. **Triyot / Lineer Bölge (Triode / Linear):**  
+   $V_{GS} \\ge V_{th}$ ve $V_{DS} < V_{GS} - V_{th}$  
+   Kanal boyunca kesintisiz taşıyıcı yolu vardır. Transistör Gate voltajıyla değeri değişen bir direnç gibi davranır:
+   $$I_{DS} = \\mu C_{ox} \\frac{W}{L} \\left( (V_{GS} - V_{th})V_{DS} - \\frac{V_{DS}^2}{2} \\right)$$
+3. **Doyum Bölgesi (Saturation):**  
+   $V_{GS} \\ge V_{th}$ ve $V_{DS} \\ge V_{GS} - V_{th}$  
+   Drain ucunda kanal kalınlığı sıfıra iner (**Pinch-off / Kanal Sıkışması**). $V_{DS}$ ne kadar artarsa artsın akım doyuma ulaşır ve neredeyse sabit kalır:
+   $$I_{DS} = \\frac{1}{2} \\mu C_{ox} \\frac{W}{L} (V_{GS} - V_{th})^2 (1 + \\lambda V_{DS})$$`,
       },
     ],
     playground: {
-      title: "MOSFET Vds vs Id Karakteristiği ve Pinch-off Noktası",
-      filename: "testbench.v",
+      title: "MOSFET Akım-Gerilim (I-V) Çalışma Bölgesi Tespiti",
+      filename: "tb_mosfet_iv.v",
       language: "verilog",
-      initialCode: `module tb_regimes;
-  real Vgs, Vth, Vds, Vov;
-  real Id_mA;
+      initialCode: `module tb_iv;
+  real Vgs, Vds, Vth;
+  real Vov; // Aşırı sürüş gerilimi (Vgs - Vth)
 
   initial begin
-    Vgs = 1.0;
     Vth = 0.4;
-    Vov = Vgs - Vth; // 0.6V aşırı sürüş gerilimi
-    $display("=== MOSFET Akım Bölgeleri Analizi (Vov = 0.6V) ===");
-    $display("Vds (V) | Bölge      | Davranış");
+    $display("=== MOSFET Çalışma Bölgesi Belirleme (Vth = 0.4V) ===");
 
-    for (Vds = 0.1; Vds <= 1.0; Vds = Vds + 0.2) begin
-      if (Vds < Vov)
-        $display(" %4.2f V  | LINEER     | Direnç gibi, Vds arttıkça akım artıyor.", Vds);
-      else
-        $display(" %4.2f V  | DOYUM (SAT)| PINCH-OFF! Akım Vds'den bağımsız sabitlendi.", Vds);
-    end
+    // Senaryo 1:
+    Vgs = 0.2; Vds = 0.8;
+    $display("Vgs=%3.1fV, Vds=%3.1fV -> %s", Vgs, Vds, (Vgs < Vth) ? "KESİM (Cutoff - Akım Yok)" : "Açık");
+
+    // Senaryo 2:
+    Vgs = 0.9; Vds = 0.2; Vov = Vgs - Vth; // Vov = 0.5V
+    $display("Vgs=%3.1fV, Vds=%3.1fV -> %s (Vds < Vov)", Vgs, Vds, (Vds < Vov) ? "TRİYOT (Lineer - Direnç gibi)" : "Doyum");
+
+    // Senaryo 3:
+    Vgs = 0.9; Vds = 0.8; Vov = Vgs - Vth; // Vov = 0.5V
+    $display("Vgs=%3.1fV, Vds=%3.1fV -> %s (Vds >= Vov)", Vgs, Vds, (Vds >= Vov) ? "DOYUM (Saturation - Sabit Akım Kaynağı)" : "Triyot");
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== MOSFET Akım Bölgeleri Analizi (Vov = 0.6V) ===",
-        "Vds (V) | Bölge      | Davranış",
-        " 0.10 V  | LINEER     | Direnç gibi, Vds arttıkça akım artıyor.",
-        " 0.30 V  | LINEER     | Direnç gibi, Vds arttıkça akım artıyor.",
-        " 0.50 V  | LINEER     | Direnç gibi, Vds arttıkça akım artıyor.",
-        " 0.70 V  | DOYUM (SAT)| PINCH-OFF! Akım Vds'den bağımsız sabitlendi.",
-        " 0.90 V  | DOYUM (SAT)| PINCH-OFF! Akım Vds'den bağımsız sabitlendi.",
+        "=== MOSFET Çalışma Bölgesi Belirleme (Vth = 0.4V) ===",
+        "Vgs=0.2V, Vds=0.8V -> KESİM (Cutoff - Akım Yok)",
+        "Vgs=0.9V, Vds=0.2V -> TRİYOT (Lineer - Direnç gibi) (Vds < Vov)",
+        "Vgs=0.9V, Vds=0.8V -> DOYUM (Saturation - Sabit Akım Kaynağı) (Vds >= Vov)",
       ],
     },
     quiz: {
-      question: "MOSFET'te Drain-Source gerilimi Vds ≥ (Vgs - Vth) olduğunda kanalın Drain ucunda daralarak kapanmasına ve akımın doymasına ne ad verilir?",
+      question: "Doyum (Saturation) bölgesinde Drain ucunda kanal kalınlığının sıfıra inmesi olayına ne denir?",
       options: [
         "A) Kırılma (Breakdown)",
-        "B) Kanal Boğulması (Pinch-off)",
-        "C) Çığ etkisi (Avalanche)",
-        "D) Erime (Melting)",
+        "B) Kanal sıkışması (Pinch-off)",
+        "C) Erime",
+        "D) Doping",
       ],
       correctIndex: 1,
-      explanation: "Doğru! Drain ucundaki potansiyel yükseldiğinde oradaki dikey elektrik alanı zayıflar ve kanal o uçta boğulur (Pinch-off); bu doyum bölgesinin başlangıcıdır.",
+      explanation:
+        "Doğru! $V_{DS} \\ge V_{GS} - V_{th}$ olduğunda Drain tarafındaki yerel Gate-Kanal voltajı $V_{th}$ seviyesine iner ve kanal ucu sıkışır (Pinch-off).",
     },
   },
 
+  // ========================================================
+  // BÖLÜM 3: NMOS VS PMOS
+  // ========================================================
   "df-nmos-vs-pmos": {
     id: "df-nmos-vs-pmos",
     badge: "Bölüm 3 • MOSFET",
-    readingTime: "7 dk okuma",
+    readingTime: "9 dk okuma",
     level: "Başlangıç Seviyesi",
-    title: "NMOS vs PMOS Transistör Karşılaştırması",
-    subtitle: "Elektron vs delik akışı, pull-up vs pull-down rolleri, PMOS balon simgesi ve boyutlandırma kuralları.",
+    title: "NMOS ve PMOS Karşılaştırması: Elektron vs Delik Hızı",
+    subtitle:
+      "Elektron ve delik mobilitesi farkı, W_p / W_n kapı boyutlandırma oranı ve N-Well / P-Well yapıları.",
     sections: [
       {
-        title: "1. NMOS ve PMOS Farkları",
-        content: `| Özellik | NMOS | PMOS |
-|---|---|---|
-| **Kanal Tipi** | N-kanalı (Elektronlar) | P-kanalı (Boşluklar/Delikler) |
-| **Gövde (Substrate)** | P-tipi | N-well (N-kuyusu) |
-| **İletim Koşulu** | Gate = 1 (HIGH) iken ON | Gate = 0 (LOW) iken ON |
-| **İyi İlettiği Voltaj** | Güçlü 0 (GND), Zayıf 1 | Güçlü 1 (VDD), Zayıf 0 |
-| **Hareketlilik (μ)** | Yüksek (~1400 cm²/Vs) | Düşük (~450 cm²/Vs) |
-| **Şematik Sembolü** | Düz Gate ucu | Gate ucunda tersleme baloncuk halkası |`,
+        title: "1. NMOS ve PMOS Fiziksel Mimarisi",
+        content: `| Parametre | NMOS Transistör | PMOS Transistör |
+| :--- | :--- | :--- |
+| **Gövde (Substrate/Well)** | P-Tipi Silikon Gövde | N-Well (N-Kuyusu) |
+| **Source / Drain Katkısı** | N+ (Fosfor/Arsenik zengin) | P+ (Bor zengin) |
+| **Kanal Taşıyıcıları** | Serbest Elektronlar | Pozitif Delikler |
+| **Açılma Şartı** | $V_{GS} > +V_{thn}$ (Yüksek Gate voltajı) | $V_{GS} < -|V_{thp}|$ (Düşük Gate voltajı) |
+| **En İyi İlettiği Seviye** | **Güçlü '0' (GND)**, zayıf '1' | **Güçlü '1' ($V_{DD}$)**, zayıf '0' |`,
       },
       {
-        title: "2. Güçlü 0 ve Güçlü 1 Prensibi",
-        content: `- **NMOS:** Çıkışı GND'ye (0V) mükemmel çeker (Güçlü 0 iletir). Ancak çıkışı VDD'ye çekmeye çalışırsa \`VDD - Vth\` seviyesinde tıkanır (Zayıf 1). Bu yüzden mantık devrelerinde **Pull-Down (Aşağı Çekici)** ağında kullanılır.
-- **PMOS:** Çıkışı VDD'ye mükemmel taşır (Güçlü 1 iletir). Ancak GND'ye çekmeye kalkarsa \`|Vth|\` seviyesinde takılır (Zayıf 0). Bu yüzden **Pull-Up (Yukarı Çekici)** ağında kullanılır.`,
+        title: "2. Neden NMOS PMOS'tan ~2.5 Kat Daha Hızlıdır?",
+        content: `Elektronlar silikon kristal örgüsünde serbestçe akar (mobilite $\\mu_n \\approx 1400\\text{ cm}^2/\\text{V}\\cdot\\text{s}$).
+
+Delikler ise elektronların kovalent bağlar arasında adım adım yer değiştirmesiyle ilerler; bu yüzden mobiliteleri çok daha düşüktür ($\\mu_p \\approx 450\\text{ cm}^2/\\text{V}\\cdot\\text{s}$).
+
+Elektronlar deliklerden yaklaşık **2 ila 3 kat daha hızlıdır** ($\mu_n / \mu_p \approx 2.5$).
+
+Bu nedenle bir CMOS kapısında yükselme süresi ($t_{rise}$) ile düşme süresini ($t_{fall}$) eşitlemek için PMOS transistörün kanal genişliği ($W_p$), NMOS'tan 2 - 2.5 kat daha geniş üretilir:
+$$W_p \\approx 2.5 \\times W_n$$`,
       },
     ],
     playground: {
-      title: "NMOS ve PMOS Tamamlayıcı (CMOS) Çalışma Mantığı",
-      filename: "testbench.v",
+      title: "Simetrik CMOS Kapı Boyutlandırma Oranı Simülasyonu",
+      filename: "tb_sizing_ratio.v",
       language: "verilog",
-      initialCode: `module tb_nmos_pmos;
-  reg In;
-  wire nmos_on;
-  wire pmos_on;
-
-  // NMOS In=1 iken açılır, PMOS In=0 iken açılır
-  assign nmos_on = (In == 1'b1);
-  assign pmos_on = (In == 1'b0);
+      initialCode: `module tb_sizing;
+  real mu_n, mu_p;
+  real W_n, W_p;
+  real R_n, R_p;
 
   initial begin
-    $display("=== NMOS vs PMOS Tetiklenme Tablosu ===");
-    $display("Giriş (In) | PMOS Durumu (Pull-Up) | NMOS Durumu (Pull-Down)");
+    mu_n = 1200.0; // cm^2/Vs
+    mu_p = 480.0;  // cm^2/Vs
+    W_n = 100.0;   // nm
 
-    In = 0; #10;
-    $display("    0      | AÇIK (İletimde)       | KAPALI (Yalıtkan)");
+    // Eşit direnç (Rn = Rp) için Wp ne olmalı?
+    // Rn ~ 1 / (mu_n * Wn), Rp ~ 1 / (mu_p * Wp)
+    W_p = W_n * (mu_n / mu_p);
 
-    In = 1; #10;
-    $display("    1      | KAPALI (Yalıtkan)     | AÇIK (İletimde)");
+    $display("=== Simetrik CMOS Boyutlandırma Analizi ===");
+    $display("Elektron Mobilitesi mu_n: %4.0f cm^2/Vs", mu_n);
+    $display("Delik Mobilitesi mu_p   : %4.0f cm^2/Vs", mu_p);
+    $display("Mobilite Oranı (mu_n/mu_p): %4.2f kat", mu_n / mu_p);
+    $display("NMOS Genişliği W_n      : %4.0f nm", W_n);
+    $display("Gerekli PMOS Genişliği W_p: %4.0f nm (Simetrik Yükselme/Düşme Süresi için)", W_p);
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== NMOS vs PMOS Tetiklenme Tablosu ===",
-        "Giriş (In) | PMOS Durumu (Pull-Up) | NMOS Durumu (Pull-Down)",
-        "    0      | AÇIK (İletimde)       | KAPALI (Yalıtkan)",
-        "    1      | KAPALI (Yalıtkan)     | AÇIK (İletimde)",
+        "=== Simetrik CMOS Boyutlandırma Analizi ===",
+        "Elektron Mobilitesi mu_n: 1200 cm^2/Vs",
+        "Delik Mobilitesi mu_p   :  480 cm^2/Vs",
+        "Mobilite Oranı (mu_n/mu_p): 2.50 kat",
+        "NMOS Genişliği W_n      :  100 nm",
+        "Gerekli PMOS Genişliği W_p:  250 nm (Simetrik Yükselme/Düşme Süresi için)",
       ],
     },
     quiz: {
-      question: "Dijital mantık devrelerinde NMOS transistörler neden Pull-Up (yukarı çekici) yerine Pull-Down (aşağı çekici) ağında kullanılır?",
+      question: "CMOS devrelerinde PMOS transistörlerin kanal genişliğinin (Wp) NMOS'tan (Wn) daha büyük seçilmesinin sebebi nedir?",
       options: [
-        "A) Çünkü NMOS çıkışı 0V'a (GND) mükemmel çeker (Güçlü 0), fakat VDD'ye zayıf taşır",
-        "B) NMOS sadece eksi voltajlarda çalışır",
-        "C) NMOS transistörlerin üretimi çok pahalıdır",
-        "D) PMOS transistörlerin sıfır voltu hiç tanımaması",
+        "A) PMOS transistörlerin rengini ayırt etmek için",
+        "B) Deliklerin elektronlara göre daha yavaş (düşük mobilite) olması yüzünden sürüş akımlarını dengelemek",
+        "C) PMOS'un daha ucuz olması",
+        "D) Sadece saat devrelerinde kullanılması",
       ],
-      correctIndex: 0,
-      explanation: "Doğru! NMOS transistörler 0V'u eşik gerilimi kaybı olmadan tam 'Güçlü 0' olarak iletirken, VDD seviyesini (VDD - Vth) seviyesine kadar düşürür.",
+      correctIndex: 1,
+      explanation:
+        "Doğru! Delik mobilitesi elektron mobilitesinden ~2.5 kat düşük olduğundan, simetrik anahtarlama ve eşit gecikme sağlamak için PMOS transistörler daha geniş ($W_p \\approx 2.5 W_n$) yapılır.",
     },
   },
 
+  // ========================================================
+  // BÖLÜM 3: SUBTHRESHOLD LEAKAGE & SHORT CHANNEL EFFECTS
+  // ========================================================
   "df-leakage-short-channel": {
     id: "df-leakage-short-channel",
     badge: "Bölüm 3 • MOSFET",
-    readingTime: "8 dk okuma",
+    readingTime: "11 dk okuma",
     level: "İleri Seviye",
-    title: "Eşikaltı Kaçak Akımı & Kısa Kanal Etkileri (Short Channel Effects)",
-    subtitle: "DIBL (Drain-Induced Barrier Lowering), kuantum tünelleme, FinFET ve GAAFET mimarilerine geçiş nedeni.",
+    title: "Kısa Kanal Etkileri (SCE) ve Eşikaltı Kaçak Akımları",
+    subtitle:
+      "DIBL (Drain-Induced Barrier Lowering), hız doyumu, alt-eşik salınımı (subthreshold swing) ve FinFET/GAA mimarileri.",
     sections: [
       {
-        title: "1. Kısa Kanal Etkileri (Short Channel Effects - SCE) Nedir?",
-        content: `Transistörün kanal uzunluğu (\`L\`) mikrometrelerden nanometreler seviyesine küçüldükçe, Drain ucundaki yüksek elektrik alanı Gate'in kontrolünü gasp etmeye başlar:
-- **DIBL (Drain-Induced Barrier Lowering):** Drain voltajı Source-kanal arasındaki potansiyel bariyeri alçaltır; Gate istemese bile transistör kendiliğinden açılır!
-- **Hız Doyumu (Velocity Saturation):** Elektronlar artık elektrik alanıyla sonsuz hızlanamaz; optik fonon saçılmasıyla maksimum hıza (\`vsat ≈ 10^7 cm/s\`) ulaşır ve takılır.`,
+        title: "1. Nanometre Ölçeğinde Ne Bozulur?",
+        content: `Kanal uzunluğu ($L$) onlarca nanometrenin altına indiğinde, Gate elektrodu kanal üzerindeki elektrostatik kontrolünü kaybetmeye başlar. Drain voltajı doğrudan kanal bariyerini etkiler:
+1. **DIBL (Drain-Induced Barrier Lowering):** Yüksek Drain voltajı Source-Kanal potansiyel bariyerini aşağı çeker; Gate sıfırken bile transistörün eşik gerilimi düşer ve akım sızar!
+2. **Hız Doyumu (Velocity Saturation):** Çok yüksek elektrik alan altında elektronlar sonsuza kadar hızlanamaz; optik fonon saçılması nedeniyle silikonda doygunluk hızına ($v_{sat} \\approx 10^7\\text{ cm/s}$) ulaşırlar. Akım artık $V_{GS}^2$ ile değil lineer ($V_{GS}$) artar.
+3. **Eşikaltı Sızıntısı (Subthreshold Leakage):** $V_{GS} < V_{th}$ iken akım tam sıfır olmaz; difüzyon nedeniyle üssel bir sızıntı akar:
+   $$I_{sub} \\propto 10^{\\frac{V_{GS} - V_{th}}{S}}$$
+   Burada $S$ (Subthreshold Swing) tipik olarak $60 - 90\\text{ mV/decade}$'dir.`,
       },
       {
-        title: "2. Eşikaltı Kaçak Akımı (Subthreshold Leakage)",
-        content: `İdeal bir anahtar kapatıldığında akım tam sıfır olmalıdır. Ancak gerçek transistörlerde \`Vgs < Vth\` iken bile üstel olarak azalan bir **eşikaltı akım (Subthreshold Current)** akar.
-Milyarlarca transistör kapalıyken bile arka planda devasa bir statik kaçak akım tüketir. Akıllı telefonların cebinizde dururken bile şarjının bitmesinin ve ısınmasının bir numaralı sorumlusu bu kaçak akımdır!`,
-      },
-      {
-        title: "3. Çözüm: Düzlemsel MOSFET'ten FinFET ve GAAFET'e Geçiş",
-        content: `Kanalı tek taraftan (üstten) kontrol etmek yetersiz kalınca:
-- **FinFET (3D Gate):** Kanal ince bir yüzgeç (fin) haline getirildi ve Gate kanalı 3 taraftan sardı.
-- **GAAFET (Gate-All-Around / Nanosheet):** Kanal yatay nano-şeritler haline getirildi ve Gate kanalı 4 taraftan tamamen sarmalayarak kaçak akımı asgariye indirdi.`,
+        title: "2. Çözüm: 3D FinFET ve GAAFET (Gate-All-Around) Devrimi",
+        content: `Geleneksel düzlemsel (planar) transistörlerde Gate sadece kanalın üst yüzeyindeydi. Kaçak akımları önlemek için çip endüstrisi 3D mimarilere geçti:
+- **FinFET (Intel 22nm, TSMC 16nm-3nm):** Silikon kanal ince bir yüzgeç (fin) gibi dikey yükseltilir. Gate yüzgeci 3 taraftan sarar.
+- **GAAFET / Nanosheet (Samsung 3nm, TSMC 2nm, Intel 20A):** Kanal yatay nanoyapraklar (nanosheets) haline getirilir. Gate kanalı **4 taraftan tamamen çevreler**. Bu sayede kısa kanal kaçak akımları neredeyse tamamen hapsedilir.`,
       },
     ],
     playground: {
-      title: "Statik Kaçak Gücü ve DIBL Bariyer Alçalması Modeli",
-      filename: "testbench.v",
+      title: "Milyarlarca Transistörlü Mobil SoC Kaçak Güç Analizi",
+      filename: "tb_leakage.v",
       language: "verilog",
       initialCode: `module tb_leakage;
-  integer transistor_sayisi_milyar;
+  integer transistor_milyar;
   real transistor_basi_kacak_nA;
+  real vdd_volt;
   real toplam_kacak_amper;
-  real besleme_V;
-  real kacak_guc_watt;
+  real statik_guc_watt;
 
   initial begin
-    transistor_sayisi_milyar = 15; // Modern bir mobil SoC (15 Milyar Transistör)
-    transistor_basi_kacak_nA = 0.5; // Transistör başına 0.5 nA sızıntı
-    besleme_V = 0.8; // 0.8V VDD
+    transistor_milyar = 16;       // 16 Milyar Transistör
+    transistor_basi_kacak_nA = 0.5; // Transistör başına 0.5 nA kaçak
+    vdd_volt = 0.8;               // 0.8V Besleme
 
-    // Toplam Kaçak = 15e9 * 0.5e-9 A = 7.5 Amper!
-    toplam_kacak_amper = transistor_sayisi_milyar * transistor_basi_kacak_nA;
-    kacak_guc_watt = toplam_kacak_amper * besleme_V;
+    // Toplam Kaçak = 16e9 * 0.5e-9 A = 8.0 Amper!
+    toplam_kacak_amper = transistor_milyar * transistor_basi_kacak_nA;
+    statik_guc_watt = toplam_kacak_amper * vdd_volt;
 
-    $display("=== Modern Mobil Çip Statik Kaçak Güç Analizi ===");
-    $display("Transistör Sayısı   : %d Milyar", transistor_sayisi_milyar);
-    $display("Toplam Kaçak Akımı  : %5.2f Amper (Hiçbir işlem yapılmazken!)", toplam_kacak_amper);
-    $display("Statik Güç Tüketimi : %5.2f Watt (Isıya dönüşen boşa güç)", kacak_guc_watt);
+    $display("=== Mobil Çip Statik Kaçak Güç Analizi ===");
+    $display("Transistör Sayısı   : %d Milyar", transistor_milyar);
+    $display("Transistör Başı Kaçak: %3.1f nA", transistor_basi_kacak_nA);
+    $display("Toplam Kaçak Akımı  : %4.2f Amper (Telefon beklemedeyken!)", toplam_kacak_amper);
+    $display("Statik Güç Tüketimi : %4.2f Watt (Isıya dönüşen kayıp)", statik_guc_watt);
     $finish;
   end
 endmodule`,
       expectedOutput: [
-        "=== Modern Mobil Çip Statik Kaçak Güç Analizi ===",
-        "Transistör Sayısı   : 15 Milyar",
-        "Toplam Kaçak Akımı  :  7.50 Amper (Hiçbir işlem yapılmazken!)",
-        "Statik Güç Tüketimi :  6.00 Watt (Isıya dönüşen boşa güç)",
+        "=== Mobil Çip Statik Kaçak Güç Analizi ===",
+        "Transistör Sayısı   : 16 Milyar",
+        "Transistör Başı Kaçak: 0.5 nA",
+        "Toplam Kaçak Akımı  : 8.00 Amper (Telefon beklemedeyken!)",
+        "Statik Güç Tüketimi : 6.40 Watt (Isıya dönüşen kayıp)",
       ],
     },
     quiz: {
-      question: "Geleneksel düzlemsel (planar) transistörler yerine 3D FinFET ve GAAFET (Gate-All-Around) mimarilerine geçilmesinin ana mühendislik sebebi nedir?",
+      question: "Planar transistörler yerine 3D FinFET ve GAAFET mimarilerine geçilmesinin temel mühendislik sebebi nedir?",
       options: [
-        "A) Transistörleri daha renkli üretmek",
-        "B) Gate'in kanalı çok taraftan sararak kısa kanal kaçak akımlarını (leakage) bastırması",
-        "C) Çiplerin daha ağır olmasını sağlamak",
-        "D) Sadece analog ses devreleri üretmek",
+        "A) Çiplerin daha büyük ve ağır olması için",
+        "B) Gate elektrodunun kanalı 3 veya 4 taraftan sararak elektrostatik kontrolü artırması ve kısa kanal sızıntılarını engellemesi",
+        "C) Daha ucuz plastik kullanabilmek için",
+        "D) Sadece ses devrelerinde kullanılabilmesi",
       ],
       correctIndex: 1,
-      explanation: "Doğru! FinFET ve GAAFET mimarileri Gate elektrodunun kanalı 3 ve 4 taraftan sarmasını sağlayarak elektrostatik kontrolü artırır ve eşikaltı kaçak akımını engeller.",
+      explanation:
+        "Doğru! FinFET ve GAAFET mimarileri Gate elektrodunun kanalı çok yönden sarmasını sağlayarak Drain'in bariyeri delmesini (DIBL) engeller ve eşikaltı kaçak akımını radikal biçimde düşürür.",
     },
   },
 };

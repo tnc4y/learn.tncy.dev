@@ -14,13 +14,18 @@ export const DIGITAL_FUNDAMENTALS_PART4: Record<string, LessonContent> = {
     sections: [
       {
         title: "1. Çiplerde Neden Tel Gecikmesi Kapı Gecikmesini Geçti?",
-        content: `Eski mikrometre teknolojilerinde transistörler yavaştı, aralarındaki metal kablolar ise geniş ve kalın olduğu için gecikmeleri ihmal edilirdi.
+        content: `![Dağıtılmış RC iletim hattı modeli](/images/digital/7.1-wire-distributed-rc-model.svg)
+
+Eski mikrometre teknolojilerinde transistörler yavaştı, aralarındaki metal kablolar ise geniş ve kalın olduğu için gecikmeleri ihmal edilirdi.
 Modern nanometre çiplerde ise transistörler inanılmaz hızlandı ancak metal hatlar o kadar inceldi ki parazitik **dirençleri (R)** ve komşu hatlara olan **kapasitansları (C)** fırladı. Günümüzde bir işlemcide gecikmenin **%70'inden fazlası kapılardan değil, aralarındaki metal iletken hatlardan (interconnect)** kaynaklanır!`,
       },
       {
         title: "2. Dağıtık RC Ağı ve Elmore Gecikmesi",
         content: `Bir kablonun gecikmesi basitçe \`R · C\` değildir; çünkü direnç ve kapasitans hat boyunca eşit dağılmıştır.
 Hattın gecikmesi uzunluğunun karesiyle (\`L²\`) artar!
+
+![Tel uzunluğuna göre gecikmenin karesel artışı grafiği](/images/digital/7.1-wire-delay-vs-length.svg)
+
 **Mühendislik Çözümü (Repeater / Buffer Ekleme):** Uzun bir hattın ortasına belirli aralıklarla tampon (buffer / inverter) eklenerek hat küçük parçalara bölünür. Böylece gecikme \`L²\` parabolik artıştan \`L\` doğrusal artışa düşürülür.`,
       },
     ],
@@ -74,7 +79,9 @@ endmodule`,
     sections: [
       {
         title: "1. Fanout Nedir?",
-        content: `**Fanout (Dallanma Katsayısı)**, bir mantık kapısının çıkışına kaç adet başka kapının girişinin bağlı olduğunu belirten sayıdır.
+        content: `![Yüksek fan-out tampon ağacı (Buffer Tree) mimarisi](/images/digital/7.2-high-fanout-buffer-tree.svg)
+
+**Fanout (Dallanma Katsayısı)**, bir mantık kapısının çıkışına kaç adet başka kapının girişinin bağlı olduğunu belirten sayıdır.
 Her bağlanan yeni kapının Gate terminali devreye bir parazitik kapasitans (\`Cg\`) ekler.
 Bir kapının fanout'u arttıkça çıkış kapasitansı (\`C_load\`) şişer; kapı o kapasitansı şarj etmekte zorlanır ve sinyalin eğimi (Slew Rate) yatıklaşarak gecikme artar.`,
       },
@@ -133,7 +140,9 @@ endmodule`,
     sections: [
       {
         title: "1. Dört Kritik Gerilim Seviyesi",
-        content: `- **VOH (Voltage Output High):** Kapının garanti ettiği minimum '1' çıkış voltajı.
+        content: `![LVCMOS mantık gerilim seviyeleri ve gürültü payları (NMH, NML)](/images/digital/7.3-noise-margins-lvcmos.svg)
+
+- **VOH (Voltage Output High):** Kapının garanti ettiği minimum '1' çıkış voltajı.
 - **VOL (Voltage Output Low):** Kapının garanti ettiği maksimum '0' çıkış voltajı.
 - **VIH (Voltage Input High):** Kapının '1' olarak algılayacağı minimum giriş voltajı.
 - **VIL (Voltage Input Low):** Kapının '0' olarak algılayacağı maksimum giriş voltajı.`,
@@ -194,7 +203,9 @@ endmodule`,
     sections: [
       {
         title: "1. Crosstalk (Çapraz Karışma) Nedir?",
-        content: `Yan yana paralel uzanan iki ince metal kablo arasında kaçınılmaz bir **kuplaj kapasitansı (Coupling Capacitance - Cc)** oluşur:
+        content: `![Çapraz karışma (Crosstalk): Saldırgan hat ve kurban hat kapasitif kuplajı](/images/digital/7.4-crosstalk-aggressor-victim.svg)
+
+Yan yana paralel uzanan iki ince metal kablo arasında kaçınılmaz bir **kuplaj kapasitansı (Coupling Capacitance - Cc)** oluşur:
 - **Aggressor (Saldırgan Hat):** Aniden 0'dan 1'e veya 1'den 0'a hızlıca anahtarlayan komşu hat.
 - **Victim (Kurban Hat):** Sabit durması gerekirken komşusunun elektrik alanından etkilenip üzerinde istenmeyen voltaj sıçraması (glitch) oluşan hat.`,
       },
@@ -255,7 +266,9 @@ endmodule`,
     sections: [
       {
         title: "1. IR Drop Nedir?",
-        content: `Çipin güç pinlerinden (VDD) en ortadaki transistörlere kadar uzanan güç dağıtım raylarının (Power Grid) sıfır olmayan bir direnci (\`R\`) vardır.
+        content: `![Güç rayında direnç ve endüktans kaynaklı IR-Drop voltaj çöküşü](/images/digital/7.5-ir-drop-power-rail.svg)
+
+Çipin güç pinlerinden (VDD) en ortadaki transistörlere kadar uzanan güç dağıtım raylarının (Power Grid) sıfır olmayan bir direnci (\`R\`) vardır.
 Milyonlarca kapı aynı anda anahtarlayıp yüksek akım (\`I\`) çektiğinde, Ohm kanununa göre (\`V = I · R\`) voltaj düşümü gerçekleşir.
 Örneğin 0.8V olması gereken VDD hattı çipin ortasında 0.68V'a düşebilir! Düşen voltaj transistörleri aniden yavaşlatır ve zamanlama hatalarına (timing violation) yol açar.`,
       },
@@ -375,7 +388,9 @@ endmodule`,
     sections: [
       {
         title: "1. SR Mandalının Çalışma Prensibi (NOR Tabanlı)",
-        content: `İki adet NOR kapısının çıkışları çaprazlama birbirinin girişine bağlandığında tarihteki ilk 1-bitlik statik bellek hücresi doğar:
+        content: `![NOR tabanlı SR Latch devre şeması](/images/digital/sr_latch_circuit.png)
+
+İki adet NOR kapısının çıkışları çaprazlama birbirinin girişine bağlandığında tarihteki ilk 1-bitlik statik bellek hücresi doğar:
 - **S = 1, R = 0 (Set):** \`Q = 1\`, \`~Q = 0\` (Hafızaya 1 yazılır).
 - **S = 0, R = 1 (Reset):** \`Q = 0\`, \`~Q = 1\` (Hafızaya 0 yazılır).
 - **S = 0, R = 0 (Hold / Tutma):** Önceki durum korunur (Hafıza görevi!).
@@ -442,7 +457,9 @@ endmodule`,
       },
       {
         title: "2. Master-Slave Mimarisi",
-        content: `Kenar tetiklemeli bir D Flip-Flop, zıt saat sinyalleriyle çalışan iki adet D Latch'in (Master ve Slave) arka arkaya bağlanmasıyla kurulur. Saat 0 iken Master veriyi alır ama Slave kilitlidir; saat 1 olduğu anda Master kapanır ve Slave veriyi çıkışa aktarır.`,
+        content: `![D Flip-Flop iç kapı yapısı ve Master-Slave mimarisi](/images/digital/d_flip_flop_circuit.png)
+
+Kenar tetiklemeli bir D Flip-Flop, zıt saat sinyalleriyle çalışan iki adet D Latch'in (Master ve Slave) arka arkaya bağlanmasıyla kurulur. Saat 0 iken Master veriyi alır ama Slave kilitlidir; saat 1 olduğu anda Master kapanır ve Slave veriyi çıkışa aktarır.`,
       },
     ],
     playground: {
@@ -503,7 +520,9 @@ endmodule`,
     sections: [
       {
         title: "1. JK Flip-Flop",
-        content: `SR mandalındaki yasaklı durumu (S=R=1) çözmek için tasarlanmıştır:
+        content: `![JK Flip-Flop devre şeması](/images/digital/jk_flip_flop_circuit.png)
+
+SR mandalındaki yasaklı durumu (S=R=1) çözmek için tasarlanmıştır:
 - \`J=0, K=0\`: Hold (Eski durumu korur).
 - \`J=0, K=1\`: Reset (\`Q = 0\`).
 - \`J=1, K=0\`: Set (\`Q = 1\`).
@@ -511,7 +530,9 @@ endmodule`,
       },
       {
         title: "2. T (Toggle) Flip-Flop ve Frekans Bölücüler",
-        content: `T Flip-Flop'un tek bir girişi vardır. T=1 iken her saat darbesinde çıkış yön değiştirir (0->1->0->1).
+        content: `![T Flip-Flop devre şeması](/images/digital/t_flip_flop_circuit.png)
+
+T Flip-Flop'un tek bir girişi vardır. T=1 iken her saat darbesinde çıkış yön değiştirir (0->1->0->1).
 Bu sayede çıkışın frekansı giriş saat frekansının **tam olarak yarısına (\`f_clk / 2\`)** düşer! Sayısal sayaçların ve frekans bölücülerin temelidir.`,
       },
     ],
@@ -568,8 +589,17 @@ endmodule`,
       {
         title: "1. Shift Register Mimarisi",
         content: `Bir dizi flip-flop'un çıkışının bir sonrakinin girişine bağlanmasıyla oluşur. Her saat darbesinde veriler bir basamak sağa veya sola kayar:
+
+![SISO (Seri Giriş Seri Çıkış) Kaydırmalı Kaydedici](/images/digital/siso_circuit.png)
+
 - **SISO (Serial-In Serial-Out):** Seri girer, seri çıkar (gecikme hattı).
+
+![SIPO (Seri Giriş Paralel Çıkış) Kaydırmalı Kaydedici](/images/digital/sipo_circuit.png)
+
 - **SIPO (Serial-In Parallel-Out):** Tek bir telden gelen seri bitleri yan yana getirip 8-bitlik paralel bayta çevirir (Örnek: UART alıcısı).
+
+![PISO (Paralel Giriş Seri Çıkış) Kaydırmalı Kaydedici](/images/digital/piso_circuit.png)
+
 - **PISO (Parallel-In Serial-Out):** 8-bitlik paralel veriyi tek bir kablodan sırayla seri iletir (Örnek: UART vericisi).
 - **PIPO (Parallel-In Parallel-Out):** Standart CPU kaydedicileri (Register).`,
       },
@@ -628,7 +658,9 @@ endmodule`,
     sections: [
       {
         title: "1. Clock Skew (Saat Eğrilmesi) Nedir?",
-        content: `Milyarlarca flip-flop içeren bir çipte saat sinyali kristalden çıkıp tüm flop'lara aynı anda ULAŞAMAZ.
+        content: `![Saat eğikliği (Clock Skew) setup ve hold ihlali zamanlaması](/images/digital/8.5-clock-skew-setup-hold.svg)
+
+Milyarlarca flip-flop içeren bir çipte saat sinyali kristalden çıkıp tüm flop'lara aynı anda ULAŞAMAZ.
 İki komşu flip-flop'a ulaşan saat sinyallerinin varış zamanı farkına **Clock Skew (Saat Eğrilmesi)** denir:
 - **Pozitif Skew:** Hedef flop'a saat kaynak flop'tan geç varırsa.
 - **Negatif Skew:** Hedef flop'a saat kaynak flop'tan erken varırsa.
@@ -636,7 +668,9 @@ endmodule`,
       },
       {
         title: "2. Saat Ağacı Sentezi (CTS - Clock Tree Synthesis)",
-        content: `Saat sinyalini tüm flip-flop'lara eşit gecikmeyle ulaştırmak için silikon üzerinde dengeli simetrik **H-Tree** veya tampon ağaçları inşa edilir.`,
+        content: `![H-Tree simetrik saat dağıtım ağı mimarisi](/images/digital/8.5-h-tree-clock-distribution.svg)
+
+Saat sinyalini tüm flip-flop'lara eşit gecikmeyle ulaştırmak için silikon üzerinde dengeli simetrik **H-Tree** veya tampon ağaçları inşa edilir.`,
       },
     ],
     playground: {
@@ -699,7 +733,11 @@ Flip-Flop 0 veya 1 olamaz! Çıkış voltajı ara bir değerde (VDD/2) asılı k
       },
       {
         title: "2. Çift Flop Senkronlayıcı (2-FF Synchronizer)",
-        content: `Tek bitlik kontrol sinyalleri asenkron saat alanına girerken doğrudan mantık devrelerine bağlanmaz! Araya arka arkaya iki adet D Flip-Flop konur.
+        content: `![İki Flip-Flop'lu asenkron saat alanı senkronizörü (2-FF Synchronizer)](/images/digital/8.6-two-flop-synchronizer.svg)
+
+![Asenkron FIFO'da Gray kodu ile saat alanı geçişi](/images/digital/8.6-async-fifo-gray-pointers.svg)
+
+Tek bitlik kontrol sinyalleri asenkron saat alanına girerken doğrudan mantık devrelerine bağlanmaz! Araya arka arkaya iki adet D Flip-Flop konur.
 İlk flop metastabiliteye düşse bile, ikinci flop saat periyodu boyunca ilk flop'un kararlı hale gelmesini (0 veya 1'e oturmasını) bekler. Bu yöntem **MTBF (Mean Time Between Failures)** hata aralığını binlerce yıla çıkarır.`,
       },
     ],
@@ -762,7 +800,9 @@ endmodule`,
     sections: [
       {
         title: "1. FSM Nedir?",
-        content: `**Sonlu Durum Makinesi (FSM)**, dijital kontrol birimlerinin (kontrolörler, protokol motorları, CPU yöneticileri) omurgasıdır. Devre sonlu sayıdaki durumlardan birindedir ve saat darbeleriyle bir durumdan diğerine geçer.
+        content: `![FSM durum geçiş diyagramı örneği](/images/digital/fsm_state_transition.png)
+
+**Sonlu Durum Makinesi (FSM)**, dijital kontrol birimlerinin (kontrolörler, protokol motorları, CPU yöneticileri) omurgasıdır. Devre sonlu sayıdaki durumlardan birindedir ve saat darbeleriyle bir durumdan diğerine geçer.
 Bir FSM 3 temel donanım bloğundan oluşur:
 1. **Gelecek Durum Mantığı (Next-State Logic):** Mevcut duruma ve girişlere göre bir sonraki durumu hesaplayan bileşik mantık.
 2. **Durum Kaydedicisi (State Register):** Mevcut durumu saklayan flip-flop'lar.
@@ -840,7 +880,11 @@ endmodule`,
     sections: [
       {
         title: "1. Mealy FSM Mimarisi",
-        content: `Mealy FSM'de çıkışlar **HEM mevcut duruma HEM DE o andaki girişlere** doğrudan bağlıdır (\`Çıkış = f(State, Inputs)\`).
+        content: `![Mealy Durum Makinesi blok diyagramı: Çıkış hem duruma hem de girdiye bağlıdır](/images/digital/mealy-machine-block-diagram.svg)
+
+![Mealy '110' dizi tanıyıcı durum diyagramı](/images/digital/mealy-seq-detector-110.svg)
+
+Mealy FSM'de çıkışlar **HEM mevcut duruma HEM DE o andaki girişlere** doğrudan bağlıdır (\`Çıkış = f(State, Inputs)\`).
 - **Avantajı:** Genellikle Moore makinesine göre daha az durumla (daha az flip-flop) tasarlanabilir; giriş değiştiğinde saat darbesini beklemeden anında tepki verebilir.
 - **Dezavantajı:** Giriş hattındaki gürültü ve glitch'ler anında çıkışa sızabilir; saat kenarı beklenmediği için zamanlama analizi daha zordur.`,
       },
@@ -896,7 +940,13 @@ endmodule`,
     sections: [
       {
         title: "1. Moore FSM Mimarisi",
-        content: `Moore FSM'de çıkışlar **YALNIZCA mevcut duruma** bağlıdır (\`Çıkış = f(State)\`). Girişler çıkışı doğrudan etkileyemez!
+        content: `![Moore Durum Makinesi blok diyagramı: Çıkış yalnızca mevcut duruma bağlıdır](/images/digital/moore-machine-block-diagram.svg)
+
+![Moore dizi tanıyıcı durum diyagramı](/images/digital/moore-seq-detector-state-diagram.svg)
+
+![Moore trafik ışığı denetleyicisi FSM durum mimarisi](/images/digital/moore-traffic-controller-fsm.svg)
+
+Moore FSM'de çıkışlar **YALNIZCA mevcut duruma** bağlıdır (\`Çıkış = f(State)\`). Girişler çıkışı doğrudan etkileyemez!
 - **Neden Güvenlidir?** Giriş hattında ne kadar gürültü veya glitch olursa olsun çıkışa yansımaz; çıkış yalnızca saat kenarında durum değiştiğinde güncellenir.
 - Çip tasarımcıları kritik kontrol yollarında daima **Moore FSM** tercih eder çünkü saat senkronizasyonu ve zamanlama kapanışı (timing closure) çok daha kolaydır.`,
       },
@@ -955,7 +1005,9 @@ endmodule`,
     sections: [
       {
         title: "1. 6T SRAM Mimarisi",
-        content: `İşlemcilerin L1, L2, L3 önbelleklerinde (Cache) kullanılan **SRAM (Statik RAM)**, gücü kesilmediği sürece veriyi yenileme (refresh) ihtiyacı olmadan saklar:
+        content: `![6-Transistörlü (6T) SRAM bellek hücresi mimarisi](/images/digital/9.4-6t-sram-cell.svg)
+
+İşlemcilerin L1, L2, L3 önbelleklerinde (Cache) kullanılan **SRAM (Statik RAM)**, gücü kesilmediği sürece veriyi yenileme (refresh) ihtiyacı olmadan saklar:
 - **Çekirdek:** Birbirini besleyen 2 adet CMOS inverter (4 transistör).
 - **Erişim:** Hücreye erişimi kontrol eden 2 adet NMOS transistör (Pass-gate).
 Toplamda **6 Transistör (6T)** içerir:
@@ -1011,7 +1063,9 @@ endmodule`,
     sections: [
       {
         title: "1. 1T-1C DRAM Mimarisi",
-        content: `Bilgisayarların ana belleği (DDR4, DDR5 RAM) **DRAM (Dinamik RAM)** teknolojisidir:
+        content: `![1-Transistör 1-Kapasitör (1T-1C) DRAM bellek hücresi](/images/digital/9.5-1t1c-dram-cell.svg)
+
+Bilgisayarların ana belleği (DDR4, DDR5 RAM) **DRAM (Dinamik RAM)** teknolojisidir:
 - Yalnızca **1 Transistör ve 1 Kapasitör (1T-1C)** içerir!
 - 6T SRAM'e göre 6 kat daha az yer kapladığı için gigabaytlarca bellek tek bir çipe sığdırılabilir.`,
       },
@@ -1075,7 +1129,9 @@ endmodule`,
     sections: [
       {
         title: "1. Bir Çip Nasıl Üretilir? (ASIC Akışının 7 Adımı)",
-        content: `1. **RTL Tasarımı & Doğrulama:** İşlemci Verilog/SystemVerilog ile yazılır ve UVM testbench'lerle simüle edilir.
+        content: `![RTL'den Silikona ASIC / VLSI tasarım akışı (Sentez, DFT, P&R, STA, DRC/LVS, Maske)](/images/digital/9.6-rtl-to-gdsii-flow.svg)
+
+1. **RTL Tasarımı & Doğrulama:** İşlemci Verilog/SystemVerilog ile yazılır ve UVM testbench'lerle simüle edilir.
 2. **Mantıksal Sentez (Synthesis):** RTL kodu hedef teknolojinin (TSMC, Intel) standart kapı kütüphanesine (NAND, NOR, DFF) dönüştürülür (*Gate-level Netlist* üretilir).
 3. **Taban Planlama (Floorplanning):** Çipin fiziksel boyutları, I/O pin yerleri ve güç hatları (Power Ring) planlanır.
 4. **Yerleşim (Placement):** Milyarlarca standart kapı hücresi silikon yüzeyine yerleştirilir.
@@ -1129,7 +1185,9 @@ endmodule`,
     sections: [
       {
         title: "1. İki Büyük Kariyer Yolu",
-        content: `- **RTL Tasarım Mühendisi (ASIC/FPGA Design Engineer):** Mimarileri ve algoritmaları en düşük güç, en yüksek hız ve en küçük alanda sentezlenebilir Verilog/SystemVerilog ile yazar.
+        content: `![VLSI öğrenme ve nanometre çip mimarileri yol haritası](/images/digital/9.7-learning-roadmap.svg)
+
+- **RTL Tasarım Mühendisi (ASIC/FPGA Design Engineer):** Mimarileri ve algoritmaları en düşük güç, en yüksek hız ve en küçük alanda sentezlenebilir Verilog/SystemVerilog ile yazar.
 - **Doğrulama Mühendisi (Design Verification - DV Engineer):** Çip üretilmeden önce sıfır bug kalmasını garantilemek için SystemVerilog OOP, UVM (Universal Verification Methodology) ve rastgele kısıtlı testbench'ler (Constrained Random Testing) yazar.`,
       },
       {

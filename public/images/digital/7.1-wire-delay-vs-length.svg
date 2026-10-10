@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 600 300" width="600" height="300" role="img" aria-label="Wire delay versus length with and without repeaters" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs></defs>
+<rect x="0.5" y="0.5" width="599" height="299" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<polyline points="80.0,250.0 560.0,250.0" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="72" y="254.0" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">0</text>
+<polyline points="80.0,197.5 560.0,197.5" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="72" y="201.5" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">200</text>
+<polyline points="80.0,145.0 560.0,145.0" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="72" y="149.0" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">400</text>
+<polyline points="80.0,92.5 560.0,92.5" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="72" y="96.5" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">600</text>
+<polyline points="80.0,40.0 560.0,40.0" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="72" y="44.0" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">800</text>
+<text x="80.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">0</text>
+<text x="176.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">1</text>
+<text x="272.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">2</text>
+<text x="368.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">3</text>
+<text x="464.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">4</text>
+<text x="560.0" y="266" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">5</text>
+<polyline points="80.0,250.0 560.0,250.0" fill="none" stroke="#6b7280" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="80.0,250.0 80.0,30.0" fill="none" stroke="#6b7280" stroke-width="1.2" stroke-linejoin="round"/>
+<polyline points="80.0,250.0 84.8,250.0 89.6,249.9 94.4,249.8 99.2,249.7 104.0,249.5 108.8,249.3 113.6,249.0 118.4,248.7 123.2,248.4 128.0,248.0 132.8,247.6 137.6,247.2 142.4,246.7 147.2,246.1 152.0,245.6 156.8,245.0 161.6,244.3 166.4,243.6 171.2,242.9 176.0,242.1 180.8,241.3 185.6,240.5 190.4,239.6 195.2,238.7 200.0,237.7 204.8,236.7 209.6,235.6 214.4,234.6 219.2,233.4 224.0,232.3 228.8,231.1 233.6,229.8 238.4,228.6 243.2,227.2 248.0,225.9 252.8,224.5 257.6,223.0 262.4,221.6 267.2,220.1 272.0,218.5 276.8,216.9 281.6,215.3 286.4,213.6 291.2,211.9 296.0,210.1 300.8,208.3 305.6,206.5 310.4,204.6 315.2,202.7 320.0,200.8 324.8,198.8 329.6,196.8 334.4,194.7 339.2,192.6 344.0,190.4 348.8,188.3 353.6,186.0 358.4,183.8 363.2,181.5 368.0,179.1 372.8,176.7 377.6,174.3 382.4,171.9 387.2,169.4 392.0,166.8 396.8,164.2 401.6,161.6 406.4,159.0 411.2,156.3 416.0,153.5 420.8,150.8 425.6,147.9 430.4,145.1 435.2,142.2 440.0,139.3 444.8,136.3 449.6,133.3 454.4,130.2 459.2,127.1 464.0,124.0 468.8,120.8 473.6,117.6 478.4,114.4 483.2,111.1 488.0,107.8 492.8,104.4 497.6,101.0 502.4,97.5 507.2,94.1 512.0,90.5 516.8,87.0 521.6,83.4 526.4,79.7 531.2,76.0 536.0,72.3 540.8,68.6 545.6,64.8 550.4,60.9 555.2,57.0 560.0,53.1" fill="none" stroke="#b91c1c" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="80.0,250.0 560.0,190.9" fill="none" stroke="#15803d" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="473.59999999999997" y="103.0" font-size="11" fill="#b91c1c" text-anchor="end" font-weight="bold">unrepeated: grows with length squared</text>
+<text x="550.4" y="231.625" font-size="11" fill="#15803d" text-anchor="end" font-weight="bold">with a repeater every 1 mm: grows linearly</text>
+<text x="320.0" y="286" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="normal">wire length (mm)</text>
+<text x="26" y="145" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="normal" transform="rotate(-90 26 145)">delay (ps)</text>
+<text x="560" y="30" font-size="10" fill="#6b7280" text-anchor="end" font-weight="normal">illustrative: 30 ps/mm^2 wire, 15 ps per repeater</text>
+</svg>

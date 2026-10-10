@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 326" width="660" height="326" role="img" aria-label="Static-1 hazard timing diagram" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<rect x="0.5" y="0.5" width="659" height="325" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="358.8888888888889" y="30" width="104.4444444444444" height="250" rx="0" fill="#fee2e2" stroke="none" stroke-width="0" opacity="0.7"/>
+<text x="411.1111111111111" y="24" font-size="11" fill="#b91c1c" text-anchor="middle" font-weight="bold">glitch</text>
+<polyline points="150.0,30 150.0,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="150.0" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">8</text>
+<polyline points="202.22222222222223,30 202.22222222222223,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="202.22222222222223" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">9</text>
+<polyline points="254.44444444444446,30 254.44444444444446,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="254.44444444444446" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">10</text>
+<polyline points="306.66666666666663,30 306.66666666666663,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="306.66666666666663" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">11</text>
+<polyline points="358.8888888888889,30 358.8888888888889,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="358.8888888888889" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">12</text>
+<polyline points="411.1111111111111,30 411.1111111111111,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="411.1111111111111" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">13</text>
+<polyline points="463.3333333333333,30 463.3333333333333,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="463.3333333333333" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">14</text>
+<polyline points="515.5555555555555,30 515.5555555555555,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="515.5555555555555" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">15</text>
+<polyline points="567.7777777777778,30 567.7777777777778,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="567.7777777777778" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">16</text>
+<polyline points="620.0,30 620.0,280" fill="none" stroke="#e5e7eb" stroke-width="1" stroke-linejoin="round"/>
+<text x="620.0" y="296" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">17</text>
+<text x="385.0" y="314" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">time (ns)   -   b = c = 1 throughout, every gate delay = 1 ns except the inverter (2 ns)</text>
+<polyline points="254.44444444444446,30 254.44444444444446,280" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<text x="138" y="64" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">a</text>
+<polyline points="150.0,48 254.44444444444446,48 254.44444444444446,70 620.0,70" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="104" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">a_n = ~a  (+2 ns)</text>
+<polyline points="150.0,110 358.8888888888889,110 358.8888888888889,88 620.0,88" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="144" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">t1 = a &amp; b</text>
+<polyline points="150.0,128 306.66666666666663,128 306.66666666666663,150 620.0,150" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="184" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">t2 = a_n &amp; c</text>
+<polyline points="150.0,190 411.1111111111111,190 411.1111111111111,168 620.0,168" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="224" font-size="11" fill="#b91c1c" text-anchor="end" font-weight="bold">y = t1 | t2</text>
+<polyline points="150.0,208 358.8888888888889,208 358.8888888888889,230 463.3333333333333,230 463.3333333333333,208 620.0,208" fill="none" stroke="#b91c1c" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="138" y="264" font-size="11" fill="#15803d" text-anchor="end" font-weight="bold">y with b &amp; c term</text>
+<polyline points="150.0,248 620.0,248" fill="none" stroke="#15803d" stroke-width="2.2" stroke-linejoin="round"/>
+</svg>

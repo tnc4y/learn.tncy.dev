@@ -7,26 +7,42 @@ export const DIGITAL_FUNDAMENTALS_PART3: Record<string, LessonContent> = {
   "df-boolean-logic": {
     id: "df-boolean-logic",
     badge: "Bölüm 6 • Boole Mantığı",
-    readingTime: "7 dk okuma",
+    readingTime: "9 dk okuma",
     level: "Başlangıç Seviyesi",
     title: "Boole Mantığı ve De Morgan Teoremleri",
-    subtitle: "Boole cebri aksiyomları, mantıksal eşitlikler, De Morgan kuralları ve kapı dönüşümleri.",
+    subtitle: "Boole cebri aksiyomları, temel mantık kapıları, De Morgan kuralları ve kapı dönüşümleri.",
     sections: [
       {
-        title: "1. Boole Cebri Temel Teoremleri",
-        content: `Boole cebri (George Boole, 1854), yalnızca 0 ve 1 değerleriyle çalışan mantıksal matematik sistemidir:
-- **Etkisiz Eleman:** \`A & 1 = A\` , \`A | 0 = A\`
-- **Yutan Eleman:** \`A & 0 = 0\` , \`A | 1 = 1\`
-- **Tersleme:** \`A & ~A = 0\` , \`A | ~A = 1\`
-- **İdempotentlik:** \`A & A = A\` , \`A | A = A\`
-- **Dağılma Özelliği:** \`A & (B | C) = (A & B) | (A & C)\``,
+        title: "1. Temel Mantık Kapıları ve Sembolleri",
+        content: `![Temel mantık kapıları: NOT, AND, OR, NAND, NOR, XOR ve XNOR sembolleri ile doğruluk tabloları](/images/digital/logic-gates.png)
+
+Boole cebri (George Boole, 1854), yalnızca iki değerle (**0** ve **1**) çalışan ve tüm bilgisayar işlemcilerinin temelini oluşturan matematiksel sistemdir:
+- **AND (VE):** Her iki giriş de 1 ise çıkış 1'dir (\`Y = A & B\`).
+- **OR (VEYA):** Girişlerden herhangi biri 1 ise çıkış 1'dir (\`Y = A | B\`).
+- **NOT (DEĞİL):** Girişin tersini alır (\`Y = ~A\`).
+- **XOR (ÖZEL VEYA):** Girişler birbirinden farklı olduğunda 1 üretir (\`Y = A ^ B\`).
+- **XNOR:** Girişler birbirine eşit olduğunda 1 üretir (\`Y = ~(A ^ B)\`).`,
       },
       {
-        title: "2. Hayati De Morgan Teoremleri",
-        content: `Çip tasarımında en çok kullanılan dönüşüm kurallarıdır:
-1. **~(A & B) = ~A | ~B** (NAND işlemi, girişleri terslenmiş OR işlemine eşittir).
-2. **~(A | B) = ~A & ~B** (NOR işlemi, girişleri terslenmiş AND işlemine eşittir).
-Bu kural sayesinde tüm mantık kapıları yalnızca NAND veya yalnızca NOR kullanılarak birbirine dönüştürülebilir.`,
+        title: "2. Boole Cebri Temel Aksiyom ve Teoremleri",
+        content: `Mantık devrelerini sadeleştirmek için kullanılan temel cebir kuralları:
+
+| Kural Adı | VE (AND) İfadesi | VEYA (OR) İfadesi |
+| :--- | :--- | :--- |
+| **Etkisiz Eleman** | $A \\cdot 1 = A$ | $A + 0 = A$ |
+| **Yutan Eleman** | $A \\cdot 0 = 0$ | $A + 1 = 1$ |
+| **Tersleme (Complement)** | $A \\cdot \\bar{A} = 0$ | $A + \\bar{A} = 1$ |
+| **Tekil Kuvvet (Idempotence)** | $A \\cdot A = A$ | $A + A = A$ |
+| **Dağılma Özelliği** | $A \\cdot (B + C) = (A \\cdot B) + (A \\cdot C)$ | $A + (B \\cdot C) = (A + B) \\cdot (A + C)$ |
+| **Yutma Teoremi (Absorption)** | $A \\cdot (A + B) = A$ | $A + (A \\cdot B) = A$ |`,
+      },
+      {
+        title: "3. Hayati De Morgan Teoremleri",
+        content: `Çip tasarımında kapı maliyetini düşürmek ve kapı türlerini dönüştürmek için kullanılan en kritik iki kural:
+1. **$\\overline{A \\cdot B} = \\bar{A} + \\bar{B}$** : Bir NAND kapısı, girişleri terslenmiş bir OR kapısına eşdeğerdir.
+2. **$\\overline{A + B} = \\bar{A} \\cdot \\bar{B}$** : Bir NOR kapısı, girişleri terslenmiş bir AND kapısına eşdeğerdir.
+
+Bu kural sayesinde karmaşık mantık fonksiyonları standart NAND-NAND veya NOR-NOR kademelerine dönüştürülerek silikonda minimum transistörle üretilir.`,
       },
     ],
     playground: {
@@ -72,22 +88,38 @@ endmodule`,
   "df-karnaugh-maps": {
     id: "df-karnaugh-maps",
     badge: "Bölüm 6 • Boole Mantığı",
-    readingTime: "8 dk okuma",
+    readingTime: "10 dk okuma",
     level: "Orta Seviye",
     title: "Karnaugh Haritaları (K-Map) ile Sadeleştirme",
     subtitle: "Gray kodu dizilimi, 2-3-4 değişkenli K-Map tabloları, 2'nin kuvvetleri şeklinde gruplama ve Don't Care durumları.",
     sections: [
       {
         title: "1. K-Map Mantığı ve Gray Kodu Düzeni",
-        content: `Karnaugh Haritası (K-Map), Boole cebirsel ifadelerini görsel bir ızgara üzerinde en az sayıda kapıyla gerçeklemek için sadeleştirme tekniğidir.
-Tablonun satır ve sütunları **Gray Kodu (00, 01, 11, 10)** şeklinde sıralanır. Bu sayede komşu hücreler arasında yalnızca tek bir değişkenin değeri değişir.`,
+        content: `![Karnaugh haritası genel yapısı ve ızgara düzeni](/images/digital/k-maps.png)
+
+Karnaugh Haritası (Maurice Karnaugh, 1953), karmaşık Boole cebirsel ifadelerini insan gözünün desen tanıma yeteneğini kullanarak görsel olarak en sade formuna indirgeme tekniğidir.
+
+Tablonun satır ve sütun başlıkları standart ikilik sıra (00, 01, 10, 11) yerine **Gray Kodu (00, 01, 11, 10)** ile dizilir. Bu kural sayesinden yan yana olan her iki hücre arasında yalnızca **tek bir değişkenin değeri değişir** ($A$ ile $\\bar{A}$).
+
+![Karnaugh haritası ile mantık sadeleştirme genel görünümü](/images/digital/kmap-example.png)
+
+![Doğruluk tablosundan K-Map'e aktarım örneği](/images/digital/example-truth-table.png)
+
+![3-Değişkenli Karnaugh haritası yerleşimi](/images/digital/3var-kmap.png)
+
+![K-Map hücrelerine doğruluk tablosu çıkışlarının yerleştirilmesi](/images/digital/kmap-entry.png)`,
       },
       {
-        title: "2. Gruplama Kuralları ve Don't Care (X)",
-        content: `- Gruplar mutlaka **1, 2, 4, 8, 16 (2'nin kuvveti)** boyutunda dikdörtgen veya kareler olmalıdır.
-- Gruplar mümkün olduğunca BÜYÜK seçilmelidir (Grup ne kadar büyükse ifade o kadar sadeleşir).
-- Tablo kenarları birbiriyle bitişiktir (Toroid yapısı: En sağdaki sütun en soldaki sütunla komşudur!).
-- **Don't Care (X - Farketmez):** Devrenin normal çalışmasında asla gelmeyecek durumlar 1 veya 0 kabul edilerek grupları büyütmek için joker olarak kullanılır.`,
+        title: "2. Gruplama Kuralları ve Kapı Devresine Dönüştürme",
+        content: `![K-Map hücre doldurma ve 1'leri 2'nin kuvvetleri şeklinde gruplama](/images/digital/fill-kmap.png)
+
+K-Map üzerinde gruplama yaparken dikkat edilmesi gereken altın kurallar:
+1. **Grup Boyutları:** Gruplar mutlaka **1, 2, 4, 8, 16 (2'nin kuvveti)** adet 1 içermelidir. 3'lü veya 5'li grup yapılamaz.
+2. **Maksimum Boyut:** Grup ne kadar büyük olursa o kadar çok değişken yok olur (8'li grup 3 değişkeni, 4'lü grup 2 değişkeni eler).
+3. **Toroid Yapısı (Kenar Komşuluğu):** Haritanın en sol sütunu en sağ sütunuyla, en üst satırı ise en alt satırıyla bitişiktir.
+4. **Don't Care (X - Farketmez):** Asla oluşmayacak giriş kombinasyonları, grupları büyütmek amacıyla isteğe göre 1 veya 0 olarak değerlendirilebilir.
+
+![Sadeleştirilmiş K-Map sonucunun mantık kapılarıyla sentezlenmiş hali](/images/digital/kmap-logic-gates.png)`,
       },
     ],
     playground: {
@@ -146,7 +178,7 @@ endmodule`,
   "df-universal-gates": {
     id: "df-universal-gates",
     badge: "Bölüm 6 • Boole Mantığı",
-    readingTime: "7 dk okuma",
+    readingTime: "8 dk okuma",
     level: "Başlangıç Seviyesi",
     title: "Evrensel Kapılar: Yalnızca NAND ve NOR ile Tasarım",
     subtitle: "Universal Gates kavramı; yalnızca NAND kullanarak NOT, AND, OR, XOR kapılarını türetme.",
@@ -160,7 +192,8 @@ endmodule`,
         title: "2. NAND Kapısından Diğer Kapıların Türetilmesi",
         content: `- **NOT Kapısı:** Girişleri birbirine bağla -> \`~(A & A) = ~A\`.
 - **AND Kapısı:** NAND çıkışına bir NOT (NAND) bağla -> \`~(~(A & B)) = A & B\`.
-- **OR Kapısı:** De Morgan kuralı ile girişlerin değillerini alıp NAND'e ver -> \`~(~A & ~B) = A | B\`.`,
+- **OR Kapısı:** De Morgan kuralı ile girişlerin değillerini alıp NAND'e ver -> \`~(~A & ~B) = A | B\`.
+- **NOR Kapısı:** OR kapısının çıkışını tersle -> \`~(~(~A & ~B))\`.`,
       },
     ],
     playground: {
@@ -272,21 +305,30 @@ endmodule`,
   "df-hazards-glitches": {
     id: "df-hazards-glitches",
     badge: "Bölüm 6 • Boole Mantığı",
-    readingTime: "8 dk okuma",
+    readingTime: "9 dk okuma",
     level: "İleri Seviye",
     title: "Mantık Tehlikeleri (Hazards) ve Glitch Önleme",
     subtitle: "Statik-1 ve Statik-0 tehlikeleri, kapı gecikmesi uyumsuzlukları ve K-Map konsensus terimi ekleme.",
     sections: [
       {
         title: "1. Glitch ve Hazard Nedir?",
-        content: `İdeal matematikte \`A\` ile \`~A\` anında zıt değerdedir. Ancak gerçek silikonda bir sinyalin tersini üreten inverter kapısının birkaç pikosaniyelik bir **gecikmesi (propagation delay)** vardır.
+        content: `![Statik-1 tehlikesi zamanlama diyagramı ve geçici glitch dalgası](/images/digital/5.5-static-1-hazard-timing.svg)
+
+İdeal matematikte \`A\` ile \`~A\` anında zıt değerdedir. Ancak gerçek silikonda bir sinyalin tersini üreten inverter kapısının birkaç pikosaniyelik bir **gecikmesi (propagation delay)** vardır.
+
 Giriş değiştiğinde çıkışın sabit kalması gerekirken anlık olarak zıt değere sıçrayıp geri dönmesine **Glitch (Kısa Darbe)**, bu duruma yol açan devre zafiyetine ise **Hazard (Tehlike)** denir:
 - **Statik-1 Tehlikesi:** Çıkışın 1 kalması gerekirken anlık 0'a düşmesi.
 - **Statik-0 Tehlikesi:** Çıkışın 0 kalması gerekirken anlık 1'e fırlaması.`,
       },
       {
         title: "2. K-Map Konsensus Terimi ile Çözüm",
-        content: `Bir K-Map'te iki ayrı grup birbirine teğet geçtiğinde, bir gruptan diğerine atlama anında glitch oluşur. Çözüm, bu iki grubu birbirine bağlayan fazladan bir örtüşme grubu (**Konsensus Terimi**) eklemektir.`,
+        content: `![K-Map üzerinde tehlike önleyici uzlaşma (consensus) terimi ekleme](/images/digital/5.5-kmap-hazard-consensus.svg)
+
+Bir K-Map'te iki ayrı grup birbirine teğet geçtiğinde, bir gruptan diğerine atlama anında glitch oluşur.
+
+Çözüm, bu iki grubu birbirine bağlayan fazladan bir örtüşme grubu (**Konsensus Terimi - Consensus Term**) eklemektir. Bu terim fonksiyonu mantıksal olarak değiştirmez ancak geçiş anında sinyali sürekli 1 seviyesinde tutar.
+
+![Alıştırma K-Map çözümü ve örtüşen terim](/images/digital/5.5-exercise-kmap-solution.svg)`,
       },
     ],
     playground: {
@@ -338,14 +380,16 @@ endmodule`,
   "df-combinational-logic": {
     id: "df-combinational-logic",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "7 dk okuma",
+    readingTime: "8 dk okuma",
     level: "Başlangıç Seviyesi",
-    title: "Bileşik Mantık İlkeleri ve Doğruluk Tabloları",
+    title: "Bileşik Mantık İlkeleri ve Tasarım Metodolojisi",
     subtitle: "Hafızasız (Memoryless) devreler, geri beslemesiz akış ve doğruluk tablosundan devre sentezi.",
     sections: [
       {
         title: "1. Bileşik Mantık (Combinational Logic) Nedir?",
-        content: `Bir devrenin çıkışları **YALNIZCA o andaki girişlerin durumuna bağlıysa**, geçmişteki durumları hatırlamıyorsa buna **Bileşik Mantık** denir:
+        content: `![Bileşik mantık devresi giriş ve çıkış blok yapısı](/images/digital/full-adder-io.png)
+
+Bir devrenin çıkışları **YALNIZCA o andaki girişlerin durumuna bağlıysa**, geçmişteki durumları hatırlamıyorsa buna **Bileşik Mantık** denir:
 - Bellek elemanı (Flip-Flop, Latch) içermez.
 - Saat sinyali (Clock) kullanmaz.
 - Geri besleme (Feedback) döngüsü yoktur.
@@ -403,15 +447,30 @@ endmodule`,
   "df-decoders": {
     id: "df-decoders",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "7 dk okuma",
+    readingTime: "8 dk okuma",
     level: "Başlangıç Seviyesi",
     title: "Sayısal Kod Çözücüler (Decoders: 2-to-4, 3-to-8)",
     subtitle: "N-to-2^N kod çözücü mimarisi, Enable pini ve bellek adres çözme donanımı.",
     sections: [
       {
-        title: "1. Kod Çözücü (Decoder) Nedir ve Nerede Kullanılır?",
-        content: `Bir kod çözücü, \`N\` bitlik ikilik giriş kodunu alır ve \`2^N\` adet çıkış hattından **yalnızca bir tanesini aktif (1)** yapar.
+        title: "1. Kod Çözücü Blok Şeması ve Doğruluk Tablosu",
+        content: `![2-to-4 Kod Çözücü blok diyagramı](/images/digital/2x4-decoder-block.png)
+
+Bir kod çözücü, \`N\` bitlik ikilik giriş kodunu alır ve \`2^N\` adet çıkış hattından **yalnızca bir tanesini aktif (1)** yapar:
+
+![2-to-4 Kod Çözücü doğruluk tablosu](/images/digital/2x4-decoder-truth-table.png)
+
 En yaygın kullanım alanı **Bellek Adres Çözümlemedir (Address Decoding)**: İşlemci 10 bitlik bir bellek adresi verdiğinde, bir kod çözücü 1024 bellek satırından tam olarak istenen satırın \`Wordline\` kablosunu aktif hale getirir.`,
+      },
+      {
+        title: "2. Kapı Seviyesi Devre Tasarımı",
+        content: `![2-to-4 Kod Çözücü mantık kapıları şeması](/images/digital/2x4-decoder-circuit.png)
+
+Her çıkış hattı giriş kombinasyonlarından birinin AND kapısıyla çarpılmasıyla oluşturulur:
+- $Y_0 = \\bar{A}_1 \\cdot \\bar{A}_0 \\cdot EN$
+- $Y_1 = \\bar{A}_1 \\cdot A_0 \\cdot EN$
+- $Y_2 = A_1 \\cdot \\bar{A}_0 \\cdot EN$
+- $Y_3 = A_1 \\cdot A_0 \\cdot EN$`,
       },
     ],
     playground: {
@@ -459,15 +518,24 @@ endmodule`,
   "df-encoders": {
     id: "df-encoders",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "7 dk okuma",
+    readingTime: "8 dk okuma",
     level: "Orta Seviye",
     title: "Kodlayıcılar ve Öncelikli Kodlayıcı (Priority Encoders)",
     subtitle: "2^N-to-N kodlayıcı mimarisi ve birden fazla kesme (interrupt) geldiğinde öncelik yönetimi.",
     sections: [
       {
-        title: "1. Öncelikli Kodlayıcı (Priority Encoder) Neden Gereklidir?",
-        content: `Standart bir kodlayıcıda aynı anda birden fazla giriş 1 olursa çıkış anlamsızlaşır.
+        title: "1. Öncelikli Kodlayıcı Blok Şeması ve Doğruluk Tablosu",
+        content: `![4-to-2 Kodlayıcı blok diyagramı](/images/digital/4x2_encoder_bd.png)
+
+Standart bir kodlayıcıda aynı anda birden fazla giriş 1 olursa çıkış anlamsızlaşır.
+
+![4-to-2 Kodlayıcı doğruluk tablosu](/images/digital/4x2_encoder_truth_table.png)
+
 İşlemcilerde birden fazla donanım aynı anda kesme (Interrupt) talep edebilir. **Öncelikli Kodlayıcı (Priority Encoder)**, aynı anda birden fazla giriş aktif olduğunda **en yüksek öncelikli olanın (en büyük indeksin)** kodunu çıkışa verir.`,
+      },
+      {
+        title: "2. Kapı Seviyesi Devre Şeması",
+        content: `![4-to-2 Kodlayıcı kapı seviyesi devre şeması](/images/digital/4x2_encoder_circuit.png)`,
       },
     ],
     playground: {
@@ -527,10 +595,14 @@ endmodule`,
     subtitle: "Sayısal veri yönlendirme vanası, seçim hatları (Select lines) ve MUX ile Boole fonksiyonu üretme.",
     sections: [
       {
-        title: "1. Çoklayıcı (Multiplexer - MUX) Nedir?",
-        content: `**MUX**, birden fazla veri girişinden bir tanesini seçici sinyallere (\`sel\`) göre seçip tek bir çıkış hattına ileten sayısal bir döner anahtardır (vanadır):
-- \`2^N\` adet veri girişini seçmek için **\`N\` adet seçim hattı** gerekir (örneğin 4:1 MUX için 2 bit seçim hattı).
-- Modern işlemcilerin veri yollarında (ALU girişleri, register yönlendirmeleri) en çok kullanılan devredir.`,
+        title: "1. 2:1 ve 4:1 MUX Devre Mimarisi",
+        content: `![2-to-1 Çoğullayıcı (MUX) mantık devresi](/images/digital/2x1_mux_logic.png)
+
+**MUX**, birden fazla veri girişinden bir tanesini seçici sinyallere (\`sel\`) göre seçip tek bir çıkış hattına ileten sayısal bir döner anahtardır:
+- \`2^N\` adet veri girişini seçmek için **\`N\` adet seçim hattı** gerekir.
+- Modern işlemcilerin veri yollarında (ALU girişleri, register yönlendirmeleri) en çok kullanılan devredir.
+
+![4-to-1 Çoğullayıcı (MUX) mantık devresi](/images/digital/4x1_mux_logic.png)`,
       },
     ],
     playground: {
@@ -577,14 +649,18 @@ endmodule`,
   "df-demultiplexers": {
     id: "df-demultiplexers",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "6 dk okuma",
+    readingTime: "7 dk okuma",
     level: "Başlangıç Seviyesi",
-    title: "Tekleyiciler (Demultiplexers - DEMUX)",
+    title: "Tekleyiciler (Demultiplexers - DEMUX: 1:2, 1:4)",
     subtitle: "1-to-N dağıtıcı mimarisi, MUX ile simetri ve haberleşme veri dağıtımı.",
     sections: [
       {
-        title: "1. DEMUX Nedir?",
-        content: `DEMUX, MUX'un tam tersidir: Tek bir veri girişini (\`Din\`), seçim sinyallerine (\`sel\`) bağlı olarak \`2^N\` adet çıkış hattından seçilen birine aktarır, diğer çıkışları 0 yapar.`,
+        title: "1. 1:2 ve 1:4 DEMUX Devre Yapısı",
+        content: `![1-to-2 Tekleyici (DEMUX) mantık devresi](/images/digital/1x2_demux_logic.png)
+
+DEMUX, MUX'un tam tersidir: Tek bir veri girişini (\`Din\`), seçim sinyallerine (\`sel\`) bağlı olarak \`2^N\` adet çıkış hattından seçilen birine aktarır, diğer çıkışları 0 yapar.
+
+![1-to-4 Tekleyici (DEMUX) mantık devresi](/images/digital/1x4_demux_logic.png)`,
       },
     ],
     playground: {
@@ -633,24 +709,35 @@ endmodule`,
   "df-half-full-adder": {
     id: "df-half-full-adder",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "8 dk okuma",
+    readingTime: "9 dk okuma",
     level: "Başlangıç Seviyesi",
     title: "Yarım Toplayıcı (Half Adder) ve Tam Toplayıcı (Full Adder)",
     subtitle: "Sum ve Carry denklemleri, Ripple Carry Adder mimarisi ve Carry Lookahead (CLA) farkı.",
     sections: [
       {
         title: "1. Yarım Toplayıcı (Half Adder)",
-        content: `İki adet 1-bitlik sayıyı (A ve B) toplar:
+        content: `![Yarım Toplayıcı blok şeması](/images/digital/half_adder.png)
+
+İki adet 1-bitlik sayıyı (A ve B) toplar:
+
+![Yarım Toplayıcı doğruluk tablosu](/images/digital/half_adder_truth_table.png)
+
 - **Sum (Toplam):** \`S = A ^ B\` (XOR Kapısı)
 - **Carry (Elde):** \`C = A & B\` (AND Kapısı)
 Önceki basamaktan gelen bir elde (Cin) girişini kabul edemediği için 'yarım' olarak adlandırılır.`,
       },
       {
         title: "2. Tam Toplayıcı (Full Adder)",
-        content: `Üç adet 1-bitlik sayıyı (A, B ve önceki basamağın eldesi Cin) toplar:
+        content: `![Tam Toplayıcı K-Map sadeleştirmesi](/images/digital/full_adder_kmap.png)
+
+Üç adet 1-bitlik sayıyı (A, B ve önceki basamağın eldesi Cin) toplar:
+
+![İki Yarım Toplayıcı ile Tam Toplayıcı inşası](/images/digital/full-adder-with-ha.png)
+
+![Tam Toplayıcı mantık kapıları şeması](/images/digital/full-adder-logic-gates.png)
+
 - **Sum:** \`S = A ^ B ^ Cin\`
-- **Cout:** \`Cout = (A & B) | (Cin & (A ^ B))\`
-İki adet Half Adder ve bir OR kapısıyla kurulabilir. Çok bitlik toplayıcıların (ör. 32-bit Ripple Carry Adder) yapı taşıdır.`,
+- **Cout:** \`Cout = (A & B) | (Cin & (A ^ B))\``,
       },
     ],
     playground: {
@@ -700,20 +787,17 @@ endmodule`,
   "df-comparators-alu": {
     id: "df-comparators-alu",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "8 dk okuma",
+    readingTime: "9 dk okuma",
     level: "Orta Seviye",
     title: "Karşılaştırıcılar (Comparators) ve ALU Mimarisi",
     subtitle: "Büyüktür, Küçüktür, Eşittir devreleri ve mikroişlemcinin beyni Aritmetik Mantık Birimi (ALU).",
     sections: [
       {
-        title: "1. Sayısal Karşılaştırıcı (Magnitude Comparator)",
-        content: `İki ikilik sayıyı (A ve B) karşılaştırarak 3 bayrak üretir:
-- \`A == B\`: Karşılıklı tüm bitlerin XNOR (\`~(A ^ B)\`) sonuçlarının AND'lenmesidir.
-- \`A > B\` ve \`A < B\`: MSB'den başlayarak ilk farklılaşan bitin incelenmesiyle belirlenir.`,
-      },
-      {
-        title: "2. Aritmetik Mantık Birimi (ALU)",
-        content: `ALU, CPU'nun tüm matematiksel ve mantıksal hesaplamalarını yapan merkezidir. Bir kontrol kodu (\`Opcode\`) ile toplayıcı, çıkarıcı, AND, OR, XOR veya kaydırma operasyonlarından hangisinin çalıştırılacağını seçer.`,
+        title: "1. Aritmetik Mantık Birimi (ALU) ve Paylaşımlı Toplayıcı Mimarisi",
+        content: `![Paylaşımlı toplayıcı/çıkarıcı mimarisine sahip ALU blok diyagramı](/images/digital/6.7-alu-shared-adder-block-diagram.svg)
+
+ALU, CPU'nun tüm matematiksel ve mantıksal hesaplamalarını yapan merkezidir.
+Modern ALU tasarımlarında çıkarıcı ayrı bir donanım olarak kurulmaz; **İkiye Tümleyen (Two's Complement)** kuralı kullanılarak tek bir toplayıcı hem toplama hem çıkarma için paylaşılır (\`A - B = A + ~B + 1\`).`,
       },
     ],
     playground: {
@@ -764,24 +848,28 @@ endmodule`,
   "df-propagation-delay": {
     id: "df-propagation-delay",
     badge: "Bölüm 7 • Bileşik Mantık",
-    readingTime: "8 dk okuma",
+    readingTime: "10 dk okuma",
     level: "İleri Seviye",
     title: "Yayılma Gecikmesi (Propagation Delay) ve Kritik Yol",
     subtitle: "tpd, tcd (contamination delay), kritik yol (Critical Path) ve işlemcinin maksimum saat frekansı (Fmax).",
     sections: [
       {
-        title: "1. Yayılma Gecikmesi (Propagation Delay - tpd) Nedir?",
-        content: `Bir mantık kapısının girişindeki sinyal değiştiği anda çıkış anında değişemez; transistörlerin dirençleri ve kablo kapasitansları nedeniyle çıkışın %50 seviyesine ulaşması belirli bir zaman alır.
+        title: "1. Zamanlama Yolları ve Kritik Yol (Critical Path)",
+        content: `![Ardışıl devre zamanlama yolları ve kritik yol gecikmesi](/images/digital/6.8-timing-paths-critical-path.svg)
+
+Bir mantık kapısının girişindeki sinyal değiştiği anda çıkış anında değişemez; transistörlerin dirençleri ve kablo kapasitansları nedeniyle çıkışın %50 seviyesine ulaşması belirli bir zaman alır.
 - **\`tpd\` (Propagation Delay):** Giriş %50 olduktan sonra çıkışın kararlı hale gelmesine kadar geçen maksimum süre.
-- **\`tcd\` (Contamination Delay):** Giriş değiştikten sonra çıkışın değişmeye başladığı ilk minimum süre.`,
+- **\`tcd\` (Contamination Delay):** Giriş değiştikten sonra çıkışın değişmeye başladığı ilk minimum süre.
+
+İki flip-flop arasındaki en uzun gecikmeli bileşik mantık yoluna **Kritik Yol (Critical Path)** denir.`,
       },
       {
-        title: "2. Kritik Yol (Critical Path) ve Fmax",
-        content: `İki flip-flop arasındaki en uzun gecikmeli bileşik mantık yoluna **Kritik Yol (Critical Path)** denir.
+        title: "2. Saat Periyodu Bütçesi ve Fmax",
+        content: `![Saat periyodu zamanlama bütçesi (t_setup, t_clk-q, t_comb)](/images/digital/6.8-clock-period-budget.svg)
+
 Çipin maksimum çalışabileceği saat frekansı (\`Fmax\`) doğrudan bu en yavaş yolun süresiyle sınırlandırılır:
-\`T_clock ≥ t_clk_to_q + t_kritik_yol + t_setup\`
-\`Fmax = 1 / T_clock\`
-Çipi hızlandırmak isteyen bir mühendis kritik yoldaki en yavaş mantık kapılarını optimize eder veya araya pipeline kaydedicileri ekler!`,
+$$T_{clock} \\ge t_{clk\\to q} + t_{comb(max)} + t_{setup}$$
+$$F_{max} = \\frac{1}{T_{clock}}$$`,
       },
     ],
     playground: {

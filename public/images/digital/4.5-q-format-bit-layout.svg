@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 640 216" width="640" height="216" role="img" aria-label="Q1.15 bit layout and Q2.30 product" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<rect x="0.5" y="0.5" width="639" height="215" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<text x="138" y="56" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">Q1.15 (16 bits)</text>
+<rect x="150" y="40" width="17" height="24" rx="0" fill="#fee2e2" stroke="#9ca3af" stroke-width="1"/>
+<rect x="167" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="184" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="201" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="218" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="235" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="252" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="269" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="286" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="303" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="320" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="337" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="354" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="371" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="388" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="405" y="40" width="17" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<polyline points="167,34 167,70" fill="none" stroke="#d9480f" stroke-width="2.5" stroke-linejoin="round"/>
+<text x="167" y="30" font-size="10" fill="#d9480f" text-anchor="middle" font-weight="bold">binary point</text>
+<text x="158.5" y="80" font-size="10" fill="#b91c1c" text-anchor="middle" font-weight="normal">sign</text>
+<text x="294.5" y="80" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="normal">15 fraction bits: weights 1/2, 1/4 ... 1/32768</text>
+<text x="432" y="56" font-size="10" fill="#6b7280" text-anchor="start" font-weight="normal">range -1 to +0.99997</text>
+<text x="138" y="136" font-size="11" fill="#1f2937" text-anchor="end" font-weight="bold">Q1.15 x Q1.15 = Q2.30</text>
+<rect x="150.0" y="120" width="13.5" height="24" rx="0" fill="#fee2e2" stroke="#9ca3af" stroke-width="1"/>
+<rect x="163.5" y="120" width="13.5" height="24" rx="0" fill="#fee2e2" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="177.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="190.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="204.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="217.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="231.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="244.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="258.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="271.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="285.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="298.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="312.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="325.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="339.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="352.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="366.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#1f2937" stroke-width="1.6"/>
+<rect x="379.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="393.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="406.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="420.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="433.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="447.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="460.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="474.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="487.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="501.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="514.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="528.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="541.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="555.0" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<rect x="568.5" y="120" width="13.5" height="24" rx="0" fill="#dbeafe" stroke="#9ca3af" stroke-width="1"/>
+<polyline points="177.0,114 177.0,150" fill="none" stroke="#d9480f" stroke-width="2.5" stroke-linejoin="round"/>
+<polyline points="163.5,154 163.5,162 379.5,162 379.5,154" fill="none" stroke="#1f2937" stroke-width="1.5" stroke-linejoin="round"/>
+<text x="271.5" y="178" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">keep bits [30:15] -> back to Q1.15</text>
+<text x="156.75" y="110" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="normal">31</text>
+<text x="575.25" y="110" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="normal">0</text>
+<text x="507.75" y="178" font-size="10" fill="#6b7280" text-anchor="middle" font-weight="normal">discard [14:0] (round first)</text>
+<text x="156.75" y="196" font-size="10" fill="#b91c1c" text-anchor="start" font-weight="normal">[31] duplicate sign: differs from [30] only for -1 x -1 -> saturate</text>
+</svg>

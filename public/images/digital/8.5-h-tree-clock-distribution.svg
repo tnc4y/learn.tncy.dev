@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="H-tree clock distribution" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs></defs>
+<rect x="0.5" y="0.5" width="639" height="299" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<polyline points="110.0,110.0 110.0,230.0" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="350.0,110.0 350.0,230.0" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="110.0,170.0 350.0,170.0" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="50.0,80.0 50.0,140.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="170.0,80.0 170.0,140.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="50.0,110.0 170.0,110.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<rect x="45.0" y="75.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="45.0" y="135.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="165.0" y="75.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="165.0" y="135.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<polyline points="50.0,200.0 50.0,260.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="170.0,200.0 170.0,260.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="50.0,230.0 170.0,230.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<rect x="45.0" y="195.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="45.0" y="255.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="165.0" y="195.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="165.0" y="255.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<polyline points="290.0,80.0 290.0,140.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="410.0,80.0 410.0,140.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="290.0,110.0 410.0,110.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<rect x="285.0" y="75.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="285.0" y="135.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="405.0" y="75.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="405.0" y="135.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<polyline points="290.0,200.0 290.0,260.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="410.0,200.0 410.0,260.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<polyline points="290.0,230.0 410.0,230.0" fill="none" stroke="#2563eb" stroke-width="1.9" stroke-linejoin="round"/>
+<rect x="285.0" y="195.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="285.0" y="255.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="405.0" y="195.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<rect x="405.0" y="255.0" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<polyline points="230.0,30.0 230.0,170.0" fill="none" stroke="#2563eb" stroke-width="2.6" stroke-linejoin="round"/>
+<circle cx="230" cy="170" r="3.5" fill="#2563eb"/>
+<rect x="190" y="14" width="80" height="26" rx="6" fill="#dbeafe" stroke="#2563eb" stroke-width="1.8"/><text x="230.0" y="31.0" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">clock root</text>
+<text x="470" y="110" font-size="11" fill="#1f2937" text-anchor="start" font-weight="bold">every leaf is the same</text>
+<text x="470" y="126" font-size="11" fill="#1f2937" text-anchor="start" font-weight="bold">wire distance from the root</text>
+<rect x="470" y="150" width="10" height="10" rx="2" fill="#dcfce7" stroke="#15803d" stroke-width="1.2"/>
+<text x="488" y="159" font-size="10" fill="#6b7280" text-anchor="start" font-weight="normal">group of flip-flops</text>
+<polyline points="470.0,180.0 500.0,180.0" fill="none" stroke="#2563eb" stroke-width="2" stroke-linejoin="round"/>
+<text x="508" y="184" font-size="10" fill="#6b7280" text-anchor="start" font-weight="normal">clock wire (with buffers)</text>
+</svg>

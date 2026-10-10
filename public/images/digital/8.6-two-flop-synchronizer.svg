@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 324" width="660" height="324" role="img" aria-label="Two-flop synchronizer and metastability" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+<defs><marker id="sync-1f2937" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f2937"/></marker></defs>
+<rect x="0.5" y="0.5" width="659" height="323" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<rect x="30" y="40" width="64" height="70" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+<text x="62.0" y="73.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">FF</text>
+<text x="62.0" y="88.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="normal">clk_a</text>
+<polyline points="30,92 39,99 30,106" fill="none" stroke="#2563eb" stroke-width="1.6"/>
+<rect x="220" y="40" width="64" height="70" rx="4" fill="#fde0cf" stroke="#d9480f" stroke-width="2"/>
+<text x="252.0" y="73.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">sync1</text>
+<text x="252.0" y="88.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="normal">clk_b</text>
+<polyline points="220,92 229,99 220,106" fill="none" stroke="#d9480f" stroke-width="1.6"/>
+<rect x="360" y="40" width="64" height="70" rx="4" fill="#fde0cf" stroke="#d9480f" stroke-width="2"/>
+<text x="392.0" y="73.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">sync2</text>
+<text x="392.0" y="88.0" font-size="9" fill="#6b7280" text-anchor="middle" font-weight="normal">clk_b</text>
+<polyline points="360,92 369,99 360,106" fill="none" stroke="#d9480f" stroke-width="1.6"/>
+<polyline points="94.0,75.0 220.0,75.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#sync-1f2937)"/>
+<text x="157" y="67" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">d_async</text>
+<polyline points="284.0,75.0 360.0,75.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#sync-1f2937)"/>
+<text x="322" y="67" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">q1</text>
+<polyline points="424.0,75.0 520.0,75.0" fill="none" stroke="#1f2937" stroke-width="2" stroke-linejoin="round" marker-end="url(#sync-1f2937)"/>
+<text x="472" y="67" font-size="10" fill="#1f2937" text-anchor="middle" font-weight="bold">q2</text>
+<rect x="520" y="52" width="110" height="46" rx="6" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="575.0" y="79.0" font-size="11" fill="#1f2937" text-anchor="middle" font-weight="bold">clk_b logic</text>
+<text x="62" y="128" font-size="10" fill="#2563eb" text-anchor="middle" font-weight="bold">clock domain A</text>
+<text x="325" y="128" font-size="10" fill="#d9480f" text-anchor="middle" font-weight="bold">clock domain B</text>
+<polyline points="160.0,30.0 160.0,130.0" fill="none" stroke="#6b7280" stroke-width="1.2" stroke-dasharray="5 4" stroke-linejoin="round"/>
+<text x="140" y="174" font-size="10" fill="#d9480f" text-anchor="end" font-weight="bold">clk_b</text>
+<polyline points="150.0,180.0 210.0,180.0 210.0,164.0 270.0,164.0 270.0,180.0 330.0,180.0 330.0,164.0 390.0,164.0 390.0,180.0 450.0,180.0 450.0,164.0 510.0,164.0 510.0,180.0 620.0,180.0 620.0,180.0" fill="none" stroke="#d9480f" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="140" y="214" font-size="10" fill="#1f2937" text-anchor="end" font-weight="bold">d_async</text>
+<polyline points="150.0,220.0 208.0,220.0 208.0,204.0 620.0,204.0 620.0,204.0" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="140" y="256" font-size="10" fill="#1f2937" text-anchor="end" font-weight="bold">q1</text>
+<polyline points="150.0,262.0 210.0,262.0" fill="none" stroke="#1f2937" stroke-width="2.2" stroke-linejoin="round"/>
+<path d="M210,262 C225,254 235,256 250,253 C262,251 268,256 280,246 L620,246" fill="none" stroke="#b91c1c" stroke-width="2.2"/>
+<text x="245" y="276" font-size="9" fill="#b91c1c" text-anchor="middle" font-weight="bold">metastable, then resolves</text>
+<text x="140" y="298" font-size="10" fill="#15803d" text-anchor="end" font-weight="bold">q2</text>
+<polyline points="150.0,304.0 330.0,304.0 330.0,288.0 620.0,288.0 620.0,288.0" fill="none" stroke="#15803d" stroke-width="2.2" stroke-linejoin="round"/>
+<text x="450" y="318" font-size="9" fill="#15803d" text-anchor="middle" font-weight="bold">clean: sync1 had a full clk_b cycle to resolve</text>
+<polyline points="208.0,150.0 208.0,310.0" fill="none" stroke="#b91c1c" stroke-width="1" stroke-dasharray="3 3" stroke-linejoin="round"/>
+</svg>
