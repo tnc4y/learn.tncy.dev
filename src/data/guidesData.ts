@@ -852,3 +852,23 @@ while True:
     ],
   },
 ];
+
+export function getGuideForBoard(boardId: string): HardwareGuide {
+  if (boardId.includes("esp32")) {
+    return HARDWARE_GUIDES.find((g) => g.id === "esp32-flash-guide") || HARDWARE_GUIDES[1];
+  }
+  if (boardId.includes("raspberry-pi-5") || boardId.includes("jetson")) {
+    return HARDWARE_GUIDES.find((g) => g.id === "raspberry-pi-imager") || HARDWARE_GUIDES[0];
+  }
+  if (boardId.includes("pico")) {
+    return HARDWARE_GUIDES.find((g) => g.id === "raspberry-pi-imager") || HARDWARE_GUIDES[0];
+  }
+  if (boardId.includes("arduino")) {
+    return HARDWARE_GUIDES.find((g) => g.id === "arduino-cli-guide") || HARDWARE_GUIDES[2];
+  }
+  if (boardId.includes("stm32")) {
+    return HARDWARE_GUIDES.find((g) => g.id === "arch-hyprland-caelestia") || HARDWARE_GUIDES[4];
+  }
+  return HARDWARE_GUIDES.find((g) => g.id === "embedded-linux-guide") || HARDWARE_GUIDES[3];
+}
+

@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { DEV_BOARDS, DevBoard } from "@/data/boardsData";
 import { BOARD_PINOUTS, BoardPin } from "@/data/pinoutsData";
 import { HARDWARE_GUIDES, HardwareGuide } from "@/data/guidesData";
 import BoardIllustration from "@/components/BoardIllustration";
 import CodeBlock from "@/components/CodeBlock";
 import { InlineMarkdown } from "@/components/MarkdownRenderer";
+
 import {
   Cpu,
   Search,
@@ -74,13 +76,10 @@ export default function BoardsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("all");
-  const [activeBoardModal, setActiveBoardModal] = useState<DevBoard | null>(null);
-  const [modalTab, setModalTab] = useState<"specs" | "pinout" | "guide">("specs");
-  const [activePin, setActivePin] = useState<BoardPin | null>(null);
-  const [pinFilter, setPinFilter] = useState<string>("all");
   const [compareBoardIds, setCompareBoardIds] = useState<string[]>([]);
   const [isCompareModalOpen, setIsCompareModalOpen] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
 
   const toggleCompare = (boardId: string) => {
     setCompareBoardIds((prev) => {
@@ -295,16 +294,21 @@ export default function BoardsPage() {
                   {/* Kart Üst Alanı & Vektör Görsel */}
                   <div className="card-body p-5 space-y-3">
                     {/* Görsel PCB Çizimi (Vector Board Illustration) */}
-                    <BoardIllustration boardId={board.id} className="mb-1" />
+                    <Link href={`/boards/${board.id}`} className="block">
+                      <BoardIllustration boardId={board.id} className="mb-1 transition-transform group-hover:scale-[1.02]" />
+                    </Link>
 
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         <span className="text-[10px] font-mono uppercase tracking-wider text-primary font-bold">
                           {board.vendor}
                         </span>
-                        <h3 className="text-lg font-extrabold text-base-content group-hover:text-primary transition-colors">
+                        <Link
+                          href={`/boards/${board.id}`}
+                          className="text-lg font-extrabold text-base-content group-hover:text-primary transition-colors block"
+                        >
                           {board.name}
-                        </h3>
+                        </Link>
                       </div>
                       <div className="flex flex-col items-end gap-1 shrink-0">
                         {board.badge && (
@@ -389,19 +393,15 @@ export default function BoardsPage() {
                       <span>{isSelectedForCompare ? "Seçildi ✓" : "Karşılaştır"}</span>
                     </button>
 
-                    <button
-                      onClick={() => {
-                        setActiveBoardModal(board);
-                        setModalTab("specs");
-                        setActivePin(null);
-                        setPinFilter("all");
-                      }}
-                      className="btn btn-outline btn-xs font-mono text-[11px] gap-1"
+                    <Link
+                      href={`/boards/${board.id}`}
+                      className="btn btn-primary btn-xs font-mono text-[11px] gap-1 shadow-xs"
                     >
                       <span>Detaylı İncele</span>
                       <ArrowRight className="w-3 h-3" />
-                    </button>
+                    </Link>
                   </div>
+
                 </div>
               );
             })}
@@ -612,472 +612,7 @@ export default function BoardsPage() {
         </div>
       )}
 
-      {/* ======================================================== */}
-      {/* 5. TEK KART DETAY MODALI (3 SEKME: SPECS, PINOUT, FLASH) */}
-      {/* ======================================================== */}
-      {activeBoardModal && (() => {
-        const pinout = BOARD_PINOUTS[activeBoardModal.id];
-        const matchingGuide = getGuideForBoard(activeBoardModal.id);
 
-        const getPinColor = (type: BoardPin["type"]) => {
-          switch (type) {
-            case "power":
-              return "border-rose-500/40 bg-rose-500/10 text-rose-300 hover:bg-rose-500/20";
-            case "gnd":
-              return "border-zinc-600 bg-zinc-800 text-zinc-300 hover:bg-zinc-700";
-            case "pwm":
-              return "border-purple-500/40 bg-purple-500/10 text-purple-300 hover:bg-purple-500/20";
-            case "analog":
-              return "border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20";
-            case "comm":
-              return "border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20";
-            case "digital":
-              return "border-sky-500/40 bg-sky-500/10 text-sky-300 hover:bg-sky-500/20";
-            case "special":
-              return "border-cyan-500/40 bg-cyan-500/10 text-cyan-300 hover:bg-cyan-500/20";
-            default:
-              return "border-base-content/20 bg-base-200 text-base-content hover:bg-base-300";
-          }
-        };
-
-        const getPinTypeBadge = (type: BoardPin["type"]) => {
-          switch (type) {
-            case "power":
-              return { label: "Güç (Power)", color: "badge-error" };
-            case "gnd":
-              return { label: "Toprak (GND)", color: "badge-neutral" };
-            case "pwm":
-              return { label: "PWM Çıkışı", color: "badge-secondary" };
-            case "analog":
-              return { label: "Analog ADC/DAC", color: "badge-warning" };
-            case "comm":
-              return { label: "Haberleşme (I2C/SPI/UART)", color: "badge-success" };
-            case "digital":
-              return { label: "Dijital G/Ç (GPIO)", color: "badge-info" };
-            case "special":
-              return { label: "Özel Fonksiyon", color: "badge-accent" };
-            default:
-              return { label: type, color: "badge-ghost" };
-          }
-        };
-
-        const matchesPinFilter = (pin: BoardPin) => {
-          if (pinFilter === "all") return true;
-          if (pinFilter === "power") return pin.type === "power" || pin.type === "gnd";
-          if (pinFilter === "pwm") return pin.type === "pwm";
-          if (pinFilter === "analog") return pin.type === "analog";
-          if (pinFilter === "comm") return pin.type === "comm";
-          if (pinFilter === "digital") return pin.type === "digital";
-          return true;
-        };
-
-        return (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-            <div
-              className="bg-base-100 rounded-3xl border border-base-content/10 shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-in fade-in zoom-in-95 duration-150"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Modal Başlığı */}
-              <div className="p-6 border-b border-base-300 flex items-start justify-between gap-4">
-                <div>
-                  <span className="text-xs font-mono uppercase text-primary font-bold">
-                    {activeBoardModal.vendor} • {activeBoardModal.family}
-                  </span>
-                  <h2 className="text-2xl font-black text-base-content">
-                    {activeBoardModal.name}
-                  </h2>
-                </div>
-                <button
-                  onClick={() => setActiveBoardModal(null)}
-                  className="btn btn-ghost btn-sm btn-square"
-                >
-                  ✕
-                </button>
-              </div>
-
-              {/* Sekme Butonları (3 Sekme) */}
-              <div className="flex border-b border-base-300 px-6 bg-base-200/40 gap-2 flex-wrap">
-                <button
-                  onClick={() => setModalTab("specs")}
-                  className={`py-3 px-4 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                    modalTab === "specs"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-base-content/60 hover:text-base-content"
-                  }`}
-                >
-                  <Cpu className="w-3.5 h-3.5" />
-                  <span>Teknik Özellikler</span>
-                </button>
-                {pinout && (
-                  <button
-                    onClick={() => setModalTab("pinout")}
-                    className={`py-3 px-4 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                      modalTab === "pinout"
-                        ? "border-primary text-primary"
-                        : "border-transparent text-base-content/60 hover:text-base-content"
-                    }`}
-                  >
-                    <Layers className="w-3.5 h-3.5 text-accent" />
-                    <span>İnteraktif Pinout Şeması</span>
-                    <span className="badge badge-accent badge-xs font-mono text-[9px]">Yeni</span>
-                  </button>
-                )}
-                <button
-                  onClick={() => setModalTab("guide")}
-                  className={`py-3 px-4 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                    modalTab === "guide"
-                      ? "border-primary text-primary"
-                      : "border-transparent text-base-content/60 hover:text-base-content"
-                  }`}
-                >
-                  <Terminal className="w-3.5 h-3.5 text-warning" />
-                  <span>Hızlı Kurulum & Flashing</span>
-                </button>
-              </div>
-
-              {/* SEKME 1: TEKNİK ÖZELLİKLER */}
-              {modalTab === "specs" && (
-                <div className="p-6 space-y-5 text-sm">
-                  <div className="max-w-md mx-auto mb-4">
-                    <BoardIllustration boardId={activeBoardModal.id} />
-                  </div>
-
-                  <p className="text-base-content/80 leading-relaxed">
-                    {activeBoardModal.description}
-                  </p>
-
-                  {/* Teknik Özellikler Tablosu */}
-                  <div className="border border-base-300 rounded-2xl overflow-hidden bg-base-200/50">
-                    <table className="table table-sm text-xs font-mono">
-                      <tbody>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">İşlemci / Çip:</td>
-                          <td className="text-base-content font-bold">{activeBoardModal.chipset}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">Mimari:</td>
-                          <td>{activeBoardModal.architecture}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">Saat Frekansı (Clock):</td>
-                          <td className="text-secondary font-bold">{activeBoardModal.clockSpeed}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">Bellek (RAM):</td>
-                          <td>{activeBoardModal.ram}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">Flash / ROM:</td>
-                          <td>{activeBoardModal.flashMemory}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">Çalışma Gerilimi:</td>
-                          <td className="text-accent font-bold">{activeBoardModal.operatingVoltage}</td>
-                        </tr>
-                        <tr className="border-b border-base-300">
-                          <td className="font-bold text-base-content/60">GPIO Sayısı:</td>
-                          <td>{activeBoardModal.gpioCount} adet</td>
-                        </tr>
-                        <tr>
-                          <td className="font-bold text-base-content/60">Haberleşme Protokolleri:</td>
-                          <td className="text-primary">{activeBoardModal.protocols.join(" • ")}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
-                  {/* En Çok Hangi Alanlarda Kullanılır? */}
-                  <div className="p-4 rounded-2xl bg-primary/10 border border-primary/20 space-y-1">
-                    <h4 className="font-bold text-xs uppercase tracking-wider text-primary">
-                      Önerilen Kullanım Alanı:
-                    </h4>
-                    <p className="text-xs text-base-content/90 leading-relaxed">
-                      {activeBoardModal.bestFor}
-                    </p>
-                  </div>
-
-                  {/* Avantajlar */}
-                  <div className="space-y-2">
-                    <h4 className="font-bold text-xs uppercase tracking-wider text-base-content/60">
-                      Öne Çıkan Artıları:
-                    </h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {activeBoardModal.pros.map((pro, idx) => (
-                        <div
-                          key={idx}
-                          className="p-2.5 rounded-xl bg-base-200 border border-base-300 flex items-center gap-2 text-xs"
-                        >
-                          <Zap className="w-3.5 h-3.5 text-warning shrink-0" />
-                          <span>{pro}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* SEKME 2: İNTERAKTİF PINOUT ŞEMASI */}
-              {modalTab === "pinout" && pinout && (
-                <div className="p-6 space-y-6 text-sm">
-                  {/* Pin Filtreleri */}
-                  <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-2xl bg-base-200/60 border border-base-300">
-                    <div className="flex items-center gap-1.5 flex-wrap">
-                      <span className="text-xs font-mono text-base-content/60 mr-1 flex items-center gap-1">
-                        <Filter className="w-3.5 h-3.5" /> Filtrele:
-                      </span>
-                      {[
-                        { id: "all", label: "Tümü" },
-                        { id: "power", label: "Güç & Toprak" },
-                        { id: "pwm", label: "PWM" },
-                        { id: "analog", label: "Analog (ADC)" },
-                        { id: "comm", label: "Haberleşme" },
-                        { id: "digital", label: "Dijital GPIO" },
-                      ].map((f) => (
-                        <button
-                          key={f.id}
-                          onClick={() => setPinFilter(f.id)}
-                          className={`btn btn-xs font-mono rounded-lg ${
-                            pinFilter === f.id
-                              ? "btn-primary shadow-xs font-bold"
-                              : "btn-ghost border border-base-content/10 text-base-content/70"
-                          }`}
-                        >
-                          {f.label}
-                        </button>
-                      ))}
-                    </div>
-
-                    <div className="text-xs font-mono text-base-content/60">
-                      Toplam: <strong>{pinout.totalPins} Pin</strong> • <strong>{pinout.operatingVoltage}</strong>
-                    </div>
-                  </div>
-
-                  {/* İncelenen Pin Paneli (Pin Inspector) */}
-                  <div className="p-4 rounded-2xl bg-base-200/80 border border-base-300 shadow-inner">
-                    {activePin ? (
-                      <div className="space-y-2 animate-in fade-in duration-150">
-                        <div className="flex flex-wrap items-center justify-between gap-2">
-                          <div className="flex items-center gap-2">
-                            <span className="badge badge-neutral font-mono font-bold text-xs">
-                              Pin #{activePin.pinNumber}
-                            </span>
-                            <h4 className="text-base font-extrabold text-base-content font-mono">
-                              {activePin.name}
-                            </h4>
-                          </div>
-                          <span
-                            className={`badge badge-sm font-mono text-xs ${
-                              getPinTypeBadge(activePin.type).color
-                            }`}
-                          >
-                            {getPinTypeBadge(activePin.type).label}
-                          </span>
-                        </div>
-
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className="text-[11px] font-mono text-base-content/50">Fonksiyonlar:</span>
-                          {activePin.functions.map((fn, fIdx) => (
-                            <span
-                              key={fIdx}
-                              className="badge badge-outline badge-xs font-mono text-[10px]"
-                            >
-                              {fn}
-                            </span>
-                          ))}
-                        </div>
-
-                        <p className="text-xs text-base-content/80 leading-relaxed pt-1 border-t border-base-content/10">
-                          {activePin.description}
-                        </p>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-2.5 text-xs text-base-content/60 py-1">
-                        <Info className="w-4 h-4 text-primary shrink-0" />
-                        <span>
-                          Donanımsal açıklamaları ve elektriksel limitleri görmek için aşağıdaki herhangi bir pinin üzerine gelin veya dokunun.
-                        </span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* İki Sütunlu Kart Pin Şeması */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
-                    {/* Sol Header Pinleri */}
-                    <div className="md:col-span-5 space-y-1.5">
-                      <div className="text-[11px] font-mono uppercase font-bold text-base-content/50 px-1 mb-2">
-                        Sol Header ({pinout.leftPins.length} Pin)
-                      </div>
-                      {pinout.leftPins.map((pin) => {
-                        const isMatch = matchesPinFilter(pin);
-                        const isSelected = activePin?.pinNumber === pin.pinNumber;
-                        return (
-                          <button
-                            key={pin.pinNumber}
-                            onMouseEnter={() => setActivePin(pin)}
-                            onClick={() => setActivePin(pin)}
-                            className={`w-full flex items-center justify-between p-2 rounded-xl border text-xs font-mono transition-all text-left ${getPinColor(
-                              pin.type
-                            )} ${!isMatch ? "opacity-30" : ""} ${
-                              isSelected ? "ring-2 ring-primary shadow-md scale-[1.01]" : ""
-                            }`}
-                          >
-                            <div className="flex items-center gap-2 truncate">
-                              <span className="text-[10px] font-bold opacity-60 w-5">
-                                #{pin.pinNumber}
-                              </span>
-                              <span className="font-bold truncate">{pin.name}</span>
-                            </div>
-                            <span className="text-[10px] opacity-70 truncate ml-2">
-                              {pin.functions[0] || ""}
-                            </span>
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {/* Merkez Çip / Kart İllüstrasyonu */}
-                    <div className="md:col-span-2 hidden md:flex flex-col items-center justify-center p-4 rounded-2xl bg-base-300/40 border border-base-300 min-h-[360px] text-center space-y-3">
-                      <div className="w-8 h-8 rounded-lg bg-primary/20 border border-primary/40 flex items-center justify-center text-primary">
-                        <Radio className="w-4 h-4" />
-                      </div>
-                      <div>
-                        <span className="text-[10px] font-mono uppercase text-base-content/50 block">
-                          MCU ÇEKİRDEK
-                        </span>
-                        <span className="text-xs font-mono font-bold text-base-content block truncate max-w-[110px]">
-                          {activeBoardModal.chipset}
-                        </span>
-                      </div>
-                      <div className="w-12 h-0.5 bg-base-content/10" />
-                      <div className="text-[10px] font-mono text-base-content/70">
-                        <div>{activeBoardModal.clockSpeed}</div>
-                        <div>{pinout.operatingVoltage} Mantık</div>
-                      </div>
-                      <div className="text-[9px] font-mono text-primary font-bold uppercase tracking-wider pt-2">
-                        {activeBoardModal.vendor}
-                      </div>
-                    </div>
-
-                    {/* Sağ Header Pinleri */}
-                    <div className="md:col-span-5 space-y-1.5">
-                      <div className="text-[11px] font-mono uppercase font-bold text-base-content/50 px-1 mb-2">
-                        Sağ Header ({pinout.rightPins.length} Pin)
-                      </div>
-                      {pinout.rightPins.map((pin) => {
-                        const isMatch = matchesPinFilter(pin);
-                        const isSelected = activePin?.pinNumber === pin.pinNumber;
-                        return (
-                          <button
-                            key={pin.pinNumber}
-                            onMouseEnter={() => setActivePin(pin)}
-                            onClick={() => setActivePin(pin)}
-                            className={`w-full flex items-center justify-between p-2 rounded-xl border text-xs font-mono transition-all text-left ${getPinColor(
-                              pin.type
-                            )} ${!isMatch ? "opacity-30" : ""} ${
-                              isSelected ? "ring-2 ring-primary shadow-md scale-[1.01]" : ""
-                            }`}
-                          >
-                            <span className="text-[10px] opacity-70 truncate mr-2">
-                              {pin.functions[0] || ""}
-                            </span>
-                            <div className="flex items-center gap-2 truncate justify-end">
-                              <span className="font-bold truncate">{pin.name}</span>
-                              <span className="text-[10px] font-bold opacity-60 w-5 text-right">
-                                #{pin.pinNumber}
-                              </span>
-                            </div>
-                          </button>
-                        );
-                      })}
-                    </div>
-                  </div>
-
-                  {/* Renk Lejantı */}
-                  <div className="p-3 rounded-xl bg-base-200/40 border border-base-300 flex flex-wrap items-center justify-center gap-3 text-[11px] font-mono">
-                    <span className="flex items-center gap-1.5 text-rose-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" /> Güç (VCC)
-                    </span>
-                    <span className="flex items-center gap-1.5 text-zinc-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-zinc-600 inline-block" /> Toprak (GND)
-                    </span>
-                    <span className="flex items-center gap-1.5 text-purple-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-purple-500 inline-block" /> PWM
-                    </span>
-                    <span className="flex items-center gap-1.5 text-amber-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block" /> Analog (ADC)
-                    </span>
-                    <span className="flex items-center gap-1.5 text-emerald-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" /> Haberleşme (SPI/I2C/UART)
-                    </span>
-                    <span className="flex items-center gap-1.5 text-sky-400">
-                      <span className="w-2.5 h-2.5 rounded-full bg-sky-500 inline-block" /> Dijital GPIO
-                    </span>
-                  </div>
-                </div>
-              )}
-
-              {/* SEKME 3: HIZLI KURULUM & FLASHING REHBERİ */}
-              {modalTab === "guide" && (
-                <div className="p-6 space-y-6 text-sm">
-                  <div className="p-4 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-start gap-3">
-                    <Terminal className="w-5 h-5 text-secondary shrink-0 mt-0.5" />
-                    <div className="space-y-1">
-                      <h4 className="font-bold text-sm text-base-content">
-                        {matchingGuide.title}
-                      </h4>
-                      <p className="text-xs text-base-content/75 leading-relaxed">
-                        {matchingGuide.summary}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Kılavuz Adımları */}
-                  <div className="space-y-4">
-                    {matchingGuide.steps.map((step, idx) => (
-                      <div key={idx} className="p-4 rounded-xl bg-base-200/50 border border-base-300 space-y-2">
-                        <h5 className="font-bold text-xs uppercase font-mono tracking-wider text-primary">
-                          {step.title}
-                        </h5>
-                        <p className="text-xs text-base-content/80 leading-relaxed whitespace-pre-line">
-                          <InlineMarkdown text={step.description} />
-                        </p>
-                        {step.command && (
-                          <CodeBlock code={step.command} language="bash" caption="Komut" />
-                        )}
-                        {step.codeSnippet && (
-                          <CodeBlock
-                            code={step.codeSnippet.code}
-                            language={step.codeSnippet.language}
-                            caption={step.codeSnippet.caption}
-                          />
-                        )}
-                        {step.callout && (
-                          <div className="alert alert-warning text-xs p-2.5">
-                            <div>
-                              <strong><InlineMarkdown text={step.callout.title} />: </strong>
-                              <span><InlineMarkdown text={step.callout.message} /></span>
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Alt Buton */}
-              <div className="p-4 border-t border-base-300 bg-base-200/50 flex justify-end">
-                <button
-                  onClick={() => setActiveBoardModal(null)}
-                  className="btn btn-primary btn-sm font-mono text-xs"
-                >
-                  Kapat
-                </button>
-              </div>
-            </div>
-          </div>
-        );
-      })()}
 
       {/* ======================================================== */}
       {/* 6. ALT SABİT KARŞILAŞTIRMA ÇUBUĞU (FLOATING COMPARE DOCK) */}
@@ -1154,9 +689,13 @@ export default function BoardsPage() {
                     <th className="w-36">Özellik</th>
                     {comparedBoards.map((b) => (
                       <th key={b.id} className="min-w-[160px] text-primary">
-                        {b.name}
+                        <Link href={`/boards/${b.id}`} className="hover:underline flex items-center gap-1 font-bold">
+                          <span>{b.name}</span>
+                          <ArrowRight className="w-3 h-3 opacity-60" />
+                        </Link>
                       </th>
                     ))}
+
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-base-300">

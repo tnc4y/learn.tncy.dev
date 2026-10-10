@@ -3,29 +3,20 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { PROJECT_RECIPES, ProjectRecipe } from "@/data/projectsData";
-import CodeBlock from "@/components/CodeBlock";
+import { PROJECT_RECIPES } from "@/data/projectsData";
 import {
   Search,
   Clock,
   Layers,
-  CheckCircle2,
   Terminal,
-  ExternalLink,
-  Code2,
   Hammer,
   Radio,
   SlidersHorizontal,
   LayoutGrid,
   ListFilter,
-  X,
-  Sparkles,
-  ArrowRight,
   ChevronRight,
   Cpu,
   Bot,
-  Wifi,
-  Monitor,
 } from "lucide-react";
 
 const CATEGORIES = [
@@ -43,8 +34,7 @@ export default function ProjectsPage() {
   const [selectedDifficulty, setSelectedDifficulty] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [activeModalProject, setActiveModalProject] = useState<ProjectRecipe | null>(null);
-  const [modalTab, setModalTab] = useState<"bom" | "wiring" | "code" | "steps">("bom");
+
 
   const filteredProjects = PROJECT_RECIPES.filter((p) => {
     const matchesCat = selectedCategory === "all" || p.category === selectedCategory;
@@ -190,12 +180,9 @@ export default function ProjectsPage() {
               className="card bg-base-100 border border-base-300 shadow-sm hover:shadow-xl hover:border-primary/40 transition-all duration-200 overflow-hidden flex flex-col group"
             >
               {/* Proje Banner Görseli */}
-              <div
-                onClick={() => {
-                  setActiveModalProject(project);
-                  setModalTab("bom");
-                }}
-                className="relative aspect-16/9 w-full bg-base-300 cursor-pointer overflow-hidden border-b border-base-300"
+              <Link
+                href={`/projects/${project.id}`}
+                className="relative aspect-16/9 w-full bg-base-300 block overflow-hidden border-b border-base-300"
               >
                 <img
                   src={project.image}
@@ -227,20 +214,17 @@ export default function ProjectsPage() {
                     <Clock className="w-3 h-3 text-primary" /> {project.estimatedTime}
                   </span>
                 </div>
-              </div>
+              </Link>
 
               {/* Kart İçeriği */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
-                  <h3
-                    onClick={() => {
-                      setActiveModalProject(project);
-                      setModalTab("bom");
-                    }}
-                    className="font-extrabold text-base sm:text-lg text-base-content group-hover:text-primary transition-colors cursor-pointer line-clamp-2"
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="block font-extrabold text-base sm:text-lg text-base-content group-hover:text-primary transition-colors line-clamp-2"
                   >
                     {project.title}
-                  </h3>
+                  </Link>
 
                   <p className="text-xs text-base-content/70 line-clamp-3 leading-relaxed">
                     {project.summary}
@@ -273,16 +257,13 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => {
-                        setActiveModalProject(project);
-                        setModalTab("bom");
-                      }}
+                    <Link
+                      href={`/projects/${project.id}`}
                       className="btn btn-sm btn-primary flex-1 font-mono text-xs rounded-xl shadow-xs"
                     >
                       <span>Rehberi Aç</span>
                       <ChevronRight className="w-3.5 h-3.5" />
-                    </button>
+                    </Link>
 
                     {project.playgroundPresetId && (
                       <Link
@@ -309,15 +290,16 @@ export default function ProjectsPage() {
               className="card bg-base-100 border border-base-300 p-4 sm:p-5 shadow-xs hover:border-primary/40 transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-4"
             >
               <div className="flex items-start sm:items-center gap-4 flex-1">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-24 h-16 rounded-xl object-cover shrink-0 border border-base-300 cursor-pointer hidden sm:block"
-                  onClick={() => {
-                    setActiveModalProject(project);
-                    setModalTab("bom");
-                  }}
-                />
+                <Link
+                  href={`/projects/${project.id}`}
+                  className="w-24 h-16 rounded-xl overflow-hidden shrink-0 border border-base-300 hidden sm:block block"
+                >
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </Link>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <span className="badge badge-primary badge-xs font-mono font-bold">
@@ -331,15 +313,12 @@ export default function ProjectsPage() {
                     </span>
                   </div>
 
-                  <h3
-                    onClick={() => {
-                      setActiveModalProject(project);
-                      setModalTab("bom");
-                    }}
-                    className="font-extrabold text-base text-base-content hover:text-primary transition-colors cursor-pointer"
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="block font-extrabold text-base text-base-content hover:text-primary transition-colors"
                   >
                     {project.title}
-                  </h3>
+                  </Link>
 
                   <p className="text-xs text-base-content/70 line-clamp-1">
                     {project.summary}
@@ -348,15 +327,12 @@ export default function ProjectsPage() {
               </div>
 
               <div className="flex items-center gap-2 shrink-0">
-                <button
-                  onClick={() => {
-                    setActiveModalProject(project);
-                    setModalTab("bom");
-                  }}
+                <Link
+                  href={`/projects/${project.id}`}
                   className="btn btn-sm btn-primary font-mono text-xs rounded-xl"
                 >
-                  Detaylar
-                </button>
+                  Detaylar &amp; Rehber
+                </Link>
                 {project.playgroundPresetId && (
                   <Link
                     href={`/playground?preset=${project.playgroundPresetId}`}
@@ -392,253 +368,7 @@ export default function ProjectsPage() {
           </button>
         </div>
       )}
-
-      {/* 4. PROJE DETAY MODAL / DRAWER */}
-      {activeModalProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-150">
-          <div className="bg-base-100 border border-base-300 rounded-3xl w-full max-w-5xl max-h-[92vh] flex flex-col shadow-2xl overflow-hidden">
-            {/* Modal Üst Başlık & Kapat Butonu */}
-            <div className="p-5 sm:p-6 border-b border-base-300 bg-base-200/50 flex items-start justify-between gap-4">
-              <div className="space-y-1.5 flex-1">
-                <div className="flex items-center gap-2 flex-wrap">
-                  <span className="badge badge-primary badge-xs font-mono font-bold">
-                    {activeModalProject.category}
-                  </span>
-                  <span className="badge badge-outline badge-xs font-mono">
-                    {activeModalProject.difficulty}
-                  </span>
-                  <span className="badge badge-ghost badge-xs font-mono flex items-center gap-1">
-                    <Clock className="w-3 h-3" /> {activeModalProject.estimatedTime}
-                  </span>
-                </div>
-                <h2 className="text-xl sm:text-2xl font-black text-base-content">
-                  {activeModalProject.title}
-                </h2>
-                <p className="text-xs sm:text-sm text-base-content/70 max-w-3xl leading-relaxed">
-                  {activeModalProject.summary}
-                </p>
-              </div>
-
-              <button
-                onClick={() => setActiveModalProject(null)}
-                className="btn btn-ghost btn-sm btn-square rounded-xl shrink-0"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Sekmeleri */}
-            <div className="px-6 pt-3 bg-base-200/30 border-b border-base-300 flex items-center gap-2 overflow-x-auto scrollbar-none">
-              <button
-                onClick={() => setModalTab("bom")}
-                className={`px-3 py-2 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                  modalTab === "bom"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-base-content/60 hover:text-base-content"
-                }`}
-              >
-                <Layers className="w-3.5 h-3.5" />
-                Malzeme Listesi (BOM) ({activeModalProject.hardwareBOM.length})
-              </button>
-
-              <button
-                onClick={() => setModalTab("wiring")}
-                className={`px-3 py-2 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                  modalTab === "wiring"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-base-content/60 hover:text-base-content"
-                }`}
-              >
-                <Radio className="w-3.5 h-3.5" />
-                Bağlantı Şeması (Wiring) ({activeModalProject.wiring.length})
-              </button>
-
-              <button
-                onClick={() => setModalTab("code")}
-                className={`px-3 py-2 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                  modalTab === "code"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-base-content/60 hover:text-base-content"
-                }`}
-              >
-                <Code2 className="w-3.5 h-3.5" />
-                Kaynak Kod ({activeModalProject.sourceCode.language})
-              </button>
-
-              <button
-                onClick={() => setModalTab("steps")}
-                className={`px-3 py-2 text-xs font-mono font-bold border-b-2 transition-all flex items-center gap-1.5 ${
-                  modalTab === "steps"
-                    ? "border-primary text-primary"
-                    : "border-transparent text-base-content/60 hover:text-base-content"
-                }`}
-              >
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                Adım Adım Montaj ({activeModalProject.steps.length})
-              </button>
-            </div>
-
-            {/* Modal Gövde İçeriği */}
-            <div className="p-6 overflow-y-auto flex-1 space-y-6">
-              {/* Sekme A: Malzeme Listesi */}
-              {modalTab === "bom" && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-bold text-xs uppercase font-mono tracking-wider text-primary flex items-center gap-1.5">
-                      <Layers className="w-4 h-4" />
-                      Gereken Donanım &amp; Parça Listesi (Bill of Materials)
-                    </h4>
-                    <span className="text-[11px] font-mono text-base-content/50">
-                      Toplam {activeModalProject.hardwareBOM.length} ana bileşen
-                    </span>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {activeModalProject.hardwareBOM.map((bom, idx) => (
-                      <div
-                        key={idx}
-                        className="p-3.5 rounded-2xl bg-base-200/50 border border-base-300 flex items-center justify-between gap-3 font-mono text-xs"
-                      >
-                        <div className="space-y-0.5">
-                          <div className="font-bold text-base-content">{bom.item}</div>
-                          {bom.note && (
-                            <div className="text-[11px] text-base-content/60">{bom.note}</div>
-                          )}
-                        </div>
-                        <span className="badge badge-neutral badge-sm font-mono shrink-0">
-                          {bom.count}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Sekme B: Bağlantı Şeması */}
-              {modalTab === "wiring" && (
-                <div className="space-y-4">
-                  <h4 className="font-bold text-xs uppercase font-mono tracking-wider text-secondary flex items-center gap-1.5">
-                    <Radio className="w-4 h-4" />
-                    Donanım Pin Bağlantı Haritası (Wiring Matrix)
-                  </h4>
-
-                  <div className="overflow-x-auto rounded-2xl border border-base-300">
-                    <table className="table table-sm font-mono w-full">
-                      <thead className="bg-base-200/80">
-                        <tr className="text-base-content/70">
-                          <th>Bileşen / Modül Pini</th>
-                          <th>Mikrodenetleyici / FPGA Pini</th>
-                          <th>Sinyal Tipi</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {activeModalProject.wiring.map((w, wIdx) => (
-                          <tr key={wIdx} className="border-b border-base-300/40 hover:bg-base-200/30">
-                            <td className="font-bold text-base-content">{w.from}</td>
-                            <td className="text-primary font-bold">{w.to}</td>
-                            <td>
-                              <span
-                                className={`badge badge-xs text-[9px] font-mono ${
-                                  w.type === "Power"
-                                    ? "badge-error"
-                                    : w.type === "GND"
-                                    ? "badge-neutral"
-                                    : w.type === "I2C"
-                                    ? "badge-success"
-                                    : w.type === "SPI"
-                                    ? "badge-warning"
-                                    : w.type === "UART"
-                                    ? "badge-info"
-                                    : w.type === "CAN"
-                                    ? "badge-accent"
-                                    : "badge-primary"
-                                }`}
-                              >
-                                {w.type}
-                              </span>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-
-              {/* Sekme C: Kaynak Kod */}
-              {modalTab === "code" && (
-                <div className="space-y-4">
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-bold text-xs uppercase font-mono tracking-wider text-base-content flex items-center gap-1.5">
-                      <Code2 className="w-4 h-4 text-accent" />
-                      {activeModalProject.sourceCode.caption}
-                    </h4>
-                  </div>
-                  <CodeBlock
-                    code={activeModalProject.sourceCode.code}
-                    language={activeModalProject.sourceCode.language}
-                    caption={activeModalProject.sourceCode.caption}
-                  />
-                </div>
-              )}
-
-              {/* Sekme D: Adım Adım Montaj */}
-              {modalTab === "steps" && (
-                <div className="space-y-4">
-                  <h4 className="font-bold text-xs uppercase font-mono tracking-wider text-base-content flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-success" />
-                    Montaj, Yapılandırma ve Çalıştırma Adımları
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {activeModalProject.steps.map((st) => (
-                      <div
-                        key={st.number}
-                        className="p-4 rounded-2xl bg-base-200/50 border border-base-300 space-y-2"
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="w-6 h-6 rounded-lg bg-primary/15 text-primary font-mono text-xs font-black flex items-center justify-center shrink-0">
-                            {st.number}
-                          </span>
-                          <h5 className="font-bold text-xs text-base-content">{st.title}</h5>
-                        </div>
-                        <p className="text-xs text-base-content/80 leading-relaxed pl-8">
-                          {st.detail}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Modal Alt Aksiyon Çubuğu */}
-            <div className="p-4 sm:p-5 border-t border-base-300 bg-base-200/50 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div className="flex items-center gap-2 text-xs font-mono text-base-content/60">
-                <Sparkles className="w-4 h-4 text-primary" />
-                <span>learn.tncy.dev Açık Kaynak Proje Kılavuzu</span>
-              </div>
-
-              <div className="flex items-center gap-2 w-full sm:w-auto">
-                {activeModalProject.playgroundPresetId && (
-                  <Link
-                    href={`/playground?preset=${activeModalProject.playgroundPresetId}`}
-                    className="btn btn-sm btn-primary flex-1 sm:flex-initial font-mono text-xs rounded-xl shadow-xs"
-                  >
-                    <Terminal className="w-4 h-4" />
-                    <span>Web IDE'de Çalıştır (VS Code)</span>
-                  </Link>
-                )}
-                <button
-                  onClick={() => setActiveModalProject(null)}
-                  className="btn btn-sm btn-outline btn-neutral font-mono text-xs rounded-xl"
-                >
-                  Kapat
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
+
