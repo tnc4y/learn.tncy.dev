@@ -1056,16 +1056,16 @@ Yukarıdaki dalga formunda görüldüğü gibi, simülatör her saat kenarında 
         content: `Sinyal geçişlerini yakalamak için yerleşik fonksiyonlar kullanılır:
 
 1. **\`$rose(sig)\`**: Sinyal önceki saat darbesinde 0 iken şimdi 1 oldu mu? (Yükselen kenar)
-![assert rose a](/images/images/systemverilog/assert_rose_a.png)
+![assert rose a](/images/systemverilog/assert_rose_a.png)
 
 2. **\`$fell(sig)\`**: Sinyal önceki saat darbesinde 1 iken şimdi 0 oldu mu? (Düşen kenar)
-![assert fell a](/images/images/systemverilog/assert_fell_a.png)
+![assert fell a](/images/systemverilog/assert_fell_a.png)
 
 3. **\`$stable(sig)\`**: Sinyal değerini korudu mu? (Değişmedi)
-![assert stable a](/images/images/systemverilog/assert_stable_a.png)
+![assert stable a](/images/systemverilog/assert_stable_a.png)
 
 4. **\`assert(a)\`**: Sinyal o anda 1 mi?
-![assert a](/images/images/systemverilog/assert_a.png)`,
+![assert a](/images/systemverilog/assert_a.png)`,
       },
       {
         title: "4. İma Operatörleri: |-> vs |=>",

@@ -25,6 +25,55 @@ function renderKatex(math: string, displayMode: boolean): string {
   }
 }
 
+function ImageWithFallback({
+  src,
+  alt,
+  className = "",
+}: {
+  src: string;
+  alt?: string;
+  className?: string;
+}) {
+  const [error, setError] = React.useState(false);
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center p-6 text-center text-base-content/60 bg-base-200/50 rounded-lg w-full min-h-[120px]">
+        <svg
+          className="w-10 h-10 mb-2 opacity-40 text-base-content"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
+        <span className="text-xs font-semibold text-base-content/70">
+          {alt || "Görsel yüklenemedi"}
+        </span>
+        <span className="text-[10px] text-base-content/40 font-mono mt-1 break-all">
+          {src}
+        </span>
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt || "Diyagram"}
+      className={className}
+      loading="lazy"
+      onError={() => setError(true)}
+    />
+  );
+}
+
 function createInlineRegex() {
   // 1-3: Images ![alt](url)
   // 4-6: Links [text](url)
@@ -70,12 +119,10 @@ export function renderInline(
           key={key}
           className="inline-block bg-white p-1 rounded-md border border-base-300 my-1 align-middle"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <ImageWithFallback
             src={src}
             alt={alt}
-            className="max-h-60 rounded object-contain inline-block"
-            loading="lazy"
+            className="max-h-60 w-auto max-w-full h-auto rounded object-contain inline-block"
           />
         </span>
       );
@@ -571,14 +618,12 @@ export default function MarkdownRenderer({
 
           case "image":
             return (
-              <figure key={idx} className="my-6 flex flex-col items-center">
-                <div className="rounded-xl overflow-hidden border border-base-300 bg-white p-4 shadow-sm max-w-full flex justify-center items-center">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+              <figure key={idx} className="my-6 flex flex-col items-center w-full">
+                <div className="rounded-xl overflow-hidden border border-base-300 bg-white p-4 shadow-sm w-full max-w-3xl flex justify-center items-center min-h-[100px]">
+                  <ImageWithFallback
                     src={block.src}
                     alt={block.alt}
-                    className="max-h-[500px] w-auto max-w-full object-contain rounded mx-auto"
-                    loading="lazy"
+                    className="max-h-[520px] w-auto max-w-full h-auto object-contain rounded mx-auto block"
                   />
                 </div>
                 {block.alt && (
