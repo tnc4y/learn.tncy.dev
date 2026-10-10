@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import katex from "katex";
 import CodeBlock from "@/components/CodeBlock";
 
 interface MarkdownRendererProps {
@@ -13,18 +14,30 @@ interface InlineMarkdownProps {
   className?: string;
 }
 
+function renderKatex(math: string, displayMode: boolean): string {
+  try {
+    return katex.renderToString(math.trim(), {
+      displayMode,
+      throwOnError: false,
+    });
+  } catch {
+    return math;
+  }
+}
+
 function createInlineRegex() {
   // 1-3: Images ![alt](url)
   // 4-6: Links [text](url)
   // 7-8: Inline code `code`
-  // 9-10: Bold Italic ***text***
-  // 11-12: Bold **text**
-  // 13-14: Italic *text*
-  return /(!\[([^\]]*)\]\(([^)]+)\))|(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\*\*\*([^*]+?)\*\*\*)|(\*\*([^*]+?)\*\*)|((?<!\*)\*([^*]+?)\*(?!\*))/g;
+  // 9-10: LaTeX inline math $math$
+  // 11-12: Bold Italic ***text***
+  // 13-14: Bold **text**
+  // 15-16: Italic *text*
+  return /(!\[([^\]]*)\]\(([^)]+)\))|(\[([^\]]+)\]\(([^)]+)\))|(`([^`]+)`)|(\$([^\$\s](?:[^\$]*?[^\$\s])?|[^\$\s])\$)|(\*\*\*([^*]+?)\*\*\*)|(\*\*([^*]+?)\*\*)|((?<!\*)\*([^*]+?)\*(?!\*))/g;
 }
 
 /**
- * Tokenizes text and renders React nodes with formatting (bold, italic, code, links).
+ * Tokenizes text and renders React nodes with formatting (bold, italic, code, math, links, images).
  * Creates a fresh regex per call so recursive calls never interfere with parent loop state.
  */
 export function renderInline(
@@ -53,14 +66,18 @@ export function renderInline(
       const alt = match[2];
       const src = match[3];
       nodes.push(
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <span
           key={key}
-          src={src}
-          alt={alt}
-          className="inline-block max-h-60 rounded my-1 border border-base-300"
-          loading="lazy"
-        />
+          className="inline-block bg-white p-1 rounded-md border border-base-300 my-1 align-middle"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={src}
+            alt={alt}
+            className="max-h-60 rounded object-contain inline-block"
+            loading="lazy"
+          />
+        </span>
       );
     } else if (match[4]) {
       // Link [text](url)
@@ -90,24 +107,35 @@ export function renderInline(
         </code>
       );
     } else if (match[9]) {
+      // LaTeX inline math $math$
+      const mathExpr = match[10];
+      const mathHtml = renderKatex(mathExpr, false);
+      nodes.push(
+        <span
+          key={key}
+          className="inline-math px-0.5 text-base-content inline-block align-baseline"
+          dangerouslySetInnerHTML={{ __html: mathHtml }}
+        />
+      );
+    } else if (match[11]) {
       // Bold italic ***text***
-      const inner = match[10];
+      const inner = match[12];
       nodes.push(
         <strong key={key} className="font-extrabold text-base-content">
           <em className="italic">{renderInline(inner, `${key}-bi`, depth + 1)}</em>
         </strong>
       );
-    } else if (match[11]) {
+    } else if (match[13]) {
       // Bold **text**
-      const inner = match[12];
+      const inner = match[14];
       nodes.push(
         <strong key={key} className="font-extrabold text-base-content">
           {renderInline(inner, `${key}-b`, depth + 1)}
         </strong>
       );
-    } else if (match[13]) {
+    } else if (match[15]) {
       // Italic *text*
-      const inner = match[14];
+      const inner = match[16];
       nodes.push(
         <em key={key} className="italic text-base-content/90">
           {renderInline(inner, `${key}-i`, depth + 1)}
@@ -142,6 +170,7 @@ type MarkdownBlock =
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
   | { type: "code"; lang: string; code: string }
+  | { type: "math"; math: string }
   | { type: "heading"; level: number; text: string }
   | { type: "blockquote"; text: string }
   | { type: "image"; alt: string; src: string }
@@ -154,6 +183,7 @@ function parseMarkdownBlocks(text: string): MarkdownBlock[] {
   const blocks: MarkdownBlock[] = [];
   let currentList: { type: "ul" | "ol"; items: string[] } | null = null;
   let currentCode: { lang: string; lines: string[] } | null = null;
+  let currentMath: string[] | null = null;
   let currentTable: string[] | null = null;
   let currentParagraph: string[] = [];
 
@@ -195,6 +225,20 @@ function parseMarkdownBlocks(text: string): MarkdownBlock[] {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
+    // Inside multiline math block ($$)
+    if (currentMath) {
+      if (line.trim().startsWith("$$")) {
+        blocks.push({
+          type: "math",
+          math: currentMath.join("\n"),
+        });
+        currentMath = null;
+      } else {
+        currentMath.push(line);
+      }
+      continue;
+    }
+
     // Inside fenced code block
     if (currentCode) {
       if (line.trim().startsWith("```")) {
@@ -207,6 +251,28 @@ function parseMarkdownBlocks(text: string): MarkdownBlock[] {
       } else {
         currentCode.lines.push(line);
       }
+      continue;
+    }
+
+    // Single line block math ($$...$$)
+    const singleMathMatch = line.trim().match(/^\$\$(.+?)\$\$$/);
+    if (singleMathMatch) {
+      flushParagraph();
+      flushList();
+      flushTable();
+      blocks.push({
+        type: "math",
+        math: singleMathMatch[1].trim(),
+      });
+      continue;
+    }
+
+    // Multiline math block start ($$)
+    if (line.trim() === "$$") {
+      flushParagraph();
+      flushList();
+      flushTable();
+      currentMath = [];
       continue;
     }
 
@@ -309,6 +375,13 @@ function parseMarkdownBlocks(text: string): MarkdownBlock[] {
   flushParagraph();
   flushList();
   flushTable();
+
+  if (currentMath) {
+    blocks.push({
+      type: "math",
+      math: currentMath.join("\n"),
+    });
+  }
 
   if (currentCode) {
     blocks.push({
@@ -485,15 +558,26 @@ export default function MarkdownRenderer({
               </div>
             );
 
+          case "math":
+            return (
+              <div
+                key={idx}
+                className="my-5 py-3 px-4 bg-base-200/50 rounded-xl overflow-x-auto flex justify-center items-center border border-base-300 shadow-xs text-base-content"
+                dangerouslySetInnerHTML={{
+                  __html: renderKatex(block.math, true),
+                }}
+              />
+            );
+
           case "image":
             return (
               <figure key={idx} className="my-6 flex flex-col items-center">
-                <div className="rounded-xl overflow-hidden border border-base-300 bg-base-200/40 p-3 shadow-xs max-w-full flex justify-center items-center">
+                <div className="rounded-xl overflow-hidden border border-base-300 bg-white p-4 shadow-sm max-w-full flex justify-center items-center">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={block.src}
                     alt={block.alt}
-                    className="max-h-[500px] w-auto max-w-full object-contain rounded-lg mx-auto"
+                    className="max-h-[500px] w-auto max-w-full object-contain rounded mx-auto"
                     loading="lazy"
                   />
                 </div>

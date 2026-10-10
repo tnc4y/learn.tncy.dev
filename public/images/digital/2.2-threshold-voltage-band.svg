@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 305" width="660" height="305" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="304" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">MOSFET Eşik Voltajı (V_t) Mekanizması ve Kanal Oluşumu</text>
+<g transform="translate(40, 45)">
+  <!-- Left: Vgs < Vt -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="275" height="180" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">V_GS &lt; V_t (Tükenim Rejimi / Kapalı)</text>
+    
+    <rect x="35" y="45" width="205" height="25" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="137" y="62" font-size="10" fill="#475569" text-anchor="middle">Gate Oksit (SiO₂)</text>
+    
+    <rect x="35" y="70" width="205" height="40" fill="#fef9c3" stroke="#ca8a04" stroke-dasharray="3,2"/>
+    <text x="137" y="93" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">Tükenim Katmanı (Kanal Yok!)</text>
+
+    <text x="137" y="140" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">I_D ≈ 0 (Sadece Alt-Eşik Sızıntısı)</text>
+    <text x="137" y="160" font-size="10" fill="#64748b" text-anchor="middle">Kanalda serbest elektron birikmemiştir.</text>
+  </g>
+
+  <!-- Right: Vgs > Vt -->
+  <g transform="translate(305, 0)">
+    <rect x="0" y="0" width="275" height="180" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">V_GS &gt; V_t (Terslenme / Kanal Açık)</text>
+    
+    <rect x="35" y="45" width="205" height="25" fill="#e2e8f0" stroke="#94a3b8"/>
+    <text x="137" y="62" font-size="10" fill="#475569" text-anchor="middle">Gate Oksit (SiO₂)</text>
+    
+    <rect x="35" y="70" width="205" height="25" fill="#bbf7d0" stroke="#16a34a"/>
+    <text x="137" y="87" font-size="10" font-weight="bold" fill="#166534" text-anchor="middle">Güçlü Terslenme Kanalı (e⁻ e⁻ e⁻)</text>
+
+    <text x="137" y="140" font-size="11" font-weight="bold" fill="#16a34a" text-anchor="middle">I_D Akımı Serbestçe Akar</text>
+    <text x="137" y="160" font-size="10" fill="#334155" text-anchor="middle">Yüzey potansiyeli: φ_s ≥ 2φ_F</text>
+  </g>
+</g>
+
+<!-- Bottom Equation Card -->
+<rect x="40" y="240" width="580" height="50" rx="6" fill="#f1f5f9" stroke="#cbd5e1"/>
+<text x="330" y="260" font-size="11" font-weight="bold" fill="#1e293b" text-anchor="middle">V_t Formülü: V_t = V_t0 + γ(√(2φ_F + V_SB) - √(2φ_F))</text>
+<text x="330" y="278" font-size="10" fill="#475569" text-anchor="middle">• Sıcaklık arttıkça V_t düşer (~ -1.5 mV/°C)  • Body bias (V_SB &gt; 0) V_t değerini artırır (Gövde Etkisi)</text>
+
+</svg>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 280" width="660" height="280" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="279" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">PN Jonksiyonu &amp; Tükenim Bölgesi (Depletion Region)</text>
+<g transform="translate(50, 45)">
+  <!-- P Region -->
+  <rect x="0" y="0" width="200" height="150" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="100" y="30" font-size="13" font-weight="bold" fill="#b91c1c" text-anchor="middle">P-Bölgesi (Akseptör N_A)</text>
+  <text x="100" y="55" font-size="11" fill="#7f1d1d" text-anchor="middle">Çoğunluk: Deşikler (h⁺)</text>
+
+  <!-- Depletion Region -->
+  <rect x="200" y="0" width="160" height="150" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+  <text x="280" y="25" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">Tükenim Bölgesi (W_dep)</text>
+  
+  <!-- Fixed charges in depletion -->
+  <text x="235" y="75" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">⊖ ⊖</text>
+  <text x="235" y="105" font-size="10" fill="#b91c1c" text-anchor="middle">Negatif İyonlar</text>
+  
+  <text x="325" y="75" font-size="16" font-weight="bold" fill="#16a34a" text-anchor="middle">⊕ ⊕</text>
+  <text x="325" y="105" font-size="10" fill="#15803d" text-anchor="middle">Pozitif İyonlar</text>
+  
+  <!-- Built-in electric field arrow -->
+  <line x1="330" y1="130" x2="230" y2="130" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="280" y="125" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Dahili Elektrik Alanı (E_built-in)</text>
+
+  <!-- N Region -->
+  <rect x="360" y="0" width="200" height="150" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="460" y="30" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">N-Bölgesi (Donör N_D)</text>
+  <text x="460" y="55" font-size="11" fill="#14532d" text-anchor="middle">Çoğunluk: Elektronlar (e⁻)</text>
+</g>
+
+<!-- Barrier explanation cards -->
+<g transform="translate(50, 210)">
+  <rect x="0" y="0" width="270" height="55" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+  <text x="135" y="22" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">İleri Kutuplama (Forward Bias, V_D &gt; 0)</text>
+  <text x="135" y="42" font-size="10" fill="#15803d" text-anchor="middle">Bariyer düşer (~0.7V), difüzyon akımı üstel fırlar.</text>
+
+  <rect x="290" y="0" width="270" height="55" rx="6" fill="#fef2f2" stroke="#fca5a5"/>
+  <text x="425" y="22" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">Ters Kutuplama (Reverse Bias, V_R &gt; 0)</text>
+  <text x="425" y="42" font-size="10" fill="#b91c1c" text-anchor="middle">Tükenim bölgesi genişler, akım tıkınır (I_D ≈ -I_s).</text>
+</g>
+
+</svg>

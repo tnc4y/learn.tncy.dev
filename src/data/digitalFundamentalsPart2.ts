@@ -25,7 +25,9 @@ export const DIGITAL_FUNDAMENTALS_PART2: Record<string, LessonContent> = {
       },
       {
         title: "2. Pull-Up ve Pull-Down Yapısı",
-        content: `CMOS (Complementary Metal-Oxide-Semiconductor) kelimesi "tamamlayıcı" anlamına gelir. Devre iki zıt kutuptan oluşur:
+        content: `![CMOS İnvertör Şeması ve Gerilim Geçiş Eğrisi (VTC)](/images/digital/3.1-cmos-inverter-schematic-vtc.svg)
+
+CMOS (Complementary Metal-Oxide-Semiconductor) kelimesi "tamamlayıcı" anlamına gelir. Devre iki zıt kutuptan oluşur:
 
 1. **Pull-Up Ağı (PUN):** VDD güç rayı ile çıkış arasına yerleştirilmiş **PMOS** transistör. Çıkışı Mantık 1'e ($V_{DD}$) çeker.
 2. **Pull-Down Ağı (PDN):** Çıkış ile GND toprak rayı arasına yerleştirilmiş **NMOS** transistör. Çıkışı Mantık 0'a ($0\\text{ V}$) çeker.
@@ -160,7 +162,9 @@ endmodule`,
       },
       {
         title: "2. NAND2 Devre Yapısı ve Çalışma Prensibi",
-        content: `NAND mantığı: Çıkış Yalnızca $A=1$ VE $B=1$ olduğunda 0 olur; diğer tüm durumlarda 1'dir ($Y = \\overline{A \\cdot B}$).
+        content: `![2-Girişli CMOS NAND Kapısı ve Doğruluk Tablosu](/images/digital/3.2-cmos-nand-schematic.svg)
+
+NAND mantığı: Çıkış Yalnızca $A=1$ VE $B=1$ olduğunda 0 olur; diğer tüm durumlarda 1'dir ($Y = \\overline{A \\cdot B}$).
 
 1. **Pull-Down Ağı (NMOS):** Çıkışı 0'a çekmek için HEM $A$ HEM DE $B$ açık olmalıdır. Bu yüzden iki NMOS transistör **SERİ (Series)** bağlanır!
 2. **Pull-Up Ağı (PMOS):** Çıkışı 1'e çekmek için $A=0$ VEYA $B=0$ olması yeterlidir. Bu yüzden iki PMOS transistör **PARALEL (Parallel)** bağlanır!
@@ -283,7 +287,9 @@ endmodule`,
       },
       {
         title: "2. NOR2 Devre Yapısı ve Çalışma Prensibi",
-        content: `NOR mantığı: Girişlerden HERHANGİ BİRİ 1 olduğunda çıkış 0 olur; çıkış yalnızca her iki giriş de 0 iken 1'dir ($Y = \\overline{A + B}$).
+        content: `![2-Girişli CMOS NOR Kapısı ve Doğruluk Tablosu](/images/digital/3.3-cmos-nor-schematic.svg)
+
+NOR mantığı: Girişlerden HERHANGİ BİRİ 1 olduğunda çıkış 0 olur; çıkış yalnızca her iki giriş de 0 iken 1'dir ($Y = \\overline{A + B}$).
 
 1. **Pull-Down Ağı (NMOS):** $A=1$ VEYA $B=1$ olduğunda çıkış 0'a çekilmelidir. Bu nedenle iki NMOS transistör **PARALEL** bağlanır.
 2. **Pull-Up Ağı (PMOS):** Çıkışı 1'e çekmek için HEM $A=0$ HEM DE $B=0$ olmalıdır. Bu nedenle iki PMOS transistör **SERİ** bağlanır!
@@ -402,7 +408,9 @@ endmodule`,
       },
       {
         title: "2. Sürüş Gücü (Drive Strength: 1X, 2X, 4X) Nedir?",
-        content: `Bir standart hücre kütüphanesinde aynı mantığı yapan (örneğin INV veya NAND2) farklı boyutlarda hücreler bulunur:
+        content: `![Transistör Boyutlandırma (W/L) ve PMOS/NMOS Mobilite Oranı](/images/digital/3.4-transistor-sizing-ratio.svg)
+
+Bir standart hücre kütüphanesinde aynı mantığı yapan (örneğin INV veya NAND2) farklı boyutlarda hücreler bulunur:
 - \`INV_X1\` (1X): Minimum boyutlu hücre. En az akımı çeker, çıkışı yavaş doldurur ama giriş kapasitansı çok küçüktür.
 - \`INV_X4\` (4X): Kanal genişliği ($W$) 4 kat büyüktür. Direnci $1/4$'e iner; çıkışındaki yükü 4 kat daha hızlı şarj eder.
 - \`INV_X16\` (16X): Devasa akım sürer; çip dışı pinleri veya devasa saat hatlarını sürmek için kullanılır.
@@ -522,7 +530,9 @@ endmodule`,
       },
       {
         title: "2. Dinamik Anahtarlama Gücü ($P_{dyn}$)",
-        content: `Bir CMOS kapısının çıkışı 0'dan 1'e geçerken, VDD güç kaynağından bir enerji çekilir ve yük kondansatörü ($C_L$) şarj edilir. Çıkış 1'den 0'a geçerken bu enerji NMOS üzerinden toprağa ısı olarak atılır.
+        content: `![CMOS Güç Tüketimi Bileşenleri](/images/digital/3.5-cmos-power-breakdown.svg)
+
+Bir CMOS kapısının çıkışı 0'dan 1'e geçerken, VDD güç kaynağından bir enerji çekilir ve yük kondansatörü ($C_L$) şarj edilir. Çıkış 1'den 0'a geçerken bu enerji NMOS üzerinden toprağa ısı olarak atılır.
 
 $$P_{dyn} = \\alpha \\cdot C_L \\cdot V_{DD}^2 \\cdot f$$
 
@@ -641,7 +651,9 @@ endmodule`,
       },
       {
         title: "2. AOI22 Örneği: Y = ~( (A·B) + (C·D) )",
-        content: `Klasik tasarımda $Y = \\overline{A B + C D}$ ifadesini yapmak için iki adet AND kapısı, bir adet OR kapısı ve bir adet NOT kapısı gerekir (Toplam 4 kapı, onlarca transistör ve 3 kademeli gecikme!).
+        content: `![AOI21 Karmaşık Kapı Transistör Ağ Mimarisi](/images/digital/3.6-aoi-oai-complex-gates.svg)
+
+Klasik tasarımda $Y = \\overline{A B + C D}$ ifadesini yapmak için iki adet AND kapısı, bir adet OR kapısı ve bir adet NOT kapısı gerekir (Toplam 4 kapı, onlarca transistör ve 3 kademeli gecikme!).
 
 Oysa CMOS mantığında bu ifade **TEK BİR HÜCREDE (AOI22)** yalnızca 8 transistörle çözülür:
 
@@ -974,7 +986,9 @@ endmodule`,
       },
       {
         title: "2. İkiye Tümleyen Alma Algoritması",
-        content: `Bir pozitif sayının negatifini bulmak için standart iki adımlı kural uygulanır:
+        content: `![4-Bit İki'ye Tümleyen Sayı Çemberi ve Taşma](/images/digital/4.1-twos-complement-number-wheel.svg)
+
+Bir pozitif sayının negatifini bulmak için standart iki adımlı kural uygulanır:
 1. **Adım 1:** Tüm bitleri tersle (1'ler 0, 0'lar 1 olur - One's complement).
 2. **Adım 2:** Sonuca 1 ekle (+1).
 
@@ -1206,7 +1220,9 @@ endmodule`,
       },
       {
         title: "2. IEEE-754 Tek Duyarlıklı (Single Precision) Formatı",
-        content: `32 bitlik standart bir \`float\` sayısı bellekte tam olarak 3 alana bölünür:
+        content: `![IEEE-754 32-Bit Kayan Nokta Formatı](/images/digital/4.2-ieee754-floating-point-format.svg)
+
+32 bitlik standart bir \`float\` sayısı bellekte tam olarak 3 alana bölünür:
 
 $$\\text{Değer} = (-1)^S \\times 1.F \\times 2^{E - 127}$$
 

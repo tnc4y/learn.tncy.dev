@@ -318,7 +318,9 @@ endmodule`,
       },
       {
         title: "2. Enerji Bantları: Elektronlar Neden ve Nasıl Hareket Eder?",
-        content: `Tek bir izole atomda elektronlar Bohr modeline göre belirli ayrık enerji seviyelerinde döner. Ancak katı bir kristalde trilyonlarca atom bir araya geldiğinde Pauli dışlama ilkesi gereği atomik orbitaller üst üste binerek sürekli enerji bantlarını oluşturur:
+        content: `![Silisyum Kristal Kafesi ve Kovalent Bağlar](/images/digital/1.1-silicon-lattice-intrinsic.svg)
+
+Tek bir izole atomda elektronlar Bohr modeline göre belirli ayrık enerji seviyelerinde döner. Ancak katı bir kristalde trilyonlarca atom bir araya geldiğinde Pauli dışlama ilkesi gereği atomik orbitaller üst üste binerek sürekli enerji bantlarını oluşturur:
 
 - **Valans Bandı (Valence Band):** Atom çekirdeğine bağlı olan ve kovalent bağları oluşturan elektronların bulunduğu en yüksek dolu enerji bandıdır. Buradaki elektronlar kristal boyunca serbestçe gezemez.
 - **İletim Bandı (Conduction Band):** Çekirdeğin bağından kurtulmuş, kristal kafesi içinde elektrik alan etkisiyle serbestçe akabilen hareketli elektronların bulunduğu enerji bandıdır.
@@ -462,7 +464,9 @@ endmodule`,
       },
       {
         title: "2. N-Tipi Katkılama: Fazladan Elektron Eklemek",
-        content: `Silikon 4 valans elektronuna sahiptir. Periyodik tablonun V. grubunda yer alan **Fosfor (P)** veya **Arsenik (As)** ise 5 valans elektronuna sahiptir.
+        content: `![Yarıiletken Katkılama: N-Tipi vs P-Tipi](/images/digital/1.2-doping-n-type-p-type.svg)
+
+Silikon 4 valans elektronuna sahiptir. Periyodik tablonun V. grubunda yer alan **Fosfor (P)** veya **Arsenik (As)** ise 5 valans elektronuna sahiptir.
 
 Silikon kristalindeki bir Si atomunun yerine bir Fosfor atomu girdiğinde:
 1. Fosforun 4 elektronu komşu 4 silikon atomu ile kovalent bağ kurar.
@@ -634,7 +638,9 @@ endmodule`,
       },
       {
         title: "2. P ve N Bir Araya Geldiğinde Ne Olur? (Denge Durumu)",
-        content: `P bölgesinde trilyonlarca delik, N bölgesinde ise trilyonlarca serbest elektron vardır. Birleşme sınırında devasa bir konsantrasyon farkı oluşur:
+        content: `![PN Jonksiyonu ve Tükenim Bölgesi](/images/digital/1.3-pn-junction-depletion.svg)
+
+P bölgesinde trilyonlarca delik, N bölgesinde ise trilyonlarca serbest elektron vardır. Birleşme sınırında devasa bir konsantrasyon farkı oluşur:
 
 1. **Difüzyon (Yayılma):** Elektronlar çok oldukları N bölgesinden P bölgesine doğru yayılır. Delikler ise P bölgesinden N bölgesine doğru yayılır.
 2. **Rekombinasyon (Yeniden Birleşme):** Sınırı geçen elektronlar deliklerle karşılaşır ve kovalent bağlara oturarak her iki serbest taşıyıcı da birbirini nötrler (yok olur).
@@ -806,7 +812,9 @@ endmodule`,
       },
       {
         title: "2. Akım Nasıl Akar? İki Temel Mekanizma",
-        content: `Bir yarı iletkende akım iki farklı fiziksel kuvvetle taşınır:
+        content: `![Taşıyıcı Yoğunluğu vs Sıcaklık ve Fermi Seviyesi](/images/digital/1.4-carrier-concentration-temp.svg)
+
+Bir yarı iletkende akım iki farklı fiziksel kuvvetle taşınır:
 
 1. **Sürüklenme Akımı (Drift Current):**
    - Kristale bir harici elektrik alanı ($E$) uygulandığında, yüklü parçacıklar bu alanın kuvvetiyle sürüklenir.
@@ -944,7 +952,9 @@ endmodule`,
       },
       {
         title: "2. MOSFET'in Dört Terminali",
-        content: `Bir MOSFET üç değil, aslında **dört terminalli** bir cihazdır:
+        content: `![NMOS Transistör Anatomisi ve Kesit Yapısı](/images/digital/2.1-nmos-cross-section.svg)
+
+Bir MOSFET üç değil, aslında **dört terminalli** bir cihazdır:
 
 1. **Gate (Kapı - G):** Kontrol terminalidir. Bir musluğun vanası gibidir. Buraya uygulanan gerilim, kaynak ile savak arasındaki iletken kanalın açılıp kapanmasını kontrol eder.
 2. **Source (Kaynak - S):** Taşıyıcıların kanala girdiği uçtur (NMOS'ta elektronların, PMOS'ta deliklerin kaynağıdır).
@@ -1097,7 +1107,9 @@ endmodule`,
       },
       {
         title: "2. MOS Kapasitör Rejimleri: Kanal Adım Adım Nasıl Doğar?",
-        content: `P-Tipi bir silikon taban üzerine oksit ve metal kapı yerleştirildiğinde bir MOS yapısı oluşur. Kapıya ($V_G$) uygulanan gerilime göre silikon yüzeyinde 3 aşama yaşanır:
+        content: `![MOSFET Eşik Voltajı (Vt) Mekanizması ve Kanal Oluşumu](/images/digital/2.2-threshold-voltage-band.svg)
+
+P-Tipi bir silikon taban üzerine oksit ve metal kapı yerleştirildiğinde bir MOS yapısı oluşur. Kapıya ($V_G$) uygulanan gerilime göre silikon yüzeyinde 3 aşama yaşanır:
 
 1. **Birikim (Accumulation - $V_G < 0$):**
    - Kapıya negatif voltaj uygulandığında, P-tabandaki pozitif delikler oksit yüzeyine doğru çekilir. Yüzeyde ekstra delik birikir; kanal oluşmaz.
@@ -1233,7 +1245,9 @@ endmodule`,
       },
       {
         title: "2. Üç Çalışma Rejiminin Karşılaştırmalı Özeti",
-        content: `Bir NMOS transistör için akım rejimleri aşağıdaki koşullara göre belirlenir:
+        content: `![MOSFET ID - VDS Akım-Gerilim Karakteristiği](/images/digital/2.3-mosfet-iv-characteristics.svg)
+
+Bir NMOS transistör için akım rejimleri aşağıdaki koşullara göre belirlenir:
 
 | Rejim | Koşul | Fiziksel Kanal Durumu | Akım Denklemi ($I_{DS}$) | Dijital Devredeki Rolü |
 | :--- | :--- | :--- | :--- | :--- |
@@ -1373,7 +1387,9 @@ endmodule`,
       },
       {
         title: "2. Yan Yana Karşılaştırma Tablosu",
-        content: `NMOS ve PMOS mükemmel bir zıtlık dengesiyle çalışır:
+        content: `![NMOS ve PMOS Transistör Karşılaştırmalı Mimarisi](/images/digital/2.4-nmos-vs-pmos-comparison.svg)
+
+NMOS ve PMOS mükemmel bir zıtlık dengesiyle çalışır:
 
 | Parametre | NMOS Transistör | PMOS Transistör |
 | :--- | :--- | :--- |
@@ -1521,7 +1537,9 @@ endmodule`,
       },
       {
         title: "2. Alt-Eşik Kaçağı: Kapalı Transistör Neden Akım Akıtır?",
-        content: `Klasik dijital mantıkta transistör $V_{GS} < V_t$ olduğunda tamamen kapalı kabul edilir. Ancak kuantum ve istatistiksel mekanik açısından Boltzmann dağılımı gereği bazı elektronlar daima yüksek termal enerjiye sahiptir ve potansiyel bariyerini aşabilir.
+        content: `![Kısa Kanal Etkileri ve Başlıca Sızıntı Akımı Yolları](/images/digital/2.5-short-channel-effects.svg)
+
+Klasik dijital mantıkta transistör $V_{GS} < V_t$ olduğunda tamamen kapalı kabul edilir. Ancak kuantum ve istatistiksel mekanik açısından Boltzmann dağılımı gereği bazı elektronlar daima yüksek termal enerjiye sahiptir ve potansiyel bariyerini aşabilir.
 
 Alt-eşik bölgesinde akım voltajla üstel olarak değişir:
 $$I_{sub} \\propto \\exp\\left(\\frac{V_{GS} - V_t}{n \\cdot V_T}\\right)$$

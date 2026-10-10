@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 315" width="660" height="315" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="314" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">2-Girişli CMOS NAND Kapısı (PUN: Paralel PMOS / PDN: Seri NMOS)</text>
+<g transform="translate(50, 45)">
+  <!-- Schematic Card -->
+  <rect x="0" y="0" width="320" height="250" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <line x1="80" y1="25" x2="240" y2="25" stroke="#dc2626" stroke-width="3"/>
+  <text x="160" y="20" font-size="11" font-weight="bold" fill="#dc2626" text-anchor="middle">V_DD</text>
+
+  <!-- Parallel PMOS A and B -->
+  <rect x="70" y="45" width="60" height="35" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="100" y="67" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">PMOS A</text>
+
+  <rect x="190" y="45" width="60" height="35" rx="3" fill="#fee2e2" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="220" y="67" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">PMOS B</text>
+
+  <!-- Shared output node -->
+  <line x1="100" y1="80" x2="100" y2="105" stroke="#374151" stroke-width="2"/>
+  <line x1="220" y1="80" x2="220" y2="105" stroke="#374151" stroke-width="2"/>
+  <line x1="100" y1="105" x2="220" y2="105" stroke="#374151" stroke-width="2.5"/>
+  <line x1="160" y1="105" x2="280" y2="105" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="285" y="108" font-size="11" font-weight="bold" fill="#2563eb">Y = ~(A &amp; B)</text>
+
+  <!-- Series NMOS A and B -->
+  <line x1="160" y1="105" x2="160" y2="125" stroke="#374151" stroke-width="2"/>
+  <rect x="130" y="125" width="60" height="35" rx="3" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="160" y="147" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">NMOS A</text>
+
+  <line x1="160" y1="160" x2="160" y2="175" stroke="#374151" stroke-width="2"/>
+  <rect x="130" y="175" width="60" height="35" rx="3" fill="#dcfce7" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="160" y="197" font-size="10" font-weight="bold" fill="#15803d" text-anchor="middle">NMOS B</text>
+
+  <line x1="160" y1="210" x2="160" y2="230" stroke="#374151" stroke-width="2"/>
+  <line x1="120" y1="230" x2="200" y2="230" stroke="#374151" stroke-width="3"/>
+  <text x="160" y="245" font-size="10" font-weight="bold" fill="#374151" text-anchor="middle">GND</text>
+
+  <!-- Truth Table Card -->
+  <g transform="translate(340, 15)">
+    <rect x="0" y="0" width="220" height="220" rx="6" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="110" y="24" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">Doğruluk Tablosu</text>
+    
+    <rect x="15" y="40" width="190" height="25" fill="#f1f5f9"/>
+    <text x="45" y="57" font-size="11" font-weight="bold" fill="#334155">A</text>
+    <text x="95" y="57" font-size="11" font-weight="bold" fill="#334155">B</text>
+    <text x="155" y="57" font-size="11" font-weight="bold" fill="#2563eb">Y = NAND</text>
+
+    <text x="45" y="90" font-size="11" fill="#334155">0</text>
+    <text x="95" y="90" font-size="11" fill="#334155">0</text>
+    <text x="155" y="90" font-size="11" font-weight="bold" fill="#16a34a">1</text>
+
+    <text x="45" y="125" font-size="11" fill="#334155">0</text>
+    <text x="95" y="125" font-size="11" fill="#334155">1</text>
+    <text x="155" y="125" font-size="11" font-weight="bold" fill="#16a34a">1</text>
+
+    <text x="45" y="160" font-size="11" fill="#334155">1</text>
+    <text x="95" y="160" font-size="11" fill="#334155">0</text>
+    <text x="155" y="160" font-size="11" font-weight="bold" fill="#16a34a">1</text>
+
+    <text x="45" y="195" font-size="11" fill="#334155">1</text>
+    <text x="95" y="195" font-size="11" fill="#334155">1</text>
+    <text x="155" y="195" font-size="11" font-weight="bold" fill="#dc2626">0</text>
+  </g>
+</g>
+
+</svg>

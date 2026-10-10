@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 315" width="660" height="315" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="314" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">4-Bit İki'ye Tümleyen (2's Complement) Sayı Çemberi ve Taşma (Overflow)</text>
+<g transform="translate(330, 160)">
+  <!-- Outer circle -->
+  <circle cx="0" cy="0" r="100" fill="#f8fafc" stroke="#cbd5e1" stroke-width="4"/>
+
+  <!-- Dividing line between pos and neg -->
+  <line x1="-105" y1="0" x2="105" y2="0" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="0" y="-115" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">0000 (0)</text>
+
+  <!-- Positive half numbers -->
+  <text x="50" y="-80" font-size="10" fill="#15803d">0001 (+1)</text>
+  <text x="80" y="-45" font-size="10" fill="#15803d">0010 (+2)</text>
+  <text x="90" y="-10" font-size="10" fill="#15803d">0011 (+3)</text>
+  <text x="80" y="30" font-size="10" fill="#15803d">0100 (+4)</text>
+  <text x="60" y="65" font-size="10" fill="#15803d">0101 (+5)</text>
+  <text x="30" y="90" font-size="10" fill="#15803d">0110 (+6)</text>
+  <text x="0" y="115" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">0111 (+7 MAX)</text>
+
+  <!-- Negative half numbers -->
+  <text x="-5" y="130" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">1000 (-8 MIN)</text>
+  <text x="-95" y="75" font-size="10" fill="#b91c1c">1001 (-7)</text>
+  <text x="-105" y="40" font-size="10" fill="#b91c1c">1010 (-6)</text>
+  <text x="-105" y="5" font-size="10" fill="#b91c1c">1011 (-5)</text>
+  <text x="-95" y="-30" font-size="10" fill="#b91c1c">1100 (-4)</text>
+  <text x="-80" y="-60" font-size="10" fill="#b91c1c">1101 (-3)</text>
+  <text x="-55" y="-85" font-size="10" fill="#b91c1c">1110 (-2)</text>
+  <text x="-25" y="-100" font-size="10" fill="#b91c1c">1111 (-1)</text>
+
+  <!-- Center Overflow Warning -->
+  <circle cx="0" cy="115" r="8" fill="#dc2626"/>
+  <text x="0" y="-15" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">TAŞMA (OVERFLOW)</text>
+  <text x="0" y="5" font-size="9" fill="#64748b" text-anchor="middle">+7 + 1 = 1000 (-8)</text>
+</g>
+
+</svg>

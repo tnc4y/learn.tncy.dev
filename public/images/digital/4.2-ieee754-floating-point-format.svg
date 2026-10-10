@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 225" width="660" height="225" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="224" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">IEEE-754 32-Bit Kayan Nokta Formatı (Single Precision / float)</text>
+<g transform="translate(40, 50)">
+  <!-- 32-bit layout box -->
+  <!-- Sign bit -->
+  <rect x="0" y="0" width="40" height="50" rx="4" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="20" y="25" font-size="11" font-weight="bold" fill="#b91c1c" text-anchor="middle">S</text>
+  <text x="20" y="42" font-size="9" fill="#991b1b" text-anchor="middle">Bit 31</text>
+  <text x="20" y="70" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">İşaret (1b)</text>
+
+  <!-- Exponent bits -->
+  <rect x="45" y="0" width="165" height="50" rx="4" fill="#fef9c3" stroke="#eab308" stroke-width="2"/>
+  <text x="127" y="25" font-size="11" font-weight="bold" fill="#854d0e" text-anchor="middle">Üs (Exponent: 8-bit)</text>
+  <text x="127" y="42" font-size="9" fill="#713f12" text-anchor="middle">Bit 30 .. Bit 23 (Bias = 127)</text>
+  <text x="127" y="70" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">Kaydırılmış Üs: E - 127</text>
+
+  <!-- Mantissa bits -->
+  <rect x="215" y="0" width="365" height="50" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="397" y="25" font-size="11" font-weight="bold" fill="#1e40af" text-anchor="middle">Kesir / Mantissa (Fraction: 23-bit)</text>
+  <text x="397" y="42" font-size="9" fill="#1d4ed8" text-anchor="middle">Bit 22 .. Bit 0 (Gizli '1.' biti ile normalleştirilmiş)</text>
+  <text x="397" y="70" font-size="10" font-weight="bold" fill="#1d4ed8" text-anchor="middle">1.M (Gizli 1 Mantığı)</text>
+</g>
+
+<!-- Value formula card -->
+<rect x="40" y="145" width="580" height="60" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+<text x="330" y="170" font-size="12" font-weight="bold" fill="#0f172a" text-anchor="middle">Değer Formülü: V = (-1)^S × (1 + Fraction) × 2^(Exponent - 127)</text>
+<text x="330" y="192" font-size="10" fill="#475569" text-anchor="middle">Örnek: -1.75 = (-1)¹ × 1.11₂ × 2⁰ ⟹ S=1, Exponent=127 (01111111), Mantissa=11000...0</text>
+
+</svg>

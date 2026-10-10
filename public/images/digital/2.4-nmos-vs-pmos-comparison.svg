@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 305" width="660" height="305" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="304" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">NMOS ve PMOS Transistör Karşılaştırmalı Mimarisi</text>
+<g transform="translate(40, 45)">
+  <!-- Left: NMOS -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="275" height="235" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="13" font-weight="bold" fill="#166534" text-anchor="middle">NMOS Transistör (N-Kanal)</text>
+
+    <!-- Symbol -->
+    <circle cx="137" cy="85" r="32" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <line x1="120" y1="65" x2="120" y2="105" stroke="#16a34a" stroke-width="3"/>
+    <line x1="100" y1="85" x2="120" y2="85" stroke="#16a34a" stroke-width="2.5"/>
+    <line x1="128" y1="65" x2="128" y2="105" stroke="#16a34a" stroke-width="2.5" stroke-dasharray="5,3"/>
+    <!-- Drain & Source lines -->
+    <line x1="128" y1="70" x2="155" y2="70" stroke="#16a34a" stroke-width="2"/>
+    <line x1="155" y1="70" x2="155" y2="50" stroke="#16a34a" stroke-width="2"/>
+    <line x1="128" y1="100" x2="155" y2="100" stroke="#16a34a" stroke-width="2"/>
+    <line x1="155" y1="100" x2="155" y2="120" stroke="#16a34a" stroke-width="2"/>
+    <!-- Inward arrow -->
+    <polygon points="128,85 140,81 140,89" fill="#16a34a"/>
+
+    <text x="137" y="145" font-size="11" font-weight="bold" fill="#166534" text-anchor="middle">• Taşıyıcı: Elektronlar (Yüksek Mobilite)</text>
+    <text x="137" y="165" font-size="10" fill="#334155" text-anchor="middle">μ_n ≈ 500 cm²/V·s (Hızlı)</text>
+    <text x="137" y="185" font-size="10" fill="#15803d" font-weight="bold" text-anchor="middle">V_GS = V_DD iken İLETİR (KAPALI: 0)</text>
+    <text x="137" y="205" font-size="11" fill="#166534" font-weight="bold" text-anchor="middle">Pull-Down Ağı (Güçlü '0' Geçirir)</text>
+  </g>
+
+  <!-- Right: PMOS -->
+  <g transform="translate(305, 0)">
+    <rect x="0" y="0" width="275" height="235" rx="6" fill="#fef2f2" stroke="#fca5a5" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="13" font-weight="bold" fill="#991b1b" text-anchor="middle">PMOS Transistör (P-Kanal)</text>
+
+    <!-- Symbol with bubble -->
+    <circle cx="137" cy="85" r="32" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <line x1="120" y1="65" x2="120" y2="105" stroke="#dc2626" stroke-width="3"/>
+    <line x1="95" y1="85" x2="112" y2="85" stroke="#dc2626" stroke-width="2.5"/>
+    <circle cx="116" cy="85" r="4" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <line x1="128" y1="65" x2="128" y2="105" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5,3"/>
+    <!-- Drain & Source lines -->
+    <line x1="128" y1="70" x2="155" y2="70" stroke="#dc2626" stroke-width="2"/>
+    <line x1="155" y1="70" x2="155" y2="50" stroke="#dc2626" stroke-width="2"/>
+    <line x1="128" y1="100" x2="155" y2="100" stroke="#dc2626" stroke-width="2"/>
+    <line x1="155" y1="100" x2="155" y2="120" stroke="#dc2626" stroke-width="2"/>
+    <!-- Outward arrow -->
+    <polygon points="140,85 128,81 128,89" fill="#dc2626"/>
+
+    <text x="137" y="145" font-size="11" font-weight="bold" fill="#991b1b" text-anchor="middle">• Taşıyıcı: Deşikler (Düşük Mobilite)</text>
+    <text x="137" y="165" font-size="10" fill="#334155" text-anchor="middle">μ_p ≈ 200 cm²/V·s (μ_n ≈ 2.5 × μ_p)</text>
+    <text x="137" y="185" font-size="10" fill="#b91c1c" font-weight="bold" text-anchor="middle">V_GS = 0 iken İLETİR (AÇIK: 0)</text>
+    <text x="137" y="205" font-size="11" fill="#991b1b" font-weight="bold" text-anchor="middle">Pull-Up Ağı (Güçlü '1' Geçirir)</text>
+  </g>
+</g>
+
+</svg>

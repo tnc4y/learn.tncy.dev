@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 275" width="660" height="275" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="274" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">Kısa Kanal Etkileri (SCE) ve Başlıca Sızıntı Akımı Yolları</text>
+<g transform="translate(50, 45)">
+  <!-- MOSFET base cross section -->
+  <rect x="0" y="60" width="560" height="150" fill="#fee2e2" stroke="#f87171" stroke-width="2"/>
+  
+  <!-- Source & Drain with narrow channel -->
+  <rect x="40" y="60" width="110" height="70" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="95" y="100" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">Source (n⁺)</text>
+
+  <rect x="410" y="60" width="110" height="70" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="465" y="100" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">Drain (n⁺)</text>
+
+  <!-- Thin gate oxide & gate -->
+  <rect x="170" y="45" width="220" height="15" fill="#e2e8f0" stroke="#94a3b8"/>
+  <rect x="170" y="10" width="220" height="35" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+  <text x="280" y="32" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Gate (Kapı L &lt; 20 nm)</text>
+
+  <!-- Leakage Path 1: Subthreshold -->
+  <path d="M 150 75 L 410 75" fill="none" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="4,3" marker-end="url(#arrow-red)"/>
+  <text x="280" y="90" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">1. Eşik-Altı Sızıntısı (I_sub / DIBL)</text>
+
+  <!-- Leakage Path 2: Gate tunneling -->
+  <path d="M 280 45 L 280 60" fill="none" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+  <text x="280" y="115" font-size="10" font-weight="bold" fill="#6d28d9" text-anchor="middle">2. Kapı Oksiti Kuantum Tünellemesi (I_gate)</text>
+
+  <!-- Leakage Path 3: Junction reverse leakage -->
+  <path d="M 465 130 L 465 180" fill="none" stroke="#d97706" stroke-width="2.5" marker-end="url(#arrow-red)"/>
+  <text x="465" y="195" font-size="10" font-weight="bold" fill="#b45309" text-anchor="middle">3. Jonksiyon Ters Sızıntısı</text>
+
+  <!-- Punchthrough -->
+  <path d="M 150 115 Q 280 145 410 115" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="3,3"/>
+  <text x="280" y="155" font-size="10" font-weight="bold" fill="#b91c1c" text-anchor="middle">4. Taban Delinmesi (Punchthrough)</text>
+</g>
+
+</svg>

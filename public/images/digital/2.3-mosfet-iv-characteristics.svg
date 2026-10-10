@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 290" width="660" height="290" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+  </filter>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+  <marker id="arrow-dark" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#374151"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="289" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">MOSFET I_D - V_DS Akım-Gerilim Karakteristiği ve Çalışma Bölgeleri</text>
+<g transform="translate(60, 45)">
+  <!-- Axes -->
+  <line x1="40" y1="210" x2="520" y2="210" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow-dark)"/>
+  <line x1="40" y1="210" x2="40" y2="20" stroke="#475569" stroke-width="2.5" marker-end="url(#arrow-dark)"/>
+  <text x="510" y="230" font-size="11" font-weight="bold" fill="#334155">V_DS (Savak Gerilimi)</text>
+  <text x="35" y="15" font-size="11" font-weight="bold" fill="#334155" text-anchor="middle">I_D</text>
+
+  <!-- Saturation boundary (pinch off locus: Id ~ Vds^2) -->
+  <path d="M 40 210 Q 150 170 240 60" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="4,4"/>
+  <text x="210" y="50" font-size="10" font-weight="bold" fill="#dc2626">Boğulma Sınırı (V_DS = V_GS - V_t)</text>
+
+  <!-- IV Curves for different Vgs -->
+  <!-- Curve 3: High Vgs -->
+  <path d="M 40 210 Q 160 80 240 70 L 500 65" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+  <text x="505" y="68" font-size="10" font-weight="bold" fill="#2563eb">V_GS3 (En Yüksek)</text>
+
+  <!-- Curve 2: Mid Vgs -->
+  <path d="M 40 210 Q 130 130 180 120 L 500 115" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+  <text x="505" y="118" font-size="10" font-weight="bold" fill="#0284c7">V_GS2</text>
+
+  <!-- Curve 1: Low Vgs -->
+  <path d="M 40 210 Q 90 175 130 170 L 500 165" fill="none" stroke="#0ea5e9" stroke-width="2.5"/>
+  <text x="505" y="168" font-size="10" font-weight="bold" fill="#0ea5e9">V_GS1 &gt; V_t</text>
+
+  <!-- Cutoff regime (on axis) -->
+  <line x1="40" y1="210" x2="500" y2="210" stroke="#94a3b8" stroke-width="4"/>
+  <text x="350" y="200" font-size="10" font-weight="bold" fill="#64748b">Kesim Bölgesi (V_GS &lt; V_t, I_D = 0)</text>
+
+  <!-- Zone highlights -->
+  <rect x="50" y="70" width="100" height="40" rx="4" fill="#fef9c3" stroke="#eab308" opacity="0.8"/>
+  <text x="100" y="87" font-size="10" font-weight="bold" fill="#854d0e" text-anchor="middle">Triyot / Lineer</text>
+  <text x="100" y="101" font-size="9" fill="#713f12" text-anchor="middle">Direnç gibi davranır</text>
+
+  <rect x="300" y="75" width="130" height="40" rx="4" fill="#dbeafe" stroke="#3b82f6" opacity="0.8"/>
+  <text x="365" y="92" font-size="10" font-weight="bold" fill="#1e40af" text-anchor="middle">Doyum (Saturation)</text>
+  <text x="365" y="106" font-size="9" fill="#1d4ed8" text-anchor="middle">Sabit akım kaynağı</text>
+</g>
+
+</svg>
