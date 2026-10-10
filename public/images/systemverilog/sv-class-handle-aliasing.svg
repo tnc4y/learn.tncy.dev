@@ -1,0 +1,85 @@
+<svg viewBox="0 0 760 380" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="760" height="380" fill="#ffffff"/>
+
+  <!-- Stage 1 header -->
+  <rect x="20" y="20" width="116" height="26" rx="9" fill="#2E86AB" opacity="0.12"/>
+  <text x="78" y="38" text-anchor="middle" font-size="11" font-weight="bold" fill="#2E86AB">Packet pkt;</text>
+
+  <!-- Stage 1: null handle -->
+  <rect x="20" y="64" width="200" height="70" rx="4" fill="#2E86AB" opacity="0.07" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4"/>
+  <text x="120" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pkt</text>
+  <text x="120" y="112" text-anchor="middle" font-size="10" fill="#445566">null</text>
+  <circle cx="120" cy="124" r="3" fill="none" stroke="#445566" stroke-width="1"/>
+
+  <!-- Arrow stage1 to stage2 -->
+  <path d="M 230 99 L 290 99" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7" fill="none" marker-end="url(#arrow2)"/>
+  <rect x="232" y="44" width="97" height="22" rx="4" fill="#fef4ed"/>
+  <text x="280.5" y="59" text-anchor="middle" font-size="10" fill="#b35a1f">pkt = new()</text>
+
+  <defs>
+    <marker id="arrow2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2E86AB" opacity="0.7"/>
+    </marker>
+    <marker id="arrow3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2E86AB"/>
+    </marker>
+  </defs>
+
+  <!-- Stage 2 header -->
+  <rect x="300" y="20" width="200" height="26" rx="9" fill="#E07B39" opacity="0.12"/>
+  <text x="400" y="38" text-anchor="middle" font-size="11" font-weight="bold" fill="#E07B39">Object created in memory</text>
+
+  <!-- Stage 2: handle pointing to object -->
+  <rect x="300" y="64" width="90" height="70" rx="4" fill="#2E86AB" opacity="0.07" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="345" y="92" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pkt</text>
+  <text x="345" y="112" text-anchor="middle" font-size="9" fill="#445566">handle</text>
+
+  <path d="M 392 99 L 420 99" stroke="#2E86AB" stroke-width="1.5" fill="none" marker-end="url(#arrow3)"/>
+
+  <rect x="424" y="64" width="120" height="70" rx="4" fill="#E07B39" opacity="0.09" stroke="#E07B39" stroke-width="1.5"/>
+  <text x="484" y="88" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a2e3b">Packet object</text>
+  <text x="484" y="108" text-anchor="middle" font-size="10" fill="#445566">count = 0</text>
+  <polygon points="478,118 484,124 478,130 472,124" fill="#E07B39"/>
+
+  <!-- Arrow stage2 to stage3 -->
+  <path d="M 555 99 L 600 99" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7" fill="none" marker-end="url(#arrow2)"/>
+  <rect x="552" y="44" width="91" height="22" rx="4" fill="#fef4ed"/>
+  <text x="597.5" y="59" text-anchor="middle" font-size="10" fill="#b35a1f">pkt2 = pkt</text>
+
+  <!-- Stage 3 header -->
+  <rect x="590" y="20" width="160" height="26" rx="9" fill="#E07B39" opacity="0.12"/>
+  <text x="670" y="38" text-anchor="middle" font-size="10" font-weight="bold" fill="#E07B39">Two handles, one object</text>
+
+  <!-- Stage 3: two handles same object -->
+  <rect x="600" y="64" width="80" height="50" rx="4" fill="#2E86AB" opacity="0.07" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="640" y="93" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pkt</text>
+
+  <rect x="600" y="124" width="80" height="50" rx="4" fill="#2E86AB" opacity="0.07" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="640" y="153" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pkt2</text>
+
+  <path d="M 684 89 L 700 110 L 700 130" stroke="#2E86AB" stroke-width="1.5" fill="none"/>
+  <path d="M 684 149 L 700 130" stroke="#2E86AB" stroke-width="1.5" fill="none" marker-end="url(#arrow3)"/>
+
+  <rect x="704" y="90" width="50" height="78" rx="4" fill="#E07B39" opacity="0.09" stroke="#E07B39" stroke-width="1.5"/>
+  <text x="729" y="118" text-anchor="middle" font-size="9" font-weight="bold" fill="#1a2e3b">Packet</text>
+  <text x="729" y="132" text-anchor="middle" font-size="9" fill="#445566">object</text>
+  <text x="729" y="150" text-anchor="middle" font-size="8" fill="#445566">count=</text>
+  <text x="729" y="161" text-anchor="middle" font-size="8" fill="#b35a1f">0xabcd</text>
+
+  <!-- Divider -->
+  <line x1="20" y1="200" x2="740" y2="200" stroke="#c8d8e0" stroke-width="0.5"/>
+
+  <!-- Footnote callouts -->
+  <rect x="20" y="216" width="160" height="22" rx="4" fill="#eef6fa"/>
+  <text x="100" y="231" text-anchor="middle" font-size="10" fill="#1a6080">Handle alone is null</text>
+
+  <rect x="300" y="216" width="195" height="22" rx="4" fill="#fef4ed"/>
+  <text x="397.5" y="231" text-anchor="middle" font-size="10" fill="#b35a1f">new() allocates the object</text>
+
+  <rect x="600" y="216" width="160" height="22" rx="4" fill="#fef4ed"/>
+  <text x="680" y="231" text-anchor="middle" font-size="10" fill="#b35a1f">No new object created</text>
+
+  <text x="20" y="266" font-size="10" fill="#445566">A handle is just a name for an object &#8212; until <tspan font-style="italic">new()</tspan> is called, it points to nothing (<tspan font-style="italic">null</tspan>).</text>
+  <text x="20" y="284" font-size="10" fill="#445566">Assigning one handle to another (<tspan font-style="italic">pkt2 = pkt</tspan>) does not create a new object &#8212; both handles now point to the</text>
+  <text x="20" y="302" font-size="10" fill="#445566">same memory. Changing a property through either handle is visible through both.</text>
+</svg>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 270" width="660" height="270" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="269" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">SystemVerilog DPI-C (Direct Programming Interface) Köprü Mimarisi</text>
+<g transform="translate(50, 45)">
+  <rect x="0" y="0" width="560" height="205" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  
+  <!-- Left: SV -->
+  <g transform="translate(30, 25)">
+    <rect x="0" y="0" width="210" height="155" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="105" y="24" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">SystemVerilog Katmanı</text>
+    <text x="15" y="55" font-size="9" font-family="monospace" fill="#0f172a">import "DPI-C" function</text>
+    <text x="25" y="72" font-size="9" font-family="monospace" fill="#2563eb">int c_calc(int val);</text>
+    <text x="15" y="105" font-size="9" font-family="monospace" fill="#0f172a">initial begin</text>
+    <text x="25" y="122" font-size="9" font-family="monospace" fill="#2563eb">  res = c_calc(100);</text>
+    <text x="15" y="139" font-size="9" font-family="monospace" fill="#0f172a">end</text>
+  </g>
+
+  <!-- Bidirectional Bridge Arrow -->
+  <g transform="translate(255, 80)">
+    <line x1="0" y1="20" x2="50" y2="20" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+    <line x1="50" y1="35" x2="0" y2="35" stroke="#16a34a" stroke-width="3" marker-end="url(#arrow-green)"/>
+    <text x="25" y="10" font-size="10" font-weight="bold" fill="#334155" text-anchor="middle">DPI-C Katmanı</text>
+    <text x="25" y="55" font-size="8" fill="#64748b" text-anchor="middle">Doğrudan Bellek Paylaşımı</text>
+  </g>
+
+  <!-- Right: C/C++ -->
+  <g transform="translate(320, 25)">
+    <rect x="0" y="0" width="210" height="155" rx="6" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="105" y="24" font-size="12" font-weight="bold" fill="#15803d" text-anchor="middle">C / C++ / Python Katmanı</text>
+    <text x="15" y="55" font-size="9" font-family="monospace" fill="#0f172a">#include &lt;svdpi.h&gt;</text>
+    <text x="15" y="80" font-size="9" font-family="monospace" fill="#166534">int c_calc(int val) {</text>
+    <text x="25" y="100" font-size="9" font-family="monospace" fill="#166534">  return val * val + 42;</text>
+    <text x="15" y="120" font-size="9" font-family="monospace" fill="#166534">}</text>
+    <text x="105" y="145" font-size="9" fill="#15803d" text-anchor="middle">Yüksek Hızlı Referans Model (C/C++)</text>
+  </g>
+</g>
+
+</svg>

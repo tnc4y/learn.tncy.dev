@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" width="640" height="220" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="640" height="220" fill="#ffffff"/>
+
+  <!-- raw label pill -->
+  <rect x="243" y="6" width="154" height="23" rx="4" fill="#eef6fa" stroke="#1a2e3b" stroke-width="1"/>
+  <text x="320" y="22" text-anchor="middle" font-size="11" fill="#1a2e3b">d.raw = 32'hDEAD_BEEF</text>
+
+  <!-- dashed line from label to strip -->
+  <line x1="320" y1="29" x2="320" y2="50" stroke="#1a2e3b" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+
+  <!-- 8 hex nibble cells: D E A D B E E F -->
+  <g stroke="#1a2e3b" stroke-width="1" fill="#c8d8e0" fill-opacity="0.3">
+    <rect x="80" y="50" width="60" height="50"/>
+    <rect x="140" y="50" width="60" height="50"/>
+    <rect x="200" y="50" width="60" height="50"/>
+    <rect x="260" y="50" width="60" height="50"/>
+    <rect x="320" y="50" width="60" height="50"/>
+    <rect x="380" y="50" width="60" height="50"/>
+    <rect x="440" y="50" width="60" height="50"/>
+    <rect x="500" y="50" width="60" height="50"/>
+  </g>
+  <g font-size="18" font-weight="bold" fill="#1a2e3b" text-anchor="middle">
+    <text x="110" y="82">D</text>
+    <text x="170" y="82">E</text>
+    <text x="230" y="82">A</text>
+    <text x="290" y="82">D</text>
+    <text x="350" y="82">B</text>
+    <text x="410" y="82">E</text>
+    <text x="470" y="82">E</text>
+    <text x="530" y="82">F</text>
+  </g>
+  <text x="80" y="42" font-size="10" fill="#445566">MSB</text>
+  <text x="560" y="42" font-size="10" fill="#445566" text-anchor="end">LSB</text>
+
+  <!-- bracket spans under each half -->
+  <rect x="80" y="104" width="240" height="3" fill="#2E86AB"/>
+  <rect x="320" y="104" width="240" height="3" fill="#E07B39"/>
+
+  <!-- dashed guide lines down to pills -->
+  <line x1="200" y1="107" x2="200" y2="138" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+  <line x1="440" y1="107" x2="440" y2="138" stroke="#E07B39" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+
+  <!-- high pill -->
+  <rect x="113" y="138" width="174" height="23" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="1"/>
+  <text x="200" y="154" text-anchor="middle" font-size="11" fill="#1a6080">d.halves.high = 16'hDEAD</text>
+
+  <!-- low pill -->
+  <rect x="356.5" y="138" width="167" height="23" rx="4" fill="#fef4ed" stroke="#E07B39" stroke-width="1"/>
+  <text x="440" y="154" text-anchor="middle" font-size="11" fill="#b35a1f">d.halves.low = 16'hBEEF</text>
+
+  <!-- notes -->
+  <text x="200" y="182" text-anchor="middle" font-size="10" fill="#445566">declared first - upper (MSB) half</text>
+  <text x="440" y="182" text-anchor="middle" font-size="10" fill="#445566">declared second - lower (LSB) half</text>
+</svg>

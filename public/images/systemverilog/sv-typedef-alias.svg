@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 270" width="660" height="270" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="269" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">SystemVerilog 'typedef' ve 'alias' İfadeleri</text>
+<g transform="translate(40, 45)">
+  <!-- Left: typedef -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="275" height="205" rx="6" fill="#f0fdf4" stroke="#86efac"/>
+    <text x="137" y="24" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">1. typedef (Kullanıcı Tanımlı Tip)</text>
+    <rect x="15" y="40" width="245" height="65" rx="4" fill="#ffffff" stroke="#bbf7d0"/>
+    <text x="25" y="60" font-size="10" font-family="monospace" fill="#15803d">typedef logic [63:0] uint64_t;</text>
+    <text x="25" y="80" font-size="10" font-family="monospace" fill="#15803d">typedef int int_array_t [];</text>
+    <text x="25" y="98" font-size="10" font-family="monospace" fill="#15803d">uint64_t data_reg, addr_bus;</text>
+    <text x="137" y="130" font-size="11" fill="#334155" text-anchor="middle">• Karmaşık tip tanımlarını sadeleştirir.</text>
+    <text x="137" y="150" font-size="11" fill="#334155" text-anchor="middle">• Kod genelinde tek merkezden boyut değişimi sağlar.</text>
+    <text x="137" y="170" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Hem RTL hem Testbench için zorunlu!</text>
+  </g>
+
+  <!-- Right: alias -->
+  <g transform="translate(305, 0)">
+    <rect x="0" y="0" width="275" height="205" rx="6" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="137" y="24" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">2. alias (Çift Yönlü Hat Takma Adı)</text>
+    <rect x="15" y="40" width="245" height="65" rx="4" fill="#ffffff" stroke="#bfdbfe"/>
+    <text x="25" y="60" font-size="10" font-family="monospace" fill="#1d4ed8">wire [7:0] bus_a;</text>
+    <text x="25" y="80" font-size="10" font-family="monospace" fill="#1d4ed8">wire [7:0] data_bus;</text>
+    <text x="25" y="98" font-size="10" font-family="monospace" fill="#1d4ed8">alias bus_a = data_bus;</text>
+    <text x="137" y="130" font-size="11" fill="#334155" text-anchor="middle">• İki net'i çift yönlü birbirine bağlar.</text>
+    <text x="137" y="150" font-size="11" fill="#334155" text-anchor="middle">• 'assign' tek yönlüdür, 'alias' çift yönlü köprüdür.</text>
+    <text x="137" y="170" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">İki isim de aynı fiziksel kabloya bakar!</text>
+  </g>
+</g>
+
+</svg>

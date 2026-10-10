@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 260" width="660" height="260" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="259" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">SystemVerilog Anlık İfadeler (Immediate Assertions) ve Hata Seviyeleri</text>
+<g transform="translate(40, 45)">
+  <rect x="0" y="0" width="580" height="195" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="250" height="155" rx="4" fill="#eff6ff" stroke="#bfdbfe"/>
+    <text x="125" y="22" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Sözdizimi ve Yürütme Mantığı</text>
+    <text x="15" y="45" font-size="9" font-family="monospace" fill="#0f172a">assert (a != 0) begin</text>
+    <text x="25" y="65" font-size="9" font-family="monospace" fill="#16a34a">  // Başarı eylemi (Pass action)</text>
+    <text x="15" y="85" font-size="9" font-family="monospace" fill="#0f172a">end else begin</text>
+    <text x="25" y="105" font-size="9" font-family="monospace" fill="#dc2626">  $error("a sıfır olamaz!");</text>
+    <text x="15" y="125" font-size="9" font-family="monospace" fill="#0f172a">end</text>
+    <text x="125" y="145" font-size="9" fill="#475569" text-anchor="middle">Yürütüldüğü anda kontrol edilir (Kombinasyonel)</text>
+  </g>
+
+  <!-- Severity Levels -->
+  <g transform="translate(295, 20)">
+    <rect x="0" y="0" width="260" height="155" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="130" y="20" font-size="11" font-weight="bold" fill="#0f172a" text-anchor="middle">4 Şiddet Seviyesi (Severity Levels)</text>
+    
+    <text x="15" y="45" font-size="10" font-weight="bold" fill="#dc2626">• $fatal(1, "msg"):</text>
+    <text x="15" y="60" font-size="9" fill="#475569">Simülasyonu anında durdurur (Kritik Donanım Hatası)</text>
+
+    <text x="15" y="80" font-size="10" font-weight="bold" fill="#ea580c">• $error("msg"):</text>
+    <text x="15" y="95" font-size="9" fill="#475569">Varsayılan hata mesajı; simülasyon devam eder</text>
+
+    <text x="15" y="115" font-size="10" font-weight="bold" fill="#ca8a04">• $warning("msg"): Uyarı logu üretir</text>
+    <text x="15" y="135" font-size="10" font-weight="bold" fill="#2563eb">• $info("msg"): Bilgilendirme mesajı</text>
+  </g>
+</g>
+
+</svg>

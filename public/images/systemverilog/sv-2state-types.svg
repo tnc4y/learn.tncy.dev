@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 290" width="660" height="290" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="289" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">SystemVerilog 2-Durumlu (2-State) vs 4-Durumlu (4-State) Tipler</text>
+<g transform="translate(40, 45)">
+  <!-- Left: 4-state -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="275" height="225" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="13" font-weight="bold" fill="#0284c7" text-anchor="middle">4-Durumlu Tipler (Donanım Modeli)</text>
+    <text x="137" y="45" font-size="11" fill="#475569" text-anchor="middle">logic, reg, wire, integer, time</text>
+    <rect x="25" y="60" width="225" height="70" rx="4" fill="#e0f2fe" stroke="#38bdf8"/>
+    <text x="137" y="85" font-size="12" font-weight="bold" fill="#0369a1" text-anchor="middle">Değerler: 0, 1, X (Bilinmeyen), Z (High-Z)</text>
+    <text x="137" y="110" font-size="10" fill="#0284c7" text-anchor="middle">Varsayılan Başlangıç: 'x' (Başlatılmamış)</text>
+    <text x="137" y="155" font-size="11" fill="#334155" text-anchor="middle">• Fiziksel donanım sinyallerini modeller</text>
+    <text x="137" y="175" font-size="11" fill="#334155" text-anchor="middle">• Bellek: Her bit için 2 bit simülasyon belleği</text>
+    <text x="137" y="195" font-size="11" font-weight="bold" fill="#0369a1" text-anchor="middle">Kullanım: Sentezlenebilir RTL Mantığı</text>
+  </g>
+  <!-- Right: 2-state -->
+  <g transform="translate(305, 0)">
+    <rect x="0" y="0" width="275" height="225" rx="6" fill="#f0fdf4" stroke="#86efac" stroke-width="1.5"/>
+    <text x="137" y="24" font-size="13" font-weight="bold" fill="#15803d" text-anchor="middle">2-Durumlu Tipler (Yüksek Başarım)</text>
+    <text x="137" y="45" font-size="11" fill="#475569" text-anchor="middle">bit, byte (8b), shortint (16b), int (32b), longint (64b)</text>
+    <rect x="25" y="60" width="225" height="70" rx="4" fill="#dcfce7" stroke="#4ade80"/>
+    <text x="137" y="85" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Değerler: Yalnızca 0 ve 1 (C Uyumu)</text>
+    <text x="137" y="110" font-size="10" fill="#15803d" text-anchor="middle">Varsayılan Başlangıç: 0 (Sıfır)</text>
+    <text x="137" y="155" font-size="11" fill="#334155" text-anchor="middle">• %50 daha az bellek tüketimi</text>
+    <text x="137" y="175" font-size="11" fill="#334155" text-anchor="middle">• 2x - 4x daha hızlı CPU simülasyonu</text>
+    <text x="137" y="195" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Kullanım: Testbench Sayaçları &amp; Paketler</text>
+  </g>
+</g>
+
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="640" height="260" fill="#ffffff"/>
+
+  <!-- STRUCT header pill -->
+  <rect x="70" y="10" width="180" height="23" rx="9" fill="#eef6fa" stroke="#2E86AB" stroke-width="1"/>
+  <text x="160" y="26" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a6080">STRUCT - separate storage</text>
+
+  <!-- UNION header pill -->
+  <rect x="399.5" y="10" width="161" height="23" rx="9" fill="#fef4ed" stroke="#E07B39" stroke-width="1"/>
+  <text x="480" y="26" text-anchor="middle" font-size="11" font-weight="bold" fill="#b35a1f">UNION - shared storage</text>
+
+  <!-- STRUCT: val_a box (16 bits) -->
+  <rect x="70" y="50" width="180" height="60" rx="4" fill="#2E86AB" fill-opacity="0.10" stroke="#2E86AB" stroke-width="1.5"/>
+  <text x="160" y="75" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">val_a</text>
+  <text x="160" y="93" text-anchor="middle" font-size="10" fill="#445566">[15:0] - 16 bits - own space</text>
+
+  <!-- STRUCT: val_b box (8 bits) -->
+  <rect x="70" y="122" width="180" height="40" rx="4" fill="#E07B39" fill-opacity="0.10" stroke="#E07B39" stroke-width="1.5"/>
+  <text x="160" y="140" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">val_b</text>
+  <text x="160" y="155" text-anchor="middle" font-size="10" fill="#445566">[7:0] - 8 bits - own space</text>
+
+  <!-- STRUCT summary -->
+  <text x="160" y="195" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a2e3b">24 bits total</text>
+  <text x="160" y="211" text-anchor="middle" font-size="10" fill="#445566">two separate regions</text>
+
+  <!-- UNION: annotation pill for val_a -->
+  <rect x="390" y="45" width="180" height="23" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="1"/>
+  <text x="480" y="61" text-anchor="middle" font-size="11" fill="#1a6080">val_a sees this as [15:0]</text>
+
+  <!-- dashed guide line: val_a annotation to shared box -->
+  <line x1="480" y1="68" x2="480" y2="90" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+
+  <!-- UNION: shared storage box (16 bits, sized to largest member) -->
+  <rect x="390" y="90" width="180" height="60" rx="4" fill="#c8d8e0" fill-opacity="0.35" stroke="#1a2e3b" stroke-width="1.5"/>
+  <text x="480" y="115" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">one shared storage</text>
+  <text x="480" y="132" text-anchor="middle" font-size="10" fill="#445566">16 bits wide</text>
+
+  <!-- dashed guide line: shared box to val_b annotation -->
+  <line x1="480" y1="150" x2="480" y2="170" stroke="#E07B39" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+
+  <!-- UNION: annotation pill for val_b -->
+  <rect x="393" y="170" width="174" height="23" rx="4" fill="#fef4ed" stroke="#E07B39" stroke-width="1"/>
+  <text x="480" y="186" text-anchor="middle" font-size="11" fill="#b35a1f">val_b sees this as [7:0]</text>
+
+  <!-- UNION summary -->
+  <text x="480" y="219" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a2e3b">16 bits total</text>
+  <text x="480" y="235" text-anchor="middle" font-size="10" fill="#445566">one shared region</text>
+</svg>

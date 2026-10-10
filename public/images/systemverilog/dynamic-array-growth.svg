@@ -1,0 +1,62 @@
+<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowTealD" markerWidth="9" markerHeight="9" refX="4.5" refY="7" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,0 L4.5,7 Z" fill="#2E86AB"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="700" height="320" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="350" y="26" font-size="17" font-weight="bold" fill="#2E86AB" text-anchor="middle">Growing a Dynamic Array</text>
+  <text x="350" y="44" font-size="12" fill="#445566" text-anchor="middle">id = array;  then  id = new [id.size()+1] (id);</text>
+
+  <!-- Row 1: before growth -->
+  <text x="350" y="72" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">array (size 5) &#8212; id starts as a copy of it</text>
+
+  <rect x="197" y="82" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="260" y="82" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="323" y="82" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="386" y="82" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="449" y="82" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+
+  <text x="224.5" y="112" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">1</text>
+  <text x="287.5" y="112" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">2</text>
+  <text x="350.5" y="112" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">3</text>
+  <text x="413.5" y="112" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">4</text>
+  <text x="476.5" y="112" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">5</text>
+
+  <text x="224.5" y="146" font-size="9" fill="#445566" text-anchor="middle">[0]</text>
+  <text x="287.5" y="146" font-size="9" fill="#445566" text-anchor="middle">[1]</text>
+  <text x="350.5" y="146" font-size="9" fill="#445566" text-anchor="middle">[2]</text>
+  <text x="413.5" y="146" font-size="9" fill="#445566" text-anchor="middle">[3]</text>
+  <text x="476.5" y="146" font-size="9" fill="#445566" text-anchor="middle">[4]</text>
+
+  <!-- Arrow down -->
+  <line x1="350" y1="160" x2="350" y2="196" stroke="#2E86AB" stroke-width="2" marker-end="url(#arrowTealD)"/>
+  <text x="368" y="182" font-size="10" fill="#1a6080" text-anchor="start">new [id.size()+1] (id)</text>
+
+  <!-- Row 2: after growth -->
+  <text x="350" y="222" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">id (size 6) &#8212; index 5 is the new slot</text>
+
+  <rect x="165" y="232" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="228" y="232" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="291" y="232" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="354" y="232" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="417" y="232" width="55" height="50" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="480" y="232" width="55" height="50" rx="4" fill="#E07B39" fill-opacity="0.12" stroke="#E07B39" stroke-width="1.4"/>
+
+  <text x="192.5" y="262" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">1</text>
+  <text x="255.5" y="262" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">2</text>
+  <text x="318.5" y="262" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">3</text>
+  <text x="381.5" y="262" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">4</text>
+  <text x="444.5" y="262" font-size="13" font-weight="bold" fill="#1a2e3b" text-anchor="middle">5</text>
+  <text x="507.5" y="262" font-size="13" font-weight="bold" fill="#b35a1f" text-anchor="middle">6</text>
+
+  <text x="192.5" y="296" font-size="9" fill="#445566" text-anchor="middle">[0]</text>
+  <text x="255.5" y="296" font-size="9" fill="#445566" text-anchor="middle">[1]</text>
+  <text x="318.5" y="296" font-size="9" fill="#445566" text-anchor="middle">[2]</text>
+  <text x="381.5" y="296" font-size="9" fill="#445566" text-anchor="middle">[3]</text>
+  <text x="444.5" y="296" font-size="9" fill="#445566" text-anchor="middle">[4]</text>
+  <text x="507.5" y="296" font-size="9" fill="#b35a1f" text-anchor="middle">[5] new</text>
+</svg>

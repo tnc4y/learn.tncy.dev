@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 660 260" width="660" height="260" role="img" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#2563eb"/>
+  </marker>
+  <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#16a34a"/>
+  </marker>
+  <marker id="arrow-red" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M 0 1 L 10 5 L 0 9 z" fill="#dc2626"/>
+  </marker>
+</defs>
+<rect x="0.5" y="0.5" width="659" height="259" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+
+<text x="330" y="28" font-size="14" fill="#111827" text-anchor="middle" font-weight="bold">SystemVerilog Dinamik Tip Dönüşümü: $cast(hedef, kaynak)</text>
+<g transform="translate(40, 45)">
+  <rect x="0" y="0" width="580" height="195" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  
+  <g transform="translate(30, 20)">
+    <rect x="0" y="0" width="240" height="60" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
+    <text x="120" y="22" font-size="11" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Taban Tutucu (Base Handle)</text>
+    <text x="120" y="42" font-size="10" font-family="monospace" fill="#0f172a" text-anchor="middle">Packet base_pkt;</text>
+  </g>
+
+  <!-- Downcast arrow with condition -->
+  <line x1="270" y1="50" x2="330" y2="50" stroke="#dc2626" stroke-width="3" marker-end="url(#arrow-red)"/>
+  <text x="300" y="40" font-size="10" font-weight="bold" fill="#dc2626" text-anchor="middle">Downcast</text>
+
+  <g transform="translate(330, 20)">
+    <rect x="0" y="0" width="220" height="60" rx="4" fill="#f0fdf4" stroke="#22c55e"/>
+    <text x="110" y="22" font-size="11" font-weight="bold" fill="#15803d" text-anchor="middle">Türemiş Tutucu (Derived Handle)</text>
+    <text x="110" y="42" font-size="10" font-family="monospace" fill="#0f172a" text-anchor="middle">EthPacket eth_pkt;</text>
+  </g>
+
+  <!-- Code check -->
+  <g transform="translate(30, 95)">
+    <rect x="0" y="0" width="520" height="80" rx="4" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="15" y="22" font-size="10" font-family="monospace" fill="#2563eb">if (!$cast(eth_pkt, base_pkt)) begin</text>
+    <text x="35" y="42" font-size="10" font-family="monospace" fill="#dc2626">  $fatal("Dönüşüm başarısız! base_pkt gerçekte bir EthPacket nesnesi işaret etmiyor!");</text>
+    <text x="15" y="62" font-size="10" font-family="monospace" fill="#2563eb">end else begin eth_pkt.send(); end</text>
+  </g>
+</g>
+
+</svg>

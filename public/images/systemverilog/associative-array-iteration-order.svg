@@ -1,0 +1,67 @@
+<svg viewBox="0 0 760 310" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowTealA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#2E86AB"/>
+    </marker>
+    <marker id="arrowOrangeA" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#E07B39"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="760" height="310" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="380" y="26" font-size="17" font-weight="bold" fill="#2E86AB" text-anchor="middle">Associative Array Iteration Order</text>
+  <text x="380" y="44" font-size="12" fill="#445566" text-anchor="middle">Keys are visited in sorted order, not insertion order</text>
+
+  <!-- Row 1: insertion order -->
+  <text x="380" y="72" font-size="12" font-weight="bold" fill="#445566" text-anchor="middle">Inserted in this order (arbitrary)</text>
+
+  <rect x="170" y="82" width="90" height="55" rx="4" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="280" y="82" width="90" height="55" rx="4" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="390" y="82" width="90" height="55" rx="4" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="500" y="82" width="90" height="55" rx="4" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+
+  <text x="215" y="105" font-size="11" font-weight="bold" fill="#445566" text-anchor="middle">key = 5</text>
+  <text x="215" y="122" font-size="9" fill="#445566" text-anchor="middle">value = 20</text>
+  <text x="325" y="105" font-size="11" font-weight="bold" fill="#445566" text-anchor="middle">key = 8</text>
+  <text x="325" y="122" font-size="9" fill="#445566" text-anchor="middle">value = 10</text>
+  <text x="435" y="105" font-size="11" font-weight="bold" fill="#445566" text-anchor="middle">key = 1</text>
+  <text x="435" y="122" font-size="9" fill="#445566" text-anchor="middle">value = 50</text>
+  <text x="545" y="105" font-size="11" font-weight="bold" fill="#445566" text-anchor="middle">key = 2</text>
+  <text x="545" y="122" font-size="9" fill="#445566" text-anchor="middle">value = 100</text>
+
+  <!-- Row 2: iteration order -->
+  <text x="380" y="170" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Iterated in sorted key order</text>
+
+  <text x="215" y="177" font-size="9" font-weight="bold" fill="#1a6080" text-anchor="middle">first()</text>
+  <text x="545" y="177" font-size="9" font-weight="bold" fill="#1a6080" text-anchor="middle">last()</text>
+
+  <rect x="170" y="182" width="90" height="55" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="280" y="182" width="90" height="55" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="390" y="182" width="90" height="55" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+  <rect x="500" y="182" width="90" height="55" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#1a2e3b" stroke-width="1"/>
+
+  <text x="215" y="205" font-size="11" font-weight="bold" fill="#1a2e3b" text-anchor="middle">key = 1</text>
+  <text x="215" y="222" font-size="9" fill="#1a2e3b" text-anchor="middle">value = 50</text>
+  <text x="325" y="205" font-size="11" font-weight="bold" fill="#1a2e3b" text-anchor="middle">key = 2</text>
+  <text x="325" y="222" font-size="9" fill="#1a2e3b" text-anchor="middle">value = 100</text>
+  <text x="435" y="205" font-size="11" font-weight="bold" fill="#1a2e3b" text-anchor="middle">key = 5</text>
+  <text x="435" y="222" font-size="9" fill="#1a2e3b" text-anchor="middle">value = 20</text>
+  <text x="545" y="205" font-size="11" font-weight="bold" fill="#1a2e3b" text-anchor="middle">key = 8</text>
+  <text x="545" y="222" font-size="9" fill="#1a2e3b" text-anchor="middle">value = 10</text>
+
+  <!-- Forward next() arrows -->
+  <line x1="262" y1="209" x2="278" y2="209" stroke="#2E86AB" stroke-width="1.5" marker-end="url(#arrowTealA)"/>
+  <text x="270" y="201" font-size="8" fill="#1a6080" text-anchor="middle">next()</text>
+
+  <line x1="372" y1="209" x2="388" y2="209" stroke="#2E86AB" stroke-width="1.5" marker-end="url(#arrowTealA)"/>
+  <text x="380" y="201" font-size="8" fill="#1a6080" text-anchor="middle">next()</text>
+
+  <line x1="482" y1="209" x2="498" y2="209" stroke="#2E86AB" stroke-width="1.5" marker-end="url(#arrowTealA)"/>
+  <text x="490" y="201" font-size="8" fill="#1a6080" text-anchor="middle">next()</text>
+
+  <!-- prev() curved arrow: from key=5 box back to key=2 box -->
+  <path d="M430,239 C430,270 325,270 325,239" fill="none" stroke="#E07B39" stroke-width="1.5" marker-end="url(#arrowOrangeA)"/>
+  <text x="377" y="284" font-size="9" font-weight="bold" fill="#b35a1f" text-anchor="middle">prev()</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg viewBox="0 0 700 240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="240" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="350" y="28" font-size="18" font-weight="bold" fill="#2E86AB" text-anchor="middle">SystemVerilog Array Types at a Glance</text>
+  <text x="350" y="47" font-size="12" fill="#445566" text-anchor="middle">Recognize each type by its declaration syntax</text>
+  <line x1="300" y1="56" x2="400" y2="56" stroke="#2E86AB" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Card 1: Static Array -->
+  <rect x="15" y="70" width="157" height="150" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="33.5" y="82" width="120" height="30" rx="9" fill="#eef6fa"/>
+  <text x="93.5" y="102" font-size="16" font-weight="bold" fill="#1a6080" text-anchor="middle">[15:0]</text>
+  <text x="93.5" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Static Array</text>
+  <line x1="23.5" y1="140" x2="163.5" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="93.5" y="158" font-size="10" fill="#445566" text-anchor="middle">Fixed size, compile-time</text>
+  <text x="93.5" y="180" font-size="8" font-style="italic" fill="#445566" text-anchor="middle" opacity="0.85">declared as:</text>
+  <text x="93.5" y="198" font-size="9" fill="#1a2e3b" text-anchor="middle">bit [15:0] m_mem [10:0];</text>
+
+  <!-- Card 2: Dynamic Array -->
+  <rect x="186" y="70" width="157" height="150" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="204.5" y="82" width="120" height="30" rx="9" fill="#eef6fa"/>
+  <text x="264.5" y="102" font-size="16" font-weight="bold" fill="#1a6080" text-anchor="middle">[ ]</text>
+  <text x="264.5" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Dynamic Array</text>
+  <line x1="194.5" y1="140" x2="334.5" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="264.5" y="158" font-size="10" fill="#445566" text-anchor="middle">Resizable at runtime</text>
+  <text x="264.5" y="180" font-size="8" font-style="italic" fill="#445566" text-anchor="middle" opacity="0.85">declared as:</text>
+  <text x="264.5" y="198" font-size="9" fill="#1a2e3b" text-anchor="middle">int m_mem [];</text>
+
+  <!-- Card 3: Associative Array -->
+  <rect x="357" y="70" width="157" height="150" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="375.5" y="82" width="120" height="30" rx="9" fill="#eef6fa"/>
+  <text x="435.5" y="102" font-size="16" font-weight="bold" fill="#1a6080" text-anchor="middle">[string]</text>
+  <text x="435.5" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Associative Array</text>
+  <line x1="365.5" y1="140" x2="505.5" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="435.5" y="158" font-size="10" fill="#445566" text-anchor="middle">Key type shown in [ ]</text>
+  <text x="435.5" y="180" font-size="8" font-style="italic" fill="#445566" text-anchor="middle" opacity="0.85">declared as:</text>
+  <text x="435.5" y="198" font-size="9" fill="#1a2e3b" text-anchor="middle">int m_data [string];</text>
+
+  <!-- Card 4: Queue -->
+  <rect x="528" y="70" width="157" height="150" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="546.5" y="82" width="120" height="30" rx="9" fill="#eef6fa"/>
+  <text x="606.5" y="102" font-size="16" font-weight="bold" fill="#1a6080" text-anchor="middle">[$]</text>
+  <text x="606.5" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Queue</text>
+  <line x1="536.5" y1="140" x2="676.5" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="606.5" y="158" font-size="10" fill="#445566" text-anchor="middle">Push/pop from either end</text>
+  <text x="606.5" y="180" font-size="8" font-style="italic" fill="#445566" text-anchor="middle" opacity="0.85">declared as:</text>
+  <text x="606.5" y="198" font-size="9" fill="#1a2e3b" text-anchor="middle">int m_queue [$];</text>
+</svg>

@@ -1,0 +1,38 @@
+<svg viewBox="0 0 700 225" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="225" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="350" y="28" font-size="18" font-weight="bold" fill="#2E86AB" text-anchor="middle">Array Manipulation Methods at a Glance</text>
+  <text x="350" y="47" font-size="12" fill="#445566" text-anchor="middle">Three categories, grouped by what they do to the array</text>
+  <line x1="300" y1="56" x2="400" y2="56" stroke="#2E86AB" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Card 1: Locator Methods -->
+  <rect x="30" y="70" width="200" height="140" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="75" y="82" width="110" height="30" rx="9" fill="#eef6fa"/>
+  <text x="130" y="102" font-size="15" font-weight="bold" fill="#1a6080" text-anchor="middle">find()</text>
+  <text x="130" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Locator Methods</text>
+  <line x1="42" y1="140" x2="218" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="130" y="158" font-size="10" fill="#445566" text-anchor="middle">Search &amp; filter elements</text>
+  <text x="130" y="178" font-size="9" fill="#1a2e3b" text-anchor="middle">find, find_index,</text>
+  <text x="130" y="194" font-size="9" fill="#1a2e3b" text-anchor="middle">min, max, unique</text>
+
+  <!-- Card 2: Ordering Methods -->
+  <rect x="250" y="70" width="200" height="140" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="295" y="82" width="110" height="30" rx="9" fill="#eef6fa"/>
+  <text x="350" y="102" font-size="15" font-weight="bold" fill="#1a6080" text-anchor="middle">sort()</text>
+  <text x="350" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Ordering Methods</text>
+  <line x1="262" y1="140" x2="438" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="350" y="158" font-size="10" fill="#445566" text-anchor="middle">Rearrange elements in place</text>
+  <text x="350" y="178" font-size="9" fill="#1a2e3b" text-anchor="middle">reverse, sort,</text>
+  <text x="350" y="194" font-size="9" fill="#1a2e3b" text-anchor="middle">rsort, shuffle</text>
+
+  <!-- Card 3: Reduction Methods -->
+  <rect x="470" y="70" width="200" height="140" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1"/>
+  <rect x="515" y="82" width="110" height="30" rx="9" fill="#eef6fa"/>
+  <text x="570" y="102" font-size="15" font-weight="bold" fill="#1a6080" text-anchor="middle">sum()</text>
+  <text x="570" y="130" font-size="12" font-weight="bold" fill="#2E86AB" text-anchor="middle">Reduction Methods</text>
+  <line x1="482" y1="140" x2="658" y2="140" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="570" y="158" font-size="10" fill="#445566" text-anchor="middle">Combine into one value</text>
+  <text x="570" y="178" font-size="9" fill="#1a2e3b" text-anchor="middle">sum, product,</text>
+  <text x="570" y="194" font-size="9" fill="#1a2e3b" text-anchor="middle">and, or, xor</text>
+</svg>
