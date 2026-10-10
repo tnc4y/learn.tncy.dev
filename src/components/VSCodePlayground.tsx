@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import MonacoEditor from "@/components/MonacoEditor";
 import {
   Play,
   RotateCcw,
@@ -18,30 +19,22 @@ import {
   ChevronDown,
   Maximize2,
   Minimize2,
-  Trash2,
   Settings,
-  Search,
   GitBranch,
-  SplitSquareVertical,
-  Columns,
   RefreshCw,
-  ExternalLink,
   Bot,
-  Radio,
   Sparkles,
-  HelpCircle,
-  FilePlus,
-  Compass,
+  MapPin,
+  Eye,
+  Sliders,
 } from "lucide-react";
 
 export type WorkspacePresetId =
   | "systemverilog-counter"
   | "systemverilog-alu"
-  | "systemverilog-uart"
   | "web-developer"
   | "ros2-robotics"
-  | "stm32-freertos"
-  | "python-vision";
+  | "stm32-freertos";
 
 export interface FileItem {
   name: string;
@@ -63,11 +56,6 @@ export interface WorkspaceConfig {
   secondaryFile?: string; // For 3-pane SystemVerilog right editor (e.g. testbench.sv)
   simLogs: string[];
   signals?: { name: string; wave: string; data?: string[] }[];
-  webPreviewSnippet?: {
-    html: string;
-    css: string;
-    js: string;
-  };
 }
 
 export const WORKSPACE_PRESETS: WorkspaceConfig[] = [
@@ -495,8 +483,10 @@ document.getElementById("btn-toggle").addEventListener("click", () => {
 setInterval(() => {
   const temp = (24 + Math.random() * 1.5).toFixed(1);
   const hum = (48 + Math.random() * 2).toFixed(1);
-  document.getElementById("temp-val").textContent = temp + " °C";
-  document.getElementById("hum-val").textContent = "%" + hum;
+  const tempEl = document.getElementById("temp-val");
+  const humEl = document.getElementById("hum-val");
+  if (tempEl) tempEl.textContent = temp + " °C";
+  if (humEl) humEl.textContent = "%" + hum;
 }, 2000);`,
       },
     ],
@@ -725,13 +715,14 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
   // Çalışma ve Simülasyon
   const [isRunning, setIsRunning] = useState(false);
   const [terminalLogs, setTerminalLogs] = useState<string[]>([]);
-  const [activeBottomTab, setActiveBottomTab] = useState<"terminal" | "waveform" | "rqt" | "problems">(
+  const [activeBottomTab, setActiveBottomTab] = useState<"terminal" | "waveform" | "rqt">(
     "terminal"
   );
   const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [activityTab, setActivityTab] = useState<"explorer" | "search" | "git" | "run">("explorer");
+  const [activityTab, setActivityTab] = useState<"explorer" | "run" | "git">("explorer");
   const [copied, setCopied] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [minimapEnabled, setMinimapEnabled] = useState(true);
   const [webPreviewRefreshKey, setWebPreviewRefreshKey] = useState(0);
 
   // Çalışma Alanı Değiştiğinde Dosyaları Yükle
@@ -821,7 +812,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {/* Logo / Title */}
           <div className="flex items-center gap-1.5 font-bold text-white shrink-0">
             <Code2 className="w-4 h-4 text-[#007acc]" />
-            <span className="hidden sm:inline">VS Code Web</span>
+            <span className="hidden sm:inline">VS Code Web (Monaco Engine)</span>
           </div>
 
           <span className="text-[#555555]">/</span>
@@ -846,6 +837,16 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
 
         {/* Sağ Aksiyon Butonları */}
         <div className="flex items-center gap-1.5 shrink-0">
+          <button
+            onClick={() => setMinimapEnabled(!minimapEnabled)}
+            className={`p-1.5 rounded-md transition-colors ${
+              minimapEnabled ? "text-[#007acc] bg-[#333333]" : "text-[#858585] hover:text-white"
+            }`}
+            title={minimapEnabled ? "Minimap Gizle" : "Minimap Göster"}
+          >
+            <Eye className="w-3.5 h-3.5" />
+          </button>
+
           <button
             onClick={handleRunSimulation}
             disabled={isRunning}
@@ -1013,72 +1014,61 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             <div className="p-3 border-t border-[#2d2d2d] bg-[#181818] text-[11px] text-[#858585] space-y-1">
               <div className="font-bold text-white flex items-center gap-1">
                 <Sparkles className="w-3 h-3 text-[#007acc]" />
-                <span>Düzenlenebilir Kod</span>
+                <span>Monaco Editor Motoru</span>
               </div>
               <p className="leading-tight text-[10px]">
-                Kodları değiştirip <strong className="text-white">Çalıştır (F5)</strong> ile anında test edebilirsiniz.
+                VS Code'un resmi Monaco motoru ile renklendirme, minimap ve kısayollar aktif.
               </p>
             </div>
           </div>
         )}
 
-        {/* C) MERKEZİ EDİTÖR & ÇIKTI ALANI */}
+        {/* C) MERKEZİ MONACO EDİTÖR & ÇIKTI ALANI */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#1e1e1e]">
           {/* DURUM 1: SYSTEMVERILOG 3-PANE DÜZENİ (DUT + TESTBENCH + TERMINAL) */}
           {currentWorkspace.layout === "systemverilog-3pane" && (
             <div className="flex-1 flex flex-col overflow-hidden">
-              {/* ÜST İKİLİ EDİTÖR (SOL: RTL KODU, SAĞ: TESTBENCH KODU) */}
+              {/* ÜST İKİLİ MONACO EDİTÖR (SOL: RTL KODU, SAĞ: TESTBENCH KODU) */}
               <div className="flex-1 flex flex-col md:flex-row overflow-hidden border-b border-[#2d2d2d]">
-                {/* SOL EDİTÖR (DUT / RTL) */}
+                {/* SOL MONACO EDİTÖR (DUT / RTL) */}
                 <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
-                  <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono">
+                  <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                     <div className="flex items-center gap-2 text-white font-bold">
                       <Cpu className="w-3.5 h-3.5 text-[#4fc1ff]" />
                       <span>{activeFileName} (RTL / Donanım)</span>
                     </div>
-                    <span className="text-[10px] text-[#858585]">DUT Modülü</span>
+                    <span className="text-[10px] text-[#858585]">DUT Modülü (Monaco)</span>
                   </div>
 
-                  <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                    {/* Satır Numaraları */}
-                    <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                      {activeContent.split("\n").map((_, i) => (
-                        <div key={i}>{i + 1}</div>
-                      ))}
-                    </div>
-                    {/* Textarea Kod Düzenleyici */}
-                    <textarea
+                  <div className="flex-1 overflow-hidden relative">
+                    <MonacoEditor
                       value={activeContent}
-                      onChange={(e) => handleContentChange(activeFileName, e.target.value)}
-                      className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-4"
-                      spellCheck={false}
+                      onChange={(val) => handleContentChange(activeFileName, val)}
+                      language={activeFile?.language || "systemverilog"}
+                      readOnly={activeFile?.readOnly}
+                      minimap={minimapEnabled}
                     />
                   </div>
                 </div>
 
-                {/* SAĞ EDİTÖR (TESTBENCH / TESTMARK) */}
+                {/* SAĞ MONACO EDİTÖR (TESTBENCH / TESTMARK) */}
                 {secondaryFileName && (
                   <div className="flex-1 flex flex-col overflow-hidden">
-                    <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono">
+                    <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                       <div className="flex items-center gap-2 text-[#4fc1ff] font-bold">
                         <Code2 className="w-3.5 h-3.5 text-[#4fc1ff]" />
                         <span>{secondaryFileName} (Testbench / Testmark)</span>
                       </div>
-                      <span className="text-[10px] text-[#858585]">Doğrulama Çevresi</span>
+                      <span className="text-[10px] text-[#858585]">Doğrulama Çevresi (Monaco)</span>
                     </div>
 
-                    <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                      {/* Satır Numaraları */}
-                      <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                        {secondaryContent.split("\n").map((_, i) => (
-                          <div key={i}>{i + 1}</div>
-                        ))}
-                      </div>
-                      <textarea
+                    <div className="flex-1 overflow-hidden relative">
+                      <MonacoEditor
                         value={secondaryContent}
-                        onChange={(e) => handleContentChange(secondaryFileName, e.target.value)}
-                        className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-4"
-                        spellCheck={false}
+                        onChange={(val) => handleContentChange(secondaryFileName, val)}
+                        language={secondaryFile?.language || "systemverilog"}
+                        readOnly={secondaryFile?.readOnly}
+                        minimap={minimapEnabled}
                       />
                     </div>
                   </div>
@@ -1087,7 +1077,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
 
               {/* ALT PANE: SİMÜLASYON TERMİNALİ & DALGA ŞEKLİ GÖRÜNTÜLEYİCİ */}
               <div className="h-60 bg-[#181818] flex flex-col shrink-0">
-                <div className="h-8 bg-[#252526] border-b border-[#1e1e1e] px-3 flex items-center justify-between text-xs font-mono">
+                <div className="h-8 bg-[#252526] border-b border-[#1e1e1e] px-3 flex items-center justify-between text-xs font-mono shrink-0">
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setActiveBottomTab("terminal")}
@@ -1176,10 +1166,10 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {/* DURUM 2: WEB LIVE PREVIEW DÜZENİ (HTML/CSS/JS + CANLI TARAYICI) */}
           {currentWorkspace.layout === "web-live-preview" && (
             <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
-              {/* SOL EDİTÖR (KOD SEKMELERİ) */}
+              {/* SOL MONACO EDİTÖR (KOD SEKMELERİ) */}
               <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
                 {/* Sekmeler */}
-                <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none">
+                <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none shrink-0">
                   {currentWorkspace.files.map((file) => (
                     <button
                       key={file.name}
@@ -1195,18 +1185,14 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                   ))}
                 </div>
 
-                {/* Editör */}
-                <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                  <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                    {activeContent.split("\n").map((_, i) => (
-                      <div key={i}>{i + 1}</div>
-                    ))}
-                  </div>
-                  <textarea
+                {/* Monaco Editor */}
+                <div className="flex-1 overflow-hidden relative">
+                  <MonacoEditor
                     value={activeContent}
-                    onChange={(e) => handleContentChange(activeFileName, e.target.value)}
-                    className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-2"
-                    spellCheck={false}
+                    onChange={(val) => handleContentChange(activeFileName, val)}
+                    language={activeFile?.language || "html"}
+                    readOnly={activeFile?.readOnly}
+                    minimap={minimapEnabled}
                   />
                 </div>
               </div>
@@ -1214,7 +1200,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
               {/* SAĞ: CANLI TARAYICI ÖNİZLEMESİ (LIVE WEB PREVIEW) */}
               <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0d14]">
                 {/* Tarayıcı Chrome Başlığı */}
-                <div className="h-9 bg-[#1e1e1e] border-b border-[#2d2d2d] px-3 flex items-center justify-between text-xs">
+                <div className="h-9 bg-[#1e1e1e] border-b border-[#2d2d2d] px-3 flex items-center justify-between text-xs shrink-0">
                   <div className="flex items-center gap-2 flex-1 max-w-sm bg-[#121212] px-2.5 py-1 rounded-md text-[#858585] font-mono text-[11px] border border-[#2a2a2a]">
                     <Globe className="w-3 h-3 text-[#007acc]" />
                     <span className="truncate">http://localhost:3000</span>
@@ -1247,47 +1233,39 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
           {currentWorkspace.layout === "ros2-split" && (
             <div className="flex-1 flex flex-col overflow-hidden">
               <div className="flex-1 flex flex-col md:flex-row overflow-hidden border-b border-[#2d2d2d]">
-                {/* SOL EDİTÖR (PUBLISHER NODE) */}
+                {/* SOL MONACO (PUBLISHER NODE) */}
                 <div className="flex-1 flex flex-col border-r border-[#2d2d2d] overflow-hidden">
-                  <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono">
+                  <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                     <span className="text-white font-bold">{activeFileName}</span>
-                    <span className="badge badge-warning badge-xs font-mono">ROS 2 Publisher</span>
+                    <span className="badge badge-warning badge-xs font-mono">ROS 2 Publisher (Monaco)</span>
                   </div>
 
-                  <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                    <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                      {activeContent.split("\n").map((_, i) => (
-                        <div key={i}>{i + 1}</div>
-                      ))}
-                    </div>
-                    <textarea
+                  <div className="flex-1 overflow-hidden relative">
+                    <MonacoEditor
                       value={activeContent}
-                      onChange={(e) => handleContentChange(activeFileName, e.target.value)}
-                      className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-4"
-                      spellCheck={false}
+                      onChange={(val) => handleContentChange(activeFileName, val)}
+                      language="python"
+                      readOnly={activeFile?.readOnly}
+                      minimap={minimapEnabled}
                     />
                   </div>
                 </div>
 
-                {/* SAĞ EDİTÖR (SUBSCRIBER NODE) */}
+                {/* SAĞ MONACO (SUBSCRIBER NODE) */}
                 {secondaryFileName && (
                   <div className="flex-1 flex flex-col overflow-hidden">
-                    <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono">
+                    <div className="h-9 bg-[#252526] px-3 border-b border-[#1e1e1e] flex items-center justify-between text-xs font-mono shrink-0">
                       <span className="text-[#4fc1ff] font-bold">{secondaryFileName}</span>
-                      <span className="badge badge-info badge-xs font-mono">ROS 2 Subscriber</span>
+                      <span className="badge badge-info badge-xs font-mono">ROS 2 Subscriber (Monaco)</span>
                     </div>
 
-                    <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                      <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                        {secondaryContent.split("\n").map((_, i) => (
-                          <div key={i}>{i + 1}</div>
-                        ))}
-                      </div>
-                      <textarea
+                    <div className="flex-1 overflow-hidden relative">
+                      <MonacoEditor
                         value={secondaryContent}
-                        onChange={(e) => handleContentChange(secondaryFileName, e.target.value)}
-                        className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-4"
-                        spellCheck={false}
+                        onChange={(val) => handleContentChange(secondaryFileName, val)}
+                        language="python"
+                        readOnly={secondaryFile?.readOnly}
+                        minimap={minimapEnabled}
                       />
                     </div>
                   </div>
@@ -1296,7 +1274,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
 
               {/* ALT ROS 2 DÜĞÜM GRAFİĞİ & KONSOL */}
               <div className="h-56 bg-[#181818] flex flex-col shrink-0">
-                <div className="h-8 bg-[#252526] border-b border-[#1e1e1e] px-3 flex items-center justify-between text-xs font-mono">
+                <div className="h-8 bg-[#252526] border-b border-[#1e1e1e] px-3 flex items-center justify-between text-xs font-mono shrink-0">
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => setActiveBottomTab("terminal")}
@@ -1371,10 +1349,10 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             </div>
           )}
 
-          {/* DURUM 4: STANDART DÜZEN (STM32 / PYTHON / RUST) */}
+          {/* DURUM 4: STANDART DÜZEN (STM32 / C) */}
           {currentWorkspace.layout === "standard" && (
             <div className="flex-1 flex flex-col overflow-hidden">
-              <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none">
+              <div className="h-9 bg-[#252526] px-2 flex items-center gap-1 border-b border-[#1e1e1e] overflow-x-auto scrollbar-none shrink-0">
                 {currentWorkspace.files.map((file) => (
                   <button
                     key={file.name}
@@ -1390,22 +1368,18 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                 ))}
               </div>
 
-              <div className="flex-1 flex overflow-hidden relative font-mono text-xs">
-                <div className="w-10 bg-[#1e1e1e] text-[#606060] text-right pr-2 pt-3 select-none text-[11px] font-mono leading-relaxed border-r border-[#2d2d2d]">
-                  {activeContent.split("\n").map((_, i) => (
-                    <div key={i}>{i + 1}</div>
-                  ))}
-                </div>
-                <textarea
+              <div className="flex-1 overflow-hidden relative">
+                <MonacoEditor
                   value={activeContent}
-                  onChange={(e) => handleContentChange(activeFileName, e.target.value)}
-                  className="flex-1 bg-transparent text-[#d4d4d4] p-3 font-mono text-xs leading-relaxed resize-none focus:outline-none overflow-auto whitespace-pre tab-4"
-                  spellCheck={false}
+                  onChange={(val) => handleContentChange(activeFileName, val)}
+                  language={activeFile?.language || "c"}
+                  readOnly={activeFile?.readOnly}
+                  minimap={minimapEnabled}
                 />
               </div>
 
               {/* Alt Terminal */}
-              <div className="h-48 bg-[#181818] border-t border-[#2d2d2d] p-3 overflow-y-auto font-mono text-xs space-y-1">
+              <div className="h-48 bg-[#181818] border-t border-[#2d2d2d] p-3 overflow-y-auto font-mono text-xs space-y-1 shrink-0">
                 <div className="text-[#858585] text-[11px] pb-1 border-b border-[#2d2d2d] mb-2 flex items-center justify-between">
                   <span>TERMINAL: GCC &amp; GÖMÜLÜ ÇIKTI</span>
                   <span>115200 Baud</span>
@@ -1437,6 +1411,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
             <GitBranch className="w-3 h-3" /> main*
           </span>
           <span className="hidden sm:inline">0 ⊗  0 ⚠</span>
+          <span className="hidden md:inline text-white/80">Monaco Engine</span>
         </div>
 
         <div className="flex items-center gap-4">
