@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:v="http://schemas.microsoft.com/visio/2003/SVGExtensions/"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="7.0829in"
+   height="3.8225in"
+   viewBox="0 0 509.969 275.22"
+   xml:space="preserve"
+   color-interpolation-filters="sRGB"
+   class="st21"
+   version="1.1"
+   id="svg282"
+   sodipodi:docname="uvm_scoreboard.svg"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"><metadata
+   id="metadata286"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1009"
+   id="namedview284"
+   showgrid="false"
+   inkscape:zoom="1.0836034"
+   inkscape:cx="327.52094"
+   inkscape:cy="240.88248"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg282" />
+	<v:documentProperties
+   v:langID="1033"
+   v:viewMarkup="false">
+		<v:userDefs>
+			<v:ud
+   v:nameU="msvConvertTheme" />
+		</v:userDefs>
+	</v:documentProperties>
+
+	<style
+   type="text/css"
+   id="style2">
+	<![CDATA[
+		.st1 {fill:#ffffff;stroke:#7f7f7f;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st2 {fill:#f2f2f2;stroke:#7f7f7f;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st3 {fill:#000000;font-family:Arial;font-size:1.00001em}
+		.st4 {fill:#eaeff5;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st5 {fill:#000000;font-family:Calibri;font-size:0.75em}
+		.st6 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st7 {marker-end:url(#mrkr5-24);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st8 {fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:0.086948582161584}
+		.st9 {fill:#7f7f7f;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st10 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st11 {marker-end:url(#mrkr5-24);marker-start:url(#mrkr5-50);stroke:#000000;stroke-dasharray:1.67983,1.19988;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st12 {marker-start:url(#mrkr5-50);stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st13 {stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st14 {fill:#000000;font-family:Calibri;font-size:0.833336em}
+		.st15 {fill:#ffc000;stroke:#7f7f7f;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st16 {fill:#eeeaf2;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st17 {fill:#ebf1df;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st18 {marker-start:url(#mrkr5-50);stroke:#000000;stroke-dasharray:1.67983,1.19988;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.239976}
+		.st19 {marker-end:url(#mrkr5-129);stroke:#bfbfbf;stroke-dasharray:5.04,3.6;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.72}
+		.st20 {fill:#bfbfbf;fill-opacity:1;stroke:#bfbfbf;stroke-opacity:1;stroke-width:0.22222222222222}
+		.st21 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<defs
+   id="Markers">
+		<g
+   id="lend5">
+			<path
+   d="M 2 1 L 0 0 L 1.98117 -0.993387 C 1.67173 -0.364515 1.67301 0.372641 1.98465 1.00043 "
+   style="stroke:none"
+   id="path4" />
+		</g>
+		<marker
+   id="mrkr5-24"
+   class="st8"
+   v:arrowType="5"
+   v:arrowSize="2"
+   v:setback="20.1268"
+   refX="-20.126837683768"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend5"
+   transform="scale(-11.501050105011,-11.501050105011) "
+   id="use7" />
+		</marker>
+		<marker
+   id="mrkr5-50"
+   class="st8"
+   v:arrowType="5"
+   v:arrowSize="2"
+   v:setback="18.6267"
+   refX="18.626687668767"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend5"
+   transform="scale(11.501050105011) "
+   id="use10" />
+		</marker>
+		<marker
+   id="mrkr5-129"
+   class="st20"
+   v:arrowType="5"
+   v:arrowSize="2"
+   v:setback="7.375"
+   refX="-7.375"
+   orient="auto"
+   markerUnits="strokeWidth"
+   overflow="visible">
+			<use
+   xlink:href="#lend5"
+   transform="scale(-4.5,-4.5) "
+   id="use13" />
+		</marker>
+	</defs>
+	<g
+   v:mID="0"
+   v:index="1"
+   v:groupContext="foregroundPage"
+   id="g280">
+		<title
+   id="title17">Page-1</title>
+		<v:pageProperties
+   v:drawingScale="1"
+   v:pageScale="1"
+   v:drawingUnits="19"
+   v:shadowOffsetX="8.50394"
+   v:shadowOffsetY="-8.50394" />
+		<v:layer
+   v:name="Connector"
+   v:index="0" />
+		<g
+   id="group345-1"
+   transform="translate(0.36,-0.36)"
+   v:mID="345"
+   v:groupContext="group">
+			<title
+   id="title19">Sheet.345</title>
+			<g
+   id="shape336-2"
+   v:mID="336"
+   v:groupContext="shape"
+   transform="translate(287.438,-180)">
+				<title
+   id="title21">Sheet.336</title>
+				<rect
+   x="0"
+   y="202.657"
+   width="182.25"
+   height="72.5625"
+   class="st1"
+   id="rect23" />
+			</g>
+			<g
+   id="group132-4"
+   v:mID="132"
+   v:groupContext="group">
+				<title
+   id="title26">Sheet.132</title>
+				<g
+   id="shape133-5"
+   v:mID="133"
+   v:groupContext="shape">
+					<title
+   id="title28">Sheet.133</title>
+					<rect
+   x="0"
+   y="0.72"
+   width="216"
+   height="274.5"
+   class="st1"
+   id="rect30" />
+				</g>
+				<g
+   id="shape134-7"
+   v:mID="134"
+   v:groupContext="shape"
+   transform="translate(9,-9)">
+					<title
+   id="title33">Sheet.134</title>
+					<rect
+   x="0"
+   y="27.72"
+   width="198"
+   height="247.5"
+   class="st2"
+   id="rect35" />
+				</g>
+				<g
+   id="shape135-9"
+   v:mID="135"
+   v:groupContext="shape"
+   transform="translate(260.438,-49.6809)">
+					<title
+   id="title38">Sheet.135</title>
+					<desc
+   id="desc40">DUT</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="36"
+   cy="238.939"
+   width="72"
+   height="72.5625" />
+					<rect
+   x="0"
+   y="202.657"
+   width="72"
+   height="72.5625"
+   class="st1"
+   id="rect42" />
+					<text
+   x="23.67"
+   y="242.54"
+   class="st3"
+   v:langID="1033"
+   id="text44"><v:paragraph
+   v:horizAlign="1" /><v:tabList />DUT</text>				</g>
+				<g
+   id="shape136-12"
+   v:mID="136"
+   v:groupContext="shape"
+   transform="translate(18,-20.625)">
+					<title
+   id="title47">Sheet.136</title>
+					<rect
+   x="0"
+   y="97.845"
+   width="162"
+   height="177.375"
+   class="st1"
+   id="rect49" />
+				</g>
+				<g
+   id="shape137-14"
+   v:mID="137"
+   v:groupContext="shape"
+   transform="translate(26.1564,-89.6117)">
+					<title
+   id="title52">Sheet.137</title>
+					<desc
+   id="desc54">uart_sequencer</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="36.8504"
+   cy="260.649"
+   width="73.71"
+   height="29.1429" />
+					<rect
+   x="0"
+   y="246.077"
+   width="73.7008"
+   height="29.1429"
+   class="st4"
+   id="rect56" />
+					<text
+   x="7.97"
+   y="263.35"
+   class="st5"
+   v:langID="1033"
+   id="text58"><v:paragraph
+   v:horizAlign="1" /><v:tabList />uart_sequencer</text>				</g>
+				<g
+   id="shape138-17"
+   v:mID="138"
+   v:groupContext="shape"
+   transform="translate(59.3571,-82.1756)">
+					<title
+   id="title61">Sheet.138</title>
+					<ellipse
+   cx="3.64286"
+   cy="271.53"
+   rx="3.64286"
+   ry="3.68956"
+   class="st6"
+   id="ellipse63" />
+				</g>
+				<g
+   id="shape139-19"
+   v:mID="139"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(54,-83.9651)">
+					<title
+   id="title66">Dynamic connector</title>
+					<path
+   d="M9 277.01 L9 286.6"
+   class="st7"
+   id="path68" />
+				</g>
+				<g
+   id="group140-25"
+   transform="translate(27.4893,-32.7262)"
+   v:mID="140"
+   v:groupContext="group">
+					<title
+   id="title71">Sheet.140</title>
+					<g
+   id="shape141-26"
+   v:mID="141"
+   v:groupContext="shape">
+						<title
+   id="title73">Sheet.141</title>
+						<desc
+   id="desc75">uart_driver</desc>
+						<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+						<v:textRect
+   cx="35.4016"
+   cy="260.649"
+   width="70.81"
+   height="29.1429" />
+						<rect
+   x="0"
+   y="246.077"
+   width="70.8031"
+   height="29.1429"
+   class="st4"
+   id="rect77" />
+						<text
+   x="14.76"
+   y="263.35"
+   class="st5"
+   v:langID="1033"
+   id="text79"><v:paragraph
+   v:horizAlign="1" /><v:tabList />uart_driver</text>					</g>
+					<g
+   id="shape142-29"
+   v:mID="142"
+   v:groupContext="shape"
+   transform="translate(32.2276,-29.1998)">
+						<title
+   id="title82">Sheet.142</title>
+						<rect
+   x="0"
+   y="269.391"
+   width="6.56609"
+   height="5.82857"
+   class="st9"
+   id="rect84" />
+					</g>
+					<g
+   id="shape143-31"
+   v:mID="143"
+   v:groupContext="shape"
+   transform="translate(-123.774,70.9549) rotate(-45)">
+						<title
+   id="title87">Sheet.143</title>
+						<rect
+   x="0"
+   y="268.766"
+   width="6.3607"
+   height="6.45444"
+   class="st9"
+   id="rect89" />
+					</g>
+				</g>
+				<g
+   id="group144-33"
+   transform="translate(110.786,-83.7262)"
+   v:mID="144"
+   v:groupContext="group">
+					<title
+   id="title93">Sheet.144</title>
+					<g
+   id="shape145-34"
+   v:mID="145"
+   v:groupContext="shape"
+   transform="translate(0,-5.88549)">
+						<title
+   id="title95">Sheet.145</title>
+						<desc
+   id="desc97">uart_monitor</desc>
+						<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+						<v:textRect
+   cx="29.1429"
+   cy="260.649"
+   width="58.29"
+   height="29.1429" />
+						<rect
+   x="0"
+   y="246.077"
+   width="58.2857"
+   height="29.1429"
+   class="st4"
+   id="rect99" />
+						<text
+   x="4.49"
+   y="263.35"
+   class="st5"
+   v:langID="1033"
+   id="text101"><v:paragraph
+   v:horizAlign="1" /><v:tabList />uart_monitor</text>					</g>
+					<g
+   id="shape146-37"
+   v:mID="146"
+   v:groupContext="shape"
+   transform="translate(25.5,0)">
+						<title
+   id="title104">Sheet.146</title>
+						<rect
+   x="0"
+   y="269.391"
+   width="7.28571"
+   height="5.82857"
+   class="st9"
+   id="rect106" />
+					</g>
+				</g>
+				<g
+   id="shape147-39"
+   v:mID="147"
+   v:groupContext="shape"
+   transform="translate(167.25,-27.9108)">
+					<title
+   id="title110">Sheet.147</title>
+					<rect
+   x="0"
+   y="228.302"
+   width="12.75"
+   height="46.9183"
+   class="st1"
+   id="rect112" />
+				</g>
+				<g
+   id="shape148-41"
+   v:mID="148"
+   v:groupContext="shape"
+   transform="translate(-97.9054,245.189) rotate(-90)">
+					<title
+   id="title115">Sheet.148</title>
+					<desc
+   id="desc117">Virtual IF</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="21.5555"
+   cy="271.53"
+   width="43.12"
+   height="7.37912" />
+					<rect
+   x="0"
+   y="267.841"
+   width="43.1109"
+   height="7.37912"
+   class="st10"
+   id="rect119" />
+					<text
+   x="4.1"
+   y="274.23"
+   class="st5"
+   v:langID="1033"
+   id="text121"><v:paragraph
+   v:horizAlign="1" /><v:tabList />Virtual  IF</text>				</g>
+				<g
+   id="shape149-44"
+   v:mID="149"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(102.79,-37.9121)">
+					<title
+   id="title124">Dynamic connector.2372</title>
+					<path
+   d="M4.47 266.22 L4.83 266.22 L59.63 266.22"
+   class="st11"
+   id="path126" />
+				</g>
+				<g
+   id="shape150-52"
+   v:mID="150"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(139.929,-83.7262)">
+					<title
+   id="title129">Dynamic connector.2373</title>
+					<path
+   d="M0 279.69 L0 280.05 L0 298.08 L27.32 298.08"
+   class="st12"
+   id="path131" />
+				</g>
+				<g
+   id="shape151-57"
+   v:mID="151"
+   v:groupContext="shape"
+   transform="translate(-55.1001,-38.1444) rotate(-45)">
+					<title
+   id="title134">Sheet.151</title>
+					<rect
+   x="0"
+   y="269.391"
+   width="5.74392"
+   height="5.82857"
+   class="st6"
+   id="rect136" />
+				</g>
+				<g
+   id="shape152-59"
+   v:mID="152"
+   v:groupContext="shape"
+   transform="translate(-51.1425,-117.39) rotate(-45)">
+					<title
+   id="title139">Sheet.152</title>
+					<rect
+   x="0"
+   y="269.391"
+   width="5.74392"
+   height="5.82857"
+   class="st6"
+   id="rect141" />
+				</g>
+				<g
+   id="shape153-61"
+   v:mID="153"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(132.459,-124.929)">
+					<title
+   id="title144">Dynamic connector.2377</title>
+					<path
+   d="M9 275.22 L9 200.14"
+   class="st13"
+   id="path146" />
+				</g>
+				<g
+   id="shape154-64"
+   v:mID="154"
+   v:groupContext="shape"
+   transform="translate(72.3095,-184.627)">
+					<title
+   id="title149">Sheet.154</title>
+					<desc
+   id="desc151">uart_agent</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="26.6905"
+   cy="271.129"
+   width="53.39"
+   height="8.18299" />
+					<rect
+   x="0"
+   y="267.037"
+   width="53.3809"
+   height="8.18299"
+   class="st10"
+   id="rect153" />
+					<text
+   x="6.47"
+   y="273.83"
+   class="st5"
+   v:langID="1033"
+   id="text155"><v:paragraph
+   v:horizAlign="1" /><v:tabList />uart_agent</text>				</g>
+				<g
+   id="shape155-67"
+   v:mID="155"
+   v:groupContext="shape"
+   transform="translate(-32.22,225.539) rotate(-90)">
+					<title
+   id="title158">Sheet.155</title>
+					<desc
+   id="desc160">UART IF</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="36.8504"
+   cy="266.501"
+   width="73.71"
+   height="17.4375" />
+					<rect
+   x="0"
+   y="257.782"
+   width="73.7008"
+   height="17.4375"
+   class="st1"
+   id="rect162" />
+					<text
+   x="19.78"
+   y="269.5"
+   class="st14"
+   v:langID="1033"
+   id="text164"><v:paragraph
+   v:horizAlign="1" /><v:tabList />UART  IF</text>				</g>
+				<g
+   id="shape156-70"
+   v:mID="156"
+   v:groupContext="shape"
+   transform="translate(152.437,-243)">
+					<title
+   id="title167">Sheet.156</title>
+					<desc
+   id="desc169">my_env</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="26.6905"
+   cy="271.129"
+   width="53.39"
+   height="8.18299" />
+					<rect
+   x="0"
+   y="267.037"
+   width="53.3809"
+   height="8.18299"
+   class="st10"
+   id="rect171" />
+					<text
+   x="12.18"
+   y="273.83"
+   class="st5"
+   v:langID="1033"
+   id="text173"><v:paragraph
+   v:horizAlign="1" /><v:tabList />my_env</text>				</g>
+				<g
+   id="shape157-73"
+   v:mID="157"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(180,-53.255)">
+					<title
+   id="title176">Dynamic connector.2436</title>
+					<path
+   d="M0 266.22 L40.73 266.22"
+   class="st7"
+   id="path178" />
+				</g>
+				<g
+   id="shape158-78"
+   v:mID="158"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(260.719,-76.9621)">
+					<title
+   id="title181">Dynamic connector.2438</title>
+					<path
+   d="M-0.28 266.22 L-17.72 266.22"
+   class="st13"
+   id="path183" />
+				</g>
+				<g
+   id="shape159-81"
+   v:mID="159"
+   v:groupContext="shape"
+   transform="translate(0.0565573,-261)">
+					<title
+   id="title186">Sheet.159</title>
+					<desc
+   id="desc188">my_test</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="26.6905"
+   cy="271.129"
+   width="53.39"
+   height="8.18299" />
+					<rect
+   x="0"
+   y="267.037"
+   width="53.3809"
+   height="8.18299"
+   class="st10"
+   id="rect190" />
+					<text
+   x="11.8"
+   y="273.83"
+   class="st5"
+   v:langID="1033"
+   id="text192"><v:paragraph
+   v:horizAlign="1" /><v:tabList />my_test</text>				</g>
+				<g
+   id="shape160-84"
+   v:mID="160"
+   v:groupContext="shape"
+   transform="translate(26.4375,-138.429)">
+					<title
+   id="title195">Sheet.160</title>
+					<desc
+   id="desc197">uart_subscriber</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="36.8504"
+   cy="260.649"
+   width="73.71"
+   height="29.1429" />
+					<rect
+   x="0"
+   y="246.077"
+   width="73.7008"
+   height="29.1429"
+   class="st4"
+   id="rect199" />
+					<text
+   x="8.09"
+   y="263.35"
+   class="st5"
+   v:langID="1033"
+   id="text201"><v:paragraph
+   v:horizAlign="1" /><v:tabList />uart_subscriber</text>				</g>
+				<g
+   id="shape161-87"
+   v:mID="161"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(138.424,-125.911)">
+					<title
+   id="title204">Dynamic connector.63</title>
+					<path
+   d="M0 275.22 L0 248.13 L-33.46 248.13"
+   class="st7"
+   id="path206" />
+				</g>
+				<g
+   id="shape162-92"
+   v:mID="162"
+   v:groupContext="shape"
+   transform="translate(18.6812,-216)">
+					<title
+   id="title209">Sheet.162</title>
+					<desc
+   id="desc211">scoreboard</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="47.7531"
+   cy="263.82"
+   width="95.51"
+   height="22.8" />
+					<rect
+   x="0"
+   y="252.42"
+   width="95.5063"
+   height="22.8"
+   class="st15"
+   id="rect213" />
+					<text
+   x="24.79"
+   y="266.82"
+   class="st14"
+   v:langID="1033"
+   id="text215"><v:paragraph
+   v:horizAlign="1" /><v:tabList />scoreboard</text>				</g>
+				<g
+   id="shape163-95"
+   v:mID="163"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(143.438,-206.153)">
+					<title
+   id="title218">Dynamic connector.65</title>
+					<path
+   d="M0 275.22 L0 253.97 L-24.42 253.97"
+   class="st7"
+   id="path220" />
+				</g>
+			</g>
+			<g
+   id="shape327-100"
+   v:mID="327"
+   v:groupContext="shape"
+   transform="translate(376.313,-207)">
+				<title
+   id="title224">Sheet.327</title>
+				<desc
+   id="desc226">ref_model</desc>
+				<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   cx="34.875"
+   cy="263.689"
+   width="69.75"
+   height="23.0625" />
+				<rect
+   x="0"
+   y="252.158"
+   width="69.75"
+   height="23.0625"
+   class="st16"
+   id="rect228" />
+				<text
+   x="13.73"
+   y="266.69"
+   class="st14"
+   v:langID="1033"
+   id="text230"><v:paragraph
+   v:horizAlign="1" /><v:tabList />ref_model</text>			</g>
+			<g
+   id="group331-103"
+   transform="translate(296.437,-191.642)"
+   v:mID="331"
+   v:groupContext="group">
+				<title
+   id="title233">Sheet.331</title>
+				<g
+   id="shape328-104"
+   v:mID="328"
+   v:groupContext="shape"
+   transform="translate(194.61,53.4887) rotate(45)">
+					<title
+   id="title235">Sheet.328</title>
+					<rect
+   x="0"
+   y="237.763"
+   width="38.3554"
+   height="37.4571"
+   class="st17"
+   id="rect237" />
+				</g>
+				<g
+   id="shape329-106"
+   v:mID="329"
+   v:groupContext="shape"
+   transform="translate(4.03213,-16.5616)">
+					<title
+   id="title240">Sheet.329</title>
+					<desc
+   id="desc242">Checker</desc>
+					<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+					<v:textRect
+   cx="23.6"
+   cy="265.22"
+   width="47.21"
+   height="20" />
+					<rect
+   x="0"
+   y="255.22"
+   width="47.2"
+   height="20"
+   class="st10"
+   id="rect244" />
+					<text
+   x="7.2"
+   y="268.22"
+   class="st14"
+   v:langID="1033"
+   id="text246"><v:paragraph
+   v:horizAlign="1" /><v:tabList />Checker</text>				</g>
+			</g>
+			<g
+   id="shape334-109"
+   v:mID="334"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(376.312,-209.531)">
+				<title
+   id="title250">Dynamic connector.334</title>
+				<path
+   d="M0 266.22 L-21.84 266.22"
+   class="st7"
+   id="path252" />
+			</g>
+			<g
+   id="shape341-114"
+   v:mID="341"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(329.392,-238.781)">
+				<title
+   id="title255">Dynamic connector.341</title>
+				<path
+   d="M4.47 275.22 L4.83 275.22 L156.05 275.22 L156.05 298"
+   class="st18"
+   id="path257" />
+			</g>
+			<g
+   id="shape342-119"
+   v:mID="342"
+   v:groupContext="shape"
+   v:layerMember="0"
+   transform="translate(446.063,-207)">
+				<title
+   id="title260">Dynamic connector.342</title>
+				<path
+   d="M4.47 266.22 L4.83 266.22 L57.37 266.22"
+   class="st18"
+   id="path262" />
+			</g>
+			<g
+   id="shape343-124"
+   v:mID="343"
+   v:groupContext="shape"
+   transform="translate(92.323,-238.732) rotate(-1.27303)">
+				<title
+   id="title265">Sheet.343</title>
+				<path
+   d="M0 275.22 A184.703 40.2021 12.28 0 1 183.5 274.03 L183.85 274.11"
+   class="st19"
+   id="path267" />
+			</g>
+			<g
+   id="shape344-130"
+   v:mID="344"
+   v:groupContext="shape"
+   transform="translate(415.062,-180)">
+				<title
+   id="title270">Sheet.344</title>
+				<desc
+   id="desc272">scoreboard</desc>
+				<v:textBlock
+   v:margins="rect(4,4,4,4)" />
+				<v:textRect
+   cx="27.3125"
+   cy="265.22"
+   width="54.63"
+   height="20" />
+				<rect
+   x="0"
+   y="255.22"
+   width="54.625"
+   height="20"
+   class="st10"
+   id="rect274" />
+				<text
+   x="4.35"
+   y="268.22"
+   class="st14"
+   v:langID="1033"
+   id="text276"><v:paragraph
+   v:horizAlign="1" /><v:tabList />scoreboard</text>			</g>
+		</g>
+	</g>
+<g
+   id="g1080"
+   transform="matrix(2.8346463,0,0,2.8346463,42.629325,-212.26541)"><g
+     id="g1210"
+     style="opacity:0.461538;fill:#cccccc"
+     transform="matrix(0.35277737,0,0,0.35277737,3.7620162,61.372752)"><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="137.87764"
+       id="text1122"><tspan
+         sodipodi:role="line"
+         id="tspan1120"
+         x="22.451456"
+         y="137.87764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="189.63393"
+       id="text1122-2"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5"
+         x="22.451456"
+         y="189.63393"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="34.365044"
+       id="text1122-3"><tspan
+         sodipodi:role="line"
+         id="tspan1120-8"
+         x="22.451456"
+         y="34.365044"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="86.121338"
+       id="text1122-2-1"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-0"
+         x="22.451456"
+         y="86.121338"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="241.39021"
+       id="text1122-7"><tspan
+         sodipodi:role="line"
+         id="tspan1120-83"
+         x="22.451456"
+         y="241.39021"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="293.14648"
+       id="text1122-2-14"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06"
+         x="22.451456"
+         y="293.14648"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="344.9028"
+       id="text1122-2-14-9"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-9"
+         x="22.451456"
+         y="344.9028"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text></g><g
+     id="g1210-9"
+     transform="matrix(0.35277737,0,0,0.35277737,39.132202,61.372752)"
+     style="opacity:0.461538;fill:#cccccc"><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="137.87764"
+       id="text1122-0"><tspan
+         sodipodi:role="line"
+         id="tspan1120-9"
+         x="22.451456"
+         y="137.87764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="189.63393"
+       id="text1122-2-9"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-3"
+         x="22.451456"
+         y="189.63393"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="34.365044"
+       id="text1122-3-0"><tspan
+         sodipodi:role="line"
+         id="tspan1120-8-0"
+         x="22.451456"
+         y="34.365044"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="86.121338"
+       id="text1122-2-1-7"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-0-2"
+         x="22.451456"
+         y="86.121338"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="241.39021"
+       id="text1122-7-2"><tspan
+         sodipodi:role="line"
+         id="tspan1120-83-2"
+         x="22.451456"
+         y="241.39021"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="293.14648"
+       id="text1122-2-14-1"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-6"
+         x="22.451456"
+         y="293.14648"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="344.9028"
+       id="text1122-2-14-9-2"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-9-9"
+         x="22.451456"
+         y="344.9028"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text></g><g
+     id="g1210-9-5"
+     transform="matrix(0.35277737,0,0,0.35277737,74.502395,61.372752)"
+     style="opacity:0.461538;fill:#cccccc"><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="137.87764"
+       id="text1122-0-3"><tspan
+         sodipodi:role="line"
+         id="tspan1120-9-6"
+         x="22.451456"
+         y="137.87764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="189.63393"
+       id="text1122-2-9-8"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-3-3"
+         x="22.451456"
+         y="189.63393"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="34.365044"
+       id="text1122-3-0-8"><tspan
+         sodipodi:role="line"
+         id="tspan1120-8-0-5"
+         x="22.451456"
+         y="34.365044"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="86.121338"
+       id="text1122-2-1-7-3"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-0-2-7"
+         x="22.451456"
+         y="86.121338"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="241.39021"
+       id="text1122-7-2-2"><tspan
+         sodipodi:role="line"
+         id="tspan1120-83-2-9"
+         x="22.451456"
+         y="241.39021"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="293.14648"
+       id="text1122-2-14-1-6"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-6-0"
+         x="22.451456"
+         y="293.14648"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="344.9028"
+       id="text1122-2-14-9-2-4"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-9-9-3"
+         x="22.451456"
+         y="344.9028"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text></g><g
+     id="g1210-9-6"
+     transform="matrix(0.35277737,0,0,0.35277737,109.87258,61.372752)"
+     style="opacity:0.461538;fill:#cccccc"><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="137.87764"
+       id="text1122-0-5"><tspan
+         sodipodi:role="line"
+         id="tspan1120-9-1"
+         x="22.451456"
+         y="137.87764"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="189.63393"
+       id="text1122-2-9-0"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-3-9"
+         x="22.451456"
+         y="189.63393"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="34.365044"
+       id="text1122-3-0-5"><tspan
+         sodipodi:role="line"
+         id="tspan1120-8-0-54"
+         x="22.451456"
+         y="34.365044"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="86.121338"
+       id="text1122-2-1-7-7"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-0-2-6"
+         x="22.451456"
+         y="86.121338"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="241.39021"
+       id="text1122-7-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan1120-83-2-0"
+         x="22.451456"
+         y="241.39021"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="293.14648"
+       id="text1122-2-14-1-1"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-6-1"
+         x="22.451456"
+         y="293.14648"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text><text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;line-height:1.25;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;fill-opacity:1;stroke:none;stroke-width:0.750001"
+       x="22.451456"
+       y="344.9028"
+       id="text1122-2-14-9-2-0"><tspan
+         sodipodi:role="line"
+         id="tspan1120-5-06-9-9-5"
+         x="22.451456"
+         y="344.9028"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:9.99999px;font-family:Calibri;-inkscape-font-specification:'Calibri, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#cccccc;stroke-width:0.750001">© ChipVerify</tspan></text></g></g></svg>

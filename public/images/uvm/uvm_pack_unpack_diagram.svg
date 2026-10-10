@@ -1,0 +1,92 @@
+<svg viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+
+  <!-- White background -->
+  <rect x="0" y="0" width="900" height="500" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="450" y="28" text-anchor="middle" font-size="14" font-weight="bold" fill="#2E86AB">Packing a 13-bit Object Three Ways</text>
+
+  <!-- ============ Source object ============ -->
+  <rect x="370" y="45" width="160" height="50" rx="4" fill="#2E86AB" fill-opacity="0.10" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="450" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">Packet object</text>
+  <text x="450" y="80" text-anchor="middle" font-size="10" fill="#445566">4+4+4+1 = 13 bits</text>
+
+  <!-- diamond sample marker under Packet -->
+  <rect x="444" y="98" width="12" height="12" fill="#2E86AB" transform="rotate(45 450 104)"/>
+
+  <!-- distribution trunk -->
+  <line x1="450" y1="110" x2="450" y2="125" stroke="#1a2e3b" stroke-width="2"/>
+  <line x1="210" y1="125" x2="710" y2="125" stroke="#1a2e3b" stroke-width="2"/>
+
+  <line x1="210" y1="125" x2="210" y2="145" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="210,145 205,135 215,135" fill="#1a2e3b"/>
+
+  <line x1="450" y1="125" x2="450" y2="145" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="450,145 445,135 455,135" fill="#1a2e3b"/>
+
+  <line x1="710" y1="125" x2="710" y2="145" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="710,145 705,135 715,135" fill="#1a2e3b"/>
+
+  <!-- pack() -->
+  <rect x="140" y="145" width="140" height="38" rx="4" fill="#E07B39" fill-opacity="0.12" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="210" y="169" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pack()</text>
+
+  <!-- pack_bytes() -->
+  <rect x="390" y="145" width="120" height="38" rx="4" fill="#E07B39" fill-opacity="0.12" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="450" y="169" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pack_bytes()</text>
+
+  <!-- pack_ints() -->
+  <rect x="650" y="145" width="120" height="38" rx="4" fill="#E07B39" fill-opacity="0.12" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="710" y="169" text-anchor="middle" font-size="12" font-weight="bold" fill="#1a2e3b">pack_ints()</text>
+
+  <!-- connectors down to result arrays -->
+  <line x1="210" y1="183" x2="210" y2="205" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="210,205 205,195 215,195" fill="#1a2e3b"/>
+
+  <line x1="450" y1="183" x2="450" y2="205" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="450,205 445,195 455,195" fill="#1a2e3b"/>
+
+  <line x1="710" y1="183" x2="710" y2="205" stroke="#1a2e3b" stroke-width="2"/>
+  <polygon points="710,205 705,195 715,195" fill="#1a2e3b"/>
+
+  <!-- result: bit array -->
+  <rect x="110" y="205" width="200" height="50" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="210" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a6080">bit array</text>
+  <text x="210" y="240" text-anchor="middle" font-size="10" fill="#1a6080">13 elements, exact fit</text>
+
+  <!-- result: byte array -->
+  <rect x="350" y="205" width="200" height="50" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="450" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a6080">byte array</text>
+  <text x="450" y="240" text-anchor="middle" font-size="10" fill="#1a6080">2 elements (16 bits), padded</text>
+
+  <!-- result: int array -->
+  <rect x="610" y="205" width="200" height="50" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="710" y="225" text-anchor="middle" font-size="11" font-weight="bold" fill="#1a6080">int array</text>
+  <text x="710" y="240" text-anchor="middle" font-size="10" fill="#1a6080">1 element (32 bits), padded</text>
+
+  <!-- padding annotation under byte/int arrays -->
+  <text x="450" y="270" text-anchor="middle" font-size="9" fill="#445566">3 unused bits zero-padded</text>
+  <text x="710" y="270" text-anchor="middle" font-size="9" fill="#445566">19 unused bits zero-padded</text>
+
+  <!-- divider line -->
+  <line x1="40" y1="305" x2="860" y2="305" stroke="#c8d8e0" stroke-width="0.5"/>
+
+  <!-- ============ Unpack return value clarification panel ============ -->
+  <rect x="60" y="325" width="780" height="155" rx="4" fill="#fef4ed" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="450" y="348" text-anchor="middle" font-size="12" font-weight="bold" fill="#b35a1f">What unpack() Actually Returns</text>
+
+  <!-- diamond drive marker -->
+  <rect x="444" y="356" width="10" height="10" fill="#E07B39" transform="rotate(45 449 361)"/>
+
+  <text x="450" y="380" text-anchor="middle" font-size="10" font-family="monospace" fill="#1a2e3b">function int unpack (ref bit value[], input uvm_packer packer = null)</text>
+
+  <text x="450" y="400" text-anchor="middle" font-size="11" fill="#1a2e3b">the array is the argument (passed by ref) &#8212; the int return value is a separate bit count</text>
+  <text x="450" y="418" text-anchor="middle" font-size="11" fill="#1a2e3b">NOT a data field like m_addr</text>
+
+  <!-- dashed guide line connecting to example -->
+  <line x1="450" y1="425" x2="450" y2="438" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+
+  <text x="450" y="458" text-anchor="middle" font-size="10" fill="#b35a1f">example: a 13-bit Packet unpacked with unpack() returns 13 (0xd) every time &#8212; regardless of field values</text>
+
+
+</svg>

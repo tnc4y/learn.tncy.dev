@@ -1,0 +1,55 @@
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="700" height="380" fill="#ffffff"/>
+
+  <!-- Section header pills -->
+  <rect x="60" y="30" width="220" height="28" rx="9" fill="#eef6fa"/>
+  <text x="170" y="49" font-size="12" font-weight="bold" fill="#1a6080" text-anchor="middle">reg_transaction (data object)</text>
+
+  <rect x="430" y="30" width="210" height="28" rx="9" fill="#fef4ed"/>
+  <text x="535" y="49" font-size="12" font-weight="bold" fill="#b35a1f" text-anchor="middle">reg_if (pin-level signals)</text>
+
+  <!-- Transaction box -->
+  <rect x="60" y="80" width="220" height="220" rx="6" fill="#2E86AB" opacity="0.10" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="170" y="108" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">class reg_transaction</text>
+  <text x="170" y="124" font-size="10" fill="#445566" text-anchor="middle">extends uvm_sequence_item</text>
+
+  <line x1="80" y1="136" x2="260" y2="136" stroke="#c8d8e0" stroke-width="0.5"/>
+
+  <polygon points="80,154 88,162 80,170 72,162" fill="#2E86AB"/>
+  <text x="98" y="166" font-size="11" font-weight="500" fill="#1a2e3b">rand bit wr_en, rd_en</text>
+
+  <polygon points="80,184 88,192 80,200 72,192" fill="#2E86AB"/>
+  <text x="98" y="196" font-size="11" font-weight="500" fill="#1a2e3b">rand bit [3:0] addr</text>
+
+  <polygon points="80,214 88,222 80,230 72,222" fill="#2E86AB"/>
+  <text x="98" y="226" font-size="11" font-weight="500" fill="#1a2e3b">rand bit [7:0] wdata</text>
+
+  <polygon points="80,244 88,252 80,260 72,252" fill="#E07B39"/>
+  <text x="98" y="256" font-size="11" font-weight="500" fill="#1a2e3b">bit [7:0] rdata</text>
+
+  <rect x="80" y="270" width="180" height="22" rx="4" fill="#eef6fa"/>
+  <text x="170" y="285" font-size="10" font-weight="500" fill="#1a6080" text-anchor="middle">one object per operation</text>
+
+  <!-- DUT-side box -->
+  <rect x="430" y="80" width="210" height="220" rx="6" fill="#E07B39" opacity="0.09" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="535" y="108" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">interface reg_if</text>
+  <text x="535" y="124" font-size="10" fill="#445566" text-anchor="middle">from the previous article</text>
+
+  <line x1="450" y1="136" x2="620" y2="136" stroke="#c8d8e0" stroke-width="0.5"/>
+
+  <text x="535" y="164" font-size="11" fill="#445566" text-anchor="middle">wr_en, rd_en</text>
+  <text x="535" y="194" font-size="11" fill="#445566" text-anchor="middle">addr</text>
+  <text x="535" y="224" font-size="11" fill="#445566" text-anchor="middle">wdata</text>
+  <text x="535" y="254" font-size="11" fill="#445566" text-anchor="middle">rdata</text>
+
+  <!-- Connectors mapping each field across -->
+  <line x1="280" y1="162" x2="430" y2="162" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7"/>
+  <line x1="280" y1="192" x2="430" y2="192" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7"/>
+  <line x1="280" y1="222" x2="430" y2="222" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7"/>
+  <line x1="280" y1="252" x2="430" y2="252" stroke="#E07B39" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7"/>
+
+  <!-- Bottom note -->
+  <rect x="160" y="330" width="380" height="30" rx="4" fill="#eef6fa"/>
+  <text x="350" y="350" font-size="10" font-weight="500" fill="#1a6080" text-anchor="middle">same field names and widths, on purpose - the driver maps them 1:1</text>
+
+</svg>

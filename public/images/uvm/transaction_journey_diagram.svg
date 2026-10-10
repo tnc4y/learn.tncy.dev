@@ -1,0 +1,64 @@
+<svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="700" height="280" fill="#ffffff"/>
+
+  <text x="40" y="32" font-size="12" font-weight="bold" fill="#1a2e3b">Where a reg_transaction object travels</text>
+
+  <!-- Box 1: Sequence (not yet built) -->
+  <rect x="40" y="58" width="110" height="64" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="95" y="84" font-size="12" font-weight="bold" fill="#445566" text-anchor="middle">sequence</text>
+  <text x="95" y="102" font-size="10" fill="#445566" text-anchor="middle">creates the</text>
+  <text x="95" y="114" font-size="10" fill="#445566" text-anchor="middle">transaction</text>
+
+  <!-- Box 2: Sequencer (not yet built) -->
+  <rect x="164" y="58" width="110" height="64" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="219" y="84" font-size="12" font-weight="bold" fill="#445566" text-anchor="middle">sequencer</text>
+  <text x="219" y="102" font-size="10" fill="#445566" text-anchor="middle">routes it to</text>
+  <text x="219" y="114" font-size="10" fill="#445566" text-anchor="middle">the driver</text>
+
+  <!-- Box 3: Driver (not yet built) -->
+  <rect x="288" y="58" width="110" height="64" rx="6" fill="#ffffff" stroke="#c8d8e0" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="343" y="84" font-size="12" font-weight="bold" fill="#445566" text-anchor="middle">driver</text>
+  <text x="343" y="102" font-size="10" fill="#445566" text-anchor="middle">reads its fields,</text>
+  <text x="343" y="114" font-size="10" fill="#445566" text-anchor="middle">drives pins</text>
+
+  <!-- Box 4: reg_if (already built, from 2.1) -->
+  <rect x="412" y="58" width="110" height="64" rx="6" fill="#2E86AB" opacity="0.10" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="467" y="84" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">reg_if</text>
+  <text x="467" y="102" font-size="10" fill="#445566" text-anchor="middle">carries the</text>
+  <text x="467" y="114" font-size="10" fill="#445566" text-anchor="middle">pin-level signals</text>
+
+  <!-- Box 5: reg_block (DUT, already built, from 2.1) -->
+  <rect x="536" y="58" width="124" height="64" rx="6" fill="#E07B39" opacity="0.09" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="598" y="84" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">reg_block</text>
+  <text x="598" y="106" font-size="10" fill="#445566" text-anchor="middle">the DUT</text>
+
+  <!-- Connectors -->
+  <line x1="150" y1="90" x2="164" y2="90" stroke="#445566" stroke-width="1.5"/>
+  <polygon points="164,90 156,86 156,94" fill="#445566"/>
+
+  <line x1="274" y1="90" x2="288" y2="90" stroke="#445566" stroke-width="1.5"/>
+  <polygon points="288,90 280,86 280,94" fill="#445566"/>
+
+  <line x1="398" y1="90" x2="412" y2="90" stroke="#445566" stroke-width="1.5"/>
+  <polygon points="412,90 404,86 404,94" fill="#445566"/>
+
+  <line x1="522" y1="90" x2="536" y2="90" stroke="#2E86AB" stroke-width="2"/>
+  <polygon points="536,90 528,86 528,94" fill="#2E86AB"/>
+
+  <!-- reg_transaction marker riding on the sequence->sequencer connector -->
+  <polygon points="157,90 165,98 173,90 165,82" fill="#2E86AB"/>
+
+  <!-- Status legend row -->
+  <rect x="40" y="142" width="358" height="40" rx="4" fill="#f1f1f1"/>
+  <text x="219" y="158" font-size="10" font-weight="500" fill="#445566" text-anchor="middle">covered in upcoming articles</text>
+  <text x="219" y="172" font-size="10" fill="#445566" text-anchor="middle">this article only defines the transaction itself</text>
+
+  <rect x="412" y="142" width="248" height="40" rx="4" fill="#fef4ed"/>
+  <text x="536" y="158" font-size="10" font-weight="500" fill="#b35a1f" text-anchor="middle">already built</text>
+  <text x="536" y="172" font-size="10" fill="#b35a1f" text-anchor="middle">from the previous article</text>
+
+  <!-- This article's actual focus, called out separately with the marker -->
+  <rect x="40" y="206" width="380" height="40" rx="4" fill="#eef6fa" stroke="#2E86AB" stroke-width="0.5"/>
+  <text x="230" y="222" font-size="11" font-weight="500" fill="#1a6080" text-anchor="middle">&#9670; this article: defining reg_transaction,</text>
+  <text x="230" y="238" font-size="11" font-weight="500" fill="#1a6080" text-anchor="middle">the object that travels through every box above</text>
+</svg>

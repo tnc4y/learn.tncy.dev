@@ -1,0 +1,37 @@
+<svg viewBox="0 0 640 360" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="640" height="360" fill="#ffffff"/>
+
+  <!-- Outer top module boundary -->
+  <rect x="40" y="50" width="560" height="280" rx="4" fill="none" stroke="#c8d8e0" stroke-width="0.5"/>
+  <rect x="258.5" y="34" width="123" height="23" rx="9" fill="#eef6fa"/>
+  <text x="320" y="49.5" font-size="11" font-weight="500" fill="#1a6080" text-anchor="middle">Top-Level Module</text>
+  <text x="320" y="90" font-size="10" fill="#445566" text-anchor="middle">tb_top</text>
+
+  <!-- run_test() call annotation -->
+  <polygon points="320,104 326,110 320,116 314,110" fill="#2E86AB"/>
+  <rect x="249" y="122" width="142" height="22" rx="4" fill="#eef6fa"/>
+  <text x="320" y="137" font-size="10" font-weight="500" fill="#1a6080" text-anchor="middle">run_test("base_test")</text>
+
+  <line x1="320" y1="144" x2="320" y2="166" stroke="#1a2e3b" stroke-width="2" stroke-linecap="square"/>
+
+  <!-- Test block (outer) -->
+  <rect x="120" y="166" width="400" height="160" rx="4" fill="#2E86AB" fill-opacity="0.10" stroke="#2E86AB" stroke-width="1.2"/>
+  <rect x="278.5" y="154" width="83" height="24" rx="9" fill="#eef6fa"/>
+  <text x="320" y="170.5" font-size="12" font-weight="bold" fill="#1a6080" text-anchor="middle">base_test</text>
+  <text x="320" y="196" font-size="11" font-weight="500" fill="#445566" text-anchor="middle">extends uvm_test</text>
+
+  <!-- Environment block (inside test) -->
+  <rect x="160" y="216" width="320" height="90" rx="4" fill="#2E86AB" fill-opacity="0.08" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" stroke-opacity="0.7"/>
+  <rect x="289" y="228" width="62" height="24" rx="9" fill="#eef6fa"/>
+  <text x="320" y="244.5" font-size="12" font-weight="bold" fill="#1a6080" text-anchor="middle">my_env</text>
+  <text x="320" y="268" font-size="11" font-weight="500" fill="#445566" text-anchor="middle">extends uvm_env</text>
+
+  <!-- Hello UVM print marker inside env -->
+  <polygon points="320,278 326,284 320,290 314,284" fill="#2E86AB"/>
+  <rect x="237.5" y="294" width="165" height="22" rx="4" fill="#eef6fa"/>
+  <text x="320" y="309" font-size="10" font-weight="500" fill="#1a6080" text-anchor="middle">"Hello UVM!" printed here</text>
+
+  <!-- Legend -->
+  <rect x="60" y="335" width="14" height="14" fill="#2E86AB" fill-opacity="0.10" stroke="#2E86AB" stroke-width="1"/>
+  <text x="80" y="346" font-size="10" fill="#445566">UVM class hierarchy — built and run by run_test()</text>
+</svg>

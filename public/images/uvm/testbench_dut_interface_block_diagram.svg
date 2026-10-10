@@ -1,0 +1,68 @@
+<svg viewBox="0 0 700 360" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <rect x="0" y="0" width="700" height="360" fill="#ffffff"/>
+
+  <!-- Section header pills -->
+  <rect x="40" y="30" width="170" height="28" rx="9" fill="#eef6fa"/>
+  <text x="125" y="49" font-size="12" font-weight="bold" fill="#1a6080" text-anchor="middle">testbench</text>
+
+  <rect x="500" y="30" width="160" height="28" rx="9" fill="#fef4ed"/>
+  <text x="580" y="49" font-size="12" font-weight="bold" fill="#b35a1f" text-anchor="middle">dut: reg_block</text>
+
+  <!-- Testbench box -->
+  <rect x="40" y="80" width="170" height="200" rx="6" fill="#2E86AB" opacity="0.10" stroke="#2E86AB" stroke-width="1.2"/>
+  <text x="125" y="108" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">driver / monitor</text>
+
+  <text x="60" y="140" font-size="11" font-weight="500" fill="#2E86AB">wr_en, rd_en</text>
+  <text x="60" y="162" font-size="11" font-weight="500" fill="#2E86AB">addr, wdata</text>
+  <text x="60" y="216" font-size="11" font-weight="500" fill="#E07B39">rdata</text>
+
+  <!-- Interface box (middle) -->
+  <rect x="270" y="80" width="160" height="200" rx="6" fill="#ffffff" stroke="#1a2e3b" stroke-width="1.2"/>
+  <text x="350" y="108" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">interface reg_if</text>
+  <text x="350" y="126" font-size="10" fill="#445566" text-anchor="middle">(bundles all signals)</text>
+
+  <!-- diamond marker on interface -->
+  <polygon points="350,148 358,156 350,164 342,156" fill="#2E86AB"/>
+
+  <text x="350" y="186" font-size="10" fill="#445566" text-anchor="middle">clk, rst_n</text>
+  <text x="350" y="204" font-size="10" fill="#445566" text-anchor="middle">wr_en, rd_en</text>
+  <text x="350" y="222" font-size="10" fill="#445566" text-anchor="middle">addr, wdata</text>
+  <text x="350" y="240" font-size="10" fill="#445566" text-anchor="middle">rdata</text>
+
+  <!-- diamond marker output side -->
+  <polygon points="350,256 358,264 350,272 342,264" fill="#E07B39"/>
+
+  <!-- DUT box -->
+  <rect x="500" y="80" width="160" height="200" rx="6" fill="#E07B39" opacity="0.09" stroke="#E07B39" stroke-width="1.2"/>
+  <text x="580" y="108" font-size="12" font-weight="bold" fill="#1a2e3b" text-anchor="middle">reg_block</text>
+  <text x="580" y="126" font-size="10" fill="#445566" text-anchor="middle">16 x 8-bit memory</text>
+
+  <line x1="540" y1="150" x2="620" y2="150" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="580" y="172" font-size="10" fill="#445566" text-anchor="middle">mem[addr] &lt;= wdata</text>
+  <text x="580" y="192" font-size="10" fill="#445566" text-anchor="middle">on write</text>
+  <line x1="540" y1="206" x2="620" y2="206" stroke="#c8d8e0" stroke-width="0.5"/>
+  <text x="580" y="228" font-size="10" fill="#445566" text-anchor="middle">rdata &lt;= mem[addr]</text>
+  <text x="580" y="248" font-size="10" fill="#445566" text-anchor="middle">on read</text>
+
+  <!-- Connector: testbench -> interface -->
+  <line x1="210" y1="150" x2="270" y2="150" stroke="#2E86AB" stroke-width="2"/>
+  <polygon points="270,150 262,146 262,154" fill="#2E86AB"/>
+
+  <!-- Connector: interface -> testbench (return, rdata) -->
+  <line x1="270" y1="230" x2="210" y2="230" stroke="#E07B39" stroke-width="2"/>
+  <polygon points="210,230 218,226 218,234" fill="#E07B39"/>
+
+  <!-- Connector: interface -> dut -->
+  <line x1="430" y1="150" x2="500" y2="150" stroke="#2E86AB" stroke-width="2"/>
+  <polygon points="500,150 492,146 492,154" fill="#2E86AB"/>
+
+  <!-- Connector: dut -> interface (return) -->
+  <line x1="500" y1="230" x2="430" y2="230" stroke="#E07B39" stroke-width="2"/>
+  <polygon points="430,230 438,226 438,234" fill="#E07B39"/>
+
+  <!-- Dashed guide showing the interface connects to both via virtual interface handle -->
+  <line x1="350" y1="280" x2="350" y2="320" stroke="#2E86AB" stroke-width="1.2" stroke-dasharray="5 4" opacity="0.7"/>
+  <rect x="230" y="320" width="240" height="28" rx="4" fill="#eef6fa"/>
+  <text x="350" y="338" font-size="10" font-weight="500" fill="#1a6080" text-anchor="middle">same vif handle used on both sides</text>
+
+</svg>
