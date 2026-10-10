@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import MonacoEditor from "@/components/MonacoEditor";
+import RobotSimCanvas from "@/components/RobotSimCanvas";
 import { executePythonCode } from "@/lib/pyodideRunner";
 import { simulateSystemVerilog, SimSignal } from "@/lib/svSimulator";
 import {
@@ -28,6 +29,7 @@ import {
   Sparkles,
   Eye,
   Zap,
+  Compass,
 } from "lucide-react";
 
 export type WorkspacePresetId =
@@ -739,7 +741,7 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
   const [dynamicSignals, setDynamicSignals] = useState<SimSignal[] | undefined>(
     currentWorkspace.signals
   );
-  const [activeBottomTab, setActiveBottomTab] = useState<"terminal" | "waveform" | "rqt">(
+  const [activeBottomTab, setActiveBottomTab] = useState<"terminal" | "waveform" | "rqt" | "sim">(
     "terminal"
   );
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -760,6 +762,11 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
     setSecondaryFileName(currentWorkspace.secondaryFile);
     setTerminalLogs(currentWorkspace.simLogs.slice(0, 5));
     setDynamicSignals(currentWorkspace.signals);
+    if (currentWorkspace.id === "ros2-robotics") {
+      setActiveBottomTab("sim");
+    } else {
+      setActiveBottomTab("terminal");
+    }
   }, [currentWorkspace]);
 
   const activeFile = currentWorkspace.files.find((f) => f.name === activeFileName);
@@ -1347,28 +1354,40 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                 )}
               </div>
 
-              {/* ALT ROS 2 DÜĞÜM GRAFİĞİ & KONSOL */}
-              <div className="h-56 bg-[#181818] flex flex-col shrink-0">
+              {/* ALT ROS 2 DÜĞÜM GRAFİĞİ, 2D ROBOT SİMÜLATÖRÜ & KONSOL */}
+              <div className="h-64 sm:h-72 bg-[#181818] flex flex-col shrink-0">
                 <div className="h-8 bg-[#252526] border-b border-[#1e1e1e] px-3 flex items-center justify-between text-xs font-mono shrink-0">
                   <div className="flex items-center gap-3">
                     <button
+                      onClick={() => setActiveBottomTab("sim")}
+                      className={`h-8 flex items-center gap-1.5 px-2 border-b-2 transition-colors ${
+                        activeBottomTab === "sim"
+                          ? "border-[#007acc] text-white font-bold"
+                          : "border-transparent text-[#858585] hover:text-white"
+                      }`}
+                    >
+                      <Compass className="w-3.5 h-3.5 text-primary" />
+                      <span>2D ROBOT &amp; LIDAR SİMÜLATÖRÜ</span>
+                    </button>
+
+                    <button
                       onClick={() => setActiveBottomTab("terminal")}
-                      className={`h-8 flex items-center gap-1 px-2 border-b-2 ${
+                      className={`h-8 flex items-center gap-1.5 px-2 border-b-2 transition-colors ${
                         activeBottomTab === "terminal"
                           ? "border-[#007acc] text-white font-bold"
-                          : "border-transparent text-[#858585]"
+                          : "border-transparent text-[#858585] hover:text-white"
                       }`}
                     >
                       <Terminal className="w-3 h-3" />
-                      <span>ROS 2 TERMINAL (Gerçek rclpy Çıktısı)</span>
+                      <span>ROS 2 TERMINAL (rclpy Wasm)</span>
                     </button>
 
                     <button
                       onClick={() => setActiveBottomTab("rqt")}
-                      className={`h-8 flex items-center gap-1 px-2 border-b-2 ${
+                      className={`h-8 flex items-center gap-1.5 px-2 border-b-2 transition-colors ${
                         activeBottomTab === "rqt"
                           ? "border-[#007acc] text-white font-bold"
-                          : "border-transparent text-[#858585]"
+                          : "border-transparent text-[#858585] hover:text-white"
                       }`}
                     >
                       <Bot className="w-3 h-3 text-warning" />
@@ -1377,9 +1396,11 @@ export default function VSCodePlayground({ initialPresetId }: { initialPresetId?
                   </div>
                 </div>
 
-                <div className="flex-1 p-3 overflow-y-auto font-mono text-xs">
-                  {activeBottomTab === "terminal" ? (
-                    <div className="space-y-1">
+                <div className="flex-1 overflow-hidden font-mono text-xs">
+                  {activeBottomTab === "sim" ? (
+                    <RobotSimCanvas />
+                  ) : activeBottomTab === "terminal" ? (
+                    <div className="h-full p-3 overflow-y-auto space-y-1">
                       {terminalLogs.map((log, lIdx) => (
                         <div
                           key={lIdx}
