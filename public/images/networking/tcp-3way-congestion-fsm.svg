@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="100%" height="100%">
+  <rect width="900" height="400" rx="16" fill="#0f172a" stroke="#334155" stroke-width="2"/>
+  <text x="450" y="34" fill="#f8fafc" font-family="monospace" font-size="17" font-weight="bold" text-anchor="middle">TRANSPORT LAYER: TCP 3-WAY HANDSHAKE, SLIDING WINDOW &amp; AIMD / CUBIC CONGESTION</text>
+  <g font-family="monospace" font-size="12">
+    <rect x="35" y="55" width="380" height="315" rx="10" fill="#1e293b" stroke="#475569"/>
+    <text x="225" y="80" fill="#38bdf8" font-weight="bold" text-anchor="middle">TCP 3-WAY HANDSHAKE &amp; DATA</text>
+    <line x1="95" y1="100" x2="95" y2="345" stroke="#94a3b8" stroke-width="3"/>
+    <line x1="355" y1="100" x2="355" y2="345" stroke="#94a3b8" stroke-width="3"/>
+    <text x="95" y="95" fill="#f8fafc" text-anchor="middle">Client</text>
+    <text x="355" y="95" fill="#f8fafc" text-anchor="middle">Server</text>
+    <line x1="95" y1="125" x2="355" y2="160" stroke="#34d399" stroke-width="2"/>
+    <text x="225" y="135" fill="#6ee7b7" font-size="11" text-anchor="middle">1. SYN (seq=x)</text>
+    <line x1="355" y1="175" x2="95" y2="210" stroke="#60a5fa" stroke-width="2"/>
+    <text x="225" y="185" fill="#93c5fd" font-size="11" text-anchor="middle">2. SYNACK (seq=y, ack=x+1)</text>
+    <line x1="95" y1="225" x2="355" y2="260" stroke="#fbbf24" stroke-width="2"/>
+    <text x="225" y="235" fill="#fde68a" font-size="11" text-anchor="middle">3. ACK (seq=x+1, ack=y+1) + Data</text>
+    <text x="225" y="305" fill="#cbd5e1" font-size="11" text-anchor="middle">Timeout = EstRTT + 4*DevRTT</text>
+    <text x="225" y="328" fill="#f472b6" font-size="11" text-anchor="middle">Fast Retransmit on 3 Duplicate ACKs</text>
+
+    <rect x="445" y="55" width="420" height="315" rx="10" fill="#1e293b" stroke="#475569"/>
+    <text x="655" y="80" fill="#a78bfa" font-weight="bold" text-anchor="middle">TCP CONGESTION CONTROL (Slow Start, AIMD, CUBIC)</text>
+    <line x1="485" y1="310" x2="835" y2="310" stroke="#64748b" stroke-width="2"/>
+    <line x1="485" y1="310" x2="485" y2="110" stroke="#64748b" stroke-width="2"/>
+    <text x="470" y="125" fill="#94a3b8" font-size="10" text-anchor="end">cwnd</text>
+    <text x="820" y="328" fill="#94a3b8" font-size="10">RTT</text>
+    <line x1="485" y1="200" x2="835" y2="200" stroke="#f59e0b" stroke-dasharray="5,5"/>
+    <text x="535" y="194" fill="#fbbf24" font-size="10">ssthresh</text>
+    <polyline points="485,300 510,285 535,255 560,200 630,130 630,215 710,145 710,300 740,260 775,215 825,165" fill="none" stroke="#38bdf8" stroke-width="3"/>
+    <text x="530" y="275" fill="#34d399" font-size="10">Slow Start (2x)</text>
+    <text x="605" y="122" fill="#f87171" font-size="10">3 Dup ACK (cwnd/2)</text>
+    <text x="720" y="135" fill="#f87171" font-size="10">Timeout (cwnd=1)</text>
+    <text x="655" y="352" fill="#e2e8f0" font-size="11" text-anchor="middle">BBR: Probe Bottleneck Bandwidth (BtlBw) &amp; RTprop</text>
+  </g>
+</svg>

@@ -30,6 +30,782 @@ export interface CourseTrack {
 }
 
 export const COURSES: CourseTrack[] = [
+  {
+    "id": "computer-networking",
+    "title": "Computer Networking: A Top-Down Approach (Kurose & Ross 9e)",
+    "shortTitle": "Computer Networking 9e",
+    "category": "Gömülü Sistemler",
+    "icon": "Server",
+    "badge": "TCP/IP, QUIC, BGP, 5G & Security",
+    "color": "badge-info",
+    "description": "Complete Kurose & Ross 9th Edition Computer Networking curriculum: Internet Architecture, Application Layer (HTTP/3, QUIC, DNS, SMTP, DASH/CDNs, Sockets), Transport Layer (UDP, rdt3.0, GBN/SR, TCP 3-Way Handshake, AIMD, CUBIC, BBR), Network Data Plane (Routers, LPM, IPv4/IPv6, CIDR, DHCP, NAT, OpenFlow), Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP, NETCONF/YANG), Link Layer (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS, Data Centers), Wireless & 5G (MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Starlink), and Network Security (AES, RSA, PKI, TLS 1.3, IPsec, WPA2, Firewalls).",
+    "modules": [
+      {
+        "id": "cn-mod-1",
+        "number": 1,
+        "title": "1. Chapter 1: Computer Networks and the Internet",
+        "description": "Kurose & Ross 9th Edition — Chapter 1: Computer Networks and the Internet",
+        "lessons": [
+          {
+            "id": "cn-ch1-what-is-internet",
+            "title": "1.1 What is the Internet? Nuts-and-Bolts, Services View & Network Protocols",
+            "shortTitle": "1.1 What is the Internet? Nuts-and-Bolts, Servic",
+            "readTime": "10 dk",
+            "difficulty": "Orta",
+            "description": "Hosts, end systems, packet switches, communication links, RFC/IETF standards, and the formal definition of a network protocol.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-network-edge",
+            "title": "1.2 The Network Edge: Access Networks (Cable HFC, DSL, FTTH, 5G) & Physical Media",
+            "shortTitle": "1.2 The Network Edge",
+            "readTime": "10 dk",
+            "difficulty": "Orta",
+            "description": "Connecting end systems to edge routers via Cable DOCSIS/FDM, DSL, Fiber-to-the-Home, WiFi/5G wireless, and guided vs. unguided physical links.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-network-core-switching",
+            "title": "1.3 The Network Core: Forwarding, Routing, Packet Switching vs. Circuit Switching",
+            "shortTitle": "1.3 The Network Core",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Store-and-forward packet transmission, output buffer queueing, FDM/TDM circuit switching, and statistical multiplexing efficiency.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-network-of-networks",
+            "title": "1.3B Internet Structure: A 'Network of Networks', Tier-1 ISPs, IXPs & Content Providers",
+            "shortTitle": "1.3B Internet Structure",
+            "readTime": "8 dk",
+            "difficulty": "Orta",
+            "description": "Evolution from Network Structure 1 to Structure 5: Tier-1 commercial backbones, regional ISPs, multi-homing, peering at IXPs, and Google/Netflix private backbones.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-delay-loss-throughput",
+            "title": "1.4 Performance: Nodal Delay (Processing, Queueing, Transmission, Propagation), Loss & Throughput",
+            "shortTitle": "1.4 Performance",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Deriving the four components of nodal delay, traffic intensity (La/R), tail-drop packet loss, Traceroute measurements, and bottleneck link throughput.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-networks-under-attack",
+            "title": "1.5 Networks Under Attack: Packet Interception, IP Spoofing, DoS/DDoS & Lines of Defense",
+            "shortTitle": "1.5 Networks Under Attack",
+            "readTime": "8 dk",
+            "difficulty": "Orta",
+            "description": "Promiscuous packet sniffing, fake identity (IP spoofing), Distributed Denial of Service (DDoS) botnets, authentication, confidentiality, and firewalls.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-protocol-layers-encapsulation",
+            "title": "1.6 Protocol Layers, Reference Models (5-Layer Internet vs. 7-Layer OSI) & Encapsulation",
+            "shortTitle": "1.6 Protocol Layers, Reference Models (5-Layer I",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Modularizing complex networks via layered service models: Application, Transport, Network, Link, Physical, ISO/OSI presentation/session, and header encapsulation.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch1-internet-history",
+            "title": "1.7 History of Computer Networking & the Internet (1961–Today)",
+            "shortTitle": "1.7 History of Computer Networking & the Interne",
+            "readTime": "8 dk",
+            "difficulty": "Orta",
+            "description": "From Kleinrock's queueing theory and ARPAnet packet switching to TCP/IP flag day, DNS, congestion control, the World Wide Web, SDN, and hyperscale cloud networks.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-2",
+        "number": 2,
+        "title": "2. Chapter 2: The Application Layer (HTTP/3, QUIC, DNS, Email, CDNs & Sockets)",
+        "description": "Kurose & Ross 9th Edition — Chapter 2: The Application Layer (HTTP/3, QUIC, DNS, Email, CDNs & Sockets)",
+        "lessons": [
+          {
+            "id": "cn-ch2-app-layer-principles",
+            "title": "2.1 Principles of Network Applications: Client-Server vs. P2P, Sockets & Transport Services",
+            "shortTitle": "2.1 Principles of Network Applications",
+            "readTime": "10 dk",
+            "difficulty": "Orta",
+            "description": "Network app architectures, communicating processes, IP:port socket addressing, and matching app requirements (loss, timing, throughput) to TCP, TLS, and UDP.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-web-http-protocol",
+            "title": "2.2 The Web & HTTP/1.1: Non-Persistent vs. Persistent Connections, Messages & Status Codes",
+            "shortTitle": "2.2 The Web & HTTP/1.1",
+            "readTime": "10 dk",
+            "difficulty": "Orta",
+            "description": "HTTP client-server transactions over TCP, 2*RTT non-persistent overhead vs. persistent pipelining, ASCII request/response header syntax, and status codes (200, 301, 400, 404).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-cookies-web-caching",
+            "title": "2.2B HTTP State & Web Caching: Cookies, User Tracking/GDPR, Proxy Caches & Conditional GET",
+            "shortTitle": "2.2B HTTP State & Web Caching",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Maintaining session state over stateless HTTP via Set-Cookie headers, third-party tracking cookies, enterprise Web proxy caches, and If-Modified-Since / 304 Not Modified.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-http2-http3-quic",
+            "title": "2.2C Modern Web Protocols: HTTP/2 Framing, HOL Blocking, HTTP/3 & QUIC over UDP",
+            "shortTitle": "2.2C Modern Web Protocols",
+            "readTime": "10 dk",
+            "difficulty": "Orta",
+            "description": "Solving HTTP/1.1 Head-of-Line (HOL) blocking via HTTP/2 interleaved binary frames, why TCP loss still stalls HTTP/2, and how QUIC integrates TLS 1.3 + per-stream congestion/reliability over UDP.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-email-smtp-imap",
+            "title": "2.3 Electronic Mail Architecture: Mail Servers, SMTP (RFC 5321), Message Formats & IMAP",
+            "shortTitle": "2.3 Electronic Mail Architecture",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "User agents, mail server message queues, SMTP push handshaking (HELO, MAIL FROM, RCPT TO, DATA), 7-bit ASCII MIME headers, and IMAP/HTTP mail retrieval.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-dns-architecture",
+            "title": "2.4 DNS (Domain Name System): Distributed Hierarchy (Root, TLD, Authoritative) & Query Resolution",
+            "shortTitle": "2.4 DNS (Domain Name System)",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Why DNS avoids a single point of failure: 13 logical Root server clusters (anycast), Top-Level Domain (TLD) servers, Authoritative servers, Local DNS resolvers, and Iterative vs. Recursive queries.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-dns-records-security",
+            "title": "2.4B DNS Caching, Resource Records (A, NS, CNAME, MX), Wire Format & DNSSEC Security",
+            "shortTitle": "2.4B DNS Caching, Resource Records (A, NS, CNAME",
+            "readTime": "8 dk",
+            "difficulty": "Orta",
+            "description": "TTL-based DNS caching, Resource Record (RR) 4-tuples (Name, Value, Type, TTL), 12-byte binary DNS query/reply header format, registrar insertion, DDoS attacks, and DNSSEC authentication.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-video-streaming-cdns",
+            "title": "2.5 Video Streaming & Content Distribution Networks (CDNs): Playout Buffering, DASH, Akamai & Netflix",
+            "shortTitle": "2.5 Video Streaming & Content Distribution Networks (CDNs)",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Spatial/temporal CBR and VBR video coding, client-side playout buffering against network jitter, HTTP Adaptive Streaming (DASH manifest chunks), Enter Deep vs. Bring Home CDNs, and Netflix Open Connect.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch2-socket-programming",
+            "title": "2.6 Socket Programming in Python: Building UDP Datagram & TCP Stream Client/Server Apps",
+            "shortTitle": "2.6 Socket Programming in Python",
+            "readTime": "12 dk",
+            "difficulty": "Orta",
+            "description": "Hands-on network application development using Python's socket API: SOCK_DGRAM connectionless UDP interaction vs. SOCK_STREAM welcoming/connection sockets and timeout exception handling.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-3",
+        "number": 3,
+        "title": "3. Chapter 3: The Transport Layer (UDP, Reliable Data Transfer rdt, TCP, AIMD, CUBIC & BBR)",
+        "description": "Kurose & Ross 9th Edition — Chapter 3: The Transport Layer (UDP, Reliable Data Transfer rdt, TCP, AIMD, CUBIC & BBR)",
+        "lessons": [
+          {
+            "id": "cn-ch3-transport-services-mux",
+            "title": "3.1–3.2 Transport-Layer Services & Multiplexing / Demultiplexing (Connectionless vs. TCP 4-Tuple)",
+            "shortTitle": "3.1–3.2 Transport-Layer Services & Multiplexing ",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Logical communication between application processes vs. hosts, source/destination port numbers, 2-tuple UDP socket demultiplexing, and 4-tuple TCP connection socket demultiplexing.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-udp-protocol-checksum",
+            "title": "3.3 Connectionless Transport (UDP): RFC 768 Segment Header, Actions & 1's Complement Checksum",
+            "shortTitle": "3.3 Connectionless Transport (UDP)",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Why DNS, SNMP, and HTTP/3 (QUIC) build on no-frills UDP: zero handshake delay, 8-byte segment header, and step-by-step 16-bit 1's complement Internet checksum arithmetic.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-rdt-stop-and-wait",
+            "title": "3.4 Principles of Reliable Data Transfer: rdt1.0, rdt2.0/2.1/2.2 (Bit Errors) & rdt3.0 (Stop-and-Wait)",
+            "shortTitle": "3.4 Principles of Reliable Data Transfer",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Incremental FSM design of reliable transport: checksums, ACK/NAK control messages, why corrupted ACKs require 1-bit sequence numbers (rdt2.1/rdt2.2), and countdown timers in rdt3.0.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-pipelined-gbn-sr",
+            "title": "3.4B Pipelined Reliable Data Transfer: Go-Back-N (GBN) & Selective Repeat (SR) Sliding Windows",
+            "shortTitle": "3.4B Pipelined Reliable Data Transfer",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Overcoming Stop-and-Wait's 0.027% utilization via pipelining: Go-Back-N cumulative ACKs and single timer vs. Selective Repeat out-of-order buffering and the window-size <= N_seq/2 dilemma.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-tcp-segment-seq-ack",
+            "title": "3.5 Connection-Oriented Transport (TCP): RFC 793 Segment Header, Byte Sequence Numbers & ACKs",
+            "shortTitle": "3.5 Connection-Oriented Transport (TCP)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "20-byte TCP header layout, why TCP numbers bytes rather than segments, piggbacked cumulative ACKs (next expected byte), and Telnet/interactive sequence number traces.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-tcp-rtt-retransmission",
+            "title": "3.5B TCP RTT Estimation (EWMA), Timeout Interval, Retransmission Scenarios & Fast Retransmit",
+            "shortTitle": "3.5B TCP RTT Estimation (EWMA), Timeout Interval",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Calculating EstimatedRTT (alpha=0.125) and DevRTT (beta=0.25), safety margin TimeoutInterval = EstimatedRTT + 4*DevRTT, RFC 5681 ACK rules, and triple-duplicate-ACK Fast Retransmit.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-tcp-flow-conn-mgmt",
+            "title": "3.5C TCP Flow Control (rwnd) & Connection Management: 3-Way Handshake & Graceful Close",
+            "shortTitle": "3.5C TCP Flow Control (rwnd) & Connection Management",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Preventing receiver buffer overflow via advertised rwnd, why 2-way handshakes fail with delayed duplicate packets, the SYN / SYN-ACK / ACK 3-way handshake, and FIN / ACK teardown.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-congestion-principles",
+            "title": "3.6 Principles of Congestion Control: Queueing Costs, Retransmission Waste & Multi-Hop Collapse",
+            "shortTitle": "3.6 Principles of Congestion Control",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Analyzing Kurose & Ross's three congestion scenarios: infinite buffers with huge queueing delays, finite buffers with duplicate retransmissions, and upstream bandwidth wasted when packets drop downstream.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-tcp-congestion-aimd",
+            "title": "3.7 Classic TCP Congestion Control: Slow Start, AIMD Sawtooth, ssthresh & Congestion Avoidance",
+            "shortTitle": "3.7 Classic TCP Congestion Control",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Tracing cwnd evolution round-by-round: exponential Slow Start (doubling per RTT), linear Congestion Avoidance (+1 MSS per RTT), multiplicative decrease (ssthresh = cwnd/2) on 3 duplicate ACKs vs. cwnd=1 on timeout.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-tcp-cubic-bbr-ecn",
+            "title": "3.7B Modern Congestion Control: TCP CUBIC, Delay-Based BBR, ECN & TCP Fairness",
+            "shortTitle": "3.7B Modern Congestion Control",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Why Linux defaults to TCP CUBIC (cubic function around W_max), Google BBR's model of keeping the bottleneck pipe 'just full enough, but no fuller', Explicit Congestion Notification (ECN), and AIMD fairness.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch3-quic-transport-evolution",
+            "title": "3.8 Evolution of Transport-Layer Functionality: QUIC Architecture, Streams & Zero HOL Blocking",
+            "shortTitle": "3.8 Evolution of Transport-Layer Functionality",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Implementing modern transport in user space over UDP: combined 1-RTT TLS 1.3 + transport handshake, independent stream framing, and eliminating transport-layer Head-of-Line blocking.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-4",
+        "number": 4,
+        "title": "4. Chapter 4: The Network Layer — Data Plane (Routers, IPv4/IPv6, CIDR, DHCP, NAT & OpenFlow)",
+        "description": "Kurose & Ross 9th Edition — Chapter 4: The Network Layer — Data Plane (Routers, IPv4/IPv6, CIDR, DHCP, NAT & OpenFlow)",
+        "lessons": [
+          {
+            "id": "cn-ch4-data-vs-control-plane",
+            "title": "4.1 Network Layer Overview: Data Plane Forwarding vs. Control Plane Routing & Best-Effort Service",
+            "shortTitle": "4.1 Network Layer Overview",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Distinguishing local per-packet forwarding (nanoseconds in hardware) from network-wide routing (seconds in software), per-router vs. SDN control planes, and why the Internet's best-effort model succeeded.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-router-architecture-lpm",
+            "title": "4.2 Inside a Router: Input Port Functions, Destination-Based Forwarding & Longest Prefix Matching",
+            "shortTitle": "4.2 Inside a Router",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "High-speed router architecture: line termination, link-layer decapsulation, decentralized TCAM forwarding tables, and resolving overlapping prefix rules via Longest Prefix Matching (LPM).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-switching-fabrics-queuing",
+            "title": "4.2B Switching Fabrics (Memory, Bus, Crossbar), Input/Output Port Queuing & Buffer Sizing",
+            "shortTitle": "4.2B Switching Fabrics (Memory, Bus, Crossbar), ",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Moving packets across memory, shared bus, and Banyan/crossbar interconnection networks, Input Port Head-of-Line (HOL) blocking at 58.6% load, output buffer sizing (RTT*C / sqrt(N)), and Tail Drop vs. RED/ECN.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-packet-scheduling-net-neutrality",
+            "title": "4.2C Packet Scheduling Policies (FCFS, Priority, Round Robin, WFQ) & Network Neutrality",
+            "shortTitle": "4.2C Packet Scheduling Policies (FCFS, Priority,",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Deciding which queued packet transmits next: First-Come-First-Served, Strict Priority Queuing, Round Robin, Weighted Fair Queueing (WFQ), and the technical/legal debate over Net Neutrality.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-ipv4-datagram-subnets-cidr",
+            "title": "4.3 The Internet Protocol (IPv4): 20-Byte Datagram Header, Fragmentation, Subnets & CIDR",
+            "shortTitle": "4.3 The Internet Protocol (IPv4)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Anatomy of the IPv4 header (TTL, Protocol, Header Checksum), MTU fragmentation and reassembly, defining an IP subnet, and Classless Interdomain Routing (a.b.c.d/x) address masks.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-dhcp-hierarchical-routing",
+            "title": "4.3B Dynamic Host Configuration Protocol (DHCP DORA) & Hierarchical Route Aggregation",
+            "shortTitle": "4.3B Dynamic Host Configuration Protocol (DHCP D",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Plug-and-play IP assignment via the 4-step broadcast DHCP handshake (Discover, Offer, Request, ACK), learning default gateway and DNS server IPs, and ISP prefix route aggregation.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-nat-ipv6-transition",
+            "title": "4.3C Network Address Translation (NAT) & IPv6: 128-Bit Header, Dual-Stack Tunneling & Adoption",
+            "shortTitle": "4.3C Network Address Translation (NAT) & IPv6",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "How home routers multiplex private RFC 1918 subnets (10/8, 172.16/12, 192.168/16) behind a single public IPv4 via NAT translation tables, IPv6's streamlined 40-byte header, and IPv6-in-IPv4 tunneling.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch4-generalized-forwarding-openflow",
+            "title": "4.4–4.5 Generalized Forwarding (Match + Action), OpenFlow Flow Tables, Middleboxes & End-to-End Argument",
+            "shortTitle": "4.4–4.5 Generalized Forwarding (Match + Action),",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Unifying routers, switches, firewalls, and NATs under OpenFlow's Match-plus-Action abstraction, middleboxes in modern networks, the IP hourglass, and Saltzer/Reed/Clark's End-to-End Argument.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-5",
+        "number": 5,
+        "title": "5. Chapter 5: The Network Layer — Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP & NETCONF)",
+        "description": "Kurose & Ross 9th Edition — Chapter 5: The Network Layer — Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP & NETCONF)",
+        "lessons": [
+          {
+            "id": "cn-ch5-routing-protocols-dijkstra",
+            "title": "5.1–5.2 Control Plane & Link-State Routing: Graph Abstraction, Dijkstra's Algorithm & Oscillations",
+            "shortTitle": "5.1–5.2 Control Plane & Link-State Routing",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Centralized vs. decentralized routing classification, weighted graph network representation, step-by-step execution of Dijkstra's Link-State (LS) algorithm, O(n^2) complexity, and congestion-driven oscillations.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-distance-vector-bellman-ford",
+            "title": "5.2B Distance Vector Routing: Bellman-Ford Equation, Iterative Diffusion & Poisoned Reverse",
+            "shortTitle": "5.2B Distance Vector Routing",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Distributed asynchronous routing via Dx(y) = min_v {c(x,v) + Dv(y)}, neighbor distance vector exchanges, 'good news travels fast vs. bad news travels slowly' (count-to-infinity), and poisoned reverse.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-scalable-routing-ospf",
+            "title": "5.3 Scalable Intra-AS Routing: Autonomous Systems (AS), OSPF Link-State Flooding & Hierarchical OSPF",
+            "shortTitle": "5.3 Scalable Intra-AS Routing",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Why hundreds of millions of destinations require Autonomous Systems (ASes), Open Shortest Path First (OSPF) link-state advertisements over IP, equal-cost multipath (ECMP), and two-tier Backbone/Area OSPF.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-inter-as-routing-bgp",
+            "title": "5.4 Internet Inter-AS Routing (BGP): eBGP/iBGP, AS-PATH, NEXT-HOP, Hot Potato & Route Selection",
+            "shortTitle": "5.4 Internet Inter-AS Routing (BGP)",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Border Gateway Protocol (BGP) as the glue of the Internet: OPEN/UPDATE/KEEPALIVE/NOTIFICATION over TCP port 179, loop detection via AS-PATH, Hot Potato vs. Cold Potato routing, and valley-free ISP policy.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-sdn-control-plane",
+            "title": "5.5 Software-Defined Networking (SDN) Control Plane: Traffic Engineering, Controllers & OpenFlow",
+            "shortTitle": "5.5 Software-Defined Networking (SDN) Control Plane",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Why traditional per-router destination forwarding struggles with traffic engineering and load splitting, the 3 layers of an SDN controller (Northbound API, Network State, Southbound OpenFlow), and Packet_In / FlowMod.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-sdn-controllers-onos-orion",
+            "title": "5.5B Industrial SDN Control Planes: ONOS Distributed Core & Google Orion (Jupiter / B4)",
+            "shortTitle": "5.5B Industrial SDN Control Planes",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Case studies of production SDN at hyperscale: Open Network Operating System (ONOS) intent framework and Google's Orion SDN control plane managing Jupiter datacenter fabrics and B4 global WAN.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-icmp-traceroute",
+            "title": "5.6 ICMP (Internet Control Message Protocol): Error Signaling, Ping & How Traceroute Works",
+            "shortTitle": "5.6 ICMP (Internet Control Message Protocol)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Network-layer diagnostics carried inside IP datagrams: ICMP Type/Code pairs (Echo Request/Reply 8/0, Destination Unreachable 3, TTL Expired 11/0) and Traceroute's incrementing TTL UDP probes.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch5-network-mgmt-snmp-netconf-yang",
+            "title": "5.7 Network Management Architecture: CLI vs. SNMP/MIBs vs. Programmable NETCONF & YANG",
+            "shortTitle": "5.7 Network Management Architecture",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Evolution of network operations: fragile per-device CLI scripting, SNMPv3 polling/traps with SMI/MIB objects, and transactional network-wide configuration via NETCONF RPCs over SSH and YANG data models.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-6",
+        "number": 6,
+        "title": "6. Chapter 6: The Link Layer and LANs (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS & Data Centers)",
+        "description": "Kurose & Ross 9th Edition — Chapter 6: The Link Layer and LANs (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS & Data Centers)",
+        "lessons": [
+          {
+            "id": "cn-ch6-link-layer-crc",
+            "title": "6.1–6.2 Link Layer Services, NIC Hardware & Error Detection: Parity, Checksum & CRC Polynomials",
+            "shortTitle": "6.1–6.2 Link Layer Services, NIC Hardware & Error Detection",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Framing, link access, reliable delivery on wireless links, NIC controller hardware vs. CPU, 2D parity error correction, and modulo-2 polynomial division in Cyclic Redundancy Check (CRC-32).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-mac-protocols-aloha-csma",
+            "title": "6.3 Multiple Access Protocols: TDMA/FDMA, Slotted/Pure ALOHA, CSMA, CSMA/CD & DOCSIS Cable",
+            "shortTitle": "6.3 Multiple Access Protocols",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Sharing a broadcast channel: Channel Partitioning (TDMA/FDMA), Random Access efficiency (Slotted ALOHA 37% vs. Pure ALOHA 18%), CSMA/CD binary exponential backoff, Taking Turns, and DOCSIS.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-mac-addresses-arp",
+            "title": "6.4 LANs: 48-Bit MAC Addresses, Address Resolution Protocol (ARP) & Routing Frames Across Subnets",
+            "shortTitle": "6.4 LANs: 48-Bit MAC Addresses, Address Resoluti",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "IEEE 48-bit flat hardware MAC addresses vs. hierarchical IP addresses, broadcast ARP Queries (FF-FF-FF-FF-FF-FF) and cached unicast ARP Replies, and step-by-step MAC/IP header rewriting across a router.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-ethernet-frame-standards",
+            "title": "6.4B Ethernet (IEEE 802.3): Physical Topology, Frame Structure & 10G/100G/400G Standards",
+            "shortTitle": "6.4B Ethernet (IEEE 802.3)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Evolution from shared coaxial bus to switched star topology, the 6 fields of an IEEE 802.3 Ethernet frame (Preamble/SFD, Dst/Src MAC, Type, Data, CRC-32), and multi-gigabit fiber/copper physical layers.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-ethernet-switches-self-learning",
+            "title": "6.4C Link-Layer Switches: Frame Filtering/Forwarding, Self-Learning MAC Tables & Switches vs. Routers",
+            "shortTitle": "6.4C Link-Layer Switches",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "How plug-and-play full-duplex Ethernet switches eliminate collisions, build their MAC switch tables dynamically via source MAC learning, flood unknown unicasts, and compare against Layer-3 routers.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-vlans-8021q-evpn",
+            "title": "6.4D Virtual LANs (VLANs): Port-Based Isolation, Trunking, IEEE 802.1Q Tagging & EVPN/VXLAN",
+            "shortTitle": "6.4D Virtual LANs (VLANs)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Isolating broadcast domains on a single physical switch, interconnecting multi-switch VLANs via trunk ports, the 4-byte IEEE 802.1Q VLAN tag (TPID 0x8100 + 12-bit VID), and Layer-2 EVPN/VXLAN overlays.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-mpls-label-switching",
+            "title": "6.5 Link Virtualization & Multiprotocol Label Switching (MPLS): Label-Switched Routers & TE",
+            "shortTitle": "6.5 Link Virtualization & Multiprotocol Label Switching (MPLS)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Fixed-length label switching between Layer 2 and Layer 3 (20-bit label, 3-bit Exp, 1-bit S, 8-bit TTL), Label-Switched Routers (LSRs) forwarding without IP lookup, RSVP-TE signaling, and VPN traffic engineering.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-datacenter-networking",
+            "title": "6.6 Data Center Networking: Clos Topologies (ToR/Spine-Leaf), Multipath, RoCEv2 & Google Jupiter",
+            "shortTitle": "6.6 Data Center Networking",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Inside hyperscale cloud data centers: 10,000+ servers in racks under Top-of-Rack (ToR) switches, Rich Tier-1/Tier-2 Clos meshes providing massive bisection bandwidth, RDMA over Converged Ethernet (RoCEv2), and Orion SDN.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch6-day-in-life-web-request",
+            "title": "6.7 Synthesis — A Day in the Life of a Web Page Request (End-to-End Protocol Walkthrough)",
+            "shortTitle": "6.7 Synthesis — A Day in the Life of a Web Page ",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Putting Chapters 1–6 together: connecting a laptop to a school Ethernet LAN and tracing every single packet required to load www.google.com — DHCP, ARP, DNS, Intra-AS OSPF, Inter-AS BGP, TCP 3-way handshake, and HTTP.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-7",
+        "number": 7,
+        "title": "7. Chapter 7: Wireless and Mobile Networks (RF, MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Mobility, BT & Starlink)",
+        "description": "Kurose & Ross 9th Edition — Chapter 7: Wireless and Mobile Networks (RF, MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Mobility, BT & Starlink)",
+        "lessons": [
+          {
+            "id": "cn-ch7-wireless-rf-mimo",
+            "title": "7.1–7.2 Wireless Links, RF Propagation, SNR, Shannon Capacity, Path Loss, Hidden Terminals & MIMO",
+            "shortTitle": "7.1–7.2 Wireless Links, RF Propagation, SNR, Sha",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Electromagnetic wave physics, Signal-to-Noise Ratio (dB), Shannon's capacity theorem C = B*log2(1+SNR), free-space path loss (~(fd)^2), multipath fading, hidden terminals, and MIMO spatial diversity/multiplexing.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-phy-coding-modulation-qam",
+            "title": "7.2B Physical Layer Coding & Modulation: FEC Interleaving, ASK/PSK/QPSK, QAM Constellations & Adaptive MCS",
+            "shortTitle": "7.2B Physical Layer Coding & Modulation",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Forward Error Correction (FEC) with burst-error shuffling, modulating amplitude and phase, QPSK (2 bits/symbol), 16-QAM (4 bits/symbol), 64-QAM (6 bits/symbol) constellation diagrams, and SNR-adaptive modulation.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-ofdm-ofdma-csmaca",
+            "title": "7.3 Wireless MAC: FDM, OFDM Orthogonal Subcarriers, OFDMA Resource Blocks & 802.11 CSMA/CA (RTS/CTS)",
+            "shortTitle": "7.3 Wireless MAC",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Packing overlapping orthogonal subcarriers in OFDM, 2D time-frequency OFDMA Resource Blocks in 4G/5G and WiFi 6, why wireless cannot detect collisions while transmitting, and 802.11 CSMA/CA with RTS/CTS.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-wifi-80211-frame-architecture",
+            "title": "7.3B IEEE 802.11 WiFi Link Layer: AP-to-Router Frame Flow & 4-Address Frame Format (Addr1–Addr4)",
+            "shortTitle": "7.3B IEEE 802.11 WiFi Link Layer",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Why an 802.11 wireless frame needs up to 4 MAC addresses (Receiver MAC, Transmitter MAC, Router Interface MAC, WDS MAC), AP bridging between 802.11 and 802.3 Ethernet, and Frame Control fields.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-5g-ran-pipeline",
+            "title": "7.4 5G Cellular Architecture & Radio Access Network (RAN): Channels, PDCP/RLC/MAC Pipeline & Split/SD-RAN",
+            "shortTitle": "7.4 5G Cellular Architecture & Radio Access Network (RAN)",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "5G New Radio (NR) sub-6GHz and mmWave bands, physical/logical downlink and uplink channels, the 5G RAN protocol stack (PDCP encryption, RLC segmentation, MAC HARQ), RU/DU/CU Split RAN, and Software-Defined RAN.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-wireless-association-scheduling-power",
+            "title": "7.4B Joining the Wireless Edge, Channel-Aware MAC Scheduling (Max Throughput vs. BET) & Power Saving",
+            "shortTitle": "7.4B Joining the Wireless Edge, Channel-Aware MA",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Passive beacon scanning vs. active probing in 802.11 and 5G, CQI/QCI feedback, Max Throughput vs. Blind Equal Throughput (BET) proportional-fair scheduling, and coordinated sleep/wake cycles (DRX).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-5g-core-cups-tunnels",
+            "title": "7.4C 5G Core Network Architecture: AMF, SMF, UPF, UDM, Control/User-Plane Separation (CUPS) & GTP-U",
+            "shortTitle": "7.4C 5G Core Network Architecture",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Disaggregating the 5G Core into cloud-native microservices: Access and Mobility Management (AMF), Session Management (SMF), Unified Data Management (UDM), User Plane Function (UPF) GTP-U tunnels, and IMSI/SUPI.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-mobility-wifi-5g-handover",
+            "title": "7.5 Mobility Management: Spectrum of Mobility, WiFi BSS Roaming & 5G Base Station Handover",
+            "shortTitle": "7.5 Mobility Management",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Maintaining active TCP sessions while moving across cells: WiFi AP re-association with switch self-learning vs. the 7-step 5G handover timeline between Source BS, Target BS, AMF, SMF, and UPF tunnel switching.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch7-bluetooth-leo-starlink-iot",
+            "title": "7.6 Wireless Personal & Global Networks: Bluetooth FHSS/L2CAP, LEO Satellites (Starlink) & IoT",
+            "shortTitle": "7.6 Wireless Personal & Global Networks",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Short-range Bluetooth piconets (79-channel Frequency Hopping Spread Spectrum and L2CAP), Geostationary (GEO 36,000 km) vs. Low-Earth Orbit (LEO Starlink 550 km, Ku/Ka phased arrays, laser ISLs), and IoT protocols.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      },
+      {
+        "id": "cn-mod-8",
+        "number": 8,
+        "title": "8. Chapter 8: Network Security (Cryptography, RSA, Signatures/PKI, PGP, TLS 1.3, IPsec, WPA2/5G & Firewalls)",
+        "description": "Kurose & Ross 9th Edition — Chapter 8: Network Security (Cryptography, RSA, Signatures/PKI, PGP, TLS 1.3, IPsec, WPA2/5G & Firewalls)",
+        "lessons": [
+          {
+            "id": "cn-ch8-security-symmetric-crypto",
+            "title": "8.1–8.2 Network Security Threat Model (Alice, Bob, Trudy) & Symmetric Key Cryptography (DES & AES)",
+            "shortTitle": "8.1–8.2 Network Security Threat Model (Alice, Bo",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Confidentiality, message integrity, end-point authentication, and operational security; Trudy's passive eavesdropping vs. active tampering; substitution/permutation ciphers, DES 56-bit exhaustion, and AES (128/192/256-bit).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-public-key-rsa",
+            "title": "8.2B Public-Key Cryptography & RSA: Modular Arithmetic, Key Generation, Proofs & Session Keys",
+            "shortTitle": "8.2B Public-Key Cryptography & RSA",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Solving symmetric key distribution via public/private key pairs (K+, K-), step-by-step RSA prime selection (n=pq, z=(p-1)(q-1), ed mod z = 1), Euler/Fermat proof of RSA correctness, and hybrid AES session keys.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-authentication-signatures-ca",
+            "title": "8.3–8.4 Authentication Protocols (ap1.0–ap5.0), Hash Digests, Digital Signatures & Certification Authorities",
+            "shortTitle": "8.3–8.4 Authentication Protocols (ap1.0–ap5.0), ",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Why ap1.0–ap3.1 fail against spoofing and playback attacks, cryptographic nonces in ap4.0, man-in-the-middle attacks on ap5.0, SHA-256 message digests, signed hash digital signatures, and X.509 CAs + Diffie-Hellman.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-secure-email-pgp",
+            "title": "8.5 Securing Electronic Mail (PGP / S/MIME): Confidentiality, Sender Authentication & Integrity",
+            "shortTitle": "8.5 Securing Electronic Mail (PGP / S/MIME)",
+            "readTime": "8 dk",
+            "difficulty": "İleri",
+            "description": "Synthesizing cryptographic building blocks to secure email: signing H(m) with Alice's private key for integrity/non-repudiation, encrypting with a symmetric session key KS, and wrapping KS with Bob's public key.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-tls-13-handshake",
+            "title": "8.6 Transport-Layer Security (TLS): Key Derivation, Record MACs, TLS 1.3 Cipher Suites & 1-RTT Handshake",
+            "shortTitle": "8.6 Transport-Layer Security (TLS)",
+            "readTime": "10 dk",
+            "difficulty": "İleri",
+            "description": "Building Toy TLS from scratch: why TCP needs handshake encryption, deriving 4 directional session keys (KC, MC, KS, MS), sequence numbers against replay attacks, and TLS 1.3's streamlined 1-RTT / 0-RTT Diffie-Hellman handshake.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-ipsec-esp-ike",
+            "title": "8.7 Network-Layer Security (IPsec & VPNs): AH vs. ESP Tunnel Mode, Security Associations & IKE",
+            "shortTitle": "8.7 Network-Layer Security (IPsec & VPNs)",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Blanket network-layer confidentiality between routers/hosts: Authentication Header (AH) vs. Encapsulating Security Payload (ESP) tunnel mode, unidirectional Security Associations (SAs), SPD, and Internet Key Exchange (IKE).",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-wifi-wpa2-8021x-5g-sec",
+            "title": "8.8 Wireless & Mobile Security: WiFi WPA2-PSK 4-Way Handshake, 802.1X EAP-TTLS & 5G Mutual Auth",
+            "shortTitle": "8.8 Wireless & Mobile Security",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Securing the wireless edge: WPA2-Personal 4-way EAPOL handshake (deriving the Pairwise Transient Key from PMK + nonces), WPA2/WPA3-Enterprise 802.1X with EAP-TTLS and RADIUS, and 5G AMF/SEAF/AUSF/UDM authentication.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          },
+          {
+            "id": "cn-ch8-firewalls-ids",
+            "title": "8.9 Operational Security: Stateless vs. Stateful Firewalls, ACLs, Application Gateways & IDS/IPS",
+            "shortTitle": "8.9 Operational Security",
+            "readTime": "12 dk",
+            "difficulty": "İleri",
+            "description": "Defending enterprise network perimeters: Stateless packet-filtering Access Control Lists (SYN/ACK bit filtering), Stateful connection-tracking tables, Application Gateways, and Deep Packet Inspection in Snort IDS/IPS.",
+            "hasPlayground": true,
+            "category": "Embedded"
+          }
+        ]
+      }
+    ]
+  },
   // ========================================================
   // 1. DİJİTAL MANTIK & DONANIM TEMELLERİ (CHIPVERIFY DIGITAL FUNDAMENTALS)
   // ========================================================

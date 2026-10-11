@@ -143,6 +143,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
     startLessonUrl: "/tutorial/devops-intro",
     isAvailable: true,
   },
+  {
+    id: "computer-networking",
+    title: "Computer Networking: A Top-Down Approach (Kurose & Ross 9e)",
+    category: "Gömülü Sistemler",
+    iconName: "Server",
+    badge: "TCP/IP, QUIC, BGP, 5G & Security",
+    colorClass: "badge-primary",
+    description: "Complete 8-Chapter Kurose & Ross (9th Edition) Computer Networking track: Internet Architecture, Application Layer (HTTP/3, QUIC, DNS, SMTP, DASH/CDNs, Socket Programming), Transport Layer (UDP, rdt3.0, Go-Back-N, Selective Repeat, TCP 3-Way Handshake, AIMD, CUBIC, BBR), Network Data Plane (Routers, LPM, IPv4/IPv6, CIDR, DHCP, NAT, OpenFlow), Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP, NETCONF/YANG), Link Layer (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS, Data Centers), Wireless & 5G (MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Starlink), and Network Security (AES, RSA, PKI, TLS 1.3, IPsec, WPA2, Firewalls).",
+    lessonCount: 70,
+    level: "İleri",
+    topics: ["HTTP/3, QUIC, DNS & Sockets", "TCP, rdt3.0, AIMD, CUBIC & BBR", "IPv4/v6, CIDR, NAT, OSPF & BGP", "SDN OpenFlow, Ethernet, VLAN & MPLS", "802.11 WiFi, 5G RAN/Core & TLS 1.3"],
+    startLessonUrl: "/tutorial/cn-ch1-what-is-internet",
+    isAvailable: true,
+  },
 
   // 3. Donanım & FPGA
   {
