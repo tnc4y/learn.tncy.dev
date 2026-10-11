@@ -18,6 +18,7 @@ import { VERIFICATION_LESSONS } from "./verificationLessons";
 import { UPF_LESSONS } from "./upfLessons";
 import { GFG_AIML_LESSONS } from "./gfgAiMlLessons";
 import { LINUX_LESSONS } from "./linuxLessons";
+import { DEVOPS_LESSONS } from "./devopsLessons";
 
 export interface LessonContent {
   id: string;
@@ -55,6 +56,7 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...UPF_LESSONS,
   ...GFG_AIML_LESSONS,
   ...LINUX_LESSONS,
+  ...DEVOPS_LESSONS,
   ...EMBEDDED_C_LESSONS,
   ...MAKER_LESSONS,
   ...SYSTEMS_LESSONS,

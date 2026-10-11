@@ -5401,6 +5401,972 @@ export const COURSES: CourseTrack[] = [
 },
 
   // ========================================================
+  // DEVOPS, DOCKER, KUBERNETES & TERRAFORM (GFG)
+  // ========================================================
+  {
+  "id": "devops",
+  "title": "DevOps, Docker, Kubernetes, CI/CD & Terraform",
+  "shortTitle": "DevOps & K8s",
+  "category": "Gömülü Sistemler",
+  "icon": "Server",
+  "badge": "DevOps, Docker & K8s",
+  "color": "badge-info",
+  "description": "End-to-end DevOps & Cloud Native curriculum: Distributed System Design, Microservices, Git/GitHub SCM, YAML & Automation Scripting, Docker Containers, Kubernetes (K8s) Orchestration, Jenkins CI/CD Pipelines, Terraform IaC, and Prometheus & Grafana Observability.",
+  "modules": [
+    {
+      "id": "devops-fundamentals",
+      "number": 1,
+      "title": "1. DevOps Fundamentals, Lifecycle & DevSecOps",
+      "description": "Core DevOps culture, prerequisites, infinity lifecycle phases, automation trends, and shifting security left with DevSecOps.",
+      "lessons": [
+        {
+          "id": "devops-intro",
+          "title": "Introduction to DevOps",
+          "shortTitle": "Introduction to DevOps",
+          "readTime": "28 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Introduction to DevOps.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-prerequisites",
+          "title": "DevOps Prerequisites & Core Skills",
+          "shortTitle": "DevOps Prerequisites & Core...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for DevOps Prerequisites & Core Skills.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-lifecycle",
+          "title": "DevOps Lifecycle Phases Explained",
+          "shortTitle": "DevOps Lifecycle Phases Exp...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for DevOps Lifecycle Phases Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-evolution-trends",
+          "title": "Evolution of DevOps & Future Engineering Trends",
+          "shortTitle": "Evolution of DevOps & Futur...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Evolution of DevOps & Future Engineering Trends.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-devsecops",
+          "title": "What is DevSecOps: Security in CI/CD Pipelines",
+          "shortTitle": "What is DevSecOps: Security...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for What is DevSecOps: Security in CI/CD Pipelines.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-system-design",
+      "number": 2,
+      "title": "2. Cloud System Design & Microservices Architecture",
+      "description": "Monolithic vs Microservices architecture, event-driven systems, horizontal scalability, high availability, CAP theorem, load balancers, and reverse proxies.",
+      "lessons": [
+        {
+          "id": "devops-monolithic",
+          "title": "Monolithic Architecture in System Design",
+          "shortTitle": "Monolithic Architecture in ...",
+          "readTime": "28 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Monolithic Architecture in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-microservices",
+          "title": "Microservices Architecture & Service Decomposition",
+          "shortTitle": "Microservices Architecture ...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Microservices Architecture & Service Decomposition.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-event-driven",
+          "title": "Event-Driven Architecture (EDA)",
+          "shortTitle": "Event-Driven Architecture (...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Event-Driven Architecture (EDA).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-scalability",
+          "title": "Horizontal vs Vertical Scalability",
+          "shortTitle": "Horizontal vs Vertical Scal...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Horizontal vs Vertical Scalability.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-availability",
+          "title": "High Availability, SLA, SLO & Fault Tolerance",
+          "shortTitle": "High Availability, SLA, SLO...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for High Availability, SLA, SLO & Fault Tolerance.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-cap-theorem",
+          "title": "CAP Theorem in Distributed Systems",
+          "shortTitle": "CAP Theorem in Distributed ...",
+          "readTime": "28 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for CAP Theorem in Distributed Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-load-balancing",
+          "title": "Load Balancers & Traffic Distribution Algorithms",
+          "shortTitle": "Load Balancers & Traffic Di...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Load Balancers & Traffic Distribution Algorithms.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-proxy-reverse-proxy",
+          "title": "Forward Proxy vs Reverse Proxy Servers",
+          "shortTitle": "Forward Proxy vs Reverse Pr...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Forward Proxy vs Reverse Proxy Servers.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-networking",
+      "number": 3,
+      "title": "3. Networking Models, Routing & Firewalls for DevOps",
+      "description": "OSI 7-layer model, TCP/IP stack, switches/routers/gateways, Linux routing tables, SSH, network protocols, and firewall architectures.",
+      "lessons": [
+        {
+          "id": "devops-osi-model",
+          "title": "OSI Model: 7 Layers of Computer Networking",
+          "shortTitle": "OSI Model: 7 Layers of Comp...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for OSI Model: 7 Layers of Computer Networking.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-tcp-ip",
+          "title": "TCP/IP Protocol Suite & Packet Encapsulation",
+          "shortTitle": "TCP/IP Protocol Suite & Pac...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for TCP/IP Protocol Suite & Packet Encapsulation.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-net-devices",
+          "title": "Network Devices: Hub, Switch, Router & Gateway",
+          "shortTitle": "Network Devices: Hub, Switc...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Network Devices: Hub, Switch, Router & Gateway.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-net-interfaces",
+          "title": "Listing & Inspecting Network Interfaces in Linux",
+          "shortTitle": "Listing & Inspecting Networ...",
+          "readTime": "26 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Listing & Inspecting Network Interfaces in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-route-cmd",
+          "title": "Routing Tables & route Command in Linux",
+          "shortTitle": "Routing Tables & route Comm...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Routing Tables & route Command in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-ssh-cmd",
+          "title": "SSH Protocol & Remote Server Administration",
+          "shortTitle": "SSH Protocol & Remote Serve...",
+          "readTime": "26 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for SSH Protocol & Remote Server Administration.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-net-protocols",
+          "title": "Network Protocols (HTTP/HTTPS, TCP, UDP, DNS, ICMP)",
+          "shortTitle": "Network Protocols (HTTP/HTT...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Network Protocols (HTTP/HTTPS, TCP, UDP, DNS, ICMP).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-firewall-types",
+          "title": "Types of Network Firewalls (Packet Filtering, Stateful, WAF)",
+          "shortTitle": "Types of Network Firewalls ...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "DevOps and Cloud Native engineering guide for Types of Network Firewalls (Packet Filtering, Stateful, WAF).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-git-scm",
+      "number": 4,
+      "title": "4. Source Code Management with Git & GitHub",
+      "description": "Distributed version control internals, Git object model, branching workflows, merge vs rebase strategies, and GitHub collaboration.",
+      "lessons": [
+        {
+          "id": "devops-vcs-overview",
+          "title": "Version Control Systems (Centralized vs Distributed)",
+          "shortTitle": "Version Control Systems (Ce...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Version Control Systems (Centralized vs Distributed).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-intro",
+          "title": "Introduction and Configuration of Git",
+          "shortTitle": "Introduction and Configurat...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Introduction and Configuration of Git.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-internals",
+          "title": "How Git Works Under the Hood (Blobs, Trees, Commits)",
+          "shortTitle": "How Git Works Under the Hoo...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for How Git Works Under the Hood (Blobs, Trees, Commits).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-github-intro",
+          "title": "Introduction to GitHub & Remote Repositories",
+          "shortTitle": "Introduction to GitHub & Re...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Introduction to GitHub & Remote Repositories.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-concepts",
+          "title": "Useful Git Commands and Core Concepts",
+          "shortTitle": "Useful Git Commands and Cor...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Useful Git Commands and Core Concepts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-github-commands",
+          "title": "Essential Git & GitHub CLI Workflows",
+          "shortTitle": "Essential Git & GitHub CLI ...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Essential Git & GitHub CLI Workflows.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-branching",
+          "title": "Branching Strategies in Git (GitFlow, Trunk-Based)",
+          "shortTitle": "Branching Strategies in Git...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Branching Strategies in Git (GitFlow, Trunk-Based).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-merging",
+          "title": "Merge Strategies in Git (Fast-Forward, Recursive, Squash)",
+          "shortTitle": "Merge Strategies in Git (Fa...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Merge Strategies in Git (Fast-Forward, Recursive, Squash).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-git-examples",
+          "title": "Basic Git Commands with Practical Examples",
+          "shortTitle": "Basic Git Commands with Pra...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Basic Git Commands with Practical Examples.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-yaml-scripting",
+      "number": 5,
+      "title": "5. YAML Configuration & Automation Scripting",
+      "description": "YAML syntax for Kubernetes/Ansible/CI, shebang interpreters, conditional logic, loops, job scheduling, and automated backup scripts.",
+      "lessons": [
+        {
+          "id": "devops-yaml-intro",
+          "title": "YAML Syntax & Data Serialization for DevOps",
+          "shortTitle": "YAML Syntax & Data Serializ...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for YAML Syntax & Data Serialization for DevOps.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-shebang",
+          "title": "Using Shebang (#!) in Linux Automation Scripts",
+          "shortTitle": "Using Shebang (#!) in Linux...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Using Shebang (#!) in Linux Automation Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-shell-conditionals",
+          "title": "Conditional Statements (if/elif/else/case) in Shell Scripts",
+          "shortTitle": "Conditional Statements (if/...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Conditional Statements (if/elif/else/case) in Shell Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-shell-loops",
+          "title": "Looping Statements (for, while, until) in Shell Scripts",
+          "shortTitle": "Looping Statements (for, wh...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Looping Statements (for, while, until) in Shell Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-schedule-tasks",
+          "title": "Scheduling One-Time & Recurring Tasks in Linux (at & cron)",
+          "shortTitle": "Scheduling One-Time & Recur...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Scheduling One-Time & Recurring Tasks in Linux (at & cron).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-backup-script",
+          "title": "Automated System Backup Script with Versioning & Cleanup",
+          "shortTitle": "Automated System Backup Scr...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Automated System Backup Script with Versioning & Cleanup.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-docker",
+      "number": 6,
+      "title": "6. Containerization with Docker & Docker Compose",
+      "description": "Docker Engine architecture, Dockerfile instructions, image layers, multi-container Docker Compose, volumes, bridge/overlay networks, and registries.",
+      "lessons": [
+        {
+          "id": "devops-docker-intro",
+          "title": "Introduction to Docker & Containers vs VMs",
+          "shortTitle": "Introduction to Docker & Co...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Introduction to Docker & Containers vs VMs.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-arch",
+          "title": "Docker Architecture (Client, Daemon, containerd, Registry)",
+          "shortTitle": "Docker Architecture (Client...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Architecture (Client, Daemon, containerd, Registry).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-commands",
+          "title": "Docker Instruction & CLI Commands Reference",
+          "shortTitle": "Docker Instruction & CLI Co...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Instruction & CLI Commands Reference.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-dockerfile",
+          "title": "What is a Dockerfile & How to Build Custom Images",
+          "shortTitle": "What is a Dockerfile & How ...",
+          "readTime": "26 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for What is a Dockerfile & How to Build Custom Images.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-dockerfile-syntax",
+          "title": "Dockerfile Syntax & Multi-Stage Build Best Practices",
+          "shortTitle": "Dockerfile Syntax & Multi-S...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Dockerfile Syntax & Multi-Stage Build Best Practices.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-images",
+          "title": "Understanding Docker Images & Union File Systems",
+          "shortTitle": "Understanding Docker Images...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Understanding Docker Images & Union File Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-compose",
+          "title": "Docker Compose: Defining Multi-Container Applications",
+          "shortTitle": "Docker Compose: Defining Mu...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Compose: Defining Multi-Container Applications.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-volumes",
+          "title": "Docker Volumes & Persistent Container Storage",
+          "shortTitle": "Docker Volumes & Persistent...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Volumes & Persistent Container Storage.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-networking",
+          "title": "Basics of Docker Networking (Bridge, Host, Overlay)",
+          "shortTitle": "Basics of Docker Networking...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Basics of Docker Networking (Bridge, Host, Overlay).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-ports",
+          "title": "Docker Port Mapping & Container Exposure",
+          "shortTitle": "Docker Port Mapping & Conta...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Port Mapping & Container Exposure.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-docker-registry",
+          "title": "Docker Registry (Docker Hub & Private Registries)",
+          "shortTitle": "Docker Registry (Docker Hub...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "DevOps and Cloud Native engineering guide for Docker Registry (Docker Hub & Private Registries).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-kubernetes",
+      "number": 7,
+      "title": "7. Container Orchestration with Kubernetes (K8s)",
+      "description": "Kubernetes control plane & node architecture, Pods, Deployments, Services, Ingress, ConfigMaps, Secrets, Volumes, RBAC, and production best practices.",
+      "lessons": [
+        {
+          "id": "devops-k8s-intro",
+          "title": "Introduction to Kubernetes (K8s) Container Orchestration",
+          "shortTitle": "Introduction to Kubernetes ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Introduction to Kubernetes (K8s) Container Orchestration.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-arch",
+          "title": "Kubernetes Cluster Architecture (API Server, etcd, Kubelet)",
+          "shortTitle": "Kubernetes Cluster Architec...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Cluster Architecture (API Server, etcd, Kubelet).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-components",
+          "title": "Fundamental Kubernetes Components & Their Roles",
+          "shortTitle": "Fundamental Kubernetes Comp...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Fundamental Kubernetes Components & Their Roles.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-pods",
+          "title": "Kubernetes Pods: Lifecycle, Init Containers & Sidecars",
+          "shortTitle": "Kubernetes Pods: Lifecycle,...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Pods: Lifecycle, Init Containers & Sidecars.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-deployments",
+          "title": "Kubernetes Deployments & ReplicaSets",
+          "shortTitle": "Kubernetes Deployments & Re...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Deployments & ReplicaSets.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-strategies",
+          "title": "Kubernetes Deployment Strategies (Rolling, Recreate, Canary)",
+          "shortTitle": "Kubernetes Deployment Strat...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Deployment Strategies (Rolling, Recreate, Canary).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-services",
+          "title": "Kubernetes Services (ClusterIP, NodePort, LoadBalancer)",
+          "shortTitle": "Kubernetes Services (Cluste...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Services (ClusterIP, NodePort, LoadBalancer).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-ingress",
+          "title": "Kubernetes Ingress & Ingress Controllers",
+          "shortTitle": "Kubernetes Ingress & Ingres...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Ingress & Ingress Controllers.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-scheduling",
+          "title": "Pod Scheduling & Node Affinity in Kubernetes",
+          "shortTitle": "Pod Scheduling & Node Affin...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Pod Scheduling & Node Affinity in Kubernetes.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-taints",
+          "title": "Kubernetes Taints and Tolerations",
+          "shortTitle": "Kubernetes Taints and Toler...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Taints and Tolerations.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-namespaces",
+          "title": "Kubernetes Namespaces & Resource Isolation",
+          "shortTitle": "Kubernetes Namespaces & Res...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Namespaces & Resource Isolation.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-configmap",
+          "title": "Kubernetes ConfigMaps: Decoupling Configuration",
+          "shortTitle": "Kubernetes ConfigMaps: Deco...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes ConfigMaps: Decoupling Configuration.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-secrets",
+          "title": "Kubernetes Secrets: Managing Sensitive Credentials",
+          "shortTitle": "Kubernetes Secrets: Managin...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Secrets: Managing Sensitive Credentials.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-volumes",
+          "title": "Kubernetes Volumes, PV & PVC Storage",
+          "shortTitle": "Kubernetes Volumes, PV & PV...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Volumes, PV & PVC Storage.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-rbac",
+          "title": "Kubernetes Role-Based Access Control (RBAC)",
+          "shortTitle": "Kubernetes Role-Based Acces...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Kubernetes Role-Based Access Control (RBAC).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-kubectl",
+          "title": "kubectl Command Reference for Cluster Management",
+          "shortTitle": "kubectl Command Reference f...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for kubectl Command Reference for Cluster Management.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-k8s-best-practices",
+          "title": "Production DevOps Best Practices for Kubernetes",
+          "shortTitle": "Production DevOps Best Prac...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Production DevOps Best Practices for Kubernetes.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-cicd-jenkins",
+      "number": 8,
+      "title": "8. CI/CD Pipelines & Jenkins Automation",
+      "description": "Continuous Integration, Continuous Delivery/Deployment, deployment automation, Jenkins setup, plugins, and declarative Jenkinsfile pipelines.",
+      "lessons": [
+        {
+          "id": "devops-cicd-intro",
+          "title": "What is CI/CD (Continuous Integration & Continuous Delivery)?",
+          "shortTitle": "What is CI/CD (Continuous I...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for What is CI/CD (Continuous Integration & Continuous Delivery)?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-deployment-auto",
+          "title": "Understanding Deployment Automation",
+          "shortTitle": "Understanding Deployment Au...",
+          "readTime": "5 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Understanding Deployment Automation.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-jenkins-intro",
+          "title": "What is Jenkins? Architecture & Master-Agent Model",
+          "shortTitle": "What is Jenkins? Architectu...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for What is Jenkins? Architecture & Master-Agent Model.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-jenkins-install",
+          "title": "Installing and Configuring Jenkins on Ubuntu Linux",
+          "shortTitle": "Installing and Configuring ...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Installing and Configuring Jenkins on Ubuntu Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-jenkins-plugins",
+          "title": "Working with Jenkins Plugins & Integrations",
+          "shortTitle": "Working with Jenkins Plugin...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Working with Jenkins Plugins & Integrations.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-jenkins-pipeline",
+          "title": "How to Build a CI/CD Pipeline in Jenkins",
+          "shortTitle": "How to Build a CI/CD Pipeli...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for How to Build a CI/CD Pipeline in Jenkins.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-jenkinsfile",
+          "title": "Deploying an Application Using a Declarative Jenkinsfile",
+          "shortTitle": "Deploying an Application Us...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Deploying an Application Using a Declarative Jenkinsfile.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-iac-terraform",
+      "number": 9,
+      "title": "9. Infrastructure as Code (IaC): Terraform & CloudFormation",
+      "description": "Declarative infrastructure provisioning, HashiCorp Terraform HCL syntax, providers, resources, state, reusable modules, AWS EC2, and CloudFormation.",
+      "lessons": [
+        {
+          "id": "devops-iac-intro",
+          "title": "What is Infrastructure as Code (IaC)?",
+          "shortTitle": "What is Infrastructure as C...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for What is Infrastructure as Code (IaC)?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-terraform-intro",
+          "title": "Introduction to HashiCorp Terraform",
+          "shortTitle": "Introduction to HashiCorp T...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Introduction to HashiCorp Terraform.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-terraform-syntax",
+          "title": "Terraform HCL Syntax & Configuration Examples",
+          "shortTitle": "Terraform HCL Syntax & Conf...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Terraform HCL Syntax & Configuration Examples.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-terraform-resources",
+          "title": "Terraform Resources, Providers & State Lifecycle",
+          "shortTitle": "Terraform Resources, Provid...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Terraform Resources, Providers & State Lifecycle.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-terraform-modules",
+          "title": "Reusable Modules Block in Terraform",
+          "shortTitle": "Reusable Modules Block in T...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Reusable Modules Block in Terraform.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-terraform-ec2",
+          "title": "Provisioning AWS EC2 Infrastructure Using Terraform",
+          "shortTitle": "Provisioning AWS EC2 Infras...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Provisioning AWS EC2 Infrastructure Using Terraform.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-cloudformation",
+          "title": "AWS CloudFormation Templates & Stack Management",
+          "shortTitle": "AWS CloudFormation Template...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for AWS CloudFormation Templates & Stack Management.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "devops-observability-cloud",
+      "number": 10,
+      "title": "10. Observability, Prometheus, Grafana & Cloud Containers",
+      "description": "System monitoring pillars, Prometheus time-series scraping, exporters, Grafana K8s dashboards, Helm charts, and AWS ECS container orchestration.",
+      "lessons": [
+        {
+          "id": "devops-monitoring-types",
+          "title": "Types of Monitoring & Observability in System Design",
+          "shortTitle": "Types of Monitoring & Obser...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Types of Monitoring & Observability in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-prometheus-intro",
+          "title": "Prometheus Monitoring Architecture & PromQL",
+          "shortTitle": "Prometheus Monitoring Archi...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Prometheus Monitoring Architecture & PromQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-prometheus-scrape",
+          "title": "Configuring scrape_config in Prometheus",
+          "shortTitle": "Configuring scrape_config i...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Configuring scrape_config in Prometheus.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-prometheus-registry",
+          "title": "Prometheus Collector Registry & Metric Types",
+          "shortTitle": "Prometheus Collector Regist...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Prometheus Collector Registry & Metric Types.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-prometheus-blackbox",
+          "title": "Endpoint Probing with Prometheus Blackbox Exporter",
+          "shortTitle": "Endpoint Probing with Prome...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Endpoint Probing with Prometheus Blackbox Exporter.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-grafana-intro",
+          "title": "What is Grafana? Dashboards, Panels & Data Sources",
+          "shortTitle": "What is Grafana? Dashboards...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for What is Grafana? Dashboards, Panels & Data Sources.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-grafana-k8s",
+          "title": "Visualizing Kubernetes Cluster Metrics with Grafana",
+          "shortTitle": "Visualizing Kubernetes Clus...",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Visualizing Kubernetes Cluster Metrics with Grafana.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-helm-prom-grafana",
+          "title": "Deploying Prometheus & Grafana on K8s Using Helm",
+          "shortTitle": "Deploying Prometheus & Graf...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Deploying Prometheus & Grafana on K8s Using Helm.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "devops-aws-ecs",
+          "title": "Deploying & Managing Containers on AWS ECS",
+          "shortTitle": "Deploying & Managing Contai...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "DevOps and Cloud Native engineering guide for Deploying & Managing Containers on AWS ECS.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // AI, MACHINE LEARNING & DATA SCIENCE (GFG)
   // ========================================================
   {

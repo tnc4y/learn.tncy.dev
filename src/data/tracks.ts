@@ -129,6 +129,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
     startLessonUrl: "/tutorial/linux-intro",
     isAvailable: true,
   },
+  {
+    id: "devops",
+    title: "DevOps, Docker, Kubernetes, CI/CD & Terraform",
+    category: "Gömülü Sistemler",
+    iconName: "Server",
+    badge: "DevOps, Docker & K8s",
+    colorClass: "badge-info",
+    description: "End-to-end DevOps & Cloud Native curriculum: Distributed System Design, Microservices, Git/GitHub SCM, YAML & Automation Scripting, Docker Containers, Kubernetes (K8s) Orchestration, Jenkins CI/CD Pipelines, Terraform IaC, and Prometheus & Grafana Observability.",
+    lessonCount: 87,
+    level: "İleri",
+    topics: ["Docker & Docker Compose", "Kubernetes (K8s) & Helm", "Jenkins CI/CD Pipelines", "Terraform IaC & AWS", "Prometheus & Grafana"],
+    startLessonUrl: "/tutorial/devops-intro",
+    isAvailable: true,
+  },
 
   // 3. Donanım & FPGA
   {
