@@ -4257,6 +4257,1150 @@ export const COURSES: CourseTrack[] = [
   },
 
   // ========================================================
+  // LINUX SYSTEM ADMINISTRATION & BASH SCRIPTING (GFG)
+  // ========================================================
+  {
+  "id": "linux",
+  "title": "Linux System Administration & Bash Scripting",
+  "shortTitle": "Linux & Bash",
+  "category": "Gömülü Sistemler",
+  "icon": "Terminal",
+  "badge": "Linux, CLI & Bash",
+  "color": "badge-accent",
+  "description": "Comprehensive Linux Operating System & Shell Scripting curriculum: Kernel Architecture, File Hierarchy (FHS), CLI Commands, Permissions (chmod/chown), Package Managers, User/Group Management, Networking & Firewalls (iptables/UFW), Process Management, systemd, and Bash Scripting.",
+  "modules": [
+    {
+      "id": "linux-basics",
+      "number": 1,
+      "title": "1. Understanding Linux Basics & Architecture",
+      "description": "Introduction to the Linux operating system, kernel architecture, distributions, virtual machine setup, and Unix vs Linux.",
+      "lessons": [
+        {
+          "id": "linux-intro",
+          "title": "Introduction to Linux Operating System",
+          "shortTitle": "Introduction to Linux Opera...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Introduction to Linux Operating System.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-install-vm",
+          "title": "Installing Linux Using a Virtual Machine",
+          "shortTitle": "Installing Linux Using a Vi...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Installing Linux Using a Virtual Machine.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-distributions",
+          "title": "Linux Distributions (Distros) Explained",
+          "shortTitle": "Linux Distributions (Distro...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Linux Distributions (Distros) Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-architecture",
+          "title": "Architecture of Linux Operating System",
+          "shortTitle": "Architecture of Linux Opera...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Architecture of Linux Operating System.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-vs-unix",
+          "title": "Difference Between Linux and UNIX",
+          "shortTitle": "Difference Between Linux an...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Difference Between Linux and UNIX.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-filesystem",
+      "number": 2,
+      "title": "2. Linux File System & Directory Hierarchy",
+      "description": "File system types (ext4, XFS, Btrfs), Filesystem Hierarchy Standard (FHS), directory structure, navigation, and pathnames.",
+      "lessons": [
+        {
+          "id": "linux-file-system",
+          "title": "Linux File System Internals",
+          "shortTitle": "Linux File System Internals",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Linux File System Internals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-fhs",
+          "title": "Linux File Hierarchy Structure (FHS)",
+          "shortTitle": "Linux File Hierarchy Struct...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Linux File Hierarchy Structure (FHS).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-directory-structure",
+          "title": "Linux Directory Structure Explained",
+          "shortTitle": "Linux Directory Structure E...",
+          "readTime": "18 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Linux Directory Structure Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-fs-navigation",
+          "title": "File System Navigation Commands (pwd, cd, ls)",
+          "shortTitle": "File System Navigation Comm...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for File System Navigation Commands (pwd, cd, ls).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-pathnames",
+          "title": "Absolute and Relative Pathnames in Linux/UNIX",
+          "shortTitle": "Absolute and Relative Pathn...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Absolute and Relative Pathnames in Linux/UNIX.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-commands-permissions",
+      "number": 3,
+      "title": "3. Essential Commands, File Management & Permissions",
+      "description": "Core CLI commands, file & directory manipulation, rwx permission bits, octal notation, chmod, and chown.",
+      "lessons": [
+        {
+          "id": "linux-basic-commands",
+          "title": "Basic Linux Commands for Beginners",
+          "shortTitle": "Basic Linux Commands for Be...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Basic Linux Commands for Beginners.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-complete-commands",
+          "title": "Complete Linux Commands Reference",
+          "shortTitle": "Complete Linux Commands Ref...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Complete Linux Commands Reference.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-file-management",
+          "title": "File Management in Linux",
+          "shortTitle": "File Management in Linux",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for File Management in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-directory-management",
+          "title": "Directory Management in Linux (mkdir, rmdir, cp, mv)",
+          "shortTitle": "Directory Management in Lin...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Directory Management in Linux (mkdir, rmdir, cp, mv).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-permissions",
+          "title": "Permissions in Linux (rwx, User, Group, Others)",
+          "shortTitle": "Permissions in Linux (rwx, ...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for Permissions in Linux (rwx, User, Group, Others).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-chmod",
+          "title": "chmod Command in Linux with Examples",
+          "shortTitle": "chmod Command in Linux with...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for chmod Command in Linux with Examples.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-chown",
+          "title": "chown Command: Changing Ownership in Linux",
+          "shortTitle": "chown Command: Changing Own...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Linux CLI and system administration guide for chown Command: Changing Ownership in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-archiving",
+      "number": 4,
+      "title": "4. Archiving & Compression Tools",
+      "description": "Creating, compressing, and extracting archives using tar, gzip, gunzip, zip/unzip, bzip2, and xz.",
+      "lessons": [
+        {
+          "id": "linux-tar",
+          "title": "tar Command: Creating and Extracting Archives",
+          "shortTitle": "tar Command: Creating and E...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for tar Command: Creating and Extracting Archives.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-gzip",
+          "title": "gzip Command: Compressing Files in Linux",
+          "shortTitle": "gzip Command: Compressing F...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for gzip Command: Compressing Files in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-gunzip",
+          "title": "gunzip Command: Decompressing .gz Archives",
+          "shortTitle": "gunzip Command: Decompressi...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for gunzip Command: Decompressing .gz Archives.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-zip-unzip",
+          "title": "zip and unzip Commands in Linux",
+          "shortTitle": "zip and unzip Commands in L...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for zip and unzip Commands in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bzip2",
+          "title": "bzip2 High-Compression Archiving Tool",
+          "shortTitle": "bzip2 High-Compression Arch...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for bzip2 High-Compression Archiving Tool.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-xz",
+          "title": "xz Lossless Data Compression Tool",
+          "shortTitle": "xz Lossless Data Compressio...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for xz Lossless Data Compression Tool.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-package-management",
+      "number": 5,
+      "title": "5. Package Management (APT, DPKG, DNF, YUM)",
+      "description": "Installing, updating, and managing software packages across Debian/Ubuntu and RHEL/Fedora/CentOS ecosystems.",
+      "lessons": [
+        {
+          "id": "linux-pkg-overview",
+          "title": "Understanding Package Managers & Repositories",
+          "shortTitle": "Understanding Package Manag...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Understanding Package Managers & Repositories.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-apt-get",
+          "title": "apt-get & apt Package Manager (Debian/Ubuntu)",
+          "shortTitle": "apt-get & apt Package Manag...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for apt-get & apt Package Manager (Debian/Ubuntu).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-dpkg",
+          "title": "dpkg: Low-Level Debian Package Manager",
+          "shortTitle": "dpkg: Low-Level Debian Pack...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for dpkg: Low-Level Debian Package Manager.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-dnf",
+          "title": "dnf Package Manager (Fedora & RHEL 8+)",
+          "shortTitle": "dnf Package Manager (Fedora...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for dnf Package Manager (Fedora & RHEL 8+).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-yum",
+          "title": "yum Package Manager (CentOS & RHEL)",
+          "shortTitle": "yum Package Manager (CentOS...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for yum Package Manager (CentOS & RHEL).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-users-groups",
+      "number": 6,
+      "title": "6. User, Group & Privilege Management (sudo)",
+      "description": "Managing multi-user accounts, /etc/passwd, /etc/shadow, useradd, userdel, passwd, groups, and sudo privileges.",
+      "lessons": [
+        {
+          "id": "linux-user-mgmt",
+          "title": "User Management in Linux (/etc/passwd & /etc/shadow)",
+          "shortTitle": "User Management in Linux (/...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for User Management in Linux (/etc/passwd & /etc/shadow).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-useradd",
+          "title": "useradd Command: Creating Users in Linux",
+          "shortTitle": "useradd Command: Creating U...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for useradd Command: Creating Users in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-adduser",
+          "title": "adduser Command: Interactive User Creation",
+          "shortTitle": "adduser Command: Interactiv...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for adduser Command: Interactive User Creation.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-userdel",
+          "title": "userdel Command: Deleting User Accounts",
+          "shortTitle": "userdel Command: Deleting U...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for userdel Command: Deleting User Accounts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-passwd",
+          "title": "passwd Command: Managing User Passwords",
+          "shortTitle": "passwd Command: Managing Us...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for passwd Command: Managing User Passwords.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-id-cmd",
+          "title": "id Command: Viewing UID, GID & User Identity",
+          "shortTitle": "id Command: Viewing UID, GI...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for id Command: Viewing UID, GID & User Identity.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-group-mgmt",
+          "title": "Group Management in Linux (/etc/group)",
+          "shortTitle": "Group Management in Linux (...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Group Management in Linux (/etc/group).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-groups-cmd",
+          "title": "groups Command: Checking Group Memberships",
+          "shortTitle": "groups Command: Checking Gr...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for groups Command: Checking Group Memberships.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-groupadd",
+          "title": "groupadd Command: Creating User Groups",
+          "shortTitle": "groupadd Command: Creating ...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for groupadd Command: Creating User Groups.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-groupdel",
+          "title": "groupdel Command: Removing Groups",
+          "shortTitle": "groupdel Command: Removing ...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for groupdel Command: Removing Groups.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-check-groups",
+          "title": "How to Check All Groups a User Belongs To",
+          "shortTitle": "How to Check All Groups a U...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for How to Check All Groups a User Belongs To.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-sudo",
+          "title": "sudo Command & /etc/sudoers Administrative Access",
+          "shortTitle": "sudo Command & /etc/sudoers...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for sudo Command & /etc/sudoers Administrative Access.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-networking-firewall",
+      "number": 7,
+      "title": "7. Linux Networking, Sockets & Firewalls (iptables/UFW)",
+      "description": "Network interfaces (ip, ifconfig, nmcli), routing, diagnostics (ping, netstat, ss, traceroute), DNS/DHCP, and Linux firewalls.",
+      "lessons": [
+        {
+          "id": "linux-ifconfig",
+          "title": "ifconfig Command: Configuring Network Interfaces",
+          "shortTitle": "ifconfig Command: Configuri...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for ifconfig Command: Configuring Network Interfaces.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-ip-cmd",
+          "title": "ip Command: Managing IP Addresses, Routes & Links",
+          "shortTitle": "ip Command: Managing IP Add...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for ip Command: Managing IP Addresses, Routes & Links.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-nmcli",
+          "title": "nmcli Command: NetworkManager CLI Control",
+          "shortTitle": "nmcli Command: NetworkManag...",
+          "readTime": "26 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for nmcli Command: NetworkManager CLI Control.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-ping",
+          "title": "ping Command: Testing Network Connectivity",
+          "shortTitle": "ping Command: Testing Netwo...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for ping Command: Testing Network Connectivity.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-netstat",
+          "title": "netstat Command: Monitoring Network Connections",
+          "shortTitle": "netstat Command: Monitoring...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for netstat Command: Monitoring Network Connections.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-ss-cmd",
+          "title": "ss Command: Inspecting Socket Statistics",
+          "shortTitle": "ss Command: Inspecting Sock...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for ss Command: Inspecting Socket Statistics.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-traceroute",
+          "title": "traceroute Command: Tracing Packet Routes",
+          "shortTitle": "traceroute Command: Tracing...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for traceroute Command: Tracing Packet Routes.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-dhcp",
+          "title": "Dynamic Host Configuration Protocol (DHCP)",
+          "shortTitle": "Dynamic Host Configuration ...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Dynamic Host Configuration Protocol (DHCP).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-dns",
+          "title": "Domain Name System (DNS) Resolution",
+          "shortTitle": "Domain Name System (DNS) Re...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Domain Name System (DNS) Resolution.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-ftp",
+          "title": "File Transfer Protocol (FTP) in Linux",
+          "shortTitle": "File Transfer Protocol (FTP...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for File Transfer Protocol (FTP) in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-firewall-intro",
+          "title": "Linux Firewall Architecture (Netfilter)",
+          "shortTitle": "Linux Firewall Architecture...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Linux Firewall Architecture (Netfilter).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-ufw-iptables",
+          "title": "Setting Up Firewalls with UFW and iptables",
+          "shortTitle": "Setting Up Firewalls with U...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Setting Up Firewalls with UFW and iptables.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-iptables-cmd",
+          "title": "iptables Command: Chains, Tables & Packet Rules",
+          "shortTitle": "iptables Command: Chains, T...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for iptables Command: Chains, Tables & Packet Rules.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-firewall-setup",
+          "title": "Managing Firewall Configuration in Linux",
+          "shortTitle": "Managing Firewall Configura...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Managing Firewall Configuration in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-centos-net",
+          "title": "Configuring Network Interfaces in CentOS/RHEL",
+          "shortTitle": "Configuring Network Interfa...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Configuring Network Interfaces in CentOS/RHEL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-net-troubleshooting",
+          "title": "Network Configuration & Troubleshooting Commands",
+          "shortTitle": "Network Configuration & Tro...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Linux CLI and system administration guide for Network Configuration & Troubleshooting Commands.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-process-management",
+      "number": 8,
+      "title": "8. Process Management, Signals & Job Scheduling",
+      "description": "Inspecting processes (ps, top, htop), sending POSIX signals (kill), CPU scheduling priority (nice/renice), and background jobs (bg/fg).",
+      "lessons": [
+        {
+          "id": "linux-ps-cmd",
+          "title": "ps Command: Viewing Running Processes",
+          "shortTitle": "ps Command: Viewing Running...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for ps Command: Viewing Running Processes.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-top-cmd",
+          "title": "top Command: Real-Time Process Monitoring",
+          "shortTitle": "top Command: Real-Time Proc...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for top Command: Real-Time Process Monitoring.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-htop-cmd",
+          "title": "htop Command: Interactive Process Viewer",
+          "shortTitle": "htop Command: Interactive P...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for htop Command: Interactive Process Viewer.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-kill-cmd",
+          "title": "kill Command & POSIX Signals (SIGTERM, SIGKILL)",
+          "shortTitle": "kill Command & POSIX Signal...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for kill Command & POSIX Signals (SIGTERM, SIGKILL).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-nice-renice",
+          "title": "nice and renice: Controlling Process Priority",
+          "shortTitle": "nice and renice: Controllin...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for nice and renice: Controlling Process Priority.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bg-cmd",
+          "title": "bg Command: Running Jobs in Background",
+          "shortTitle": "bg Command: Running Jobs in...",
+          "readTime": "10 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for bg Command: Running Jobs in Background.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-fg-cmd",
+          "title": "fg Command: Bringing Jobs to Foreground",
+          "shortTitle": "fg Command: Bringing Jobs t...",
+          "readTime": "10 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for fg Command: Bringing Jobs to Foreground.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-du-cmd",
+          "title": "du Command: Monitoring Directory Disk Usage",
+          "shortTitle": "du Command: Monitoring Dire...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for du Command: Monitoring Directory Disk Usage.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-systemd-monitoring",
+      "number": 9,
+      "title": "9. System Services (systemd) & Performance Monitoring",
+      "description": "Linux boot sequence, systemd unit files, systemctl, journalctl logs, disk/memory/CPU telemetry (df, free, lscpu, iostat, lsof).",
+      "lessons": [
+        {
+          "id": "linux-systemd-intro",
+          "title": "systemd Architecture and Components",
+          "shortTitle": "systemd Architecture and Co...",
+          "readTime": "10 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for systemd Architecture and Components.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-boot-process",
+          "title": "Linux Boot Process with systemd (BIOS/UEFI to Target)",
+          "shortTitle": "Linux Boot Process with sys...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Linux Boot Process with systemd (BIOS/UEFI to Target).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-systemd-remote",
+          "title": "Controlling systemd Services on Remote Servers",
+          "shortTitle": "Controlling systemd Service...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Controlling systemd Services on Remote Servers.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-systemctl",
+          "title": "systemctl Command: Managing Daemons & Units",
+          "shortTitle": "systemctl Command: Managing...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for systemctl Command: Managing Daemons & Units.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-journalctl",
+          "title": "journalctl Command: Querying systemd Logs",
+          "shortTitle": "journalctl Command: Queryin...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for journalctl Command: Querying systemd Logs.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-df-cmd",
+          "title": "df Command: Checking Filesystem Disk Space",
+          "shortTitle": "df Command: Checking Filesy...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for df Command: Checking Filesystem Disk Space.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-free-cmd",
+          "title": "free Command: Monitoring RAM & Swap Memory",
+          "shortTitle": "free Command: Monitoring RA...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for free Command: Monitoring RAM & Swap Memory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-lscpu",
+          "title": "lscpu Command: Viewing CPU Architecture & Cores",
+          "shortTitle": "lscpu Command: Viewing CPU ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for lscpu Command: Viewing CPU Architecture & Cores.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-uptime",
+          "title": "uptime Command: System Load Averages Explained",
+          "shortTitle": "uptime Command: System Load...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for uptime Command: System Load Averages Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-iostat",
+          "title": "iostat Command: Monitoring CPU and Disk I/O",
+          "shortTitle": "iostat Command: Monitoring ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for iostat Command: Monitoring CPU and Disk I/O.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-lsof",
+          "title": "lsof Command: Listing Open Files & Network Descriptors",
+          "shortTitle": "lsof Command: Listing Open ...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for lsof Command: Listing Open Files & Network Descriptors.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-sys-monitoring",
+          "title": "Linux System Monitoring Commands & Tools Overview",
+          "shortTitle": "Linux System Monitoring Com...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Linux System Monitoring Commands & Tools Overview.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-shell-scripting",
+      "number": 10,
+      "title": "10. Shell & Bash Scripting Mastery",
+      "description": "Linux Kernel vs Shell, Bash scripting syntax, variables, exit codes, I/O redirection, functions, operators, and building a custom shell in C.",
+      "lessons": [
+        {
+          "id": "linux-shell-intro",
+          "title": "Introduction to Linux Shell and Shell Scripting",
+          "shortTitle": "Introduction to Linux Shell...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Introduction to Linux Shell and Shell Scripting.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-kernel",
+          "title": "The Linux Kernel: Subsystems & System Calls",
+          "shortTitle": "The Linux Kernel: Subsystem...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for The Linux Kernel: Subsystems & System Calls.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-different-shells",
+          "title": "Different Shells in Linux (bash, zsh, fish, ksh, sh)",
+          "shortTitle": "Different Shells in Linux (...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Different Shells in Linux (bash, zsh, fish, ksh, sh).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-shell-vs-kernel",
+          "title": "Difference Between Shell and Kernel",
+          "shortTitle": "Difference Between Shell an...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Difference Between Shell and Kernel.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-terminal-console",
+          "title": "Terminal vs Console vs Shell vs Kernel",
+          "shortTitle": "Terminal vs Console vs Shel...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Terminal vs Console vs Shell vs Kernel.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-create-script",
+          "title": "How to Create and Execute a Shell Script",
+          "shortTitle": "How to Create and Execute a...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for How to Create and Execute a Shell Script.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-script-comments",
+          "title": "Single-Line and Multi-Line Comments in Shell Scripts",
+          "shortTitle": "Single-Line and Multi-Line ...",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Single-Line and Multi-Line Comments in Shell Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-script-messages",
+          "title": "Displaying and Broadcasting Messages in Shell Scripts",
+          "shortTitle": "Displaying and Broadcasting...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Displaying and Broadcasting Messages in Shell Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-save-output",
+          "title": "Redirecting & Saving Command Output to Files (> , >> , tee)",
+          "shortTitle": "Redirecting & Saving Comman...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Redirecting & Saving Command Output to Files (> , >> , tee).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-exit-codes",
+          "title": "Exit Codes ($?) and Error Handling in Bash Scripts",
+          "shortTitle": "Exit Codes ($?) and Error H...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Exit Codes ($?) and Error Handling in Bash Scripts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-shell-variables",
+          "title": "Shell Variables (Environment vs Local Variables)",
+          "shortTitle": "Shell Variables (Environmen...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Shell Variables (Environment vs Local Variables).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-variable-rules",
+          "title": "Rules for Naming and Defining Variables in Shell",
+          "shortTitle": "Rules for Naming and Defini...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Rules for Naming and Defining Variables in Shell.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bash-intro",
+          "title": "Bash Scripting Fundamentals",
+          "shortTitle": "Bash Scripting Fundamentals",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Bash Scripting Fundamentals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bash-variables",
+          "title": "Defining Bash Variables and Data Types",
+          "shortTitle": "Defining Bash Variables and...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Defining Bash Variables and Data Types.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bash-working",
+          "title": "How Bash Scripting Works Under the Hood",
+          "shortTitle": "How Bash Scripting Works Un...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for How Bash Scripting Works Under the Hood.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-run-bash",
+          "title": "Different Ways to Run a Bash Script in Linux",
+          "shortTitle": "Different Ways to Run a Bas...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Different Ways to Run a Bash Script in Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-bash-functions",
+          "title": "Functions, Arguments & Return Values in Bash",
+          "shortTitle": "Functions, Arguments & Retu...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Functions, Arguments & Return Values in Bash.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-sh-vs-bash",
+          "title": "Difference Between sh (Bourne Shell) and Bash",
+          "shortTitle": "Difference Between sh (Bour...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Difference Between sh (Bourne Shell) and Bash.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-shell-operators",
+          "title": "Arithmetic, Relational, Boolean & File Test Operators",
+          "shortTitle": "Arithmetic, Relational, Boo...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Arithmetic, Relational, Boolean & File Test Operators.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-custom-shell-c",
+          "title": "Making Your Own Linux Shell in C (fork, execvp, wait)",
+          "shortTitle": "Making Your Own Linux Shell...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Making Your Own Linux Shell in C (fork, execvp, wait).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-script-examples",
+          "title": "Practical Linux Shell Script Examples",
+          "shortTitle": "Practical Linux Shell Scrip...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Practical Linux Shell Script Examples.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "linux-sysadmin-cloud",
+      "number": 11,
+      "title": "11. System Administration, SSH, Nginx & Cloud DevOps",
+      "description": "Configuring OpenSSH, SCP file transfers, compiling Nginx from source, and managing Linux servers in Cloud & DevOps environments.",
+      "lessons": [
+        {
+          "id": "linux-enable-ssh",
+          "title": "Enabling and Hardening OpenSSH on Ubuntu/Linux",
+          "shortTitle": "Enabling and Hardening Open...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Enabling and Hardening OpenSSH on Ubuntu/Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-scp-cmd",
+          "title": "scp Command: Secure File & Directory Transfer over SSH",
+          "shortTitle": "scp Command: Secure File & ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for scp Command: Secure File & Directory Transfer over SSH.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-nginx-source",
+          "title": "Installing and Configuring Nginx from Source on Linux",
+          "shortTitle": "Installing and Configuring ...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Installing and Configuring Nginx from Source on Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-install-jdk",
+          "title": "Installing Java Development Kit (JDK) on Linux",
+          "shortTitle": "Installing Java Development...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Installing Java Development Kit (JDK) on Linux.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-cloud-devops",
+          "title": "Role of Linux in Cloud Computing and DevOps",
+          "shortTitle": "Role of Linux in Cloud Comp...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Role of Linux in Cloud Computing and DevOps.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-devops-commands",
+          "title": "Essential Linux Commands for DevOps Engineers",
+          "shortTitle": "Essential Linux Commands fo...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Essential Linux Commands for DevOps Engineers.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linux-cloud-deploy",
+          "title": "Deploying and Managing Linux Instances in the Cloud",
+          "shortTitle": "Deploying and Managing Linu...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "Linux CLI and system administration guide for Deploying and Managing Linux Instances in the Cloud.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // AI, MACHINE LEARNING & DATA SCIENCE (GFG)
   // ========================================================
   {

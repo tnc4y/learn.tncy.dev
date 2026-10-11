@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 210">
+  <rect width="800" height="210" rx="16" fill="#0f172a"/>
+  <text x="400" y="34" text-anchor="middle" fill="#fbbf24" font-family="monospace" font-size="16" font-weight="bold">LINUX POSIX PERMISSION BITS &amp; OCTAL NOTATION (chmod 755)</text>
+  <g transform="translate(50,60)" font-family="monospace">
+    <rect x="0" y="0" width="110" height="115" rx="10" fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+    <text x="55" y="35" text-anchor="middle" fill="#e2e8f0" font-size="20" font-weight="bold">-</text>
+    <text x="55" y="68" text-anchor="middle" fill="#94a3b8" font-size="12">File Type</text>
+    <text x="55" y="92" text-anchor="middle" fill="#38bdf8" font-size="11">- file | d dir</text>
+
+    <rect x="135" y="0" width="175" height="115" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="222" y="35" text-anchor="middle" fill="#34d399" font-size="20" font-weight="bold">r w x (7)</text>
+    <text x="222" y="68" text-anchor="middle" fill="#e2e8f0" font-size="12">User / Owner (u)</text>
+    <text x="222" y="92" text-anchor="middle" fill="#94a3b8" font-size="11">4 + 2 + 1 = 7</text>
+
+    <rect x="335" y="0" width="175" height="115" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="422" y="35" text-anchor="middle" fill="#38bdf8" font-size="20" font-weight="bold">r - x (5)</text>
+    <text x="422" y="68" text-anchor="middle" fill="#e2e8f0" font-size="12">Group (g)</text>
+    <text x="422" y="92" text-anchor="middle" fill="#94a3b8" font-size="11">4 + 0 + 1 = 5</text>
+
+    <rect x="535" y="0" width="165" height="115" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="617" y="35" text-anchor="middle" fill="#fbbf24" font-size="20" font-weight="bold">r - x (5)</text>
+    <text x="617" y="68" text-anchor="middle" fill="#e2e8f0" font-size="12">Others (o)</text>
+    <text x="617" y="92" text-anchor="middle" fill="#94a3b8" font-size="11">4 + 0 + 1 = 5</text>
+  </g>
+</svg>

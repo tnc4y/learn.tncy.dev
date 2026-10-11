@@ -374,8 +374,7 @@ export default async function LessonPage({
   const fallback = getDynamicFallbackTemplate(course.id, lesson.title);
   const isHardwareCourse = course.category === "Donanım & FPGA";
   const isWebCourse = course.category === "Web Geliştirme";
-  const isProgrammingCourse =
-    course.category === "Programlama Dilleri" || course.id === "ai-ml";
+  const isProgrammingCourse = !isHardwareCourse && !isWebCourse;
 
   return (
     <div className="flex-1 flex max-w-7xl w-full mx-auto">

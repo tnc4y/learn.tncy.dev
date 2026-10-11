@@ -115,6 +115,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
     startLessonUrl: "/tutorial/ros2-intro",
     isAvailable: true,
   },
+  {
+    id: "linux",
+    title: "Linux System Administration & Bash Scripting",
+    category: "Gömülü Sistemler",
+    iconName: "Terminal",
+    badge: "Linux, CLI & Bash",
+    colorClass: "badge-accent",
+    description: "Complete Linux OS & Shell Scripting track: Kernel Architecture, File Hierarchy (FHS), CLI Commands, Permissions (chmod/chown), Package Managers, User/Group Management, Networking & Firewalls (iptables/UFW), Process Management, systemd, and Bash Scripting.",
+    lessonCount: 104,
+    level: "Orta",
+    topics: ["Linux Kernel & FHS", "CLI Commands & chmod/chown", "Networking, iptables & UFW", "Process & systemd Management", "Bash Scripting & Automation"],
+    startLessonUrl: "/tutorial/linux-intro",
+    isAvailable: true,
+  },
 
   // 3. Donanım & FPGA
   {
