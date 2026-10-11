@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220">
+  <rect width="800" height="220" rx="16" fill="#0f172a"/>
+  <text x="400" y="34" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="16" font-weight="bold">DATABASE SHARDING &amp; LEADER-FOLLOWER REPLICATION</text>
+  <g transform="translate(40,55)" font-family="sans-serif" text-anchor="middle">
+    <rect x="0" y="25" width="160" height="90" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="80" y="60" fill="#38bdf8" font-size="14" font-weight="bold">Shard Router</text>
+    <text x="80" y="84" fill="#e2e8f0" font-size="11">Hash(user_id) % N</text>
+
+    <rect x="230" y="0" width="210" height="65" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="335" y="28" fill="#34d399" font-size="13" font-weight="bold">Shard A Primary (Writes)</text>
+    <text x="335" y="48" fill="#94a3b8" font-size="11">Users 0000 - 4999</text>
+
+    <rect x="230" y="80" width="210" height="65" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="335" y="108" fill="#fbbf24" font-size="13" font-weight="bold">Shard B Primary (Writes)</text>
+    <text x="335" y="128" fill="#94a3b8" font-size="11">Users 5000 - 9999</text>
+
+    <rect x="500" y="0" width="220" height="65" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="610" y="28" fill="#c084fc" font-size="13" font-weight="bold">Read Replicas (A1, A2)</text>
+    <text x="610" y="48" fill="#94a3b8" font-size="11">Async WAL Replication</text>
+
+    <rect x="500" y="80" width="220" height="65" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="610" y="108" fill="#c084fc" font-size="13" font-weight="bold">Read Replicas (B1, B2)</text>
+    <text x="610" y="128" fill="#94a3b8" font-size="11">High-Throughput Queries</text>
+  </g>
+</svg>

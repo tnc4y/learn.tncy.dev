@@ -259,7 +259,21 @@ export const LEARNING_TRACKS: LearningTrack[] = [
   },
 
 
-  // 4. Genel Programlama Dilleri & Yapay Zeka / Veri Bilimi
+  // 4. Genel Programlama Dilleri, Sistem Tasarımı & Yapay Zeka / Veri Bilimi
+  {
+    id: "system-design",
+    title: "System Design: High-Level (HLD), Low-Level (LLD) & Distributed Systems",
+    category: "Programlama Dilleri",
+    iconName: "Layers",
+    badge: "HLD, LLD & Distributed",
+    colorClass: "badge-primary",
+    description: "Complete System Design & Software Architecture curriculum: Capacity Estimation, Microservices & Event-Driven HLD, Scalability & CAP Theorem, Database Sharding & Replication, Load Balancing, Consistent Hashing & Redis Caching, API Gateways, Message Queues, Rate Limiting, Paxos/Raft Consensus, SOLID, UML & GoF Design Patterns, and Netflix/Uber Case Studies.",
+    lessonCount: 80,
+    level: "İleri",
+    topics: ["HLD, Microservices & CAP", "Database Sharding & Replication", "Load Balancing, Redis & CDN", "SOLID, UML & GoF Design Patterns", "Netflix & Uber Architecture"],
+    startLessonUrl: "/tutorial/sd-getting-started",
+    isAvailable: true,
+  },
   {
     id: "data-science",
     title: "Data Science & Data Analytics",

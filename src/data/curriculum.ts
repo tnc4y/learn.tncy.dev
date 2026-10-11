@@ -6367,6 +6367,894 @@ export const COURSES: CourseTrack[] = [
 },
 
   // ========================================================
+  // SYSTEM DESIGN: HLD, LLD & DISTRIBUTED ARCHITECTURE (GFG)
+  // ========================================================
+  {
+  "id": "system-design",
+  "title": "System Design: High-Level (HLD), Low-Level (LLD) & Distributed Systems",
+  "shortTitle": "System Design",
+  "category": "Programlama Dilleri",
+  "icon": "Layers",
+  "badge": "HLD, LLD & Distributed",
+  "color": "badge-primary",
+  "description": "Complete System Design & Software Architecture curriculum: Capacity Estimation, Microservices & Event-Driven HLD, Scalability & CAP Theorem, Database Sharding & Replication, Load Balancing, Consistent Hashing & Redis Caching, API Gateways, Message Queues, Rate Limiting, Paxos/Raft Consensus, SOLID, UML & GoF Design Patterns, and Netflix/Uber Case Studies.",
+  "modules": [
+    {
+      "id": "sd-foundations",
+      "number": 1,
+      "title": "1. System Design Foundations, Requirements & Capacity Estimation",
+      "description": "Core system design concepts, SDLC, architectural components, functional vs non-functional requirements, back-of-the-envelope capacity estimation, and HLD vs LLD.",
+      "lessons": [
+        {
+          "id": "sd-getting-started",
+          "title": "Getting Started with System Design",
+          "shortTitle": "Getting Started with System...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Getting Started with System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-sdlc",
+          "title": "System Design Life Cycle (SDLC): Phases & Models",
+          "shortTitle": "System Design Life Cycle (S...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for System Design Life Cycle (SDLC): Phases & Models.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-components",
+          "title": "Core Components of System Design",
+          "shortTitle": "Core Components of System D...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Core Components of System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-key-concepts",
+          "title": "Key Concepts and Terminologies in System Design",
+          "shortTitle": "Key Concepts and Terminolog...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Key Concepts and Terminologies in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-requirements",
+          "title": "Requirements Gathering Process in System Design",
+          "shortTitle": "Requirements Gathering Proc...",
+          "readTime": "26 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Requirements Gathering Process in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-func-vs-nonfunc",
+          "title": "Functional vs Non-Functional Requirements",
+          "shortTitle": "Functional vs Non-Functiona...",
+          "readTime": "26 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Functional vs Non-Functional Requirements.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-capacity-estimation",
+          "title": "Capacity Estimation & Back-of-the-Envelope Calculations",
+          "shortTitle": "Capacity Estimation & Back-...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Capacity Estimation & Back-of-the-Envelope Calculations.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-hld-vs-lld",
+          "title": "Difference Between High-Level Design (HLD) and Low-Level Design (LLD)",
+          "shortTitle": "Difference Between High-Lev...",
+          "readTime": "8 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Difference Between High-Level Design (HLD) and Low-Level Design (LLD).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-architectural-patterns",
+      "number": 2,
+      "title": "2. High-Level Architectural Patterns (Microservices, Serverless & Event-Driven)",
+      "description": "HLD diagrams, monolithic vs microservices, serverless compute, stateless vs stateful tiers, Pub/Sub messaging, and Event Sourcing.",
+      "lessons": [
+        {
+          "id": "sd-hld-intro",
+          "title": "What is High-Level Design (HLD)?",
+          "shortTitle": "What is High-Level Design (...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for What is High-Level Design (HLD)?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-mono-vs-micro",
+          "title": "Monolithic vs Microservices Architecture",
+          "shortTitle": "Monolithic vs Microservices...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Monolithic vs Microservices Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-serverless",
+          "title": "Serverless Architecture (FaaS & BaaS)",
+          "shortTitle": "Serverless Architecture (Fa...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Serverless Architecture (FaaS & BaaS).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-stateless-stateful",
+          "title": "Stateful vs Stateless Architecture in Distributed Systems",
+          "shortTitle": "Stateful vs Stateless Archi...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Stateful vs Stateless Architecture in Distributed Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-pub-sub",
+          "title": "Publish-Subscribe (Pub/Sub) Architecture",
+          "shortTitle": "Publish-Subscribe (Pub/Sub)...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Publish-Subscribe (Pub/Sub) Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-event-sourcing",
+          "title": "Event Sourcing Pattern in System Design",
+          "shortTitle": "Event Sourcing Pattern in S...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Event Sourcing Pattern in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-event-streaming",
+          "title": "Event Sourcing vs Event Streaming",
+          "shortTitle": "Event Sourcing vs Event Str...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Event Sourcing vs Event Streaming.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-request-vs-event",
+          "title": "Request-Driven vs Event-Driven Microservices",
+          "shortTitle": "Request-Driven vs Event-Dri...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "System Design (HLD & LLD) architectural guide for Request-Driven vs Event-Driven Microservices.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-scalability-consistency",
+      "number": 3,
+      "title": "3. Scalability, Availability, Consistency & Fault Tolerance",
+      "description": "Horizontal vs vertical scaling, eliminating scalability bottlenecks, high availability (99.999%), consistency models, reliability, fault tolerance, and concurrency.",
+      "lessons": [
+        {
+          "id": "sd-horiz-vert-scaling",
+          "title": "Horizontal vs Vertical Scaling in System Design",
+          "shortTitle": "Horizontal vs Vertical Scal...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Horizontal vs Vertical Scaling in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-scalable-systems",
+          "title": "Guide for Designing Highly Scalable Systems",
+          "shortTitle": "Guide for Designing Highly ...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Guide for Designing Highly Scalable Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-scalability-bottlenecks",
+          "title": "Primary Bottlenecks That Hurt Application Scalability",
+          "shortTitle": "Primary Bottlenecks That Hu...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Primary Bottlenecks That Hurt Application Scalability.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-high-availability",
+          "title": "Achieving High Availability & Redundancy",
+          "shortTitle": "Achieving High Availability...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Achieving High Availability & Redundancy.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-consistency",
+          "title": "Consistency in System Design (Strong, Eventual, Weak)",
+          "shortTitle": "Consistency in System Desig...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Consistency in System Design (Strong, Eventual, Weak).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-consistency-patterns",
+          "title": "Consistency Patterns in Distributed Systems",
+          "shortTitle": "Consistency Patterns in Dis...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Consistency Patterns in Distributed Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-reliability-fault",
+          "title": "Reliability and Fault Tolerance in System Design",
+          "shortTitle": "Reliability and Fault Toler...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Reliability and Fault Tolerance in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-concurrency-parallelism",
+          "title": "Concurrency vs Parallelism in System Architecture",
+          "shortTitle": "Concurrency vs Parallelism ...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Concurrency vs Parallelism in System Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-databases-storage",
+      "number": 4,
+      "title": "4. Database Design, Sharding, Replication & Storage Systems",
+      "description": "SQL vs NoSQL selection, cloud storage (Block, Object, File), leader-follower replication, horizontal sharding, partitioning, normalization, denormalization, and Redis.",
+      "lessons": [
+        {
+          "id": "sd-db-reference",
+          "title": "Complete Reference to Databases in Designing Systems",
+          "shortTitle": "Complete Reference to Datab...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Complete Reference to Databases in Designing Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-sql-vs-nosql",
+          "title": "Choosing a Database in System Design: SQL vs NoSQL",
+          "shortTitle": "Choosing a Database in Syst...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Choosing a Database in System Design: SQL vs NoSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-block-object-file",
+          "title": "Block, Object, and File Storage in the Cloud",
+          "shortTitle": "Block, Object, and File Sto...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Block, Object, and File Storage in the Cloud.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-db-replication",
+          "title": "Database Replication & Master-Replica Topologies",
+          "shortTitle": "Database Replication & Mast...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Database Replication & Master-Replica Topologies.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-db-sharding",
+          "title": "Database Sharding Architecture & Strategies",
+          "shortTitle": "Database Sharding Architect...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Database Sharding Architecture & Strategies.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-data-partitioning",
+          "title": "Data Partitioning Techniques (Horizontal, Vertical, Functional)",
+          "shortTitle": "Data Partitioning Technique...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Data Partitioning Techniques (Horizontal, Vertical, Functional).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-db-normalization",
+          "title": "Database Normalization (1NF, 2NF, 3NF, BCNF)",
+          "shortTitle": "Database Normalization (1NF...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Database Normalization (1NF, 2NF, 3NF, BCNF).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-denormalization",
+          "title": "Denormalization in Read-Heavy Databases",
+          "shortTitle": "Denormalization in Read-Hea...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Denormalization in Read-Heavy Databases.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-sql-optimization",
+          "title": "Best Practices for SQL Query Optimization & Indexing",
+          "shortTitle": "Best Practices for SQL Quer...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Best Practices for SQL Query Optimization & Indexing.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-redis-intro",
+          "title": "Introduction to Redis In-Memory Data Store",
+          "shortTitle": "Introduction to Redis In-Me...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Introduction to Redis In-Memory Data Store.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-load-balancing-caching",
+      "number": 5,
+      "title": "5. Load Balancing, Consistent Hashing & Distributed Caching",
+      "description": "L4/L7 load balancers, routing algorithms, consistent hashing rings, latency vs throughput, distributed caching, cache eviction policies (LRU/LFU), and CDNs.",
+      "lessons": [
+        {
+          "id": "sd-load-balancer-types",
+          "title": "Types of Load Balancers (L4 Transport vs L7 Application)",
+          "shortTitle": "Types of Load Balancers (L4...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Types of Load Balancers (L4 Transport vs L7 Application).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-lb-algorithms",
+          "title": "Load Balancing Algorithms (Round Robin, Least Conn, IP Hash)",
+          "shortTitle": "Load Balancing Algorithms (...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Load Balancing Algorithms (Round Robin, Least Conn, IP Hash).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-stateless-stateful-lb",
+          "title": "Stateless vs Stateful Load Balancing",
+          "shortTitle": "Stateless vs Stateful Load ...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Stateless vs Stateful Load Balancing.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-consistent-hashing",
+          "title": "Consistent Hashing & Hash Rings Explained",
+          "shortTitle": "Consistent Hashing & Hash R...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Consistent Hashing & Hash Rings Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-latency-throughput",
+          "title": "Latency and Throughput in System Design",
+          "shortTitle": "Latency and Throughput in S...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Latency and Throughput in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-caching-basics",
+          "title": "Caching in System Design (Write-Through, Write-Back, Cache-Aside)",
+          "shortTitle": "Caching in System Design (W...",
+          "readTime": "26 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Caching in System Design (Write-Through, Write-Back, Cache-Aside).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-distributed-cache",
+          "title": "Designing a Distributed Cache System",
+          "shortTitle": "Designing a Distributed Cac...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Designing a Distributed Cache System.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-cache-eviction",
+          "title": "Cache Eviction Policies (LRU, LFU, MRU, FIFO, TTL)",
+          "shortTitle": "Cache Eviction Policies (LR...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Cache Eviction Policies (LRU, LFU, MRU, FIFO, TTL).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-edge-caching",
+          "title": "Edge Caching & CDN vs Edge Servers",
+          "shortTitle": "Edge Caching & CDN vs Edge ...",
+          "readTime": "26 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Edge Caching & CDN vs Edge Servers.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-cdn-arch",
+          "title": "Content Delivery Network (CDN) Architecture",
+          "shortTitle": "Content Delivery Network (C...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Content Delivery Network (CDN) Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-gateways-queues-protocols",
+      "number": 6,
+      "title": "6. API Gateways, Message Queues, Rate Limiting & Network Protocols",
+      "description": "API Gateways, asynchronous message brokers, rate limiting algorithms (Token/Leaky Bucket), REST/gRPC/WebSockets, long polling, and DNS caching.",
+      "lessons": [
+        {
+          "id": "sd-api-gateway",
+          "title": "What is an API Gateway in System Design?",
+          "shortTitle": "What is an API Gateway in S...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for What is an API Gateway in System Design?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-message-queues",
+          "title": "Message Queues & Asynchronous Processing in System Design",
+          "shortTitle": "Message Queues & Asynchrono...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Message Queues & Asynchronous Processing in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-rate-limiting",
+          "title": "Rate Limiting in System Design",
+          "shortTitle": "Rate Limiting in System Design",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Rate Limiting in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-rate-limit-algos",
+          "title": "Rate Limiting Algorithms (Token Bucket, Leaky Bucket, Sliding Window)",
+          "shortTitle": "Rate Limiting Algorithms (T...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Rate Limiting Algorithms (Token Bucket, Leaky Bucket, Sliding Window).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-comm-protocols",
+          "title": "Communication Protocols in System Design (HTTP, REST, gRPC, WebRTC)",
+          "shortTitle": "Communication Protocols in ...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Communication Protocols in System Design (HTTP, REST, gRPC, WebRTC).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-websockets",
+          "title": "WebSockets vs HTTP: Real-Time Bi-Directional Communication",
+          "shortTitle": "WebSockets vs HTTP: Real-Ti...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for WebSockets vs HTTP: Real-Time Bi-Directional Communication.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-polling",
+          "title": "Long Polling vs Short Polling vs Server-Sent Events",
+          "shortTitle": "Long Polling vs Short Polli...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Long Polling vs Short Polling vs Server-Sent Events.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-web-app-proxies",
+          "title": "Web Servers, Application Servers & Proxies in System Design",
+          "shortTitle": "Web Servers, Application Se...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for Web Servers, Application Servers & Proxies in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-dns-caching-ttl",
+          "title": "DNS Caching and Time to Live (TTL)",
+          "shortTitle": "DNS Caching and Time to Liv...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "System Design (HLD & LLD) architectural guide for DNS Caching and Time to Live (TTL).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-distributed-security",
+      "number": 7,
+      "title": "7. Distributed Systems, Consensus Algorithms & Security Architecture",
+      "description": "Distributed systems architecture, Paxos & Raft consensus, distributed tracing, security hardening, AuthN vs AuthZ, SSL/TLS, and Disaster Recovery.",
+      "lessons": [
+        {
+          "id": "sd-distributed-intro",
+          "title": "What is a Distributed System?",
+          "shortTitle": "What is a Distributed System?",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for What is a Distributed System?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-consensus-algos",
+          "title": "Consensus Algorithms in Distributed Systems (Paxos & Raft)",
+          "shortTitle": "Consensus Algorithms in Dis...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Consensus Algorithms in Distributed Systems (Paxos & Raft).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-distributed-tracing",
+          "title": "Distributed Tracing & Microservice Observability",
+          "shortTitle": "Distributed Tracing & Micro...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Distributed Tracing & Microservice Observability.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-distributed-issues",
+          "title": "Core Design Issues and Challenges of Distributed Systems",
+          "shortTitle": "Core Design Issues and Chal...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Core Design Issues and Challenges of Distributed Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-security-measures",
+          "title": "Essential Security Measures in System Design",
+          "shortTitle": "Essential Security Measures...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Essential Security Measures in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-authn-vs-authz",
+          "title": "Authentication vs Authorization (OAuth2, JWT, Session, RBAC)",
+          "shortTitle": "Authentication vs Authoriza...",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Authentication vs Authorization (OAuth2, JWT, Session, RBAC).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-ssl-vs-tls",
+          "title": "SSL vs TLS Cryptographic Handshake & Security",
+          "shortTitle": "SSL vs TLS Cryptographic Ha...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for SSL vs TLS Cryptographic Handshake & Security.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-backup-dr",
+          "title": "Data Backup and Disaster Recovery (RTO & RPO)",
+          "shortTitle": "Data Backup and Disaster Re...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Data Backup and Disaster Recovery (RTO & RPO).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-lld-patterns",
+      "number": 8,
+      "title": "8. Low-Level Design (LLD), SOLID Principles, UML & Design Patterns",
+      "description": "Object-Oriented Analysis and Design (OOAD), modularity, SOLID/DRY/KISS/YAGNI principles, UML diagrams, and GoF Creational, Structural & Behavioral Design Patterns.",
+      "lessons": [
+        {
+          "id": "sd-lld-intro",
+          "title": "What is Low-Level Design (LLD)?",
+          "shortTitle": "What is Low-Level Design (L...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for What is Low-Level Design (LLD)?.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-ooad",
+          "title": "Object-Oriented Analysis and Design (OOAD)",
+          "shortTitle": "Object-Oriented Analysis an...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Object-Oriented Analysis and Design (OOAD).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-modularity-interfaces",
+          "title": "Modularity and Interfaces in System Design",
+          "shortTitle": "Modularity and Interfaces i...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Modularity and Interfaces in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-solid-principles",
+          "title": "SOLID Principles in Object-Oriented System Design",
+          "shortTitle": "SOLID Principles in Object-...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for SOLID Principles in Object-Oriented System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-dry-kiss-yagni",
+          "title": "DRY, KISS & YAGNI Software Engineering Principles",
+          "shortTitle": "DRY, KISS & YAGNI Software ...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for DRY, KISS & YAGNI Software Engineering Principles.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-uml-intro",
+          "title": "Unified Modeling Language (UML) Class & Sequence Diagrams",
+          "shortTitle": "Unified Modeling Language (...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Unified Modeling Language (UML) Class & Sequence Diagrams.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-uml-activity",
+          "title": "UML Activity Diagrams in System Modeling",
+          "shortTitle": "UML Activity Diagrams in Sy...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for UML Activity Diagrams in System Modeling.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-design-patterns",
+          "title": "Software Design Patterns Overview (Gang of Four)",
+          "shortTitle": "Software Design Patterns Ov...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Software Design Patterns Overview (Gang of Four).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-creational-patterns",
+          "title": "Creational Design Patterns (Singleton, Factory, Abstract Factory, Builder)",
+          "shortTitle": "Creational Design Patterns ...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Creational Design Patterns (Singleton, Factory, Abstract Factory, Builder).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-structural-patterns",
+          "title": "Structural Design Patterns (Adapter, Bridge, Composite, Decorator, Facade, Proxy)",
+          "shortTitle": "Structural Design Patterns ...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Structural Design Patterns (Adapter, Bridge, Composite, Decorator, Facade, Proxy).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-behavioral-patterns",
+          "title": "Behavioral Design Patterns (Observer, Strategy, Command, State, Iterator)",
+          "shortTitle": "Behavioral Design Patterns ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Behavioral Design Patterns (Observer, Strategy, Command, State, Iterator).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-patterns-cheatsheet",
+          "title": "Design Patterns Cheat Sheet: When to Use Which Pattern",
+          "shortTitle": "Design Patterns Cheat Sheet...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Design Patterns Cheat Sheet: When to Use Which Pattern.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sd-case-studies-perf",
+      "number": 9,
+      "title": "9. Real-World System Design Case Studies (Netflix, Uber) & Optimization",
+      "description": "End-to-end architecture of Netflix and Uber, data structures for system design, load/stress testing, performance optimization, and cost-performance tradeoffs.",
+      "lessons": [
+        {
+          "id": "sd-case-netflix",
+          "title": "Designing Netflix: Global Video Streaming Architecture",
+          "shortTitle": "Designing Netflix: Global V...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Designing Netflix: Global Video Streaming Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-case-uber",
+          "title": "Designing Uber: Real-Time Geospatial Dispatch & Ride Matching",
+          "shortTitle": "Designing Uber: Real-Time G...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Designing Uber: Real-Time Geospatial Dispatch & Ride Matching.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-dsa-for-sysdesign",
+          "title": "Data Structures and Algorithms Used in System Design (Bloom Filters, Trie, QuadTree)",
+          "shortTitle": "Data Structures and Algorit...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Data Structures and Algorithms Used in System Design (Bloom Filters, Trie, QuadTree).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-container-arch",
+          "title": "Containerization Architecture in System Design",
+          "shortTitle": "Containerization Architectu...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Containerization Architecture in System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-load-stress-testing",
+          "title": "Load Testing vs Stress Testing Distributed Systems",
+          "shortTitle": "Load Testing vs Stress Test...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Load Testing vs Stress Testing Distributed Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-perf-optimization",
+          "title": "Performance Optimization Techniques for System Design",
+          "shortTitle": "Performance Optimization Te...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Performance Optimization Techniques for System Design.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sd-cost-vs-perf",
+          "title": "Cost vs Performance Tradeoffs in Cloud Architecture",
+          "shortTitle": "Cost vs Performance Tradeof...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "System Design (HLD & LLD) architectural guide for Cost vs Performance Tradeoffs in Cloud Architecture.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // AI, MACHINE LEARNING & DATA SCIENCE (GFG)
   // ========================================================
   {
