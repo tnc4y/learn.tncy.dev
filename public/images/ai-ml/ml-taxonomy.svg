@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 240">
+  <rect width="800" height="240" rx="16" fill="#0f172a"/>
+  <text x="400" y="34" text-anchor="middle" fill="#10b981" font-family="monospace" font-size="16" font-weight="bold">MACHINE LEARNING PARADIGMS TAXONOMY</text>
+  <g transform="translate(35,60)" font-family="sans-serif">
+    <rect x="0" y="0" width="225" height="150" rx="12" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="112" y="30" text-anchor="middle" fill="#34d399" font-size="14" font-weight="bold">Supervised Learning</text>
+    <text x="112" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Labeled Data (X → y)</text>
+    <text x="20" y="80" fill="#e2e8f0" font-size="11">• Linear &amp; Logistic Reg</text>
+    <text x="20" y="100" fill="#e2e8f0" font-size="11">• SVM, KNN, Naive Bayes</text>
+    <text x="20" y="120" fill="#e2e8f0" font-size="11">• Random Forest &amp; XGBoost</text>
+
+    <rect x="252" y="0" width="225" height="150" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="364" y="30" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="bold">Unsupervised Learning</text>
+    <text x="364" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Unlabeled Structure (X)</text>
+    <text x="272" y="80" fill="#e2e8f0" font-size="11">• K-Means &amp; DBSCAN</text>
+    <text x="272" y="100" fill="#e2e8f0" font-size="11">• Hierarchical &amp; GMM</text>
+    <text x="272" y="120" fill="#e2e8f0" font-size="11">• PCA, t-SNE &amp; Apriori</text>
+
+    <rect x="505" y="0" width="225" height="150" rx="12" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="617" y="30" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="bold">Reinforcement Learning</text>
+    <text x="617" y="52" text-anchor="middle" fill="#94a3b8" font-size="11">Agent ↔ Environment (R)</text>
+    <text x="525" y="80" fill="#e2e8f0" font-size="11">• Markov Decision Process</text>
+    <text x="525" y="100" fill="#e2e8f0" font-size="11">• Bellman &amp; Q-Learning</text>
+    <text x="525" y="120" fill="#e2e8f0" font-size="11">• Policy Gradient &amp; PPO</text>
+  </g>
+</svg>

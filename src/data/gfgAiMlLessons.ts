@@ -1,8 +1,12 @@
 import { LessonContent } from "./lessonsData";
-import { GFG_AIML_PART1 } from "./gfgAiMlPart1";
-import { GFG_AIML_PART2 } from "./gfgAiMlPart2";
+import { DATA_SCIENCE_LESSONS } from "./dataScienceLessons";
+import { MACHINE_LEARNING_LESSONS } from "./machineLearningLessons";
+import { DEEP_LEARNING_LESSONS } from "./deepLearningLessons";
+import { AI_GENAI_LESSONS } from "./aiGenAiLessons";
 
 export const GFG_AIML_LESSONS: Record<string, LessonContent> = {
-  ...GFG_AIML_PART1,
-  ...GFG_AIML_PART2,
+  ...DATA_SCIENCE_LESSONS,
+  ...MACHINE_LEARNING_LESSONS,
+  ...DEEP_LEARNING_LESSONS,
+  ...AI_GENAI_LESSONS,
 };

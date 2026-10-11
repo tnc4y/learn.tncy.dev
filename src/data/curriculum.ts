@@ -4260,470 +4260,1449 @@ export const COURSES: CourseTrack[] = [
   // AI, MACHINE LEARNING & DATA SCIENCE (GFG)
   // ========================================================
   {
-  "id": "ai-ml",
-  "title": "AI, Machine Learning & Data Science",
-  "shortTitle": "AI / ML",
+  "id": "data-science",
+  "title": "Data Science & Data Analytics",
+  "shortTitle": "Data Science",
   "category": "Programlama Dilleri",
-  "icon": "Brain",
-  "badge": "AI/ML & Data Science",
-  "color": "badge-success",
-  "description": "Complete AI, ML & Data Science learning path sourced from GeeksForGeeks: Python, Math, EDA, Data Analysis, ML algorithms, Deep Learning, NLP, Generative AI, and MLOps.",
+  "icon": "Database",
+  "badge": "Data Science & Analytics",
+  "color": "badge-info",
+  "description": "Complete Data Science & Analytics curriculum: NumPy, Pandas, Data Loading, Data Cleaning, Feature Scaling, Exploratory Data Analysis (EDA), Statistical Hypothesis Testing, and Data Visualization with Matplotlib, Seaborn & Plotly.",
   "modules": [
     {
-      "id": "aiml-python",
+      "id": "ds-libraries",
       "number": 1,
-      "title": "1. Python for Data Science",
-      "description": "Python programming fundamentals, libraries, and interview preparation for data science.",
+      "title": "1. Python Libraries for Data Science",
+      "description": "Core Python libraries for numerical computing, tabular data manipulation, visualization, and machine learning.",
       "lessons": [
         {
-          "id": "python-intro",
-          "title": "Python Tutorial",
-          "shortTitle": "Python Tutorial",
-          "readTime": "32 dk",
+          "id": "ds-numpy-guide",
+          "title": "NumPy for Data Science",
+          "shortTitle": "NumPy for Data Science",
+          "readTime": "14 dk",
           "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Python Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for NumPy for Data Science.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "python-interview",
-          "title": "Python Interview Questions and Answers",
-          "shortTitle": "Python Interview Questions a...",
-          "readTime": "142 dk",
+          "id": "ds-pandas-guide",
+          "title": "Pandas Step-by-Step Guide",
+          "shortTitle": "Pandas Step-by-Step Guide",
+          "readTime": "28 dk",
           "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Python Interview Questions and Answers — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Pandas Step-by-Step Guide.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-matplotlib-guide",
+          "title": "Data Visualization with Matplotlib",
+          "shortTitle": "Data Visualization with Mat...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Data Visualization with Matplotlib.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-seaborn-guide",
+          "title": "Statistical Visualization with Seaborn",
+          "shortTitle": "Statistical Visualization w...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Statistical Visualization with Seaborn.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-plotly-guide",
+          "title": "Interactive Plots with Plotly",
+          "shortTitle": "Interactive Plots with Plotly",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Interactive Plots with Plotly.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-scikit-learn",
+          "title": "Model Building with Scikit-Learn",
+          "shortTitle": "Model Building with Scikit-...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Model Building with Scikit-Learn.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-math",
+      "id": "ds-data-loading",
       "number": 2,
-      "title": "2. Math for Data Science",
-      "description": "Linear algebra, statistics, probability, and calculus foundations for ML.",
+      "title": "2. Data Ingestion & Extraction",
+      "description": "Loading data from CSV, Excel, JSON, SQL databases, and web scraping with BeautifulSoup.",
       "lessons": [
         {
-          "id": "linear-algebra-ds",
-          "title": "Linear Algebra For Machine Learning",
-          "shortTitle": "Linear Algebra For Machine L...",
-          "readTime": "24 dk",
-          "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Linear Algebra For Machine Learning — practical guide with Python examples and theory.",
+          "id": "ds-read-csv",
+          "title": "Reading CSV Files with Pandas",
+          "shortTitle": "Reading CSV Files with Pandas",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Reading CSV Files with Pandas.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "statistics-ds",
-          "title": "Statistics For Data Science",
-          "shortTitle": "Statistics For Data Science",
-          "readTime": "58 dk",
-          "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Statistics For Data Science — practical guide with Python examples and theory.",
+          "id": "ds-read-excel",
+          "title": "Importing Excel Files into Pandas",
+          "shortTitle": "Importing Excel Files into ...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Importing Excel Files into Pandas.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "probability-ds",
-          "title": "Probability Distributions in Data Science",
-          "shortTitle": "Probability Distributions in...",
-          "readTime": "38 dk",
-          "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Probability Distributions in Data Science — practical guide with Python examples and theory.",
+          "id": "ds-read-json",
+          "title": "Parsing & Reading JSON Datasets",
+          "shortTitle": "Parsing & Reading JSON Data...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Parsing & Reading JSON Datasets.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "calculus-ml",
-          "title": "Calculus for Machine Learning: Key Concepts and Applications",
-          "shortTitle": "Calculus for Machine Learnin...",
-          "readTime": "24 dk",
-          "difficulty": "Başlangıç",
-          "description": "GeeksForGeeks: Calculus for Machine Learning: Key Concepts and Applications — practical guide with Python examples and theory.",
+          "id": "ds-read-sql",
+          "title": "Reading SQL Databases with SQLAlchemy",
+          "shortTitle": "Reading SQL Databases with ...",
+          "readTime": "6 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Reading SQL Databases with SQLAlchemy.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-web-scraping",
+          "title": "Web Scraping with BeautifulSoup",
+          "shortTitle": "Web Scraping with Beautiful...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Web Scraping with BeautifulSoup.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-eda",
+      "id": "ds-preprocessing",
       "number": 3,
-      "title": "3. Exploratory Data Analysis",
-      "description": "EDA techniques with NumPy, Pandas, Matplotlib, and Seaborn.",
+      "title": "3. Data Cleaning & Preprocessing",
+      "description": "Handling missing values, removing duplicates, feature scaling, categorical encoding, and outlier detection.",
       "lessons": [
         {
-          "id": "eda-intro",
-          "title": "Exploratory Data Analysis",
-          "shortTitle": "Exploratory Data Analysis",
+          "id": "ds-data-preprocessing",
+          "title": "Data Preprocessing in Python",
+          "shortTitle": "Data Preprocessing in Python",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Data Preprocessing in Python.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-missing-data",
+          "title": "Working with Missing Data in Pandas",
+          "shortTitle": "Working with Missing Data i...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Working with Missing Data in Pandas.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-remove-duplicates",
+          "title": "Removing Duplicates in Datasets",
+          "shortTitle": "Removing Duplicates in Data...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Removing Duplicates in Datasets.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-scaling-normalization",
+          "title": "Feature Scaling, Normalization & Standardization",
+          "shortTitle": "Feature Scaling, Normalizat...",
           "readTime": "32 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Exploratory Data Analysis — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Feature Scaling, Normalization & Standardization.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "eda-numpy-pandas",
-          "title": "Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn",
-          "shortTitle": "Exploratory Data Analysis (E...",
-          "readTime": "24 dk",
+          "id": "ds-groupby-aggregation",
+          "title": "Aggregating & Grouping Data (GroupBy)",
+          "shortTitle": "Aggregating & Grouping Data...",
+          "readTime": "10 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Aggregating & Grouping Data (GroupBy).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-label-one-hot",
+          "title": "Categorical Encoding: Label & One-Hot Encoding",
+          "shortTitle": "Categorical Encoding: Label...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Categorical Encoding: Label & One-Hot Encoding.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-outlier-zscore-iqr",
+          "title": "Outlier Detection with Z-Score & IQR",
+          "shortTitle": "Outlier Detection with Z-Sc...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Outlier Detection with Z-Score & IQR.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-imbalanced-data",
+          "title": "Handling Imbalanced Datasets",
+          "shortTitle": "Handling Imbalanced Datasets",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Handling Imbalanced Datasets.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-data-analysis",
+      "id": "ds-eda-stats",
       "number": 4,
-      "title": "4. Data Analysis",
-      "description": "Data analytics workflows, NumPy arrays, and Pandas DataFrames.",
+      "title": "4. Exploratory Data Analysis & Statistical Tests",
+      "description": "EDA workflows, univariate/multivariate analysis, correlation matrices, and parametric/non-parametric hypothesis testing.",
       "lessons": [
         {
-          "id": "data-analysis-tutorial",
-          "title": "Data Analytics Tutorial",
-          "shortTitle": "Data Analytics Tutorial",
-          "readTime": "36 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: Data Analytics Tutorial — practical guide with Python examples and theory.",
+          "id": "ds-eda-python",
+          "title": "Exploratory Data Analysis (EDA) in Python",
+          "shortTitle": "Exploratory Data Analysis (...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Exploratory Data Analysis (EDA) in Python.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "numpy-tutorial",
-          "title": "NumPy Tutorial",
-          "shortTitle": "NumPy Tutorial",
+          "id": "ds-univariate-multivariate",
+          "title": "Univariate, Bivariate & Multivariate Analysis",
+          "shortTitle": "Univariate, Bivariate & Mul...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Univariate, Bivariate & Multivariate Analysis.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-correlation",
+          "title": "Correlation Matrix & Analysis in Pandas",
+          "shortTitle": "Correlation Matrix & Analys...",
+          "readTime": "6 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Correlation Matrix & Analysis in Pandas.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-sampling-dist",
+          "title": "Sampling Distributions in Python",
+          "shortTitle": "Sampling Distributions in P...",
+          "readTime": "6 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Sampling Distributions in Python.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-hypothesis-testing",
+          "title": "Understanding Hypothesis Testing",
+          "shortTitle": "Understanding Hypothesis Te...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Understanding Hypothesis Testing.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-t-test-z-test",
+          "title": "T-Test and Z-Test in Data Science",
+          "shortTitle": "T-Test and Z-Test in Data S...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for T-Test and Z-Test in Data Science.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-chi-square-anova",
+          "title": "Chi-Square Test & One-Way ANOVA",
+          "shortTitle": "Chi-Square Test & One-Way A...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Chi-Square Test & One-Way ANOVA.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ds-visualization",
+      "number": 5,
+      "title": "5. Advanced Data Visualization",
+      "description": "Mastering charts, distributions, heatmaps, box plots, violin plots, and multi-variable pair plots.",
+      "lessons": [
+        {
+          "id": "ds-viz-line-bar",
+          "title": "Line Charts & Bar Plots in Matplotlib",
+          "shortTitle": "Line Charts & Bar Plots in ...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Line Charts & Bar Plots in Matplotlib.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-viz-histogram-kde",
+          "title": "Histograms & KDE Distribution Plots",
+          "shortTitle": "Histograms & KDE Distributi...",
+          "readTime": "6 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Histograms & KDE Distribution Plots.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-viz-heatmap",
+          "title": "2D Heatmaps & Correlation Plots",
+          "shortTitle": "2D Heatmaps & Correlation P...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for 2D Heatmaps & Correlation Plots.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-viz-boxplot-violin",
+          "title": "Box Plots & Violin Plots for Quartile Analysis",
+          "shortTitle": "Box Plots & Violin Plots fo...",
+          "readTime": "6 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Box Plots & Violin Plots for Quartile Analysis.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ds-viz-scatter-pairplot",
+          "title": "Scatter Plots & Multi-Variable Pair Plots",
+          "shortTitle": "Scatter Plots & Multi-Varia...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Scatter Plots & Multi-Variable Pair Plots.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  {
+  "id": "machine-learning",
+  "title": "Machine Learning Engineering",
+  "shortTitle": "Machine Learning",
+  "category": "Programlama Dilleri",
+  "icon": "Brain",
+  "badge": "Machine Learning",
+  "color": "badge-success",
+  "description": "End-to-end Machine Learning course: Mathematical Foundations, Supervised Regression & Classification, Decision Trees, Ensemble Methods (Random Forest, XGBoost), Model Evaluation, Unsupervised Clustering, PCA, Reinforcement Learning, and MLOps.",
+  "modules": [
+    {
+      "id": "ml-foundations-math",
+      "number": 1,
+      "title": "1. ML Foundations & Mathematical Pillars",
+      "description": "Core ML concepts, lifecycle, probability, Bayes' theorem, descriptive/inferential statistics, linear algebra, and gradient descent.",
+      "lessons": [
+        {
+          "id": "ml-intro",
+          "title": "Introduction to Machine Learning",
+          "shortTitle": "Introduction to Machine Lea...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Introduction to Machine Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-ai-vs-ml-vs-dl",
+          "title": "AI vs Machine Learning vs Deep Learning",
+          "shortTitle": "AI vs Machine Learning vs D...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for AI vs Machine Learning vs Deep Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-lifecycle",
+          "title": "Machine Learning Lifecycle & Workflow",
+          "shortTitle": "Machine Learning Lifecycle ...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Machine Learning Lifecycle & Workflow.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-bayes-probability",
+          "title": "Conditional Probability & Bayes' Theorem",
+          "shortTitle": "Conditional Probability & B...",
+          "readTime": "28 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Conditional Probability & Bayes' Theorem.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-prob-distributions",
+          "title": "Probability Distributions in ML",
+          "shortTitle": "Probability Distributions i...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Probability Distributions in ML.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-descriptive-inferential",
+          "title": "Descriptive & Inferential Statistics",
+          "shortTitle": "Descriptive & Inferential S...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Descriptive & Inferential Statistics.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-vectors-matrices",
+          "title": "Vectors & Matrix Arithmetic for ML",
+          "shortTitle": "Vectors & Matrix Arithmetic...",
+          "readTime": "18 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Vectors & Matrix Arithmetic for ML.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-gradient-descent-math",
+          "title": "Gradient Descent & Calculus in ML",
+          "shortTitle": "Gradient Descent & Calculus...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Gradient Descent & Calculus in ML.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ml-supervised",
+      "number": 2,
+      "title": "2. Supervised Learning: Regression & Classification",
+      "description": "Linear & multiple regression, logistic regression, decision trees, KNN, Naive Bayes, and Support Vector Machines.",
+      "lessons": [
+        {
+          "id": "ml-supervised-overview",
+          "title": "Supervised Machine Learning Fundamentals",
+          "shortTitle": "Supervised Machine Learning...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Supervised Machine Learning Fundamentals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-linear-reg",
+          "title": "Linear Regression in Machine Learning",
+          "shortTitle": "Linear Regression in Machin...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Linear Regression in Machine Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-multiple-reg",
+          "title": "Multiple Linear Regression in Python",
+          "shortTitle": "Multiple Linear Regression ...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Multiple Linear Regression in Python.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-logistic-reg",
+          "title": "Understanding Logistic Regression",
+          "shortTitle": "Understanding Logistic Regr...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Understanding Logistic Regression.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-decision-tree",
+          "title": "Decision Tree Algorithms & Splitting Criteria",
+          "shortTitle": "Decision Tree Algorithms & ...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Decision Tree Algorithms & Splitting Criteria.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-knn",
+          "title": "K-Nearest Neighbors (KNN) & Decision Boundaries",
+          "shortTitle": "K-Nearest Neighbors (KNN) &...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for K-Nearest Neighbors (KNN) & Decision Boundaries.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-naive-bayes",
+          "title": "Naive Bayes Classifiers (Gaussian & Multinomial)",
+          "shortTitle": "Naive Bayes Classifiers (Ga...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Naive Bayes Classifiers (Gaussian & Multinomial).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-svm",
+          "title": "Support Vector Machines (SVM) & Kernel Trick",
+          "shortTitle": "Support Vector Machines (SV...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Support Vector Machines (SVM) & Kernel Trick.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ml-ensemble",
+      "number": 3,
+      "title": "3. Ensemble Learning & Boosting",
+      "description": "Combining weak learners via Bagging, Random Forests, AdaBoost, Gradient Boosting, and XGBoost.",
+      "lessons": [
+        {
+          "id": "ml-ensemble-guide",
+          "title": "Comprehensive Guide to Ensemble Learning",
+          "shortTitle": "Comprehensive Guide to Ense...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Comprehensive Guide to Ensemble Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-bagging-vs-boosting",
+          "title": "Bagging vs Boosting in Machine Learning",
+          "shortTitle": "Bagging vs Boosting in Mach...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Bagging vs Boosting in Machine Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-random-forest",
+          "title": "Random Forest Algorithm & Implementation",
+          "shortTitle": "Random Forest Algorithm & I...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Random Forest Algorithm & Implementation.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-adaboost",
+          "title": "AdaBoost Adaptive Boosting Algorithm",
+          "shortTitle": "AdaBoost Adaptive Boosting ...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for AdaBoost Adaptive Boosting Algorithm.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-gradient-boosting",
+          "title": "Gradient Boosting Machines (GBM)",
+          "shortTitle": "Gradient Boosting Machines ...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Gradient Boosting Machines (GBM).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-xgboost",
+          "title": "XGBoost: Extreme Gradient Boosting",
+          "shortTitle": "XGBoost: Extreme Gradient B...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for XGBoost: Extreme Gradient Boosting.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ml-evaluation",
+      "number": 4,
+      "title": "4. Model Evaluation, Regularization & Tuning",
+      "description": "Confusion matrix, Precision/Recall/F1, ROC-AUC, cross-validation, bias-variance tradeoff, L1/L2 regularization, and hyperparameter tuning.",
+      "lessons": [
+        {
+          "id": "ml-confusion-matrix",
+          "title": "Confusion Matrix, Precision, Recall & F1-Score",
+          "shortTitle": "Confusion Matrix, Precision...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Confusion Matrix, Precision, Recall & F1-Score.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-auc-roc",
+          "title": "AUC-ROC Curve & Classification Thresholds",
+          "shortTitle": "AUC-ROC Curve & Classificat...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for AUC-ROC Curve & Classification Thresholds.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-regression-metrics",
+          "title": "Regression Evaluation Metrics (MAE, MSE, RMSE, R²)",
+          "shortTitle": "Regression Evaluation Metri...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Regression Evaluation Metrics (MAE, MSE, RMSE, R²).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-cross-validation",
+          "title": "Cross-Validation Techniques (K-Fold & Stratified)",
+          "shortTitle": "Cross-Validation Techniques...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Cross-Validation Techniques (K-Fold & Stratified).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-bias-variance",
+          "title": "Overfitting, Underfitting & Bias-Variance Tradeoff",
+          "shortTitle": "Overfitting, Underfitting &...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Overfitting, Underfitting & Bias-Variance Tradeoff.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-regularization",
+          "title": "L1 (Lasso) & L2 (Ridge) Regularization",
+          "shortTitle": "L1 (Lasso) & L2 (Ridge) Reg...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for L1 (Lasso) & L2 (Ridge) Regularization.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-hyperparameter-tuning",
+          "title": "Hyperparameter Tuning (GridSearch & RandomSearch)",
+          "shortTitle": "Hyperparameter Tuning (Grid...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Hyperparameter Tuning (GridSearch & RandomSearch).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ml-unsupervised",
+      "number": 5,
+      "title": "5. Unsupervised Learning & Dimensionality Reduction",
+      "description": "Clustering (K-Means, Hierarchical, DBSCAN, GMM), Association Rules (Apriori), and Dimensionality Reduction (PCA, t-SNE).",
+      "lessons": [
+        {
+          "id": "ml-unsupervised-overview",
+          "title": "Unsupervised Learning Fundamentals",
+          "shortTitle": "Unsupervised Learning Funda...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Unsupervised Learning Fundamentals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-kmeans",
+          "title": "K-Means Clustering & Elbow Method",
+          "shortTitle": "K-Means Clustering & Elbow ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for K-Means Clustering & Elbow Method.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-hierarchical",
+          "title": "Hierarchical & Agglomerative Clustering",
+          "shortTitle": "Hierarchical & Agglomerativ...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Hierarchical & Agglomerative Clustering.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-dbscan",
+          "title": "DBSCAN Density-Based Clustering",
+          "shortTitle": "DBSCAN Density-Based Cluste...",
+          "readTime": "20 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for DBSCAN Density-Based Clustering.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-gmm-em",
+          "title": "Gaussian Mixture Models (GMM) & EM Algorithm",
+          "shortTitle": "Gaussian Mixture Models (GM...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Gaussian Mixture Models (GMM) & EM Algorithm.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-pca",
+          "title": "Principal Component Analysis (PCA)",
+          "shortTitle": "Principal Component Analysi...",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Principal Component Analysis (PCA).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-tsne",
+          "title": "t-SNE Non-Linear Dimensionality Reduction",
+          "shortTitle": "t-SNE Non-Linear Dimensiona...",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for t-SNE Non-Linear Dimensionality Reduction.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-apriori",
+          "title": "Apriori Algorithm & Association Rule Mining",
+          "shortTitle": "Apriori Algorithm & Associa...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Apriori Algorithm & Association Rule Mining.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ml-rl-timeseries-mlops",
+      "number": 6,
+      "title": "6. Reinforcement Learning, Time Series & MLOps",
+      "description": "MDPs, Bellman equation, Q-Learning, Time Series ARIMA forecasting, model deployment with FastAPI/Streamlit, and MLOps CI/CD.",
+      "lessons": [
+        {
+          "id": "ml-rl-intro",
+          "title": "Reinforcement Learning & Markov Decision Processes",
+          "shortTitle": "Reinforcement Learning & Ma...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Reinforcement Learning & Markov Decision Processes.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-q-learning",
+          "title": "Bellman Equation & Q-Learning in Python",
+          "shortTitle": "Bellman Equation & Q-Learni...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Bellman Equation & Q-Learning in Python.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-time-series",
+          "title": "Time Series Analysis, Stationarity & ARIMA",
+          "shortTitle": "Time Series Analysis, Stati...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Time Series Analysis, Stationarity & ARIMA.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-deploy-fastapi",
+          "title": "Deploying ML Models as APIs with FastAPI",
+          "shortTitle": "Deploying ML Models as APIs...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Deploying ML Models as APIs with FastAPI.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-deploy-streamlit",
+          "title": "Interactive ML Web Apps with Streamlit & Gradio",
+          "shortTitle": "Interactive ML Web Apps wit...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Interactive ML Web Apps with Streamlit & Gradio.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-mlops-cicd",
+          "title": "MLOps Fundamentals & CI/CD Pipelines",
+          "shortTitle": "MLOps Fundamentals & CI/CD ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for MLOps Fundamentals & CI/CD Pipelines.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  {
+  "id": "deep-learning",
+  "title": "Deep Learning & Neural Architectures",
+  "shortTitle": "Deep Learning",
+  "category": "Programlama Dilleri",
+  "icon": "Cpu",
+  "badge": "Deep Learning",
+  "color": "badge-secondary",
+  "description": "Comprehensive Deep Learning track: Artificial Neural Networks, Forward & Backpropagation, Optimizers (SGD, Adam), Regularization (Dropout, BatchNorm), CNN Computer Vision Architectures, RNN/LSTM/GRU Sequence Models, GANs, Diffusion, and Deep RL.",
+  "modules": [
+    {
+      "id": "dl-foundations",
+      "number": 1,
+      "title": "1. Neural Network Foundations",
+      "description": "ANN architecture, layers, weights and biases, activation functions, forward pass, loss functions, and backpropagation.",
+      "lessons": [
+        {
+          "id": "dl-neural-nets-guide",
+          "title": "Introduction to Neural Networks",
+          "shortTitle": "Introduction to Neural Netw...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Introduction to Neural Networks.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-ann-layers",
+          "title": "Layers in Artificial Neural Networks (ANN)",
+          "shortTitle": "Layers in Artificial Neural...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Layers in Artificial Neural Networks (ANN).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-weights-biases",
+          "title": "Role of Weights and Biases in Neural Networks",
+          "shortTitle": "Role of Weights and Biases ...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Role of Weights and Biases in Neural Networks.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-activation-functions",
+          "title": "Activation Functions (ReLU, Sigmoid, Tanh, Softmax)",
+          "shortTitle": "Activation Functions (ReLU,...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Activation Functions (ReLU, Sigmoid, Tanh, Softmax).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-forward-prop",
+          "title": "Forward Propagation in Neural Networks",
+          "shortTitle": "Forward Propagation in Neur...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Forward Propagation in Neural Networks.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-loss-functions",
+          "title": "Loss Functions in Deep Learning",
+          "shortTitle": "Loss Functions in Deep Lear...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Loss Functions in Deep Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-backpropagation",
+          "title": "Backpropagation Algorithm & Chain Rule",
+          "shortTitle": "Backpropagation Algorithm &...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Backpropagation Algorithm & Chain Rule.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "dl-optimizers-reg",
+      "number": 2,
+      "title": "2. Optimizers & Network Regularization",
+      "description": "Gradient descent variants, SGD, Momentum, RMSProp, Adam optimizer, Dropout, Batch Normalization, and Early Stopping.",
+      "lessons": [
+        {
+          "id": "dl-gd-variants",
+          "title": "Gradient Descent Variants (Batch, SGD, Mini-Batch)",
+          "shortTitle": "Gradient Descent Variants (...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Gradient Descent Variants (Batch, SGD, Mini-Batch).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-momentum-adagrad",
+          "title": "Momentum & Adagrad Optimizers",
+          "shortTitle": "Momentum & Adagrad Optimizers",
           "readTime": "20 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: NumPy Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Momentum & Adagrad Optimizers.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "pandas-tutorial",
-          "title": "Pandas Tutorial",
-          "shortTitle": "Pandas Tutorial",
-          "readTime": "24 dk",
+          "id": "dl-rmsprop-adam",
+          "title": "RMSProp & Adam (Adaptive Moment Estimation)",
+          "shortTitle": "RMSProp & Adam (Adaptive Mo...",
+          "readTime": "32 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Pandas Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for RMSProp & Adam (Adaptive Moment Estimation).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-dropout",
+          "title": "Dropout Regularization in Deep Learning",
+          "shortTitle": "Dropout Regularization in D...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Dropout Regularization in Deep Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-batch-norm",
+          "title": "Batch Normalization in Deep Networks",
+          "shortTitle": "Batch Normalization in Deep...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Batch Normalization in Deep Networks.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-early-stopping",
+          "title": "Early Stopping & Hyperparameter Tuning in DL",
+          "shortTitle": "Early Stopping & Hyperparam...",
+          "readTime": "26 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Early Stopping & Hyperparameter Tuning in DL.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-visualization",
+      "id": "dl-cnn",
+      "number": 3,
+      "title": "3. Convolutional Neural Networks (CNN) & Vision",
+      "description": "Convolutional layers, padding, pooling, PyTorch/TensorFlow CNNs, and landmark architectures (LeNet, AlexNet, VGG, ResNet, U-Net, ViT).",
+      "lessons": [
+        {
+          "id": "dl-cnn-intro",
+          "title": "Introduction to Convolutional Neural Networks",
+          "shortTitle": "Introduction to Convolution...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Introduction to Convolutional Neural Networks.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-conv-padding-pooling",
+          "title": "Convolutional, Padding & Pooling Layers",
+          "shortTitle": "Convolutional, Padding & Po...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Convolutional, Padding & Pooling Layers.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-cnn-pytorch",
+          "title": "Building a CNN using PyTorch",
+          "shortTitle": "Building a CNN using PyTorch",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Building a CNN using PyTorch.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-lenet-alexnet-vgg",
+          "title": "Classic CNN Architectures: LeNet-5, AlexNet & VGG-16",
+          "shortTitle": "Classic CNN Architectures: ...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Classic CNN Architectures: LeNet-5, AlexNet & VGG-16.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-resnet",
+          "title": "Residual Networks (ResNet) & Skip Connections",
+          "shortTitle": "Residual Networks (ResNet) ...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Residual Networks (ResNet) & Skip Connections.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-unet-vit",
+          "title": "U-Net Segmentation & Vision Transformer (ViT)",
+          "shortTitle": "U-Net Segmentation & Vision...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for U-Net Segmentation & Vision Transformer (ViT).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "dl-rnn-sequence",
+      "number": 4,
+      "title": "4. Recurrent Neural Networks (RNN, LSTM & GRU)",
+      "description": "Sequence modeling, Backpropagation Through Time (BPTT), vanishing gradients, Bidirectional RNNs, LSTMs, and GRUs.",
+      "lessons": [
+        {
+          "id": "dl-rnn-intro",
+          "title": "Introduction to Recurrent Neural Networks (RNN)",
+          "shortTitle": "Introduction to Recurrent N...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Introduction to Recurrent Neural Networks (RNN).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-bptt-vanishing",
+          "title": "Backpropagation Through Time & Vanishing Gradients",
+          "shortTitle": "Backpropagation Through Tim...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Backpropagation Through Time & Vanishing Gradients.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-lstm",
+          "title": "Long Short-Term Memory Networks (LSTM)",
+          "shortTitle": "Long Short-Term Memory Netw...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Long Short-Term Memory Networks (LSTM).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-bilstm-gru",
+          "title": "Bidirectional LSTMs & Gated Recurrent Units (GRU)",
+          "shortTitle": "Bidirectional LSTMs & Gated...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Bidirectional LSTMs & Gated Recurrent Units (GRU).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-seq2seq-transfer",
+          "title": "Encoder-Decoder Seq2Seq & Transfer Learning",
+          "shortTitle": "Encoder-Decoder Seq2Seq & T...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Encoder-Decoder Seq2Seq & Transfer Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "dl-generative-drl",
       "number": 5,
-      "title": "5. Data Visualization",
-      "description": "Creating insightful charts and plots with Matplotlib and Seaborn.",
+      "title": "5. Generative Deep Learning & Deep RL",
+      "description": "Autoencoders, Generative Adversarial Networks (GANs), Diffusion Models, Deep Q-Networks (DQN), Actor-Critic, and PPO.",
       "lessons": [
         {
-          "id": "data-visualization-tutorial",
-          "title": "Python - Data visualization Tutorial",
-          "shortTitle": "Python - Data visualization ...",
-          "readTime": "28 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: Python - Data visualization Tutorial — practical guide with Python examples and theory.",
+          "id": "dl-autoencoders",
+          "title": "Autoencoders & Variational Autoencoders (VAE)",
+          "shortTitle": "Autoencoders & Variational ...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Autoencoders & Variational Autoencoders (VAE).",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "matplotlib-tutorial",
-          "title": "Matplotlib Tutorial",
-          "shortTitle": "Matplotlib Tutorial",
+          "id": "dl-gans",
+          "title": "Generative Adversarial Networks (GANs)",
+          "shortTitle": "Generative Adversarial Netw...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Generative Adversarial Networks (GANs).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-diffusion",
+          "title": "Diffusion Models in Deep Learning",
+          "shortTitle": "Diffusion Models in Deep Le...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Diffusion Models in Deep Learning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-dqn",
+          "title": "Deep Reinforcement Learning & Deep Q-Networks (DQN)",
+          "shortTitle": "Deep Reinforcement Learning...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Deep Reinforcement Learning & Deep Q-Networks (DQN).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "dl-policy-gradient-ppo",
+          "title": "Policy Gradient, Actor-Critic & PPO",
+          "shortTitle": "Policy Gradient, Actor-Crit...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Policy Gradient, Actor-Critic & PPO.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  {
+  "id": "ai-genai",
+  "title": "Artificial Intelligence, LLMs & Autonomous Agents",
+  "shortTitle": "AI & GenAI",
+  "category": "Programlama Dilleri",
+  "icon": "Sparkles",
+  "badge": "AI, NLP & GenAI",
+  "color": "badge-warning",
+  "description": "Modern Artificial Intelligence curriculum: Search & Planning Algorithms, Knowledge Representation, Logical & Probabilistic Reasoning, Transformer Architecture, Attention Mechanisms, BERT & GPT, Large Language Models, RAG, Prompt Engineering, and Autonomous AI Agents.",
+  "modules": [
+    {
+      "id": "ai-search-planning",
+      "number": 1,
+      "title": "1. AI Foundations & Search Algorithms",
+      "description": "Intelligent agents, state space search, BFS, DFS, A* heuristic search, adversarial Minimax search, and Constraint Satisfaction Problems.",
+      "lessons": [
+        {
+          "id": "ai-what-is-ai",
+          "title": "Types & Functionalities of Artificial Intelligence",
+          "shortTitle": "Types & Functionalities of ...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Types & Functionalities of Artificial Intelligence.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-bfs-dfs",
+          "title": "Uninformed Search: Breadth-First (BFS) & Depth-First (DFS)",
+          "shortTitle": "Uninformed Search: Breadth-...",
+          "readTime": "26 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Uninformed Search: Breadth-First (BFS) & Depth-First (DFS).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-astar-heuristic",
+          "title": "Informed Search & A* Heuristic Algorithm",
+          "shortTitle": "Informed Search & A* Heuris...",
+          "readTime": "8 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Informed Search & A* Heuristic Algorithm.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-minimax-alphabeta",
+          "title": "Adversarial Search: Minimax & Alpha-Beta Pruning",
+          "shortTitle": "Adversarial Search: Minimax...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Adversarial Search: Minimax & Alpha-Beta Pruning.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-csp",
+          "title": "Constraint Satisfaction Problems (CSP) & Backtracking",
+          "shortTitle": "Constraint Satisfaction Pro...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "Comprehensive guide and Python implementation for Constraint Satisfaction Problems (CSP) & Backtracking.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "ai-knowledge-reasoning",
+      "number": 2,
+      "title": "2. Knowledge Representation & Reasoning",
+      "description": "Ontologies, propositional and first-order logic, deductive/inductive reasoning, probabilistic inference, and fuzzy logic.",
+      "lessons": [
+        {
+          "id": "ai-knowledge-rep",
+          "title": "Knowledge Representation, Frames & Ontologies",
+          "shortTitle": "Knowledge Representation, F...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Knowledge Representation, Frames & Ontologies.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-propositional-fol",
+          "title": "Propositional Logic & First-Order Logic (FOL)",
+          "shortTitle": "Propositional Logic & First...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Propositional Logic & First-Order Logic (FOL).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-reasoning-planning",
+          "title": "Deductive, Inductive & Abductive Reasoning in AI",
+          "shortTitle": "Deductive, Inductive & Abdu...",
           "readTime": "24 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Matplotlib Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Deductive, Inductive & Abductive Reasoning in AI.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "seaborn-tutorial",
-          "title": "Seaborn Tutorial",
-          "shortTitle": "Seaborn Tutorial",
-          "readTime": "5 dk",
+          "id": "ai-probabilistic-fuzzy",
+          "title": "Probabilistic Reasoning & Fuzzy Logic Systems",
+          "shortTitle": "Probabilistic Reasoning & F...",
+          "readTime": "16 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Seaborn Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Probabilistic Reasoning & Fuzzy Logic Systems.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-ml",
-      "number": 6,
-      "title": "6. Machine Learning",
-      "description": "Core ML algorithms: regression, classification, clustering, and ensemble methods.",
+      "id": "ai-transformers-llms",
+      "number": 3,
+      "title": "3. Transformers, Attention & Large Language Models",
+      "description": "Transformer architecture, self-attention, multi-head attention, positional encoding, BERT, GPT, LLMs, Prompt Engineering, and RAG.",
       "lessons": [
         {
-          "id": "ml-introduction",
-          "title": "Introduction to Machine Learning",
-          "shortTitle": "Introduction to Machine Lear...",
+          "id": "ai-transformer-arch",
+          "title": "Architecture & Working of Transformers",
+          "shortTitle": "Architecture & Working of T...",
           "readTime": "24 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Introduction to Machine Learning — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Architecture & Working of Transformers.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "types-of-ml",
-          "title": "Types of Machine Learning",
-          "shortTitle": "Types of Machine Learning",
-          "readTime": "52 dk",
+          "id": "ai-self-attention",
+          "title": "Self-Attention & Multi-Head Attention Mechanisms",
+          "shortTitle": "Self-Attention & Multi-Head...",
+          "readTime": "24 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Types of Machine Learning — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Self-Attention & Multi-Head Attention Mechanisms.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "supervised-learning",
-          "title": "Supervised and Unsupervised learning",
-          "shortTitle": "Supervised and Unsupervised ...",
-          "readTime": "38 dk",
+          "id": "ai-positional-encoding",
+          "title": "Positional Encoding in Transformers",
+          "shortTitle": "Positional Encoding in Tran...",
+          "readTime": "16 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Supervised and Unsupervised learning — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Positional Encoding in Transformers.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "linear-regression",
-          "title": "Linear Regression in Machine learning",
-          "shortTitle": "Linear Regression in Machine...",
-          "readTime": "50 dk",
+          "id": "ai-bert-gpt",
+          "title": "BERT & Generative Pre-trained Transformer (GPT)",
+          "shortTitle": "BERT & Generative Pre-train...",
+          "readTime": "32 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Linear Regression in Machine learning — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for BERT & Generative Pre-trained Transformer (GPT).",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "logistic-regression",
-          "title": "Logistic Regression in Machine Learning",
-          "shortTitle": "Logistic Regression in Machi...",
+          "id": "ai-llm-fundamentals",
+          "title": "Large Language Models (LLMs) Architecture & Scaling",
+          "shortTitle": "Large Language Models (LLMs...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Comprehensive guide and Python implementation for Large Language Models (LLMs) Architecture & Scaling.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-prompt-engineering",
+          "title": "Prompt Engineering Techniques (Zero-Shot, Few-Shot, CoT)",
+          "shortTitle": "Prompt Engineering Techniqu...",
           "readTime": "30 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Logistic Regression in Machine Learning — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Prompt Engineering Techniques (Zero-Shot, Few-Shot, CoT).",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "decision-trees",
-          "title": "Decision Tree in Machine Learning",
-          "shortTitle": "Decision Tree in Machine Lea...",
-          "readTime": "34 dk",
+          "id": "ai-rag",
+          "title": "Retrieval-Augmented Generation (RAG) Pipelines",
+          "shortTitle": "Retrieval-Augmented Generat...",
+          "readTime": "14 dk",
           "difficulty": "Orta",
-          "description": "GeeksForGeeks: Decision Tree in Machine Learning — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "random-forest",
-          "title": "Random Forest Classifier using Scikit-learn",
-          "shortTitle": "Random Forest Classifier usi...",
-          "readTime": "28 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: Random Forest Classifier using Scikit-learn — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "svm-ml",
-          "title": "Support Vector Machine (SVM) Algorithm",
-          "shortTitle": "Support Vector Machine (SVM)...",
-          "readTime": "38 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: Support Vector Machine (SVM) Algorithm — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "k-means-clustering",
-          "title": "K means Clustering – Introduction",
-          "shortTitle": "K means Clustering – Introdu...",
-          "readTime": "36 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: K means Clustering – Introduction — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "ml-algorithms",
-          "title": "Machine Learning Algorithms",
-          "shortTitle": "Machine Learning Algorithms",
-          "readTime": "42 dk",
-          "difficulty": "Orta",
-          "description": "GeeksForGeeks: Machine Learning Algorithms — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Retrieval-Augmented Generation (RAG) Pipelines.",
           "hasPlayground": true,
           "category": "Core"
         }
       ]
     },
     {
-      "id": "aiml-deep-learning",
-      "number": 7,
-      "title": "7. Deep Learning",
-      "description": "Neural networks, CNN, RNN, backpropagation, and deep learning architectures.",
+      "id": "ai-agents-nlp-cv",
+      "number": 4,
+      "title": "4. Autonomous AI Agents, NLP & Computer Vision",
+      "description": "AI agent architectures, LLM tool calling, agent memory, multi-agent systems, NLP text classification, and computer vision object detection.",
       "lessons": [
         {
-          "id": "deep-learning-intro",
-          "title": "Introduction to Deep Learning",
-          "shortTitle": "Introduction to Deep Learnin...",
-          "readTime": "22 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Introduction to Deep Learning — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "neural-networks",
-          "title": "Introduction To Neural Networks",
-          "shortTitle": "Introduction To Neural Netwo...",
-          "readTime": "42 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Introduction To Neural Networks — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "cnn-intro",
-          "title": "Introduction to Convolution Neural Network",
-          "shortTitle": "Introduction to Convolution ...",
-          "readTime": "44 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Introduction to Convolution Neural Network — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "rnn-intro",
-          "title": "Introduction to Recurrent Neural Networks",
-          "shortTitle": "Introduction to Recurrent Ne...",
-          "readTime": "64 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Introduction to Recurrent Neural Networks — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "backpropagation",
-          "title": "Backpropagation in Neural Network",
-          "shortTitle": "Backpropagation in Neural Ne...",
-          "readTime": "44 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Backpropagation in Neural Network — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        }
-      ]
-    },
-    {
-      "id": "aiml-ai",
-      "number": 8,
-      "title": "8. Artificial Intelligence",
-      "description": "AI fundamentals, search algorithms, and natural language processing.",
-      "lessons": [
-        {
-          "id": "ai-intro",
-          "title": "Artificial Intelligence (AI) Tutorial",
-          "shortTitle": "Artificial Intelligence (AI)...",
-          "readTime": "50 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Artificial Intelligence (AI) Tutorial — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "search-algorithms-ai",
-          "title": "Search Algorithms in AI",
-          "shortTitle": "Search Algorithms in AI",
+          "id": "ai-intelligent-agents",
+          "title": "Intelligent Agents & Environment Types in AI",
+          "shortTitle": "Intelligent Agents & Enviro...",
           "readTime": "30 dk",
           "difficulty": "İleri",
-          "description": "GeeksForGeeks: Search Algorithms in AI — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Intelligent Agents & Environment Types in AI.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "natural-language-processing",
-          "title": "Introduction to Natural Language Processing (NLP)",
-          "shortTitle": "Introduction to Natural Lang...",
-          "readTime": "22 dk",
+          "id": "ai-llm-agents-tools",
+          "title": "LLM Agents & Function/Tool Calling",
+          "shortTitle": "LLM Agents & Function/Tool ...",
+          "readTime": "24 dk",
           "difficulty": "İleri",
-          "description": "GeeksForGeeks: Introduction to Natural Language Processing (NLP) — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        }
-      ]
-    },
-    {
-      "id": "aiml-genai",
-      "number": 9,
-      "title": "9. Generative AI & LLMs",
-      "description": "Generative AI, large language models, and prompt engineering techniques.",
-      "lessons": [
-        {
-          "id": "generative-ai-tutorial",
-          "title": "Generative AI Tutorial",
-          "shortTitle": "Generative AI Tutorial",
-          "readTime": "30 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Generative AI Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for LLM Agents & Function/Tool Calling.",
           "hasPlayground": true,
           "category": "Core"
         },
         {
-          "id": "large-language-models",
-          "title": "Large Language Model (LLM) Tutorial",
-          "shortTitle": "Large Language Model (LLM) T...",
+          "id": "ai-agent-memory-multi",
+          "title": "Agent Memory & Multi-Agent Systems",
+          "shortTitle": "Agent Memory & Multi-Agent ...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Agent Memory & Multi-Agent Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-nlp-pipeline",
+          "title": "Natural Language Processing (NLP) & Text Classification",
+          "shortTitle": "Natural Language Processing...",
+          "readTime": "10 dk",
+          "difficulty": "İleri",
+          "description": "Comprehensive guide and Python implementation for Natural Language Processing (NLP) & Text Classification.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ai-computer-vision",
+          "title": "Computer Vision: Object Detection & Image Segmentation",
+          "shortTitle": "Computer Vision: Object Det...",
           "readTime": "28 dk",
           "difficulty": "İleri",
-          "description": "GeeksForGeeks: Large Language Model (LLM) Tutorial — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "prompt-engineering",
-          "title": "Prompt Engineering",
-          "shortTitle": "Prompt Engineering",
-          "readTime": "5 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Prompt Engineering — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        }
-      ]
-    },
-    {
-      "id": "aiml-mlops",
-      "number": 10,
-      "title": "10. MLOps & Model Deployment",
-      "description": "MLOps pipeline, FastAPI and Flask for model serving and production deployment.",
-      "lessons": [
-        {
-          "id": "mlops-tutorial",
-          "title": "MLOps Tutorial",
-          "shortTitle": "MLOps Tutorial",
-          "readTime": "64 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: MLOps Tutorial — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "fastapi-tutorial",
-          "title": "FastAPI Tutorial",
-          "shortTitle": "FastAPI Tutorial",
-          "readTime": "28 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: FastAPI Tutorial — practical guide with Python examples and theory.",
-          "hasPlayground": true,
-          "category": "Core"
-        },
-        {
-          "id": "flask-ml",
-          "title": "Flask Tutorial",
-          "shortTitle": "Flask Tutorial",
-          "readTime": "30 dk",
-          "difficulty": "İleri",
-          "description": "GeeksForGeeks: Flask Tutorial — practical guide with Python examples and theory.",
+          "description": "Comprehensive guide and Python implementation for Computer Vision: Object Detection & Image Segmentation.",
           "hasPlayground": true,
           "category": "Core"
         }

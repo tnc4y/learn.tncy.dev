@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220">
+  <rect width="800" height="220" rx="16" fill="#0f172a"/>
+  <text x="400" y="36" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="bold">DATA SCIENCE &amp; ANALYTICS PIPELINE</text>
+  <g transform="translate(30,65)" font-family="sans-serif">
+    <rect x="0" y="0" width="130" height="100" rx="10" fill="#1e293b" stroke="#0ea5e9" stroke-width="2"/>
+    <text x="65" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">1. Ingestion</text>
+    <text x="65" y="62" text-anchor="middle" fill="#94a3b8" font-size="11">CSV / SQL / API</text>
+    <text x="65" y="80" text-anchor="middle" fill="#38bdf8" font-size="10">pd.read_csv()</text>
+
+    <path d="M135 50 L155 50" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="160" y="0" width="130" height="100" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="225" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">2. Cleaning</text>
+    <text x="225" y="62" text-anchor="middle" fill="#94a3b8" font-size="11">Missing / Outliers</text>
+    <text x="225" y="80" text-anchor="middle" fill="#34d399" font-size="10">dropna / Z-Score</text>
+
+    <path d="M295 50 L315 50" stroke="#64748b" stroke-width="2"/>
+    <rect x="320" y="0" width="130" height="100" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="385" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">3. EDA &amp; Stats</text>
+    <text x="385" y="62" text-anchor="middle" fill="#94a3b8" font-size="11">T-Test / ANOVA</text>
+    <text x="385" y="80" text-anchor="middle" fill="#fbbf24" font-size="10">df.corr()</text>
+
+    <path d="M455 50 L475 50" stroke="#64748b" stroke-width="2"/>
+    <rect x="480" y="0" width="130" height="100" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="545" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">4. Visuals</text>
+    <text x="545" y="62" text-anchor="middle" fill="#94a3b8" font-size="11">Seaborn / Plotly</text>
+    <text x="545" y="80" text-anchor="middle" fill="#c084fc" font-size="10">Heatmap / KDE</text>
+
+    <path d="M615 50 L635 50" stroke="#64748b" stroke-width="2"/>
+    <rect x="640" y="0" width="110" height="100" rx="10" fill="#1e293b" stroke="#ec4899" stroke-width="2"/>
+    <text x="695" y="40" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="bold">5. Modeling</text>
+    <text x="695" y="62" text-anchor="middle" fill="#94a3b8" font-size="11">Scikit-Learn</text>
+    <text x="695" y="80" text-anchor="middle" fill="#f472b6" font-size="10">fit() / predict()</text>
+  </g>
+</svg>
