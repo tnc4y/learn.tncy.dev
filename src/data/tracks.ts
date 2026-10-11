@@ -233,6 +233,20 @@ export const LEARNING_TRACKS: LearningTrack[] = [
 
   // 4. Genel Programlama Dilleri
   {
+    id: "ai-ml",
+    title: "AI, Machine Learning & Data Science",
+    category: "Programlama Dilleri",
+    iconName: "Brain",
+    badge: "AI/ML & Data Science",
+    colorClass: "badge-success",
+    description: "Complete AI, ML & Data Science learning path: Python, Statistics, EDA, Data Analysis, Machine Learning algorithms, Deep Learning, NLP, Generative AI, and MLOps deployment.",
+    lessonCount: 38,
+    level: "Orta",
+    topics: ["Machine Learning Algorithms", "Deep Learning & Neural Networks", "Data Analysis & EDA", "Generative AI & LLMs", "MLOps & Deployment"],
+    startLessonUrl: "/tutorial/ml-introduction",
+    isAvailable: true,
+  },
+  {
     id: "python",
     title: "Python 3",
     category: "Programlama Dilleri",

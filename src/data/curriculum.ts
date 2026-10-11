@@ -4257,6 +4257,482 @@ export const COURSES: CourseTrack[] = [
   },
 
   // ========================================================
+  // AI, MACHINE LEARNING & DATA SCIENCE (GFG)
+  // ========================================================
+  {
+  "id": "ai-ml",
+  "title": "AI, Machine Learning & Data Science",
+  "shortTitle": "AI / ML",
+  "category": "Programlama Dilleri",
+  "icon": "Brain",
+  "badge": "AI/ML & Data Science",
+  "color": "badge-success",
+  "description": "Complete AI, ML & Data Science learning path sourced from GeeksForGeeks: Python, Math, EDA, Data Analysis, ML algorithms, Deep Learning, NLP, Generative AI, and MLOps.",
+  "modules": [
+    {
+      "id": "aiml-python",
+      "number": 1,
+      "title": "1. Python for Data Science",
+      "description": "Python programming fundamentals, libraries, and interview preparation for data science.",
+      "lessons": [
+        {
+          "id": "python-intro",
+          "title": "Python Tutorial",
+          "shortTitle": "Python Tutorial",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Python Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "python-interview",
+          "title": "Python Interview Questions and Answers",
+          "shortTitle": "Python Interview Questions a...",
+          "readTime": "142 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Python Interview Questions and Answers — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-math",
+      "number": 2,
+      "title": "2. Math for Data Science",
+      "description": "Linear algebra, statistics, probability, and calculus foundations for ML.",
+      "lessons": [
+        {
+          "id": "linear-algebra-ds",
+          "title": "Linear Algebra For Machine Learning",
+          "shortTitle": "Linear Algebra For Machine L...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Linear Algebra For Machine Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "statistics-ds",
+          "title": "Statistics For Data Science",
+          "shortTitle": "Statistics For Data Science",
+          "readTime": "58 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Statistics For Data Science — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "probability-ds",
+          "title": "Probability Distributions in Data Science",
+          "shortTitle": "Probability Distributions in...",
+          "readTime": "38 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Probability Distributions in Data Science — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "calculus-ml",
+          "title": "Calculus for Machine Learning: Key Concepts and Applications",
+          "shortTitle": "Calculus for Machine Learnin...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "GeeksForGeeks: Calculus for Machine Learning: Key Concepts and Applications — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-eda",
+      "number": 3,
+      "title": "3. Exploratory Data Analysis",
+      "description": "EDA techniques with NumPy, Pandas, Matplotlib, and Seaborn.",
+      "lessons": [
+        {
+          "id": "eda-intro",
+          "title": "Exploratory Data Analysis",
+          "shortTitle": "Exploratory Data Analysis",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Exploratory Data Analysis — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "eda-numpy-pandas",
+          "title": "Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn",
+          "shortTitle": "Exploratory Data Analysis (E...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-data-analysis",
+      "number": 4,
+      "title": "4. Data Analysis",
+      "description": "Data analytics workflows, NumPy arrays, and Pandas DataFrames.",
+      "lessons": [
+        {
+          "id": "data-analysis-tutorial",
+          "title": "Data Analytics Tutorial",
+          "shortTitle": "Data Analytics Tutorial",
+          "readTime": "36 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Data Analytics Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "numpy-tutorial",
+          "title": "NumPy Tutorial",
+          "shortTitle": "NumPy Tutorial",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: NumPy Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "pandas-tutorial",
+          "title": "Pandas Tutorial",
+          "shortTitle": "Pandas Tutorial",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Pandas Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-visualization",
+      "number": 5,
+      "title": "5. Data Visualization",
+      "description": "Creating insightful charts and plots with Matplotlib and Seaborn.",
+      "lessons": [
+        {
+          "id": "data-visualization-tutorial",
+          "title": "Python - Data visualization Tutorial",
+          "shortTitle": "Python - Data visualization ...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Python - Data visualization Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "matplotlib-tutorial",
+          "title": "Matplotlib Tutorial",
+          "shortTitle": "Matplotlib Tutorial",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Matplotlib Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "seaborn-tutorial",
+          "title": "Seaborn Tutorial",
+          "shortTitle": "Seaborn Tutorial",
+          "readTime": "5 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Seaborn Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-ml",
+      "number": 6,
+      "title": "6. Machine Learning",
+      "description": "Core ML algorithms: regression, classification, clustering, and ensemble methods.",
+      "lessons": [
+        {
+          "id": "ml-introduction",
+          "title": "Introduction to Machine Learning",
+          "shortTitle": "Introduction to Machine Lear...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Introduction to Machine Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "types-of-ml",
+          "title": "Types of Machine Learning",
+          "shortTitle": "Types of Machine Learning",
+          "readTime": "52 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Types of Machine Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "supervised-learning",
+          "title": "Supervised and Unsupervised learning",
+          "shortTitle": "Supervised and Unsupervised ...",
+          "readTime": "38 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Supervised and Unsupervised learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "linear-regression",
+          "title": "Linear Regression in Machine learning",
+          "shortTitle": "Linear Regression in Machine...",
+          "readTime": "50 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Linear Regression in Machine learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "logistic-regression",
+          "title": "Logistic Regression in Machine Learning",
+          "shortTitle": "Logistic Regression in Machi...",
+          "readTime": "30 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Logistic Regression in Machine Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "decision-trees",
+          "title": "Decision Tree in Machine Learning",
+          "shortTitle": "Decision Tree in Machine Lea...",
+          "readTime": "34 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Decision Tree in Machine Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "random-forest",
+          "title": "Random Forest Classifier using Scikit-learn",
+          "shortTitle": "Random Forest Classifier usi...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Random Forest Classifier using Scikit-learn — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "svm-ml",
+          "title": "Support Vector Machine (SVM) Algorithm",
+          "shortTitle": "Support Vector Machine (SVM)...",
+          "readTime": "38 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Support Vector Machine (SVM) Algorithm — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "k-means-clustering",
+          "title": "K means Clustering – Introduction",
+          "shortTitle": "K means Clustering – Introdu...",
+          "readTime": "36 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: K means Clustering – Introduction — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "ml-algorithms",
+          "title": "Machine Learning Algorithms",
+          "shortTitle": "Machine Learning Algorithms",
+          "readTime": "42 dk",
+          "difficulty": "Orta",
+          "description": "GeeksForGeeks: Machine Learning Algorithms — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-deep-learning",
+      "number": 7,
+      "title": "7. Deep Learning",
+      "description": "Neural networks, CNN, RNN, backpropagation, and deep learning architectures.",
+      "lessons": [
+        {
+          "id": "deep-learning-intro",
+          "title": "Introduction to Deep Learning",
+          "shortTitle": "Introduction to Deep Learnin...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Introduction to Deep Learning — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "neural-networks",
+          "title": "Introduction To Neural Networks",
+          "shortTitle": "Introduction To Neural Netwo...",
+          "readTime": "42 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Introduction To Neural Networks — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "cnn-intro",
+          "title": "Introduction to Convolution Neural Network",
+          "shortTitle": "Introduction to Convolution ...",
+          "readTime": "44 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Introduction to Convolution Neural Network — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "rnn-intro",
+          "title": "Introduction to Recurrent Neural Networks",
+          "shortTitle": "Introduction to Recurrent Ne...",
+          "readTime": "64 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Introduction to Recurrent Neural Networks — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "backpropagation",
+          "title": "Backpropagation in Neural Network",
+          "shortTitle": "Backpropagation in Neural Ne...",
+          "readTime": "44 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Backpropagation in Neural Network — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-ai",
+      "number": 8,
+      "title": "8. Artificial Intelligence",
+      "description": "AI fundamentals, search algorithms, and natural language processing.",
+      "lessons": [
+        {
+          "id": "ai-intro",
+          "title": "Artificial Intelligence (AI) Tutorial",
+          "shortTitle": "Artificial Intelligence (AI)...",
+          "readTime": "50 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Artificial Intelligence (AI) Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "search-algorithms-ai",
+          "title": "Search Algorithms in AI",
+          "shortTitle": "Search Algorithms in AI",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Search Algorithms in AI — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "natural-language-processing",
+          "title": "Introduction to Natural Language Processing (NLP)",
+          "shortTitle": "Introduction to Natural Lang...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Introduction to Natural Language Processing (NLP) — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-genai",
+      "number": 9,
+      "title": "9. Generative AI & LLMs",
+      "description": "Generative AI, large language models, and prompt engineering techniques.",
+      "lessons": [
+        {
+          "id": "generative-ai-tutorial",
+          "title": "Generative AI Tutorial",
+          "shortTitle": "Generative AI Tutorial",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Generative AI Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "large-language-models",
+          "title": "Large Language Model (LLM) Tutorial",
+          "shortTitle": "Large Language Model (LLM) T...",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Large Language Model (LLM) Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "prompt-engineering",
+          "title": "Prompt Engineering",
+          "shortTitle": "Prompt Engineering",
+          "readTime": "5 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Prompt Engineering — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "aiml-mlops",
+      "number": 10,
+      "title": "10. MLOps & Model Deployment",
+      "description": "MLOps pipeline, FastAPI and Flask for model serving and production deployment.",
+      "lessons": [
+        {
+          "id": "mlops-tutorial",
+          "title": "MLOps Tutorial",
+          "shortTitle": "MLOps Tutorial",
+          "readTime": "64 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: MLOps Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "fastapi-tutorial",
+          "title": "FastAPI Tutorial",
+          "shortTitle": "FastAPI Tutorial",
+          "readTime": "28 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: FastAPI Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "flask-ml",
+          "title": "Flask Tutorial",
+          "shortTitle": "Flask Tutorial",
+          "readTime": "30 dk",
+          "difficulty": "İleri",
+          "description": "GeeksForGeeks: Flask Tutorial — practical guide with Python examples and theory.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // IEEE 1801 UPF (UNIFIED POWER FORMAT)
   // ========================================================
   {
