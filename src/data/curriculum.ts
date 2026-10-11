@@ -43,14 +43,14 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-1",
         "number": 1,
-        "title": "1. Chapter 1: Computer Networks and the Internet",
+        "title": "Chapter 1: Computer Networks and the Internet",
         "description": "Kurose & Ross 9th Edition — Chapter 1: Computer Networks and the Internet",
         "lessons": [
           {
             "id": "cn-ch1-what-is-internet",
             "title": "1.1 What is the Internet? Nuts-and-Bolts, Services View & Network Protocols",
-            "shortTitle": "1.1 What is the Internet? Nuts-and-Bolts, Servic",
-            "readTime": "10 dk",
+            "shortTitle": "1.1 What is the Internet?",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Hosts, end systems, packet switches, communication links, RFC/IETF standards, and the formal definition of a network protocol.",
             "hasPlayground": true,
@@ -60,7 +60,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch1-network-edge",
             "title": "1.2 The Network Edge: Access Networks (Cable HFC, DSL, FTTH, 5G) & Physical Media",
             "shortTitle": "1.2 The Network Edge",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Connecting end systems to edge routers via Cable DOCSIS/FDM, DSL, Fiber-to-the-Home, WiFi/5G wireless, and guided vs. unguided physical links.",
             "hasPlayground": true,
@@ -80,7 +80,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch1-network-of-networks",
             "title": "1.3B Internet Structure: A 'Network of Networks', Tier-1 ISPs, IXPs & Content Providers",
             "shortTitle": "1.3B Internet Structure",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Evolution from Network Structure 1 to Structure 5: Tier-1 commercial backbones, regional ISPs, multi-homing, peering at IXPs, and Google/Netflix private backbones.",
             "hasPlayground": true,
@@ -100,7 +100,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch1-networks-under-attack",
             "title": "1.5 Networks Under Attack: Packet Interception, IP Spoofing, DoS/DDoS & Lines of Defense",
             "shortTitle": "1.5 Networks Under Attack",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Promiscuous packet sniffing, fake identity (IP spoofing), Distributed Denial of Service (DDoS) botnets, authentication, confidentiality, and firewalls.",
             "hasPlayground": true,
@@ -109,7 +109,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch1-protocol-layers-encapsulation",
             "title": "1.6 Protocol Layers, Reference Models (5-Layer Internet vs. 7-Layer OSI) & Encapsulation",
-            "shortTitle": "1.6 Protocol Layers, Reference Models (5-Layer I",
+            "shortTitle": "1.6 Protocol Layers, Reference Models",
             "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Modularizing complex networks via layered service models: Application, Transport, Network, Link, Physical, ISO/OSI presentation/session, and header encapsulation.",
@@ -119,8 +119,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch1-internet-history",
             "title": "1.7 History of Computer Networking & the Internet (1961–Today)",
-            "shortTitle": "1.7 History of Computer Networking & the Interne",
-            "readTime": "8 dk",
+            "shortTitle": "1.7 History of Computer Networking & the",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "From Kleinrock's queueing theory and ARPAnet packet switching to TCP/IP flag day, DNS, congestion control, the World Wide Web, SDN, and hyperscale cloud networks.",
             "hasPlayground": true,
@@ -131,14 +131,14 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-2",
         "number": 2,
-        "title": "2. Chapter 2: The Application Layer (HTTP/3, QUIC, DNS, Email, CDNs & Sockets)",
+        "title": "Chapter 2: The Application Layer (HTTP/3, QUIC, DNS, Email, CDNs & Sockets)",
         "description": "Kurose & Ross 9th Edition — Chapter 2: The Application Layer (HTTP/3, QUIC, DNS, Email, CDNs & Sockets)",
         "lessons": [
           {
             "id": "cn-ch2-app-layer-principles",
             "title": "2.1 Principles of Network Applications: Client-Server vs. P2P, Sockets & Transport Services",
             "shortTitle": "2.1 Principles of Network Applications",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Network app architectures, communicating processes, IP:port socket addressing, and matching app requirements (loss, timing, throughput) to TCP, TLS, and UDP.",
             "hasPlayground": true,
@@ -148,7 +148,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch2-web-http-protocol",
             "title": "2.2 The Web & HTTP/1.1: Non-Persistent vs. Persistent Connections, Messages & Status Codes",
             "shortTitle": "2.2 The Web & HTTP/1.1",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "HTTP client-server transactions over TCP, 2*RTT non-persistent overhead vs. persistent pipelining, ASCII request/response header syntax, and status codes (200, 301, 400, 404).",
             "hasPlayground": true,
@@ -168,7 +168,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch2-http2-http3-quic",
             "title": "2.2C Modern Web Protocols: HTTP/2 Framing, HOL Blocking, HTTP/3 & QUIC over UDP",
             "shortTitle": "2.2C Modern Web Protocols",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "Solving HTTP/1.1 Head-of-Line (HOL) blocking via HTTP/2 interleaved binary frames, why TCP loss still stalls HTTP/2, and how QUIC integrates TLS 1.3 + per-stream congestion/reliability over UDP.",
             "hasPlayground": true,
@@ -197,8 +197,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch2-dns-records-security",
             "title": "2.4B DNS Caching, Resource Records (A, NS, CNAME, MX), Wire Format & DNSSEC Security",
-            "shortTitle": "2.4B DNS Caching, Resource Records (A, NS, CNAME",
-            "readTime": "8 dk",
+            "shortTitle": "2.4B DNS Caching, Resource Records (A, NS",
+            "readTime": "12 dk",
             "difficulty": "Orta",
             "description": "TTL-based DNS caching, Resource Record (RR) 4-tuples (Name, Value, Type, TTL), 12-byte binary DNS query/reply header format, registrar insertion, DDoS attacks, and DNSSEC authentication.",
             "hasPlayground": true,
@@ -229,13 +229,13 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-3",
         "number": 3,
-        "title": "3. Chapter 3: The Transport Layer (UDP, Reliable Data Transfer rdt, TCP, AIMD, CUBIC & BBR)",
+        "title": "Chapter 3: The Transport Layer (UDP, Reliable Data Transfer rdt, TCP, AIMD, CUBIC & BBR)",
         "description": "Kurose & Ross 9th Edition — Chapter 3: The Transport Layer (UDP, Reliable Data Transfer rdt, TCP, AIMD, CUBIC & BBR)",
         "lessons": [
           {
             "id": "cn-ch3-transport-services-mux",
             "title": "3.1–3.2 Transport-Layer Services & Multiplexing / Demultiplexing (Connectionless vs. TCP 4-Tuple)",
-            "shortTitle": "3.1–3.2 Transport-Layer Services & Multiplexing ",
+            "shortTitle": "3.1–3.2 Transport-Layer Services &",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Logical communication between application processes vs. hosts, source/destination port numbers, 2-tuple UDP socket demultiplexing, and 4-tuple TCP connection socket demultiplexing.",
@@ -276,7 +276,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch3-tcp-segment-seq-ack",
             "title": "3.5 Connection-Oriented Transport (TCP): RFC 793 Segment Header, Byte Sequence Numbers & ACKs",
             "shortTitle": "3.5 Connection-Oriented Transport (TCP)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "20-byte TCP header layout, why TCP numbers bytes rather than segments, piggbacked cumulative ACKs (next expected byte), and Telnet/interactive sequence number traces.",
             "hasPlayground": true,
@@ -285,8 +285,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch3-tcp-rtt-retransmission",
             "title": "3.5B TCP RTT Estimation (EWMA), Timeout Interval, Retransmission Scenarios & Fast Retransmit",
-            "shortTitle": "3.5B TCP RTT Estimation (EWMA), Timeout Interval",
-            "readTime": "10 dk",
+            "shortTitle": "3.5B TCP RTT Estimation (EWMA), Timeout",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Calculating EstimatedRTT (alpha=0.125) and DevRTT (beta=0.25), safety margin TimeoutInterval = EstimatedRTT + 4*DevRTT, RFC 5681 ACK rules, and triple-duplicate-ACK Fast Retransmit.",
             "hasPlayground": true,
@@ -306,7 +306,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch3-congestion-principles",
             "title": "3.6 Principles of Congestion Control: Queueing Costs, Retransmission Waste & Multi-Hop Collapse",
             "shortTitle": "3.6 Principles of Congestion Control",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Analyzing Kurose & Ross's three congestion scenarios: infinite buffers with huge queueing delays, finite buffers with duplicate retransmissions, and upstream bandwidth wasted when packets drop downstream.",
             "hasPlayground": true,
@@ -316,7 +316,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch3-tcp-congestion-aimd",
             "title": "3.7 Classic TCP Congestion Control: Slow Start, AIMD Sawtooth, ssthresh & Congestion Avoidance",
             "shortTitle": "3.7 Classic TCP Congestion Control",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Tracing cwnd evolution round-by-round: exponential Slow Start (doubling per RTT), linear Congestion Avoidance (+1 MSS per RTT), multiplicative decrease (ssthresh = cwnd/2) on 3 duplicate ACKs vs. cwnd=1 on timeout.",
             "hasPlayground": true,
@@ -347,14 +347,14 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-4",
         "number": 4,
-        "title": "4. Chapter 4: The Network Layer — Data Plane (Routers, IPv4/IPv6, CIDR, DHCP, NAT & OpenFlow)",
+        "title": "Chapter 4: The Network Layer — Data Plane (Routers, IPv4/IPv6, CIDR, DHCP, NAT & OpenFlow)",
         "description": "Kurose & Ross 9th Edition — Chapter 4: The Network Layer — Data Plane (Routers, IPv4/IPv6, CIDR, DHCP, NAT & OpenFlow)",
         "lessons": [
           {
             "id": "cn-ch4-data-vs-control-plane",
             "title": "4.1 Network Layer Overview: Data Plane Forwarding vs. Control Plane Routing & Best-Effort Service",
             "shortTitle": "4.1 Network Layer Overview",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Distinguishing local per-packet forwarding (nanoseconds in hardware) from network-wide routing (seconds in software), per-router vs. SDN control planes, and why the Internet's best-effort model succeeded.",
             "hasPlayground": true,
@@ -364,7 +364,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch4-router-architecture-lpm",
             "title": "4.2 Inside a Router: Input Port Functions, Destination-Based Forwarding & Longest Prefix Matching",
             "shortTitle": "4.2 Inside a Router",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "High-speed router architecture: line termination, link-layer decapsulation, decentralized TCAM forwarding tables, and resolving overlapping prefix rules via Longest Prefix Matching (LPM).",
             "hasPlayground": true,
@@ -373,8 +373,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch4-switching-fabrics-queuing",
             "title": "4.2B Switching Fabrics (Memory, Bus, Crossbar), Input/Output Port Queuing & Buffer Sizing",
-            "shortTitle": "4.2B Switching Fabrics (Memory, Bus, Crossbar), ",
-            "readTime": "10 dk",
+            "shortTitle": "4.2B Switching Fabrics (Memory, Bus",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Moving packets across memory, shared bus, and Banyan/crossbar interconnection networks, Input Port Head-of-Line (HOL) blocking at 58.6% load, output buffer sizing (RTT*C / sqrt(N)), and Tail Drop vs. RED/ECN.",
             "hasPlayground": true,
@@ -383,8 +383,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch4-packet-scheduling-net-neutrality",
             "title": "4.2C Packet Scheduling Policies (FCFS, Priority, Round Robin, WFQ) & Network Neutrality",
-            "shortTitle": "4.2C Packet Scheduling Policies (FCFS, Priority,",
-            "readTime": "10 dk",
+            "shortTitle": "4.2C Packet Scheduling Policies (FCFS",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Deciding which queued packet transmits next: First-Come-First-Served, Strict Priority Queuing, Round Robin, Weighted Fair Queueing (WFQ), and the technical/legal debate over Net Neutrality.",
             "hasPlayground": true,
@@ -394,7 +394,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch4-ipv4-datagram-subnets-cidr",
             "title": "4.3 The Internet Protocol (IPv4): 20-Byte Datagram Header, Fragmentation, Subnets & CIDR",
             "shortTitle": "4.3 The Internet Protocol (IPv4)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Anatomy of the IPv4 header (TTL, Protocol, Header Checksum), MTU fragmentation and reassembly, defining an IP subnet, and Classless Interdomain Routing (a.b.c.d/x) address masks.",
             "hasPlayground": true,
@@ -403,8 +403,8 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch4-dhcp-hierarchical-routing",
             "title": "4.3B Dynamic Host Configuration Protocol (DHCP DORA) & Hierarchical Route Aggregation",
-            "shortTitle": "4.3B Dynamic Host Configuration Protocol (DHCP D",
-            "readTime": "10 dk",
+            "shortTitle": "4.3B Dynamic Host Configuration Protocol",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Plug-and-play IP assignment via the 4-step broadcast DHCP handshake (Discover, Offer, Request, ACK), learning default gateway and DNS server IPs, and ISP prefix route aggregation.",
             "hasPlayground": true,
@@ -414,7 +414,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch4-nat-ipv6-transition",
             "title": "4.3C Network Address Translation (NAT) & IPv6: 128-Bit Header, Dual-Stack Tunneling & Adoption",
             "shortTitle": "4.3C Network Address Translation (NAT) & IPv6",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "How home routers multiplex private RFC 1918 subnets (10/8, 172.16/12, 192.168/16) behind a single public IPv4 via NAT translation tables, IPv6's streamlined 40-byte header, and IPv6-in-IPv4 tunneling.",
             "hasPlayground": true,
@@ -423,7 +423,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch4-generalized-forwarding-openflow",
             "title": "4.4–4.5 Generalized Forwarding (Match + Action), OpenFlow Flow Tables, Middleboxes & End-to-End Argument",
-            "shortTitle": "4.4–4.5 Generalized Forwarding (Match + Action),",
+            "shortTitle": "4.4–4.5 Generalized Forwarding (Match +",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Unifying routers, switches, firewalls, and NATs under OpenFlow's Match-plus-Action abstraction, middleboxes in modern networks, the IP hourglass, and Saltzer/Reed/Clark's End-to-End Argument.",
@@ -435,7 +435,7 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-5",
         "number": 5,
-        "title": "5. Chapter 5: The Network Layer — Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP & NETCONF)",
+        "title": "Chapter 5: The Network Layer — Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP & NETCONF)",
         "description": "Kurose & Ross 9th Edition — Chapter 5: The Network Layer — Control Plane (Dijkstra, Bellman-Ford, OSPF, BGP, SDN, ICMP & NETCONF)",
         "lessons": [
           {
@@ -452,7 +452,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch5-distance-vector-bellman-ford",
             "title": "5.2B Distance Vector Routing: Bellman-Ford Equation, Iterative Diffusion & Poisoned Reverse",
             "shortTitle": "5.2B Distance Vector Routing",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Distributed asynchronous routing via Dx(y) = min_v {c(x,v) + Dv(y)}, neighbor distance vector exchanges, 'good news travels fast vs. bad news travels slowly' (count-to-infinity), and poisoned reverse.",
             "hasPlayground": true,
@@ -462,7 +462,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch5-scalable-routing-ospf",
             "title": "5.3 Scalable Intra-AS Routing: Autonomous Systems (AS), OSPF Link-State Flooding & Hierarchical OSPF",
             "shortTitle": "5.3 Scalable Intra-AS Routing",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Why hundreds of millions of destinations require Autonomous Systems (ASes), Open Shortest Path First (OSPF) link-state advertisements over IP, equal-cost multipath (ECMP), and two-tier Backbone/Area OSPF.",
             "hasPlayground": true,
@@ -502,7 +502,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch5-icmp-traceroute",
             "title": "5.6 ICMP (Internet Control Message Protocol): Error Signaling, Ping & How Traceroute Works",
             "shortTitle": "5.6 ICMP (Internet Control Message Protocol)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Network-layer diagnostics carried inside IP datagrams: ICMP Type/Code pairs (Echo Request/Reply 8/0, Destination Unreachable 3, TTL Expired 11/0) and Traceroute's incrementing TTL UDP probes.",
             "hasPlayground": true,
@@ -523,14 +523,14 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-6",
         "number": 6,
-        "title": "6. Chapter 6: The Link Layer and LANs (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS & Data Centers)",
+        "title": "Chapter 6: The Link Layer and LANs (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS & Data Centers)",
         "description": "Kurose & Ross 9th Edition — Chapter 6: The Link Layer and LANs (CRC, CSMA/CD, ARP, Ethernet Switches, VLANs, MPLS & Data Centers)",
         "lessons": [
           {
             "id": "cn-ch6-link-layer-crc",
             "title": "6.1–6.2 Link Layer Services, NIC Hardware & Error Detection: Parity, Checksum & CRC Polynomials",
             "shortTitle": "6.1–6.2 Link Layer Services, NIC Hardware & Error Detection",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Framing, link access, reliable delivery on wireless links, NIC controller hardware vs. CPU, 2D parity error correction, and modulo-2 polynomial division in Cyclic Redundancy Check (CRC-32).",
             "hasPlayground": true,
@@ -549,7 +549,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch6-mac-addresses-arp",
             "title": "6.4 LANs: 48-Bit MAC Addresses, Address Resolution Protocol (ARP) & Routing Frames Across Subnets",
-            "shortTitle": "6.4 LANs: 48-Bit MAC Addresses, Address Resoluti",
+            "shortTitle": "6.4 LANs: 48-Bit MAC Addresses, Address",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "IEEE 48-bit flat hardware MAC addresses vs. hierarchical IP addresses, broadcast ARP Queries (FF-FF-FF-FF-FF-FF) and cached unicast ARP Replies, and step-by-step MAC/IP header rewriting across a router.",
@@ -560,7 +560,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch6-ethernet-frame-standards",
             "title": "6.4B Ethernet (IEEE 802.3): Physical Topology, Frame Structure & 10G/100G/400G Standards",
             "shortTitle": "6.4B Ethernet (IEEE 802.3)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Evolution from shared coaxial bus to switched star topology, the 6 fields of an IEEE 802.3 Ethernet frame (Preamble/SFD, Dst/Src MAC, Type, Data, CRC-32), and multi-gigabit fiber/copper physical layers.",
             "hasPlayground": true,
@@ -570,7 +570,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch6-ethernet-switches-self-learning",
             "title": "6.4C Link-Layer Switches: Frame Filtering/Forwarding, Self-Learning MAC Tables & Switches vs. Routers",
             "shortTitle": "6.4C Link-Layer Switches",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "How plug-and-play full-duplex Ethernet switches eliminate collisions, build their MAC switch tables dynamically via source MAC learning, flood unknown unicasts, and compare against Layer-3 routers.",
             "hasPlayground": true,
@@ -580,7 +580,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch6-vlans-8021q-evpn",
             "title": "6.4D Virtual LANs (VLANs): Port-Based Isolation, Trunking, IEEE 802.1Q Tagging & EVPN/VXLAN",
             "shortTitle": "6.4D Virtual LANs (VLANs)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Isolating broadcast domains on a single physical switch, interconnecting multi-switch VLANs via trunk ports, the 4-byte IEEE 802.1Q VLAN tag (TPID 0x8100 + 12-bit VID), and Layer-2 EVPN/VXLAN overlays.",
             "hasPlayground": true,
@@ -590,7 +590,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch6-mpls-label-switching",
             "title": "6.5 Link Virtualization & Multiprotocol Label Switching (MPLS): Label-Switched Routers & TE",
             "shortTitle": "6.5 Link Virtualization & Multiprotocol Label Switching (MPLS)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Fixed-length label switching between Layer 2 and Layer 3 (20-bit label, 3-bit Exp, 1-bit S, 8-bit TTL), Label-Switched Routers (LSRs) forwarding without IP lookup, RSVP-TE signaling, and VPN traffic engineering.",
             "hasPlayground": true,
@@ -600,7 +600,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch6-datacenter-networking",
             "title": "6.6 Data Center Networking: Clos Topologies (ToR/Spine-Leaf), Multipath, RoCEv2 & Google Jupiter",
             "shortTitle": "6.6 Data Center Networking",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Inside hyperscale cloud data centers: 10,000+ servers in racks under Top-of-Rack (ToR) switches, Rich Tier-1/Tier-2 Clos meshes providing massive bisection bandwidth, RDMA over Converged Ethernet (RoCEv2), and Orion SDN.",
             "hasPlayground": true,
@@ -609,7 +609,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch6-day-in-life-web-request",
             "title": "6.7 Synthesis — A Day in the Life of a Web Page Request (End-to-End Protocol Walkthrough)",
-            "shortTitle": "6.7 Synthesis — A Day in the Life of a Web Page ",
+            "shortTitle": "6.7 Synthesis — A Day in the Life of a Web",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Putting Chapters 1–6 together: connecting a laptop to a school Ethernet LAN and tracing every single packet required to load www.google.com — DHCP, ARP, DNS, Intra-AS OSPF, Inter-AS BGP, TCP 3-way handshake, and HTTP.",
@@ -621,13 +621,13 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-7",
         "number": 7,
-        "title": "7. Chapter 7: Wireless and Mobile Networks (RF, MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Mobility, BT & Starlink)",
+        "title": "Chapter 7: Wireless and Mobile Networks (RF, MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Mobility, BT & Starlink)",
         "description": "Kurose & Ross 9th Edition — Chapter 7: Wireless and Mobile Networks (RF, MIMO, QAM, OFDMA, 802.11 WiFi, 5G RAN/Core, Mobility, BT & Starlink)",
         "lessons": [
           {
             "id": "cn-ch7-wireless-rf-mimo",
             "title": "7.1–7.2 Wireless Links, RF Propagation, SNR, Shannon Capacity, Path Loss, Hidden Terminals & MIMO",
-            "shortTitle": "7.1–7.2 Wireless Links, RF Propagation, SNR, Sha",
+            "shortTitle": "7.1–7.2 Wireless Links, RF Propagation, SNR",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Electromagnetic wave physics, Signal-to-Noise Ratio (dB), Shannon's capacity theorem C = B*log2(1+SNR), free-space path loss (~(fd)^2), multipath fading, hidden terminals, and MIMO spatial diversity/multiplexing.",
@@ -638,7 +638,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch7-phy-coding-modulation-qam",
             "title": "7.2B Physical Layer Coding & Modulation: FEC Interleaving, ASK/PSK/QPSK, QAM Constellations & Adaptive MCS",
             "shortTitle": "7.2B Physical Layer Coding & Modulation",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Forward Error Correction (FEC) with burst-error shuffling, modulating amplitude and phase, QPSK (2 bits/symbol), 16-QAM (4 bits/symbol), 64-QAM (6 bits/symbol) constellation diagrams, and SNR-adaptive modulation.",
             "hasPlayground": true,
@@ -658,7 +658,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch7-wifi-80211-frame-architecture",
             "title": "7.3B IEEE 802.11 WiFi Link Layer: AP-to-Router Frame Flow & 4-Address Frame Format (Addr1–Addr4)",
             "shortTitle": "7.3B IEEE 802.11 WiFi Link Layer",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Why an 802.11 wireless frame needs up to 4 MAC addresses (Receiver MAC, Transmitter MAC, Router Interface MAC, WDS MAC), AP bridging between 802.11 and 802.3 Ethernet, and Frame Control fields.",
             "hasPlayground": true,
@@ -668,7 +668,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch7-5g-ran-pipeline",
             "title": "7.4 5G Cellular Architecture & Radio Access Network (RAN): Channels, PDCP/RLC/MAC Pipeline & Split/SD-RAN",
             "shortTitle": "7.4 5G Cellular Architecture & Radio Access Network (RAN)",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "5G New Radio (NR) sub-6GHz and mmWave bands, physical/logical downlink and uplink channels, the 5G RAN protocol stack (PDCP encryption, RLC segmentation, MAC HARQ), RU/DU/CU Split RAN, and Software-Defined RAN.",
             "hasPlayground": true,
@@ -677,7 +677,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch7-wireless-association-scheduling-power",
             "title": "7.4B Joining the Wireless Edge, Channel-Aware MAC Scheduling (Max Throughput vs. BET) & Power Saving",
-            "shortTitle": "7.4B Joining the Wireless Edge, Channel-Aware MA",
+            "shortTitle": "7.4B Joining the Wireless Edge",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Passive beacon scanning vs. active probing in 802.11 and 5G, CQI/QCI feedback, Max Throughput vs. Blind Equal Throughput (BET) proportional-fair scheduling, and coordinated sleep/wake cycles (DRX).",
@@ -688,7 +688,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch7-5g-core-cups-tunnels",
             "title": "7.4C 5G Core Network Architecture: AMF, SMF, UPF, UDM, Control/User-Plane Separation (CUPS) & GTP-U",
             "shortTitle": "7.4C 5G Core Network Architecture",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Disaggregating the 5G Core into cloud-native microservices: Access and Mobility Management (AMF), Session Management (SMF), Unified Data Management (UDM), User Plane Function (UPF) GTP-U tunnels, and IMSI/SUPI.",
             "hasPlayground": true,
@@ -698,7 +698,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch7-mobility-wifi-5g-handover",
             "title": "7.5 Mobility Management: Spectrum of Mobility, WiFi BSS Roaming & 5G Base Station Handover",
             "shortTitle": "7.5 Mobility Management",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Maintaining active TCP sessions while moving across cells: WiFi AP re-association with switch self-learning vs. the 7-step 5G handover timeline between Source BS, Target BS, AMF, SMF, and UPF tunnel switching.",
             "hasPlayground": true,
@@ -719,13 +719,13 @@ export const COURSES: CourseTrack[] = [
       {
         "id": "cn-mod-8",
         "number": 8,
-        "title": "8. Chapter 8: Network Security (Cryptography, RSA, Signatures/PKI, PGP, TLS 1.3, IPsec, WPA2/5G & Firewalls)",
+        "title": "Chapter 8: Network Security (Cryptography, RSA, Signatures/PKI, PGP, TLS 1.3, IPsec, WPA2/5G & Firewalls)",
         "description": "Kurose & Ross 9th Edition — Chapter 8: Network Security (Cryptography, RSA, Signatures/PKI, PGP, TLS 1.3, IPsec, WPA2/5G & Firewalls)",
         "lessons": [
           {
             "id": "cn-ch8-security-symmetric-crypto",
             "title": "8.1–8.2 Network Security Threat Model (Alice, Bob, Trudy) & Symmetric Key Cryptography (DES & AES)",
-            "shortTitle": "8.1–8.2 Network Security Threat Model (Alice, Bo",
+            "shortTitle": "8.1–8.2 Network Security Threat Model",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Confidentiality, message integrity, end-point authentication, and operational security; Trudy's passive eavesdropping vs. active tampering; substitution/permutation ciphers, DES 56-bit exhaustion, and AES (128/192/256-bit).",
@@ -745,7 +745,7 @@ export const COURSES: CourseTrack[] = [
           {
             "id": "cn-ch8-authentication-signatures-ca",
             "title": "8.3–8.4 Authentication Protocols (ap1.0–ap5.0), Hash Digests, Digital Signatures & Certification Authorities",
-            "shortTitle": "8.3–8.4 Authentication Protocols (ap1.0–ap5.0), ",
+            "shortTitle": "8.3–8.4 Authentication Protocols",
             "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Why ap1.0–ap3.1 fail against spoofing and playback attacks, cryptographic nonces in ap4.0, man-in-the-middle attacks on ap5.0, SHA-256 message digests, signed hash digital signatures, and X.509 CAs + Diffie-Hellman.",
@@ -756,7 +756,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch8-secure-email-pgp",
             "title": "8.5 Securing Electronic Mail (PGP / S/MIME): Confidentiality, Sender Authentication & Integrity",
             "shortTitle": "8.5 Securing Electronic Mail (PGP / S/MIME)",
-            "readTime": "8 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Synthesizing cryptographic building blocks to secure email: signing H(m) with Alice's private key for integrity/non-repudiation, encrypting with a symmetric session key KS, and wrapping KS with Bob's public key.",
             "hasPlayground": true,
@@ -766,7 +766,7 @@ export const COURSES: CourseTrack[] = [
             "id": "cn-ch8-tls-13-handshake",
             "title": "8.6 Transport-Layer Security (TLS): Key Derivation, Record MACs, TLS 1.3 Cipher Suites & 1-RTT Handshake",
             "shortTitle": "8.6 Transport-Layer Security (TLS)",
-            "readTime": "10 dk",
+            "readTime": "12 dk",
             "difficulty": "İleri",
             "description": "Building Toy TLS from scratch: why TCP needs handshake encryption, deriving 4 directional session keys (KC, MC, KS, MS), sequence numbers against replay attacks, and TLS 1.3's streamlined 1-RTT / 0-RTT Diffie-Hellman handshake.",
             "hasPlayground": true,
@@ -822,7 +822,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-basics",
         number: 1,
-        title: "1. Giriş ve Sayısal Tasarım Dünyası",
+        title: "Giriş ve Sayısal Tasarım Dünyası",
         description: "Analog ve dijital sinyaller, VLSI devriminin tarihçesi ve donanım tasarım soyutlama katmanları.",
         lessons: [
           {
@@ -840,7 +840,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-physics",
         number: 2,
-        title: "2. Katı Hal Fiziği ve Yarı İletkenler",
+        title: "Katı Hal Fiziği ve Yarı İletkenler",
         description: "Silikon kristal örgüsü, enerji bantları, katkılama (doping), PN eklemleri ve termal taşıyıcı dinamiği.",
         lessons: [
           {
@@ -888,7 +888,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-mosfet",
         number: 3,
-        title: "3. MOSFET Transistörler & Karakteristikleri",
+        title: "MOSFET Transistörler & Karakteristikleri",
         description: "MOS yapısının elektrostatik anatomisi, eşik gerilimi, akım bölgeleri ve kısa kanal etkileri.",
         lessons: [
           {
@@ -946,7 +946,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-cmos-gates",
         number: 4,
-        title: "4. CMOS Mantık Kapılarının İç Yapısı",
+        title: "CMOS Mantık Kapılarının İç Yapısı",
         description: "CMOS Inverter VTC eğrisi, gürültü payları, NAND/NOR pull-up/pull-down ağları, boyutlandırma ve güç tüketimi.",
         lessons: [
           {
@@ -1014,7 +1014,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-number-systems",
         number: 5,
-        title: "5. Sayı Sistemleri & Veri Temsili",
+        title: "Sayı Sistemleri & Veri Temsili",
         description: "Binary/Hex taban dönüşümleri, ikiye tümleyen negatif sayılar, IEEE 754 kayan nokta, Gray kodu ve sabit nokta aritmetiği.",
         lessons: [
           {
@@ -1102,7 +1102,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-boolean-minimization",
         number: 6,
-        title: "6. Boole Cebri & Karnaugh Haritaları",
+        title: "Boole Cebri & Karnaugh Haritaları",
         description: "Boole aksiyomları, De Morgan teoremleri, K-Map sadeleştirme, evrensel kapılar ve donanım glitch'leri.",
         lessons: [
           {
@@ -1160,7 +1160,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-combinational-blocks",
         number: 7,
-        title: "7. Kombinasyonel Mantık Blokları",
+        title: "Kombinasyonel Mantık Blokları",
         description: "Mimaride kullanılan temel bloklar: MUX, DEMUX, Encoders, Decoders, toplayıcılar, ALU ve gecikme analizi.",
         lessons: [
           {
@@ -1248,7 +1248,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-timing-integrity",
         number: 8,
-        title: "8. Zamanlama, İletim Hatları & Sinyal Bütünlüğü",
+        title: "Zamanlama, İletim Hatları & Sinyal Bütünlüğü",
         description: "RC tel gecikmesi, Elmore gecikme modeli, fan-out yükü, gürültü payları, crosstalk ve güç ağı bütünlüğü.",
         lessons: [
           {
@@ -1306,7 +1306,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-sequential-circuits",
         number: 9,
-        title: "9. Ardışıl Devreler: Latch, Flip-Flop & Saatleme",
+        title: "Ardışıl Devreler: Latch, Flip-Flop & Saatleme",
         description: "Geri beslemeli bellek, SR latch metastabilitesi, D Flip-Flop setup/hold kısıtları, CTS saat ağacı ve CDC senkronizasyonu.",
         lessons: [
           {
@@ -1384,7 +1384,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "df-fsm-memory-vlsi",
         number: 10,
-        title: "10. Sonlu Durum Makineleri, Bellek & VLSI Akışı",
+        title: "Sonlu Durum Makineleri, Bellek & VLSI Akışı",
         description: "Mealy ve Moore FSM tasarımı, 6T SRAM ve 1T-1C DRAM bellek hücreleri, RTL to GDSII akışı ve modern nanometre mimarileri.",
         lessons: [
           {
@@ -1478,7 +1478,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch1",
         number: 1,
-        title: "1. Verilog'a Giriş & Temeller",
+        title: "Verilog'a Giriş & Temeller",
         description: "Verilog donanım tanımlama dili felsefesi, ASIC/SoC akışı ve soyutlama katmanları.",
         lessons: [
           {
@@ -1536,7 +1536,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch2",
         number: 2,
-        title: "2. Geliştirme Araçları & Simülatörler",
+        title: "Geliştirme Araçları & Simülatörler",
         description: "EDA simülasyon ve sentez araçları ekosistemi (Icarus, ModelSim, Vivado).",
         lessons: [
           {
@@ -1554,7 +1554,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch3",
         number: 3,
-        title: "3. Temel Sözdizimi & Modül Yapısı",
+        title: "Temel Sözdizimi & Modül Yapısı",
         description: "Modül anatomisi, port tanımları (input, output, inout) ve hiyerarşik örnekleme.",
         lessons: [
           {
@@ -1602,7 +1602,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch4",
         number: 4,
-        title: "4. Veri Tipleri & Operatörler",
+        title: "Veri Tipleri & Operatörler",
         description: "wire, reg, integer tipleri, skaler/vektör hatlar ve bitsel/mantıksal operatörler.",
         lessons: [
           {
@@ -1670,7 +1670,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch5",
         number: 5,
-        title: "5. Diziler, Bellekler & Parametreler",
+        title: "Diziler, Bellekler & Parametreler",
         description: "Tek/çok boyutlu diziler, bellek blokları ve parametrik modül yapılandırması.",
         lessons: [
           {
@@ -1698,7 +1698,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch6",
         number: 6,
-        title: "6. Yordamsal initial & always Blokları",
+        title: "Yordamsal initial & always Blokları",
         description: "Yordamsal bloklar, duyarlılık listeleri (sensitivity list) ve paralel çalışma.",
         lessons: [
           {
@@ -1746,7 +1746,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch7",
         number: 7,
-        title: "7. Atama İfadeleri & Blocking/Non-Blocking",
+        title: "Atama İfadeleri & Blocking/Non-Blocking",
         description: "Sürekli assign atamaları ile engelleyen (=) ve engellemeyen (<=) atamalar.",
         lessons: [
           {
@@ -1784,7 +1784,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch8",
         number: 8,
-        title: "8. Kombinasyonel Mantık Tasarımı",
+        title: "Kombinasyonel Mantık Tasarımı",
         description: "Kombinasyonel mantık tasarım yöntemleri ve istem dışı latch oluşumunu önleme.",
         lessons: [
           {
@@ -1812,7 +1812,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch9",
         number: 9,
-        title: "9. Temel Sayısal Devreler (Toplayıcı, Mux, Kodlayıcı)",
+        title: "Temel Sayısal Devreler (Toplayıcı, Mux, Kodlayıcı)",
         description: "Tam toplayıcı (Adder), çoğullayıcı (Multiplexer) ve öncelikli kodlayıcı devreleri.",
         lessons: [
           {
@@ -1850,7 +1850,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch10",
         number: 10,
-        title: "10. Ardışıl Mantık (Sequential Logic)",
+        title: "Ardışıl Mantık (Sequential Logic)",
         description: "Saat darbeleri (clk), tetikleme mekanizmaları ve ardışıl devre mimarisi.",
         lessons: [
           {
@@ -1868,7 +1868,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch11",
         number: 11,
-        title: "11. Flip-Floplar & Mandallar (Latches)",
+        title: "Flip-Floplar & Mandallar (Latches)",
         description: "D Latch, D Flip-Flop, T Flip-Flop, JK Flip-Flop ve asenkron sıfırlama.",
         lessons: [
           {
@@ -1916,7 +1916,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch12",
         number: 12,
-        title: "12. Koşullu İfadeler (if-else & case)",
+        title: "Koşullu İfadeler (if-else & case)",
         description: "if-else öncelik zinciri, case, casex ve casez çok yollu seçim mantığı.",
         lessons: [
           {
@@ -1954,7 +1954,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch13",
         number: 13,
-        title: "13. Döngüler & Donanım Generate Blokları",
+        title: "Döngüler & Donanım Generate Blokları",
         description: "Sentezlenebilir for döngüleri ve donanım replikasyonu için generate blokları.",
         lessons: [
           {
@@ -1982,7 +1982,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch14",
         number: 14,
-        title: "14. Fonksiyonlar & Görevler (Functions & Tasks)",
+        title: "Fonksiyonlar & Görevler (Functions & Tasks)",
         description: "Kombinasyonel fonksiyonlar (function) ve zaman gecikmeli görevler (task).",
         lessons: [
           {
@@ -2010,7 +2010,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch15",
         number: 15,
-        title: "15. Sayıcı Devreleri (Counters)",
+        title: "Sayıcı Devreleri (Counters)",
         description: "4-bit senkron sayıcı, Ripple, Mod-N, Ring, Johnson ve Gray kodlu sayıcılar.",
         lessons: [
           {
@@ -2078,7 +2078,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch16",
         number: 16,
-        title: "16. Kaydırmalı Kaydediciler (Shift Registers)",
+        title: "Kaydırmalı Kaydediciler (Shift Registers)",
         description: "Seri/paralel girişli ve çift yönlü kaydırmalı kaydedici (Shift Register) mimarileri.",
         lessons: [
           {
@@ -2096,7 +2096,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch17",
         number: 17,
-        title: "17. Sonlu Durum Makineleri (FSM: Mealy & Moore)",
+        title: "Sonlu Durum Makineleri (FSM: Mealy & Moore)",
         description: "Mealy ve Moore FSM durum makineleri, durum kodlama stilleri ve 1011 dizi tespiti.",
         lessons: [
           {
@@ -2134,7 +2134,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch18",
         number: 18,
-        title: "18. Kenar Dedektörleri & Kod Dönüştürücüler",
+        title: "Kenar Dedektörleri & Kod Dönüştürücüler",
         description: "Pozitif/negatif kenar dedektörleri ve İkili (Binary) - Gray kod dönüştürücüler.",
         lessons: [
           {
@@ -2162,7 +2162,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch19",
         number: 19,
-        title: "19. Bellek Elemanları (RAM, FIFO, LIFO)",
+        title: "Bellek Elemanları (RAM, FIFO, LIFO)",
         description: "Tek portlu senkron RAM bellek, Senkron FIFO kuyruğu ve LIFO yığın belleği.",
         lessons: [
           {
@@ -2200,7 +2200,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch20",
         number: 20,
-        title: "20. Saat Üreteçleri & Buton Debounce",
+        title: "Saat Üreteçleri & Buton Debounce",
         description: "Simülasyon saat üreteçleri ve mekanik buton titreşim önleyici (debounce) filtreleri.",
         lessons: [
           {
@@ -2228,7 +2228,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch21",
         number: 21,
-        title: "21. Kapı Seviyesi Modelleme (Gate-Level)",
+        title: "Kapı Seviyesi Modelleme (Gate-Level)",
         description: "and, or, not primitifleri, kapı gecikmeleri ve anahtar seviyesi modelleme.",
         lessons: [
           {
@@ -2276,7 +2276,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch22",
         number: 22,
-        title: "22. Zamanlama Kontrolü, Gecikmeler & Timescale",
+        title: "Zamanlama Kontrolü, Gecikmeler & Timescale",
         description: "#gecikme kontrolleri, `timescale zaman ölçeği, simülasyon hassasiyeti ve scope.",
         lessons: [
           {
@@ -2334,7 +2334,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch23",
         number: 23,
-        title: "23. Testbench & Temel Simülasyon",
+        title: "Testbench & Temel Simülasyon",
         description: "Testbench yapısı, DUT uyarımı, $display, $monitor, $stop ve $finish sistem görevleri.",
         lessons: [
           {
@@ -2382,7 +2382,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch24",
         number: 24,
-        title: "24. İleri Testbench: VCD, Rastgelelik & Dosya I/O",
+        title: "İleri Testbench: VCD, Rastgelelik & Dosya I/O",
         description: "Dalga biçimi kaydı ($dumpfile/VCD), $random rastgele test ve $fopen dosya I/O.",
         lessons: [
           {
@@ -2430,7 +2430,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch25",
         number: 25,
-        title: "25. Derleyici Direktifleri (`define, `ifdef)",
+        title: "Derleyici Direktifleri (`define, `ifdef)",
         description: "`define makro tanımları, `ifdef/`ifndef koşullu derleme ve `include direktifleri.",
         lessons: [
           {
@@ -2468,7 +2468,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch26",
         number: 26,
-        title: "26. İleri Konular (UDP, specify, strength)",
+        title: "İleri Konular (UDP, specify, strength)",
         description: "Kullanıcı tanımlı primitifler (UDP), specify blokları, sinyal güçleri ve hiyerarşi.",
         lessons: [
           {
@@ -2536,7 +2536,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch27",
         number: 27,
-        title: "27. Mantıksal Sentez & Kodlama Kuralları",
+        title: "Mantıksal Sentez & Kodlama Kuralları",
         description: "RTL'den kapı netlistine mantıksal sentez ve kodlama tarzının alana/hıza etkisi.",
         lessons: [
           {
@@ -2564,7 +2564,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch28",
         number: 28,
-        title: "28. Zamanlama Analizi & SDF Açıklamaları",
+        title: "Zamanlama Analizi & SDF Açıklamaları",
         description: "Statik zamanlama denetimleri ($setup, $hold) ve Standart Gecikme Formatı (SDF).",
         lessons: [
           {
@@ -2602,7 +2602,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch29",
         number: 29,
-        title: "29. Yardımcı Fonksiyonlar & Matematik",
+        title: "Yardımcı Fonksiyonlar & Matematik",
         description: "Sistem matematik fonksiyonları ve veri tipi dönüşüm araçları.",
         lessons: [
           {
@@ -2630,7 +2630,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch30",
         number: 30,
-        title: "30. Örnek Projeler & Pratik Devreler",
+        title: "Örnek Projeler & Pratik Devreler",
         description: "Uygulamalı endüstri standardı Verilog devre örnekleri ve tasarım kalıpları.",
         lessons: [
           {
@@ -2648,7 +2648,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "v-ch31",
         number: 31,
-        title: "31. Verilog Mülakat Soruları & Çözümleri",
+        title: "Verilog Mülakat Soruları & Çözümleri",
         description: "Yarı iletken ve çip tasarım mülakatlarında en çok sorulan 15 teknik soru seti.",
         lessons: [
           {
@@ -3282,7 +3282,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-1",
         number: 1,
-        title: "1. UVM'e Giriş ve Temeller",
+        title: "UVM'e Giriş ve Temeller",
         description: "UVM metodolojisinin tarihçesi, kütüphane kurulumu, ilk testbench ve simülasyon yaşam döngüsü.",
         lessons: [
           {
@@ -3330,7 +3330,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-2",
         number: 2,
-        title: "2. İlk Testbench ve Bileşen Mimarisi",
+        title: "İlk Testbench ve Bileşen Mimarisi",
         description: "İşlem (transaction), dizi (sequence), sürücü (driver), monitör, scoreboard ve agent bileşenleri.",
         lessons: [
           {
@@ -3398,7 +3398,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-3",
         number: 3,
-        title: "3. Temel Sınıflar ve Nesne Yöntemleri",
+        title: "Temel Sınıflar ve Nesne Yöntemleri",
         description: "uvm_object temel sınıfı, copy, clone, compare, print, pack ve unpack standart nesne metotları.",
         lessons: [
           {
@@ -3456,7 +3456,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-4",
         number: 4,
-        title: "4. Yardımcı Makrolar ve Alan Makroları",
+        title: "Yardımcı Makrolar ve Alan Makroları",
         description: "Kayıt makroları (`uvm_component_utils, `uvm_object_utils) ve otomatik alan yardımcıları (`uvm_field_*).",
         lessons: [
           {
@@ -3484,7 +3484,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-5",
         number: 5,
-        title: "5. UVM Fazları ve İtiraz (Objection) Mekanizması",
+        title: "UVM Fazları ve İtiraz (Objection) Mekanizması",
         description: "Ortak fazlar (build, connect, end_of_elaboration), çalışma zamanı fazları ve itiraz (objection) mekanizması.",
         lessons: [
           {
@@ -3522,7 +3522,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-6",
         number: 6,
-        title: "6. Fabrika (Factory) ve Konfigürasyon Veritabanı",
+        title: "Fabrika (Factory) ve Konfigürasyon Veritabanı",
         description: "Tip ve örnek bazında nesne değiştirme (Factory Override), uvm_config_db ve hiyerarşik yapılandırma.",
         lessons: [
           {
@@ -3580,7 +3580,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-7",
         number: 7,
-        title: "7. TLM (Transaction Level Modeling) İletişimi",
+        title: "TLM (Transaction Level Modeling) İletişimi",
         description: "TLM 1.0/2.0 Blocking/Non-blocking Put/Get Portları, Analysis Port, TLM Sockets ve _decl makroları.",
         lessons: [
           {
@@ -3688,7 +3688,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-8",
         number: 8,
-        title: "8. Diziler (Sequences) ve Sanal Diziciler",
+        title: "Diziler (Sequences) ve Sanal Diziciler",
         description: "Dizi çalıştırma yöntemleri (start vs `uvm_do), Sanal Diziciler (Virtual Sequencers) ve Dizi Arbitrasyonu.",
         lessons: [
           {
@@ -3776,7 +3776,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-9",
         number: 9,
-        title: "9. Raporlama ve Mesajlaşma Sistemi",
+        title: "Raporlama ve Mesajlaşma Sistemi",
         description: "UVM mesajlaşma altyapısı (`uvm_info, `uvm_error, `uvm_fatal), uvm_printer ve uvm_comparer politikaları.",
         lessons: [
           {
@@ -3824,7 +3824,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-10",
         number: 10,
-        title: "10. Geri Çağırmalar (Callbacks) ve Olaylar",
+        title: "Geri Çağırmalar (Callbacks) ve Olaylar",
         description: "Bileşen davranışını dinamik genişletme (UVM Callbacks), uvm_event ve senkronizasyon havuzları (uvm_event_pool).",
         lessons: [
           {
@@ -3862,7 +3862,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-11",
         number: 11,
-        title: "11. Yazmaç Soyutlama Katmanı (RAL / Register Layer)",
+        title: "Yazmaç Soyutlama Katmanı (RAL / Register Layer)",
         description: "Yazmaç Soyutlama Katmanı (RAL), uvm_reg_block, Frontdoor/Backdoor erişimleri ve Adaptör (uvm_reg_adapter) yapısı.",
         lessons: [
           {
@@ -3930,7 +3930,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-12",
         number: 12,
-        title: "12. Sürücü-Dizici Etkileşimi ve İşlemler",
+        title: "Sürücü-Dizici Etkileşimi ve İşlemler",
         description: "Sürücü-Dizici el sıkışması (get_next_item, try_next_item, item_done), HDL erişim rutinleri ve Singleton nesneler.",
         lessons: [
           {
@@ -3988,7 +3988,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-13",
         number: 13,
-        title: "13. Yeniden Kullanılabilir VIP Geliştirme",
+        title: "Yeniden Kullanılabilir VIP Geliştirme",
         description: "Taşınabilir, standartlaştırılmış ve yeniden kullanılabilir Doğrulama IP'si (UVM VIP) mimari prensipleri.",
         lessons: [
           {
@@ -4016,7 +4016,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-14",
         number: 14,
-        title: "14. Uçtan Uca UVM Testbench Projeleri",
+        title: "Uçtan Uca UVM Testbench Projeleri",
         description: "APB/UART/SPI benzeri çevre birimleri için sıfırdan uçtan uca eksiksiz UVM testbench projeleri.",
         lessons: [
           {
@@ -4054,7 +4054,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "uvm-mod-15",
         number: 15,
-        title: "15. UVM Teknik Mülakat Soruları ve Çözümleri",
+        title: "UVM Teknik Mülakat Soruları ve Çözümleri",
         description: "Yarı iletken ve çip doğrulama mülakatlarında en sık sorulan 4 set UVM teknik soru ve detaylı çözümleri.",
         lessons: [
           {
@@ -4118,7 +4118,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-1",
         number: 1,
-        title: "1. RTL ve Sentez Temelleri",
+        title: "RTL ve Sentez Temelleri",
         description: "RTL ve Sentez Temelleri modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4136,7 +4136,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-2",
         number: 2,
-        title: "2. Icarus Verilog ile Simülasyon",
+        title: "Icarus Verilog ile Simülasyon",
         description: "Icarus Verilog ile Simülasyon modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4174,7 +4174,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-3",
         number: 3,
-        title: "3. Verilator ile Lint ve Doğrulama",
+        title: "Verilator ile Lint ve Doğrulama",
         description: "Verilator ile Lint ve Doğrulama modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4212,7 +4212,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-4",
         number: 4,
-        title: "4. Skywater 130nm PDK Mimarisi",
+        title: "Skywater 130nm PDK Mimarisi",
         description: "Skywater 130nm PDK Mimarisi modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4260,7 +4260,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-5",
         number: 5,
-        title: "5. Liberty (.lib) Dosyaları ve Zamanlama Modelleri",
+        title: "Liberty (.lib) Dosyaları ve Zamanlama Modelleri",
         description: "Liberty (.lib) Dosyaları ve Zamanlama Modelleri modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4318,7 +4318,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-6",
         number: 6,
-        title: "6. Yosys ile Mantık Sentezi (Logic Synthesis)",
+        title: "Yosys ile Mantık Sentezi (Logic Synthesis)",
         description: "Yosys ile Mantık Sentezi (Logic Synthesis) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4386,7 +4386,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-7",
         number: 7,
-        title: "7. OpenSTA ile Statik Zamanlama Analizi (STA)",
+        title: "OpenSTA ile Statik Zamanlama Analizi (STA)",
         description: "OpenSTA ile Statik Zamanlama Analizi (STA) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4454,7 +4454,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-8",
         number: 8,
-        title: "8. İleri Konular: DFT, CDC ve Düşük Güç",
+        title: "İleri Konular: DFT, CDC ve Düşük Güç",
         description: "İleri Konular: DFT, CDC ve Düşük Güç modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4532,7 +4532,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "rtl-synthesis-mod-9",
         number: 9,
-        title: "9. Ek: Hata Ayıklama Rehberi",
+        title: "Ek: Hata Ayıklama Rehberi",
         description: "Ek: Hata Ayıklama Rehberi modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4566,7 +4566,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-1",
         number: 1,
-        title: "1. Doğrulama Temelleri (Fundamentals of Verification)",
+        title: "Doğrulama Temelleri (Fundamentals of Verification)",
         description: "Doğrulama Temelleri (Fundamentals of Verification) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4674,7 +4674,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-2",
         number: 2,
-        title: "2. Doğrulama Planlaması (Verification Planning)",
+        title: "Doğrulama Planlaması (Verification Planning)",
         description: "Doğrulama Planlaması (Verification Planning) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4712,7 +4712,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-3",
         number: 3,
-        title: "3. Testbench Mimari Evrimi (Testbench Architecture)",
+        title: "Testbench Mimari Evrimi (Testbench Architecture)",
         description: "Testbench Mimari Evrimi (Testbench Architecture) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4780,7 +4780,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-4",
         number: 4,
-        title: "4. Simülasyon ve Hata Ayıklama (Simulation & Debugging)",
+        title: "Simülasyon ve Hata Ayıklama (Simulation & Debugging)",
         description: "Simülasyon ve Hata Ayıklama (Simulation & Debugging) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4848,7 +4848,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-5",
         number: 5,
-        title: "5. Kapsama Analizi (Coverage Metrics & Closure)",
+        title: "Kapsama Analizi (Coverage Metrics & Closure)",
         description: "Kapsama Analizi (Coverage Metrics & Closure) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4926,7 +4926,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-6",
         number: 6,
-        title: "6. Doğrulama Kapanışı ve Sign-Off (Verification Sign-Off)",
+        title: "Doğrulama Kapanışı ve Sign-Off (Verification Sign-Off)",
         description: "Doğrulama Kapanışı ve Sign-Off (Verification Sign-Off) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -4984,7 +4984,7 @@ export const COURSES: CourseTrack[] = [
       {
         id: "verification-mod-7",
         number: 7,
-        title: "7. Endüstri Pratikleri ve Kariyer (Industry Practices)",
+        title: "Endüstri Pratikleri ve Kariyer (Industry Practices)",
         description: "Endüstri Pratikleri ve Kariyer (Industry Practices) modülü ve temel mühendislik ilkeleri.",
         lessons: [
           {
@@ -5048,7 +5048,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-basics",
       "number": 1,
-      "title": "1. Understanding Linux Basics & Architecture",
+      "title": "Understanding Linux Basics & Architecture",
       "description": "Introduction to the Linux operating system, kernel architecture, distributions, virtual machine setup, and Unix vs Linux.",
       "lessons": [
         {
@@ -5106,7 +5106,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-filesystem",
       "number": 2,
-      "title": "2. Linux File System & Directory Hierarchy",
+      "title": "Linux File System & Directory Hierarchy",
       "description": "File system types (ext4, XFS, Btrfs), Filesystem Hierarchy Standard (FHS), directory structure, navigation, and pathnames.",
       "lessons": [
         {
@@ -5164,7 +5164,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-commands-permissions",
       "number": 3,
-      "title": "3. Essential Commands, File Management & Permissions",
+      "title": "Essential Commands, File Management & Permissions",
       "description": "Core CLI commands, file & directory manipulation, rwx permission bits, octal notation, chmod, and chown.",
       "lessons": [
         {
@@ -5242,7 +5242,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-archiving",
       "number": 4,
-      "title": "4. Archiving & Compression Tools",
+      "title": "Archiving & Compression Tools",
       "description": "Creating, compressing, and extracting archives using tar, gzip, gunzip, zip/unzip, bzip2, and xz.",
       "lessons": [
         {
@@ -5310,7 +5310,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-package-management",
       "number": 5,
-      "title": "5. Package Management (APT, DPKG, DNF, YUM)",
+      "title": "Package Management (APT, DPKG, DNF, YUM)",
       "description": "Installing, updating, and managing software packages across Debian/Ubuntu and RHEL/Fedora/CentOS ecosystems.",
       "lessons": [
         {
@@ -5368,7 +5368,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-users-groups",
       "number": 6,
-      "title": "6. User, Group & Privilege Management (sudo)",
+      "title": "User, Group & Privilege Management (sudo)",
       "description": "Managing multi-user accounts, /etc/passwd, /etc/shadow, useradd, userdel, passwd, groups, and sudo privileges.",
       "lessons": [
         {
@@ -5496,7 +5496,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-networking-firewall",
       "number": 7,
-      "title": "7. Linux Networking, Sockets & Firewalls (iptables/UFW)",
+      "title": "Linux Networking, Sockets & Firewalls (iptables/UFW)",
       "description": "Network interfaces (ip, ifconfig, nmcli), routing, diagnostics (ping, netstat, ss, traceroute), DNS/DHCP, and Linux firewalls.",
       "lessons": [
         {
@@ -5664,7 +5664,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-process-management",
       "number": 8,
-      "title": "8. Process Management, Signals & Job Scheduling",
+      "title": "Process Management, Signals & Job Scheduling",
       "description": "Inspecting processes (ps, top, htop), sending POSIX signals (kill), CPU scheduling priority (nice/renice), and background jobs (bg/fg).",
       "lessons": [
         {
@@ -5752,7 +5752,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-systemd-monitoring",
       "number": 9,
-      "title": "9. System Services (systemd) & Performance Monitoring",
+      "title": "System Services (systemd) & Performance Monitoring",
       "description": "Linux boot sequence, systemd unit files, systemctl, journalctl logs, disk/memory/CPU telemetry (df, free, lscpu, iostat, lsof).",
       "lessons": [
         {
@@ -5880,7 +5880,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-shell-scripting",
       "number": 10,
-      "title": "10. Shell & Bash Scripting Mastery",
+      "title": "Shell & Bash Scripting Mastery",
       "description": "Linux Kernel vs Shell, Bash scripting syntax, variables, exit codes, I/O redirection, functions, operators, and building a custom shell in C.",
       "lessons": [
         {
@@ -6098,7 +6098,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "linux-sysadmin-cloud",
       "number": 11,
-      "title": "11. System Administration, SSH, Nginx & Cloud DevOps",
+      "title": "System Administration, SSH, Nginx & Cloud DevOps",
       "description": "Configuring OpenSSH, SCP file transfers, compiling Nginx from source, and managing Linux servers in Cloud & DevOps environments.",
       "lessons": [
         {
@@ -6192,7 +6192,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-fundamentals",
       "number": 1,
-      "title": "1. DevOps Fundamentals, Lifecycle & DevSecOps",
+      "title": "DevOps Fundamentals, Lifecycle & DevSecOps",
       "description": "Core DevOps culture, prerequisites, infinity lifecycle phases, automation trends, and shifting security left with DevSecOps.",
       "lessons": [
         {
@@ -6250,7 +6250,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-system-design",
       "number": 2,
-      "title": "2. Cloud System Design & Microservices Architecture",
+      "title": "Cloud System Design & Microservices Architecture",
       "description": "Monolithic vs Microservices architecture, event-driven systems, horizontal scalability, high availability, CAP theorem, load balancers, and reverse proxies.",
       "lessons": [
         {
@@ -6338,7 +6338,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-networking",
       "number": 3,
-      "title": "3. Networking Models, Routing & Firewalls for DevOps",
+      "title": "Networking Models, Routing & Firewalls for DevOps",
       "description": "OSI 7-layer model, TCP/IP stack, switches/routers/gateways, Linux routing tables, SSH, network protocols, and firewall architectures.",
       "lessons": [
         {
@@ -6426,7 +6426,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-git-scm",
       "number": 4,
-      "title": "4. Source Code Management with Git & GitHub",
+      "title": "Source Code Management with Git & GitHub",
       "description": "Distributed version control internals, Git object model, branching workflows, merge vs rebase strategies, and GitHub collaboration.",
       "lessons": [
         {
@@ -6524,7 +6524,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-yaml-scripting",
       "number": 5,
-      "title": "5. YAML Configuration & Automation Scripting",
+      "title": "YAML Configuration & Automation Scripting",
       "description": "YAML syntax for Kubernetes/Ansible/CI, shebang interpreters, conditional logic, loops, job scheduling, and automated backup scripts.",
       "lessons": [
         {
@@ -6592,7 +6592,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-docker",
       "number": 6,
-      "title": "6. Containerization with Docker & Docker Compose",
+      "title": "Containerization with Docker & Docker Compose",
       "description": "Docker Engine architecture, Dockerfile instructions, image layers, multi-container Docker Compose, volumes, bridge/overlay networks, and registries.",
       "lessons": [
         {
@@ -6710,7 +6710,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-kubernetes",
       "number": 7,
-      "title": "7. Container Orchestration with Kubernetes (K8s)",
+      "title": "Container Orchestration with Kubernetes (K8s)",
       "description": "Kubernetes control plane & node architecture, Pods, Deployments, Services, Ingress, ConfigMaps, Secrets, Volumes, RBAC, and production best practices.",
       "lessons": [
         {
@@ -6888,7 +6888,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-cicd-jenkins",
       "number": 8,
-      "title": "8. CI/CD Pipelines & Jenkins Automation",
+      "title": "CI/CD Pipelines & Jenkins Automation",
       "description": "Continuous Integration, Continuous Delivery/Deployment, deployment automation, Jenkins setup, plugins, and declarative Jenkinsfile pipelines.",
       "lessons": [
         {
@@ -6966,7 +6966,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-iac-terraform",
       "number": 9,
-      "title": "9. Infrastructure as Code (IaC): Terraform & CloudFormation",
+      "title": "Infrastructure as Code (IaC): Terraform & CloudFormation",
       "description": "Declarative infrastructure provisioning, HashiCorp Terraform HCL syntax, providers, resources, state, reusable modules, AWS EC2, and CloudFormation.",
       "lessons": [
         {
@@ -7044,7 +7044,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "devops-observability-cloud",
       "number": 10,
-      "title": "10. Observability, Prometheus, Grafana & Cloud Containers",
+      "title": "Observability, Prometheus, Grafana & Cloud Containers",
       "description": "System monitoring pillars, Prometheus time-series scraping, exporters, Grafana K8s dashboards, Helm charts, and AWS ECS container orchestration.",
       "lessons": [
         {
@@ -7158,7 +7158,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-basics-ddl",
       "number": 1,
-      "title": "1. SQL Foundations, Data Types & DDL/DML Commands",
+      "title": "SQL Foundations, Data Types & DDL/DML Commands",
       "description": "Introduction to SQL, data types, operators, DDL/DQL/DML/DCL/TCL command categories, database creation, and table schema management.",
       "lessons": [
         {
@@ -7236,7 +7236,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-querying-clauses",
       "number": 2,
-      "title": "2. Querying, Filtering, Grouping & CTE Clauses",
+      "title": "Querying, Filtering, Grouping & CTE Clauses",
       "description": "SELECT queries, INSERT/UPDATE/DELETE DML statements, WHERE filtering, ORDER BY, GROUP BY, HAVING, and WITH (Common Table Expressions).",
       "lessons": [
         {
@@ -7324,7 +7324,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-constraints-joins",
       "number": 3,
-      "title": "3. Relational Keys, Data Constraints & SQL Joins",
+      "title": "Relational Keys, Data Constraints & SQL Joins",
       "description": "Relational keys (Candidate, Primary, Foreign, Composite), integrity constraints, INNER/LEFT/RIGHT/FULL/CROSS/SELF Joins, and Set Operators.",
       "lessons": [
         {
@@ -7412,7 +7412,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-functions-subqueries-window",
       "number": 4,
-      "title": "4. Aggregate Functions, Subqueries & Window Functions",
+      "title": "Aggregate Functions, Subqueries & Window Functions",
       "description": "COUNT/SUM/AVG/MAX/MIN aggregations, string & date functions, nested and correlated subqueries, Window Functions (OVER, PARTITION BY, RANK), and CASE.",
       "lessons": [
         {
@@ -7500,7 +7500,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-views-indexes-transactions",
       "number": 5,
-      "title": "5. Views, B-Tree Indexes, Stored Procedures, Triggers & Transactions",
+      "title": "Views, B-Tree Indexes, Stored Procedures, Triggers & Transactions",
       "description": "Virtual tables (Views), Clustered vs Non-Clustered B-Tree indexes, Stored Procedures, Database Triggers, Cursors, and ACID Transactions.",
       "lessons": [
         {
@@ -7578,7 +7578,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-er-normalization",
       "number": 6,
-      "title": "6. Relational Database Design, ER Diagrams & Normalization",
+      "title": "Relational Database Design, ER Diagrams & Normalization",
       "description": "Entity-Relationship (ER) modeling, mapping ER diagrams to relational tables, functional dependencies, attribute closure, and Normal Forms (1NF to BCNF).",
       "lessons": [
         {
@@ -7646,7 +7646,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sql-postgresql-tuning-security",
       "number": 7,
-      "title": "7. PostgreSQL, Query Performance Tuning, ORM & Security",
+      "title": "PostgreSQL, Query Performance Tuning, ORM & Security",
       "description": "PostgreSQL vs MySQL architecture, UPSERT & Multicolumn Indexes, SQL Performance Tuning, ORM, SQL Injection prevention, Encryption, and Backup.",
       "lessons": [
         {
@@ -7737,7 +7737,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "nosql-foundations-models",
       "number": 1,
-      "title": "1. NoSQL Foundations, Data Models & Distributed Consistency",
+      "title": "NoSQL Foundations, Data Models & Distributed Consistency",
       "description": "Evolution of non-relational databases, RDBMS vs NoSQL tradeoffs, Aggregate, Key-Value, Document, Columnar & Graph models, and ACID vs BASE.",
       "lessons": [
         {
@@ -7825,7 +7825,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "nosql-mongodb-crud",
       "number": 2,
-      "title": "2. MongoDB Architecture, BSON Documents & CRUD Queries",
+      "title": "MongoDB Architecture, BSON Documents & CRUD Queries",
       "description": "MongoDB storage engine internals (WiredTiger), collections & documents, BSON data types, ObjectId structure, CRUD methods, and query operators.",
       "lessons": [
         {
@@ -7913,7 +7913,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "nosql-mongodb-aggregation-indexing",
       "number": 3,
-      "title": "3. MongoDB Aggregation Pipeline, Indexing & Data Modeling",
+      "title": "MongoDB Aggregation Pipeline, Indexing & Data Modeling",
       "description": "Multi-stage aggregation pipelines, $group/$match/$out, single/compound/multikey/text indexes, embedded vs referenced schema design, and ACID transactions.",
       "lessons": [
         {
@@ -8001,7 +8001,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "nosql-mongodb-scaling-security",
       "number": 4,
-      "title": "4. MongoDB Replication, Sharded Clusters & Security",
+      "title": "MongoDB Replication, Sharded Clusters & Security",
       "description": "High availability with Replica Sets, Change Streams, horizontal scaling via Sharded Clusters, hashed vs ranged shard keys, RBAC authentication, and backups.",
       "lessons": [
         {
@@ -8069,7 +8069,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "nosql-cassandra-redis-dynamodb-neo4j",
       "number": 5,
-      "title": "5. Cassandra, Redis, DynamoDB, CouchDB & Neo4j",
+      "title": "Cassandra, Redis, DynamoDB, CouchDB & Neo4j",
       "description": "Deep dive into leading specialized NoSQL engines: Apache Cassandra, Redis in-memory structures, AWS DynamoDB, CouchDB, Neo4j graph queries, and Firebase.",
       "lessons": [
         {
@@ -8153,7 +8153,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-foundations",
       "number": 1,
-      "title": "1. System Design Foundations, Requirements & Capacity Estimation",
+      "title": "System Design Foundations, Requirements & Capacity Estimation",
       "description": "Core system design concepts, SDLC, architectural components, functional vs non-functional requirements, back-of-the-envelope capacity estimation, and HLD vs LLD.",
       "lessons": [
         {
@@ -8241,7 +8241,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-architectural-patterns",
       "number": 2,
-      "title": "2. High-Level Architectural Patterns (Microservices, Serverless & Event-Driven)",
+      "title": "High-Level Architectural Patterns (Microservices, Serverless & Event-Driven)",
       "description": "HLD diagrams, monolithic vs microservices, serverless compute, stateless vs stateful tiers, Pub/Sub messaging, and Event Sourcing.",
       "lessons": [
         {
@@ -8329,7 +8329,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-scalability-consistency",
       "number": 3,
-      "title": "3. Scalability, Availability, Consistency & Fault Tolerance",
+      "title": "Scalability, Availability, Consistency & Fault Tolerance",
       "description": "Horizontal vs vertical scaling, eliminating scalability bottlenecks, high availability (99.999%), consistency models, reliability, fault tolerance, and concurrency.",
       "lessons": [
         {
@@ -8417,7 +8417,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-databases-storage",
       "number": 4,
-      "title": "4. Database Design, Sharding, Replication & Storage Systems",
+      "title": "Database Design, Sharding, Replication & Storage Systems",
       "description": "SQL vs NoSQL selection, cloud storage (Block, Object, File), leader-follower replication, horizontal sharding, partitioning, normalization, denormalization, and Redis.",
       "lessons": [
         {
@@ -8525,7 +8525,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-load-balancing-caching",
       "number": 5,
-      "title": "5. Load Balancing, Consistent Hashing & Distributed Caching",
+      "title": "Load Balancing, Consistent Hashing & Distributed Caching",
       "description": "L4/L7 load balancers, routing algorithms, consistent hashing rings, latency vs throughput, distributed caching, cache eviction policies (LRU/LFU), and CDNs.",
       "lessons": [
         {
@@ -8633,7 +8633,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-gateways-queues-protocols",
       "number": 6,
-      "title": "6. API Gateways, Message Queues, Rate Limiting & Network Protocols",
+      "title": "API Gateways, Message Queues, Rate Limiting & Network Protocols",
       "description": "API Gateways, asynchronous message brokers, rate limiting algorithms (Token/Leaky Bucket), REST/gRPC/WebSockets, long polling, and DNS caching.",
       "lessons": [
         {
@@ -8731,7 +8731,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-distributed-security",
       "number": 7,
-      "title": "7. Distributed Systems, Consensus Algorithms & Security Architecture",
+      "title": "Distributed Systems, Consensus Algorithms & Security Architecture",
       "description": "Distributed systems architecture, Paxos & Raft consensus, distributed tracing, security hardening, AuthN vs AuthZ, SSL/TLS, and Disaster Recovery.",
       "lessons": [
         {
@@ -8819,7 +8819,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-lld-patterns",
       "number": 8,
-      "title": "8. Low-Level Design (LLD), SOLID Principles, UML & Design Patterns",
+      "title": "Low-Level Design (LLD), SOLID Principles, UML & Design Patterns",
       "description": "Object-Oriented Analysis and Design (OOAD), modularity, SOLID/DRY/KISS/YAGNI principles, UML diagrams, and GoF Creational, Structural & Behavioral Design Patterns.",
       "lessons": [
         {
@@ -8947,7 +8947,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "sd-case-studies-perf",
       "number": 9,
-      "title": "9. Real-World System Design Case Studies (Netflix, Uber) & Optimization",
+      "title": "Real-World System Design Case Studies (Netflix, Uber) & Optimization",
       "description": "End-to-end architecture of Netflix and Uber, data structures for system design, load/stress testing, performance optimization, and cost-performance tradeoffs.",
       "lessons": [
         {
@@ -9041,7 +9041,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ds-libraries",
       "number": 1,
-      "title": "1. Python Libraries for Data Science",
+      "title": "Python Libraries for Data Science",
       "description": "Core Python libraries for numerical computing, tabular data manipulation, visualization, and machine learning.",
       "lessons": [
         {
@@ -9109,7 +9109,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ds-data-loading",
       "number": 2,
-      "title": "2. Data Ingestion & Extraction",
+      "title": "Data Ingestion & Extraction",
       "description": "Loading data from CSV, Excel, JSON, SQL databases, and web scraping with BeautifulSoup.",
       "lessons": [
         {
@@ -9167,7 +9167,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ds-preprocessing",
       "number": 3,
-      "title": "3. Data Cleaning & Preprocessing",
+      "title": "Data Cleaning & Preprocessing",
       "description": "Handling missing values, removing duplicates, feature scaling, categorical encoding, and outlier detection.",
       "lessons": [
         {
@@ -9255,7 +9255,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ds-eda-stats",
       "number": 4,
-      "title": "4. Exploratory Data Analysis & Statistical Tests",
+      "title": "Exploratory Data Analysis & Statistical Tests",
       "description": "EDA workflows, univariate/multivariate analysis, correlation matrices, and parametric/non-parametric hypothesis testing.",
       "lessons": [
         {
@@ -9333,7 +9333,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ds-visualization",
       "number": 5,
-      "title": "5. Advanced Data Visualization",
+      "title": "Advanced Data Visualization",
       "description": "Mastering charts, distributions, heatmaps, box plots, violin plots, and multi-variable pair plots.",
       "lessons": [
         {
@@ -9404,7 +9404,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-foundations-math",
       "number": 1,
-      "title": "1. ML Foundations & Mathematical Pillars",
+      "title": "ML Foundations & Mathematical Pillars",
       "description": "Core ML concepts, lifecycle, probability, Bayes' theorem, descriptive/inferential statistics, linear algebra, and gradient descent.",
       "lessons": [
         {
@@ -9492,7 +9492,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-supervised",
       "number": 2,
-      "title": "2. Supervised Learning: Regression & Classification",
+      "title": "Supervised Learning: Regression & Classification",
       "description": "Linear & multiple regression, logistic regression, decision trees, KNN, Naive Bayes, and Support Vector Machines.",
       "lessons": [
         {
@@ -9580,7 +9580,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-ensemble",
       "number": 3,
-      "title": "3. Ensemble Learning & Boosting",
+      "title": "Ensemble Learning & Boosting",
       "description": "Combining weak learners via Bagging, Random Forests, AdaBoost, Gradient Boosting, and XGBoost.",
       "lessons": [
         {
@@ -9648,7 +9648,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-evaluation",
       "number": 4,
-      "title": "4. Model Evaluation, Regularization & Tuning",
+      "title": "Model Evaluation, Regularization & Tuning",
       "description": "Confusion matrix, Precision/Recall/F1, ROC-AUC, cross-validation, bias-variance tradeoff, L1/L2 regularization, and hyperparameter tuning.",
       "lessons": [
         {
@@ -9726,7 +9726,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-unsupervised",
       "number": 5,
-      "title": "5. Unsupervised Learning & Dimensionality Reduction",
+      "title": "Unsupervised Learning & Dimensionality Reduction",
       "description": "Clustering (K-Means, Hierarchical, DBSCAN, GMM), Association Rules (Apriori), and Dimensionality Reduction (PCA, t-SNE).",
       "lessons": [
         {
@@ -9814,7 +9814,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ml-rl-timeseries-mlops",
       "number": 6,
-      "title": "6. Reinforcement Learning, Time Series & MLOps",
+      "title": "Reinforcement Learning, Time Series & MLOps",
       "description": "MDPs, Bellman equation, Q-Learning, Time Series ARIMA forecasting, model deployment with FastAPI/Streamlit, and MLOps CI/CD.",
       "lessons": [
         {
@@ -9895,7 +9895,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "dl-foundations",
       "number": 1,
-      "title": "1. Neural Network Foundations",
+      "title": "Neural Network Foundations",
       "description": "ANN architecture, layers, weights and biases, activation functions, forward pass, loss functions, and backpropagation.",
       "lessons": [
         {
@@ -9973,7 +9973,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "dl-optimizers-reg",
       "number": 2,
-      "title": "2. Optimizers & Network Regularization",
+      "title": "Optimizers & Network Regularization",
       "description": "Gradient descent variants, SGD, Momentum, RMSProp, Adam optimizer, Dropout, Batch Normalization, and Early Stopping.",
       "lessons": [
         {
@@ -10041,7 +10041,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "dl-cnn",
       "number": 3,
-      "title": "3. Convolutional Neural Networks (CNN) & Vision",
+      "title": "Convolutional Neural Networks (CNN) & Vision",
       "description": "Convolutional layers, padding, pooling, PyTorch/TensorFlow CNNs, and landmark architectures (LeNet, AlexNet, VGG, ResNet, U-Net, ViT).",
       "lessons": [
         {
@@ -10109,7 +10109,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "dl-rnn-sequence",
       "number": 4,
-      "title": "4. Recurrent Neural Networks (RNN, LSTM & GRU)",
+      "title": "Recurrent Neural Networks (RNN, LSTM & GRU)",
       "description": "Sequence modeling, Backpropagation Through Time (BPTT), vanishing gradients, Bidirectional RNNs, LSTMs, and GRUs.",
       "lessons": [
         {
@@ -10167,7 +10167,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "dl-generative-drl",
       "number": 5,
-      "title": "5. Generative Deep Learning & Deep RL",
+      "title": "Generative Deep Learning & Deep RL",
       "description": "Autoencoders, Generative Adversarial Networks (GANs), Diffusion Models, Deep Q-Networks (DQN), Actor-Critic, and PPO.",
       "lessons": [
         {
@@ -10238,7 +10238,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ai-search-planning",
       "number": 1,
-      "title": "1. AI Foundations & Search Algorithms",
+      "title": "AI Foundations & Search Algorithms",
       "description": "Intelligent agents, state space search, BFS, DFS, A* heuristic search, adversarial Minimax search, and Constraint Satisfaction Problems.",
       "lessons": [
         {
@@ -10296,7 +10296,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ai-knowledge-reasoning",
       "number": 2,
-      "title": "2. Knowledge Representation & Reasoning",
+      "title": "Knowledge Representation & Reasoning",
       "description": "Ontologies, propositional and first-order logic, deductive/inductive reasoning, probabilistic inference, and fuzzy logic.",
       "lessons": [
         {
@@ -10344,7 +10344,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ai-transformers-llms",
       "number": 3,
-      "title": "3. Transformers, Attention & Large Language Models",
+      "title": "Transformers, Attention & Large Language Models",
       "description": "Transformer architecture, self-attention, multi-head attention, positional encoding, BERT, GPT, LLMs, Prompt Engineering, and RAG.",
       "lessons": [
         {
@@ -10422,7 +10422,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "ai-agents-nlp-cv",
       "number": 4,
-      "title": "4. Autonomous AI Agents, NLP & Computer Vision",
+      "title": "Autonomous AI Agents, NLP & Computer Vision",
       "description": "AI agent architectures, LLM tool calling, agent memory, multi-agent systems, NLP text classification, and computer vision object detection.",
       "lessons": [
         {
@@ -10496,7 +10496,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-fundamentals",
       "number": 1,
-      "title": "1. Fundamentals of Low Power Design",
+      "title": "Fundamentals of Low Power Design",
       "description": "Dynamic vs static leakage power dissipation, nanometer power challenges, and UPF design flow.",
       "lessons": [
         {
@@ -10534,7 +10534,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-architecture",
       "number": 2,
-      "title": "2. Power Intent & Architecture",
+      "title": "Power Intent & Architecture",
       "description": "Defining power domains, supply networks, supply sets, and operational power states.",
       "lessons": [
         {
@@ -10582,7 +10582,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-strategies",
       "number": 3,
-      "title": "3. Power Management Strategies",
+      "title": "Power Management Strategies",
       "description": "Power shutoff (PSO), multi-voltage domains, retention registers, isolation cells, and level shifters.",
       "lessons": [
         {
@@ -10640,7 +10640,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-special-networks",
       "number": 4,
-      "title": "4. Special Architectural Networks",
+      "title": "Special Architectural Networks",
       "description": "Feedthrough repeaters, always-on (AON) routing trees, and hierarchical UPF reuse.",
       "lessons": [
         {
@@ -10678,7 +10678,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-verification",
       "number": 5,
-      "title": "5. Power-Aware Verification",
+      "title": "Power-Aware Verification",
       "description": "Power-aware simulation (PAS), corruption semantics, static rule checking (LPS), and formal verification.",
       "lessons": [
         {
@@ -10726,7 +10726,7 @@ export const COURSES: CourseTrack[] = [
     {
       "id": "upf-implementation",
       "number": 6,
-      "title": "6. Implementation & Optimization",
+      "title": "Implementation & Optimization",
       "description": "Power-aware synthesis, low-power standard cell libraries, dynamic optimization, and physical P&R implementation.",
       "lessons": [
         {
