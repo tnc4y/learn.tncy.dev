@@ -4,14 +4,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "decision-trees": {
     "id": "decision-trees",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "34 min read",
+    "readingTime": "32 min read",
     "level": "Intermediate",
     "title": "Decision Tree in Machine Learning",
     "subtitle": "Comprehensive guide on Decision Tree in Machine Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Decision Tree in Machine Learning Last Updated : 12 Aug, 2026 • • • A decision tree is a supervised learning algorithm used for both classification and regression tasks. It has a hierarchical tree structure which consists of a root node, branches, internal nodes and leaf nodes. It works like a flowchart that helps in making step-by-step decisions, where: • Internal nodes represent attribute tests • Branches represent attribute values • Leaf nodes represent final decisions or predictions. Decision trees are widely used due to their interpretability, flexibility and low preprocessing needs.",
+        "content": "A decision tree is a supervised learning algorithm used for both classification and regression tasks. It has a hierarchical tree structure which consists of a root node, branches, internal nodes and leaf nodes. It works like a flowchart that helps in making step-by-step decisions, where: • Internal nodes represent attribute tests • Branches represent attribute values • Leaf nodes represent final decisions or predictions. Decision trees are widely used due to their interpretability, flexibility and low preprocessing needs.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -82,10 +82,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "17. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -116,14 +112,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "random-forest": {
     "id": "random-forest",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "28 min read",
+    "readingTime": "24 min read",
     "level": "Intermediate",
     "title": "Random Forest Classifier using Scikit-learn",
     "subtitle": "Comprehensive guide on Random Forest Classifier using Scikit-learn from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Random Forest Classifier using Scikit-learn Last Updated : 6 Mar, 2026 • • • Random Forest is an ensemble machine learning algorithm that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting. In Scikit‑learn, the Random Forest Classifier is widely used for classification tasks because it handles large datasets and handles nonlinear relationships well. Random Forest Classifier",
+        "content": "Random Forest is an ensemble machine learning algorithm that builds multiple decision trees and combines their predictions to improve accuracy and reduce overfitting. In Scikit‑learn, the Random Forest Classifier is widely used for classification tasks because it handles large datasets and handles nonlinear relationships well. Random Forest Classifier",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -198,19 +194,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "8. Feature Importance",
         "content": "Random Forest Classifiers also provide insight into which features were the most important in making predictions. We can plot the feature importance. Python ``` feature_importances = classifier.feature_importances_ plt.barh(iris.feature_names, feature_importances) plt.xlabel(&#39;Feature Importance&#39;) plt.title(&#39;Feature Importance in Random Forest Classifier&#39;) plt.show() ``` Output: Feature Importance in Random Classifier From the graph we can see that petal width (cm) is the most important feature followed closely by petal length (cm). The sepal width (cm) and sepal length (cm) have lower importance in determining the model’s predictions. This indicates that the classifier relies more on the petal measurements to make predictions about the flower species."
-      },
-      {
-        "title": "13. Related Articles:",
-        "content": "Random Forest Regression in Python Comment",
-        "callout": {
-          "type": "tip",
-          "title": "Practice Tip",
-          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
-        }
-      },
-      {
-        "title": "14. Explore",
-        "content": "DSA Tutorial 2 min read System Design Tutorial 2 min read Aptitude Questions and Answers 2 min read Web Development Technologies 2 min read AI, ML and Data Science Tutorial 2 min read DevOps Tutorial 2 min read"
       }
     ],
     "playground": {
@@ -248,7 +231,7 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Support Vector Machine (SVM) Algorithm Last Updated : 2 May, 2026 • • • Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks. It tries to find the best boundary known as hyperplane that separates different classes in the data. It is useful when you want to do binary classification like spam vs. not spam or cat vs. dog. The main goal of SVM is to maximize the margin between the two classes. The larger the margin the better the model performs on new and unseen data.",
+        "content": "Support Vector Machine (SVM) is a supervised machine learning algorithm used for classification and regression tasks. It tries to find the best boundary known as hyperplane that separates different classes in the data. It is useful when you want to do binary classification like spam vs. not spam or cat vs. dog. The main goal of SVM is to maximize the margin between the two classes. The larger the margin the better the model performs on new and unseen data.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -362,14 +345,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "k-means-clustering": {
     "id": "k-means-clustering",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "36 min read",
+    "readingTime": "34 min read",
     "level": "Intermediate",
     "title": "K means Clustering – Introduction",
     "subtitle": "Comprehensive guide on K means Clustering – Introduction from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "K means Clustering – Introduction Last Updated : 3 Aug, 2026 • • • K-Means Clustering groups similar data points into clusters without needing labeled data. It is used to uncover hidden patterns when the goal is to organize data based on similarity. • Helps identify natural groupings in unlabeled datasets • Works by grouping points based on distance to cluster centers • Commonly used in customer segmentation, image compression and pattern discovery • Useful when you need structure from raw, unorganized data",
+        "content": "K-Means Clustering groups similar data points into clusters without needing labeled data. It is used to uncover hidden patterns when the goal is to organize data based on similarity. • Helps identify natural groupings in unlabeled datasets • Works by grouping points based on distance to cluster centers • Commonly used in customer segmentation, image compression and pattern discovery • Useful when you need structure from raw, unorganized data",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -469,10 +452,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "18. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -503,14 +482,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "ml-algorithms": {
     "id": "ml-algorithms",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Intermediate",
     "title": "Machine Learning Algorithms",
     "subtitle": "Comprehensive guide on Machine Learning Algorithms from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Machine Learning Algorithms Last Updated : 1 Sep, 2026 • • • Machine learning algorithms are sets of rules that allow computers to learn from data, identify patterns and make predictions without being explicitly programmed. Instead of following fixed instructions, these algorithms improve their performance as they are exposed to more data. Machine learning is commonly categorized into three types: • Supervised Learning : Algorithms learn from labeled data, where the input-output relationship is known. • Unsupervised Learning : Algorithms work with unlabeled data to identify patterns or groupings. • Reinforcement Learning: Algorithms learn by interacting with an environment and receiving feedback in the form of rewards or penalties. Machine Learning Algorithms",
+        "content": "Machine learning algorithms are sets of rules that allow computers to learn from data, identify patterns and make predictions without being explicitly programmed. Instead of following fixed instructions, these algorithms improve their performance as they are exposed to more data. Machine learning is commonly categorized into three types: • Supervised Learning : Algorithms learn from labeled data, where the input-output relationship is known. • Unsupervised Learning : Algorithms work with unlabeled data to identify patterns or groupings. • Reinforcement Learning: Algorithms learn by interacting with an environment and receiving feedback in the form of rewards or penalties. Machine Learning Algorithms",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -584,6 +563,19 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "2 . Model-Free Methods",
         "content": "Value-Based Methods • Q-Learning : Learns the best action to take in each state by estimating future rewards. • SARSA : Learns action values based on the current state, action, reward and next state-action pair. • Monte Carlo Methods : Learn value functions by averaging rewards collected from complete episodes. Policy-Based Methods • REINFORCE : Learns an optimal policy by updating action probabilities based on received rewards. • Actor-Critic : Combines a policy-based actor with a value-based critic to improve decision-making. • A3C : Uses multiple agents working in parallel to learn policies and value functions."
+      },
+      {
+        "title": "19. Semi-Supervised Learning Algorithms",
+        "content": "Semi-supervised learning algorithms use both labeled and unlabeled data for training. These algorithms are useful when labeling data is expensive, but unlabeled data is easily available. • Self-Training : Uses a model's confident predictions to assign labels to unlabeled data. • Co-Training : Trains multiple models on different feature sets and uses their predictions to label unlabeled data. • Label Propagation: Assigns labels to unlabeled data based on nearby labeled data points. • Label Spreading: Propagates labels through a graph while allowing the labels to be adjusted during learning. Example: Classifying images when only a small portion of images are labeled."
+      },
+      {
+        "title": "20. Self-Supervised Learning Algorithms",
+        "content": "Self-supervised learning algorithms automatically generate labels from the data itself and learn meaningful representations without manual annotation. • Contrastive Learning (SimCLR, MoCo): Learns representations by bringing similar examples closer and separating dissimilar examples. • Masked Language Models (BERT-style training): Learn language representations by predicting masked or hidden words from their context. Example: Predicting missing words in a sentence or hidden parts of an image. Comment",
+        "callout": {
+          "type": "tip",
+          "title": "Practice Tip",
+          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
+        }
       }
     ],
     "playground": {
@@ -614,14 +606,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "deep-learning-intro": {
     "id": "deep-learning-intro",
     "badge": "Module 7 • Deep Learning",
-    "readingTime": "22 min read",
+    "readingTime": "20 min read",
     "level": "Advanced",
     "title": "Introduction to Deep Learning",
     "subtitle": "Comprehensive guide on Introduction to Deep Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction to Deep Learning Last Updated : 2 May, 2026 • • • Deep Learning is transforming the way machines understand, learn and interact with complex data. Deep learning mimics neural networks of the human brain, it enables computers to autonomously uncover patterns and make informed decisions from vast amounts of unstructured data.",
+        "content": "Deep Learning is transforming the way machines understand, learn and interact with complex data. Deep learning mimics neural networks of the human brain, it enables computers to autonomously uncover patterns and make informed decisions from vast amounts of unstructured data.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -668,10 +660,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "11. Explore",
-        "content": "Basics • Introduction 5 min read • AI vs ML vs DL 2 min read • Applications 3 min read • Challenges 7 min read • Importance 5 min read Neural Networks • Introduction 9 min read • Types 5 min read • Layers in ANN 4 min read • Activation functions 6 min read • Feedforward Neural Network 5 min read • Backpropagation 7 min read Deep Learning Models • CNN 5 min read • RNN 10 min read • LSTM 4 min read • GRU 5 min read • Transformers 5 min read • Autoencoders 6 min read • GAN 10 min read Model Evaluation • Gradient Descent 13 min read • Momentum-based Gradient Optimizer 3 min read • Adagrad 6 min read • RMSProp 4 min read • Adam Optimizer 5 min read Deep Learning Frameworks • TensorFlow 2 min read • PyTorch 5 min read • Caffe 8 min read • Apache MXNet 4 min read • Theano 3 min read Projects • Lung Cancer Detection 4 min read • Cat & Dog Classification 5 min read • Sentiment Analysis 3 min read • Text Generation using LSTM 4 min read • Machine Translation 5 min read • Interview Questions 15+ min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -702,14 +690,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "neural-networks": {
     "id": "neural-networks",
     "badge": "Module 7 • Deep Learning",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Advanced",
     "title": "Introduction To Neural Networks",
     "subtitle": "Comprehensive guide on Introduction To Neural Networks from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction To Neural Networks Last Updated : 31 Aug, 2026 • • • Neural Networks are machine learning models inspired by the way the human brain processes information. They consist of interconnected layers of neurons that learn patterns from data and make predictions. • Learn complex patterns from large datasets. • Consist of input, hidden, and output layers. • Used in image recognition, text processing, speech recognition, and prediction tasks. Neural Networks are built from several key components: • Neurons : The basic units that receive inputs, each neuron is governed by a threshold and an activation function. • Connections : Links between neurons that carry information, regulated by weights and biases. • Weights and Biases : These parameters determine the strength and influence of connections. • Propagation Functions : Mechanisms that help process and transfer data across layers of neurons. • Learning Rule : The method that adjusts weights and biases over time to improve accuracy. Learning in neural networks follows a structured, three-stage process: • Input Computation : Data is fed into the network. • Output Generation : Based on the current parameters, the network generates an output. • Iterative Refinement : The network refines its output by adjusting weights and biases, gradually improving its performance on diverse tasks. The image illustrates the analogy between a biological neuron and an artificial neuron, showing how inputs are received and processed to produce outputs in both systems.",
+        "content": "Neural Networks are machine learning models inspired by the way the human brain processes information. They consist of interconnected layers of neurons that learn patterns from data and make predictions. • Learn complex patterns from large datasets. • Consist of input, hidden, and output layers. • Used in image recognition, text processing, speech recognition, and prediction tasks. Neural Networks are built from several key components: • Neurons : The basic units that receive inputs, each neuron is governed by a threshold and an activation function. • Connections : Links between neurons that carry information, regulated by weights and biases. • Weights and Biases : These parameters determine the strength and influence of connections. • Propagation Functions : Mechanisms that help process and transfer data across layers of neurons. • Learning Rule : The method that adjusts weights and biases over time to improve accuracy. Learning in neural networks follows a structured, three-stage process: • Input Computation : Data is fed into the network. • Output Generation : Based on the current parameters, the network generates an output. • Iterative Refinement : The network refines its output by adjusting weights and biases, gradually improving its performance on diverse tasks. The image illustrates the analogy between a biological neuron and an artificial neuron, showing how inputs are received and processed to produce outputs in both systems.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -808,6 +796,19 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "18. Applications",
         "content": "• Image and Video Recognition : CNNs are extensively used in applications such as facial recognition, autonomous driving and medical image analysis. • Natural Language Processing (NLP) : RNNs and transformers power language translation, chatbots and sentiment analysis. • Finance : Predicting stock prices, fraud detection and risk management. • Healthcare : Neural networks assist in diagnosing diseases, analyzing medical images and personalizing treatment plans. • Gaming and Autonomous Systems : Neural networks enable real-time decision-making, enhancing user experience in video games and enabling autonomous systems like self-driving cars."
+      },
+      {
+        "title": "19. Advantages",
+        "content": "• Neural networks use non-linear activation functions to learn intricate patterns that cannot be captured by linear models. • They automatically extract relevant features from raw data, reducing the need for manual feature engineering. • Multiple neurons can perform computations simultaneously, improving computational efficiency, especially on GPUs. • Once trained, neural networks can make accurate predictions on new data that was not part of the training set."
+      },
+      {
+        "title": "20. Limitations",
+        "content": "• Training large neural networks is computationally intensive and requires significant processing power. • Act as black box models, making it difficult to understand how decisions are made, which can be a concern in critical applications. • May suffer from overfitting, where the model memorizes training data instead of learning general patterns, even though regularization can help reduce this issue. • Neural networks often require large, well-labeled datasets for effective training and performance may suffer if the data is limited or biased. Comment",
+        "callout": {
+          "type": "tip",
+          "title": "Practice Tip",
+          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
+        }
       }
     ],
     "playground": {
@@ -838,14 +839,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "cnn-intro": {
     "id": "cnn-intro",
     "badge": "Module 7 • Deep Learning",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Advanced",
     "title": "Introduction to Convolution Neural Network",
     "subtitle": "Comprehensive guide on Introduction to Convolution Neural Network from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction to Convolution Neural Network Last Updated : 12 May, 2026 • • • Convolutional Neural Networks (CNNs), are neural network architectures inspired by the human visual system, designed to process image data by capturing spatial relationships between pixels. • Learn hierarchical features from simple edges to complex objects • Capture spatial patterns using convolution operations • Detect objects regardless of their position in the image • Reduce computation by focusing on local regions instead of the entire image Convolutional Neural Networks",
+        "content": "Convolutional Neural Networks (CNNs), are neural network architectures inspired by the human visual system, designed to process image data by capturing spatial relationships between pixels. • Learn hierarchical features from simple edges to complex objects • Capture spatial patterns using convolution operations • Detect objects regardless of their position in the image • Reduce computation by focusing on local regions instead of the entire image Convolutional Neural Networks",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -944,6 +945,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "18. Step 7: Apply Flatten Layer",
         "content": "The flatten layer converts 2D feature maps into a 1D feature vector for fully connected layers. Python ``` flatten_layer = tf.keras.layers.Flatten() flatten_output = flatten_layer(pool_output) print(\"After Flatten Shape:\", flatten_output.shape) print(\"First 20 Flattened Values:\") print(flatten_output.numpy()[0][:20]) ``` Output: After Flatten Shape: (1, 22500) First 20 values of Flattened Vector: [135. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81. 81.]"
+      },
+      {
+        "title": "19. Step 8: Add Fully Connected (Dense) Layer",
+        "content": "The fully connected layer learns high-level patterns from the flattened feature vector and produces output predictions. Python ``` dense_layer = tf.keras.layers.Dense( units=64, activation=&#39;relu&#39; ) dense_output = dense_layer(flatten_output) print(\"After Fully Connected Layer Shape:\", dense_output.shape) ``` Output: After Fully Connected Layer Shape: (1, 64) You can download full code from here"
+      },
+      {
+        "title": "20. Advantages",
+        "content": "• Automatically learn important features from images, videos or audio without manual extraction. • Highly effective at detecting spatial patterns, edges, textures and shapes. • Robust to variations like translation, rotation and scaling in input data. • Can handle large datasets and achieve high predictive accuracy. • Supports end-to-end training, simplifying the model pipeline."
       }
     ],
     "playground": {
@@ -974,14 +983,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "rnn-intro": {
     "id": "rnn-intro",
     "badge": "Module 7 • Deep Learning",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Advanced",
     "title": "Introduction to Recurrent Neural Networks",
     "subtitle": "Comprehensive guide on Introduction to Recurrent Neural Networks from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction to Recurrent Neural Networks Last Updated : 6 May, 2026 • • • Recurrent Neural Networks (RNNs) are a class of neural networks designed to process sequential data by retaining information from previous steps. They are especially effective for tasks where context and order matter. • Designed for sequential and temporal data • Maintains memory of past inputs • Widely used in NLP, forecasting and speech tasks Imagine reading a sentence and you try to predict the next word, you don’t rely only on the current word but also remember the words that came before. RNNs work similarly by “remembering” past information i.e it considers all the earlier words to choose the most likely next word. This memory of previous steps helps the network understand context and make better predictions.",
+        "content": "Recurrent Neural Networks (RNNs) are a class of neural networks designed to process sequential data by retaining information from previous steps. They are especially effective for tasks where context and order matter. • Designed for sequential and temporal data • Maintains memory of past inputs • Widely used in NLP, forecasting and speech tasks Imagine reading a sentence and you try to predict the next word, you don’t rely only on the current word but also remember the words that came before. RNNs work similarly by “remembering” past information i.e it considers all the earlier words to choose the most likely next word. This memory of previous steps helps the network understand context and make better predictions.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1080,6 +1089,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "4. Gated Recurrent Units (GRUs)",
         "content": "Gated Recurrent Units (GRUs) simplify LSTMs by combining the input and forget gates into a single update gate and streamlining the output mechanism. This design is computationally efficient, often performing similarly to LSTMs and is useful in tasks where simplicity and faster training are beneficial."
+      },
+      {
+        "title": "19. Feedforward Neural Networks (FNNs)",
+        "content": "• Process data in a single direction, from input to output • Do not store information from previous inputs • Suitable for tasks with independent data, such as image classification • Perform poorly on sequential data due to the absence of memory"
+      },
+      {
+        "title": "20. Recurrent Neural Networks (RNNs)",
+        "content": "• Include feedback loops that pass information from previous steps • Maintain memory of past inputs through hidden states • Designed for sequential and time-dependent data • Effective for tasks where context matters, such as text and time-series analysis RNN vs Feedforward Neural Networks"
       }
     ],
     "playground": {
@@ -1110,14 +1127,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "backpropagation": {
     "id": "backpropagation",
     "badge": "Module 7 • Deep Learning",
-    "readingTime": "36 min read",
+    "readingTime": "38 min read",
     "level": "Advanced",
     "title": "Backpropagation in Neural Network",
     "subtitle": "Comprehensive guide on Backpropagation in Neural Network from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Backpropagation in Neural Network Last Updated : 29 Sep, 2026 • • • Backpropagation is an algorithm that trains neural networks by reducing prediction error. It works by propagating errors backward, computing gradients using the chain rule and updating weights and biases to improve performance. • Computes gradients of the loss function with respect to each weight using the chain rule • Updates weights and biases efficiently to reduce error • Scales well to deep and complex neural networks • Enables automatic learning and continuous improvement across training iterations Fig(a) A simple illustration of how the backpropagation works by adjustments of weights",
+        "content": "Backpropagation is an algorithm that trains neural networks by reducing prediction error. It works by propagating errors backward, computing gradients using the chain rule and updating weights and biases to improve performance. • Computes gradients of the loss function with respect to each weight using the chain rule • Updates weights and biases efficiently to reduce error • Scales well to deep and complex neural networks • Enables automatic learning and continuous improvement across training iterations Fig(a) A simple illustration of how the backpropagation works by adjustments of weights",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1130,21 +1147,12 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
         }
       },
       {
-        "title": "2. Working of Back Propagation Algorithm",
-        "content": "The Back Propagation algorithm involves two main steps:",
-        "code": {
-          "language": "python",
-          "caption": "Code Example: Working of Back Propagation Algorithm",
-          "snippet": "def feedforward ( self , X ): \n self . hidden_activation = np . dot ( \n X , self . weights_input_hidden ) + self . bias_hidden \n self . hidden_output = self . sigmoid ( self . hidden_activation ) \n\n self . output_activation = np . dot ( \n self . hidden_output , self . weights_hidden_output ) + self . bias_output \n self . predicted_output = self . sigmoid ( self . output_activation ) \n\n return self . predicted_output"
-        }
-      },
-      {
         "title": "1. Forward Pass Work",
         "content": "In forward pass , input data moves through the network to generate an output. • Input data is passed to the input layer and forwarded to hidden layers • Each neuron computes a weighted sum and adds a bias • Activation functions (like ReLU ) are applied to produce outputs • Outputs from one layer become inputs to the next layer • Final layer uses functions like softmax to produce predictions (e.g., probabilities for classification) The forward pass using weights and biases",
         "code": {
           "language": "python",
           "caption": "Code Example: 1. Forward Pass Work",
-          "snippet": "def backward ( self , X , y , learning_rate ): \n output_error = y - self . predicted_output \n output_delta = output_error * \\\n self . sigmoid_derivative ( self . predicted_output ) \n\n hidden_error = np . dot ( output_delta , self . weights_hidden_output . T ) \n hidden_delta = hidden_error * self . sigmoid_derivative ( self . hidden_output ) \n\n self . weights_hidden_output += np . dot ( self . hidden_output . T , \n output_delta ) * learning_rate \n self . bias_output += np . sum ( output_delta , axis = 0 , \n keepdims = True ) * learning_rate \n self . weights_input_hidden += np . dot ( X . T , hi"
+          "snippet": "def feedforward ( self , X ): \n self . hidden_activation = np . dot ( \n X , self . weights_input_hidden ) + self . bias_hidden \n self . hidden_output = self . sigmoid ( self . hidden_activation ) \n\n self . output_activation = np . dot ( \n self . hidden_output , self . weights_hidden_output ) + self . bias_output \n self . predicted_output = self . sigmoid ( self . output_activation ) \n\n return self . predicted_output"
         }
       },
       {
@@ -1153,21 +1161,26 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
         "code": {
           "language": "python",
           "caption": "Code Example: 2. Backward Pass",
-          "snippet": "def train ( self , X , y , epochs , learning_rate ): \n for epoch in range ( epochs ): \n output = self . feedforward ( X ) \n self . backward ( X , y , learning_rate ) \n if epoch % 4000 == 0 : \n loss = np . mean ( np . square ( y - output )) \n print ( f \"Epoch { epoch } , Loss: { loss } \" )"
+          "snippet": "def backward ( self , X , y , learning_rate ): \n output_error = y - self . predicted_output \n output_delta = output_error * \\\n self . sigmoid_derivative ( self . predicted_output ) \n\n hidden_error = np . dot ( output_delta , self . weights_hidden_output . T ) \n hidden_delta = hidden_error * self . sigmoid_derivative ( self . hidden_output ) \n\n self . weights_hidden_output += np . dot ( self . hidden_output . T , \n output_delta ) * learning_rate \n self . bias_output += np . sum ( output_delta , axis = 0 , \n keepdims = True ) * learning_rate \n self . weights_input_hidden += np . dot ( X . T , hi"
         }
       },
       {
-        "title": "5. Example",
+        "title": "4. Example",
         "content": "Let’s walk through an example of Back Propagation in machine learning. Assume the neurons use the sigmoid activation function for the forward and backward pass. The target output is 0.5 and the learning rate is 1. Example (1) of backpropagation sum",
         "code": {
           "language": "python",
           "caption": "Code Example: Example",
-          "snippet": "X = np . array ([[ 0 , 0 ], [ 0 , 1 ], [ 1 , 0 ], [ 1 , 1 ]]) \n y = np . array ([[ 0 ], [ 1 ], [ 1 ], [ 0 ]]) \n\n nn = NeuralNetwork ( input_size = 2 , hidden_size = 4 , output_size = 1 ) \n nn . train ( X , y , epochs = 10000 , learning_rate = 0.1 ) \n\n output = nn . feedforward ( X ) \n print ( \"Predictions after training:\" ) \n print ( output )"
+          "snippet": "def train ( self , X , y , epochs , learning_rate ): \n for epoch in range ( epochs ): \n output = self . feedforward ( X ) \n self . backward ( X , y , learning_rate ) \n if epoch % 4000 == 0 : \n loss = np . mean ( np . square ( y - output )) \n print ( f \"Epoch { epoch } , Loss: { loss } \" )"
         }
       },
       {
         "title": "1. Initial Calculation",
-        "content": "The weighted sum at each node is calculated using: a _j =∑(w_i ,j∗x _i ) Where, • a_j is the weighted sum of all the inputs and weights at each node • w_{i,j} represents the weights between the i^{th} input and the j^{th} neuron • x_i represents the value of the i^{th} input O (output): After applying the activation function to a , we get the output of the neuron: o_j = activation function( a_j )"
+        "content": "The weighted sum at each node is calculated using: a _j =∑(w_i ,j∗x _i ) Where, • a_j is the weighted sum of all the inputs and weights at each node • w_{i,j} represents the weights between the i^{th} input and the j^{th} neuron • x_i represents the value of the i^{th} input O (output): After applying the activation function to a , we get the output of the neuron: o_j = activation function( a_j )",
+        "code": {
+          "language": "python",
+          "caption": "Code Example: 1. Initial Calculation",
+          "snippet": "X = np . array ([[ 0 , 0 ], [ 0 , 1 ], [ 1 , 0 ], [ 1 , 1 ]]) \n y = np . array ([[ 0 ], [ 1 ], [ 1 ], [ 0 ]]) \n\n nn = NeuralNetwork ( input_size = 2 , hidden_size = 4 , output_size = 1 ) \n nn . train ( X , y , epochs = 10000 , learning_rate = 0.1 ) \n\n output = nn . feedforward ( X ) \n print ( \"Predictions after training:\" ) \n print ( output )"
+        }
       },
       {
         "title": "2. Sigmoid Function",
@@ -1195,10 +1208,10 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       },
       {
         "title": "4. Weight Updates",
-        "content": "The general formula is: {\\Delta w_{j,3}=\\eta\\delta_5 y_j} Therefore: • \\Delta w_{1,3}=\\eta\\delta_5y_3 • \\Delta w_{2,3}=\\eta\\delta_5y_4 For w_{1,3} : \\Delta w_{1,3} = 1\\times(-0.0367)\\times0.5522 \\approx-0.0203 : w_{1,3}(\\text{new}) = 0.3+(-0.0203) w_{1,3}\\approx0.2797 For w_{2,3} : \\Delta w_{2,3} = 1 \\times (-0.0367) \\times 0.5781 = -0.0212 w_{2,3}(\\text{new}) = -0.0212 + 0.9 = 0.8788 For the weights from the input layer to the hidden layer: \\Delta w_{1,1}=\\eta\\delta_3x_1 \\\\ \\Delta w_{2,1}=\\eta\\delta_3x_2 \\\\ \\Delta w_{1,2}=\\eta\\delta_4x_1 \\\\ \\Delta w_{2,2}=\\eta\\delta_4x_2 \\\\ Using: \\delta_3=-0.00273, \\delta_4=-0.0080 For w_{1,1} : \\Delta w_{1,1} = 1\\times(-0.00273)\\times0.35 \\approx-0.00096 w_{1,1}(\\text{new}) = 0.2+(-0.00096) \\approx0.19904 For w_{2,1} : \\Delta w_{2,1} = 1\\times(-0.00273)\\times0.7 \\approx-0.00191 w_{2,1}(\\text{new}) = 0.2+(-0.00191) \\approx0.19809 For w_{1,2} : \\Delta w_{1,2} = 1\\times(-0.0080)\\times0.35 \\approx-0.00280 w_{1,2}(\\text{new}) = 0.3+(-0.00280) \\approx0.29720 For w_{2,2} : \\Delta w_{2,2} = 1\\times(-0.0080)\\times0.7 \\approx-0.00560 w_{2,2}(\\text{new}) = 0.3+(-0.00560) \\approx0.29440 Updated weights: w_{1,1}=0.19904 \\\\ w_{2,1}=0.19809 \\\\ w_{1,2}=0.29720 \\\\ w_{2,2}=0.29440 \\\\ w_{1,3}=0.27970 \\\\ w_{2,3}=0.87880 \\\\ The update rule follows the standard backpropagation formula: each weight change equals the learning rate multiplied by the receiving neuron’s delta and the sending neuron’s output. The updated weights are illustrated below Through backward pass the weights are updated After updating the weights, the forward pass is repeated, hence giving: y_3 \\approx 0.5519 \\\\ y_4 \\approx 0.5767 \\\\ y_5 \\approx 0.6595 Since y_5=0.6595 is still not the target output, the process of calculating the error and backpropagating continues until the desired output is reached. This process demonstrates how backpropagation iteratively updates weights by minimizing the error. \\text{Error}=y_{\\text{target}}-y_5 =0.5-0.6595\\approx-0.1595 This process continues"
+        "content": "The general formula is: {\\Delta w_{j,3}=\\eta\\delta_5 y_j} Therefore: • \\Delta w_{1,3}=\\eta\\delta_5y_3 • \\Delta w_{2,3}=\\eta\\delta_5y_4 For w_{1,3} : \\Delta w_{1,3} = 1\\times(-0.0367)\\times0.5522 \\approx-0.0203 : w_{1,3}(\\text{new}) = 0.3+(-0.0203) w_{1,3}\\approx0.2797 For w_{2,3} : \\Delta w_{2,3} = 1 \\times (-0.0367) \\times 0.5781 = -0.0212 w_{2,3}(\\text{new}) = -0.0212 + 0.9 = 0.8788 For the weights from the input layer to the hidden layer: \\Delta w_{1,1}=\\eta\\delta_3x_1 \\\\ \\Delta w_{2,1}=\\eta\\delta_3x_2 \\\\ \\Delta w_{1,2}=\\eta\\delta_4x_1 \\\\ \\Delta w_{2,2}=\\eta\\delta_4x_2 \\\\ Using: \\delta_3=-0.00273, \\delta_4=-0.0080 For w_{1,1} : \\Delta w_{1,1} = 1\\times(-0.00273)\\times0.35 \\approx-0.00096 w_{1,1}(\\text{new}) = 0.2+(-0.00096) \\approx0.19904 For w_{2,1} : \\Delta w_{2,1} = 1\\times(-0.00273)\\times0.7 \\approx-0.00191 w_{2,1}(\\text{new}) = 0.2+(-0.00191) \\approx0.19809 For w_{1,2} : \\Delta w_{1,2} = 1\\times(-0.0080)\\times0.35 \\approx-0.00280 w_{1,2}(\\text{new}) = 0.3+(-0.00280) \\approx0.29720 For w_{2,2} : \\Delta w_{2,2} = 1\\times(-0.0080)\\times0.7 \\approx-0.00560 w_{2,2}(\\text{new}) = 0.3+(-0.00560) \\approx0.29440 Updated weights: w_{1,1}=0.19904 \\\\ w_{2,1}=0.19809 \\\\ w_{1,2}=0.29720 \\\\ w_{2,2}=0.29440 \\\\ w_{1,3}=0.27970 \\\\ w_{2,3}=0.87880 \\\\ The update rule follows the standard backpropagation formula: each weight change equals the learning rate multiplied by the receiving neuron’s delta and the sending neuron’s output. The updated weights are illustrated below Through backward pass the weights are updated After updating the weights, the forward pass is repeated, hence giving: y_3 \\approx 0.5519 \\\\ y_4 \\approx 0.5767 \\\\ y_5 \\approx 0.6595 Since y_5=0.6595 is still not the target output, the process of calculating the error and backpropagating continues until the desired output is reached. This process demonstrates how backpropagation iteratively updates weights by minimizing the error. \\text{Error}=y_{\\text{target}}-y_5 =0.5-0.6595\\approx-0.1595 This process continues until the network’s output becomes sufficiently close to the target output."
       },
       {
-        "title": "14. Implementation",
+        "title": "13. Implementation",
         "content": "This code demonstrates how Back Propagation is used in a neural network to solve the XOR problem. The neural network consists of:"
       },
       {
@@ -1216,6 +1229,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "4. Training Network",
         "content": "The network is trained over 10,000 epochs using the Back Propagation algorithm with a learning rate of 0.1 progressively reducing the error. • output = self.feedforward(X): computes the output for the current inputs • self.backward(X, y, learning_rate): updates weights and biases using Back Propagation • loss = np.mean(np.square(y - output)): calculates the mean squared error (MSE) loss Python ``` def train(self, X, y, epochs, learning_rate): for epoch in range(epochs): output = self.feedforward(X) self.backward(X, y, learning_rate) if epoch % 4000 == 0: loss = np.mean(np.square(y - output)) print(f\"Epoch {epoch}, Loss:{loss}\") ```"
+      },
+      {
+        "title": "5. Testing Neural Network",
+        "content": "• X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]): defines the input data • y = np.array([[0], [1], [1], [0]]): defines the target values • nn = NeuralNetwork(input_size=2, hidden_size=4, output_size=1): initializes the neural network • nn.train(X, y, epochs=10000, learning_rate=0.1): trains the network • output = nn.feedforward(X ): gets the final predictions after training Python ``` X = np.array([[0, 0], [0, 1], [1, 0], [1, 1]]) y = np.array([[0], [1], [1], [0]]) nn = NeuralNetwork(input_size=2, hidden_size=4, output_size=1) nn.train(X, y, epochs=10000, learning_rate=0.1) output = nn.feedforward(X) print(\"Predictions after training:\") print(output) ``` Output: Trained Model Download full code from here"
+      },
+      {
+        "title": "19. Advantages",
+        "content": "• Easy to implement and beginner-friendly, as it updates weights using error derivatives • Simple and flexible, making it suitable for different types of networks like feedforward, CNNs and RNNs • Efficient in learning, as it directly adjusts weights based on error, especially in deep networks • Helps models generalize well, improving performance on unseen data • Scales effectively with large datasets and complex architectures"
       }
     ],
     "playground": {
@@ -1246,14 +1267,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "ai-intro": {
     "id": "ai-intro",
     "badge": "Module 8 • Artificial Intelligence",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Advanced",
     "title": "Artificial Intelligence (AI) Tutorial",
     "subtitle": "Comprehensive guide on Artificial Intelligence (AI) Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Artificial Intelligence (AI) Tutorial Last Updated : 3 Sep, 2026 • • • Artificial Intelligence (AI) refers to the simulation of human intelligence in machines which allows them to think and act like humans. It involves creating algorithms and systems that can perform tasks that require human abilities such as visual perception, speech recognition, decision-making and language translation.",
+        "content": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines which allows them to think and act like humans. It involves creating algorithms and systems that can perform tasks that require human abilities such as visual perception, speech recognition, decision-making and language translation.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1327,6 +1348,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "18. Deep Learning",
         "content": "It focuses on using neural networks with many layers to model and understand complex patterns and representations in large datasets. • Introduction • Artificial Neural Networks • Multi-Layer Perceptron • Convolutional Neural Networks • Recurrent Neural Networks • Long Short-Term Memory networks • Gated Recurrent Units Networks"
+      },
+      {
+        "title": "19. Transformers",
+        "content": "Transformers are neural network architectures based on attention mechanisms that model relationships between data elements and power many modern language and multimodal AI models. • Introduction • Attention Mechanism • Self-Attention • Multi-Head Attention • Positional Encoding • Encoder and Decoder Architecture • BERT • GPT"
+      },
+      {
+        "title": "20. Generative AI",
+        "content": "Generative AI focuses on creating new data examples that resemble real data, effectively learning the distribution of data to generate similar but distinct outputs. • Introduction • Large Language Models • Diffusion Models • Prompt Engineering • RAG"
       }
     ],
     "playground": {
@@ -1357,14 +1386,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "search-algorithms-ai": {
     "id": "search-algorithms-ai",
     "badge": "Module 8 • Artificial Intelligence",
-    "readingTime": "30 min read",
+    "readingTime": "26 min read",
     "level": "Advanced",
     "title": "Search Algorithms in AI",
     "subtitle": "Comprehensive guide on Search Algorithms in AI from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Search Algorithms in AI Last Updated : 9 Jun, 2026 • • • Search algorithms in AI are techniques used to find solutions by exploring possible paths or states in a problem space. They help intelligent systems make decisions, solve problems and reach goals efficiently in applications such as navigation, robotics, game playing and pathfinding. • Helps AI systems determine the best possible solution among multiple choices • Widely used in decision-making, optimization and route-planning problems",
+        "content": "Search algorithms in AI are techniques used to find solutions by exploring possible paths or states in a problem space. They help intelligent systems make decisions, solve problems and reach goals efficiently in applications such as navigation, robotics, game playing and pathfinding. • Helps AI systems determine the best possible solution among multiple choices • Widely used in decision-making, optimization and route-planning problems",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1418,19 +1447,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
       {
         "title": "13. Limitations",
         "content": "• Some algorithms require large memory and computation time • Blind search methods can explore many unnecessary nodes • Heuristic quality directly affects informed search performance • Certain algorithms may not guarantee optimal solutions"
-      },
-      {
-        "title": "14. Related Articles:",
-        "content": "• Artificial Intelligence (AI) Algorithms • Informed Search Algorithms in Artificial Intelligence • Difference between Informed and Uninformed Search in AI • Uninformed Search Algorithms in AI Comment",
-        "callout": {
-          "type": "tip",
-          "title": "Practice Tip",
-          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
-        }
-      },
-      {
-        "title": "15. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1461,14 +1477,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "natural-language-processing": {
     "id": "natural-language-processing",
     "badge": "Module 8 • Artificial Intelligence",
-    "readingTime": "22 min read",
+    "readingTime": "20 min read",
     "level": "Advanced",
     "title": "Introduction to Natural Language Processing (NLP)",
     "subtitle": "Comprehensive guide on Introduction to Natural Language Processing (NLP) from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction to Natural Language Processing (NLP) Last Updated : 2 Jul, 2026 • • • Natural Language Processing (NLP) helps computers understand, interpret and produce human language. It studies language as data and develops a model that can analyse linguistic structure, meaning and context in both written and spoken communication. Simple Example of NLP: “Ravi is happy with the new phone.” An NLP system can: • Detect Ravi as a person • Identify phone as an object • Recognize sentiment as positive • Understand topic as product review",
+        "content": "Natural Language Processing (NLP) helps computers understand, interpret and produce human language. It studies language as data and develops a model that can analyse linguistic structure, meaning and context in both written and spoken communication. Simple Example of NLP: “Ravi is happy with the new phone.” An NLP system can: • Detect Ravi as a person • Identify phone as an object • Recognize sentiment as positive • Understand topic as product review",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1515,10 +1531,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "11. Explore",
-        "content": "Introduction to NLP • Introduction to Natural Language Processing (NLP) 3 min read • NLP vs NLU vs NLG 3 min read • Applications of NLP 6 min read • Why is NLP important? 6 min read • Phases of Natural Language Processing (NLP) 4 min read • The Future of Natural Language Processing: Trends and Innovations 7 min read Libraries for NLP • NLTK - NLP 5 min read • Tokenization Using Spacy 2 min read • Python | Tokenize text using TextBlob 3 min read • Introduction to Hugging Face Transformers 4 min read • NLP Gensim Tutorial 10 min read • NLP Libraries in Python 6 min read Text Normalization in NLP • Normalizing Textual Data with Python 4 min read • Regex Tutorial - How to write Regular Expressions 4 min read • Tokenization in NLP 7 min read • Lemmatization with NLTK 4 min read • Introduction to Stemming 5 min read • Removing stop words with NLTK in Python 4 min read • POS(Parts-Of-Speech) Tagging in NLP 5 min read Text Representation and Embedding Techniques • One-Hot Encoding in NLP 5 min read • Bag of words (BoW) model in NLP 5 min read • Understanding TF-IDF (Term Frequency-Inverse Document Frequency) 4 min read • N-Gram Language Modelling with NLTK 3 min read • Word Embedding using Word2Vec 4 min read • Glove Word Embedding in NLP 6 min read • Overview of Word Embedding using Embeddings from Language Models (ELMo) 6 min read NLP Deep Learning Techniques • NLP with Deep Learning 3 min read • Introduction to Recurrent Neural Networks 10 min read • Introduction to Long Short Term Memory 4 min read • Gated Recurrent Unit Networks 5 min read • Transformers in Machine Learning 5 min read • seq2seq Model 5 min read • PreTrained Models in Natural Language Processing (NLP) 3 min read NLP Projects and Practice • Sentiment Analysis with an Recurrent Neural Networks (RNN) 3 min read • Text Generation using Recurrent Long Short Term Memory Network 4 min read • Machine Translation with Transformer in Python 5 min read • Building a Rule-Based Chatbot with Natural Language Processi"
       }
     ],
     "playground": {
@@ -1549,14 +1561,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "generative-ai-tutorial": {
     "id": "generative-ai-tutorial",
     "badge": "Module 9 • Generative AI & LLMs",
-    "readingTime": "30 min read",
+    "readingTime": "28 min read",
     "level": "Advanced",
     "title": "Generative AI Tutorial",
     "subtitle": "Comprehensive guide on Generative AI Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Generative AI Tutorial Last Updated : 10 Mar, 2026 • • • Generative AI focuses on building models that can create new content such as text, images, audio and code by learning patterns from existing data to generate human‑like outputs across various domains. It is widely used in chatbots, content creation, design and automation.",
+        "content": "Generative AI focuses on building models that can create new content such as text, images, audio and code by learning patterns from existing data to generate human‑like outputs across various domains. It is widely used in chatbots, content creation, design and automation.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1619,10 +1631,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "15. Explore",
-        "content": "Introduction to AI • What is Artificial Intelligence (AI) 5 min read • Types of Artificial Intelligence (AI) 4 min read • Types of AI Based on Functionalities 3 min read • Agents in AI 7 min read • Artificial intelligence vs Machine Learning vs Deep Learning 2 min read • Problem Solving in Artificial Intelligence 4 min read • Applications of Artificial Intelligence (AI) 3 min read AI Concepts • Search Algorithms in AI 6 min read • Local Search Algorithm in Artificial Intelligence 6 min read • Adversarial Search Algorithms in Artificial Intelligence (AI) 10 min read • Constraint Satisfaction Problems (CSP) in AI 6 min read • Knowledge Representation in AI 4 min read • First-Order Logic in Artificial Intelligence 3 min read • Reasoning Mechanisms in AI 3 min read Machine Learning in AI • Machine Learning Tutorial 4 min read • Deep Learning Tutorial 2 min read • Natural Language Processing (NLP) Tutorial 2 min read • Computer Vision Tutorial 3 min read Robotics and AI • Artificial Intelligence in Robotics 5 min read • What is Robotics Process Automation 8 min read • Automated Planning in AI 8 min read • AI in Transportation 8 min read • AI in Manufacturing : Revolutionizing the Industry 6 min read Generative AI • What is Generative AI 6 min read • Generative Adversarial Network (GAN) 10 min read • Cycle Generative Adversarial Network (CycleGAN) 5 min read • StyleGAN - Style Generative Adversarial Networks 4 min read • Introduction to Generative Pre-trained Transformer (GPT) 3 min read • BERT Model - NLP 7 min read • Generative AI Applications 7 min read AI Practice • Artificial Intelligence(AI) Interview Questions and Answers 15+ min read • Generative AI and LLM Interview Question with Answer 15+ min read • 30+ Best Artificial Intelligence Project Ideas with Source Code [2026 Updated] 15+ min read Courses • AI Engg Course 2 min read • Data Science 360 Course 2 min read"
       }
     ],
     "playground": {
@@ -1653,14 +1661,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "large-language-models": {
     "id": "large-language-models",
     "badge": "Module 9 • Generative AI & LLMs",
-    "readingTime": "28 min read",
+    "readingTime": "26 min read",
     "level": "Advanced",
     "title": "Large Language Model (LLM) Tutorial",
     "subtitle": "Comprehensive guide on Large Language Model (LLM) Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Large Language Model (LLM) Tutorial Last Updated : 24 Sep, 2026 • • • Large Language Models (LLMs) are machine learning models trained on vast amount of textual data to generate and understand human-like language. These models can perform a wide range of natural language processing tasks from text generation to sentiment analysis and summarisation.",
+        "content": "Large Language Models (LLMs) are machine learning models trained on vast amount of textual data to generate and understand human-like language. These models can perform a wide range of natural language processing tasks from text generation to sentiment analysis and summarisation.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1719,10 +1727,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "14. Explore",
-        "content": "Basics • Introduction 5 min read • AI vs ML vs DL 2 min read • Applications 3 min read • Challenges 7 min read • Importance 5 min read Neural Networks • Introduction 9 min read • Types 5 min read • Layers in ANN 4 min read • Activation functions 6 min read • Feedforward Neural Network 5 min read • Backpropagation 7 min read Deep Learning Models • CNN 5 min read • RNN 10 min read • LSTM 4 min read • GRU 5 min read • Transformers 5 min read • Autoencoders 6 min read • GAN 10 min read Model Evaluation • Gradient Descent 13 min read • Momentum-based Gradient Optimizer 3 min read • Adagrad 6 min read • RMSProp 4 min read • Adam Optimizer 5 min read Deep Learning Frameworks • TensorFlow 2 min read • PyTorch 5 min read • Caffe 8 min read • Apache MXNet 4 min read • Theano 3 min read Projects • Lung Cancer Detection 4 min read • Cat & Dog Classification 5 min read • Sentiment Analysis 3 min read • Text Generation using LSTM 4 min read • Machine Translation 5 min read • Interview Questions 15+ min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1803,7 +1807,7 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
     "sections": [
       {
         "title": "1. Overview",
-        "content": "MLOps Tutorial Last Updated : 17 Feb, 2026 • • • MLOps (Machine Learning Operations) is a set of practices that helps teams build, deploy, monitor and maintain machine learning models in production systems. In simple words, MLOps connects model development, infrastructure and real-world usage into a continuous workflow so that ML systems remain reliable and scalable. MLOps combines concepts from machine learning, software engineering, DevOps and data engineering to create scalable AI systems.",
+        "content": "MLOps (Machine Learning Operations) is a set of practices that helps teams build, deploy, monitor and maintain machine learning models in production systems. In simple words, MLOps connects model development, infrastructure and real-world usage into a continuous workflow so that ML systems remain reliable and scalable. MLOps combines concepts from machine learning, software engineering, DevOps and data engineering to create scalable AI systems.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1855,28 +1859,28 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
         "content": "• Data lake vs data warehouse • S3-style storage systems • Delta Lake basics"
       },
       {
-        "title": "13. Batch Processing",
-        "content": "• Introduction to Apache Spark • PySpark batch workflows"
-      },
-      {
-        "title": "14. Streaming Data Pipelines",
+        "title": "13. Streaming Data Pipelines",
         "content": "• Apache Kafka architecture • Spark structured streaming • Real-time feature ingestion"
       },
       {
-        "title": "15. Experiment Tracking and Model Lifecycle",
+        "title": "14. Experiment Tracking and Model Lifecycle",
         "content": "It focuses on recording model experiments, parameters and results while managing stages like training, validation, deployment and updates so models can be improved and maintained systematically."
       },
       {
-        "title": "16. Experiment Tracking",
+        "title": "15. Experiment Tracking",
         "content": "• Introduction to MLflow • Logging metrics • Comparing model runs • Tracking experiments"
       },
       {
-        "title": "17. Model Registry",
+        "title": "16. Model Registry",
         "content": "• Versioning models • Staging vs production transitions • Managing lifecycle with MLflow"
       },
       {
-        "title": "18. Explainability, Documentation and Model Serving",
+        "title": "17. Explainability, Documentation and Model Serving",
         "content": "It covers making model decisions understandable, properly recording model details and usage and deploying models so they can handle requests reliably in real applications"
+      },
+      {
+        "title": "18. Documentation for ML Systems",
+        "content": "• README files • Experiment logs • Dataset cards • Model cards • API documentation"
       }
     ],
     "playground": {
@@ -1907,14 +1911,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "fastapi-tutorial": {
     "id": "fastapi-tutorial",
     "badge": "Module 10 • MLOps & Model Deployment",
-    "readingTime": "28 min read",
+    "readingTime": "26 min read",
     "level": "Advanced",
     "title": "FastAPI Tutorial",
     "subtitle": "Comprehensive guide on FastAPI Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "FastAPI Tutorial Last Updated : 20 Jun, 2026 • • • FastAPI is a modern, high performance Python web framework for building APIs quickly and efficiently. It offers automatic data validation, type checking, async support and built-in interactive API docs using Swagger UI and ReDoc.",
+        "content": "FastAPI is a modern, high performance Python web framework for building APIs quickly and efficiently. It offers automatic data validation, type checking, async support and built-in interactive API docs using Swagger UI and ReDoc.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1973,10 +1977,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "14. Explore",
-        "content": "Python Fundamentals • Introduction 1 min read • Input & Output 2 min read • Variables 4 min read • Operators 4 min read • Keywords 2 min read • Data Types 4 min read • Conditional Statements 3 min read • Loops 3 min read • Functions 4 min read Python Data Structures • String 4 min read • List 3 min read • Tuples 3 min read • Dictionary 3 min read • Set 2 min read • Arrays 5 min read Advanced Python • OOP Concepts 3 min read • Exception Handling 5 min read • File Handling 4 min read • Python Database 2 min read • MongoDB 3 min read • MySQL 7 min read • Packages 4 min read • Modules 3 min read • DSA Libraries 5 min read • Python GUI 2 min read Data Science with Python • Numpy 3 min read • Pandas 4 min read • Matplotlib 3 min read • Seaborn 3 min read • StatsModel 2 min read • Model Building 6 min read • TensorFlow 2 min read • PyTorch 5 min read Web Development with Python • Flask 3 min read • Django 5 min read • Django ORM 4 min read • Jinja2 Templating 5 min read • Django Templates 5 min read • REST API 3 min read • Build API with DRF 4 min read Python Practice • Quiz 1 min read • Practice Problems 2 min read • Interview Q & A 15+ min read Courses • Placement 360 Course 2 min read • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -2007,14 +2007,14 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
   "flask-ml": {
     "id": "flask-ml",
     "badge": "Module 10 • MLOps & Model Deployment",
-    "readingTime": "30 min read",
+    "readingTime": "28 min read",
     "level": "Advanced",
     "title": "Flask Tutorial",
     "subtitle": "Comprehensive guide on Flask Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Flask Tutorial Last Updated : 30 Jun, 2026 • • • Flask is a lightweight web framework used to build web applications and APIs. It follows a minimal design and provides core features like routing, request handling and template rendering while allowing developers to add extensions as needed. It is widely used for building small to medium web applications due to its simplicity and flexibility. • Microframework : Lightweight framework with minimal dependencies, giving developers full control over application structure. • Werkzeug & Jinja2 : Uses Werkzeug for request/response handling and Jinja2 for dynamic HTML templating. • Routing : Maps URLs to Python functions using simple decorators. • Flexible Database Choice: No built-in ORM, allowing use of tools like SQLAlchemy or raw SQL. • API Development: Well-suited for building RESTful APIs and backend services. • Development Server : Includes a built-in server for local testing during development.",
+        "content": "Flask is a lightweight web framework used to build web applications and APIs. It follows a minimal design and provides core features like routing, request handling and template rendering while allowing developers to add extensions as needed. It is widely used for building small to medium web applications due to its simplicity and flexibility. • Microframework : Lightweight framework with minimal dependencies, giving developers full control over application structure. • Werkzeug & Jinja2 : Uses Werkzeug for request/response handling and Jinja2 for dynamic HTML templating. • Routing : Maps URLs to Python functions using simple decorators. • Flexible Database Choice: No built-in ORM, allowing use of tools like SQLAlchemy or raw SQL. • API Development: Well-suited for building RESTful APIs and backend services. • Development Server : Includes a built-in server for local testing during development.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -2077,10 +2077,6 @@ export const GFG_AIML_PART2: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "15. Explore",
-        "content": "Python Fundamentals • Introduction 1 min read • Input & Output 2 min read • Variables 4 min read • Operators 4 min read • Keywords 2 min read • Data Types 4 min read • Conditional Statements 3 min read • Loops 3 min read • Functions 4 min read Python Data Structures • String 4 min read • List 3 min read • Tuples 3 min read • Dictionary 3 min read • Set 2 min read • Arrays 5 min read Advanced Python • OOP Concepts 3 min read • Exception Handling 5 min read • File Handling 4 min read • Python Database 2 min read • MongoDB 3 min read • MySQL 7 min read • Packages 4 min read • Modules 3 min read • DSA Libraries 5 min read • Python GUI 2 min read Data Science with Python • Numpy 3 min read • Pandas 4 min read • Matplotlib 3 min read • Seaborn 3 min read • StatsModel 2 min read • Model Building 6 min read • TensorFlow 2 min read • PyTorch 5 min read Web Development with Python • Flask 3 min read • Django 5 min read • Django ORM 4 min read • Jinja2 Templating 5 min read • Django Templates 5 min read • REST API 3 min read • Build API with DRF 4 min read Python Practice • Quiz 1 min read • Practice Problems 2 min read • Interview Q & A 15+ min read Courses • Placement 360 Course 2 min read • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {

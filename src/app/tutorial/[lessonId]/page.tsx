@@ -374,6 +374,8 @@ export default async function LessonPage({
   const fallback = getDynamicFallbackTemplate(course.id, lesson.title);
   const isHardwareCourse = course.category === "Donanım & FPGA";
   const isWebCourse = course.category === "Web Geliştirme";
+  const isProgrammingCourse =
+    course.category === "Programlama Dilleri" || course.id === "ai-ml";
 
   return (
     <div className="flex-1 flex max-w-7xl w-full mx-auto">
@@ -564,6 +566,19 @@ export default async function LessonPage({
                   expectedOutput={content.playground.expectedOutput}
                   description="Aşağıdaki kodları düzenleyebilir; masaüstü, tablet ve mobil cihaz görünümlerinde sonucun nasıl göründüğünü anlık olarak test edebilirsiniz."
                 />
+              </div>
+            )}
+
+            {/* Python / AI-ML Konsolu - Programlama kursları için */}
+            {isProgrammingCourse && content.playground && (
+              <div className="my-10">
+                <div className="flex items-center gap-2 mb-3">
+                  <Terminal className="w-5 h-5 text-success" />
+                  <h3 className="text-lg font-bold text-base-content">
+                    İnteraktif Python & ML Konsolu
+                  </h3>
+                </div>
+                <CodePlayground {...content.playground} />
               </div>
             )}
 

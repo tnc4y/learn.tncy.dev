@@ -4,14 +4,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "python-intro": {
     "id": "python-intro",
     "badge": "Module 1 • Python for Data Science",
-    "readingTime": "30 min read",
+    "readingTime": "26 min read",
     "level": "Beginner",
     "title": "Python Tutorial",
     "subtitle": "Comprehensive guide on Python Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Python Tutorial Last Updated : 12 Sep, 2026 • • • Python is one of the most popular programming languages. It’s simple to use, packed with features and supported by a wide range of libraries and frameworks. Its clean syntax makes it beginner-friendly. • A high-level language used in data science, automation, AI, web development and more. • Known for its readability, which means code is easier to write, understand and maintain. • Backed by strong library support, we don’t have to build everything from scratch.",
+        "content": "Python is one of the most popular programming languages. It’s simple to use, packed with features and supported by a wide range of libraries and frameworks. Its clean syntax makes it beginner-friendly. • A high-level language used in data science, automation, AI, web development and more. • Known for its readability, which means code is easier to write, understand and maintain. • Backed by strong library support, we don’t have to build everything from scratch.",
         "code": {
           "language": "text",
           "caption": "Code Example: Overview",
@@ -70,19 +70,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "13. Web Development",
         "content": "1. Core Web Frameworks (Backend Development with Python): These are the tools for building Python-based web applications. • Flask • Django 2. Database Integration: Learn how to connect Python web frameworks to databases for storing and retrieving data. • SQLite • SQLAlchemy • MySQL 3. Front-End and Backend Integration: Learn how to connect Python backends with front-end technologies to create dynamic, full-stack web applications. • Jinja2 (Flask) • Django Templates 4. API Development: Learn to build APIs (Application Programming Interfaces) for connecting your backend with front-end apps or other services. • Flask-RESTful • Django REST Framework (DRF) • Complete Tutorial on Web Development • Project: ToDo webapp"
-      },
-      {
-        "title": "14. Interview Questions and Practice Problems",
-        "content": "This section provides a collection of commonly asked Python interview questions and practice problems to help you prepare for technical interviews and improve your coding skills. • Interview Questions and Answers • Coding Problems This Python tutorial is updated based on latest Python 3.13.13 version. Comment",
-        "callout": {
-          "type": "tip",
-          "title": "Practice Tip",
-          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
-        }
-      },
-      {
-        "title": "15. Explore",
-        "content": "Python Fundamentals • Introduction 1 min read • Input & Output 2 min read • Variables 4 min read • Operators 4 min read • Keywords 2 min read • Data Types 4 min read • Conditional Statements 3 min read • Loops 3 min read • Functions 4 min read Python Data Structures • String 4 min read • List 3 min read • Tuples 3 min read • Dictionary 3 min read • Set 2 min read • Arrays 5 min read Advanced Python • OOP Concepts 3 min read • Exception Handling 5 min read • File Handling 4 min read • Python Database 2 min read • MongoDB 3 min read • MySQL 7 min read • Packages 4 min read • Modules 3 min read • DSA Libraries 5 min read • Python GUI 2 min read Data Science with Python • Numpy 3 min read • Pandas 4 min read • Matplotlib 3 min read • Seaborn 3 min read • StatsModel 2 min read • Model Building 6 min read • TensorFlow 2 min read • PyTorch 5 min read Web Development with Python • Flask 3 min read • Django 5 min read • Django ORM 4 min read • Jinja2 Templating 5 min read • Django Templates 5 min read • REST API 3 min read • Build API with DRF 4 min read Python Practice • Quiz 1 min read • Practice Problems 2 min read • Interview Q & A 15+ min read Courses • Placement 360 Course 2 min read • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -113,14 +100,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "python-interview": {
     "id": "python-interview",
     "badge": "Module 1 • Python for Data Science",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Beginner",
     "title": "Python Interview Questions and Answers",
     "subtitle": "Comprehensive guide on Python Interview Questions and Answers from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Python Interview Questions and Answers Last Updated : 11 Jul, 2026 • • • Python is widely used by leading companies such as Intel, IBM, NASA, Pixar, Netflix, Meta, JPMorgan Chase and Spotify due to its simplicity and rich ecosystem of libraries. Mastering key Python interview questions is essential for succeeding in coding assessments and technical interviews for Python developer roles.",
+        "content": "Python is widely used by leading companies such as Intel, IBM, NASA, Pixar, Netflix, Meta, JPMorgan Chase and Spotify due to its simplicity and rich ecosystem of libraries. Mastering key Python interview questions is essential for succeeding in coding assessments and technical interviews for Python developer roles.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -209,6 +196,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "17. What are *args and **kwargs?",
         "content": "*args: used to pass a variable number of arguments to a function. Python program to illustrate *args for a variable number of arguments. Python ``` def fun(*argv): for arg in argv: print(arg) fun(&#39;Hello&#39;, &#39;Welcome&#39;, &#39;to&#39;, &#39;GeeksforGeeks&#39;) ``` Output ``` Hello Welcome to GeeksforGeeks ``` **kwargs: used to accept a variable number of keyword arguments. These arguments are collected into a dictionary, where the keys are the argument names and the values are the corresponding values. Python ``` def fun(**kwargs): for k, val in kwargs.items(): print(\"%s == %s\" % (k, val)) fun(s1=&#39;Geeks&#39;, s2=&#39;for&#39;, s3=&#39;Geeks&#39;) ``` Output ``` s1 == Geeks s2 == for s3 == Geeks ```"
+      },
+      {
+        "title": "18. How are arguments passed by value or by reference in Python?",
+        "content": "Python uses Pass by Object Reference (also called Call by Object Sharing) to pass arguments to functions. Instead of passing values or references directly, Python passes a reference to the object. Whether the original object changes depends on whether it is mutable or immutable. Python ``` def call_by_val(x): x = x * 2 return x def call_by_ref(b): b.append(\"D\") return b a = [\"E\"] num = 6 updated_num = call_by_val(num) updated_list = call_by_ref(a) print(\"Updated value after call_by_val:\", updated_num) print(\"Updated list after call_by_ref:\", updated_list) ``` Output ``` Updated value after call_by_val: 12 Updated list after call_by_ref: ['E', 'D'] ```"
+      },
+      {
+        "title": "19. What is a Variable Scope in Python?",
+        "content": "The location where we can find a variable and also access it if required is called the scope of a variable . • Python Local variable: Local variables are those that are initialized within a function and are unique to that function. A local variable cannot be accessed outside of the function. • Python Global variables: Global variables are the ones that are defined and declared outside any function and are not specified to any function. • Module-level scope: It refers to the global objects of the current module accessible in the program. • Outermost scope: It refers to any built-in names that the program can call. The name referenced is located last among the objects in this scope."
       }
     ],
     "playground": {
@@ -239,14 +234,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "linear-algebra-ds": {
     "id": "linear-algebra-ds",
     "badge": "Module 2 • Math for Data Science",
-    "readingTime": "24 min read",
+    "readingTime": "22 min read",
     "level": "Beginner",
     "title": "Linear Algebra For Machine Learning",
     "subtitle": "Comprehensive guide on Linear Algebra For Machine Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Linear Algebra For Machine Learning Last Updated : 17 Aug, 2026 • • • Linear algebra is a core mathematical foundation for machine learning, as most datasets and models are represented using vectors and matrices. It allows efficient computation, data manipulation and optimization, making complex tasks manageable. • Data in ML is represented as vectors (features) and matrices (datasets). • Operations like dot product, matrix multiplication and transformations power ML algorithms. • Key concepts such as eigenvalues, eigenvectors and decompositions simplify dimensionality reduction, optimization and training. • Algorithms like PCA, SVD, regression, SVMs and neural networks rely heavily on linear algebra.",
+        "content": "Linear algebra is a core mathematical foundation for machine learning, as most datasets and models are represented using vectors and matrices. It allows efficient computation, data manipulation and optimization, making complex tasks manageable. • Data in ML is represented as vectors (features) and matrices (datasets). • Operations like dot product, matrix multiplication and transformations power ML algorithms. • Key concepts such as eigenvalues, eigenvectors and decompositions simplify dimensionality reduction, optimization and training. • Algorithms like PCA, SVD, regression, SVMs and neural networks rely heavily on linear algebra.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -297,10 +292,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "12. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -331,14 +322,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "statistics-ds": {
     "id": "statistics-ds",
     "badge": "Module 2 • Math for Data Science",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Beginner",
     "title": "Statistics For Data Science",
     "subtitle": "Comprehensive guide on Statistics For Data Science from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Statistics For Data Science Last Updated : 15 Apr, 2026 • • • Statistics is the science of collecting, analyzing, and interpreting data to uncover patterns and make decisions. In data science, it acts as the backbone for understanding data and building reliable models. • Summarizes data using measures like mean, median, and variance • Models uncertainty with probability and distributions • Tests hypotheses (e.g., A/B testing) • Finds relationships through regression and correlation",
+        "content": "Statistics is the science of collecting, analyzing, and interpreting data to uncover patterns and make decisions. In data science, it acts as the backbone for understanding data and building reliable models. • Summarizes data using measures like mean, median, and variance • Models uncertainty with probability and distributions • Tests hypotheses (e.g., A/B testing) • Finds relationships through regression and correlation",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -412,6 +403,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "5. Poisson Distribution",
         "content": "The poisson distribution models the number of events that occur in a fixed interval of time or space. It's characterized by a single parameter ( λ ), the average rate of occurrence. Formula: P(X=k)=\\frac{\\epsilon^{-\\lambda}\\lambda^k}{k!}"
+      },
+      {
+        "title": "6. Uniform Distribution",
+        "content": "The uniform distribution represents a constant probability for all outcomes in a given range. Formula: f(X)=\\frac{1}{b-a}"
+      },
+      {
+        "title": "20. Parameter estimation for Statistical Inference",
+        "content": "• Population: Population is entire group about which conclusions are drawn. • Sample: Sample is a subset of the population used to make inferences. • Expectation (E[x]): Expectation is average or expected value of a random variable. • Parameter: A numerical value that describes a population (e.g., μ, σ, p). • Statistic: A value computed from sample data to estimate a population parameter. • Estimation: The process of inferring population parameters from sample statistics. • Estimator: A rule or formula to estimate an unknown parameter. • Bias: The difference between an estimator’s expected value and the true parameter. Bias(\\widehat{\\theta}) = E(\\widehat{\\theta}) - \\theta"
       }
     ],
     "playground": {
@@ -449,7 +448,7 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Probability Distributions in Data Science Last Updated : 11 Mar, 2026 • • • Understanding how data behaves is one of the first steps in data science. Before we dive into building models or running analysis, we need to understand how the values in our dataset are spread out and that’s where probability distributions come in. Example: If you roll a fair die, the chance of getting a 6 is 1 out of 6, or 16.67%. This is a basic example of a probability distribution a way to describe the likelihood of different outcomes. Probability Data Distributions When dealing with complex data like customer purchases, stock prices, or weather, probability distributions help answer: • What is most likely to happen? • What are rare or unusual outcomes? • Are values close together or spread out? This helps us make better predictions and understand uncertainty.",
+        "content": "Understanding how data behaves is one of the first steps in data science. Before we dive into building models or running analysis, we need to understand how the values in our dataset are spread out and that’s where probability distributions come in. Example: If you roll a fair die, the chance of getting a 6 is 1 out of 6, or 16.67%. This is a basic example of a probability distribution a way to describe the likelihood of different outcomes. Probability Data Distributions When dealing with complex data like customer purchases, stock prices, or weather, probability distributions help answer: • What is most likely to happen? • What are rare or unusual outcomes? • Are values close together or spread out? This helps us make better predictions and understand uncertainty.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -522,7 +521,7 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       },
       {
         "title": "18. Comparison of Probability Distributions",
-        "content": "Distributions Key Features Usage Normal Distributions This is used to adjust data to make it easier to analyze and to find unusual values like errors or outliers. Used for feature scaling , model assumptions and anomaly detection Exponential Distributions It measures how long it takes for something to happen like waiting for an event. Helps to predict when a server might crash or how long it will take for customers to arrive at a store. Uniform Distributions In this every possible outcome is equally likely; no outcome is more likely than another. It is used for picking random samples from a group. Beta Distributions Helps us to update our guesses about chances based on new information. This is useful for A/B testing (comparing two options) and figuring out how often people click on links. Gamma Distributions Gamma measures the total time takes for several events to happen one after another. Helps to predict when systems might fail and assess risks in various situations. Chi-Square Distributions It checks if there is a relationship between different categories of data. helps in analyzing customer survey results to see if different groups have different opinions or behaviors. Log-Normal Distributions It shows how things grow over time especially when growth happens in steps rather than all at once. Used for predicting stock prices and understanding how income levels are distributed among people. Binomial Distributions This models the number of successes in multiple trials. Useful for determining the probability of a certain number of successes in a fixed number of trials Bernoulli Distributions Bernoulli models a single trial with two outcomes (success/failure). Mostly used in quality control to assess pass/fail situations. Poisson Distributions It find the number of events occurring in a fixed interval of time or space. Helps to predict the number of customer arrivals at a store during an hour. Geometric Distributions It helps to find number of trials until the first",
+        "content": "Distributions Key Features Usage Normal Distributions This is used to adjust data to make it easier to analyze and to find unusual values like errors or outliers. Used for feature scaling , model assumptions and anomaly detection Exponential Distributions It measures how long it takes for something to happen like waiting for an event. Helps to predict when a server might crash or how long it will take for customers to arrive at a store. Uniform Distributions In this every possible outcome is equally likely; no outcome is more likely than another. It is used for picking random samples from a group. Beta Distributions Helps us to update our guesses about chances based on new information. This is useful for A/B testing (comparing two options) and figuring out how often people click on links. Gamma Distributions Gamma measures the total time takes for several events to happen one after another. Helps to predict when systems might fail and assess risks in various situations. Chi-Square Distributions It checks if there is a relationship between different categories of data. helps in analyzing customer survey results to see if different groups have different opinions or behaviors. Log-Normal Distributions It shows how things grow over time especially when growth happens in steps rather than all at once. Used for predicting stock prices and understanding how income levels are distributed among people. Binomial Distributions This models the number of successes in multiple trials. Useful for determining the probability of a certain number of successes in a fixed number of trials Bernoulli Distributions Bernoulli models a single trial with two outcomes (success/failure). Mostly used in quality control to assess pass/fail situations. Poisson Distributions It find the number of events occurring in a fixed interval of time or space. Helps to predict the number of customer arrivals at a store during an hour. Geometric Distributions It helps to find number of trials until the first success occurs. Useful for understanding how many attempts it takes before achieving the first success e.g., how many times you need to flip a coin before getting heads. Comment",
         "callout": {
           "type": "tip",
           "title": "Practice Tip",
@@ -558,14 +557,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "calculus-ml": {
     "id": "calculus-ml",
     "badge": "Module 2 • Math for Data Science",
-    "readingTime": "24 min read",
+    "readingTime": "22 min read",
     "level": "Beginner",
     "title": "Calculus for Machine Learning: Key Concepts and Applications",
     "subtitle": "Comprehensive guide on Calculus for Machine Learning: Key Concepts and Applications from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Calculus for Machine Learning: Key Concepts and Applications Last Updated : 13 Sep, 2025 • • • Calculus is a key tool in developing machine learning algorithms and models. It offers a mathematical framework for describing how machines learn and optimize their performance. It allows practitioners to analyze and improve the learning process by modeling changes in system behavior. How calculus is used in ML",
+        "content": "Calculus is a key tool in developing machine learning algorithms and models. It offers a mathematical framework for describing how machines learn and optimize their performance. It allows practitioners to analyze and improve the learning process by modeling changes in system behavior. How calculus is used in ML",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -616,10 +615,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "12. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -650,14 +645,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "eda-intro": {
     "id": "eda-intro",
     "badge": "Module 3 • Exploratory Data Analysis",
-    "readingTime": "32 min read",
+    "readingTime": "30 min read",
     "level": "Beginner",
     "title": "Exploratory Data Analysis",
     "subtitle": "Comprehensive guide on Exploratory Data Analysis from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Exploratory Data Analysis Last Updated : 22 Jun, 2026 • • • Exploratory Data Analysis (EDA) is an important step in data analysis where we explore, summarize, and visualize data to understand its structure, detect patterns, identify anomalies, test assumptions, and check relationships between variables before applying any machine learning or statistical models.",
+        "content": "Exploratory Data Analysis (EDA) is an important step in data analysis where we explore, summarize, and visualize data to understand its structure, detect patterns, identify anomalies, test assumptions, and check relationships between variables before applying any machine learning or statistical models.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -724,10 +719,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "16. Explore",
-        "content": "DSA Tutorial 10 min read System Design Tutorial 4 min read Aptitude Questions and Answers 3 min read Web Development Technologies 5 min read AI, ML and Data Science Tutorial 3 min read DevOps Tutorial 3 min read"
       }
     ],
     "playground": {
@@ -758,14 +749,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "eda-numpy-pandas": {
     "id": "eda-numpy-pandas",
     "badge": "Module 3 • Exploratory Data Analysis",
-    "readingTime": "20 min read",
+    "readingTime": "16 min read",
     "level": "Beginner",
     "title": "Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn",
     "subtitle": "Comprehensive guide on Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn Last Updated : 29 Jan, 2026 • • • Exploratory Data Analysis (EDA) is the foundation of every data science project. It is the process of examining datasets to understand their structure, identify patterns, detect anomalies and extract meaningful insights. Before applying any machine learning or statistical models, data must be cleaned, transformed and explored this is where EDA plays an important role. EDA helps answer important questions such as: • What type of data is present (numerical, categorical, text, dates) • Are there missing or inconsistent values • Are there outliers that could affect analysis • What patterns or relationships exist between variables Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn For example, in a student performance dataset, some records may have missing scores or inconsistent subject names (such as “Math” and “Mathematics” ). EDA helps identify and fix such issues, ensuring the dataset is ready for analysis and modeling. The most commonly used Python libraries for EDA are NumPy, Pandas, Matplotlib and Seaborn. Each library serves a specific purpose in the EDA workflow.",
+        "content": "Exploratory Data Analysis (EDA) is the foundation of every data science project. It is the process of examining datasets to understand their structure, identify patterns, detect anomalies and extract meaningful insights. Before applying any machine learning or statistical models, data must be cleaned, transformed and explored this is where EDA plays an important role. EDA helps answer important questions such as: • What type of data is present (numerical, categorical, text, dates) • Are there missing or inconsistent values • Are there outliers that could affect analysis • What patterns or relationships exist between variables Exploratory Data Analysis (EDA) with NumPy, Pandas, Matplotlib and Seaborn For example, in a student performance dataset, some records may have missing scores or inconsistent subject names (such as “Math” and “Mathematics” ). EDA helps identify and fix such issues, ensuring the dataset is ready for analysis and modeling. The most commonly used Python libraries for EDA are NumPy, Pandas, Matplotlib and Seaborn. Each library serves a specific purpose in the EDA workflow.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -787,56 +778,48 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
         }
       },
       {
-        "title": "3. Topics to Explore",
-        "content": "• Introduction • Basics of NumPy Arrays • Data types and type casting • Accessing and Modifying Data • Indexing • Slicing • Arithmetic operations • Broadcasting • Mathematical Function • Linear algebra operations • Data Cleaning: Handling missing values & Replacing and removing missing data • Sorting, Searching and Counting • Reshaping Data • Random Module for EDA • Saving and loading NumPy arrays",
-        "code": {
-          "language": "python",
-          "caption": "Code Example: Topics to Explore",
-          "snippet": "import pandas as pd \n\n data = { \n \"Name\" :[ \"A\" , \"B\" , \"C\" , \"D\" ], \n \"Marks\" :[ 78 , 85 , None , 90 ] \n } \n\n df = pd . DataFrame ( data ) \n\n print ( df ) \n print ( df . isnull ()) \n print ( df [ \"Marks\" ] . mean ())"
-        }
-      },
-      {
         "title": "2. Pandas for Data Manipulation",
         "content": "Pandas is built on top of NumPy and is designed for working with structured, tabular data. It introduces two main data structures: • Series (1D) • DataFrame (2D) Pandas makes data cleaning, transformation and analysis simple and intuitive. • Reading and writing data (CSV, Excel, JSON, SQL) • Handling missing values • Filtering and slicing data • Grouping and aggregation • Working with date and time data Python ``` import pandas as pd data={ \"Name\":[\"A\",\"B\",\"C\",\"D\"], \"Marks\":[78,85,None,90] } df=pd.DataFrame(data) print(df) print(df.isnull()) print(df[\"Marks\"].mean()) ``` Output ``` Name Marks 0 A 78.0 1 B 85.0 2 C NaN 3 D 90.0 Name Marks 0 False False 1 False False 2 False True 3 False False 84.33333333333333 ``` This example demonstrates how Pandas identifies missing values and computes summary statistics.",
         "code": {
-          "language": "text",
+          "language": "python",
           "caption": "Code Example: 2. Pandas for Data Manipulation",
-          "snippet": "Name Marks\n0 A 78.0\n1 B 85.0\n2 C NaN\n3 D 90.0\n Name Marks\n0 False False\n1 False False\n2 False True\n3 False False\n84.33333333333333"
+          "snippet": "import pandas as pd \n\n data = { \n \"Name\" :[ \"A\" , \"B\" , \"C\" , \"D\" ], \n \"Marks\" :[ 78 , 85 , None , 90 ] \n } \n\n df = pd . DataFrame ( data ) \n\n print ( df ) \n print ( df . isnull ()) \n print ( df [ \"Marks\" ] . mean ())"
         }
       },
       {
         "title": "3. Matplotlib for Data Visualization",
         "content": "Matplotlib is a powerful and flexible plotting library used to visualize data in various formats. It helps convert numerical data into meaningful visual representations. • Supports line, bar, scatter, histogram and 3D plots • Highly customizable • Essential for visual EDA Python ``` import matplotlib.pyplot as plt scores=[45,50,55,60,65,70,75,80,200] plt.hist(scores) plt.xlabel(\"Scores\") plt.ylabel(\"Frequency\") plt.title(\"Distribution of Exam Scores\") plt.show() ``` Output: Visualizing Data with Matplotlib This histogram helps visually identify the presence of outliers in the dataset.",
         "code": {
-          "language": "python",
+          "language": "text",
           "caption": "Code Example: 3. Matplotlib for Data Visualization",
-          "snippet": "import matplotlib.pyplot as plt \n\n scores = [ 45 , 50 , 55 , 60 , 65 , 70 , 75 , 80 , 200 ] \n\n plt . hist ( scores ) \n plt . xlabel ( \"Scores\" ) \n plt . ylabel ( \"Frequency\" ) \n plt . title ( \"Distribution of Exam Scores\" ) \n plt . show ()"
+          "snippet": "Name Marks\n0 A 78.0\n1 B 85.0\n2 C NaN\n3 D 90.0\n Name Marks\n0 False False\n1 False False\n2 False True\n3 False False\n84.33333333333333"
         }
       },
       {
         "title": "4. Seaborn for Statistical Data Visualization",
-        "content": "Seaborn is built on top of Matplotlib and focuses on statistical visualizations. It provides a high-level interface for creating attractive and informative plots with minimal code. • Better default aesthetics • Built-in support for statistical plots • Easy visualization of relationships Python ``` import seaborn as sns import pandas as pd data=sns.load_dataset(\"tips\") sns.boxplot(x=\"day\",y=\"total_bill\",data=data) ``` Output: Statistical Visualization Using Seaborn This boxplot helps analyze data distribution and detect outliers across different categories. • Introduction to Seaborn • Types Of Seaborn Plots • Distribution Plots: Histograms , Jointplot , Pairplot , KDE Plot • Categorical Plots: Barplot , Countplot , Boxplot • Relationship Plots: Scatterplot , Line Plot , Regression plot • Matrix & Correlation Plots: Heatmap , Correlation Heatmap • Comparative Analysis: Violin plot , Strip plot , Swarm plot • Pairplot function • Facet & Grid Plot • Customization for EDA: Style and Color , Color Palette"
+        "content": "Seaborn is built on top of Matplotlib and focuses on statistical visualizations. It provides a high-level interface for creating attractive and informative plots with minimal code. • Better default aesthetics • Built-in support for statistical plots • Easy visualization of relationships Python ``` import seaborn as sns import pandas as pd data=sns.load_dataset(\"tips\") sns.boxplot(x=\"day\",y=\"total_bill\",data=data) ``` Output: Statistical Visualization Using Seaborn This boxplot helps analyze data distribution and detect outliers across different categories. • Introduction to Seaborn • Types Of Seaborn Plots • Distribution Plots: Histograms , Jointplot , Pairplot , KDE Plot • Categorical Plots: Barplot , Countplot , Boxplot • Relationship Plots: Scatterplot , Line Plot , Regression plot • Matrix & Correlation Plots: Heatmap , Correlation Heatmap • Comparative Analysis: Violin plot , Strip plot , Swarm plot • Pairplot function • Facet & Grid Plot • Customization for EDA: Style and Color , Color Palette",
+        "code": {
+          "language": "python",
+          "caption": "Code Example: 4. Seaborn for Statistical Data Visualization",
+          "snippet": "import matplotlib.pyplot as plt \n\n scores = [ 45 , 50 , 55 , 60 , 65 , 70 , 75 , 80 , 200 ] \n\n plt . hist ( scores ) \n plt . xlabel ( \"Scores\" ) \n plt . ylabel ( \"Frequency\" ) \n plt . title ( \"Distribution of Exam Scores\" ) \n plt . show ()"
+        }
       },
       {
-        "title": "7. Complete EDA Workflow Using NumPy, Pandas and Seaborn",
+        "title": "6. Complete EDA Workflow Using NumPy, Pandas and Seaborn",
         "content": "Let's implement complete workflow for performing EDA: starting with numerical analysis using NumPy and Pandas, followed by insightful visualizations using Seaborn to make data-driven decisions effectively. • Numerical analysis using NumPy and Pandas • Data Preprocessing • Visualizing with seaborn • Data Visualization using Matplotlib • Advanced EDA • Time Series Analysis & Visualization"
       },
       {
-        "title": "8. Hands-On EDA Projects",
+        "title": "7. Hands-On EDA Projects",
         "content": "To strengthen your understanding, explore these real-world projects: • Titanic Data EDA • Uber Rides Analysis • Zomato Data Analysis • Covid-19 Data Analysis and Visualizations • iPhone Sales Analysis • Google Search Analysis"
       },
       {
-        "title": "9. Web Scraping For EDA",
+        "title": "8. Web Scraping For EDA",
         "content": "Web scraping is the automated process of extracting data from websites for analysis. It is useful when datasets are not readily available. • Weather data extraction • Movies Review Scraping And Analysis • Product Price Scraping • News Scraping and Analysis • Real-time stock price analysis Comment",
         "callout": {
           "type": "tip",
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "10. Explore",
-        "content": "DSA Tutorial 10 min read System Design Tutorial 4 min read Aptitude Questions and Answers 3 min read Web Development Technologies 5 min read AI, ML and Data Science Tutorial 3 min read DevOps Tutorial 3 min read"
       }
     ],
     "playground": {
@@ -867,14 +850,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "data-analysis-tutorial": {
     "id": "data-analysis-tutorial",
     "badge": "Module 4 • Data Analysis",
-    "readingTime": "36 min read",
+    "readingTime": "34 min read",
     "level": "Intermediate",
     "title": "Data Analytics Tutorial",
     "subtitle": "Comprehensive guide on Data Analytics Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Data Analytics Tutorial Last Updated : 1 Oct, 2026 • • • Data Analytics is a process of examining, cleaning, transforming and interpreting data. • Helps businesses to identify patterns, draw conclusions and improve overall performance. • For example, an e-commerce business can analyze real-time sales and inventory data to automatically adjust product prices based on demand. while a Bank can analyze transactions in real time to detect and block potentially fraudulent payments.",
+        "content": "Data Analytics is a process of examining, cleaning, transforming and interpreting data. • Helps businesses to identify patterns, draw conclusions and improve overall performance. • For example, an e-commerce business can analyze real-time sales and inventory data to automatically adjust product prices based on demand. while a Bank can analyze transactions in real time to detect and block potentially fraudulent payments.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -949,10 +932,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "18. Explore",
-        "content": "DSA Tutorial 10 min read System Design Tutorial 4 min read Aptitude Questions and Answers 3 min read Web Development Technologies 5 min read AI, ML and Data Science Tutorial 3 min read DevOps Tutorial 3 min read"
       }
     ],
     "playground": {
@@ -983,14 +962,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "numpy-tutorial": {
     "id": "numpy-tutorial",
     "badge": "Module 4 • Data Analysis",
-    "readingTime": "18 min read",
+    "readingTime": "16 min read",
     "level": "Intermediate",
     "title": "NumPy Tutorial",
     "subtitle": "Comprehensive guide on NumPy Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "NumPy Tutorial Last Updated : 25 Mar, 2026 • • • NumPy is a core Python library for numerical computing, built for handling large arrays and matrices efficiently. It is significantly faster than Python's built-in lists because it uses optimized C language style storage where actual values are stored at contiguous locations (not object reference). • ndarray object : N-dimensional array for fast numerical operations. • Vectorized operations : Perform element-wise calculations without loops. • Broadcasting : Operate on arrays of different shapes. • Linear algebra functions : Matrix operations like multiplication and inversion. • Statistical functions : Mean, median, standard deviation. • Integration : Works with Pandas, SciPy and scikit-learn.",
+        "content": "NumPy is a core Python library for numerical computing, built for handling large arrays and matrices efficiently. It is significantly faster than Python's built-in lists because it uses optimized C language style storage where actual values are stored at contiguous locations (not object reference). • ndarray object : N-dimensional array for fast numerical operations. • Vectorized operations : Perform element-wise calculations without loops. • Broadcasting : Operate on arrays of different shapes. • Linear algebra functions : Matrix operations like multiplication and inversion. • Statistical functions : Mean, median, standard deviation. • Integration : Works with Pandas, SciPy and scikit-learn.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1049,10 +1028,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "8. Advanced Operations",
         "content": "This section includes vectorized operations for speed optimization, memory management strategies and integration with Pandas for efficient data analysis. Python ``` import numpy as np a = np.arange(5) r = a * 10 # Vectorized operation (fast and efficient) print(r) ``` Output ``` [ 0 10 20 30 40] ``` • Vectorized Operations for Performance Optimization • Sparse Matrices • Working with Images"
-      },
-      {
-        "title": "9. Explore",
-        "content": "Python Fundamentals • Introduction 1 min read • Input & Output 2 min read • Variables 4 min read • Operators 4 min read • Keywords 2 min read • Data Types 4 min read • Conditional Statements 3 min read • Loops 3 min read • Functions 4 min read Python Data Structures • String 4 min read • List 3 min read • Tuples 3 min read • Dictionary 3 min read • Set 2 min read • Arrays 5 min read Advanced Python • OOP Concepts 3 min read • Exception Handling 5 min read • File Handling 4 min read • Python Database 2 min read • MongoDB 3 min read • MySQL 7 min read • Packages 4 min read • Modules 3 min read • DSA Libraries 5 min read • Python GUI 2 min read Data Science with Python • Numpy 3 min read • Pandas 4 min read • Matplotlib 3 min read • Seaborn 3 min read • StatsModel 2 min read • Model Building 6 min read • TensorFlow 2 min read • PyTorch 5 min read Web Development with Python • Flask 3 min read • Django 5 min read • Django ORM 4 min read • Jinja2 Templating 5 min read • Django Templates 5 min read • REST API 3 min read • Build API with DRF 4 min read Python Practice • Quiz 1 min read • Practice Problems 2 min read • Interview Q & A 15+ min read Courses • Placement 360 Course 2 min read • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1083,14 +1058,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "pandas-tutorial": {
     "id": "pandas-tutorial",
     "badge": "Module 4 • Data Analysis",
-    "readingTime": "22 min read",
+    "readingTime": "20 min read",
     "level": "Intermediate",
     "title": "Pandas Tutorial",
     "subtitle": "Comprehensive guide on Pandas Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Pandas Tutorial Last Updated : 26 Mar, 2026 • • • Pandas (stands for Python Data Analysis) is an open-source software library designed for data manipulation and analysis. • Built on top of NumPy, efficiently manages large datasets, offering tools for data cleaning, transformation and analysis. • Seamlessly integrates with other Python libraries like NumPy, Matplotlib and scikit-learn. • Revolves around two primary Data structures: Series (1D) and DataFrame (2D) • Provides methods like .dropna() and .fillna() to handle missing values seamlessly Important Facts to Know : • DataFrames: It is a two-dimensional data structure constructed with rows and columns, which is more similar to Excel spreadsheet. • pandas: This name is derived for the term \"panel data\" which is econometrics terms of data sets.",
+        "content": "Pandas (stands for Python Data Analysis) is an open-source software library designed for data manipulation and analysis. • Built on top of NumPy, efficiently manages large datasets, offering tools for data cleaning, transformation and analysis. • Seamlessly integrates with other Python libraries like NumPy, Matplotlib and scikit-learn. • Revolves around two primary Data structures: Series (1D) and DataFrame (2D) • Provides methods like .dropna() and .fillna() to handle missing values seamlessly Important Facts to Know : • DataFrames: It is a two-dimensional data structure constructed with rows and columns, which is more similar to Excel spreadsheet. • pandas: This name is derived for the term \"panel data\" which is econometrics terms of data sets.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1137,10 +1112,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "11. Explore",
-        "content": "Introduction • Pandas Introduction 4 min read • How to Install Pandas in Python? 3 min read • How To Use Jupyter Notebook - An Ultimate Guide 5 min read Creating Objects • Creating a Pandas DataFrame 2 min read • Python Pandas Series 5 min read • Creating a Pandas Series 3 min read Viewing Data • Pandas Dataframe/Series.head() method - Python 3 min read • Pandas Dataframe/Series.tail() method - Python 3 min read • Pandas DataFrame describe() Method 4 min read Selection & Slicing • Dealing with Rows and Columns in Pandas DataFrame 3 min read • Pandas Extracting rows using .loc[] - Python 3 min read • Extracting rows using Pandas .iloc[] in Python 7 min read • Indexing and Selecting Data with Pandas 4 min read • Boolean Indexing in Pandas 4 min read • Python | Pandas DataFrame.ix[ ] 2 min read • Python | Pandas Series.str.slice() 3 min read • How to take column-slices of DataFrame in Pandas? 2 min read Operations • Python | Pandas.Series.apply() 2 min read • Apply function to every row in a Pandas DataFrame 3 min read • Python | Pandas Series.apply() 3 min read • Pandas dataframe.aggregate() | Python 2 min read • Pandas DataFrame mean() Method 2 min read • Python | Pandas Series.mean() 2 min read • Python | Pandas dataframe.mad() 2 min read • Python | Pandas Series.mad() to calculate Mean Absolute Deviation of a Series 2 min read • Python | Pandas dataframe.sem() 3 min read • Python | Pandas Series.value_counts() 2 min read • Pandas Index.value_counts()-Python 3 min read • Applying Lambda functions to Pandas Dataframe 6 min read Manipulating Data • Adding New Column to Existing DataFrame in Pandas 6 min read • Python | Delete rows/columns from DataFrame using Pandas.drop() 4 min read • Python | Pandas DataFrame.truncate 3 min read • Python | Pandas Series.truncate() 2 min read • Iterating over rows and columns in Pandas DataFrame 4 min read • Pandas Dataframe.sort_values() 2 min read • Python | Pandas Dataframe.sort_values() | Set-2 3 min read • How to add one row in "
       }
     ],
     "playground": {
@@ -1171,14 +1142,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "data-visualization-tutorial": {
     "id": "data-visualization-tutorial",
     "badge": "Module 5 • Data Visualization",
-    "readingTime": "28 min read",
+    "readingTime": "26 min read",
     "level": "Intermediate",
     "title": "Python - Data visualization Tutorial",
     "subtitle": "Comprehensive guide on Python - Data visualization Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Python - Data visualization Tutorial Last Updated : 9 Oct, 2026 • • • Data visualization is the process of representing data using charts graphs and other visual elements. Python provides several libraries that make it easier to explore data identify patterns and communicate insights effectively.",
+        "content": "Data visualization is the process of representing data using charts graphs and other visual elements. Python provides several libraries that make it easier to explore data identify patterns and communicate insights effectively.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1242,10 +1213,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "14. Explore",
-        "content": "Basics • Introduction 3 min read • Types of Data Visualization Charts 9 min read • Real life Examples 8 min read Using Matplotlib • Introduction 6 min read • Box plot 3 min read • Heatmap 3 min read With Seaborn • Data Visualization with Seaborn - Python 9 min read • Seaborn | Distribution Plots 2 min read • Data visualization with Seaborn Pairplot 5 min read • Seaborn | Style And Color 4 min read With Pandas • 7 Pandas Plotting Functions for Data Visualization 7 min read • Data Visualization 5 min read • How to plot Timeseries based charts using Pandas? 4 min read Advanced Visualization Libraries • Data Visualization using Plotnine and ggplot2 in Python 6 min read • Grammar of Graphics for Python: An Introduction to Plotline 5 min read • Data Visualization With Altair 8 min read • Bokeh 3 min read • paygal 9 min read Career Opportunities • Job Opportunities 5 min read • How to Get an Internship as a Data Visualization Specialist 7 min read • Top 10 Data Visualization Project Ideas in 2025 7 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1276,14 +1243,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "matplotlib-tutorial": {
     "id": "matplotlib-tutorial",
     "badge": "Module 5 • Data Visualization",
-    "readingTime": "22 min read",
+    "readingTime": "20 min read",
     "level": "Intermediate",
     "title": "Matplotlib Tutorial",
     "subtitle": "Comprehensive guide on Matplotlib Tutorial from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Matplotlib Tutorial Last Updated : 24 Feb, 2026 • • • Matplotlib is an open-source library for creating static, animated and interactive visualizations in Python. Its object-oriented API enables the embedding of plots into applications developed with GUI toolkits such as Tkinter, Qt and GTK. • It supports line plots, bar charts, histograms, scatter plots and 3D visualizations. • Provides full command over figure elements, including axes, labels, legends and colors. • Built to work with NumPy arrays and Pandas DataFrames. • Compatible with multiple general-purpose GUI toolkits (Tkinter, Qt, GTK and wxPython). • Capable of generating high-quality output in various hardcopy formats (PNG, PDF, SVG).",
+        "content": "Matplotlib is an open-source library for creating static, animated and interactive visualizations in Python. Its object-oriented API enables the embedding of plots into applications developed with GUI toolkits such as Tkinter, Qt and GTK. • It supports line plots, bar charts, histograms, scatter plots and 3D visualizations. • Provides full command over figure elements, including axes, labels, legends and colors. • Built to work with NumPy arrays and Pandas DataFrames. • Compatible with multiple general-purpose GUI toolkits (Tkinter, Qt, GTK and wxPython). • Capable of generating high-quality output in various hardcopy formats (PNG, PDF, SVG).",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1330,10 +1297,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "11. Explore",
-        "content": "Python Fundamentals • Introduction 1 min read • Input & Output 2 min read • Variables 4 min read • Operators 4 min read • Keywords 2 min read • Data Types 4 min read • Conditional Statements 3 min read • Loops 3 min read • Functions 4 min read Python Data Structures • String 4 min read • List 3 min read • Tuples 3 min read • Dictionary 3 min read • Set 2 min read • Arrays 5 min read Advanced Python • OOP Concepts 3 min read • Exception Handling 5 min read • File Handling 4 min read • Python Database 2 min read • MongoDB 3 min read • MySQL 7 min read • Packages 4 min read • Modules 3 min read • DSA Libraries 5 min read • Python GUI 2 min read Data Science with Python • Numpy 3 min read • Pandas 4 min read • Matplotlib 3 min read • Seaborn 3 min read • StatsModel 2 min read • Model Building 6 min read • TensorFlow 2 min read • PyTorch 5 min read Web Development with Python • Flask 3 min read • Django 5 min read • Django ORM 4 min read • Jinja2 Templating 5 min read • Django Templates 5 min read • REST API 3 min read • Build API with DRF 4 min read Python Practice • Quiz 1 min read • Practice Problems 2 min read • Interview Q & A 15+ min read Courses • Placement 360 Course 2 min read • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1407,14 +1370,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "ml-introduction": {
     "id": "ml-introduction",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "24 min read",
+    "readingTime": "20 min read",
     "level": "Intermediate",
     "title": "Introduction to Machine Learning",
     "subtitle": "Comprehensive guide on Introduction to Machine Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Introduction to Machine Learning Last Updated : 26 Aug, 2026 • • • Machine Learning is a technique that allows computers to learn from data and make decisions without explicit programming. It works by identifying patterns in data and using them to make predictions. It is used in areas such as: Image Recognition, Speech Processing, Language Translation and Recommender Systems.",
+        "content": "Machine Learning is a technique that allows computers to learn from data and make decisions without explicit programming. It works by identifying patterns in data and using them to make predictions. It is used in areas such as: Image Recognition, Speech Processing, Language Translation and Recommender Systems.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1456,19 +1419,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "10. Challenges",
         "content": "• Data Quality and Bias: Poor-quality or biased data can lead to inaccurate or unfair predictions, so data must be carefully collected and monitored. • Overfitting and Generalization: A model may perform well on training data but poorly on new data, making it important to ensure that it generalizes well. • Privacy: ML systems may process sensitive or personal data, creating privacy and security risks. • Explainability: Complex models can be difficult to understand, making it harder to explain their predictions and decisions. • Deployment and Resources: ML models can require significant computational resources and ongoing monitoring and maintenance after deployment."
-      },
-      {
-        "title": "11. Related Articles",
-        "content": "• Types of Machine Learning • Traditional Programming vs Machine Learning • Machine Learning Tutorial Comment",
-        "callout": {
-          "type": "tip",
-          "title": "Practice Tip",
-          "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
-        }
-      },
-      {
-        "title": "12. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
@@ -1499,14 +1449,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "types-of-ml": {
     "id": "types-of-ml",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "36 min read",
+    "readingTime": "38 min read",
     "level": "Intermediate",
     "title": "Types of Machine Learning",
     "subtitle": "Comprehensive guide on Types of Machine Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Types of Machine Learning Last Updated : 19 Jan, 2026 • • • Machine Learning (ML) is a subfield of Artificial Intelligence (AI) that focuses on building algorithms and models that enable computers to learn from data and improve with experience without explicit programming for every task. In simple words, Machine Learning teaches systems to learn patterns and make decisions like humans by analyzing and learning from data. There are several types of machine learning, each with special characteristics and applications. Some of the main types of machine learning algorithms are as follows: • Supervised Machine Learning • Unsupervised Machine Learning • Reinforcement Learning Additionally, there is a more specific category called Semi-Supervised Learning and Self-Supervised Learning, which combines elements of both supervised and unsupervised learning Types of Machine Learning",
+        "content": "Machine Learning (ML) is a subfield of Artificial Intelligence (AI) that focuses on building algorithms and models that enable computers to learn from data and improve with experience without explicit programming for every task. In simple words, Machine Learning teaches systems to learn patterns and make decisions like humans by analyzing and learning from data. There are several types of machine learning, each with special characteristics and applications. Some of the main types of machine learning algorithms are as follows: • Supervised Machine Learning • Unsupervised Machine Learning • Reinforcement Learning Additionally, there is a more specific category called Semi-Supervised Learning and Self-Supervised Learning, which combines elements of both supervised and unsupervised learning Types of Machine Learning",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1580,6 +1530,10 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "18. Popular Techniques",
         "content": "• Graph-based Learning: Spreads label information through data relationships. • Label Propagation: Iteratively assigns labels to unlabeled data. • Co-training : Uses two models to train and label each other’s data. • Self-training : Uses model predictions as pseudo-labels. • Generative Adversarial Networks (GANs) : Generates synthetic data to improve learning."
+      },
+      {
+        "title": "19. Where to Use Semi-Supervised Learning",
+        "content": "• When you have limited labeled data but plenty of unlabeled data. • Useful for domains with high labeling costs, such as medical, NLP or image datasets. • Ideal when unlabeled data still holds valuable information that can improve learning performance."
       }
     ],
     "playground": {
@@ -1617,7 +1571,7 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Supervised and Unsupervised learning Last Updated : 29 Jul, 2025 • • • Supervised and unsupervised learning are two main types of machine learning. In supervised learning, the model is trained with labeled data where each input has a corresponding output. On the other hand, unsupervised learning involves training the model with unlabeled data which helps to uncover patterns, structures or relationships within the data without predefined outputs. In this article we will see Supervised and unsupervised learning in more details.",
+        "content": "Supervised and unsupervised learning are two main types of machine learning. In supervised learning, the model is trained with labeled data where each input has a corresponding output. On the other hand, unsupervised learning involves training the model with unlabeled data which helps to uncover patterns, structures or relationships within the data without predefined outputs. In this article we will see Supervised and unsupervised learning in more details.",
         "callout": {
           "type": "info",
           "title": "Learning Objectives",
@@ -1726,14 +1680,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "linear-regression": {
     "id": "linear-regression",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "36 min read",
+    "readingTime": "40 min read",
     "level": "Intermediate",
     "title": "Linear Regression in Machine learning",
     "subtitle": "Comprehensive guide on Linear Regression in Machine learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Linear Regression in Machine learning Last Updated : 4 Jun, 2026 • • • Linear Regression is a fundamental supervised learning algorithm used to model the relationship between a dependent variable and one or more independent variables. It predicts continuous values by fitting a straight line that best represents the data. • It assumes that there is a linear relationship between the input and output • Uses a best‑fit line to make predictions • Commonly used in forecasting, trend analysis, and predictive modelling For example, suppose we want to predict a student’s exam score based on the number of hours studied. As study hours increase, exam scores generally increase as well. Here: • Independent variable (input): Hours studied because it's the factor we control or observe. • Dependent variable (output): Exam score because it depends on how many hours were studied. Linear regression uses the independent variable to predict the dependent variable.",
+        "content": "Linear Regression is a fundamental supervised learning algorithm used to model the relationship between a dependent variable and one or more independent variables. It predicts continuous values by fitting a straight line that best represents the data. • It assumes that there is a linear relationship between the input and output • Uses a best‑fit line to make predictions • Commonly used in forecasting, trend analysis, and predictive modelling For example, suppose we want to predict a student’s exam score based on the number of hours studied. As study hours increase, exam scores generally increase as well. Here: • Independent variable (input): Hours studied because it's the factor we control or observe. • Dependent variable (output): Exam score because it depends on how many hours were studied. Linear regression uses the independent variable to predict the dependent variable.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1832,6 +1786,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
       {
         "title": "3. Creating and Training Linear Regression Model",
         "content": "Initialize the model and train it using the generated dataset. Python ``` model = LinearRegression() model.fit(X, Y) ```"
+      },
+      {
+        "title": "4. Predicting Y Values",
+        "content": "Using the trained model to predict output values for the input data. Python ``` Y_pred = model.predict(X) ```"
+      },
+      {
+        "title": "5. Visualizing the Regression Line",
+        "content": "Plot the original data points along with the best-fit regression line. Python ``` plt.figure(figsize=(8,6)) plt.scatter(X, Y, color=&#39;blue&#39;, label=&#39;Data Points&#39;) plt.plot(X, Y_pred, color=&#39;red&#39;, linewidth=2, label=&#39;Regression Line&#39;) plt.title(&#39;Linear Regression on Random Dataset&#39;) plt.xlabel(&#39;X&#39;) plt.ylabel(&#39;Y&#39;) plt.legend() plt.grid(True) plt.show() ``` Output : Regression Line"
       }
     ],
     "playground": {
@@ -1862,14 +1824,14 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
   "logistic-regression": {
     "id": "logistic-regression",
     "badge": "Module 6 • Machine Learning",
-    "readingTime": "30 min read",
+    "readingTime": "28 min read",
     "level": "Intermediate",
     "title": "Logistic Regression in Machine Learning",
     "subtitle": "Comprehensive guide on Logistic Regression in Machine Learning from GeeksForGeeks — covering core theory, practical examples, and Python implementation.",
     "sections": [
       {
         "title": "1. Overview",
-        "content": "Logistic Regression in Machine Learning Last Updated : 1 Jun, 2026 • • • Logistic Regression is a supervised machine learning algorithm used for classification problems. Unlike linear regression, which predicts continuous values it predicts the probability that an input belongs to a specific class. • It is used for binary classification where the output can be one of two possible categories such as Yes/No, True/False or 0/1. • It uses sigmoid function to convert inputs into a probability value between 0 and 1.",
+        "content": "Logistic Regression is a supervised machine learning algorithm used for classification problems. Unlike linear regression, which predicts continuous values it predicts the probability that an input belongs to a specific class. • It is used for binary classification where the output can be one of two possible categories such as Yes/No, True/False or 0/1. • It uses sigmoid function to convert inputs into a probability value between 0 and 1.",
         "code": {
           "language": "python",
           "caption": "Code Example: Overview",
@@ -1942,10 +1904,6 @@ export const GFG_AIML_PART1: Record<string, LessonContent> = {
           "title": "Practice Tip",
           "message": "Use the interactive console below to experiment with the concepts covered in this lesson."
         }
-      },
-      {
-        "title": "15. Explore",
-        "content": "Machine Learning Basics • Introduction 3 min read • Types 7 min read • ML Pipeline 4 min read • Applications 2 min read Python for Machine Learning • ML with Python 3 min read • Numpy 3 min read • Pandas 4 min read • Data Preprocessing 4 min read • EDA 6 min read Feature Engineering • Feature Engineering 4 min read • Dimensionality Reduction 3 min read • Feature Selection 4 min read Supervised Learning • Supervised Learning 4 min read • Linear Regression 10 min read • Logistic Regression 9 min read • Decision Tree 8 min read • Random Forest 4 min read • KNN 7 min read • SVM 9 min read • Naive Bayes 6 min read Unsupervised Learning • Unsupervised Learning 5 min read • K means Clustering 7 min read • Hierarchical Clustering 6 min read • DBSCAN Clustering 6 min read • Apriori Algorithm 5 min read • FP Growth Algorithm 4 min read • ECLAT Algorithm 5 min read • PCA 6 min read Model Evaluation and Tuning • Evaluation Metrics 9 min read • Regularization 5 min read • Cross Validation 5 min read • Hyperparameter Tuning 5 min read • Underfitting and Overfitting 3 min read • Bias and Variance 6 min read Advanced Techniques • Reinforcement Learning 8 min read • Semi-Supervised Learning 5 min read • Self-Supervised Learning 5 min read • Ensemble Learning 6 min read Machine Learning Practice • Interview Questions 15+ min read • ML Projects 5 min read Courses • Data Science 360 Course 2 min read • AI Engg Course 2 min read"
       }
     ],
     "playground": {
