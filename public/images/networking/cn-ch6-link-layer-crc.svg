@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb923c"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#fb923c" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">6.1–6.2 LINK LAYER SERVICES, NIC HARDWARE &amp; CYCLIC REDUNDANCY CHECK (CRC)</text>
+  <rect x="22" y="64" width="916" height="106" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="40" y="84" fill="#94a3b8" font-family="monospace" font-size="10">Bit 0</text>
+  <text x="480" y="84" fill="#fb923c" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">WIRE-FORMAT PROTOCOL HEADER / FRAME ENCAPSULATION LAYOUT</text>
+  <text x="920" y="84" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="end">Bit 31 / EOF</text>
+  <rect x="36" y="94" width="191" height="62" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="131" y="120" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Preamble + Dst/Src MAC</text>
+  <text x="131" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">L2 Frame Addressing</text>
+  <rect x="231" y="94" width="333" height="62" rx="6" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  <text x="397" y="120" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Data Bits D (d bits)</text>
+  <text x="397" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">IP Datagram Payload</text>
+  <rect x="568" y="94" width="191" height="62" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <text x="663" y="120" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">CRC Remainder R (r bits)</text>
+  <text x="663" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">D*2^r XOR-divisible by G</text>
+  <rect x="763" y="94" width="155" height="62" rx="6" fill="#1e293b" stroke="#f472b6" stroke-width="2"/>
+  <text x="840" y="120" fill="#f472b6" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Generator G (r+1 bits)</text>
+  <text x="840" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">CRC-32 Polynomial</text>
+  <rect x="22" y="182" width="916" height="230" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <rect x="38" y="196" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="214" fill="#fb923c" font-family="monospace" font-size="11.5" font-weight="bold">Where the Link Layer is Implemented</text>
+  <text x="54" y="231" fill="#cbd5e1" font-family="monospace" font-size="10.5">Hardware NIC (Network Interface Card) controller chip handles framing, MAC access, and CRC; CPU handles driver glue</text>
+  <rect x="38" y="248" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="266" fill="#fb923c" font-family="monospace" font-size="11.5" font-weight="bold">Single-Bit vs. Two-Dimensional Parity</text>
+  <text x="54" y="283" fill="#cbd5e1" font-family="monospace" font-size="10.5">1D parity detects single bit flips; 2D row/column parity can both detect AND locate/correct a single bit flip</text>
+  <rect x="38" y="300" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="318" fill="#fb923c" font-family="monospace" font-size="11.5" font-weight="bold">Cyclic Redundancy Check (CRC) Math</text>
+  <text x="54" y="335" fill="#cbd5e1" font-family="monospace" font-size="10.5">Sender chooses r-bit R = remainder((D * 2^r) / G) in GF(2) XOR arithmetic so &lt;D, R&gt; is exactly divisible by G</text>
+  <rect x="38" y="352" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="370" fill="#fb923c" font-family="monospace" font-size="11.5" font-weight="bold">CRC-32 Burst Error Guarantees</text>
+  <text x="54" y="387" fill="#cbd5e1" font-family="monospace" font-size="10.5">IEEE 802.3 32-bit CRC detects all burst errors &lt;= 32 bits and any odd number of bit errors at multi-gigabit line rate</text>
+</svg>

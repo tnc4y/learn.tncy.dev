@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#818cf8" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">1.3B INTERNET STRUCTURE: TIER-1 ISPs, IXPs, PEERING &amp; CONTENT PROVIDER NETWORKS</text>
+  <rect x="20" y="62" width="440" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="85" fill="#818cf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">NETWORK TOPOLOGY &amp; ROUTING GRAPH G=(N,E)</text>
+  <line x1="140" y1="105" x2="310" y2="105" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="189" y="95" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="225" y="108" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Settlement-Fre</text>
+  <line x1="140" y1="105" x2="225" y2="190" stroke="#475569" stroke-width="1.8"/>
+  <rect x="146" y="137" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="182" y="150" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">IXP</text>
+  <line x1="310" y1="105" x2="225" y2="190" stroke="#475569" stroke-width="1.8"/>
+  <rect x="231" y="137" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="267" y="150" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">IXP</text>
+  <line x1="140" y1="105" x2="120" y2="265" stroke="#475569" stroke-width="1.8"/>
+  <rect x="94" y="175" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="130" y="188" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Transit $</text>
+  <line x1="225" y1="190" x2="120" y2="265" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="136" y="217" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="172" y="230" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Peer</text>
+  <line x1="335" y1="255" x2="225" y2="190" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="244" y="212" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="280" y="225" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Bypass Tier-1</text>
+  <line x1="335" y1="255" x2="225" y2="340" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="244" y="287" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="280" y="300" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Direct Edge</text>
+  <line x1="120" y1="265" x2="225" y2="340" stroke="#475569" stroke-width="1.8"/>
+  <rect x="136" y="292" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="172" y="305" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Multi-Home</text>
+  <circle cx="140" cy="105" r="22" fill="#1e293b" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="140" y="109" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">T1A</text>
+  <rect x="82" y="130" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="140" y="142" fill="#ef4444" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Tier-1 ISP A</text>
+  <circle cx="310" cy="105" r="22" fill="#1e293b" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="310" y="109" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">T1B</text>
+  <rect x="252" y="130" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="310" y="142" fill="#ef4444" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Tier-1 ISP B</text>
+  <circle cx="225" cy="190" r="22" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="225" y="194" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">IXP</text>
+  <rect x="167" y="215" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="225" y="227" fill="#fbbf24" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">IXP Peering</text>
+  <circle cx="120" cy="265" r="22" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="120" y="269" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">REG1</text>
+  <rect x="62" y="290" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="120" y="302" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Regional ISP</text>
+  <circle cx="335" cy="255" r="22" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+  <text x="335" y="259" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">CDN</text>
+  <rect x="277" y="280" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="335" y="292" fill="#34d399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Google/Netflix</text>
+  <circle cx="225" cy="340" r="22" fill="#1e293b" stroke="#c084fc" stroke-width="2.5"/>
+  <text x="225" y="344" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ACC</text>
+  <rect x="167" y="365" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="225" y="377" fill="#c084fc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Access ISP</text>
+  <rect x="475" y="62" width="465" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="707" y="86" fill="#818cf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">EVOLUTION TO INTERNET STRUCTURE 5</text>
+  <rect x="490" y="102" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="123" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Tier-1 Commercial ISPs</text>
+  <text x="504" y="142" fill="#cbd5e1" font-family="monospace" font-size="10">Lumen, AT&amp;T, NTT, Deutsche Telekom — global mesh with settlement-f</text>
+  <text x="504" y="157" fill="#94a3b8" font-family="monospace" font-size="9.5">ree peering</text>
+  <rect x="490" y="176" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="197" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Internet Exchange Points (IXPs)</text>
+  <text x="504" y="216" fill="#cbd5e1" font-family="monospace" font-size="10">Neutral Layer-2 fabrics where hundreds of autonomous ISPs peer dir</text>
+  <text x="504" y="231" fill="#94a3b8" font-family="monospace" font-size="9.5">ectly</text>
+  <rect x="490" y="250" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="271" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Multi-Homing Resilience</text>
+  <text x="504" y="290" fill="#cbd5e1" font-family="monospace" font-size="10">Access/Regional ISPs connect to &gt;=2 upstream providers for fault t</text>
+  <text x="504" y="305" fill="#94a3b8" font-family="monospace" font-size="9.5">olerance</text>
+  <rect x="490" y="324" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="345" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Content Provider Backbones</text>
+  <text x="504" y="364" fill="#cbd5e1" font-family="monospace" font-size="10">Google, Netflix, Meta, Akamai haul traffic over private subsea fib</text>
+  <text x="504" y="379" fill="#94a3b8" font-family="monospace" font-size="9.5">er directly to edge ISPs</text>
+</svg>

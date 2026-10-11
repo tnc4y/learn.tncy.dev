@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#818cf8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#818cf8" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">7.3B IEEE 802.11 WIFI FRAME FORMAT: 4-ADDRESS ROUTING (ADDR1–ADDR4) &amp; AP BRIDGING</text>
+  <rect x="22" y="64" width="916" height="106" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="40" y="84" fill="#94a3b8" font-family="monospace" font-size="10">Bit 0</text>
+  <text x="480" y="84" fill="#818cf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">WIRE-FORMAT PROTOCOL HEADER / FRAME ENCAPSULATION LAYOUT</text>
+  <text x="920" y="84" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="end">Bit 31 / EOF</text>
+  <rect x="36" y="94" width="173" height="62" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="2"/>
+  <text x="122" y="120" fill="#fbbf24" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Frame Ctrl(2B) + Duration(</text>
+  <text x="122" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Type/Subtype + NAV Timer</text>
+  <rect x="213" y="94" width="191" height="62" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+  <text x="308" y="120" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Addr 1 (6B: Receiver RA)</text>
+  <text x="308" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Target Wireless MAC (AP/STA)</text>
+  <rect x="408" y="94" width="191" height="62" rx="6" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  <text x="503" y="120" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Addr 2 (6B: Transmitter TA</text>
+  <text x="503" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Sender Wireless MAC (STA/AP)</text>
+  <rect x="603" y="94" width="191" height="62" rx="6" fill="#1e293b" stroke="#c084fc" stroke-width="2"/>
+  <text x="698" y="120" fill="#c084fc" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">Addr 3 (6B: Router/Src MAC</text>
+  <text x="698" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Gateway Router L2 MAC!</text>
+  <rect x="798" y="94" width="120" height="62" rx="6" fill="#1e293b" stroke="#f472b6" stroke-width="2"/>
+  <text x="858" y="120" fill="#f472b6" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">SeqCtrl(2B) + Payload + CR</text>
+  <text x="858" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Data + FCS</text>
+  <rect x="22" y="182" width="916" height="230" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <rect x="38" y="196" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="214" fill="#818cf8" font-family="monospace" font-size="11.5" font-weight="bold">Why 802.11 Needs 3 (or 4) MAC Addresses</text>
+  <text x="54" y="231" fill="#cbd5e1" font-family="monospace" font-size="10.5">An Access Point (AP) is a Link-Layer switch, invisible to L3 IP/ARP; the AP must know which wired router MAC to forward the </text>
+  <rect x="38" y="248" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="266" fill="#818cf8" font-family="monospace" font-size="11.5" font-weight="bold">Address 1 (Receiver Address - RA)</text>
+  <text x="54" y="283" fill="#cbd5e1" font-family="monospace" font-size="10.5">48-bit MAC address of the wireless station or AP that will immediately receive this RF frame</text>
+  <rect x="38" y="300" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="318" fill="#818cf8" font-family="monospace" font-size="11.5" font-weight="bold">Address 2 (Transmitter Address - TA)</text>
+  <text x="54" y="335" fill="#cbd5e1" font-family="monospace" font-size="10.5">48-bit MAC address of the wireless station or AP currently transmitting this RF frame</text>
+  <rect x="38" y="352" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="370" fill="#818cf8" font-family="monospace" font-size="11.5" font-weight="bold">Address 3 (Gateway Router / Original Source MAC)</text>
+  <text x="54" y="387" fill="#cbd5e1" font-family="monospace" font-size="10.5">Bridges the wireless BSS to the wired 802.3 Ethernet LAN by carrying the router&#x27;s MAC address (Addr 4 used in WDS AP-to-AP)</text>
+</svg>

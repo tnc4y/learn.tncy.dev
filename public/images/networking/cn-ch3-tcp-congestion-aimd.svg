@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#a78bfa" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">3.7 CLASSIC TCP CONGESTION CONTROL: SLOW START, AIMD SAWTOOTH &amp; ssthresh</text>
+  <rect x="20" y="62" width="425" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="232" y="86" fill="#a78bfa" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">CONGESTION WINDOW (cwnd) TRAJECTORY</text>
+  <line x1="55" y1="335" x2="415" y2="335" stroke="#64748b" stroke-width="2"/>
+  <line x1="55" y1="335" x2="55" y2="105" stroke="#64748b" stroke-width="2"/>
+  <line x1="55" y1="210" x2="415" y2="210" stroke="#fbbf24" stroke-dasharray="5,5"/>
+  <text x="95" y="203" fill="#fbbf24" font-family="monospace" font-size="10">ssthresh</text>
+  <polyline points="55,320 80,300 105,260 130,210 205,135 205,225 290,150 290,320 325,275 360,225 410,175" fill="none" stroke="#a78bfa" stroke-width="3"/>
+  <text x="95" y="290" fill="#34d399" font-family="monospace" font-size="10">Slow Start (2x)</text>
+  <text x="195" y="125" fill="#f87171" font-family="monospace" font-size="10">3 Dup ACK (cwnd/2)</text>
+  <text x="295" y="140" fill="#ef4444" font-family="monospace" font-size="10">Timeout (cwnd=1)</text>
+  <rect x="34" y="364" width="396" height="34" rx="6" fill="#1e293b" stroke="#475569"/>
+  <text x="232" y="385" fill="#fde68a" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Send Rate ~= cwnd / RTT   |   AIMD Throughput ~= (1.22 * MSS) </text>
+  <rect x="460" y="62" width="480" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="700" y="86" fill="#a78bfa" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">MATHEMATICAL MODEL &amp; SYSTEM BEHAVIOR</text>
+  <rect x="476" y="102" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="123" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Slow Start Exponential Phase</text>
+  <text x="490" y="142" fill="#cbd5e1" font-family="monospace" font-size="10">Starts at cwnd = 1 MSS and increments cwnd by 1 MSS on every ACK rec</text>
+  <text x="490" y="157" fill="#94a3b8" font-family="monospace" font-size="9.5">eived, doubling cwnd every RTT</text>
+  <rect x="476" y="176" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="197" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Congestion Avoidance (Additive Increase)</text>
+  <text x="490" y="216" fill="#cbd5e1" font-family="monospace" font-size="10">Once cwnd &gt;= ssthresh, cwnd grows linearly by 1 MSS per RTT (+MSS*(M</text>
+  <text x="490" y="231" fill="#94a3b8" font-family="monospace" font-size="9.5">SS/cwnd) per ACK)</text>
+  <rect x="476" y="250" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="271" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Reaction to 3 Duplicate ACKs (Fast Recovery)</text>
+  <text x="490" y="290" fill="#cbd5e1" font-family="monospace" font-size="10">Sets ssthresh = cwnd/2 and cwnd = ssthresh + 3*MSS (Multiplicative D</text>
+  <text x="490" y="305" fill="#94a3b8" font-family="monospace" font-size="9.5">ecrease by half, no Slow Start reset)</text>
+  <rect x="476" y="324" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="345" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Reaction to Timeout Expiration</text>
+  <text x="490" y="364" fill="#cbd5e1" font-family="monospace" font-size="10">Severe congestion signal: sets ssthresh = cwnd/2, resets cwnd = 1 MS</text>
+  <text x="490" y="379" fill="#94a3b8" font-family="monospace" font-size="9.5">S, and re-enters Slow Start</text>
+</svg>

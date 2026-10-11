@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#34d399" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">5.3 SCALABLE INTRA-AS ROUTING: AUTONOMOUS SYSTEMS &amp; HIERARCHICAL OSPF</text>
+  <rect x="20" y="62" width="440" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="240" y="85" fill="#34d399" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">NETWORK TOPOLOGY &amp; ROUTING GRAPH G=(N,E)</text>
+  <line x1="160" y1="120" x2="300" y2="120" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="194" y="110" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="230" y="123" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 0</text>
+  <line x1="160" y1="120" x2="145" y2="225" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="116" y="162" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="152" y="175" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 0</text>
+  <line x1="300" y1="120" x2="315" y2="225" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="271" y="162" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="307" y="175" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 0</text>
+  <line x1="145" y1="225" x2="315" y2="225" stroke="#34d399" stroke-width="3.5"/>
+  <rect x="194" y="215" width="72" height="18" rx="4" fill="#0b1120" stroke="#34d399" stroke-width="1"/>
+  <text x="230" y="228" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Backbone</text>
+  <line x1="145" y1="225" x2="145" y2="325" stroke="#475569" stroke-width="1.8"/>
+  <rect x="109" y="265" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="145" y="278" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 1 LSA</text>
+  <line x1="315" y1="225" x2="315" y2="325" stroke="#475569" stroke-width="1.8"/>
+  <rect x="279" y="265" width="72" height="18" rx="4" fill="#0b1120" stroke="#475569" stroke-width="1"/>
+  <text x="315" y="278" fill="#f8fafc" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 2 LSA</text>
+  <circle cx="160" cy="120" r="22" fill="#1e293b" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="160" y="124" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">B1</text>
+  <rect x="102" y="145" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="160" y="157" fill="#ef4444" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 0 Backbone</text>
+  <circle cx="300" cy="120" r="22" fill="#1e293b" stroke="#ef4444" stroke-width="2.5"/>
+  <text x="300" y="124" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">B2</text>
+  <rect x="242" y="145" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="300" y="157" fill="#ef4444" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">ASBR (BGP Edge)</text>
+  <circle cx="145" cy="225" r="22" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="145" y="229" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ABR1</text>
+  <rect x="87" y="250" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="145" y="262" fill="#fbbf24" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area Border ABR1</text>
+  <circle cx="315" cy="225" r="22" fill="#1e293b" stroke="#fbbf24" stroke-width="2.5"/>
+  <text x="315" y="229" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">ABR2</text>
+  <rect x="257" y="250" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="315" y="262" fill="#fbbf24" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area Border ABR2</text>
+  <circle cx="145" cy="325" r="22" fill="#1e293b" stroke="#38bdf8" stroke-width="2.5"/>
+  <text x="145" y="329" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">A1</text>
+  <rect x="87" y="350" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="145" y="362" fill="#38bdf8" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 1 Internal</text>
+  <circle cx="315" cy="325" r="22" fill="#1e293b" stroke="#34d399" stroke-width="2.5"/>
+  <text x="315" y="329" fill="#f8fafc" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">A2</text>
+  <rect x="257" y="350" width="116" height="17" rx="4" fill="#0b1120" fill-opacity="0.9"/>
+  <text x="315" y="362" fill="#34d399" font-family="monospace" font-size="9.5" font-weight="bold" text-anchor="middle">Area 2 Internal</text>
+  <rect x="475" y="62" width="465" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="707" y="86" fill="#34d399" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">TOPOLOGY &amp; ROUTING STATE ANALYSIS</text>
+  <rect x="490" y="102" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="123" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Why Partition into Autonomous Systems (AS)?</text>
+  <text x="504" y="142" fill="#cbd5e1" font-family="monospace" font-size="10">Flat link-state flooding across billions of routers would exhaust </text>
+  <text x="504" y="157" fill="#94a3b8" font-family="monospace" font-size="9.5">router memory and bandwidth; ASes provide administrative autonomy</text>
+  <rect x="490" y="176" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="197" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">OSPF (Open Shortest Path First)</text>
+  <text x="504" y="216" fill="#cbd5e1" font-family="monospace" font-size="10">Runs Dijkstra over IP Protocol 89; floods LSAs on topology changes</text>
+  <text x="504" y="231" fill="#94a3b8" font-family="monospace" font-size="9.5"> and every 30 minutes for robustness</text>
+  <rect x="490" y="250" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="271" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">OSPF Production Enhancements</text>
+  <text x="504" y="290" fill="#cbd5e1" font-family="monospace" font-size="10">Supports HMAC/MD5 LSA authentication, Equal-Cost Multipath (ECMP) </text>
+  <text x="504" y="305" fill="#94a3b8" font-family="monospace" font-size="9.5">load balancing, and ToS-specific link costs</text>
+  <rect x="490" y="324" width="435" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="504" y="345" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">2-Tier Hierarchical OSPF</text>
+  <text x="504" y="364" fill="#cbd5e1" font-family="monospace" font-size="10">Confines detailed LSA flooding within Local Areas; Area Border Rou</text>
+  <text x="504" y="379" fill="#94a3b8" font-family="monospace" font-size="9.5">ters (ABRs) summarize routes across Area 0 Backbone</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#10b981" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">6.7 SYNTHESIS: A DAY IN THE LIFE OF A WEB PAGE REQUEST (DHCP -&gt; ARP -&gt; DNS -&gt; TCP -&gt; HTTP)</text>
+  <rect x="20" y="62" width="455" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <rect x="27" y="74" width="136" height="28" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="95" y="92" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Laptop Host (Browser)</text>
+  <line x1="95" y1="102" x2="95" y2="395" stroke="#475569" stroke-width="2" stroke-dasharray="4,4"/>
+  <rect x="180" y="74" width="136" height="28" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="248" y="92" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">LAN Switch + Gateway R</text>
+  <line x1="248" y1="102" x2="248" y2="395" stroke="#475569" stroke-width="2" stroke-dasharray="4,4"/>
+  <rect x="332" y="74" width="136" height="28" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="400" y="92" fill="#f8fafc" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">Google Web Server (64.</text>
+  <line x1="400" y1="102" x2="400" y2="395" stroke="#475569" stroke-width="2" stroke-dasharray="4,4"/>
+  <line x1="95" y1="128" x2="248" y2="146" stroke="#fbbf24" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <rect x="53" y="112" width="390" height="18" rx="4" fill="#0b1120" fill-opacity="0.88"/>
+  <text x="248" y="124" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">1. Boot: DHCP DORA over UDP/IP/Ethernet Broadcast -&gt; Learns </text>
+  <line x1="95" y1="182" x2="248" y2="200" stroke="#f59e0b" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <rect x="53" y="166" width="390" height="18" rx="4" fill="#0b1120" fill-opacity="0.88"/>
+  <text x="248" y="178" fill="#f59e0b" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">2. ARP Broadcast resolves Default Gateway Router&#x27;s 48-bit MA</text>
+  <line x1="95" y1="236" x2="248" y2="254" stroke="#38bdf8" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <rect x="53" y="220" width="390" height="18" rx="4" fill="#0b1120" fill-opacity="0.88"/>
+  <text x="248" y="232" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">3. DNS Query over UDP Port 53 resolves www.google.com -&gt; 64.</text>
+  <line x1="95" y1="290" x2="400" y2="308" stroke="#34d399" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <rect x="53" y="274" width="390" height="18" rx="4" fill="#0b1120" fill-opacity="0.88"/>
+  <text x="248" y="286" fill="#34d399" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">4. TCP 3-Way Handshake (SYN -&gt; SYNACK -&gt; ACK) across OSPF/BG</text>
+  <line x1="95" y1="344" x2="400" y2="362" stroke="#c084fc" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <rect x="53" y="328" width="390" height="18" rx="4" fill="#0b1120" fill-opacity="0.88"/>
+  <text x="248" y="340" fill="#c084fc" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">5. HTTP GET Request -&gt; HTTP 200 OK HTML Response Rendered!</text>
+  <rect x="490" y="62" width="450" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="715" y="88" fill="#10b981" font-family="monospace" font-size="13" font-weight="bold" text-anchor="middle">PROTOCOL MECHANICS &amp; KEY INVARIANTS</text>
+  <rect x="506" y="104" width="418" height="50" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="518" y="123" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Phase 1: Local Network Bootstrapping (DHCP + ARP</text>
+  <text x="518" y="142" fill="#cbd5e1" font-family="monospace" font-size="10">Laptop obtains IP lease, subnet mask, gateway IP &amp; DNS IP via DHCP</text>
+  <rect x="506" y="164" width="418" height="50" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="518" y="183" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Phase 2: Hostname Resolution (DNS)</text>
+  <text x="518" y="202" fill="#cbd5e1" font-family="monospace" font-size="10">Sends UDP DNS query through gateway router to Local DNS server, wh</text>
+  <rect x="506" y="224" width="418" height="50" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="518" y="243" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Phase 3: Inter-Domain Routing (OSPF + BGP)</text>
+  <text x="518" y="262" fill="#cbd5e1" font-family="monospace" font-size="10">Gateway router forwards packets using Intra-AS OSPF and Inter-AS B</text>
+  <rect x="506" y="284" width="418" height="50" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="518" y="303" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Phase 4: End-to-End Transport &amp; Web (TCP + HTTP)</text>
+  <text x="518" y="322" fill="#cbd5e1" font-family="monospace" font-size="10">Completes 3-way TCP handshake with Google server socket, sends HTT</text>
+</svg>

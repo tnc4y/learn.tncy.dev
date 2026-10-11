@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">1.6 PROTOCOL LAYERS (5-LAYER INTERNET vs. 7-LAYER OSI) &amp; PACKET ENCAPSULATION</text>
+  <rect x="22" y="64" width="916" height="106" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="40" y="84" fill="#94a3b8" font-family="monospace" font-size="10">Bit 0</text>
+  <text x="480" y="84" fill="#38bdf8" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">WIRE-FORMAT PROTOCOL HEADER / FRAME ENCAPSULATION LAYOUT</text>
+  <text x="920" y="84" fill="#94a3b8" font-family="monospace" font-size="10" text-anchor="end">Bit 31 / EOF</text>
+  <rect x="36" y="94" width="155" height="62" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+  <text x="113" y="120" fill="#fb923c" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">L2 Header (Hl)</text>
+  <text x="113" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Dst/Src MAC + EtherType</text>
+  <rect x="195" y="94" width="173" height="62" rx="6" fill="#1e293b" stroke="#c084fc" stroke-width="2"/>
+  <text x="281" y="120" fill="#c084fc" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">L3 IP Header (Hn)</text>
+  <text x="281" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Src/Dst IP + TTL + Proto</text>
+  <rect x="372" y="94" width="173" height="62" rx="6" fill="#1e293b" stroke="#34d399" stroke-width="2"/>
+  <text x="458" y="120" fill="#34d399" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">L4 TCP Header (Ht)</text>
+  <text x="458" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">Ports + Seq + ACK + rwnd</text>
+  <rect x="549" y="94" width="262" height="62" rx="6" fill="#1e293b" stroke="#60a5fa" stroke-width="2"/>
+  <text x="680" y="120" fill="#60a5fa" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">L5 App Message (M)</text>
+  <text x="680" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">HTTP / DNS / TLS Payload</text>
+  <rect x="815" y="94" width="102" height="62" rx="6" fill="#1e293b" stroke="#fb923c" stroke-width="2"/>
+  <text x="866" y="120" fill="#fb923c" font-family="monospace" font-size="11" font-weight="bold" text-anchor="middle">L2 FCS (CRC)</text>
+  <text x="866" y="142" fill="#e2e8f0" font-family="monospace" font-size="9.5" text-anchor="middle">32-bit Frame Check</text>
+  <rect x="22" y="182" width="916" height="230" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <rect x="38" y="196" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="214" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold">5. Application Layer</text>
+  <text x="54" y="231" fill="#cbd5e1" font-family="monospace" font-size="10.5">Messages (M) exchanged by processes (HTTP, QUIC, DNS, SMTP)</text>
+  <rect x="38" y="248" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="266" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold">4. Transport Layer</text>
+  <text x="54" y="283" fill="#cbd5e1" font-family="monospace" font-size="10.5">Segments [Ht | M] providing process-to-process TCP reliability or UDP datagrams</text>
+  <rect x="38" y="300" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="318" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold">3. Network Layer</text>
+  <text x="54" y="335" fill="#cbd5e1" font-family="monospace" font-size="10.5">Datagrams [Hn | Ht | M] routed source-to-destination across IP routers</text>
+  <rect x="38" y="352" width="884" height="44" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="54" y="370" fill="#38bdf8" font-family="monospace" font-size="11.5" font-weight="bold">2. Link Layer</text>
+  <text x="54" y="387" fill="#cbd5e1" font-family="monospace" font-size="10.5">Frames [Hl | Hn | Ht | M | CRC] transferred between adjacent NICs across a single hop</text>
+</svg>

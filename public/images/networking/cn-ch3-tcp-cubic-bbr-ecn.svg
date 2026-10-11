@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 430" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+  </defs>
+  <rect width="960" height="430" rx="16" fill="url(#bg)" stroke="#38bdf8" stroke-width="2" stroke-opacity="0.65"/>
+  <rect x="18" y="14" width="924" height="36" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="480" y="37" fill="#f8fafc" font-family="monospace" font-size="14" font-weight="bold" text-anchor="middle">3.7B MODERN CONGESTION CONTROL: TCP CUBIC, DELAY-BASED BBR, ECN &amp; FAIRNESS</text>
+  <rect x="20" y="62" width="425" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="232" y="86" fill="#38bdf8" font-family="monospace" font-size="12" font-weight="bold" text-anchor="middle">CONGESTION WINDOW (cwnd) TRAJECTORY</text>
+  <line x1="55" y1="335" x2="415" y2="335" stroke="#64748b" stroke-width="2"/>
+  <line x1="55" y1="335" x2="55" y2="105" stroke="#64748b" stroke-width="2"/>
+  <line x1="55" y1="210" x2="415" y2="210" stroke="#fbbf24" stroke-dasharray="5,5"/>
+  <text x="95" y="203" fill="#fbbf24" font-family="monospace" font-size="10">ssthresh</text>
+  <polyline points="55,320 80,300 105,260 130,210 205,135 205,225 290,150 290,320 325,275 360,225 410,175" fill="none" stroke="#38bdf8" stroke-width="3"/>
+  <text x="95" y="290" fill="#34d399" font-family="monospace" font-size="10">Slow Start (2x)</text>
+  <text x="195" y="125" fill="#f87171" font-family="monospace" font-size="10">3 Dup ACK (cwnd/2)</text>
+  <text x="295" y="140" fill="#ef4444" font-family="monospace" font-size="10">Timeout (cwnd=1)</text>
+  <rect x="34" y="364" width="396" height="34" rx="6" fill="#1e293b" stroke="#475569"/>
+  <text x="232" y="385" fill="#fde68a" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle">CUBIC: W(t) = C*(t - K)^3 + W_max   |   BBR: Pacing Rate = Btl</text>
+  <rect x="460" y="62" width="480" height="350" rx="10" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+  <text x="700" y="86" fill="#38bdf8" font-family="monospace" font-size="12.5" font-weight="bold" text-anchor="middle">MATHEMATICAL MODEL &amp; SYSTEM BEHAVIOR</text>
+  <rect x="476" y="102" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="123" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">TCP CUBIC (Default in Linux/macOS/Windows)</text>
+  <text x="490" y="142" fill="#cbd5e1" font-family="monospace" font-size="10">Ramps window rapidly toward pre-loss W_max, plateaus near W_max to p</text>
+  <text x="490" y="157" fill="#94a3b8" font-family="monospace" font-size="9.5">robe gently, then accelerates cubically</text>
+  <rect x="476" y="176" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="197" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Why Loss-Based TCP Causes Bufferbloat</text>
+  <text x="490" y="216" fill="#cbd5e1" font-family="monospace" font-size="10">Filling deep router queues until packets drop adds hundreds of milli</text>
+  <text x="490" y="231" fill="#94a3b8" font-family="monospace" font-size="9.5">seconds of queueing delay</text>
+  <rect x="476" y="250" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="271" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Google TCP BBR (Bottleneck Bandwidth &amp; RTT)</text>
+  <text x="490" y="290" fill="#cbd5e1" font-family="monospace" font-size="10">Models path pipe using max throughput (BtlBw) and min RTT (RTprop) t</text>
+  <text x="490" y="305" fill="#94a3b8" font-family="monospace" font-size="9.5">o keep queues nearly empty</text>
+  <rect x="476" y="324" width="448" height="64" rx="6" fill="#1e293b" stroke="#334155"/>
+  <text x="490" y="345" fill="#f8fafc" font-family="monospace" font-size="11" font-weight="bold">Explicit Congestion Notification (ECN)</text>
+  <text x="490" y="364" fill="#cbd5e1" font-family="monospace" font-size="10">Router sets IP ECN=11 (CE) before buffer overflow; receiver echoes T</text>
+  <text x="490" y="379" fill="#94a3b8" font-family="monospace" font-size="9.5">CP ECE=1 so sender halves cwnd without loss</text>
+</svg>
