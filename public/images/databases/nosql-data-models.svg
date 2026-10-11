@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 225">
+  <rect width="800" height="225" rx="16" fill="#0f172a"/>
+  <text x="400" y="34" text-anchor="middle" fill="#34d399" font-family="monospace" font-size="16" font-weight="bold">NOSQL DISTRIBUTED DATA MODELS TAXONOMY</text>
+  <g transform="translate(30,58)" font-family="sans-serif" text-anchor="middle">
+    <rect x="0" y="0" width="172" height="125" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="86" y="34" fill="#34d399" font-size="13" font-weight="bold">1. Document Store</text>
+    <text x="86" y="60" fill="#e2e8f0" font-size="11">MongoDB / CouchDB</text>
+    <text x="86" y="84" fill="#94a3b8" font-size="10">BSON / JSON Schemas</text>
+
+    <rect x="190" y="0" width="172" height="125" rx="10" fill="#1e293b" stroke="#ef4444" stroke-width="2"/>
+    <text x="276" y="34" fill="#f87171" font-size="13" font-weight="bold">2. Key-Value Store</text>
+    <text x="276" y="60" fill="#e2e8f0" font-size="11">Redis / DynamoDB</text>
+    <text x="276" y="84" fill="#94a3b8" font-size="10">O(1) Hash Lookups</text>
+
+    <rect x="380" y="0" width="172" height="125" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="466" y="34" fill="#38bdf8" font-size="13" font-weight="bold">3. Wide-Column</text>
+    <text x="466" y="60" fill="#e2e8f0" font-size="11">Cassandra / HBase</text>
+    <text x="466" y="84" fill="#94a3b8" font-size="10">LSM-Tree &amp; SSTables</text>
+
+    <rect x="570" y="0" width="170" height="125" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="655" y="34" fill="#c084fc" font-size="13" font-weight="bold">4. Graph Database</text>
+    <text x="655" y="60" fill="#e2e8f0" font-size="11">Neo4j / Cypher</text>
+    <text x="655" y="84" fill="#94a3b8" font-size="10">Nodes &amp; Relationships</text>
+  </g>
+</svg>

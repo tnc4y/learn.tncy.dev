@@ -20,6 +20,8 @@ import { GFG_AIML_LESSONS } from "./gfgAiMlLessons";
 import { LINUX_LESSONS } from "./linuxLessons";
 import { DEVOPS_LESSONS } from "./devopsLessons";
 import { SYSTEM_DESIGN_LESSONS } from "./systemDesignLessons";
+import { SQL_DATABASES_LESSONS } from "./sqlDatabasesLessons";
+import { NOSQL_DATABASES_LESSONS } from "./nosqlDatabasesLessons";
 
 export interface LessonContent {
   id: string;
@@ -59,6 +61,8 @@ export const LESSONS_DATA: Record<string, LessonContent> = {
   ...LINUX_LESSONS,
   ...DEVOPS_LESSONS,
   ...SYSTEM_DESIGN_LESSONS,
+  ...SQL_DATABASES_LESSONS,
+  ...NOSQL_DATABASES_LESSONS,
   ...EMBEDDED_C_LESSONS,
   ...MAKER_LESSONS,
   ...SYSTEMS_LESSONS,

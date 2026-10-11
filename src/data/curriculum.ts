@@ -6367,6 +6367,1001 @@ export const COURSES: CourseTrack[] = [
 },
 
   // ========================================================
+  // SQL, POSTGRESQL, RDBMS & NOSQL DATABASES (GFG)
+  // ========================================================
+  {
+  "id": "sql-databases",
+  "title": "SQL, PostgreSQL & Relational Database Systems (RDBMS)",
+  "shortTitle": "SQL & PostgreSQL",
+  "category": "Programlama Dilleri",
+  "icon": "Database",
+  "badge": "SQL, PostgreSQL & DBMS",
+  "color": "badge-info",
+  "description": "Comprehensive Relational Database & SQL curriculum: DDL/DML/DQL/TCL Commands, Complex Joins, Subqueries, Window Functions, CTEs, B-Tree & Clustered Indexing, Stored Procedures, Triggers, ACID Transactions, ER Modeling, Normalization (1NF-BCNF), PostgreSQL, Query Tuning, and SQL Security.",
+  "modules": [
+    {
+      "id": "sql-basics-ddl",
+      "number": 1,
+      "title": "1. SQL Foundations, Data Types & DDL/DML Commands",
+      "description": "Introduction to SQL, data types, operators, DDL/DQL/DML/DCL/TCL command categories, database creation, and table schema management.",
+      "lessons": [
+        {
+          "id": "sql-what-is-sql",
+          "title": "What is SQL? Relational Database Fundamentals",
+          "shortTitle": "What is SQL? Relational Dat...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for What is SQL? Relational Database Fundamentals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-data-types",
+          "title": "SQL Data Types (Numeric, Character, Temporal, JSON)",
+          "shortTitle": "SQL Data Types (Numeric, Ch...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL Data Types (Numeric, Character, Temporal, JSON).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-operators",
+          "title": "SQL Operators (Arithmetic, Comparison, Logical, Bitwise)",
+          "shortTitle": "SQL Operators (Arithmetic, ...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL Operators (Arithmetic, Comparison, Logical, Bitwise).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-command-types",
+          "title": "SQL DDL, DQL, DML, DCL and TCL Commands",
+          "shortTitle": "SQL DDL, DQL, DML, DCL and ...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL DDL, DQL, DML, DCL and TCL Commands.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-database-ops",
+          "title": "SQL Database Operations (CREATE, SELECT, RENAME, DROP)",
+          "shortTitle": "SQL Database Operations (CR...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL Database Operations (CREATE, SELECT, RENAME, DROP).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-create-table",
+          "title": "SQL CREATE TABLE, ALTER, TRUNCATE & DROP TABLE",
+          "shortTitle": "SQL CREATE TABLE, ALTER, TR...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL CREATE TABLE, ALTER, TRUNCATE & DROP TABLE.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-aliases-comments",
+          "title": "SQL Aliases (AS) and Schema Documentation",
+          "shortTitle": "SQL Aliases (AS) and Schema...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL Aliases (AS) and Schema Documentation.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-querying-clauses",
+      "number": 2,
+      "title": "2. Querying, Filtering, Grouping & CTE Clauses",
+      "description": "SELECT queries, INSERT/UPDATE/DELETE DML statements, WHERE filtering, ORDER BY, GROUP BY, HAVING, and WITH (Common Table Expressions).",
+      "lessons": [
+        {
+          "id": "sql-select-query",
+          "title": "SQL SELECT Query & Projection",
+          "shortTitle": "SQL SELECT Query & Projection",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL SELECT Query & Projection.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-insert-statement",
+          "title": "SQL INSERT INTO & Bulk Multi-Row Inserts",
+          "shortTitle": "SQL INSERT INTO & Bulk Mult...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL INSERT INTO & Bulk Multi-Row Inserts.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-update-statement",
+          "title": "SQL UPDATE Statement & Conditional Modifications",
+          "shortTitle": "SQL UPDATE Statement & Cond...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL UPDATE Statement & Conditional Modifications.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-delete-statement",
+          "title": "SQL DELETE Statement vs TRUNCATE",
+          "shortTitle": "SQL DELETE Statement vs TRU...",
+          "readTime": "14 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL DELETE Statement vs TRUNCATE.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-where-clause",
+          "title": "SQL WHERE Clause & Predicate Filtering",
+          "shortTitle": "SQL WHERE Clause & Predicat...",
+          "readTime": "18 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL WHERE Clause & Predicate Filtering.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-group-order-having",
+          "title": "GROUP BY, HAVING & ORDER BY Clauses in SQL",
+          "shortTitle": "GROUP BY, HAVING & ORDER BY...",
+          "readTime": "8 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for GROUP BY, HAVING & ORDER BY Clauses in SQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-with-cte",
+          "title": "SQL WITH Clause & Common Table Expressions (CTEs)",
+          "shortTitle": "SQL WITH Clause & Common Ta...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for SQL WITH Clause & Common Table Expressions (CTEs).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-like-in-between",
+          "title": "Pattern Matching (LIKE, Wildcards), IN, BETWEEN & IS NULL",
+          "shortTitle": "Pattern Matching (LIKE, Wil...",
+          "readTime": "8 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Pattern Matching (LIKE, Wildcards), IN, BETWEEN & IS NULL.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-constraints-joins",
+      "number": 3,
+      "title": "3. Relational Keys, Data Constraints & SQL Joins",
+      "description": "Relational keys (Candidate, Primary, Foreign, Composite), integrity constraints, INNER/LEFT/RIGHT/FULL/CROSS/SELF Joins, and Set Operators.",
+      "lessons": [
+        {
+          "id": "sql-keys-relational",
+          "title": "Types of Keys in Relational Model (Super, Candidate, Primary, Foreign)",
+          "shortTitle": "Types of Keys in Relational...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Types of Keys in Relational Model (Super, Candidate, Primary, Foreign).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-primary-key",
+          "title": "PRIMARY KEY & Composite Key Constraints in SQL",
+          "shortTitle": "PRIMARY KEY & Composite Key...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for PRIMARY KEY & Composite Key Constraints in SQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-foreign-key",
+          "title": "FOREIGN KEY Constraint & Referential Integrity",
+          "shortTitle": "FOREIGN KEY Constraint & Re...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for FOREIGN KEY Constraint & Referential Integrity.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-not-null-unique-check",
+          "title": "NOT NULL, UNIQUE, CHECK & DEFAULT Constraints",
+          "shortTitle": "NOT NULL, UNIQUE, CHECK & D...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for NOT NULL, UNIQUE, CHECK & DEFAULT Constraints.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-joins-overview",
+          "title": "SQL Joins: INNER, LEFT, RIGHT and FULL OUTER JOIN",
+          "shortTitle": "SQL Joins: INNER, LEFT, RIG...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Joins: INNER, LEFT, RIGHT and FULL OUTER JOIN.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-left-right-full-join",
+          "title": "Deep Dive into LEFT JOIN, RIGHT JOIN & FULL JOIN",
+          "shortTitle": "Deep Dive into LEFT JOIN, R...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Deep Dive into LEFT JOIN, RIGHT JOIN & FULL JOIN.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-cross-self-join",
+          "title": "SQL CROSS JOIN (Cartesian Product) and SELF JOIN",
+          "shortTitle": "SQL CROSS JOIN (Cartesian P...",
+          "readTime": "6 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL CROSS JOIN (Cartesian Product) and SELF JOIN.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-set-operators",
+          "title": "SQL Set Operators: UNION, UNION ALL, INTERSECT & EXCEPT",
+          "shortTitle": "SQL Set Operators: UNION, U...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Set Operators: UNION, UNION ALL, INTERSECT & EXCEPT.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-functions-subqueries-window",
+      "number": 4,
+      "title": "4. Aggregate Functions, Subqueries & Window Functions",
+      "description": "COUNT/SUM/AVG/MAX/MIN aggregations, string & date functions, nested and correlated subqueries, Window Functions (OVER, PARTITION BY, RANK), and CASE.",
+      "lessons": [
+        {
+          "id": "sql-aggregate-count-sum",
+          "title": "SQL Aggregate Functions: COUNT(), SUM(), AVG(), MIN(), MAX()",
+          "shortTitle": "SQL Aggregate Functions: CO...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Aggregate Functions: COUNT(), SUM(), AVG(), MIN(), MAX().",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-string-functions",
+          "title": "SQL String Manipulation Functions",
+          "shortTitle": "SQL String Manipulation Fun...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL String Manipulation Functions.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-date-functions",
+          "title": "SQL Date and Timestamp Functions",
+          "shortTitle": "SQL Date and Timestamp Func...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Date and Timestamp Functions.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-subqueries",
+          "title": "SQL Subqueries & Nested Query Execution",
+          "shortTitle": "SQL Subqueries & Nested Que...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Subqueries & Nested Query Execution.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-correlated-subqueries",
+          "title": "Correlated Subqueries & EXISTS / ANY / ALL in SQL",
+          "shortTitle": "Correlated Subqueries & EXI...",
+          "readTime": "16 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Correlated Subqueries & EXISTS / ANY / ALL in SQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-window-functions",
+          "title": "Window Functions in SQL (ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG)",
+          "shortTitle": "Window Functions in SQL (RO...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Window Functions in SQL (ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-pivot-unpivot",
+          "title": "PIVOT and UNPIVOT Relational Transformations in SQL",
+          "shortTitle": "PIVOT and UNPIVOT Relationa...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for PIVOT and UNPIVOT Relational Transformations in SQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-case-coalesce",
+          "title": "Conditional Expressions in SQL: CASE, COALESCE & NULLIF",
+          "shortTitle": "Conditional Expressions in ...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Conditional Expressions in SQL: CASE, COALESCE & NULLIF.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-views-indexes-transactions",
+      "number": 5,
+      "title": "5. Views, B-Tree Indexes, Stored Procedures, Triggers & Transactions",
+      "description": "Virtual tables (Views), Clustered vs Non-Clustered B-Tree indexes, Stored Procedures, Database Triggers, Cursors, and ACID Transactions.",
+      "lessons": [
+        {
+          "id": "sql-views",
+          "title": "SQL Views: Creating, Updating & Dropping Virtual Tables",
+          "shortTitle": "SQL Views: Creating, Updati...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Views: Creating, Updating & Dropping Virtual Tables.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-indexes",
+          "title": "SQL Indexes: Accelerating Query Lookups",
+          "shortTitle": "SQL Indexes: Accelerating Q...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Indexes: Accelerating Query Lookups.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-clustered-nonclustered",
+          "title": "Clustered vs Non-Clustered Indexing Internals",
+          "shortTitle": "Clustered vs Non-Clustered ...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Clustered vs Non-Clustered Indexing Internals.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-stored-procedures",
+          "title": "Stored Procedures in SQL & PL/pgSQL",
+          "shortTitle": "Stored Procedures in SQL & ...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Stored Procedures in SQL & PL/pgSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-triggers",
+          "title": "SQL Triggers (BEFORE / AFTER INSERT, UPDATE, DELETE)",
+          "shortTitle": "SQL Triggers (BEFORE / AFTE...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Triggers (BEFORE / AFTER INSERT, UPDATE, DELETE).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-cursors",
+          "title": "Database Cursors in SQL",
+          "shortTitle": "Database Cursors in SQL",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Database Cursors in SQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-transactions-acid",
+          "title": "SQL Transactions (COMMIT, ROLLBACK, SAVEPOINT) & ACID",
+          "shortTitle": "SQL Transactions (COMMIT, R...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for SQL Transactions (COMMIT, ROLLBACK, SAVEPOINT) & ACID.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-er-normalization",
+      "number": 6,
+      "title": "6. Relational Database Design, ER Diagrams & Normalization",
+      "description": "Entity-Relationship (ER) modeling, mapping ER diagrams to relational tables, functional dependencies, attribute closure, and Normal Forms (1NF to BCNF).",
+      "lessons": [
+        {
+          "id": "sql-er-model",
+          "title": "Introduction to Entity-Relationship (ER) Model",
+          "shortTitle": "Introduction to Entity-Rela...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Introduction to Entity-Relationship (ER) Model.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-er-diagrams",
+          "title": "How to Design Entity-Relationship Diagrams (ERDs)",
+          "shortTitle": "How to Design Entity-Relati...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for How to Design Entity-Relationship Diagrams (ERDs).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-er-to-relational",
+          "title": "Mapping ER Models to Relational Schemas",
+          "shortTitle": "Mapping ER Models to Relati...",
+          "readTime": "12 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Mapping ER Models to Relational Schemas.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-functional-dependency",
+          "title": "Functional Dependency and Attribute Closure in DBMS",
+          "shortTitle": "Functional Dependency and A...",
+          "readTime": "10 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Functional Dependency and Attribute Closure in DBMS.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-normalization-intro",
+          "title": "Database Normalization & Anomaly Elimination",
+          "shortTitle": "Database Normalization & An...",
+          "readTime": "8 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Database Normalization & Anomaly Elimination.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-normal-forms",
+          "title": "Normal Forms in DBMS (1NF, 2NF, 3NF, BCNF, 4NF)",
+          "shortTitle": "Normal Forms in DBMS (1NF, ...",
+          "readTime": "22 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Normal Forms in DBMS (1NF, 2NF, 3NF, BCNF, 4NF).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "sql-postgresql-tuning-security",
+      "number": 7,
+      "title": "7. PostgreSQL, Query Performance Tuning, ORM & Security",
+      "description": "PostgreSQL vs MySQL architecture, UPSERT & Multicolumn Indexes, SQL Performance Tuning, ORM, SQL Injection prevention, Encryption, and Backup.",
+      "lessons": [
+        {
+          "id": "sql-mysql-vs-postgresql",
+          "title": "MySQL vs PostgreSQL: Architectural Comparison",
+          "shortTitle": "MySQL vs PostgreSQL: Archit...",
+          "readTime": "5 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for MySQL vs PostgreSQL: Architectural Comparison.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-postgresql-upsert-cte",
+          "title": "PostgreSQL Advanced Features: UPSERT & Multicolumn Indexes",
+          "shortTitle": "PostgreSQL Advanced Feature...",
+          "readTime": "16 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for PostgreSQL Advanced Features: UPSERT & Multicolumn Indexes.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-postgresql-roles",
+          "title": "Role-Based Access Control (GRANT & REVOKE) in PostgreSQL",
+          "shortTitle": "Role-Based Access Control (...",
+          "readTime": "14 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Role-Based Access Control (GRANT & REVOKE) in PostgreSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-performance-tuning",
+          "title": "SQL Performance Tuning & Execution Plan Optimization",
+          "shortTitle": "SQL Performance Tuning & Ex...",
+          "readTime": "24 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for SQL Performance Tuning & Execution Plan Optimization.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-orm-dbms",
+          "title": "Object-Relational Mapping (ORM) in Database Systems",
+          "shortTitle": "Object-Relational Mapping (...",
+          "readTime": "26 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Object-Relational Mapping (ORM) in Database Systems.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-injection-security",
+          "title": "SQL Injection Vulnerabilities & Parameterized Queries",
+          "shortTitle": "SQL Injection Vulnerabiliti...",
+          "readTime": "32 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for SQL Injection Vulnerabilities & Parameterized Queries.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "sql-encryption-backup",
+          "title": "Database Encryption, Backup & Recovery Strategies",
+          "shortTitle": "Database Encryption, Backup...",
+          "readTime": "18 dk",
+          "difficulty": "İleri",
+          "description": "Database engineering and query guide for Database Encryption, Backup & Recovery Strategies.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  {
+  "id": "nosql-databases",
+  "title": "NoSQL, MongoDB, Redis, Cassandra & Graph Databases",
+  "shortTitle": "NoSQL & MongoDB",
+  "category": "Programlama Dilleri",
+  "icon": "Database",
+  "badge": "NoSQL, MongoDB & Redis",
+  "color": "badge-success",
+  "description": "Modern Non-Relational & Distributed Databases curriculum: Key-Value, Document, Wide-Column & Graph Data Models, ACID vs BASE, MongoDB Architecture, BSON, CRUD, Aggregation Pipelines, Indexing, Replica Sets & Sharding, Apache Cassandra, Redis, Amazon DynamoDB, and Neo4j.",
+  "modules": [
+    {
+      "id": "nosql-foundations-models",
+      "number": 1,
+      "title": "1. NoSQL Foundations, Data Models & Distributed Consistency",
+      "description": "Evolution of non-relational databases, RDBMS vs NoSQL tradeoffs, Aggregate, Key-Value, Document, Columnar & Graph models, and ACID vs BASE.",
+      "lessons": [
+        {
+          "id": "nosql-intro",
+          "title": "Introduction to NoSQL Databases",
+          "shortTitle": "Introduction to NoSQL Datab...",
+          "readTime": "16 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Introduction to NoSQL Databases.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-types",
+          "title": "Types of NoSQL Databases Explained",
+          "shortTitle": "Types of NoSQL Databases Ex...",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Types of NoSQL Databases Explained.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-rdbms-vs-nosql",
+          "title": "Relational Databases (RDBMS) vs NoSQL Databases",
+          "shortTitle": "Relational Databases (RDBMS...",
+          "readTime": "8 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Relational Databases (RDBMS) vs NoSQL Databases.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-key-value-model",
+          "title": "Key-Value & Aggregate Data Models in NoSQL",
+          "shortTitle": "Key-Value & Aggregate Data ...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Key-Value & Aggregate Data Models in NoSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-document-model",
+          "title": "Document-Oriented & JSON Databases in NoSQL",
+          "shortTitle": "Document-Oriented & JSON Da...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Document-Oriented & JSON Databases in NoSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-columnar-model",
+          "title": "Column-Oriented (Wide-Column) Data Model",
+          "shortTitle": "Column-Oriented (Wide-Colum...",
+          "readTime": "32 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Column-Oriented (Wide-Column) Data Model.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-graph-model",
+          "title": "Graph Databases & Property Graph Model",
+          "shortTitle": "Graph Databases & Property ...",
+          "readTime": "30 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Graph Databases & Property Graph Model.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-acid-vs-base",
+          "title": "ACID vs BASE Model & Eventual Consistency in NoSQL",
+          "shortTitle": "ACID vs BASE Model & Eventu...",
+          "readTime": "6 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for ACID vs BASE Model & Eventual Consistency in NoSQL.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "nosql-mongodb-crud",
+      "number": 2,
+      "title": "2. MongoDB Architecture, BSON Documents & CRUD Queries",
+      "description": "MongoDB storage engine internals (WiredTiger), collections & documents, BSON data types, ObjectId structure, CRUD methods, and query operators.",
+      "lessons": [
+        {
+          "id": "nosql-mongodb-intro",
+          "title": "Introduction to MongoDB & How It Works",
+          "shortTitle": "Introduction to MongoDB & H...",
+          "readTime": "12 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Introduction to MongoDB & How It Works.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-arch",
+          "title": "MongoDB Architecture & Storage Engines",
+          "shortTitle": "MongoDB Architecture & Stor...",
+          "readTime": "24 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for MongoDB Architecture & Storage Engines.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-collections",
+          "title": "MongoDB Databases, Collections, and Documents",
+          "shortTitle": "MongoDB Databases, Collecti...",
+          "readTime": "28 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for MongoDB Databases, Collections, and Documents.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-bson-types",
+          "title": "BSON Specification, Data Types & ObjectId in MongoDB",
+          "shortTitle": "BSON Specification, Data Ty...",
+          "readTime": "22 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for BSON Specification, Data Types & ObjectId in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-crud",
+          "title": "CRUD Operations in MongoDB",
+          "shortTitle": "CRUD Operations in MongoDB",
+          "readTime": "10 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for CRUD Operations in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-insert-find",
+          "title": "Inserting and Querying Documents (insertOne, find, Cursor)",
+          "shortTitle": "Inserting and Querying Docu...",
+          "readTime": "18 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Inserting and Querying Documents (insertOne, find, Cursor).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-update-delete",
+          "title": "Updating and Deleting Documents in MongoDB",
+          "shortTitle": "Updating and Deleting Docum...",
+          "readTime": "18 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for Updating and Deleting Documents in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-operators",
+          "title": "MongoDB Comparison & Logical Query Operators ($eq, $gt, $and, $or)",
+          "shortTitle": "MongoDB Comparison & Logica...",
+          "readTime": "20 dk",
+          "difficulty": "Başlangıç",
+          "description": "Database engineering and query guide for MongoDB Comparison & Logical Query Operators ($eq, $gt, $and, $or).",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "nosql-mongodb-aggregation-indexing",
+      "number": 3,
+      "title": "3. MongoDB Aggregation Pipeline, Indexing & Data Modeling",
+      "description": "Multi-stage aggregation pipelines, $group/$match/$out, single/compound/multikey/text indexes, embedded vs referenced schema design, and ACID transactions.",
+      "lessons": [
+        {
+          "id": "nosql-mongodb-aggregation",
+          "title": "MongoDB Aggregation Framework Overview",
+          "shortTitle": "MongoDB Aggregation Framewo...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for MongoDB Aggregation Framework Overview.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-pipeline-stages",
+          "title": "Aggregation Pipeline Stages ($match, $group, $project, $sort)",
+          "shortTitle": "Aggregation Pipeline Stages...",
+          "readTime": "22 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Aggregation Pipeline Stages ($match, $group, $project, $sort).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-group-out",
+          "title": "Aggregation $group, $count and $out Operations",
+          "shortTitle": "Aggregation $group, $count ...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Aggregation $group, $count and $out Operations.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-index-types",
+          "title": "Indexing in MongoDB: Single-Field, Compound, Multikey & Text",
+          "shortTitle": "Indexing in MongoDB: Single...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Indexing in MongoDB: Single-Field, Compound, Multikey & Text.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-compound-index",
+          "title": "Compound & Text Indexes for High-Performance Queries",
+          "shortTitle": "Compound & Text Indexes for...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Compound & Text Indexes for High-Performance Queries.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-data-modeling",
+          "title": "Data Modeling & Schema Design in MongoDB",
+          "shortTitle": "Data Modeling & Schema Desi...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Data Modeling & Schema Design in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-relationships",
+          "title": "Embedded vs Referenced Document Relationships in MongoDB",
+          "shortTitle": "Embedded vs Referenced Docu...",
+          "readTime": "12 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Embedded vs Referenced Document Relationships in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-schema-validation",
+          "title": "JSON Schema Validation & Multi-Document ACID Transactions",
+          "shortTitle": "JSON Schema Validation & Mu...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for JSON Schema Validation & Multi-Document ACID Transactions.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "nosql-mongodb-scaling-security",
+      "number": 4,
+      "title": "4. MongoDB Replication, Sharded Clusters & Security",
+      "description": "High availability with Replica Sets, Change Streams, horizontal scaling via Sharded Clusters, hashed vs ranged shard keys, RBAC authentication, and backups.",
+      "lessons": [
+        {
+          "id": "nosql-mongodb-rep-shard",
+          "title": "Replication and Sharding Architecture in MongoDB",
+          "shortTitle": "Replication and Sharding Ar...",
+          "readTime": "14 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Replication and Sharding Architecture in MongoDB.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-replica-sets",
+          "title": "Replica Set Members, Elections & Oplog Synchronization",
+          "shortTitle": "Replica Set Members, Electi...",
+          "readTime": "24 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Replica Set Members, Elections & Oplog Synchronization.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-sharded-cluster",
+          "title": "Sharded Cluster Components (Shard, Mongos Router, Config Servers)",
+          "shortTitle": "Sharded Cluster Components ...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Sharded Cluster Components (Shard, Mongos Router, Config Servers).",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-shard-keys",
+          "title": "Shard Keys: Hashed Sharding vs Ranged Sharding",
+          "shortTitle": "Shard Keys: Hashed Sharding...",
+          "readTime": "28 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Shard Keys: Hashed Sharding vs Ranged Sharding.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-change-streams",
+          "title": "Real-Time Event Streaming with MongoDB Change Streams",
+          "shortTitle": "Real-Time Event Streaming w...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Real-Time Event Streaming with MongoDB Change Streams.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-mongodb-security-rbac",
+          "title": "Securing MongoDB: Authentication, RBAC, Encryption & Backups",
+          "shortTitle": "Securing MongoDB: Authentic...",
+          "readTime": "32 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Securing MongoDB: Authentication, RBAC, Encryption & Backups.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    },
+    {
+      "id": "nosql-cassandra-redis-dynamodb-neo4j",
+      "number": 5,
+      "title": "5. Cassandra, Redis, DynamoDB, CouchDB & Neo4j",
+      "description": "Deep dive into leading specialized NoSQL engines: Apache Cassandra, Redis in-memory structures, AWS DynamoDB, CouchDB, Neo4j graph queries, and Firebase.",
+      "lessons": [
+        {
+          "id": "nosql-apache-cassandra",
+          "title": "Apache Cassandra: Decentralized Wide-Column Database",
+          "shortTitle": "Apache Cassandra: Decentral...",
+          "readTime": "8 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Apache Cassandra: Decentralized Wide-Column Database.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-aws-dynamodb",
+          "title": "Amazon DynamoDB: Serverless Key-Value & Document Store",
+          "shortTitle": "Amazon DynamoDB: Serverless...",
+          "readTime": "20 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Amazon DynamoDB: Serverless Key-Value & Document Store.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-redis-datastore",
+          "title": "Redis In-Memory Data Structures, Persistence & Pub/Sub",
+          "shortTitle": "Redis In-Memory Data Struct...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Redis In-Memory Data Structures, Persistence & Pub/Sub.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-neo4j-graph",
+          "title": "Neo4j Graph Database: Nodes, Edges & Cypher Queries",
+          "shortTitle": "Neo4j Graph Database: Nodes...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Neo4j Graph Database: Nodes, Edges & Cypher Queries.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-couchdb-firebase",
+          "title": "Apache CouchDB & Google Firebase Real-Time Document Stores",
+          "shortTitle": "Apache CouchDB & Google Fir...",
+          "readTime": "10 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Apache CouchDB & Google Firebase Real-Time Document Stores.",
+          "hasPlayground": true,
+          "category": "Core"
+        },
+        {
+          "id": "nosql-bigdata-integration",
+          "title": "Integrating NoSQL Databases with Big Data Ecosystems",
+          "shortTitle": "Integrating NoSQL Databases...",
+          "readTime": "18 dk",
+          "difficulty": "Orta",
+          "description": "Database engineering and query guide for Integrating NoSQL Databases with Big Data Ecosystems.",
+          "hasPlayground": true,
+          "category": "Core"
+        }
+      ]
+    }
+  ]
+},
+
+  // ========================================================
   // SYSTEM DESIGN: HLD, LLD & DISTRIBUTED ARCHITECTURE (GFG)
   // ========================================================
   {

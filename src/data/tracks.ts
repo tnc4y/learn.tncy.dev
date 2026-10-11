@@ -259,7 +259,35 @@ export const LEARNING_TRACKS: LearningTrack[] = [
   },
 
 
-  // 4. Genel Programlama Dilleri, Sistem Tasarımı & Yapay Zeka / Veri Bilimi
+  // 4. Genel Programlama Dilleri, Sistem Tasarımı, Veritabanları & Yapay Zeka / Veri Bilimi
+  {
+    id: "sql-databases",
+    title: "SQL, PostgreSQL & Relational Database Systems (RDBMS)",
+    category: "Programlama Dilleri",
+    iconName: "Database",
+    badge: "SQL, PostgreSQL & RDBMS",
+    colorClass: "badge-info",
+    description: "Complete Relational Database & SQL curriculum: DDL/DML/DCL/TCL, Constraints (PK/FK/UNIQUE), Joins (INNER/LEFT/RIGHT/FULL/SELF/CROSS), Subqueries, CTEs & Window Functions, B-Tree Indexes, Views, Stored Procedures, Triggers, Transactions & ACID, and PostgreSQL Architecture.",
+    lessonCount: 51,
+    level: "Orta",
+    topics: ["SQL DDL, DML, DCL & TCL", "INNER/LEFT/FULL Joins & CTEs", "Window Functions & Aggregation", "B-Tree Indexes, Views & Triggers", "PostgreSQL, JSONB & ACID"],
+    startLessonUrl: "/tutorial/sql-what-is-sql",
+    isAvailable: true,
+  },
+  {
+    id: "nosql-databases",
+    title: "NoSQL, MongoDB, Redis, Cassandra & Graph Databases",
+    category: "Programlama Dilleri",
+    iconName: "Server",
+    badge: "NoSQL, MongoDB & Redis",
+    colorClass: "badge-success",
+    description: "Comprehensive Distributed NoSQL curriculum: CAP Theorem & BASE Consistency, Document Stores (MongoDB BSON, CRUD, Aggregation Pipeline, Indexing, Replica Sets & Sharding), Key-Value Stores (Redis & DynamoDB), Wide-Column Stores (Apache Cassandra & HBase), and Graph Databases (Neo4j).",
+    lessonCount: 36,
+    level: "İleri",
+    topics: ["CAP Theorem & BASE Model", "MongoDB CRUD & Aggregation", "MongoDB Sharding & Replica Sets", "Redis In-Memory & DynamoDB", "Apache Cassandra, HBase & Neo4j"],
+    startLessonUrl: "/tutorial/nosql-intro",
+    isAvailable: true,
+  },
   {
     id: "system-design",
     title: "System Design: High-Level (HLD), Low-Level (LLD) & Distributed Systems",

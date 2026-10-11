@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 220">
+  <rect width="800" height="220" rx="16" fill="#0f172a"/>
+  <text x="400" y="34" text-anchor="middle" fill="#38bdf8" font-family="monospace" font-size="16" font-weight="bold">RELATIONAL DATABASE ENGINE (SQL PARSER, OPTIMIZER, B-TREE &amp; WAL)</text>
+  <g transform="translate(30,60)" font-family="sans-serif" text-anchor="middle">
+    <rect x="0" y="0" width="165" height="115" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2"/>
+    <text x="82" y="36" fill="#38bdf8" font-size="13" font-weight="bold">1. SQL Query</text>
+    <text x="82" y="62" fill="#e2e8f0" font-size="11">SELECT / JOIN / CTE</text>
+    <text x="82" y="86" fill="#94a3b8" font-size="10">Parser &amp; Rewriter</text>
+
+    <rect x="190" y="0" width="175" height="115" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+    <text x="277" y="36" fill="#fbbf24" font-size="13" font-weight="bold">2. Query Optimizer</text>
+    <text x="277" y="62" fill="#e2e8f0" font-size="11">Cost-Based Planner</text>
+    <text x="277" y="86" fill="#94a3b8" font-size="10">Hash / Merge Join</text>
+
+    <rect x="390" y="0" width="175" height="115" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+    <text x="477" y="36" fill="#34d399" font-size="13" font-weight="bold">3. B-Tree &amp; Buffer</text>
+    <text x="477" y="62" fill="#e2e8f0" font-size="11">Shared Buffer Pool</text>
+    <text x="477" y="86" fill="#94a3b8" font-size="10">O(log N) Index Scan</text>
+
+    <rect x="590" y="0" width="150" height="115" rx="10" fill="#1e293b" stroke="#a855f7" stroke-width="2"/>
+    <text x="665" y="36" fill="#c084fc" font-size="13" font-weight="bold">4. ACID &amp; WAL</text>
+    <text x="665" y="62" fill="#e2e8f0" font-size="11">Write-Ahead Log</text>
+    <text x="665" y="86" fill="#94a3b8" font-size="10">MVCC &amp; Snapshots</text>
+  </g>
+</svg>
